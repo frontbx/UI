@@ -1,0 +1,151 @@
+.form-field
+{
+	// Icons
+	> .fa, > .fa-brands
+	{
+		position: absolute;
+    	top: 50%;
+    	transform: translateY(-50%);
+    	color: var(--fbx-input-color-label);
+	}
+
+	// Left icon
+	> .fa + input,
+	> .fa + select,
+	> .fa + textarea,
+	> .fa-brands + input,
+	> .fa-brands + select,
+	> .fa-brands + textarea
+	{
+		padding-left: calc(var(--fbx-input-pad-x) * 2.5) !important;
+	}
+	> .fa:first-child,
+	> .fa-brands:first-child
+	{
+		left: var(--fbx-input-pad-x);
+	}
+	> .fa + input + label,
+	> .fa + input + label,
+	> .fa + input + label,
+	> .fa-brands + input + label,
+	> .fa-brands + input + label,
+	> .fa-brands + input + label
+	{
+		left: calc(var(--fbx-input-pad-x) * 2.3) !important;
+	}
+
+	// Right
+	> .fa:last-child,
+	> .fa-brands:last-child
+	{
+		left: initial;
+		right: var(--fbx-input-pad-x);
+	}
+
+	// adddon base
+	.input-addon
+	{
+		display: flex;
+    	align-items: center;
+    	color: var(--fbx-input-addon-color);
+    	padding: 0 var(--fbx-input-pad-x);
+    	font-size: var(--fbx-input-font-size);
+        background-color: var(--fbx-input-addon-bg);
+        border-style: solid;
+        border-color: #{$input-border-color};
+        border-top-width: var(--fbx-input-border-size-n);
+        border-right-width: var(--fbx-input-border-size-e);
+        border-bottom-width: var(--fbx-input-border-size-s);
+        border-left-width: var(--fbx-input-border-size-w);
+
+        // First
+        &:first-child
+        {
+        	border-right-width: 0;
+        	border-top-left-radius: var(--fbx-input-radius);
+    		border-bottom-left-radius: var(--fbx-input-radius);
+        }
+
+        // Last
+        &:last-child
+        {
+        	border-left-width: 0;
+        	border-top-right-radius: var(--fbx-input-radius);
+    		border-bottom-right-radius: var(--fbx-input-radius);
+        }
+	}
+	
+	// Underlined addon
+	&.underlined .input-addon
+	{
+		background-color: var(--fbx-input-bg);
+		color: var(--fbx-body-color);
+		opacity: 0.8;
+
+		// First
+        &:first-child
+        {
+        	padding-right: var(--fbx-input-pad-x);
+        }
+
+        // Last
+        &:last-child
+        {
+        	padding-left: var(--fbx-input-pad-x);
+        }        
+	}
+
+	// Groups
+	&.input-group
+	{
+		display: flex;
+	    flex-wrap: wrap;
+	    align-items: stretch;
+	    width: 100%;
+
+	    > input, 
+	    > select, 
+	    > div
+	    {
+	    	position: relative;
+		    flex: 1 1 auto;
+		    width: 1%;
+		    min-width: 0;
+	    }
+
+	    // Radius
+	    > :first-child,
+	    > .fa:first-child + input,
+	    > .fa:first-child + select,
+	    {
+	    	border-top-right-radius: 0;
+    		border-bottom-right-radius: 0;
+	    }
+	    > :last-child,
+	    > :last-child input,
+	    > :last-child select,
+	    {
+	    	border-top-left-radius: 0;
+    		border-bottom-left-radius: 0;
+	    }
+	    > div:not(:first-child):not(:last-child) input,
+	    > div:not(:first-child):not(:last-child) select,
+	    {
+	    	border-radius: 0;
+	    }
+
+	    // Button specific
+	    > button:first-child
+	    {
+	    	z-index: 1;
+	    }
+	    > button + div:last-child
+	    {
+	    	margin-left: -1px;
+	    }
+	    input + label + button
+	    {
+	    	margin-left: -1px;
+	    }
+	}
+}

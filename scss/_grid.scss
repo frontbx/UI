@@ -1,0 +1,44 @@
+// Dependency mixins
+@import 'grid/modules/displays';
+@import 'grid/modules/containers';
+@import 'grid/modules/rows';
+@import 'grid/modules/cols';
+@import 'grid/modules/gutters';
+@import 'grid/modules/poles';
+@import 'grid/modules/flexrows';
+@import 'grid/modules/flexcols';
+@import 'grid/modules/flexgaps';
+@import 'grid/modules/flexaligns';
+@import 'grid/modules/flexgutters';
+@import 'grid/modules/flexorders';
+@import 'grid/modules/make';
+
+/* Grid base */
+@import 'grid/base';
+
+/* Mobile first */
+@include _make-grid(null, null);
+
+/* SM Grid */
+@include media-breakpoint-up(sm)
+{
+    @include _make-grid('sm', 'xs');
+}
+
+/* MD Grid */
+@include media-breakpoint-up(md)
+{ 
+    @include _make-grid('md', 'sm');
+}
+
+/* LG Grid */
+@include media-breakpoint-up(lg)
+{ 
+    @include _make-grid('lg', 'md');
+}
+
+/* XL Grid */
+@include media-breakpoint-up(xl)
+{ 
+    @include _make-grid('xl', 'lg');
+}

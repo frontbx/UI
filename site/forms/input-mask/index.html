@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Documentation | FrontBx UI</title>
+        <meta name="description" content="">
+        <script src="../../../dist/js/frontbx-lazyload.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../../dist/css/frontbx.bundle.css">
+        <link rel="stylesheet" href="../../../dist/css/docs.css">
+    </head>
+    <body>
+        <svg style="display: none;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1451 1451" xml:space="preserve">
+            <g id="logo"><path fill="#ffffff" d="M73.11,349.67c0,0,0,537.15,0,607c0,69.9,61.15,122.3,61.15,122.3s253.25,157.21,388.64,240.21 c135.38,82.96,205.26,30.55,205.26,30.55s454.18-152.83,552.31-188.6c98.13-35.79,98.4-130.2,98.4-130.2V415.16 c-4.39-69.86-86.53-105.02-86.53-105.02s-254.12-130.76-359.48-188.39C827.56,64.16,736.89,92.03,736.89,92.03 S243.44,236.14,151.73,262.31C60.03,288.53,73.11,349.67,73.11,349.67z M553.52,566.7c0,0-250.63-137.49-349.9-202.71 c-74.18-48.75,8.5-72.03,8.5-72.03s404.83-115.37,509.67-145.92c104.8-30.57,155.69,2.53,155.69,2.53L1266.2,338.8 c88.97,46.6,4.34,67.41,4.34,67.41s-43.1,13.45-105,32.91l1.65,422.15l-128.47-117.73L852.47,995.55l3.59-457.65 c-44.98,14.72-83,27.48-106.74,36.02C640.1,613.22,553.52,566.7,553.52,566.7z M178.62,405.64L547.95,627.8 c0,0,66.72,27.79,66.72,108.32c0,80.54,2.73,497.09,2.73,497.09s2.78,88.89-74.95,47.21c-77.78-41.62-361.06-219.37-361.06-219.37 s-63.83-30.49-63.83-99.97c0-77.76,0-508.22,0-508.22S109.18,363.99,178.62,405.64z"/></g>
+        </svg>
+        <nav class="navbar navbar-fixed raised-1 bg-black">
+            <div class="container-fluid">
+                <button class="hamburger xs sm js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-state="collapsed" data-content="#docs-menu" data-classes="docs-drawer">
+                    <span class="hamburger-bun  hamburger-bun--top"></span>
+                    <span class="hamburger-patty"></span>
+                    <span class="hamburger-bun  hamburger-bun--btm"></span>
+                </button>
+                <a class="nav-logo" href="/">
+                    <svg viewBox="0 0 1451 1451"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg>
+                    <span class="logo-text md-inline-block lg-inline-block xl-inline-block">FrontBx</span>
+                </a>
+
+                <ul class="nav-menu flex-content-right">
+                    <li class="md lg xl">
+                        <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white">
+                            <span class="fa-brands fa-github"></span>
+                        </a>
+                    </li>
+                    <li class="md lg xl">
+                        <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white">
+                            <span class="fa fa-download"></span>
+                        </a>
+                    </li>
+                    <li class="md lg xl">
+                        <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white">
+                            <span class="fa fa-sliders"></span>
+                        </a>
+                    </li>
+                    
+                    <li class="md lg xl">
+                        <span class="drop-container">
+                            <button class="btn-unstyled btn-dropdown js-drop-trigger" role="button" type="button" title="toggle theme">
+                                <span class="fa fa-sun"></span>
+                                <span class="caret-s"></span>
+                            </button>
+                            <div class="drop-menu drop-se js-drop-menu">
+                                <ul class="menu js-select-menu"> 
+                                    <li>
+                                        <span class="item-left"><span class="fa fa-sun"></span></span>
+                                        <span class="item-body">Light</span>
+                                    </li>
+                                    <li>
+                                        <span class="item-left"><span class="fa fa-cloud-moon"></span></span>
+                                        <span class="item-body">Dark</span>
+                                    </li>
+                                    <li>
+                                        <span class="item-left"><span class="fa fa-circle-half-stroke"></span></span>
+                                        <span class="item-body">Auto</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </span>
+                    </li>
+                    <li class="xs sm">
+                        <button class="btn-unstyled js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-direction="right" data-state="collapsed" data-content="#desktop-options-drawer">
+                            <span class="fa fa-ellipsis-vertical"></span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div id="desktop-options-drawer">
+            <ul class="menu">
+                <li class="menu-header">Explore</li>
+                <li>
+                    <a href="/site/getting-started/download/index.html">
+                        <span class="item-left"><span class="fa-brands fa-github"></span></span>
+                        <span class="item-body">Github</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/site/getting-started/download/index.html">
+                        <span class="item-left"><span class="fa fa-download"></span></span>
+                        <span class="item-body">Download</span>
+                    </a>
+                </li>
+                <li class="menu-header">Colors</li>
+                <li>
+                    <a href="/site/getting-started/download/index.html">
+                        <span class="item-left"><span class="fa fa-sliders"></span></span>
+                        <span class="item-body">Edit Documentation colors</span>
+                    </a>
+                </li>
+                <li class="menu-header">Mode</li>
+                <li>
+                    <span class="item-left"><span class="fa fa-sun"></span></span>
+                    <span class="item-body">Light</span>
+                </li>
+                <li>
+                    <span class="item-left"><span class="fa fa-cloud-moon"></span></span>
+                    <span class="item-body">Dark</span>
+                </li>
+                <li>
+                    <span class="item-left"><span class="fa fa-circle-half-stroke"></span></span>
+                    <span class="item-body">Auto</span>
+                </li>
+            </ul>
+        </div>
+        <div id="docs-menu" style="display:none;"><ul class="doc-menu menu">
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-getting-started">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Getting Started</span>
+    </li>
+    <li  id="menu-getting-started" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../getting-started/introduction/index.html">Introduction</a></li>
+            <li class="menu-item "><a href="../../getting-started/download/index.html">Download</a></li>
+            <li class="menu-item "><a href="../../getting-started/installation/index.html">Installation</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-content">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Content</span>
+    </li>
+    <li  id="menu-content" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../content/typography/index.html">Typography</a></li>
+            <li class="menu-item "><a href="../../content/images/index.html">Images</a></li>
+            <li class="menu-item "><a href="../../content/tables/index.html">Tables</a></li>
+            <li class="menu-item "><a href="../../content/lists/index.html">Lists</a></li>
+            <li class="menu-item "><a href="../../content/inline-elements/index.html">Inline Elements</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-customize">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Customize</span>
+    </li>
+    <li  id="menu-customize" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../customize/overview/index.html">Overview</a></li>
+            <li class="menu-item "><a href="../../customize/sass/index.html">Sass</a></li>
+            <li class="menu-item "><a href="../../customize/colors/index.html">Colors</a></li>
+            <li class="menu-item "><a href="../../customize/css-variables/index.html">Css Variables</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-layout">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Layout</span>
+    </li>
+    <li  id="menu-layout" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../layout/breakpoints/index.html">Breakpoints</a></li>
+            <li class="menu-item "><a href="../../layout/container/index.html">Container</a></li>
+            <li class="menu-item "><a href="../../layout/flex-grid/index.html">Flex Grid</a></li>
+            <li class="menu-item "><a href="../../layout/grid/index.html">Grid</a></li>
+            <li class="menu-item "><a href="../../layout/skeleton/index.html">Skeleton</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-images">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Images</span>
+    </li>
+    <li  id="menu-images" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../images/lazyload/index.html">Lazyload</a></li>
+            <li class="menu-item "><a href="../../images/slider/index.html">Slider</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-surfaces">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Surfaces</span>
+    </li>
+    <li  id="menu-surfaces" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../surfaces/paper/index.html">Paper</a></li>
+            <li class="menu-item "><a href="../../surfaces/cards/index.html">Cards</a></li>
+            <li class="menu-item "><a href="../../surfaces/drawer/index.html">Drawer</a></li>
+            <li class="menu-item "><a href="../../surfaces/frontdrop/index.html">Frontdrop</a></li>
+            <li class="menu-item "><a href="../../surfaces/backdrop/index.html">Backdrop</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-navigation">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Navigation</span>
+    </li>
+    <li  id="menu-navigation" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../navigation/navbar/index.html">Navbar</a></li>
+            <li class="menu-item "><a href="../../navigation/menu/index.html">Menu</a></li>
+            <li class="menu-item "><a href="../../navigation/pagination/index.html">Pagination</a></li>
+            <li class="menu-item "><a href="../../navigation/tabs/index.html">Tabs</a></li>
+            <li class="menu-item "><a href="../../navigation/breadcrumbs/index.html">Breadcrumbs</a></li>
+            <li class="menu-item "><a href="../../navigation/waypoints/index.html">Waypoints</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse active" data-collapse-target="menu-forms">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Forms</span>
+    </li>
+    <li style="height:auto" id="menu-forms" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../forms/buttons/index.html">Buttons</a></li>
+            <li class="menu-item "><a href="../../forms/dropdown/index.html">Dropdown</a></li>
+            <li class="menu-item "><a href="../../forms/inputs/index.html">Inputs</a></li>
+            <li class="menu-item "><a href="../../forms/checkbox/index.html">Checkbox</a></li>
+            <li class="menu-item "><a href="../../forms/radio/index.html">Radio</a></li>
+            <li class="menu-item "><a href="../../forms/switch/index.html">Switch</a></li>
+            <li class="menu-item "><a href="../../forms/chips/index.html">Chips</a></li>
+            <li class="menu-item "><a href="../../forms/progress/index.html">Progress</a></li>
+            <li class="menu-item active"><a href="../../forms/input-mask/index.html">Input Mask</a></li>
+            <li class="menu-item "><a href="../../forms/results/index.html">Results</a></li>
+            <li class="menu-item "><a href="../../forms/validation/index.html">Validation</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-feedback">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Feedback</span>
+    </li>
+    <li  id="menu-feedback" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../feedback/message/index.html">Message</a></li>
+            <li class="menu-item "><a href="../../feedback/notification/index.html">Notification</a></li>
+            <li class="menu-item "><a href="../../feedback/modal/index.html">Modal</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-utilities">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Utilities</span>
+    </li>
+    <li  id="menu-utilities" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../utilities/ripple/index.html">Ripple</a></li>
+            <li class="menu-item "><a href="../../utilities/tooltip/index.html">Tooltip</a></li>
+            <li class="menu-item "><a href="../../utilities/popover/index.html">Popover</a></li>
+            <li class="menu-item "><a href="../../utilities/collapse/index.html">Collapse</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-javascript">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Javascript</span>
+    </li>
+    <li  id="menu-javascript" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../javascript/container/index.html">Container</a></li>
+            <li class="menu-item "><a href="../../javascript/dom/index.html">Dom</a></li>
+            <li class="menu-item "><a href="../../javascript/utils/index.html">Utils</a></li>
+            <li class="menu-item "><a href="../../javascript/ajax/index.html">Ajax</a></li>
+            <li class="menu-item "><a href="../../javascript/pjax/index.html">Pjax</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-css">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Css</span>
+    </li>
+    <li  id="menu-css" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../css/sass/index.html">Sass</a></li>
+            <li class="menu-item "><a href="../../css/css-helpers/index.html">Css Helpers</a></li>
+        </ul>
+    </li>
+</ul></div>
+        <div class="container-fluid main-container relative js-main-container">
+            <article class="docs-body"><h1 id="input-mask">Input mask</h1>
+<hr />
+<p>FrontBx comes with a convenient and easy to use input masker that can either be instantiated through HTML or JavaScript. The input masker forces an input to only except a predefined set of input rules (e.g numbers only). </p>
+<hr />
+<ul>
+<li><a href="#usage">Usage</a></li>
+<li><a href="#regex">Regex</a></li>
+<li><a href="#formatting">Formatting</a></li>
+<li><a href="#javaScript-instantiation">JavaScript Instantiation</a></li>
+</ul>
+<hr />
+<h3 id="usage">Usage</h3>
+<p>You can initialize the input masker via HTML by using a the <code>.js-mask</code> class on a given input. You can then use one of the prebuilt masks as the <code>data-mask</code> attribute.</p>
+<p>Pre-built masks are <code>creditcard</code>, <code>money</code>, <code>alpha-numeric</code>, <code>alpha-space</code>, <code>alpha-dash</code>, <code>alpha-numeric-dash</code>, <code>numeric</code>, and <code>numeric-decimal</code>.</p>
+<p>To mask a credit card, use the <code>.js-mask</code> class.</p>
+<div class="code-content-example">
+    <div class="flex-row align-cols-center flex-cols-12 flex-cols-md-6">
+        <div>
+            <div class="flex-row row-gaps-xs">
+                <div>
+                    <div class="form-field row">
+                        <input class="js-mask" data-mask="creditcard" type="text" name="input_1" id="input_1" placeholder="**** **** **** ****">
+                        <label for="input_1">Credit Card</label>
+                    </div>
+                </div>        
+                <div>
+                    <div class="form-field row">
+                        <input class="js-mask" data-mask="money" type="text" name="input_2" id="input_2" placeholder="44.43">
+                        <label for="input_2">Money</label>
+                    </div>
+                </div>        
+                <div>
+                    <div class="form-field row">
+                        <input class="js-mask" data-mask="alpha-numeric" type="text" name="input_3" id="input_3" placeholder="Rocker_Man_91">
+                        <label for="input_3">Alpha-numeric</label>
+                    </div>
+                </div>        
+                <div>
+                    <div class="form-field row">
+                        <input class="js-mask" data-mask="alpha-space" type="text" name="input_4" id="input_4" placeholder="Rocket Mab">
+                        <label for="input_4">Alpha space</label>
+                    </div>
+                </div>        
+                <div>
+                    <div class="form-field row">
+                        <input class="js-mask" data-mask="alpha-dash" type="text" name="input_5" id="input_5" placeholder="Rocket-Man">
+                        <label for="input_5">Alpha dash</label>
+                    </div>
+                </div>        
+                <div>
+                    <div class="form-field row">
+                        <input class="js-mask" data-mask="alpha-numeric-dash" type="text" name="input_6" id="input_6" placeholder="Rocket-Man">
+                        <label for="input_6">Alpha-numeric dash</label>
+                    </div>
+                </div>        
+                <div>
+                    <div class="form-field row">
+                        <input class="js-mask" data-mask="numeric" type="text" name="input_7" id="input_7" placeholder="1234567">
+                        <label for="input_7">numeric</label>
+                    </div>
+                </div>        
+                <div>
+                    <div class="form-field row">
+                        <input class="js-mask" data-mask="numeric-decimal" type="text" name="input_8" id="input_8" placeholder="332.43">
+                        <label for="input_8">Numeric decimal</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;!-- Credit card --&gt;
+&lt;input class="js-mask" data-mask="creditcard" type="text" name="input_1" id="input_1" placeholder="**** **** **** ****"&gt;
+&lt;label for="input_1"&gt;Credit Card&lt;/label&gt;
+
+&lt;!-- Money--&gt;
+&lt;input class="js-mask" data-mask="money" type="text" name="input_2" id="input_2" placeholder="44.43"&gt;
+&lt;label for="input_2"&gt;Money&lt;/label&gt;
+
+&lt;!-- Alpha-numeric--&gt;
+&lt;input class="js-mask" data-mask="alpha-numeric" type="text" name="input_3" id="input_3" placeholder="Rocker_Man_91"&gt;
+&lt;label for="input_3"&gt;Alpha-numeric&lt;/label&gt;
+
+&lt;!-- Alpha-space --&gt;
+&lt;input class="js-mask" data-mask="alpha-space" type="text" name="input_4" id="input_4" placeholder="Rocket Mab"&gt;
+&lt;label for="input_4"&gt;Alpha space&lt;/label&gt;
+
+&lt;!-- Alpha-dash --&gt;
+&lt;input class="js-mask" data-mask="alpha-dash" type="text" name="input_5" id="input_5" placeholder="Rocket-Man"&gt;
+&lt;label for="input_5"&gt;Alpha dash&lt;/label&gt;
+
+&lt;!-- Alpha-numeric-dash --&gt;
+&lt;input class="js-mask" data-mask="alpha-numeric-dash" type="text" name="input_6" id="input_6" placeholder="Rocket-Man"&gt;
+&lt;label for="input_6"&gt;Alpha-numeric dash&lt;/label&gt;
+
+&lt;!-- Numeric --&gt;
+&lt;input class="js-mask" data-mask="numeric" type="text" name="input_7" id="input_7" placeholder="1234567"&gt;
+&lt;label for="input_7"&gt;numeric&lt;/label&gt;
+
+&lt;!-- Numeric decimal --&gt;
+&lt;input class="js-mask" data-mask="numeric-decimal" type="text" name="input_8" id="input_8" placeholder="332.43"&gt;
+&lt;label for="input_8"&gt;Numeric decimal&lt;/label&gt;</code></pre>
+<hr />
+<h3 id="regex">Regex</h3>
+<p>You can also pass your own custom RegExp to the <code>data-mask</code> attribute in format <code>regex(pattern)</code>. The regex should math allowed characters in the input.</p>
+<div class="code-content-example">
+    <div class="flex-row align-cols-center flex-cols-12 flex-cols-md-6">
+        <div>
+            <div class="form-field row">
+                <input class="js-mask" data-mask="regex([\w\|\s])" type="text" name="input_9" id="input_9" placeholder="**** **** **** ****">
+                <label for="input_9">Words and Spaces</label>
+            </div>
+        </div>
+    </div>        
+</div>
+<pre><code class="html language-html">&lt;div class="form-field"&gt;
+    &lt;input class="js-mask" data-mask="regex([\w\|\s])" type="text" name="input_9" id="input_9" placeholder="**** **** **** ****"&gt;
+    &lt;label for="input_9"&gt;Words and Spaces&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+<hr />
+<h3 id="formatting">Formatting</h3>
+<p>You can custom format any masked input using the <code>data-format</code> attribute. Formats should be structured using an <code>x</code> for input values and anything else you want to add</p>
+<div class="code-content-example">
+    <div class="flex-row align-cols-center flex-cols-12 flex-cols-md-6">
+        <div>
+            <div class="form-field row">
+                <input class="js-mask" data-mask="numeric" data-format="xxxx--xxxx--xxxx--xxxx" type="text" name="input_10" id="input_10" placeholder="**** **** **** ****">
+                <label for="input_10">Custom Format</label>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="form-field"&gt;
+    &lt;input class="js-mask" data-mask="numeric" data-format="xxxx--xxxx--xxxx--xxxx" type="text" name="input_10" id="input_10" placeholder="**** **** **** ****"&gt;
+    &lt;label for="input_10"&gt;Custom Format&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+<hr />
+<h3 id="javascript-instantiation">JavaScript Instantiation</h3>
+<p>If you need to add a custom input mask using JavaScript, you can instantiate a mask via the <code>Container</code>.</p>
+<pre><code class="javascript language-javascript">const input = document.querySelector('#my-input');
+
+const mask = FrontBx.InputMasker(input, '[A-z0-9-]',  'xxxx--xxxx--xxxx--xxxx');
+
+if (someEvent)
+{
+    mask.destroy();
+}</code></pre></article>
+        </div>
+        <footer class="site-footer">
+            <div class="container-fluid clearfix">
+                <div class="col col-12 col-sm-7 gutter-sm-r">
+                    <div class="row sitemap roof-sm floor-sm">
+                        <ul class="list-inline">
+                            <li>
+                                <a href="../../index.html">Documentation</a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/frontbx/ui/issues">Issues</a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/frontbx/">GitHub</a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/frontbx/ui/archive/master.zip">Download</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <a href="/" title="Home" class="logo-link"> <svg class="logo" viewBox="0 0 1451 1451"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg> </a>
+                        <small> © FrontBx UI 2016.
+                            <br> Designed &amp; developed with
+                            <span style="font-size:13px;color:#F36B5C;">♥</span> by Joe Howard. </small>
+                    </div>
+                </div>
+                <div class="col col-12 col-sm-4 gutter-sm-l">
+                    <ul class="list-inline social-links">
+                        <li>
+                            <a class="icon-wrap social-share github" target="_blank" href="https://github.com/frontbx/ui/index.html">
+                                <span class="icon icon-social fa fa-github"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="icon-wrap social-share twitter js-tweet-pop-up" href="#">
+                                <span class="icon icon-social fa fa-twitter"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="js-waypoint-trigger to-top icon-wrap social-share" href="#" data-waypoint-target="header" data-waypoint-speed="500" title="Go to top of page">
+                                <span class="icon fa fa-arrow-up"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <script src="../../../dist/js/frontbx.bundle.min.js"></script>
+        <script src="../../../dist/js/frontbx-docs.min.js"></script>
+    </body>
+</html>

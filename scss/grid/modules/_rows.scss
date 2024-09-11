@@ -1,0 +1,14 @@
+@mixin _make-rows($curr-grid, $prev-grid: null)
+{
+    // Rows
+    @if $curr-grid != null
+    {
+        .row-#{$curr-grid}
+        {
+            // This doesn't use a variable as it can be used on
+            // any element
+            width: 100%;
+            @include _clearfix;
+        }
+    }
+}

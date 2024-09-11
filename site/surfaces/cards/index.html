@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Documentation | FrontBx UI</title>
+        <meta name="description" content="">
+        <script src="../../../dist/js/frontbx-lazyload.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../../dist/css/frontbx.bundle.css">
+        <link rel="stylesheet" href="../../../dist/css/docs.css">
+    </head>
+    <body>
+        <svg style="display: none;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1451 1451" xml:space="preserve">
+            <g id="logo"><path fill="#ffffff" d="M73.11,349.67c0,0,0,537.15,0,607c0,69.9,61.15,122.3,61.15,122.3s253.25,157.21,388.64,240.21 c135.38,82.96,205.26,30.55,205.26,30.55s454.18-152.83,552.31-188.6c98.13-35.79,98.4-130.2,98.4-130.2V415.16 c-4.39-69.86-86.53-105.02-86.53-105.02s-254.12-130.76-359.48-188.39C827.56,64.16,736.89,92.03,736.89,92.03 S243.44,236.14,151.73,262.31C60.03,288.53,73.11,349.67,73.11,349.67z M553.52,566.7c0,0-250.63-137.49-349.9-202.71 c-74.18-48.75,8.5-72.03,8.5-72.03s404.83-115.37,509.67-145.92c104.8-30.57,155.69,2.53,155.69,2.53L1266.2,338.8 c88.97,46.6,4.34,67.41,4.34,67.41s-43.1,13.45-105,32.91l1.65,422.15l-128.47-117.73L852.47,995.55l3.59-457.65 c-44.98,14.72-83,27.48-106.74,36.02C640.1,613.22,553.52,566.7,553.52,566.7z M178.62,405.64L547.95,627.8 c0,0,66.72,27.79,66.72,108.32c0,80.54,2.73,497.09,2.73,497.09s2.78,88.89-74.95,47.21c-77.78-41.62-361.06-219.37-361.06-219.37 s-63.83-30.49-63.83-99.97c0-77.76,0-508.22,0-508.22S109.18,363.99,178.62,405.64z"/></g>
+        </svg>
+        <nav class="navbar navbar-fixed raised-1 bg-black">
+            <div class="container-fluid">
+                <button class="hamburger xs sm js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-state="collapsed" data-content="#docs-menu" data-classes="docs-drawer">
+                    <span class="hamburger-bun  hamburger-bun--top"></span>
+                    <span class="hamburger-patty"></span>
+                    <span class="hamburger-bun  hamburger-bun--btm"></span>
+                </button>
+                <a class="nav-logo" href="/">
+                    <svg viewBox="0 0 1451 1451"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg>
+                    <span class="logo-text md-inline-block lg-inline-block xl-inline-block">FrontBx</span>
+                </a>
+
+                <ul class="nav-menu flex-content-right">
+                    <li class="md lg xl">
+                        <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white">
+                            <span class="fa-brands fa-github"></span>
+                        </a>
+                    </li>
+                    <li class="md lg xl">
+                        <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white">
+                            <span class="fa fa-download"></span>
+                        </a>
+                    </li>
+                    <li class="md lg xl">
+                        <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white">
+                            <span class="fa fa-sliders"></span>
+                        </a>
+                    </li>
+                    
+                    <li class="md lg xl">
+                        <span class="drop-container">
+                            <button class="btn-unstyled btn-dropdown js-drop-trigger" role="button" type="button" title="toggle theme">
+                                <span class="fa fa-sun"></span>
+                                <span class="caret-s"></span>
+                            </button>
+                            <div class="drop-menu drop-se js-drop-menu">
+                                <ul class="menu js-select-menu"> 
+                                    <li>
+                                        <span class="item-left"><span class="fa fa-sun"></span></span>
+                                        <span class="item-body">Light</span>
+                                    </li>
+                                    <li>
+                                        <span class="item-left"><span class="fa fa-cloud-moon"></span></span>
+                                        <span class="item-body">Dark</span>
+                                    </li>
+                                    <li>
+                                        <span class="item-left"><span class="fa fa-circle-half-stroke"></span></span>
+                                        <span class="item-body">Auto</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </span>
+                    </li>
+                    <li class="xs sm">
+                        <button class="btn-unstyled js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-direction="right" data-state="collapsed" data-content="#desktop-options-drawer">
+                            <span class="fa fa-ellipsis-vertical"></span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div id="desktop-options-drawer">
+            <ul class="menu">
+                <li class="menu-header">Explore</li>
+                <li>
+                    <a href="/site/getting-started/download/index.html">
+                        <span class="item-left"><span class="fa-brands fa-github"></span></span>
+                        <span class="item-body">Github</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/site/getting-started/download/index.html">
+                        <span class="item-left"><span class="fa fa-download"></span></span>
+                        <span class="item-body">Download</span>
+                    </a>
+                </li>
+                <li class="menu-header">Colors</li>
+                <li>
+                    <a href="/site/getting-started/download/index.html">
+                        <span class="item-left"><span class="fa fa-sliders"></span></span>
+                        <span class="item-body">Edit Documentation colors</span>
+                    </a>
+                </li>
+                <li class="menu-header">Mode</li>
+                <li>
+                    <span class="item-left"><span class="fa fa-sun"></span></span>
+                    <span class="item-body">Light</span>
+                </li>
+                <li>
+                    <span class="item-left"><span class="fa fa-cloud-moon"></span></span>
+                    <span class="item-body">Dark</span>
+                </li>
+                <li>
+                    <span class="item-left"><span class="fa fa-circle-half-stroke"></span></span>
+                    <span class="item-body">Auto</span>
+                </li>
+            </ul>
+        </div>
+        <div id="docs-menu" style="display:none;"><ul class="doc-menu menu">
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-getting-started">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Getting Started</span>
+    </li>
+    <li  id="menu-getting-started" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../getting-started/introduction/index.html">Introduction</a></li>
+            <li class="menu-item "><a href="../../getting-started/download/index.html">Download</a></li>
+            <li class="menu-item "><a href="../../getting-started/installation/index.html">Installation</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-content">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Content</span>
+    </li>
+    <li  id="menu-content" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../content/typography/index.html">Typography</a></li>
+            <li class="menu-item "><a href="../../content/images/index.html">Images</a></li>
+            <li class="menu-item "><a href="../../content/tables/index.html">Tables</a></li>
+            <li class="menu-item "><a href="../../content/lists/index.html">Lists</a></li>
+            <li class="menu-item "><a href="../../content/inline-elements/index.html">Inline Elements</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-customize">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Customize</span>
+    </li>
+    <li  id="menu-customize" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../customize/overview/index.html">Overview</a></li>
+            <li class="menu-item "><a href="../../customize/sass/index.html">Sass</a></li>
+            <li class="menu-item "><a href="../../customize/colors/index.html">Colors</a></li>
+            <li class="menu-item "><a href="../../customize/css-variables/index.html">Css Variables</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-layout">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Layout</span>
+    </li>
+    <li  id="menu-layout" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../layout/breakpoints/index.html">Breakpoints</a></li>
+            <li class="menu-item "><a href="../../layout/container/index.html">Container</a></li>
+            <li class="menu-item "><a href="../../layout/flex-grid/index.html">Flex Grid</a></li>
+            <li class="menu-item "><a href="../../layout/grid/index.html">Grid</a></li>
+            <li class="menu-item "><a href="../../layout/skeleton/index.html">Skeleton</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-images">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Images</span>
+    </li>
+    <li  id="menu-images" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../images/lazyload/index.html">Lazyload</a></li>
+            <li class="menu-item "><a href="../../images/slider/index.html">Slider</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse active" data-collapse-target="menu-surfaces">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Surfaces</span>
+    </li>
+    <li style="height:auto" id="menu-surfaces" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../surfaces/paper/index.html">Paper</a></li>
+            <li class="menu-item active"><a href="../../surfaces/cards/index.html">Cards</a></li>
+            <li class="menu-item "><a href="../../surfaces/drawer/index.html">Drawer</a></li>
+            <li class="menu-item "><a href="../../surfaces/frontdrop/index.html">Frontdrop</a></li>
+            <li class="menu-item "><a href="../../surfaces/backdrop/index.html">Backdrop</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-navigation">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Navigation</span>
+    </li>
+    <li  id="menu-navigation" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../navigation/navbar/index.html">Navbar</a></li>
+            <li class="menu-item "><a href="../../navigation/menu/index.html">Menu</a></li>
+            <li class="menu-item "><a href="../../navigation/pagination/index.html">Pagination</a></li>
+            <li class="menu-item "><a href="../../navigation/tabs/index.html">Tabs</a></li>
+            <li class="menu-item "><a href="../../navigation/breadcrumbs/index.html">Breadcrumbs</a></li>
+            <li class="menu-item "><a href="../../navigation/waypoints/index.html">Waypoints</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-forms">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Forms</span>
+    </li>
+    <li  id="menu-forms" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../forms/buttons/index.html">Buttons</a></li>
+            <li class="menu-item "><a href="../../forms/dropdown/index.html">Dropdown</a></li>
+            <li class="menu-item "><a href="../../forms/inputs/index.html">Inputs</a></li>
+            <li class="menu-item "><a href="../../forms/checkbox/index.html">Checkbox</a></li>
+            <li class="menu-item "><a href="../../forms/radio/index.html">Radio</a></li>
+            <li class="menu-item "><a href="../../forms/switch/index.html">Switch</a></li>
+            <li class="menu-item "><a href="../../forms/chips/index.html">Chips</a></li>
+            <li class="menu-item "><a href="../../forms/progress/index.html">Progress</a></li>
+            <li class="menu-item "><a href="../../forms/input-mask/index.html">Input Mask</a></li>
+            <li class="menu-item "><a href="../../forms/results/index.html">Results</a></li>
+            <li class="menu-item "><a href="../../forms/validation/index.html">Validation</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-feedback">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Feedback</span>
+    </li>
+    <li  id="menu-feedback" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../feedback/message/index.html">Message</a></li>
+            <li class="menu-item "><a href="../../feedback/notification/index.html">Notification</a></li>
+            <li class="menu-item "><a href="../../feedback/modal/index.html">Modal</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-utilities">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Utilities</span>
+    </li>
+    <li  id="menu-utilities" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../utilities/ripple/index.html">Ripple</a></li>
+            <li class="menu-item "><a href="../../utilities/tooltip/index.html">Tooltip</a></li>
+            <li class="menu-item "><a href="../../utilities/popover/index.html">Popover</a></li>
+            <li class="menu-item "><a href="../../utilities/collapse/index.html">Collapse</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-javascript">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Javascript</span>
+    </li>
+    <li  id="menu-javascript" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../javascript/container/index.html">Container</a></li>
+            <li class="menu-item "><a href="../../javascript/dom/index.html">Dom</a></li>
+            <li class="menu-item "><a href="../../javascript/utils/index.html">Utils</a></li>
+            <li class="menu-item "><a href="../../javascript/ajax/index.html">Ajax</a></li>
+            <li class="menu-item "><a href="../../javascript/pjax/index.html">Pjax</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-css">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Css</span>
+    </li>
+    <li  id="menu-css" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../css/sass/index.html">Sass</a></li>
+            <li class="menu-item "><a href="../../css/css-helpers/index.html">Css Helpers</a></li>
+        </ul>
+    </li>
+</ul></div>
+        <div class="container-fluid main-container relative js-main-container">
+            <article class="docs-body"><h1 id="cards">Cards</h1>
+<p>A card is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options.</p>
+<hr />
+<ul>
+<li><a href="#basic-example">Basic example</a></li>
+<li><a href="#Media">Media</a></li>
+<li><a href="#landscape">Landscape</a></li>
+<li><a href="#header">Header</a></li>
+<li><a href="#footer">Footer</a></li>
+<li><a href="#divider">Divider</a></li>
+<li><a href="#tables">Tables</a></li>
+<li><a href="#scrollable">Scrollable</a></li>
+<li><a href="#primary-action">Primary Action</a></li>
+<li><a href="#css-customization">CSS Customization</a></li>
+</ul>
+<hr />
+<h3 id="basic-example">Basic example</h3>
+<p>Cards are built with as little markup and styles as possible, but still manage to deliver control and customization.</p>
+<p>Cards consist of the following blocks, which can be moved around interchangeably within a card:</p>
+<ol>
+<li><code>.card-header</code></li>
+<li><code>.card-media</code></li>
+<li><code>.card-block</code></li>
+<li><code>.card-footer</code></li>
+</ol>
+<p>Below is an example of a basic card with some text content.</p>
+<div class="code-content-example">
+    <div class="flex-row align-cols-center">
+        <div class="card col col-md-8 col-lg-5">
+            <div class="card-block">
+                <h4 class="card-title">This Is MAGA Country</h4>
+                <span class="card-subtitle">Make America Great Again</span>
+                <p>Mollit aliquip adipisicing aliqua velit irure consequat proident sed culpa eiusmod culpa consectetur velit excepteur est amet pariatur in sunt esse ex anim exercitation mollit ea commodo.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="card"&gt;
+    &lt;div class="card-block"&gt;
+        &lt;h4 class="card-title"&gt;This Is MAGA Country&lt;/h4&gt;
+        &lt;span class="card-subtitle"&gt;Make America Great Again&lt;/span&gt;
+        &lt;p&gt;...&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<hr />
+<h3 id="media">Media</h3>
+<p>To render media inside a card, wrap an image in a <code>.card-media</code> block. Media can be placed at the at the top, bottom or center of a card:</p>
+<div class="code-content-example">
+   <div class="flex-row col-gaps-xs row-gaps-xs">
+        <div class="card col col-lg-4">
+            <div class="card-media">
+                <img data-src="../../assets/img/trump-hero.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-hero_thumb.jpg" />
+            </div>    
+            <div class="card-block">
+                <h4 class="card-title">This Is MAGA Country</h4>
+                <p>Veniam laboris do sit sunt dolore incididunt fugiat id enim ut ullamco enim deserunt fugiat.</p>
+            </div>
+            <div class="card-footer">
+                <div class="card-footer-left">
+                    <div class="avatar">
+                        <img data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" />
+                    </div>
+                </div>
+                <div class="card-footer-content p5">
+                    <div class="text-bold">The Don</div>
+                    <div class="color-gray font-italic">Make America Great Again</div>
+                </div>
+            </div>
+        </div>
+        <div class="card col col-lg-4">
+            <div class="card-header">
+                <div class="card-header-left">
+                    <div class="avatar">
+                        <img data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" />
+                    </div>
+                </div>
+                <div class="card-header-content p5">
+                    <div class="text-bold">The Don</div>
+                    <div class="color-gray font-italic">Make America Great Again</div>
+                </div>
+            </div>
+            <div class="card-media">
+                <img data-src="../../assets/img/trump-hero.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-hero_thumb.jpg" />
+            </div>
+            <div class="card-block">
+                <h4 class="card-title">This Is MAGA Country</h4>
+                <p>Veniam laboris do sit sunt dolore incididunt fugiat id enim ut ullamco enim deserunt fugiat.</p>
+            </div>
+        </div>
+        <div class="card col col-lg-4">
+            <div class="card-header">
+                <div class="card-header-left">
+                    <div class="avatar">
+                        <img data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" />
+                    </div>
+                </div>
+                <div class="card-header-content p5">
+                    <div class="text-bold">The Don</div>
+                    <div class="color-gray font-italic">Make America Great Again</div>
+                </div>
+            </div>
+            <div class="card-block">
+                <h4 class="card-title">This Is MAGA Country</h4>
+                <p>Veniam laboris do sit sunt dolore incididunt fugiat id enim ut ullamco enim deserunt fugiat.</p>
+            </div>
+            <div class="card-media">
+                <img data-src="../../assets/img/trump-hero.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-hero_thumb.jpg" />
+            </div> 
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="flex-row col-gaps-xs"&gt;
+    &lt;div class="card col col-lg-4"&gt;
+        &lt;div class="card-media"&gt;
+            &lt;img ... /&gt;
+        &lt;/div&gt;    
+        &lt;div class="card-block"&gt;
+            ...
+        &lt;/div&gt;
+        &lt;div class="card-footer"&gt;
+            ...
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="card col col-lg-4"&gt;
+        &lt;div class="card-header"&gt;
+            ...
+        &lt;/div&gt;
+        &lt;div class="card-media"&gt;
+            &lt;img ... /&gt;
+        &lt;/div&gt;
+        &lt;div class="card-block"&gt;
+            ...
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="card col col-lg-4"&gt;
+        &lt;div class="card-header"&gt;
+            ...
+        &lt;/div&gt;
+        &lt;div class="card-block"&gt;
+            ...
+        &lt;/div&gt;
+        &lt;div class="card-media"&gt;
+            &lt;img ... /&gt;
+        &lt;/div&gt; 
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<h4 id="background-images">Background images</h4>
+<p>You can also make use of FrontBx's <code>.bg-image</code> inside a <code>.card-media</code> block if you need a fixed height image at a specific aspect ratio:</p>
+<div class="code-content-example">
+    <div class="flex-row align-cols-center">
+        <div class="card col col-md-8 col-lg-5">
+            <div class="card-header">
+                <div class="card-header-left">
+                    <div class="avatar">
+                        <img data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" />
+                    </div>
+                </div>
+                <div class="card-header-content p5">
+                    <div class="text-bold">The Don</div>
+                    <div class="color-gray font-italic">Make America Great Again</div>
+                </div>
+            </div>
+            <div class="card-media">
+                <div data-src="../../assets/img/trump-hero.jpg" class="bg-image js-lazyload lazyload grayscale" style="background-image: url(../../assets/img/trump-hero_thumb.jpg)"></div>
+            </div>
+            <div class="card-block">
+                <h4 class="card-title">This Is MAGA Country</h4>
+                <p>Veniam laboris do sit sunt dolore incididunt fugiat id enim ut ullamco enim deserunt fugiat.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="card"&gt;
+    &lt;div class="card-header"&gt;
+        ...
+    &lt;/div&gt;
+    &lt;div class="card-media"&gt;
+        &lt;div class="bg-image" style="background-image: url(...)"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="card-block"&gt;
+        ...
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<hr />
+<h3 id="landscape">Landscape</h3>
+<p>Landscape cards have their media to left or right of their content. You'll need to add <code>.card-landscape</code> modifier to the card.</p>
+<p>If using <code>card-header</code> or <code>.card-footer</code>, you'll need to your card content in a <code>&lt;div&gt;</code>:</p>
+<div class="code-content-example">
+    <div class="flex-row align-cols-center row-gaps-sm">
+        <div class="col col-lg-8 card card-landscape">
+            <div>
+                <div class="card-header">
+                    <div class="card-header-left">
+                        <div class="avatar">
+                            <img data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" />
+                        </div>
+                    </div>
+                    <div class="card-header-content p5">
+                        <div class="text-bold">The Don</div>
+                        <div class="color-gray font-italic">Make America Great Again</div>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <h4 class="card-title">This Is MAGA Country</h4>
+                    <p>Veniam laboris do sit sunt dolore incididunt fugiat id enim ut ullamco enim deserunt fugiat.</p>
+                </div>
+            </div>
+            <div class="card-media">
+                <img data-src="../../assets/img/trump-hero.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-hero_thumb.jpg" />
+            </div> 
+        </div>
+        <div class="col col-lg-8 card card-landscape">
+            <div class="card-media">
+                <img data-src="../../assets/img/trump-hero.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-hero_thumb.jpg" />
+            </div> 
+            <div>
+                <div class="card-header">
+                    <div class="card-header-left">
+                        <div class="avatar">
+                            <img data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" />
+                        </div>
+                    </div>
+                    <div class="card-header-content p5">
+                        <div class="text-bold">The Don</div>
+                        <div class="color-gray font-italic">Make America Great Again</div>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <h4 class="card-title">This Is MAGA Country</h4>
+                    <p>Veniam laboris do sit sunt dolore incididunt fugiat id enim ut ullamco enim deserunt fugiat.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="card card-landscape"&gt;
+    &lt;div class="card-block"&gt;
+        &lt;h4 class="card-title"&gt;...&lt;/h4&gt;
+        &lt;span class="card-subtitle"&gt;...&lt;/span&gt;
+        &lt;p&gt;...&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="card-media"&gt;
+        &lt;img class="img-responsive" src="..." /&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="card card-landscape"&gt;
+    &lt;div class="card-media"&gt;
+        &lt;img class="img-responsive" src="..." /&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;div class="card-header"&gt;
+            ...
+        &lt;/div&gt;
+        &lt;div class="card-block"&gt;
+            ...
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<p>Add the <code>.responsive</code> modifier class to <code>.card.card-landscape</code> to make it stack like a regular card on screens below <code>md</code> breakpoint.</p>
+<div class="code-content-example">
+    <div class="flex-row align-cols-center row-gaps-xs">
+        <div class="col col-lg-8 card card-landscape responsive">
+            <div class="card-media">
+                <img data-src="../../assets/img/trump-hero.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-hero_thumb.jpg" />
+            </div> 
+            <div>
+                <div class="card-header">
+                    <div class="card-header-left">
+                        <div class="avatar">
+                            <img data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" />
+                        </div>
+                    </div>
+                    <div class="card-header-content p5">
+                        <div class="text-bold">The Don</div>
+                        <div class="color-gray font-italic">Make America Great Again</div>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <h4 class="card-title">This Is MAGA Country</h4>
+                    <p>Veniam laboris do sit sunt dolore incididunt fugiat id enim ut ullamco enim deserunt fugiat.</p>
+                </div>
+            </div>  
+        </div>
+    </div>
+</div>
+<hr />
+<h3 id="header">Header</h3>
+<p>Add an optional header within a card by using <code>.card-header</code>, remember to wrap any content in <code>.card-header-content</code></p>
+<div class="code-content-example">
+    <div class="flex-row align-cols-center">
+        <div class="card col col-md-8 col-lg-5">
+            <div class="card-header">
+                <div class="card-header-content">
+                    <div class="avatar">
+                        <img data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" />
+                    </div>
+                </div>
+            </div>
+            <div class="card-block">
+                <p>Proident minim veniam in adipisicing in adipisicing sint quis in commodo labore labore ea velit officia dolor incididunt nisi consequat ut in tempor id.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="card"&gt;
+    &lt;div class="card-header"&gt;
+        &lt;div class="card-header-content"&gt;
+            ...
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="card-block"&gt;
+        &lt;p&gt;...&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<p><code>.card-header</code> has two additional child elements for aligning items inside it <code>.card-header-left</code> and <code>.card-header-right</code>:</p>
+<div class="code-content-example">
+    <div class="flex-row align-cols-center">
+        <div class="card col col-md-8 col-lg-5">
+            <div class="card-header">
+                <div class="card-header-left">
+                    <div class="avatar">
+                        <img src="../../assets/img/trump-avatar.jpg" />
+                    </div>
+                </div>
+                <div class="card-header-content">
+                    <h5 class="card-title">The Don</h5>
+                    <div class="card-subtitle">Make America Great Again</div>
+                </div>
+                <div class="card-header-right">
+                    <div class="drop-container">
+                        <button type="button" class="btn btn-pure btn-circle btn-sm btn-dropdown js-drop-trigger">
+                            <span class="fa fa-flickr"></span>
+                        </button>
+                        <div class="drop-menu drop-sw raised">
+                            <div class="drop">
+                                <ul>
+                                    <li class="drop-header">More</li>
+                                    <li>
+                                        <a href="#" title="">Menu 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="">Menu 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="">Menu 3</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="#" title="">More 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="">More 2</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-block">
+                <p>Proident minim veniam in adipisicing in adipisicing sint quis in commodo labore labore ea velit officia dolor incididunt nisi consequat ut in tempor id.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="card"&gt;
+    &lt;div class="card-header"&gt;
+        &lt;div class="card-header-left"&gt;
+            ...
+        &lt;/div&gt;
+        &lt;div class="card-header-content"&gt;
+            ...
+        &lt;/div&gt;
+        &lt;div class="card-header-right"&gt;
+            ...
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="card-block"&gt;
+        ...
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<hr />
+<h3 id="footer">Footer</h3>
+<p>Add an optional footer within a card by using <code>.card-footer</code>, remember to wrap any content in <code>.card-footer-content</code>:</p>
+<div class="code-content-example">
+    <div class="flex-row align-cols-center">
+        <div class="card col col-md-8 col-lg-5">
+            <div class="card-media">
+                <img data-src="../../assets/img/trump-hero.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-hero_thumb.jpg" />
+            </div>
+            <div class="card-block">
+                <p>Proident minim veniam in adipisicing in adipisicing sint quis in commodo labore labore ea velit officia dolor incididunt nisi consequat ut in tempor id.</p>
+            </div>
+            <div class="card-footer">
+                <div class="card-footer-content">
+                    <button class="btn btn-pure btn-primary">Action 1</button>
+                    <button class="btn btn-pure btn-primary">Action 2</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="card"&gt;
+    &lt;div class="card-media"&gt;
+        &lt;img class="img-responsive" src="..." /&gt;
+    &lt;/div&gt;
+    &lt;div class="card-block"&gt;
+        &lt;p&gt;...&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="card-footer"&gt;
+        &lt;div class="card-footer-content"&gt;
+            &lt;button class="btn btn-pure btn-primary"&gt;Action 1&lt;/button&gt;
+            &lt;button class="btn btn-pure btn-primary"&gt;Action 2&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<p><code>.card-footer</code> has two additional child elements for aligning items inside it <code>.card-footer-left</code> and <code>.card-footer-right</code>:</p>
+<div class="code-content-example">
+    <div class="flex-row align-cols-center">
+        <div class="card col col-md-8 col-lg-5">
+            <div class="card-header">
+                <div class="card-header-left">
+                    <div class="avatar">
+                        <img src="../../assets/img/trump-avatar.jpg" />
+                    </div>
+                </div>
+                <div class="card-header-content">
+                    <h5 class="card-title">The Don</h5>
+                    <div class="card-subtitle">Make America Great Again</div>
+                </div>
+            </div>
+            <div class="card-block">
+                <p>Proident minim veniam in adipisicing in adipisicing sint quis in commodo labore labore ea velit officia dolor incididunt nisi consequat ut in tempor id.</p>
+            </div>
+            <div class="card-footer">
+                <div class="card-footer-left">
+                    <span class="fa fa-github icon-lg"></span>
+                </div>
+                <div class="card-footer-content">
+                    <button class="btn btn-pure btn-primary">Action</button>
+                </div>
+                <div class="card-footer-right">
+                    <div class="drop-container">
+                        <button type="button" class="btn btn-pure btn-circle btn-sm btn-dropdown js-drop-trigger">
+                            <span class="fa fa-flickr"></span>
+                        </button>
+                        <div class="drop-menu drop-nw raised">
+                            <div class="drop">
+                                <ul>
+                                    <li class="drop-header">More</li>
+                                    <li>
+                                        <a href="#" title="">Menu 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="">Menu 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="">Menu 3</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="#" title="">More 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="">More 2</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="card"&gt;
+    &lt;div class="card-header"&gt;
+        ...
+    &lt;/div&gt;
+    &lt;div class="card-block"&gt;
+        ...
+    &lt;/div&gt;
+     &lt;div class="card-footer"&gt;
+        &lt;div class="card-footer-left"&gt;...&lt;/div&gt;
+        &lt;div class="card-footer-content"&gt;...&lt;/div&gt;
+        &lt;div class="card-footer-right"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<hr />
+<h3 id="divider">Divider</h3>
+<p>Dividers can be used to separate regions in cards or to indicate areas of a card that can expand. Dividers wrapped in <code>.card-block</code> should be used to separate content.</p>
+<div class="code-content-example">
+    <div class="flex-row align-cols-center">
+        <div class="card col col-md-8 col-lg-5">
+            <div class="card-header">
+                <div class="card-header-content">
+                    <h5 class="card-title">The Don</h5>
+                    <div class="card-subtitle">Make America Great Again</div>
+                </div>
+            </div>
+            <div class="card-block">
+                <p>Voluptate nisi in dolor occaecat dolor esse dolore est aliquip nulla et labore nostrud occaecat.</p>
+                <div class="card-divider"></div>
+                <p>Duis officia magna est culpa sint culpa enim sunt ex dolore est aliquip sunt velit exercitation fugiat.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="card"&gt;
+    &lt;div class="card-header"&gt;
+        &lt;div class="card-header-content"&gt;
+            &lt;h5 class="card-title"&gt;...&lt;/h5&gt;
+            &lt;div class="card-subtitle"&gt;...&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="card-block"&gt;
+        &lt;p&gt;...&lt;/p&gt;
+        &lt;div class="card-divider"&gt;&lt;/div&gt;
+        &lt;p&gt;...&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<p>Dividers outside of <code>.card-block</code> should indicate areas of a card that can expand:</p>
+<div class="code-content-example">
+    <div class="flex-row align-cols-center">
+        <div class="card col col-md-8 col-lg-5">
+            <div class="card-header">
+                <div class="card-header-left">
+                    <div class="avatar">
+                        <img data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" />
+                    </div>
+                </div>
+                <div class="card-header-content p5">
+                    <div class="text-bold">The Don</div>
+                    <div class="color-gray font-italic">Make America Great Again</div>
+                </div>
+            </div>
+            <div class="card-media">
+                <img data-src="../../assets/img/trump-hero.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-hero_thumb.jpg" />
+            </div>
+            <div class="card-block">
+                <h4 class="card-title">This Is MAGA Country</h4>
+                <p>Veniam laboris do sit sunt dolore incididunt fugiat id enim ut ullamco enim deserunt fugiat.</p>
+                <div class="hide-overflow collapsed" id="toggle-content">
+                    <p>Lorem ipsum dolor sit amet</p>
+                    <p>Consectetur adipiscing elit</p>
+                    <p class="no-margin">Sed do eiusmod tempor incididunt</p>
+                </div>
+            </div>
+            <div class="card-divider"></div>
+            <div class="card-footer">
+                <div class="card-footer-content">
+                    <button type="button" class="btn btn-pure btn-sm btn-primary btn-sm js-collapse" data-collapse-target="toggle-content">Expand</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="card"&gt;
+    &lt;div class="card-header"&gt;
+        ...
+    &lt;/div&gt;
+    &lt;div class="card-block"&gt;
+        &lt;p&gt;...&lt;/p&gt;
+        &lt;p&gt;...&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="card-divider"&gt;&lt;/div&gt;
+    &lt;div class="card-footer"&gt;
+        ...
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<hr />
+<h3 id="tables">Tables</h3>
+<p>To add tables to simply add the table markup without a <code>.card-block</code> so it spans the full width of the card.</p>
+<div class="code-content-example">
+    <div class="flex-row align-cols-center">
+        <div class="card col col-lg-8">
+            <div class="card-header">
+                <div class="card-header-left">
+                    <div class="avatar">
+                        <img data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" />
+                    </div>
+                </div>
+                <div class="card-header-content p5">
+                    <div class="text-bold">The Don</div>
+                    <div class="color-gray font-italic">Make America Great Again</div>
+                </div>
+            </div>
+            <div class="card-block">
+                <h4 class="card-title">This Is MAGA Country</h4>
+                <p>Veniam laboris do sit sunt dolore incididunt fugiat id enim ut ullamco enim deserunt fugiat.</p>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>John</td>
+                        <td>Foobar</td>
+                        <td>@fbar</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Joe</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>James</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="card"&gt;
+    &lt;div class="card-header"&gt;
+        ...
+    &lt;/div&gt;
+    &lt;div class="card-block"&gt;
+        ...
+    &lt;/div&gt;
+    &lt;table class="table"&gt;
+    ...
+    &lt;/table&gt;
+    &lt;div class="card-footer"&gt;
+        ...
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<hr />
+<h3 id="scrollable">Scrollable</h3>
+<p>There are two different ways to scroll content on a card. Use <code>.card-scrollable</code> to make the entire card scrollable, or <code>.card-scrollable-content</code> to to make the card's content scrollable while the footer and header are in fixed piositons:</p>
+<div class="code-content-example">
+    <div class="flex-row align-cols-center col-gaps-sm">
+        <div class="card card-scrollable col-6" style="height: 600px;">
+            <div class="card-header">
+                <div class="card-header-left">
+                    <div class="avatar">
+                        <img data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" />
+                    </div>
+                </div>
+                <div class="card-header-content p5">
+                    <div class="text-bold">The Don</div>
+                    <div class="color-gray font-italic">Make America Great Again</div>
+                </div>
+            </div>
+            <div class="card-block">
+                <h4 class="card-title">This Is MAGA Country</h4>
+                <span class="card-subtitle">Make America Great Again</span>
+                <p>Mollit aliquip adipisicing aliqua velit irure consequat proident sed culpa eiusmod culpa consectetur velit excepteur est amet pariatur in sunt esse ex anim exercitation mollit ea commodo.</p>
+                <p>Mollit aliquip adipisicing aliqua velit irure consequat proident sed culpa eiusmod culpa consectetur velit excepteur est amet pariatur in sunt esse ex anim exercitation mollit ea commodo.</p>
+                <p>Mollit aliquip adipisicing aliqua velit irure consequat proident sed culpa eiusmod culpa consectetur velit excepteur est amet pariatur in sunt esse ex anim exercitation mollit ea commodo.</p>
+                <p>Mollit aliquip adipisicing aliqua velit irure consequat proident sed culpa eiusmod culpa consectetur velit excepteur est amet pariatur in sunt esse ex anim exercitation mollit ea commodo.</p>
+                <p>Mollit aliquip adipisicing aliqua velit irure consequat proident sed culpa eiusmod culpa consectetur velit excepteur est amet pariatur in sunt esse ex anim exercitation mollit ea commodo.</p>
+                <p>Mollit aliquip adipisicing aliqua velit irure consequat proident sed culpa eiusmod culpa consectetur velit excepteur est amet pariatur in sunt esse ex anim exercitation mollit ea commodo.</p>
+                <p>Mollit aliquip adipisicing aliqua velit irure consequat proident sed culpa eiusmod culpa consectetur velit excepteur est amet pariatur in sunt esse ex anim exercitation mollit ea commodo.</p>
+                <p>Mollit aliquip adipisicing aliqua velit irure consequat proident sed culpa eiusmod culpa consectetur velit excepteur est amet pariatur in sunt esse ex anim exercitation mollit ea commodo.</p>
+                <p>Mollit aliquip adipisicing aliqua velit irure consequat proident sed culpa eiusmod culpa consectetur velit excepteur est amet pariatur in sunt esse ex anim exercitation mollit ea commodo.</p>
+                <p>Mollit aliquip adipisicing aliqua velit irure consequat proident sed culpa eiusmod culpa consectetur velit excepteur est amet pariatur in sunt esse ex anim exercitation mollit ea commodo.</p>
+            </div>
+            <div class="card-footer">
+                <div class="card-footer-content">
+                    <button class="btn btn-pure btn-primary btn-xs">Share</button>
+                </div>
+            </div>
+        </div>
+        <div class="card card-scrollable-content col-6" style="height: 600px;">
+            <div class="card-header">
+                <div class="card-header-left">
+                    <div class="avatar">
+                        <img data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" />
+                    </div>
+                </div>
+                <div class="card-header-content p5">
+                    <div class="text-bold">The Don</div>
+                    <div class="color-gray font-italic">Make America Great Again</div>
+                </div>
+            </div>
+            <div class="card-block">
+                <h4 class="card-title">This Is MAGA Country</h4>
+                <span class="card-subtitle">Make America Great Again</span>
+                <p>Mollit aliquip adipisicing aliqua velit irure consequat proident sed culpa eiusmod culpa consectetur velit excepteur est amet pariatur in sunt esse ex anim exercitation mollit ea commodo.</p>
+                <p>Mollit aliquip adipisicing aliqua velit irure consequat proident sed culpa eiusmod culpa consectetur velit excepteur est amet pariatur in sunt esse ex anim exercitation mollit ea commodo.</p>
+                <p>Mollit aliquip adipisicing aliqua velit irure consequat proident sed culpa eiusmod culpa consectetur velit excepteur est amet pariatur in sunt esse ex anim exercitation mollit ea commodo.</p>
+                <p>Mollit aliquip adipisicing aliqua velit irure consequat proident sed culpa eiusmod culpa consectetur velit excepteur est amet pariatur in sunt esse ex anim exercitation mollit ea commodo.</p>
+                <p>Mollit aliquip adipisicing aliqua velit irure consequat proident sed culpa eiusmod culpa consectetur velit excepteur est amet pariatur in sunt esse ex anim exercitation mollit ea commodo.</p>
+                <p>Mollit aliquip adipisicing aliqua velit irure consequat proident sed culpa eiusmod culpa consectetur velit excepteur est amet pariatur in sunt esse ex anim exercitation mollit ea commodo.</p>
+                <p>Mollit aliquip adipisicing aliqua velit irure consequat proident sed culpa eiusmod culpa consectetur velit excepteur est amet pariatur in sunt esse ex anim exercitation mollit ea commodo.</p>
+                <p>Mollit aliquip adipisicing aliqua velit irure consequat proident sed culpa eiusmod culpa consectetur velit excepteur est amet pariatur in sunt esse ex anim exercitation mollit ea commodo.</p>
+                <p>Mollit aliquip adipisicing aliqua velit irure consequat proident sed culpa eiusmod culpa consectetur velit excepteur est amet pariatur in sunt esse ex anim exercitation mollit ea commodo.</p>
+                <p>Mollit aliquip adipisicing aliqua velit irure consequat proident sed culpa eiusmod culpa consectetur velit excepteur est amet pariatur in sunt esse ex anim exercitation mollit ea commodo.</p>
+            </div>
+            <div class="card-footer">
+                <div class="card-footer-content">
+                    <button class="btn btn-pure btn-primary btn-xs">Share</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="card card-scrollable"&gt;
+    &lt;div class="card-block"&gt;
+        &lt;h4 class="card-title"&gt;This Is MAGA Country&lt;/h4&gt;
+        &lt;span class="card-subtitle"&gt;Make America Great Again&lt;/span&gt;
+        &lt;p&gt;...&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<h3 id="primary-action">Primary Action</h3>
+<p>Add the <code>.primary-action</code> to any element inside a card or the card itself to make it clickable with a ripple effect:</p>
+<div class="code-content-example">
+   <div class="flex-row col-gaps-xs row-gaps-xs align-cols-center-x align-cols-y-stretch">
+        <div class="card col col-lg-4 primary-action">
+            <div class="card-media">
+                <img data-src="../../assets/img/trump-hero.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-hero_thumb.jpg" />
+            </div>    
+            <div class="card-block">
+                <h4 class="card-title">This Is MAGA Country</h4>
+                <p>Veniam laboris do sit sunt dolore incididunt fugiat id enim ut ullamco enim deserunt fugiat.</p>
+            </div>
+            <div class="card-footer">
+                <div class="card-footer-left">
+                    <div class="avatar">
+                        <img data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" />
+                    </div>
+                </div>
+                <div class="card-footer-content p5">
+                    <div class="text-bold">The Don</div>
+                    <div class="color-gray font-italic">Make America Great Again</div>
+                </div>
+            </div>
+        </div>
+        <div class="card col col-lg-4">
+            <div class="primary-action">
+                <div class="card-media">
+                    <img data-src="../../assets/img/trump-hero.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-hero_thumb.jpg" />
+                </div>    
+                <div class="card-block">
+                    <h4 class="card-title">This Is MAGA Country</h4>
+                    <p>Veniam laboris do sit sunt dolore incididunt fugiat id enim ut ullamco enim deserunt fugiat.</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="card-footer-content">
+                    <button class="btn btn-pure btn-primary btn-xs">Share</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="card primary-action"&gt;
+    &lt;div class="card-media"&gt;
+        &lt;img ... /&gt;
+    &lt;/div&gt;
+    &lt;div class="card-block"&gt;
+        ...
+    &lt;/div&gt;
+    &lt;div class="card-footer"&gt;
+        ...
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="card"&gt;
+    &lt;div class="primary-action"&gt;
+        &lt;div class="card-media"&gt;
+            &lt;img ... /&gt;
+        &lt;/div&gt;
+        &lt;div class="card-block"&gt;
+            ...
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="card-footer"&gt;
+        ...
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<hr />
+<h3 id="css-customization">CSS Customization</h3>
+<p>Cards use a combination of both local CSS variables on <code>.card</code> and Sass variables for enhanced component customization and styling. The base values are used by the UI to create all the sizing. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>
+<p>Customization via Sass can be made in the <code>src/scss/_config.scss</code> file in FrontBx's source.</p>
+<pre><code class="file-path language-file-path">`src/scss/_config.scss`</code></pre>
+<pre><code class="sass language-sass">$card-bg:                       var(--fbx-white) !default;
+$card-bg-focus:                 var(--fbx-white) !default;
+$card-color:                    var(--fbx-gray-900) !default;
+$card-title-color:              var(--fbx-body-color) !default;
+$card-line-height:              1.8 !default;
+$card-border-radius:            var(--fbx-border-radius) !default;
+$card-border-width:             0 !default;
+$card-border-color:             var(--fbx-gray-300) !default;
+$card-box-shadow:               var(--fbx-raised-level-two) !default;
+$card-box-shadow-hover:         var(--fbx-raised-level-two) !default;
+$card-spacer-y:                 1.2rem !default;
+$card-spacer-x:                 1.6rem !default;
+$card-divider-color:            var(--fbx-gray-300) !default;
+$card-divider-size:             1px !default;
+$card-divier-space:             1rem !default;
+$card-actions-spacer-y:         2rem !default;
+$card-actions-spacer-x:         0.5rem !default;
+$card-media-padding:            0 !default;
+$card-media-bg:                 var(--fbx-gray-100) !default;
+$card-landscape-img-sm:         80px !default;
+$card-landscape-img-md:         150px !default;
+$card-landscape-img-lg:         300px !default;</code></pre>
+<pre><code class="file-path language-file-path">src/scss/components/_card.scss</code></pre>
+<pre><code class="sass language-sass">.card
+{
+    --fbx-card-bg:               #{$card-bg};
+    --fbx-card-bg-focus:         #{$card-bg-focus};
+    --fbx-card-color:            #{$card-color};
+    --fbx-card-title-color:      #{$card-title-color};
+    --fbx-card-line-height:      #{$card-line-height};
+    --fbx-card-border-radius:    #{$card-border-radius};
+    --fbx-card-border-width:     #{$card-border-width};
+    --fbx-card-border-color:     #{$card-border-color};
+    --fbx-card-box-shadow:       #{$card-box-shadow};
+    --fbx-card-box-shadow-hover: #{$card-box-shadow-hover};
+    --fbx-card-spacer-y:         #{$card-spacer-y};
+    --fbx-card-spacer-x:         #{$card-spacer-x};
+    --fbx-card-divider-color:    #{$card-divider-color};
+    --fbx-card-divider-size:     #{$card-divider-size};
+    --fbx-card-divier-space:     #{$card-divier-space};
+    --fbx-card-actions-spacer-y: #{$card-actions-spacer-y};
+    --fbx-card-actions-spacer-x: #{$card-actions-spacer-x};
+    --fbx-card-media-padding:    #{$card-media-padding};
+    --fbx-card-media-bg:         #{$card-media-bg};
+    --fbx-card-landscape-sm:     #{$card-landscape-img-sm};
+    --fbx-card-landscape-md:     #{$card-landscape-img-md};
+    --fbx-card-landscape-lg:     #{$card-landscape-img-lg};
+}</code></pre></article>
+        </div>
+        <footer class="site-footer">
+            <div class="container-fluid clearfix">
+                <div class="col col-12 col-sm-7 gutter-sm-r">
+                    <div class="row sitemap roof-sm floor-sm">
+                        <ul class="list-inline">
+                            <li>
+                                <a href="../../index.html">Documentation</a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/frontbx/ui/issues">Issues</a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/frontbx/">GitHub</a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/frontbx/ui/archive/master.zip">Download</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <a href="/" title="Home" class="logo-link"> <svg class="logo" viewBox="0 0 1451 1451"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg> </a>
+                        <small> © FrontBx UI 2016.
+                            <br> Designed &amp; developed with
+                            <span style="font-size:13px;color:#F36B5C;">♥</span> by Joe Howard. </small>
+                    </div>
+                </div>
+                <div class="col col-12 col-sm-4 gutter-sm-l">
+                    <ul class="list-inline social-links">
+                        <li>
+                            <a class="icon-wrap social-share github" target="_blank" href="https://github.com/frontbx/ui/index.html">
+                                <span class="icon icon-social fa fa-github"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="icon-wrap social-share twitter js-tweet-pop-up" href="#">
+                                <span class="icon icon-social fa fa-twitter"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="js-waypoint-trigger to-top icon-wrap social-share" href="#" data-waypoint-target="header" data-waypoint-speed="500" title="Go to top of page">
+                                <span class="icon fa fa-arrow-up"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <script src="../../../dist/js/frontbx.bundle.min.js"></script>
+        <script src="../../../dist/js/frontbx-docs.min.js"></script>
+    </body>
+</html>

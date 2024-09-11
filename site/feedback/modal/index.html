@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Documentation | FrontBx UI</title>
+        <meta name="description" content="">
+        <script src="../../../dist/js/frontbx-lazyload.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../../dist/css/frontbx.bundle.css">
+        <link rel="stylesheet" href="../../../dist/css/docs.css">
+    </head>
+    <body>
+        <svg style="display: none;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1451 1451" xml:space="preserve">
+            <g id="logo"><path fill="#ffffff" d="M73.11,349.67c0,0,0,537.15,0,607c0,69.9,61.15,122.3,61.15,122.3s253.25,157.21,388.64,240.21 c135.38,82.96,205.26,30.55,205.26,30.55s454.18-152.83,552.31-188.6c98.13-35.79,98.4-130.2,98.4-130.2V415.16 c-4.39-69.86-86.53-105.02-86.53-105.02s-254.12-130.76-359.48-188.39C827.56,64.16,736.89,92.03,736.89,92.03 S243.44,236.14,151.73,262.31C60.03,288.53,73.11,349.67,73.11,349.67z M553.52,566.7c0,0-250.63-137.49-349.9-202.71 c-74.18-48.75,8.5-72.03,8.5-72.03s404.83-115.37,509.67-145.92c104.8-30.57,155.69,2.53,155.69,2.53L1266.2,338.8 c88.97,46.6,4.34,67.41,4.34,67.41s-43.1,13.45-105,32.91l1.65,422.15l-128.47-117.73L852.47,995.55l3.59-457.65 c-44.98,14.72-83,27.48-106.74,36.02C640.1,613.22,553.52,566.7,553.52,566.7z M178.62,405.64L547.95,627.8 c0,0,66.72,27.79,66.72,108.32c0,80.54,2.73,497.09,2.73,497.09s2.78,88.89-74.95,47.21c-77.78-41.62-361.06-219.37-361.06-219.37 s-63.83-30.49-63.83-99.97c0-77.76,0-508.22,0-508.22S109.18,363.99,178.62,405.64z"/></g>
+        </svg>
+        <nav class="navbar navbar-fixed raised-1 bg-black">
+            <div class="container-fluid">
+                <button class="hamburger xs sm js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-state="collapsed" data-content="#docs-menu" data-classes="docs-drawer">
+                    <span class="hamburger-bun  hamburger-bun--top"></span>
+                    <span class="hamburger-patty"></span>
+                    <span class="hamburger-bun  hamburger-bun--btm"></span>
+                </button>
+                <a class="nav-logo" href="/">
+                    <svg viewBox="0 0 1451 1451"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg>
+                    <span class="logo-text md-inline-block lg-inline-block xl-inline-block">FrontBx</span>
+                </a>
+
+                <ul class="nav-menu flex-content-right">
+                    <li class="md lg xl">
+                        <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white">
+                            <span class="fa-brands fa-github"></span>
+                        </a>
+                    </li>
+                    <li class="md lg xl">
+                        <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white">
+                            <span class="fa fa-download"></span>
+                        </a>
+                    </li>
+                    <li class="md lg xl">
+                        <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white">
+                            <span class="fa fa-sliders"></span>
+                        </a>
+                    </li>
+                    
+                    <li class="md lg xl">
+                        <span class="drop-container">
+                            <button class="btn-unstyled btn-dropdown js-drop-trigger" role="button" type="button" title="toggle theme">
+                                <span class="fa fa-sun"></span>
+                                <span class="caret-s"></span>
+                            </button>
+                            <div class="drop-menu drop-se js-drop-menu">
+                                <ul class="menu js-select-menu"> 
+                                    <li>
+                                        <span class="item-left"><span class="fa fa-sun"></span></span>
+                                        <span class="item-body">Light</span>
+                                    </li>
+                                    <li>
+                                        <span class="item-left"><span class="fa fa-cloud-moon"></span></span>
+                                        <span class="item-body">Dark</span>
+                                    </li>
+                                    <li>
+                                        <span class="item-left"><span class="fa fa-circle-half-stroke"></span></span>
+                                        <span class="item-body">Auto</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </span>
+                    </li>
+                    <li class="xs sm">
+                        <button class="btn-unstyled js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-direction="right" data-state="collapsed" data-content="#desktop-options-drawer">
+                            <span class="fa fa-ellipsis-vertical"></span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div id="desktop-options-drawer">
+            <ul class="menu">
+                <li class="menu-header">Explore</li>
+                <li>
+                    <a href="/site/getting-started/download/index.html">
+                        <span class="item-left"><span class="fa-brands fa-github"></span></span>
+                        <span class="item-body">Github</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/site/getting-started/download/index.html">
+                        <span class="item-left"><span class="fa fa-download"></span></span>
+                        <span class="item-body">Download</span>
+                    </a>
+                </li>
+                <li class="menu-header">Colors</li>
+                <li>
+                    <a href="/site/getting-started/download/index.html">
+                        <span class="item-left"><span class="fa fa-sliders"></span></span>
+                        <span class="item-body">Edit Documentation colors</span>
+                    </a>
+                </li>
+                <li class="menu-header">Mode</li>
+                <li>
+                    <span class="item-left"><span class="fa fa-sun"></span></span>
+                    <span class="item-body">Light</span>
+                </li>
+                <li>
+                    <span class="item-left"><span class="fa fa-cloud-moon"></span></span>
+                    <span class="item-body">Dark</span>
+                </li>
+                <li>
+                    <span class="item-left"><span class="fa fa-circle-half-stroke"></span></span>
+                    <span class="item-body">Auto</span>
+                </li>
+            </ul>
+        </div>
+        <div id="docs-menu" style="display:none;"><ul class="doc-menu menu">
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-getting-started">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Getting Started</span>
+    </li>
+    <li  id="menu-getting-started" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../getting-started/introduction/index.html">Introduction</a></li>
+            <li class="menu-item "><a href="../../getting-started/download/index.html">Download</a></li>
+            <li class="menu-item "><a href="../../getting-started/installation/index.html">Installation</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-content">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Content</span>
+    </li>
+    <li  id="menu-content" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../content/typography/index.html">Typography</a></li>
+            <li class="menu-item "><a href="../../content/images/index.html">Images</a></li>
+            <li class="menu-item "><a href="../../content/tables/index.html">Tables</a></li>
+            <li class="menu-item "><a href="../../content/lists/index.html">Lists</a></li>
+            <li class="menu-item "><a href="../../content/inline-elements/index.html">Inline Elements</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-customize">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Customize</span>
+    </li>
+    <li  id="menu-customize" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../customize/overview/index.html">Overview</a></li>
+            <li class="menu-item "><a href="../../customize/sass/index.html">Sass</a></li>
+            <li class="menu-item "><a href="../../customize/colors/index.html">Colors</a></li>
+            <li class="menu-item "><a href="../../customize/css-variables/index.html">Css Variables</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-layout">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Layout</span>
+    </li>
+    <li  id="menu-layout" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../layout/breakpoints/index.html">Breakpoints</a></li>
+            <li class="menu-item "><a href="../../layout/container/index.html">Container</a></li>
+            <li class="menu-item "><a href="../../layout/flex-grid/index.html">Flex Grid</a></li>
+            <li class="menu-item "><a href="../../layout/grid/index.html">Grid</a></li>
+            <li class="menu-item "><a href="../../layout/skeleton/index.html">Skeleton</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-images">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Images</span>
+    </li>
+    <li  id="menu-images" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../images/lazyload/index.html">Lazyload</a></li>
+            <li class="menu-item "><a href="../../images/slider/index.html">Slider</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-surfaces">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Surfaces</span>
+    </li>
+    <li  id="menu-surfaces" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../surfaces/paper/index.html">Paper</a></li>
+            <li class="menu-item "><a href="../../surfaces/cards/index.html">Cards</a></li>
+            <li class="menu-item "><a href="../../surfaces/drawer/index.html">Drawer</a></li>
+            <li class="menu-item "><a href="../../surfaces/frontdrop/index.html">Frontdrop</a></li>
+            <li class="menu-item "><a href="../../surfaces/backdrop/index.html">Backdrop</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-navigation">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Navigation</span>
+    </li>
+    <li  id="menu-navigation" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../navigation/navbar/index.html">Navbar</a></li>
+            <li class="menu-item "><a href="../../navigation/menu/index.html">Menu</a></li>
+            <li class="menu-item "><a href="../../navigation/pagination/index.html">Pagination</a></li>
+            <li class="menu-item "><a href="../../navigation/tabs/index.html">Tabs</a></li>
+            <li class="menu-item "><a href="../../navigation/breadcrumbs/index.html">Breadcrumbs</a></li>
+            <li class="menu-item "><a href="../../navigation/waypoints/index.html">Waypoints</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-forms">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Forms</span>
+    </li>
+    <li  id="menu-forms" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../forms/buttons/index.html">Buttons</a></li>
+            <li class="menu-item "><a href="../../forms/dropdown/index.html">Dropdown</a></li>
+            <li class="menu-item "><a href="../../forms/inputs/index.html">Inputs</a></li>
+            <li class="menu-item "><a href="../../forms/checkbox/index.html">Checkbox</a></li>
+            <li class="menu-item "><a href="../../forms/radio/index.html">Radio</a></li>
+            <li class="menu-item "><a href="../../forms/switch/index.html">Switch</a></li>
+            <li class="menu-item "><a href="../../forms/chips/index.html">Chips</a></li>
+            <li class="menu-item "><a href="../../forms/progress/index.html">Progress</a></li>
+            <li class="menu-item "><a href="../../forms/input-mask/index.html">Input Mask</a></li>
+            <li class="menu-item "><a href="../../forms/results/index.html">Results</a></li>
+            <li class="menu-item "><a href="../../forms/validation/index.html">Validation</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse active" data-collapse-target="menu-feedback">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Feedback</span>
+    </li>
+    <li style="height:auto" id="menu-feedback" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../feedback/message/index.html">Message</a></li>
+            <li class="menu-item "><a href="../../feedback/notification/index.html">Notification</a></li>
+            <li class="menu-item active"><a href="../../feedback/modal/index.html">Modal</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-utilities">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Utilities</span>
+    </li>
+    <li  id="menu-utilities" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../utilities/ripple/index.html">Ripple</a></li>
+            <li class="menu-item "><a href="../../utilities/tooltip/index.html">Tooltip</a></li>
+            <li class="menu-item "><a href="../../utilities/popover/index.html">Popover</a></li>
+            <li class="menu-item "><a href="../../utilities/collapse/index.html">Collapse</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-javascript">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Javascript</span>
+    </li>
+    <li  id="menu-javascript" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../javascript/container/index.html">Container</a></li>
+            <li class="menu-item "><a href="../../javascript/dom/index.html">Dom</a></li>
+            <li class="menu-item "><a href="../../javascript/utils/index.html">Utils</a></li>
+            <li class="menu-item "><a href="../../javascript/ajax/index.html">Ajax</a></li>
+            <li class="menu-item "><a href="../../javascript/pjax/index.html">Pjax</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-css">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Css</span>
+    </li>
+    <li  id="menu-css" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../css/sass/index.html">Sass</a></li>
+            <li class="menu-item "><a href="../../css/css-helpers/index.html">Css Helpers</a></li>
+        </ul>
+    </li>
+</ul></div>
+        <div class="container-fluid main-container relative js-main-container">
+            <article class="docs-body"><h1 id="modal">Modal</h1>
+<p>Modals are a handy <code>JavaScript</code> component for displaying an action the user must take. Modals are highly customizable from both a <code>CSS</code> and <code>JavaScript</code> perspective.</p>
+<hr />
+<ul>
+<li><a href="#example">Example</a></li>
+<li><a href="#content">Content</a></li>
+<li><a href="#scrollable">Scrollable</a></li>
+<li><a href="#customization">Customization</a></li>
+<li><a href="#callbacks">Callbacks</a></li>
+<li><a href="#methods">Methods</a></li>
+<li><a href="#options">Options</a></li>
+<li><a href="#html-initialization">HTML Initialization</a></li>
+<li><a href="#css-customization">CSS Customization</a></li>
+</ul>
+<hr />
+<h3 id="example">Example</h3>
+<p>To display a Modal, call the <code>Modal</code> Component via FrontBx's Container:</p>
+<div class="code-content-example">
+    <div class="flex-row-fluid align-cols-center col-gaps-sm">
+        <button class="js-modal-trigger-1 btn">Basic Modal</button>
+    </div>
+</div>
+<pre><code class="javascript language-javascript">let modal = FrontBx.Modal({
+    title            : 'Use X\'s location service?',
+    content          : 'Let X help apps determine location. This means sending anonymous location data to X, even when no apps are running.',
+    cancelBtn        : 'Disagree',
+    confirmBtn       : 'Agree',
+});</code></pre>
+<blockquote>
+  <p>The <code>content</code> option can be either a <code>String</code>, <code>HTMLElement</code>, <code>NodeList</code> or <code>Array</code></p>
+</blockquote>
+<script type="text/javascript">
+window.addEventListener('load', () =>
+{
+    FrontBx.DocsDemo('.js-modal-trigger-1', () => 
+        FrontBx.Modal({
+            title            : 'Use X\'s location service?',
+            content          : 'Let X help apps determine location. This means sending anonymous location data to X, even when no apps are running.',
+            cancelBtn        : 'Disagree',
+            confirmBtn       : 'Agree',
+        })
+    );
+});
+</script>
+<hr />
+<h3 id="content">Content</h3>
+<p>By default the Modal will structure provided <code>content</code> and <code>title</code> into a card element. In cases where more customized content is needed, set <code>custom:true</code> in the options to create your own markup.</p>
+<div class="code-content-example">
+    <div class="flex-row-fluid align-cols-center col-gaps-sm">
+        <button class="js-modal-trigger-2 btn">Custom Modal</button>
+    </div>
+</div>
+<pre><code class="javascript language-javascript">let modal = FrontBx.Modal({
+    content: '...',
+    custom: true,
+    closeAnywhere: true
+});</code></pre>
+<script type="text/javascript">
+window.addEventListener('load', () =>
+{
+    let content = `<div class="card col col-lg-4">
+        <div class="card-header">
+            <div class="card-header-left">
+                <div class="avatar">
+                    <img data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" />
+                </div>
+            </div>
+            <div class="card-header-content p5">
+                <div class="text-bold">The Don</div>
+                <div class="color-gray font-italic">Make America Great Again</div>
+            </div>
+        </div>
+        <div class="card-media">
+            <img data-src="../../assets/img/trump-hero.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-hero_thumb.jpg" />
+        </div>
+        <div class="card-block">
+            <h4 class="card-title">This Is MAGA Country</h4>
+            <p>Veniam laboris do sit sunt dolore incididunt fugiat id enim ut ullamco enim deserunt fugiat.</p>
+        </div>
+    </div>`;
+
+    FrontBx.DocsDemo('.js-modal-trigger-2', () => FrontBx.Modal({
+        content : content,
+        custom: true,
+        closeAnywhere: true
+    }));
+});
+</script>
+<hr />
+<h3 id="scrollable">Scrollable</h3>
+<p>When a Modal becomes too long for the user's viewport or device the content will scroll. By default the entire modal itself will scroll. You can customize this by setting the <code>scroll</code> option to either <code>modal</code> (default) or <code>content</code>.</p>
+<p>The example below shows the difference:</p>
+<div class="code-content-example">
+    <div class="flex-row-fluid align-cols-center col-gaps-sm">
+        <button class="js-modal-trigger-3 btn">Scroll "modal"</button>
+        <button class="js-modal-trigger-4 btn">Scroll "content"</button>
+    </div>
+</div>
+<pre><code class="javascript language-javascript">let modal = FrontBx.Modal({
+    title   : '...',
+    content : '...',
+    scrollable: 'modal',
+});</code></pre>
+<script type="text/javascript">
+window.addEventListener('load', () =>
+{
+    let options = {
+        title            : 'Use X\'s location service?',
+        content          : 'Lorem ipsum officia dolore id incididunt in est ut amet reprehenderit non ut pariatur esse do dolore nisi ut ut veniam minim sed ut fugiat exercitation eiusmod duis laboris consectetur anim id quis proident proident qui laboris cillum velit in sit consequat mollit et elit ut esse minim sit et mollit dolore dolor est dolor ea exercitation aliqua officia tempor dolore sit nulla in qui est ut minim sit dolore commodo in dolor in sed exercitation duis labore anim ut sed in id consequat anim aliquip incididunt irure cupidatat nisi dolore in sunt ullamco qui commodo ut magna tempor ut eu in id mollit laboris excepteur irure sint et elit commodo cillum cillum nostrud dolor nulla sint nostrud veniam do aliquip consequat eiusmod fugiat officia dolor reprehenderit dolore eu dolor veniam sed dolor eu in mollit magna voluptate et ullamco incididunt esse esse aliquip ut elit nisi.Lorem ipsum proident cupidatat sed eiusmod est id occaecat eiusmod ut fugiat ut tempor ut esse exercitation sint est minim nulla in amet commodo dolore incididunt adipisicing est mollit tempor mollit tempor in non laboris officia proident reprehenderit fugiat adipisicing voluptate mollit labore cupidatat amet do non pariatur in id cupidatat deserunt sint tempor do dolor qui occaecat id cillum amet incididunt duis esse id incididunt ea duis voluptate nisi dolor proident consequat adipisicing elit ullamco sit eiusmod dolor excepteur sed ut officia sit pariatur ut incididunt ullamco excepteur pariatur in qui nulla excepteur ut veniam elit officia elit amet irure sed dolore dolore amet sit veniam incididunt commodo est sit mollit consequat sed cupidatat labore deserunt minim commodo dolore excepteur reprehenderit est labore est exercitation exercitation nostrud ad officia mollit consequat ea laborum et ullamco veniam cillum ad eiusmod veniam velit irure voluptate cillum quis anim enim voluptate in consectetur incididunt est proident nulla eiusmod excepteur et quis ea labore cillum nisi deserunt ad deserunt sed adipisicing sed dolore ut anim et duis sunt occaecat adipisicing.Mollit in commodo ut amet in nostrud id nostrud quis occaecat mollit ut mollit enim labore dolor nostrud occaecat sint non veniam sint do in consectetur excepteur magna nisi magna consectetur nisi enim ea ad occaecat veniam dolore fugiat exercitation tempor deserunt velit et ad proident deserunt adipisicing fugiat deserunt sint commodo tempor proident sint irure in ullamco dolore ex cillum quis sit in fugiat reprehenderit dolor mollit veniam nulla aliquip magna excepteur culpa veniam tempor amet do voluptate sint officia eiusmod est ut occaecat ea minim ut sunt quis enim est non veniam qui quis quis consequat qui do laborum nostrud cillum fugiat aute eu consectetur reprehenderit elit dolore dolore sint consequat non non ut esse laborum ut dolor in ea nostrud eiusmod duis aute irure dolor proident sit aliqua laboris qui labore ex aliquip cupidatat officia consectetur reprehenderit aliqua consectetur sunt cillum proident aute ullamco mollit ea consectetur mollit elit veniam dolor consectetur quis in est laborum sint nulla ad laborum in dolor dolor consectetur laborum id minim ut labore voluptate sit deserunt qui fugiat ullamco proident velit sunt ut ex occaecat.In consectetur cillum sed culpa nisi culpa consectetur amet laborum aute in cupidatat in consequat incididunt cupidatat tempor in laborum non mollit ex in sed duis duis sit veniam enim nisi dolore tempor adipisicing eu adipisicing veniam ea tempor sed ut aute est ullamco incididunt anim cillum esse nisi labore nostrud voluptate irure officia velit qui et eiusmod deserunt enim minim mollit proident culpa ut minim do velit eu ut enim ex nostrud eiusmod sunt esse consectetur cillum deserunt aliqua aute laboris sunt dolor voluptate excepteur ut ut qui velit aliquip et duis laborum eiusmod dolor aute aliqua ex velit dolor incididunt consequat do fugiat non tempor ut consectetur est do magna ad deserunt elit magna mollit eu laboris ad tempor occaecat fugiat laborum pariatur reprehenderit laborum sit enim cupidatat officia esse labore eu magna magna nostrud in ut nulla occaecat mollit laborum dolore labore fugiat.',
+        cancelBtn        : 'Disagree',
+        confirmBtn       : 'Agree',
+    };
+
+    FrontBx.DocsDemo('.js-modal-trigger-3', () => FrontBx.Modal({...options, scroll: 'modal'}));
+
+    FrontBx.DocsDemo('.js-modal-trigger-4', () => FrontBx.Modal({...options, scroll: 'content'}));
+});
+</script>
+<hr />
+<h3 id="customization">Customization</h3>
+<p>Modal positioning, sizing and animations are set via local CSS Variables on <code>.modal-wrap</code>. You can create a custom modal by either overriding the variables, or passing a custom modifier class to the <code>classes</code> option and then modifying the variables from there.</p>
+<p>The example below shows a simple example of a modal that slides in from the bottom of the page without an overlay element:</p>
+<div class="code-content-example">
+    <div class="flex-row-fluid align-cols-center col-gaps-sm">
+        <button class="js-modal-trigger-5 btn">Custom modal</button>
+    </div>
+</div>
+<pre><code class="css language-css">.modal-wrap.custom-modal
+{
+    --fbx-modal-transform-off: translate3d(0, 100%, 0);
+    --fbx-modal-transition: opacity .125s ease, transform .225s ease;
+    align-items: flex-end;
+    padding-bottom: 50px;
+}</code></pre>
+<pre><code class="javascript language-javascript">let modal = FrontBx.Modal({
+    title : 'Subscribe for $1?',
+    content : 'Subscribe for $1 and get all my posts for free!',
+    cancelBtn : 'Nah',
+    confirmBtn : 'YES!',
+    classes: 'custom-modal',
+    overlay: false,
+    closeAnywhere: false,
+});</code></pre>
+<style>
+    .modal-wrap.custom-modal
+    {
+        --fbx-modal-transform-off: translate3d(0, 100%, 0);
+        --fbx-modal-transition: opacity .125s ease, transform .225s ease;
+        --fbx-modal-max-width: 450px;
+        align-items: flex-end;
+        padding-bottom: 30px;
+    }
+</style>
+<script type="text/javascript">
+window.addEventListener('load', () =>
+{
+    FrontBx.DocsDemo('.js-modal-trigger-5', () => FrontBx.Modal({
+        title : 'Subscribe for $1?',
+        content : 'Subscribe for $1 and get all my posts for free!',
+        cancelBtn : 'Nah',
+        confirmBtn : 'YES!',
+        classes: 'custom-modal',
+        overlay: false,
+        closeAnywhere: false,
+    }));
+});
+</script>
+<hr />
+<h3 id="callbacks">Callbacks</h3>
+<p>There are a number of callbacks available depending on what access you require. In the example below, the <code>callbackOpen</code> option is used to focus an input within the modal when it pops up:</p>
+<p>See the <a href="#options">Options Section</a> for a full list of callbacks.</p>
+<div class="code-content-example">
+    <div class="flex-row-fluid align-cols-center col-gaps-sm">
+        <button class="js-modal-trigger-6 btn">Show form</button>
+    </div>
+</div>
+<pre><code class="javascript language-javascript">FrontBx.Modal( {
+    title: 'Subscribe',
+    content: '....',
+    callbackOpen: (modal) =&gt; find('.js-modal-input', modal).focus(),
+});</code></pre>
+<script type="text/javascript">
+window.addEventListener('load', () =>
+{
+    const [dom_element] = FrontBx.import(['dom_element']).from('_');
+
+    const blurb = dom_element({tag: 'p', class: 'pole-xs pole-s', innerText: 'To subscribe to this website, please enter your email address here. We will send updates occasionally.'});
+
+    const form = dom_element({tag: 'div', class: 'form-field row underlined'}, null, [
+        dom_element({tag: 'input', name: 'email', type: 'email', placeholder: 'Your email address', class: 'js-modal-input'}),
+        dom_element({tag: 'label', for: 'email', innerText: 'Email'}),
+    ]);
+
+    FrontBx.DocsDemo('.js-modal-trigger-6', function()
+    {
+        FrontBx.Modal({
+            title: 'Subscribe',
+            content: [blurb.cloneNode(true), form.cloneNode(true)],
+            cancelBtn : 'Cancel',
+            confirmBtn : 'Subscribe',
+            callbackOpen: (modal) => this._.find('.js-modal-input', modal).focus(),
+        })
+    });
+});
+</script>
+<hr />
+<h3 id="methods">Methods</h3>
+<p>Once a Modal instance is created, there are a few methods to interact with the modal:</p>
+<p>The <code>open</code> method will animate and open the modal:</p>
+<pre><code class="javascript language-javascript">modal.open();</code></pre>
+<p>The <code>close</code> method will animate and close the modal:</p>
+<pre><code class="javascript language-javascript">modal.close();</code></pre>
+<p>The <code>direction</code> method returns the modal state which will be either <code>closed</code> or <code>open</code>:</p>
+<pre><code class="javascript language-javascript">if (modal.state() === 'closed')
+{
+
+}</code></pre>
+<p>The <code>state</code> method returns the modal state which will be either <code>closed</code> or <code>open</code>:</p>
+<pre><code class="javascript language-javascript">if (modal.state() === 'closed')
+{
+
+}</code></pre>
+<p>The <code>opened</code> method returns <code>true</code> if the modal is open or <code>false</code> if not</p>
+<pre><code class="javascript language-javascript">if (modal.opened())
+{
+
+}</code></pre>
+<p>The <code>closed</code> method returns <code>true</code> if the modal is closed or <code>false</code> if not</p>
+<pre><code class="javascript language-javascript">if (modal.closed())
+{
+
+}</code></pre>
+<p>Finally the <code>destroy</code> method completely removes the modal from the DOM and all related event listeners:</p>
+<pre><code class="javascript language-javascript">modal.destroy()</code></pre>
+<hr />
+<h3 id="options">Options</h3>
+<p>There are a number of options for a modal depending on a given purpose. The table below outlines the available options:</p>
+<table>
+<thead>
+<tr>
+<th id="option_key">Option key</th>
+<th id="var_type">Var Type</th>
+<th id="behavior">Behavior</th>
+<th id="required">Required</th>
+<th id="default">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>Text to be displayed inside <code>.card-title</code>.</td>
+<td><code>no</code></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code>, <code>Array</code>, <code>Nodelist</code>, <code>HTMLElement</code></td>
+<td>Content to be displayed inside <code>.card-body &gt;</code>.</td>
+<td><code>no</code></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>classes</code></td>
+<td><code>string</code></td>
+<td>Any additional classes to pass to the modal</td>
+<td><code>no</code></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>custom</code></td>
+<td><code>Boolean</code></td>
+<td>Creates an un-formatted modal based on <code>content</code></td>
+<td><code>no</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>string</code></td>
+<td>Initial state when first created - <code>open</code> or <code>closed</code>.</td>
+<td><code>no</code></td>
+<td><code>open</code></td>
+</tr>
+<tr>
+<td><code>overlay</code></td>
+<td><code>string</code> <code>Boolean</code></td>
+<td>Either <code>light</code> , <code>dark</code> or <code>false</code>  if no overlay is wanted</td>
+<td><code>no</code></td>
+<td><code>dark</code></td>
+</tr>
+<tr>
+<td><code>closeAnywhere</code></td>
+<td><code>boolean</code></td>
+<td>Modal can be closed by clicking anywhere outside of it.</td>
+<td><code>no</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>cancelBtn</code></td>
+<td><code>string</code></td>
+<td>Inner text on cancel button. No cancel button will be rendered if not provided.</td>
+<td><code>no</code></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>cancelClass</code></td>
+<td><code>string</code></td>
+<td>Btn variant/context class for cancel btn. e.g <code>.btn-danger</code>.</td>
+<td><code>no</code></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>confirmBtn</code></td>
+<td><code>string</code></td>
+<td>Inner text on confirm button. No confirm button will be rendered if not provided.</td>
+<td><code>no</code></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>confirmClass</code></td>
+<td><code>string</code></td>
+<td>Btn variant/context class for cancel btn. e.g <code>.btn-success</code>.</td>
+<td><code>no</code></td>
+<td>``</td>
+</tr>
+<tr>
+<td><code>callbackBuilt</code></td>
+<td><code>function</code></td>
+<td>Callback function to be called when modal is built but not rendered.</td>
+<td><code>no</code></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>callbackRender</code></td>
+<td><code>function</code></td>
+<td>Callback function to be called when modal is rendered into DOM.</td>
+<td><code>no</code></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>callbackOpen</code></td>
+<td><code>function</code></td>
+<td>Callback function to be called when modal is opened.</td>
+<td><code>no</code></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>callbackClose</code></td>
+<td><code>function</code></td>
+<td>Callback function to be called when modal is closed.</td>
+<td><code>no</code></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>callbackValidate</code></td>
+<td><code>function</code></td>
+<td>Callback function to validate if modal can be closed. Must return boolean</td>
+<td><code>no</code></td>
+<td><code>null</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="html-initialization">HTML Initialization</h3>
+<p>For basic use-cases where access to the underlying JavaScript is not required, Modals can be enabled through HTML markup via an anchor element with the <code>.js-modal-trigger</code> class.</p>
+<p>For basic HTML string content, simply use the <code>data-content</code> attribute with any required string content to populate the modal.</p>
+<p>For more complex requirements point to the id of a hidden target element element in the DOM with the <code>data-content</code> attribute. Remember to always include the <code>#</code> character before the ID as this differentiates it from it being interpenetrated as a string.</p>
+<p>All other options can be set through <code>data-attributes</code> on the anchor element in <code>hyphen-case</code>. For example to set the <code>closeAnywhere</code> option, you would set the <code>data-close-anywhere="true"</code> attribute.</p>
+<div class="code-content-example">
+    <div class="flex-row-fluid align-cols-center pole-sm">
+        <button type="button" class="btn js-modal-trigger" data-confirm-btn="Confirm" data-content="#html-modal">Show Modal</button>
+        <div id="html-modal" style="display: none;"> 
+            <p>Let X help apps determine location. This means sending anonymous location data to X, even when no apps are running.</p>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;button type="button" class="btn js-modal-trigger" data-content="#my-modal"&gt;Toggle&lt;/button&gt;
+
+&lt;div id="my-modal"&gt;...&lt;/div&gt;</code></pre>
+<hr />
+<h3 id="css-customization">CSS Customization</h3>
+<p>Modals use a combination of both local CSS variables on <code>.modal-wrap</code>, <code>.modal-overlay</code> and Sass variables for enhanced component customization and styling.</p>
+<p>Customization via Sass can be made in the <code>src/scss/_config.scss</code> file in FrontBx's source.</p>
+<pre><code class="file-path language-file-path">`src/scss/_config.scss`</code></pre>
+<pre><code class="scss language-scss">$modal-max-width:               680px !default;
+$modal-max-height:              80vh !default;
+$modal-shadow:                  3 !default; //0,1,2,3 
+$modal-overlay-bg:              rgba(255, 255, 255, 0.8) !default;
+$modal-overlay-bg-dark:         rgba(0, 0, 0, 0.5) !default;
+$modal-title-size:              1.8rem !default;
+$modal-transform-on:            translate3d(0px, 0px, 0px) !default;
+$modal-transform-off:           translate3d(0px, -50px, 0px) !default;
+$modal-transition:              opacity .225s ease-out .225s, transform .225s ease-out .225s !default;
+$modal-overlay-transition:      opacity .225s ease-out !default;</code></pre>
+<pre><code class="file-path language-file-path">`src/scss/components/_modal.scss`</code></pre>
+<pre><code class="scss language-scss">.modal-wrap
+{
+    --fbx-modal-title-size: #{$modal-title-size};
+    --fbx-modal-transition: #{$modal-transition};
+    --fbx-modal-max-width: #{$modal-max-width};
+    --fbx-modal-max-height: #{$modal-max-height};
+    --fbx-modal-transform-on: #{$modal-transform-on};
+    --fbx-modal-transform-off: #{$modal-transform-off};
+}
+.modal-overlay
+{
+    --fbx-modal-overlay-bg: #{$modal-overlay-bg};
+    --fbx-modal-overlay-bg-dark: #{$modal-overlay-bg-dark};
+    --fbx-modal-overlay-transition: #{$modal-overlay-transition};
+}</code></pre></article>
+        </div>
+        <footer class="site-footer">
+            <div class="container-fluid clearfix">
+                <div class="col col-12 col-sm-7 gutter-sm-r">
+                    <div class="row sitemap roof-sm floor-sm">
+                        <ul class="list-inline">
+                            <li>
+                                <a href="../../index.html">Documentation</a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/frontbx/ui/issues">Issues</a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/frontbx/">GitHub</a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/frontbx/ui/archive/master.zip">Download</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <a href="/" title="Home" class="logo-link"> <svg class="logo" viewBox="0 0 1451 1451"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg> </a>
+                        <small> © FrontBx UI 2016.
+                            <br> Designed &amp; developed with
+                            <span style="font-size:13px;color:#F36B5C;">♥</span> by Joe Howard. </small>
+                    </div>
+                </div>
+                <div class="col col-12 col-sm-4 gutter-sm-l">
+                    <ul class="list-inline social-links">
+                        <li>
+                            <a class="icon-wrap social-share github" target="_blank" href="https://github.com/frontbx/ui/index.html">
+                                <span class="icon icon-social fa fa-github"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="icon-wrap social-share twitter js-tweet-pop-up" href="#">
+                                <span class="icon icon-social fa fa-twitter"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="js-waypoint-trigger to-top icon-wrap social-share" href="#" data-waypoint-target="header" data-waypoint-speed="500" title="Go to top of page">
+                                <span class="icon fa fa-arrow-up"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <script src="../../../dist/js/frontbx.bundle.min.js"></script>
+        <script src="../../../dist/js/frontbx-docs.min.js"></script>
+    </body>
+</html>

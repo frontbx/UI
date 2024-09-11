@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Documentation | FrontBx UI</title>
+        <meta name="description" content="">
+        <script src="../../../dist/js/frontbx-lazyload.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../../dist/css/frontbx.bundle.css">
+        <link rel="stylesheet" href="../../../dist/css/docs.css">
+    </head>
+    <body>
+        <svg style="display: none;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1451 1451" xml:space="preserve">
+            <g id="logo"><path fill="#ffffff" d="M73.11,349.67c0,0,0,537.15,0,607c0,69.9,61.15,122.3,61.15,122.3s253.25,157.21,388.64,240.21 c135.38,82.96,205.26,30.55,205.26,30.55s454.18-152.83,552.31-188.6c98.13-35.79,98.4-130.2,98.4-130.2V415.16 c-4.39-69.86-86.53-105.02-86.53-105.02s-254.12-130.76-359.48-188.39C827.56,64.16,736.89,92.03,736.89,92.03 S243.44,236.14,151.73,262.31C60.03,288.53,73.11,349.67,73.11,349.67z M553.52,566.7c0,0-250.63-137.49-349.9-202.71 c-74.18-48.75,8.5-72.03,8.5-72.03s404.83-115.37,509.67-145.92c104.8-30.57,155.69,2.53,155.69,2.53L1266.2,338.8 c88.97,46.6,4.34,67.41,4.34,67.41s-43.1,13.45-105,32.91l1.65,422.15l-128.47-117.73L852.47,995.55l3.59-457.65 c-44.98,14.72-83,27.48-106.74,36.02C640.1,613.22,553.52,566.7,553.52,566.7z M178.62,405.64L547.95,627.8 c0,0,66.72,27.79,66.72,108.32c0,80.54,2.73,497.09,2.73,497.09s2.78,88.89-74.95,47.21c-77.78-41.62-361.06-219.37-361.06-219.37 s-63.83-30.49-63.83-99.97c0-77.76,0-508.22,0-508.22S109.18,363.99,178.62,405.64z"/></g>
+        </svg>
+        <nav class="navbar navbar-fixed raised-1 bg-black">
+            <div class="container-fluid">
+                <button class="hamburger xs sm js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-state="collapsed" data-content="#docs-menu" data-classes="docs-drawer">
+                    <span class="hamburger-bun  hamburger-bun--top"></span>
+                    <span class="hamburger-patty"></span>
+                    <span class="hamburger-bun  hamburger-bun--btm"></span>
+                </button>
+                <a class="nav-logo" href="/">
+                    <svg viewBox="0 0 1451 1451"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg>
+                    <span class="logo-text md-inline-block lg-inline-block xl-inline-block">FrontBx</span>
+                </a>
+
+                <ul class="nav-menu flex-content-right">
+                    <li class="md lg xl">
+                        <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white">
+                            <span class="fa-brands fa-github"></span>
+                        </a>
+                    </li>
+                    <li class="md lg xl">
+                        <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white">
+                            <span class="fa fa-download"></span>
+                        </a>
+                    </li>
+                    <li class="md lg xl">
+                        <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white">
+                            <span class="fa fa-sliders"></span>
+                        </a>
+                    </li>
+                    
+                    <li class="md lg xl">
+                        <span class="drop-container">
+                            <button class="btn-unstyled btn-dropdown js-drop-trigger" role="button" type="button" title="toggle theme">
+                                <span class="fa fa-sun"></span>
+                                <span class="caret-s"></span>
+                            </button>
+                            <div class="drop-menu drop-se js-drop-menu">
+                                <ul class="menu js-select-menu"> 
+                                    <li>
+                                        <span class="item-left"><span class="fa fa-sun"></span></span>
+                                        <span class="item-body">Light</span>
+                                    </li>
+                                    <li>
+                                        <span class="item-left"><span class="fa fa-cloud-moon"></span></span>
+                                        <span class="item-body">Dark</span>
+                                    </li>
+                                    <li>
+                                        <span class="item-left"><span class="fa fa-circle-half-stroke"></span></span>
+                                        <span class="item-body">Auto</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </span>
+                    </li>
+                    <li class="xs sm">
+                        <button class="btn-unstyled js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-direction="right" data-state="collapsed" data-content="#desktop-options-drawer">
+                            <span class="fa fa-ellipsis-vertical"></span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div id="desktop-options-drawer">
+            <ul class="menu">
+                <li class="menu-header">Explore</li>
+                <li>
+                    <a href="/site/getting-started/download/index.html">
+                        <span class="item-left"><span class="fa-brands fa-github"></span></span>
+                        <span class="item-body">Github</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/site/getting-started/download/index.html">
+                        <span class="item-left"><span class="fa fa-download"></span></span>
+                        <span class="item-body">Download</span>
+                    </a>
+                </li>
+                <li class="menu-header">Colors</li>
+                <li>
+                    <a href="/site/getting-started/download/index.html">
+                        <span class="item-left"><span class="fa fa-sliders"></span></span>
+                        <span class="item-body">Edit Documentation colors</span>
+                    </a>
+                </li>
+                <li class="menu-header">Mode</li>
+                <li>
+                    <span class="item-left"><span class="fa fa-sun"></span></span>
+                    <span class="item-body">Light</span>
+                </li>
+                <li>
+                    <span class="item-left"><span class="fa fa-cloud-moon"></span></span>
+                    <span class="item-body">Dark</span>
+                </li>
+                <li>
+                    <span class="item-left"><span class="fa fa-circle-half-stroke"></span></span>
+                    <span class="item-body">Auto</span>
+                </li>
+            </ul>
+        </div>
+        <div id="docs-menu" style="display:none;"><ul class="doc-menu menu">
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-getting-started">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Getting Started</span>
+    </li>
+    <li  id="menu-getting-started" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../getting-started/introduction/index.html">Introduction</a></li>
+            <li class="menu-item "><a href="../../getting-started/download/index.html">Download</a></li>
+            <li class="menu-item "><a href="../../getting-started/installation/index.html">Installation</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-content">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Content</span>
+    </li>
+    <li  id="menu-content" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../content/typography/index.html">Typography</a></li>
+            <li class="menu-item "><a href="../../content/images/index.html">Images</a></li>
+            <li class="menu-item "><a href="../../content/tables/index.html">Tables</a></li>
+            <li class="menu-item "><a href="../../content/lists/index.html">Lists</a></li>
+            <li class="menu-item "><a href="../../content/inline-elements/index.html">Inline Elements</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-customize">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Customize</span>
+    </li>
+    <li  id="menu-customize" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../customize/overview/index.html">Overview</a></li>
+            <li class="menu-item "><a href="../../customize/sass/index.html">Sass</a></li>
+            <li class="menu-item "><a href="../../customize/colors/index.html">Colors</a></li>
+            <li class="menu-item "><a href="../../customize/css-variables/index.html">Css Variables</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-layout">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Layout</span>
+    </li>
+    <li  id="menu-layout" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../layout/breakpoints/index.html">Breakpoints</a></li>
+            <li class="menu-item "><a href="../../layout/container/index.html">Container</a></li>
+            <li class="menu-item "><a href="../../layout/flex-grid/index.html">Flex Grid</a></li>
+            <li class="menu-item "><a href="../../layout/grid/index.html">Grid</a></li>
+            <li class="menu-item "><a href="../../layout/skeleton/index.html">Skeleton</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-images">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Images</span>
+    </li>
+    <li  id="menu-images" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../images/lazyload/index.html">Lazyload</a></li>
+            <li class="menu-item "><a href="../../images/slider/index.html">Slider</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-surfaces">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Surfaces</span>
+    </li>
+    <li  id="menu-surfaces" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../surfaces/paper/index.html">Paper</a></li>
+            <li class="menu-item "><a href="../../surfaces/cards/index.html">Cards</a></li>
+            <li class="menu-item "><a href="../../surfaces/drawer/index.html">Drawer</a></li>
+            <li class="menu-item "><a href="../../surfaces/frontdrop/index.html">Frontdrop</a></li>
+            <li class="menu-item "><a href="../../surfaces/backdrop/index.html">Backdrop</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-navigation">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Navigation</span>
+    </li>
+    <li  id="menu-navigation" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../navigation/navbar/index.html">Navbar</a></li>
+            <li class="menu-item "><a href="../../navigation/menu/index.html">Menu</a></li>
+            <li class="menu-item "><a href="../../navigation/pagination/index.html">Pagination</a></li>
+            <li class="menu-item "><a href="../../navigation/tabs/index.html">Tabs</a></li>
+            <li class="menu-item "><a href="../../navigation/breadcrumbs/index.html">Breadcrumbs</a></li>
+            <li class="menu-item "><a href="../../navigation/waypoints/index.html">Waypoints</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse active" data-collapse-target="menu-forms">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Forms</span>
+    </li>
+    <li style="height:auto" id="menu-forms" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../forms/buttons/index.html">Buttons</a></li>
+            <li class="menu-item active"><a href="../../forms/dropdown/index.html">Dropdown</a></li>
+            <li class="menu-item "><a href="../../forms/inputs/index.html">Inputs</a></li>
+            <li class="menu-item "><a href="../../forms/checkbox/index.html">Checkbox</a></li>
+            <li class="menu-item "><a href="../../forms/radio/index.html">Radio</a></li>
+            <li class="menu-item "><a href="../../forms/switch/index.html">Switch</a></li>
+            <li class="menu-item "><a href="../../forms/chips/index.html">Chips</a></li>
+            <li class="menu-item "><a href="../../forms/progress/index.html">Progress</a></li>
+            <li class="menu-item "><a href="../../forms/input-mask/index.html">Input Mask</a></li>
+            <li class="menu-item "><a href="../../forms/results/index.html">Results</a></li>
+            <li class="menu-item "><a href="../../forms/validation/index.html">Validation</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-feedback">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Feedback</span>
+    </li>
+    <li  id="menu-feedback" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../feedback/message/index.html">Message</a></li>
+            <li class="menu-item "><a href="../../feedback/notification/index.html">Notification</a></li>
+            <li class="menu-item "><a href="../../feedback/modal/index.html">Modal</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-utilities">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Utilities</span>
+    </li>
+    <li  id="menu-utilities" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../utilities/ripple/index.html">Ripple</a></li>
+            <li class="menu-item "><a href="../../utilities/tooltip/index.html">Tooltip</a></li>
+            <li class="menu-item "><a href="../../utilities/popover/index.html">Popover</a></li>
+            <li class="menu-item "><a href="../../utilities/collapse/index.html">Collapse</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-javascript">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Javascript</span>
+    </li>
+    <li  id="menu-javascript" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../javascript/container/index.html">Container</a></li>
+            <li class="menu-item "><a href="../../javascript/dom/index.html">Dom</a></li>
+            <li class="menu-item "><a href="../../javascript/utils/index.html">Utils</a></li>
+            <li class="menu-item "><a href="../../javascript/ajax/index.html">Ajax</a></li>
+            <li class="menu-item "><a href="../../javascript/pjax/index.html">Pjax</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-css">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Css</span>
+    </li>
+    <li  id="menu-css" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a href="../../css/sass/index.html">Sass</a></li>
+            <li class="menu-item "><a href="../../css/css-helpers/index.html">Css Helpers</a></li>
+        </ul>
+    </li>
+</ul></div>
+        <div class="container-fluid main-container relative js-main-container">
+            <article class="docs-body"><h1 id="dropdown">Dropdown</h1>
+<p>Dropdown provides end-users with a list of options on a temporary surface. It appears when the user interacts with a button, or other control.</p>
+<hr />
+<ul>
+<li><a href="#markup">Markup</a></li>
+<li><a href="#menu-items">Menu items</a></li>
+<li><a href="#icon-menu">Dense menu</a></li>
+<li><a href="#states">States</a></li>
+<li><a href="#selected-menu">Selected menu</a></li>
+<li><a href="#positioning">Positioning</a></li>
+<li><a href="#sizing">Sizing</a></li>
+<li><a href="#carets">Carets</a></li>
+<li><a href="#arrows">Arrows</a></li>
+<li><a href="#css-customization">CSS Customization</a></li>
+<li><a href="#javascript-instantiation">JavaScript Instantiation</a></li>
+</ul>
+<hr />
+<h3 id="markup">Markup</h3>
+<p>A basic menu opens underneath the anchor element by default (positioning can be changed via class modifiers). To create a menu:</p>
+<ol>
+<li>Create a wrapper element with the <code>.drop-container</code> class.</li>
+<li>Nest any clickable element (usually <code>.btn</code>) with the <code>.js-drop-trigger</code> class to control the dropdown.</li>
+<li>Create the dropdown menu as the next sibling of the anchor element as <code>.drop-menu</code>.</li>
+<li>Nest your menu as <code>.menu</code> inside the dropdown.</li>
+</ol>
+<div class="code-content-example">
+    <div class="flex-row-fluid align-cols-center col-gaps-xs">
+        <div class="drop-container">
+            <button type="button" class="btn btn-dropdown js-drop-trigger">Dropdown trigger</button>
+            <div class="drop-menu js-drop-menu">
+                <ul class="menu"> 
+                    <li>Menu 1</li>
+                    <li>Menu 2</li>
+                    <li>Menu 3</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="drop-container"&gt;
+    &lt;button type="button" class="btn btn-dropdown"&gt;Dropdown trigger&lt;/button&gt;
+    &lt;div class="drop-menu js-drop-menu"&gt;
+        &lt;ul class="menu"&gt; 
+            &lt;li&gt;Menu 1&lt;/li&gt;
+            &lt;li&gt;Menu 2&lt;/li&gt;
+            &lt;li&gt;Menu 3&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<hr />
+<h3 id="menu-items">Menu items</h3>
+<p>Menu items have a few different options to provide additional content. To align content inside an item, wrap the main content in <code>.item-body</code> with left or right content in <code>.item-left</code> or <code>.item-right</code>:</p>
+<div class="code-content-example">
+    <div class="flex-row-fluid align-cols-center">
+        <div class="drop-container">
+            <button type="button" class="btn btn-dropdown js-drop-trigger">Dropdown trigger</button>
+            <div class="drop-menu js-drop-menu">
+                <ul class="menu"> 
+                    <li>
+                        <span class="item-left"><span class="fa fa-inbox color-gray-500"></span></span>
+                        <span class="item-body">Inbox</span>
+                        <span class="item-right"><span class="label">4</span></span>
+                    </li>
+                    <li>
+                        <span class="item-left"><span class="fa fa-flag color-gray-500"></span></span>
+                        <span class="item-body">Flagged</span>
+                        <span class="item-right"><span class="label">23</span></span>
+                    </li>
+                    <li>
+                        <span class="item-left"><span class="fa fa-note-sticky color-gray-500"></span></span>
+                        <span class="item-body">Drafts</span>
+                        <span class="item-right"><span class="label">3</span></span>
+                    </li>
+                    <li>
+                        <span class="item-left"><span class="fa fa-paper-plane color-gray-500"></span></span>
+                        <span class="item-body">Sent</span>
+                        <span class="item-right"><span class="status status-xs"></span></span>
+                    </li>
+                    <li>
+                        <span class="item-left"><span class="fa fa-circle-minus color-gray-500"></span></span>
+                        <span class="item-body">Junk</span>
+                        <span class="item-right"><span class="status status-xs status-warning"></span></span>
+                    </li>
+                    <li>
+                        <span class="item-left"><span class="fa fa-trash color-gray-500"></span></span>
+                        <span class="item-body">Trash</span>
+                        <span class="item-right"><span class="status status-xs status-danger"></span></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;ul class="menu"&gt; 
+    &lt;li&gt;
+        &lt;span class="item-left"&gt;&lt;span class="fa fa-inbox color-gray-500"&gt;&lt;/span&gt;&lt;/span&gt;
+        &lt;span class="item-body"&gt;Inbox&lt;/span&gt;
+        &lt;span class="item-right"&gt;&lt;span class="label"&gt;4&lt;/span&gt;&lt;/span&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<p>Use <code>.menu-divider</code> on menu item to separate menu items or add <code>.menu-header</code> to the first item to give a menu a heading:</p>
+<div class="code-content-example">
+    <div class="flex-row-fluid align-cols-center">
+        <div class="drop-container">
+            <button type="button" class="btn btn-dropdown js-drop-trigger">Dropdown trigger</button>
+            <div class="drop-menu js-drop-menu">
+                <ul class="menu">
+                    <li class="menu-header">Options</li>
+                    <li>
+                        <span class="item-left"><span class="fa fa-inbox color-gray-500"></span></span>
+                        <span class="item-body">Inbox</span>
+                        <span class="item-right"><span class="label">4</span></span>
+                    </li>
+                    <li>
+                        <span class="item-left"><span class="fa fa-flag color-gray-500"></span></span>
+                        <span class="item-body">Flagged</span>
+                        <span class="item-right"><span class="label">23</span></span>
+                    </li>
+                    <li>
+                        <span class="item-left"><span class="fa fa-note-sticky color-gray-500"></span></span>
+                        <span class="item-body">Drafts</span>
+                        <span class="item-right"><span class="label">3</span></span>
+                    </li>
+                    <li>
+                        <span class="item-left"><span class="fa fa-paper-plane color-gray-500"></span></span>
+                        <span class="item-body">Sent</span>
+                        <span class="item-right"><span class="status status-xs"></span></span>
+                    </li>
+                    <li>
+                        <span class="item-left"><span class="fa fa-circle-minus color-gray-500"></span></span>
+                        <span class="item-body">Junk</span>
+                        <span class="item-right"><span class="status status-xs status-warning"></span></span>
+                    </li>
+                    <li>
+                        <span class="item-left"><span class="fa fa-trash color-gray-500"></span></span>
+                        <span class="item-body">Trash</span>
+                        <span class="item-right"><span class="status status-xs status-danger"></span></span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li>
+                        <span class="item-left"><span class="fa fa-ellipsis-vertical color-gray-500"></span></span>
+                        <span class="item-body">More</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;ul class="menu"&gt; 
+    &lt;li class="menu-header"&gt;Options&lt;/li&gt;
+    ...
+    &lt;li class="menu-divider"&gt;&lt;/li&gt;
+    ...
+&lt;/ul&gt;</code></pre>
+<hr />
+<h3 id="dense-menu">Dense menu</h3>
+<p>For larger menus with multiple items, you can use the <code>.menu-dense</code> modifier on <code>.menu</code> to reduce the padding and text size.</p>
+<div class="code-content-example">
+    <div class="flex-row-fluid align-cols-center">
+        <div class="drop-container">
+            <button type="button" class="btn btn-dropdown js-drop-trigger">Dropdown trigger</button>
+            <div class="drop-menu js-drop-menu">
+                <ul class="menu menu-dense">
+                    <li>Back</li>
+                    <li>Forward</li>
+                    <li>Reload</li>
+                    <li class="menu-divider"></li>
+                    <li>Save As...</li>
+                    <li>Print...</li>
+                    <li>Cast...</li>
+                    <li class="menu-divider"></li>
+                    <li>View Page Source</li>
+                    <li>Inspect</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="drop-container"&gt;
+    &lt;button type="button" class="btn btn-dropdown js-drop-trigger"&gt;Dropdown trigger&lt;/button&gt;
+    &lt;div class="drop-menu js-drop-menu"&gt;
+        &lt;ul class="menu menu-dense"&gt;
+            &lt;li&gt;Back&lt;/li&gt;
+            &lt;li&gt;Forward&lt;/li&gt;
+            &lt;li&gt;Reload&lt;/li&gt;
+            &lt;li class="menu-divider"&gt;&lt;/li&gt;
+            &lt;li&gt;Save As...&lt;/li&gt;
+            &lt;li&gt;Print...&lt;/li&gt;
+            &lt;li&gt;Cast...&lt;/li&gt;
+            &lt;li class="menu-divider"&gt;&lt;/li&gt;
+            &lt;li&gt;View Page Source&lt;/li&gt;
+            &lt;li&gt;Inspect&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<hr />
+<h3 id="states">States</h3>
+<p>Menu items come with a handful of convenient states to help with different use-cases. Add the classes <code>.active</code> <code>.selected</code> or <code>.disabled</code> to a list item to help provide context:</p>
+<div class="code-content-example">
+    <div class="flex-row-fluid align-cols-center">
+        <ul class="menu raised-2 border-radius" style="width: 200px;">
+            <li>Back</li>
+            <li class="disabled">.disabled</li>
+            <li class="active">.active</li>
+            <li>Cast...</li>
+            <li class="selected">
+                <span class="item-body">.selected</span>
+                <span class="item-right"><span class="fa fa-check"></span>
+            </li>
+            <li>Inspect</li>
+        </ul>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;ul class="menu"&gt;
+    &lt;li class="disabled"&gt;.disabled&lt;/li&gt;
+    &lt;li class="active"&gt;.active&lt;/li&gt;
+    &lt;li class="selected"&gt;
+        &lt;span class="item-body"&gt;.selected&lt;/span&gt;
+        &lt;span class="item-right"&gt;&lt;span class="fa fa-check"&gt;&lt;/span&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<hr />
+<h3 id="selected-menu">Selected Menu</h3>
+<p>Dropdown offers three different options for selectable menus.</p>
+<ol>
+<li><code>.js-select-menu</code> - Add this modifier class to the <code>.menu</code> to toggle the <code>.selected</code> class on items when clicked.</li>
+<li><code>.js-check-menu</code> - Add this modifier class to the <code>.menu</code> to toggle the <code>.checked</code> class on items when clicked.</li>
+<li><code>.js-active-menu</code> - Add this modifier class to the <code>.menu</code> to toggle the <code>.active</code> class on items when clicked.</li>
+</ol>
+<p>Note that when using the <code>.js-menu-check</code> modifier, FrontBx will automatically include a checkmark on the checked item.</p>
+<div class="code-content-example">
+    <div class="flex-row-fluid align-cols-center col-gaps-xs">
+        <div class="drop-container">
+            <button type="button" class="btn btn-dropdown js-drop-trigger">.js-select-menu</button>
+            <div class="drop-menu js-drop-menu">
+                <ul class="menu js-select-menu">
+                    <li>Option  1</li>
+                    <li>Option  2</li>
+                    <li>Option  3</li>
+                    <li>Option  4</li>
+                    <li>Option  5</li>
+                    <li>Option  6</li>
+                </ul>
+            </div>
+        </div>
+        <div class="drop-container">
+            <button type="button" class="btn btn-dropdown js-drop-trigger">.js-check-menu</button>
+            <div class="drop-menu js-drop-menu">
+                <ul class="menu js-check-menu">
+                    <li>Option  1</li>
+                    <li>Option  2</li>
+                    <li>Option  3</li>
+                    <li>Option  4</li>
+                    <li>Option  5</li>
+                    <li>Option  6</li>
+                </ul>
+            </div>
+        </div>
+        <div class="drop-container">
+            <button type="button" class="btn btn-dropdown js-drop-trigger">.js-active-menu</button>
+            <div class="drop-menu js-drop-menu">
+                <ul class="menu js-active-menu">
+                    <li>Option  1</li>
+                    <li>Option  2</li>
+                    <li>Option  3</li>
+                    <li>Option  4</li>
+                    <li>Option  5</li>
+                    <li>Option  6</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="drop-container"&gt;
+    &lt;input type="hidden" name="menu" value=""&gt;
+    &lt;button type="button" class="btn btn-dropdown js-drop-trigger"&gt;.js-select-menu&lt;/button&gt;
+    &lt;div class="drop-menu js-drop-menu"&gt;
+        &lt;ul class="menu js-select-menu"&gt;
+            &lt;li&gt;Option  1&lt;/li&gt;
+            &lt;li&gt;Option  2&lt;/li&gt;
+            &lt;li&gt;Option  3&lt;/li&gt;
+            &lt;li&gt;Option  4&lt;/li&gt;
+            &lt;li&gt;Option  5&lt;/li&gt;
+            &lt;li&gt;Option  6&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<p>Additionally, adding the <code>js-drop-selectable</code> modifier to the anchor element will replace the anchor element <code>innerText</code> with the text of a selected menu item.</p>
+<p>You may also nest a hidden <code>input</code> inside the <code>.drop-container</code> to store the input value of the selected menu item. If items have a <code>data-value</code> attribute - the input value will be updated to this attribute rather than the text of the menu item.</p>
+<div class="code-content-example">
+    <div class="flex-row-fluid align-cols-center col-gaps-xs">
+        <div class="drop-container">
+            <input type="hidden" name="menu" value="">
+            <button type="button" class="btn btn-dropdown js-drop-trigger js-drop-selectable">.js-select-menu</button>
+            <div class="drop-menu js-drop-menu">
+                <ul class="menu js-select-menu">
+                    <li data-value="1">Option  1</li>
+                    <li data-value="2">Option  2</li>
+                    <li data-value="3">Option  3</li>
+                    <li data-value="4">Option  4</li>
+                    <li data-value="5">Option  5</li>
+                    <li data-value="6">Option  6</li>
+                </ul>
+            </div>
+        </div>
+        <div class="drop-container">
+            <input type="hidden" name="menu" value="">
+            <button type="button" class="btn btn-dropdown js-drop-trigger js-drop-selectable">.js-check-menu</button>
+            <div class="drop-menu js-drop-menu">
+                <ul class="menu js-check-menu">
+                    <li data-value="1">Option  1</li>
+                    <li data-value="2">Option  2</li>
+                    <li data-value="3">Option  3</li>
+                    <li data-value="4">Option  4</li>
+                    <li data-value="5">Option  5</li>
+                    <li data-value="6">Option  6</li>
+                </ul>
+            </div>
+        </div>
+        <div class="drop-container">
+            <input type="hidden" name="menu" value="">
+            <button type="button" class="btn btn-dropdown js-drop-trigger js-drop-selectable">.js-active-menu</button>
+            <div class="drop-menu js-drop-menu">
+                <ul class="menu js-active-menu">
+                    <li data-value="1">Option  1</li>
+                    <li data-value="2">Option  2</li>
+                    <li data-value="3">Option  3</li>
+                    <li data-value="4">Option  4</li>
+                    <li data-value="5">Option  5</li>
+                    <li data-value="6">Option  6</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="drop-container"&gt;
+    &lt;input type="hidden" name="menu" value=""&gt;
+    &lt;button type="button" class="btn btn-dropdown js-drop-trigger js-drop-selectable"&gt;.js-select-menu&lt;/button&gt;
+    &lt;div class="drop-menu js-drop-menu"&gt;
+        &lt;ul class="menu js-select-menu"&gt;
+            &lt;li data-value="1"&gt;Option  1&lt;/li&gt;
+            &lt;li data-value="2"&gt;Option  2&lt;/li&gt;
+            &lt;li data-value="3"&gt;Option  3&lt;/li&gt;
+            &lt;li data-value="4"&gt;Option  4&lt;/li&gt;
+            &lt;li data-value="5"&gt;Option  5&lt;/li&gt;
+            &lt;li data-value="6"&gt;Option  6&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<hr />
+<h3 id="positioning">Positioning</h3>
+<p>You can change the alignment of the dropdown to different directions by adding a directional class to the <code>.drop-menu</code> element. The directions are <code>.drop-s</code> <code>.drop-se</code> <code>.drop-sw</code> <code>.drop-n</code> <code>.drop-ne</code> <code>.drop-nw</code></p>
+<div class="code-content-example">
+    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
+        <div class="drop-container">
+            <button type="button" class="btn btn-dropdown js-drop-trigger">.drop-s</button>
+            <div class="drop-menu drop-s js-drop-menu">
+                <ul class="menu">
+                    <li>Option  1</li>
+                    <li>Option  2</li>
+                    <li>Option  3</li>
+                    <li>Option  4</li>
+                    <li>Option  5</li>
+                    <li>Option  6</li>
+                </ul>
+            </div>
+        </div>
+        <div class="drop-container">
+            <button type="button" class="btn btn-dropdown js-drop-trigger">.drop-se</button>
+            <div class="drop-menu drop-se js-drop-menu">
+                <ul class="menu">
+                    <li>Option  1</li>
+                    <li>Option  2</li>
+                    <li>Option  3</li>
+                    <li>Option  4</li>
+                    <li>Option  5</li>
+                    <li>Option  6</li>
+                </ul>
+            </div>
+        </div>
+        <div class="drop-container">
+            <button type="button" class="btn btn-dropdown js-drop-trigger">.drop-sw</button>
+            <div class="drop-menu drop-sw js-drop-menu">
+                <ul class="menu">
+                    <li>Option  1</li>
+                    <li>Option  2</li>
+                    <li>Option  3</li>
+                    <li>Option  4</li>
+                    <li>Option  5</li>
+                    <li>Option  6</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12"></div>
+        <div class="drop-container">
+            <button type="button" class="btn btn-dropdown js-drop-trigger">.drop-n</button>
+            <div class="drop-menu drop-n js-drop-menu">
+                <ul class="menu">
+                    <li>Option  1</li>
+                    <li>Option  2</li>
+                    <li>Option  3</li>
+                    <li>Option  4</li>
+                    <li>Option  5</li>
+                    <li>Option  6</li>
+                </ul>
+            </div>
+        </div>
+        <div class="drop-container">
+            <button type="button" class="btn btn-dropdown js-drop-trigger">.drop-ne</button>
+            <div class="drop-menu drop-ne js-drop-menu">
+                <ul class="menu">
+                    <li>Option  1</li>
+                    <li>Option  2</li>
+                    <li>Option  3</li>
+                    <li>Option  4</li>
+                    <li>Option  5</li>
+                    <li>Option  6</li>
+                </ul>
+            </div>
+        </div>
+        <div class="drop-container">
+            <button type="button" class="btn btn-dropdown js-drop-trigger">.drop-nw</button>
+            <div class="drop-menu drop-nw js-drop-menu">
+                <ul class="menu">
+                    <li>Option  1</li>
+                    <li>Option  2</li>
+                    <li>Option  3</li>
+                    <li>Option  4</li>
+                    <li>Option  5</li>
+                    <li>Option  6</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="drop-container"&gt;
+    &lt;button type="button" class="btn btn-dropdown js-drop-trigger"&gt;.drop-s&lt;/button&gt;
+    &lt;div class="drop-menu drop-s js-drop-menu"&gt;
+        ...
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<hr />
+<h3 id="sizing">Sizing</h3>
+<p>Dropdown height is sized via <code>max-height</code> on <code>.menu</code>. This value can be overidden via either Sass or CSS variables.</p>
+<div class="code-content-example">
+    <div class="flex-row-fluid align-cols-center">
+        <div class="drop-container">
+            <button type="button" class="btn btn-dropdown js-drop-trigger">Dropdown trigger</button>
+            <div class="drop-menu js-drop-menu">
+                <ul class="menu menu-dense"> 
+                    <li>Albania</li>
+                    <li>Algeria</li>
+                    <li>Andorra</li>
+                    <li>Angola</li>
+                    <li>Antigua</li>
+                    <li>Argentina</li>
+                    <li>Armenia</li>
+                    <li>Australia</li>
+                    <li>Austria</li>
+                    <li>Azerbaijan</li>
+                    <li>Bahamas</li>
+                    <li>Bahrain</li>
+                    <li>Bangladesh</li>
+                    <li>Barbados</li>
+                    <li>Belarus</li>
+                    <li>Belgium</li>
+                    <li>Belize</li>
+                    <li>Benin</li>
+                    <li>Bhutan</li>
+                    <li>Bolivia</li>
+                    <li>Bosnia</li>
+                    <li>Botswana</li>
+                    <li>Brazil</li>
+                    <li>Brunei</li>
+                    <li>Bulgaria</li>
+                    <li>Burkina</li>
+                    <li>Burundi</li>
+                    <li>Côte</li>
+                    <li>Cabo</li>
+                    <li>Cambodia</li>
+                    <li>Cameroon</li>
+                    <li>Canada</li>
+                    <li>Central</li>
+                    <li>Chad</li>
+                    <li>Chile</li>
+                    <li>China</li>
+                    <li>Colombia</li>
+                    <li>Comoros</li>
+                    <li>Congo</li>
+                    <li>Costa</li>
+                    <li>Croatia</li>
+                    <li>Cuba</li>
+                    <li>Cyprus</li>
+                    <li>Czechia</li>
+                    <li>Democratic</li>
+                    <li>Denmark</li>
+                    <li>Djibouti</li>
+                    <li>Dominica</li>
+                    <li>Dominican</li>
+                    <li>Ecuador</li>
+                    <li>Egypt</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="css language-css">.drop-container {
+    --fbx-dropdown-height: 300px;
+}</code></pre>
+<p>Dropdown width is sized via <code>min-width</code> on <code>.menu</code>. This value can be overidden via either Sass or CSS variables. Longer text will wrap, however you can add <code>menu-ellipsis</code> to the menu to prevent this from happening</p>
+<pre><code class="css language-css">.drop-container {
+    --fbx-dropdown-width: 160px;
+}</code></pre>
+<div class="code-content-example">
+    <div class="flex-row-fluid align-cols-center col-gaps-xs">
+        <div>
+            <ul class="menu raised-2 border-radius" style="width: 200px;"> 
+                <li>Menu 1</li>
+                <li>This text will wrap which is the default behavior</li>
+                <li>Menu 3</li>
+            </ul>
+        </div>
+        <div>
+            <ul class="menu menu-ellipsis raised-2 border-radius" style="width: 200px;">  
+                <li>Menu 1</li>
+                <li><span class="item-body">This text will be truncated if it's too long.</span></li>
+                <li>Menu 3</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;ul class="menu menu-ellipsis"&gt;  
+    &lt;li&gt;&lt;span class="item-body"&gt;Menu item with additional text that spills over&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<hr />
+<h3 id="carets">Carets</h3>
+<p>Add a caret to the button by using either a <code>.caret-s</code> or <code>caret-n</code> element inside inside the button or a caret icon</p>
+<div class="code-content-example">
+    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
+        <div class="drop-container">
+            <button type="button" class="btn btn-dropdown js-drop-trigger">
+                .caret-s <span class="caret-s"></span>
+            </button>
+            <div class="drop-menu drop-s js-drop-menu">
+                <ul class="menu">
+                    <li>Option  1</li>
+                    <li>Option  2</li>
+                    <li>Option  3</li>
+                    <li>Option  4</li>
+                    <li>Option  5</li>
+                    <li>Option  6</li>
+                </ul>
+            </div>
+        </div>
+        <div class="drop-container">
+            <button type="button" class="btn btn-dropdown js-drop-trigger">
+                .caret-n <span class="caret-n"></span>
+            </button>
+            <div class="drop-menu drop-n js-drop-menu">
+                <ul class="menu">
+                    <li>Option  1</li>
+                    <li>Option  2</li>
+                    <li>Option  3</li>
+                    <li>Option  4</li>
+                    <li>Option  5</li>
+                    <li>Option  6</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;button type="button" class="btn btn-dropdown js-drop-trigger"&gt;
+    .caret-s &lt;span class="caret-s"&gt;&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+<hr />
+<h3 id="arrows">Arrows</h3>
+<p>Add an arrow on the border of the dropdown using the <code>.arrow</code> with an arrow position <code>arrow-[position]</code> class. Arrow positions are <code>.arrow-s</code> <code>.arrow-se</code> <code>.arrow-sw</code> <code>.arrow-n</code> <code>.arrow-ne</code> <code>.arrow-nw</code></p>
+<div class="code-content-example">
+    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
+        <div class="drop-container">
+            <button type="button" class="btn btn-dropdown js-drop-trigger">.arrow-n</button>
+            <div class="drop-menu drop-s arrow arrow-n js-drop-menu">
+                <ul class="menu">
+                    <li>Option  1</li>
+                    <li>Option  2</li>
+                    <li>Option  3</li>
+                    <li>Option  4</li>
+                    <li>Option  5</li>
+                    <li>Option  6</li>
+                </ul>
+            </div>
+        </div>
+        <div class="drop-container">
+            <button type="button" class="btn btn-dropdown js-drop-trigger">.arrow-s</button>
+            <div class="drop-menu drop-n arrow arrow-s js-drop-menu">
+                <ul class="menu">
+                    <li>Option  1</li>
+                    <li>Option  2</li>
+                    <li>Option  3</li>
+                    <li>Option  4</li>
+                    <li>Option  5</li>
+                    <li>Option  6</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="drop-container"&gt;
+    ...
+    &lt;div class="drop-menu drop-s arrow arrow-n js-drop-menu"&gt;
+        ...
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<hr />
+<h3 id="css-customization">CSS Customization</h3>
+<p>Dropdown uses local CSS variables on <code>.drop-container</code> and <code>.menu</code> along with Sass variables for enhanced component customization and styling. The base values are used by the UI to create all the styling. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>
+<div class="code-content-example">
+    <div class="flex-row-fluid align-cols-center">
+        <style scoped>
+            .custom-drop
+            {
+                --fbx-dropdown-bg: var(--fbx-black);
+            }
+            .custom-drop .menu
+            {
+                --fbx-menu-color: var(--fbx-white);
+                --fbx-menu-item-color-hover: var(--fbx-white);
+                --fbx-menu-item-color-active: var(--fbx-theme-primary);
+                --fbx-menu-item-color-selected: var(--fbx-theme-primary);
+                --fbx-menu-item-bg-hover: var(--fbx-gray-900);
+                --fbx-menu-item-bg-active: var(--fbx-gray-900);
+                --fbx-menu-item-bg-selected: var(--fbx-gray-900);
+                --fbx-menu-divider-color: var(--fbx-gray-600);
+            }
+        </style>
+        <div class="drop-container custom-drop">
+            <button type="button" class="btn btn-dropdown js-drop-trigger">Dropdown trigger</button>
+            <div class="drop-menu js-drop-menu">
+                <ul class="menu"> 
+                    <li>
+                        <span class="item-left"><span class="fa fa-inbox color-gray-800"></span></span>
+                        <span class="item-body">Inbox</span>
+                        <span class="item-right"><span class="label bg-gray-800">4</span></span>
+                    </li>
+                    <li>
+                        <span class="item-left"><span class="fa fa-flag color-gray-800"></span></span>
+                        <span class="item-body">Flagged</span>
+                        <span class="item-right"><span class="label bg-gray-800">23</span></span>
+                    </li>
+                    <li>
+                        <span class="item-left"><span class="fa fa-note-sticky color-gray-800"></span></span>
+                        <span class="item-body">Drafts</span>
+                        <span class="item-right"><span class="label bg-gray-800">3</span></span>
+                    </li>
+                    <li>
+                        <span class="item-left"><span class="fa fa-paper-plane color-gray-800"></span></span>
+                        <span class="item-body">Sent</span>
+                        <span class="item-right"><span class="status status-xs bg-gray-800"></span></span>
+                    </li>
+                    <li>
+                        <span class="item-left"><span class="fa fa-circle-minus color-gray-800"></span></span>
+                        <span class="item-body">Junk</span>
+                        <span class="item-right"><span class="status status-xs status-warning"></span></span>
+                    </li>
+                    <li>
+                        <span class="item-left"><span class="fa fa-trash color-gray-800"></span></span>
+                        <span class="item-body">Trash</span>
+                        <span class="item-right"><span class="status status-xs status-danger"></span></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="css language-css">.custom-drop
+{
+    --fbx-dropdown-bg: var(--fbx-black);
+}
+.custom-drop .menu
+{
+    --fbx-menu-color: var(--fbx-white);
+    --fbx-menu-item-color-hover: var(--fbx-white);
+    --fbx-menu-item-color-active: var(--fbx-theme-primary);
+    --fbx-menu-item-color-selected: var(--fbx-theme-primary);
+    --fbx-menu-item-bg-hover: var(--fbx-gray-900);
+    --fbx-menu-item-bg-active: var(--fbx-gray-900);
+    --fbx-menu-item-bg-selected: var(--fbx-gray-900);
+    --fbx-menu-divider-color: var(--fbx-gray-600);
+}</code></pre>
+<p>Customization via Sass can be made in the <code>src/scss/_config.scss</code> file in FrontBx's source.</p>
+<pre><code class="file-path language-file-path">`src/scss/_config.scss`</code></pre>
+<pre><code class="sass language-sass">// Dropdown
+$dropdown-border-radius:        var(--fbx-border-radius) !default;
+$dropdown-width:                160px !default;
+$dropdown-height:               300px !default;
+$dropdown-shadow-level:         2 !default;
+$dropdown-bg:                   var(--fbx-white) !default;
+
+// Menu
+$menu-bg:                       var(--fbx-white) !default;
+$menu-color:                    var(--fbx-gray-700) !default;
+$menu-font-size:                1.3rem !default;
+$menu-item-bg:                  transparent !default;
+$menu-item-color-hover:         var(--fbx-gray-700) !default;
+$menu-item-color-active:        var(--fbx-gray-700) !default;
+$menu-item-color-selected:      var(--fbx-white) !default;
+$menu-item-bg-hover:            var(--fbx-gray-200) !default;
+$menu-item-bg-active:           var(--fbx-theme-info-100) !default;
+$menu-item-bg-selected:         var(--fbx-theme-info) !default;
+$menu-item-pad-y:               10px !default;
+$menu-item-pad-x:               12px !default;
+$menu-divider-color:            var(--fbx-gray-200) !default;
+$menu-divider-space:            5px;</code></pre>
+<pre><code class="file-path language-file-path">src/scss/components/dropdown.scss</code></pre>
+<pre><code class="css language-css">.drop-container {
+  --fbx-dropdown-border-radius: var(--fbx-border-radius);
+  --fbx-dropdown-width: 160px;
+  --fbx-dropdown-height: 300px;
+  --fbx-dropdown-bg: var(--fbx-white);
+}</code></pre>
+<pre><code class="file-path language-file-path">src/scss/components/menu.scss</code></pre>
+<pre><code class="css language-css">.menu {
+    --fbx-menu-bg: var(--fbx-white);
+    --fbx-menu-color: var(--fbx-gray-700);
+    --fbx-menu-font-size: 1.3rem;
+    --fbx-menu-item-color-hover: var(--fbx-gray-700);
+    --fbx-menu-item-color-active: var(--fbx-gray-700);
+    --fbx-menu-item-color-selected: var(--fbx-white);
+    --fbx-menu-item-bg: transparent;
+    --fbx-menu-item-bg-hover: var(--fbx-gray-200);
+    --fbx-menu-item-bg-active: var(--fbx-theme-info-100);
+    --fbx-menu-item-bg-selected: var(--fbx-theme-info);
+    --fbx-menu-item-pad-y: 10px;
+    --fbx-menu-item-pad-x: 12px;
+    --fbx-menu-divider-color: var(--fbx-gray-200);
+    --fbx-menu-divider-space: 5px;
+}</code></pre>
+<hr />
+<h3 id="javascript-instantiation">JavaScript Instantiation</h3>
+<p>Dropdown can be instantiated via JavaScript to generate dynamic content on the fly. To create a Dropdown dynamically, use FrontBx's <code>Component.Create</code> method either via the <code>FrontBx.Dom</code> or the Dropdown Component directly:</p>
+<pre><code class="JavaScript language-JavaScript">let options =
+{
+    anchorText: 'Basic',
+    items:
+    [
+        'Option One',
+        {
+            left: '&lt;span class="fa fa-sun"&gt;&lt;/span&gt;',
+            body: 'Option Two'
+        },
+        {
+            left: '&lt;span class="fa fa-sun"&gt;&lt;/span&gt;',
+            body: 'Option 3',
+            right: '&lt;span class="fa fa-user"&gt;&lt;/span&gt;',
+        }
+    ]
+};
+
+let container = document.querySelector('.my-container');
+
+// Via Hibble dom
+FrontBx.Dom().create('Dropdown', options, container);
+
+// Or via Component directly
+FrontBx.Dom().component('Dropdown').create(options, container);</code></pre>
+<p>Below are the available options</p>
+<table>
+<thead>
+<tr>
+<th id="option">Option</th>
+<th id="default">Default</th>
+<th id="example">Example</th>
+<th id="behavior">Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>anchorTag</code></td>
+<td><code>button</code></td>
+<td><code>div</code></td>
+<td>Tag element for anchor element</td>
+</tr>
+<tr>
+<td><code>anchorClass</code></td>
+<td><code>''</code></td>
+<td><code>my-button</code></td>
+<td>Additional class name(s) on anchor element.</td>
+</tr>
+<tr>
+<td><code>anchorText</code></td>
+<td><code>''</code></td>
+<td><code>click me</code></td>
+<td>Text inside anchor element</td>
+</tr>
+<tr>
+<td><code>caret</code></td>
+<td><code>false</code></td>
+<td><code>s</code></td>
+<td>Adds caret to anchor element - either <code>n</code> or <code>s</code></td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td><code>sw</code></td>
+<td><code>ne'</code></td>
+<td>Position of dropdown menu</td>
+</tr>
+<tr>
+<td><code>dense</code></td>
+<td><code>false</code></td>
+<td><code>true</code></td>
+<td>Makes dense menu</td>
+</tr>
+<tr>
+<td><code>ellipsis</code></td>
+<td><code>false</code></td>
+<td><code>true</code></td>
+<td>Makes dropdown menu text overflow ellipsis</td>
+</tr>
+<tr>
+<td><code>checkable</code></td>
+<td><code>false</code></td>
+<td><code>true</code></td>
+<td>Checkable menu items with checkmarks</td>
+</tr>
+<tr>
+<td><code>selectable</code></td>
+<td><code>false</code></td>
+<td><code>true</code></td>
+<td>Adds a hidden input and makes menu items selectable</td>
+</tr>
+<tr>
+<td><code>input</code></td>
+<td><code>null</code></td>
+<td><code>myinput</code></td>
+<td>Hidden input <code>name</code> attribute when <code>selectable</code> is true</td>
+</tr>
+<tr>
+<td><code>selected</code></td>
+<td><code>null</code></td>
+<td><code>option 2</code></td>
+<td>Text or value of default selected item when <code>selectable</code> or <code>checkable</code> is true</td>
+</tr>
+<tr>
+<td><code>items</code></td>
+<td><code>[]</code></td>
+<td><code>['option 1', 'option 2']</code></td>
+<td>Array of menu items as text or objects with sub item properties</td>
+</tr>
+<tr>
+<td><code>items.item.left</code></td>
+<td><code>null</code></td>
+<td><code>{left:&lt;span class="fa fa-sun"&gt;&lt;/span&gt;'</code></td>
+<td>Optional HTML string of optional menu item left</td>
+</tr>
+<tr>
+<td><code>items.item.right</code></td>
+<td><code>null</code></td>
+<td><code>{right: '&lt;span class="fa fa-user"&gt;&lt;/span&gt;'</code></td>
+<td>Optional HTML string of optional menu item right</td>
+</tr>
+<tr>
+<td><code>items.item.body</code></td>
+<td><code>null</code></td>
+<td><code>{right: 'Option 1'</code></td>
+<td>Optional HTML string or text of optional menu item body</td>
+</tr>
+<tr>
+<td><code>items.item.state</code></td>
+<td><code>null</code></td>
+<td><code>{state: 'selected'</code></td>
+<td>Optional Menu item state class</td>
+</tr>
+</tbody>
+</table></article>
+        </div>
+        <footer class="site-footer">
+            <div class="container-fluid clearfix">
+                <div class="col col-12 col-sm-7 gutter-sm-r">
+                    <div class="row sitemap roof-sm floor-sm">
+                        <ul class="list-inline">
+                            <li>
+                                <a href="../../index.html">Documentation</a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/frontbx/ui/issues">Issues</a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/frontbx/">GitHub</a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/frontbx/ui/archive/master.zip">Download</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <a href="/" title="Home" class="logo-link"> <svg class="logo" viewBox="0 0 1451 1451"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg> </a>
+                        <small> © FrontBx UI 2016.
+                            <br> Designed &amp; developed with
+                            <span style="font-size:13px;color:#F36B5C;">♥</span> by Joe Howard. </small>
+                    </div>
+                </div>
+                <div class="col col-12 col-sm-4 gutter-sm-l">
+                    <ul class="list-inline social-links">
+                        <li>
+                            <a class="icon-wrap social-share github" target="_blank" href="https://github.com/frontbx/ui/index.html">
+                                <span class="icon icon-social fa fa-github"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="icon-wrap social-share twitter js-tweet-pop-up" href="#">
+                                <span class="icon icon-social fa fa-twitter"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="js-waypoint-trigger to-top icon-wrap social-share" href="#" data-waypoint-target="header" data-waypoint-speed="500" title="Go to top of page">
+                                <span class="icon fa fa-arrow-up"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <script src="../../../dist/js/frontbx.bundle.min.js"></script>
+        <script src="../../../dist/js/frontbx-docs.min.js"></script>
+    </body>
+</html>
