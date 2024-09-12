@@ -370,20 +370,20 @@ Filter chips use tags or descriptive words to filter content. Filter chips clear
     <div class="row floor-xs">
         <div class="flex-row-fluid align-cols-center col-gaps-xs js-filter-chips">
             <button class="btn btn-chip">
-                <span class="fa fa-bed"></span>Bedroom
                 <input type="hidden" value="bedroom" name="location[]">
+                <span class="fa fa-bed"></span>Bedroom
             </button>
             <button class="btn btn-chip">
-                <span class="fa fa-couch"></span>Living Room
                 <input type="hidden" value="living-room" name="location[]">
+                <span class="fa fa-couch"></span>Living Room                
             </button>
             <button class="btn btn-chip checked">
-                <span class="fa fa-kitchen-set"></span>Kitchen
                 <input type="hidden" value="kitchen" name="location[]">
+                <span class="fa fa-kitchen-set"></span>Kitchen
             </button>
             <button class="btn btn-chip checked">
-                <span class="fa fa-kitchen-book"></span>Study
                 <input type="hidden" value="study" name="location[]">
+                Study
             </button>
         </div>
     </div>

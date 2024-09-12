@@ -90,7 +90,7 @@
     .fa, .fa-brands
     {
         --fbx-icon-size: var(--fbx-btn-icon-size);
-        display: inline !important; 
+        display: inline; 
         color: var(--fbx-btn-icon-color);
         transition: color var(--fbx-ease-time-sm) $base-easing;
         user-select: none;
@@ -206,50 +206,6 @@
     height: calc(var(--fbx-btn-font-size) * 3);
     
 }
-
-// Chip buttons
-.btn.btn-chip
-{
-    $chipsize: _minusPercent($btn-font-size, 37);
-
-    --fbx-btn-padding-y: #{$chipsize};
-    --fbx-btn-border-radius: 100px;
-
-    &.btn-xs
-    {
-        --fbx-btn-padding-y: #{_minusPercent($chipsize, 30)};
-        --fbx-btn-font-size: #{_minusPercent($btn-font-size, 10)};
-        --fbx-btn-icon-size: #{_minusPercent($btn-icon-font-size, 20)};
-    }
-    &.btn-sm
-    {
-        --fbx-btn-padding-y: #{_minusPercent($chipsize, 20)};
-        --fbx-btn-font-size: #{_minusPercent($btn-font-size, 5)};
-        --fbx-btn-icon-size: #{_minusPercent($btn-icon-font-size, 10)};
-    }
-    &.btn-lg
-    {
-        --fbx-btn-padding-y: #{_addPercent($chipsize, 20)};
-        --fbx-btn-font-size: #{_addPercent($btn-font-size, 5)};
-        --fbx-btn-icon-size: #{_addPercent($btn-icon-font-size, 10)};
-    }
-    &.btn-xl
-    {
-        --fbx-btn-padding-y: #{_addPercent($chipsize, 25)};
-        --fbx-btn-font-size: #{_addPercent($btn-font-size, 5)};
-        --fbx-btn-icon-size: #{_addPercent($btn-icon-font-size, 15)};
-    }
-
-    &.selected,
-    &.checked
-    {
-        color: var(--fbx-white);
-        background-color: var(--fbx-theme-primary);
-        --fbx-btn-icon-color: var(--fbx-white);
-        
-    }
-}
-
 
 // Block buttons
 .btn-block

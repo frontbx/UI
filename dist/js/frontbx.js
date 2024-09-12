@@ -15752,7 +15752,7 @@ Container.singleton('_', _);
      * 
      */
     Ripple.prototype.bind = function(node)
-    {        
+    {                
         // No ripples inside primary actions
         if (!has_class(node, 'primary-action') && closest(node, '.primary-action') && !has_class(node, 'card'))
         {

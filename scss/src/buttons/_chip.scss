@@ -1,0 +1,188 @@
+@use "sass:math";
+// Base
+.btn.btn-chip
+{
+    $chipsize: _minusPercent($btn-font-size, 30);
+
+    --fbx-btn-padding-y: #{$chipsize};
+    --fbx-btn-border-radius: 100px;
+
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    column-gap: 6px;
+
+    > .fa, > .fa-brands
+    {
+        display: flex;
+        &:after
+        {
+            display: none;
+        }
+    }
+
+    &.btn-xs
+    {
+        --fbx-btn-padding-y: #{_minusPercent($chipsize, 30)};
+        --fbx-btn-font-size: #{_minusPercent($btn-font-size, 10)};
+        --fbx-btn-icon-size: #{_minusPercent($btn-icon-font-size, 20)};
+    }
+    &.btn-sm
+    {
+        --fbx-btn-padding-y: #{_minusPercent($chipsize, 20)};
+        --fbx-btn-font-size: #{_minusPercent($btn-font-size, 5)};
+        --fbx-btn-icon-size: #{_minusPercent($btn-icon-font-size, 10)};
+    }
+    &.btn-lg
+    {
+        --fbx-btn-padding-y: #{_addPercent($chipsize, 20)};
+        --fbx-btn-font-size: #{_addPercent($btn-font-size, 5)};
+        --fbx-btn-icon-size: #{_addPercent($btn-icon-font-size, 10)};
+    }
+    &.btn-xl
+    {
+        --fbx-btn-padding-y: #{_addPercent($chipsize, 25)};
+        --fbx-btn-font-size: #{_addPercent($btn-font-size, 5)};
+        --fbx-btn-icon-size: #{_addPercent($btn-icon-font-size, 15)};
+    }
+
+    &.selected,
+    &.checked
+    {
+        color: var(--fbx-white);
+        background-color: var(--fbx-theme-primary);
+        --fbx-btn-icon-color: var(--fbx-white);
+        
+    }
+
+    &:before
+    {
+        @include glyph-icon;
+    	content: "\f00c";
+        vertical-align: middle;
+	    line-height: 0;
+        display: inline;
+	    font-size: var(--fbx-btn-icon-size);
+        opacity: 0;
+        visibility: hidden;
+        display: none;
+    }
+
+    // Selected
+    &.checked
+    {
+    	&:before
+	    {
+	        opacity: 1;
+            visibility: visible;
+	        transition: opacity var(--fbx-ease-time-sm) var(--fbx-base-easing);
+            margin-right: 6px;
+            display: flex;
+	    }
+
+	    > .fa:first-child,
+        > .fa-brands:first-child,
+        > input:first-child + .fa,
+        > input:first-child + .fa-brands,
+        > .ripple + input + .fa,
+        > .ripple + input + .fa-brands
+        {
+            display: none;
+        }
+    }
+    .remove-btn
+    {
+    	font-size: var(--fbx-btn-icon-size);
+    	line-height: 0;
+    	vertical-align: middle;
+    	cursor: pointer;
+    }
+
+}
+
+// Styled input
+.chips-input
+{
+    display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	column-gap: 5px;
+    row-gap: 20px;
+	border: 1px solid $input-border-color;
+    border-radius: $input-radius;
+    padding: 0;
+
+    &:focus,
+    &:focus-within
+    {
+        box-shadow: inset 0 0 0 1px $input-focus-theme;
+        border-color: $input-focus-theme;
+    }
+    .btn-chip
+    {
+        margin: math.div($input-pad-y, 2) 0;
+        &:first-child
+        {
+            margin-left: $input-pad-x;
+        }
+    }
+    .form-field
+    {
+    	display: flex;
+    	flex: 1 0 0%;
+    	width: 100%;
+    	min-width: 30%;
+        padding: 0 1px;
+
+        input
+        {
+            border-left: none;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border: none;
+            box-shadow: none;
+            margin-top: 1px;
+            margin-bottom: 1px;
+        }
+        &:focus,
+        &.focus
+        {
+            box-shadow: none;
+            border: none;
+            outline: none;
+            box-shadow: none;
+            box-shadow: none;
+        }
+    }
+}
+
+// Unstyled input
+.chips-input-unstyled
+{
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	row-gap: 10px;
+	column-gap: 5px;
+
+	.btn-chip
+	{
+		display: inline-table;
+	}
+
+	label
+	{
+		margin-right: 10px;
+	}
+	input
+	{
+		flex: 1 0 0%;
+    	width: 100%;
+    	min-width: 100px;
+    	margin-left: 10px;
+	}
+}
+
