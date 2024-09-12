@@ -266,7 +266,144 @@
     </li>
 </ul></div>
         <div class="container-fluid main-container relative js-main-container">
-            <article class="docs-body"></article>
+            <article class="docs-body"><h1 id="pagination">Pagination</h1>
+<p>Provide pagination links for your site or app with the multi-page pagination component.</p>
+<hr />
+<ul>
+<li><a href="#markup">Markup</a></li>
+<li><a href="#variants">Variants</a></li>
+<li><a href="#states">States</a></li>
+<li><a href="#css-customization">CSS Customization</a></li>
+</ul>
+<hr />
+<h3 id="markup">Markup</h3>
+<p>This simple pagination layout is great for apps and search results. The large block is hard to miss, easily scalable, and provides large click areas.</p>
+<div class="code-content-example">
+    <div class="container-fuid"> 
+        <nav>
+            <ul class="pagination">
+                <li class="disabled"><span>«</span></li>
+                <li class="active"><span>1</span></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li class="elips"><span>...</span></li>
+                <li><a href="#">22</a></li>
+                <li><a href="#">23</a></li>
+                <li><a href="#"><span>»</span></a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;nav&gt;
+    &lt;ul class="pagination"&gt;
+        &lt;li class="disabled"&gt;&lt;span&gt;«&lt;/span&gt;&lt;/li&gt;
+        &lt;li class="active"&gt;&lt;span&gt;1&lt;/span&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="elips"&gt;&lt;span&gt;...&lt;/span&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;22&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;23&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;»&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+<hr />
+<h3 id="variants">Variants</h3>
+<p>The pagination component can be easily styled a few different ways by simply adding an extra class. Use the <code>.pagination-btns</code> class to style them as individual buttons or the <code>.pagination-borderless</code> for a text-only style.</p>
+<div class="code-content-example">
+    <div class="container-fuid"> 
+        <nav>
+            <ul class="pagination pagination-btns">
+                <li class="disabled"><span>«</span></li>
+                <li class="active"><span>1</span></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li class="elips"><span>...</span></li>
+                <li><a href="#">22</a></li>
+                <li><a href="#">23</a></li>
+                <li><a href="#"><span>»</span></a></li>
+            </ul>
+        </nav>
+        <nav>
+            <ul class="pagination pagination-borderless">
+                <li class="disabled"><span>«</span></li>
+                <li class="active"><span>1</span></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li class="elips"><span>...</span></li>
+                <li><a href="#">22</a></li>
+                <li><a href="#">23</a></li>
+                <li><a href="#"><span>»</span></a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;nav&gt;
+    &lt;ul class="pagination pagination-btns"&gt;
+        ...
+    &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;nav&gt;
+    &lt;ul class="pagination pagination-borderless"&gt;
+        ...
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+<hr />
+<h4 id="states">States</h4>
+<p>Link states are customizable for different circumstances. Use <code>.disabled</code> for un-clickable links, <code>.active</code> to indicate the current page and <code>.elips</code> to indicate a number of pages have been skipped.</p>
+<div class="code-content-example">
+    <div class="container-fuid"> 
+        <nav>
+            <ul class="pagination">
+                <li class="disabled"><span>«</span></li>
+                <li class="active"><span>1</span></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li class="elips"><span>...</span></li>
+                <li><a href="#">22</a></li>
+                <li><a href="#">23</a></li>
+                <li><a href="#"><span>»</span></a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;nav&gt;
+    &lt;ul class="pagination"&gt;
+        &lt;li class="disabled"&gt;&lt;span&gt;«&lt;/span&gt;&lt;/li&gt;
+        &lt;li class="active"&gt;&lt;span&gt;1&lt;/span&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="elips"&gt;&lt;span&gt;...&lt;/span&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;22&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;23&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;»&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+<hr />
+<h3 id="css-customization">CSS Customization</h3>
+<p>Pagination uses a combination of both root and local CSS variables on <code>.pagination</code> for enhanced component customization and styling across a range of components.</p>
+<p>Customization via Sass can be made in the <code>scss/_config.scss</code> file in FrontBx's source.</p>
+<pre><code class="file-path language-file-path">`src/scss/_config.scss`</code></pre>
+<pre><code class="sass language-sass">$pagination-radius:             var(--fbx-border-radius) !default;
+$pagination-color:              var(--fbx-gray) !default;
+$pagination-link-pad-x:         16px !default;
+$pagination-link-pad-y:         9px !default;
+$pagination-border-color:       var(--fbx-gray-300) !default;
+$pagination-hover-color:        var(--fbx-gray) !default;
+$pagination-hover-bg:           var(--fbx-theme-primary-200) !default;
+$pagination-active-color:       var(--fbx-white) !default;
+$pagination-active-bg:          var(--fbx-theme-primary) !default;</code></pre>
+<pre><code class="css language-css">.pagination {
+    --fbx-pagination-radius: var(--fbx-border-radius);
+    --fbx-pagination-link-pad-x: 16px;
+    --fbx-pagination-link-pad-y: 9px;
+    --fbx-pagination-color: var(--fbx-gray);
+    --fbx-pagination-hover-color: var(--fbx-gray);
+    --fbx-pagination-hover-bg: var(--fbx-theme-primary-200);
+    --fbx-pagination-border-color: var(--fbx-gray-300);
+    --fbx-pagination-active-color: var(--fbx-white);
+    --fbx-pagination-active-bg: var(--fbx-theme-primary);
+}</code></pre></article>
         </div>
         <footer class="site-footer">
             <div class="container-fluid clearfix">

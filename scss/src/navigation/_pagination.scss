@@ -1,91 +1,122 @@
-.pagination {
+.pagination
+{
+    --fbx-pagination-radius: #{$pagination-radius};
+    --fbx-pagination-link-pad-x: #{$pagination-link-pad-x};
+    --fbx-pagination-link-pad-y: #{$pagination-link-pad-y};
+    --fbx-pagination-color: #{$pagination-color};
+    --fbx-pagination-hover-color: #{$pagination-hover-color};
+    --fbx-pagination-hover-bg: #{$pagination-hover-bg};
+    --fbx-pagination-border-color: #{$pagination-border-color};
+    --fbx-pagination-active-color: #{$pagination-active-color};
+    --fbx-pagination-active-bg: #{$pagination-active-bg};
+
     list-style: none;
     display: inline-block;
     padding: 0;
     margin: 0;
-    border-radius: $border-radius;
+    border-radius: var(--fbx-pagination-radius);
     overflow: hidden;
-}
-.pagination > li {
-    display: inline;
-}
-.pagination>li>a, .pagination>li>span {
-    position: relative;
-    float: left;
-    padding: 6px 15px;
-    margin-left: -1px;
-    line-height: 1.57142857;
-    color: #76838f;
-    text-decoration: none;
-    background-color: transparent;
-    border: 1px solid #e4eaec;
-}
-.pagination>.active>a, 
-.pagination>.active>a:focus,
-.pagination>.active>a:hover,
-.pagination>.active>span,
-.pagination>.active>span:focus,
-.pagination>.active>span:hover {
-    z-index: 3;
-    color: #fff;
-    cursor: default;
-    background-color: $theme-primary;
-    border-color: $theme-primary;
-}
-.pagination>.disabled>a, 
-.pagination>.disabled>a:focus, 
-.pagination>.disabled>a:hover, 
-.pagination>.disabled>span, 
-.pagination>.disabled>span:focus, 
-.pagination>.disabled>span:hover {
-    color: #76838f;
-    text-decoration: none;
-    background-color: transparent;
-    border: 1px solid #e4eaec;
-    cursor: not-allowed;
-}
-.pagination>li:first-child>a, .pagination>li:first-child>span {
-    margin-left: 0;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
-}
-.pagination>li:last-child>a, .pagination>li:last-child>span {
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-}
-.pagination li>a, .pagination li>span {
-    padding: 9px 15px;
-    -webkit-transition: background .1s ease,border-color 0s ease-out,color .1s ease;
-    -o-transition: background .1s ease,border-color 0s ease-out,color .1s ease;
-    transition: background .1s ease,border-color 0s ease-out,color .1s ease;
-}
-.pagination-btns {
-    > li {
-        display: inline-block;
-        > a,
-        > span {
-            border-radius: $border-radius;
+
+    li
+    {
+        display: inline;
+
+        > *
+        {
+            padding: var(--fbx-pagination-link-pad-y) var(--fbx-pagination-link-pad-x);
+            color: var(--fbx-pagination-color);
+            border: 1px solid var(--fbx-pagination-border-color);
+            transition: background var(--fbx-ease-time-xs) var(--fbx-base-easing), color var(--fbx-ease-time-xs) var(--fbx-base-easing);
+            position: relative;
+            float: left;
+            margin-left: -1px;
+            text-decoration: none;
+            background-color: transparent;
+        }
+
+        a, a:hover
+        {
+            text-decoration: none;
+        }
+
+        // Hover
+        &:hover a
+        {
+            color: var(--fbx-pagination-hover-color);
+            background-color: var(--fbx-pagination-hover-bg);
+        }
+
+        // active
+        &.active
+        {
+            > *
+            {
+                color: var(--fbx-pagination-active-color);
+                background-color: var(--fbx-pagination-active-bg);
+                border-color: var(--fbx-pagination-active-bg);
+            }
+        }
+
+        // Disabled
+        &.disabled
+        {
+            > *
+            {
+                color: var(--fbx-pagination-color);
+                background-color: transparent;
+                border: 1px solid var(--fbx-pagination-border-color);
+                cursor: not-allowed;
+                opacity: 0.75;
+            }
+        }
+
+        // Border setups
+        &:first-child > *
+        {
+            margin-left: 0;
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+        &:last-child > *
+        {
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
         }
     }
-}
-.pagination.pagination-borderless {
-    > li.elips > span,
-    > li.elips > span:focus,
-    > li.elips > span:hover,
-    > li.disabled > span,
-    > li.disabled > span:hover,
-    > li.active > span,
-    > li.active > span:hover,
-    > li > a {
-        border: 1px solid transparent;
+
+    // Button style
+    &.pagination-btns
+    {
+        > li
+        {
+            display: inline-block;
+            
+            > *
+            {
+                border-radius: var(--fbx-pagination-radius);
+            }
+        }
     }
-    > li > a:hover,
-    > li > span:hover {
-        background-color: transparent;
-    }
-    > li.active > span,
-    > li.active > span:hover {
-        background-color: transparent;
-        color: $theme-primary;
+
+    // borderless
+    &.pagination-borderless
+    {
+        > li > *
+        {
+            border: 1px solid transparent;
+        }
+
+        > li:not(:active):not(.disabled):hover > *
+        {
+            background-color: transparent;
+            color: var(--fbx-pagination-active-bg);
+        }
+        
+        > li.active > *,
+        > li.active > *:hover
+        {
+            background-color: transparent;
+            color: var(--fbx-pagination-active-bg);
+        }
     }
 }

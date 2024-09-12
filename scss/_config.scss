@@ -463,22 +463,32 @@ $skeleton-bg-2:                 rgba(0, 0, 0, 0.4) !default;
 $skeleton-text-radius:          var(--fbx-border-radius) !default;
 
 // Navbar
-$navbar-padding-x: 				0;
-$navbar-padding-y: 				2rem;
-$navbar-color: 					var(--fbx-white);
-$navbar-logo-size:				40px;
+$navbar-padding-x: 				0 !default;
+$navbar-padding-y: 				2rem !default;
+$navbar-color: 					var(--fbx-white) !default;
+$navbar-logo-size:				40px !default;
 
 // Nav menu
-$nav-link-padding-x: 			1rem;
-$nav-link-padding-y: 			0.5rem;
-$nav-link-spacing:  			1rem;
-$nav-link-font-size: 			1.4rem;
-$nav-link-icon-size: 			1.6rem;
-$nav-link-font-weight: 			$text-bold;
-$nav-link-color: 				rgba(255,255,255,0.85);
-$nav-link-hover-color: 			#ffffff;
-$nav-link-active-color: 		#ffffff;
+$nav-link-padding-x: 			1rem  !default;
+$nav-link-padding-y: 			0.5rem  !default;
+$nav-link-spacing:  			1rem !default;
+$nav-link-font-size: 			1.4rem !default;
+$nav-link-icon-size: 			1.6rem !default;
+$nav-link-font-weight: 			$text-bold !default;
+$nav-link-color: 				rgba(255,255,255,0.85) !default;
+$nav-link-hover-color: 			#ffffff !default;
+$nav-link-active-color: 		#ffffff !default;
 
+// Pagination
+$pagination-radius:				var(--fbx-border-radius) !default;
+$pagination-color:				var(--fbx-gray) !default;
+$pagination-link-pad-x:			16px !default;
+$pagination-link-pad-y:			9px !default;
+$pagination-border-color:		var(--fbx-gray-300) !default;
+$pagination-hover-color:		var(--fbx-gray) !default;
+$pagination-hover-bg:			var(--fbx-theme-primary-200) !default;
+$pagination-active-color:		var(--fbx-white) !default;
+$pagination-active-bg:			var(--fbx-theme-primary) !default;
 
 // Responsive breakpoints
 $breakpoints:

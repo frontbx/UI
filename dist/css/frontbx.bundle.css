@@ -512,7 +512,7 @@ body.no-scroll {
 
 /* ----------------------------------- CONTENT ------------------------------------- */
 /* --------------------------------------------------------------------------------- */
-/* base/typography */
+/* content/typography */
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: var(--fbx-font-headings);
@@ -826,7 +826,7 @@ pre > code {
   background-color: transparent;
 }
 
-/* base/images */
+/* content/images */
 .img-responsive {
   display: block;
   width: 100%;
@@ -4590,98 +4590,81 @@ blockquote[class*=bq-] pre {
 /* navigation/breadcrumbs */
 /* navigation/pagination */
 .pagination {
+  --fbx-pagination-radius: var(--fbx-border-radius);
+  --fbx-pagination-link-pad-x: 16px;
+  --fbx-pagination-link-pad-y: 9px;
+  --fbx-pagination-color: var(--fbx-gray);
+  --fbx-pagination-hover-color: var(--fbx-gray);
+  --fbx-pagination-hover-bg: var(--fbx-theme-primary-200);
+  --fbx-pagination-border-color: var(--fbx-gray-300);
+  --fbx-pagination-active-color: var(--fbx-white);
+  --fbx-pagination-active-bg: var(--fbx-theme-primary);
   list-style: none;
   display: inline-block;
   padding: 0;
   margin: 0;
-  border-radius: 5px;
+  border-radius: var(--fbx-pagination-radius);
   overflow: hidden;
 }
-
-.pagination > li {
+.pagination li {
   display: inline;
 }
-
-.pagination > li > a, .pagination > li > span {
+.pagination li > * {
+  padding: var(--fbx-pagination-link-pad-y) var(--fbx-pagination-link-pad-x);
+  color: var(--fbx-pagination-color);
+  border: 1px solid var(--fbx-pagination-border-color);
+  transition: background var(--fbx-ease-time-xs) var(--fbx-base-easing), color var(--fbx-ease-time-xs) var(--fbx-base-easing);
   position: relative;
   float: left;
-  padding: 6px 15px;
   margin-left: -1px;
-  line-height: 1.57142857;
-  color: #76838f;
   text-decoration: none;
   background-color: transparent;
-  border: 1px solid #e4eaec;
 }
-
-.pagination > .active > a,
-.pagination > .active > a:focus,
-.pagination > .active > a:hover,
-.pagination > .active > span,
-.pagination > .active > span:focus,
-.pagination > .active > span:hover {
-  z-index: 3;
-  color: #fff;
-  cursor: default;
-  background-color: var(--fbx-color-beetroot);
-  border-color: var(--fbx-color-beetroot);
-}
-
-.pagination > .disabled > a,
-.pagination > .disabled > a:focus,
-.pagination > .disabled > a:hover,
-.pagination > .disabled > span,
-.pagination > .disabled > span:focus,
-.pagination > .disabled > span:hover {
-  color: #76838f;
+.pagination li a, .pagination li a:hover {
   text-decoration: none;
+}
+.pagination li:hover a {
+  color: var(--fbx-pagination-hover-color);
+  background-color: var(--fbx-pagination-hover-bg);
+}
+.pagination li.active > * {
+  color: var(--fbx-pagination-active-color);
+  background-color: var(--fbx-pagination-active-bg);
+  border-color: var(--fbx-pagination-active-bg);
+}
+.pagination li.disabled > * {
+  color: var(--fbx-pagination-color);
   background-color: transparent;
-  border: 1px solid #e4eaec;
+  border: 1px solid var(--fbx-pagination-border-color);
   cursor: not-allowed;
+  opacity: 0.75;
 }
-
-.pagination > li:first-child > a, .pagination > li:first-child > span {
+.pagination li:first-child > * {
   margin-left: 0;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
 }
-
-.pagination > li:last-child > a, .pagination > li:last-child > span {
+.pagination li:last-child > * {
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
-
-.pagination li > a, .pagination li > span {
-  padding: 9px 15px;
-  transition: background 0.1s ease, border-color 0s ease-out, color 0.1s ease;
-}
-
-.pagination-btns > li {
+.pagination.pagination-btns > li {
   display: inline-block;
 }
-.pagination-btns > li > a,
-.pagination-btns > li > span {
-  border-radius: 5px;
+.pagination.pagination-btns > li > * {
+  border-radius: var(--fbx-pagination-radius);
 }
-
-.pagination.pagination-borderless > li.elips > span,
-.pagination.pagination-borderless > li.elips > span:focus,
-.pagination.pagination-borderless > li.elips > span:hover,
-.pagination.pagination-borderless > li.disabled > span,
-.pagination.pagination-borderless > li.disabled > span:hover,
-.pagination.pagination-borderless > li.active > span,
-.pagination.pagination-borderless > li.active > span:hover,
-.pagination.pagination-borderless > li > a {
+.pagination.pagination-borderless > li > * {
   border: 1px solid transparent;
 }
-.pagination.pagination-borderless > li > a:hover,
-.pagination.pagination-borderless > li > span:hover {
+.pagination.pagination-borderless > li:not(:active):not(.disabled):hover > * {
   background-color: transparent;
+  color: var(--fbx-pagination-active-bg);
 }
-.pagination.pagination-borderless > li.active > span,
-.pagination.pagination-borderless > li.active > span:hover {
+.pagination.pagination-borderless > li.active > *,
+.pagination.pagination-borderless > li.active > *:hover {
   background-color: transparent;
-  color: var(--fbx-color-beetroot);
+  color: var(--fbx-pagination-active-bg);
 }
 
 /* ------------------------------------ IMAGES ------------------------------------- */
