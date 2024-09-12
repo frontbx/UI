@@ -69,7 +69,7 @@
             color: var(--fbx-list-item-color-selected);
             .item-title
             {
-            	color: var(--fbx-list-item-color-selected);
+                color: var(--fbx-list-item-color-selected);
             }
         }
         &.disabled,&.disabled:hover
@@ -82,8 +82,8 @@
 
         .item-title
         {
-        	color: var(--fbx-body-color);
-        	font-weight: $text-bold;
+            color: var(--fbx-body-color);
+            font-weight: $text-bold;
         }
     }
 
@@ -101,7 +101,7 @@
 
                 > *
                 {
-                	@include _ellipsis;
+                    @include _ellipsis;
                 }
             }
         }

@@ -46,8 +46,6 @@ $theme-info:                    var(--fbx-color-skyblue)     !default;
 $theme-warning:                 var(--fbx-color-sunflower)   !default;
 $theme-danger:                  var(--fbx-color-coralred)    !default;
 
-@import 'colors';
-
 // Load and host icons locally?
 $local-icons:					'true' !default;
 $icons-url:						'../fonts/' !default;
