@@ -1,6 +1,6 @@
 # Colors
 
-FrontBx is supported by an extensive CSS color system for enhanced styling, component customization and beyond.
+FrontBx provides an extensive CSS color system for enhanced styling, component customization and beyond.
 
 ---
 
@@ -9,20 +9,25 @@ FrontBx is supported by an extensive CSS color system for enhanced styling, comp
 *	[Grays](#grays)
 	* [Usage](#gray-usage)
 *	[Color Palette](#color-palette)
-	* [Usage](#theme-usage)
+	* [Usage](#palette-usage)
 * [Sass](#sass)
 	* [theme-colors](#theme-colors)
-	* [Palette](#pallette)
+	* [Palette](#palette)
 	* [Shades](#shades)
 	
 ---
 
+FrontBx's color system is built using a combination of both CSS variables, Sass variables and Sass functions. 
+
+
 ### Theme colors
 
-FrontBx's color system is built using a combination of both CSS variables, Sass variables and Sass functions. The table below outlines the core color palette used by FrontBx:
+Theme colors are used for contextual styling on most FrontBx components and set the foundation for a theme's color styling.
 
-| Swatch                                        | CSS Variable            | Sass Variable       | Description                                                |
-|:---------------------------------------------:|-------------------------|---------------------|------------------------------------------------------------|
+Theme colors are available in both CSS and Sass variables. When using the Sass variable, this will always point to the CSS variable - which is assigned to the actual color in `scss/src/base/_root.scss`. The table below outlines the core theme colors:
+
+| Swatch                                        | CSS Variable             | Sass Variable       | Description                                                |
+|:---------------------------------------------:|--------------------------|---------------------|------------------------------------------------------------|
 | <div class="docs-swatch bg-body-bg"></div>    | `--fbx-body-bg`          | `$body-bg`          | Body background color.                                     |
 | <div class="docs-swatch bg-body-color"></div> | `--fbx-body-color`       | `$body-color`       | Body `color`                                               |
 | <div class="docs-swatch bg-white"></div>      | `--fbx-white`            | `$white`            | Global `white` definition.                                 |
@@ -37,7 +42,7 @@ FrontBx's color system is built using a combination of both CSS variables, Sass 
 
 #### Usage<a id='theme-usage'></a>
 
-All theme colors are available via FrontBx's utility helper classes as `.bg-[name]` and `color-[name]` without the word `theme`.
+All theme colors are available via FrontBx's utility [helper classes](../../css/css-helpers/index.html) as `.bg-[name]` and `color-[name]` without the word `theme` (e.g. `bg-primary` or `color-success`).
 
 <div class="code-content-example">
 	<div class="flex-row align-cols-center">
@@ -53,11 +58,12 @@ All theme colors are available via FrontBx's utility helper classes as `.bg-[nam
 </div>
 ```
 
-If using any of the theme colors pre compilation, using the Sass variable will output a reference to the CSS Variable:
+When using any of the theme colors pre-compilation with Sass - the Sass variable will output a reference to the CSS Variable:
 
 ```scss
 .my-element
 {
+	// color: var(--fbx-theme-primary)
 	color: $theme-primary;
 }
 ```
@@ -66,7 +72,7 @@ If using any of the theme colors pre compilation, using the Sass variable will o
 
 ### Grays
 
-Grays are available via CSS variables `--fbx-gray-[num]` ranging from `100` through `900`. The table below outlines the core color palette used by FrontBx:
+Grays are available in shades ranging from `100` (lightest) through `900` (darkest) with the default `$gray` variable sits in between `400` and `500`. Grays are available CSS variables `--fbx-gray-[num]`. The table below outlines the core color palette used by FrontBx:
 
 | Swatch                                      | CSS Variable    |
 |:-------------------------------------------:|-----------------|
@@ -83,7 +89,7 @@ Grays are available via CSS variables `--fbx-gray-[num]` ranging from `100` thro
 
 #### Usage<a id='gray-usage'></a>
 
-All gray colors are available via FrontBx's utility helper classes as `.bg-[name]` and `color-[name]`.
+All gray shades are available via FrontBx's utility [helper classes](../../css/css-helpers/index.html) as `.bg-gray-[num]` and `color-gray-[num]`
 
 <div class="code-content-example">
 	<div class="flex-row align-cols-center">
@@ -103,10 +109,13 @@ All gray colors are available via FrontBx's utility helper classes as `.bg-[name
 
 ### Color Palette
 
-FrontBx comes with a palette of colors via both CSS ans Sass variables for changing theme colors, customizing components or building out custom UI. The table below outlines theme colors:
+FrontBx comes with a palette of colors via both CSS ans Sass variables for changing theme colors, customizing components or building out custom UI.  The table below outlines theme colors:
 
-| Swatch                                                                           | CSS Variable              | Sass Variable   |
-|:--------------------------------------------------------------------------------:|---------------------------|-----------------|
+With color palette, the Sass variable will point directly the actual hex color value.
+ 
+
+| Swatch                                                                            | CSS Variable               | Sass Variable   |
+|:---------------------------------------------------------------------------------:|----------------------------|-----------------|
 | <div class="docs-swatch" style="background: var(--fbx-color-teal)"></div>         | `--fbx-color-teal`         | `$teal`         |
 | <div class="docs-swatch" style="background: var(--fbx-color-turquoise)"></div>    | `--fbx-color-turquoise`    | `$turquoise`    |
 | <div class="docs-swatch" style="background: var(--fbx-color-greensea)"></div>     | `--fbx-color-greensea`     | `$greensea`     |
@@ -139,17 +148,33 @@ FrontBx comes with a palette of colors via both CSS ans Sass variables for chang
 | <div class="docs-swatch" style="background: var(--fbx-color-ash)"></div>          | `--fbx-color-ash`          | `$ash`          |
 
 
-#### Usage<a id='theme-usage'></a>
+#### Usage<a id='palette-usage'></a>
 
 Palette colors are available through both Sass and CSS Variables. They are not available as a utility classes or palette shades as CSS variables unless defined as a "theme" color pre-complication.
 
-Changing FrontBx's core theme color via Sass is super simple:
+However, they can still be used as CSS variables:
 
-```file-path
-`src/scss/_config.scss`
+<div class="code-content-example">
+	<div class="flex-row align-cols-center">
+	    <div class="paper paper-rounded raised-1 col col-5 col-lg-3 pad-40 text-center" style="background: var(--fbx-color-teal)">
+	    	<p class="color-white text-bolder no-margin">Hello World!</p>
+	    </div>
+	</div>
+</div>
+
+```html
+<div class="paper paper-rounded raised-1 color-white" style="background: var(--fbx-color-teal)">
+	<p class="text-bolder no-margin">Hello World!</p>
+</div>
 ```
+
+Setting FrontBx's core theme color via Sass is super simple:
+
 ```sass
+@import "../node_modules/frontbx/scss/frontbx/src/colors";
+
 $theme-primary: $emerland;
+
 $theme-secondary: $nephritis;
 ```
 
@@ -184,7 +209,15 @@ FrontBx uses a Sass function for gradients on theme colors to style the odd comp
 
 ### Sass
 
-All Sass color variable definitions will point to the the real hex color of a given color (rather than a CSS Variable).
+All Sass color variable definitions (with the exception of the core "Theme Colors") will point to the the real hex value of a given color (rather than a CSS Variable).
+
+```sass
+div {
+	// color: ##2ecc71;
+	color: $emerland
+}
+
+```
 
 #### Theme colors<a id="sass-theme-colors"></a>
 
@@ -192,7 +225,7 @@ FrontBx defines the following variables for use in a theme. Note that theme colo
 
 ```scss
 // Contexts
-$theme-primary:                 var(--fbx-color-hotpink)     !default;
+$theme-primary:                 var(--fbx-color-beetroot)    !default;
 $theme-secondary:               var(--fbx-color-salmon)      !default;
 $theme-success:                 var(--fbx-color-emerland)    !default;
 $theme-info:                    var(--fbx-color-skyblue)     !default;
@@ -203,11 +236,12 @@ $theme-danger:                  var(--fbx-color-coralred)    !default;
 ```scss
 .my-element 
 {
-	background-color: $theme-primary;
+	// color 
+	color: $theme-primary;
 }
 ```
 
-#### Palette <a id="sass-theme-colors"></a>
+#### Palette
 
 All palette hex colors are available through the following:
 
@@ -260,7 +294,7 @@ $gray:                          #9597a0 !default;
 }
 ```
 
-#### Shades <a id="sass-theme-shades"></a>
+#### Shades
 
 FrontBx uses Sass functions to generate color shades (`100` -> `900`) for all palette colors and assign them as CSS Variables on `:root`. However doing this for all theme colors would obviously create a large amount of unnecessary CSS variables. 
 
@@ -269,7 +303,7 @@ You can also access **Base Color** shades (`100` -> `900`) via Sass variables:
 ```scss
 .my-element
 {
-	background-color: $gray-100;
+	background-color: $teal-100;
 }
 
 ```

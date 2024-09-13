@@ -24,8 +24,6 @@ pre[class*="language-"] {
     tab-size: 4;
 
     -webkit-hyphens: none;
-    -moz-hyphens: none;
-    -ms-hyphens: none;
     hyphens: none;
 }
 
@@ -33,6 +31,11 @@ code[class*="language-"]::-moz-selection,
 pre[class*="language-"]::-moz-selection,
 code[class*="language-"] ::-moz-selection,
 pre[class*="language-"] ::-moz-selection {
+    background: #cceae7;
+    color: #263238;
+}
+
+code[class*="language-"]::-moz-selection, pre[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection, pre[class*="language-"] ::-moz-selection {
     background: #cceae7;
     color: #263238;
 }
