@@ -140,8 +140,8 @@
         responseDoc         = this._removeScripts(responseDoc);
 
         // Move scripts to head incase we're replacing body
-        //each(currScripts, (i, script) => { if (script.node.parentNode.nodeName.toLowerCase() !== 'head') find('head').appendChild(script.node); });
-
+        each(currScripts, (i, script) => { if (script.node.parentNode.nodeName.toLowerCase() !== 'head') find('head').appendChild(script.node); });
+        
         // Default to document bodys
         let targetEl        = document.body;
         let responseEl      = responseDoc.body;

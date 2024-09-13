@@ -26,11 +26,11 @@
     "scripts": {
         "start": "npm-run-all --parallel watch docs-serve",
         "dist": "npm-run-all --aggregate-output --parallel css js docs",
-        "css": "npm-run-all css-compile css-prefix css-minify",
+        "css": "npm-run-all css-compile css-prefix css-minify docs-build-assets-css",
         "css-compile": "sass --style expanded --source-map --embed-sources --no-error-css scss/:dist/css/ --verbose",
         "css-prefix": "postcss dist/css/**/*.css --use autoprefixer --replace --no-map",
         "css-minify": "postcss dist/css/**/*.css !dist/css/**/*.min.css --use postcss-minify --dir dist/css/ --ext .min.css",
-        "js": "npm-run-all js-compile js-minify",
+        "js": "npm-run-all js-compile js-minify docs-build-assets-js",
         "js-compile": "npm-run-all --aggregate-output --parallel js-compile-*",
         "js-compile-standalone": "node build/import.mjs js/frontbx.js > dist/js/frontbx.js",
         "js-compile-bundle": "node build/import.mjs js/frontbx.umd.js > dist/js/frontbx.bundle.js",
@@ -49,8 +49,8 @@
         "docs-lint": "html-linter --config ./build/html-linter.json site/**/*.html",
         "docs-serve": "http-server -a localhost -p 8000 -c-1 -o /site/getting-started/introduction/index.html",
         "watch": "npm-run-all --parallel watch-*",
-        "watch-css-main": "nodemon --watch scss/ --ext scss --exec \"npm-run-all css-compile css-prefix css-minify\"",
-        "watch-js-main": "nodemon --watch js/ --ext js --exec \"npm-run-all js-compile js-minify\"",
+        "watch-css-main": "nodemon --watch scss/ --ext scss --exec \"npm run css\"",
+        "watch-js-main": "nodemon --watch js/ --ext js --exec \"npm run js\"",
         "watch-docs": "nodemon --watch docs/ --ext md --exec \"npm run docs-build\""
     },
     "files": [
