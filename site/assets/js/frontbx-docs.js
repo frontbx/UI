@@ -126,14 +126,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
     const DocDrawer = function()
     {
-        this.container = find('.docs-drawer');
-    	this.drawer    = find('.docs-drawer .js-drawer-wrap');
-    	this.main      = find('.main-container');
-    	this.inMain    = false;
-
         this.super('.docs-drawer');
-
-        trigger_event(window, 'resize');
     }
 
     DocDrawer.prototype.resize = function()
@@ -161,10 +154,17 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     DocDrawer.prototype.bind = function(node)
     {
        	if (!WINDOW_LISTENING)
-        {
+        {        	
+        	this.container = find('.docs-drawer');
+	    	this.drawer    = find('.docs-drawer .js-drawer-wrap');
+	    	this.main      = find('.main-container');
+	    	this.inMain    = false;
+
         	on(window, 'resize', this.resize(), this);
 
-        	WINDOW_LISTENING = true;	
+        	WINDOW_LISTENING = true;
+
+        	trigger_event(window, 'resize');
         }
     }
 
@@ -203,7 +203,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     	if (is_array_last(link, this._DOMElements)) FrontBx.dom().refresh('WayPoints');
     }
 
-    ArticleWaypoints.prototype.unbind = function(block)
+    ArticleWaypoints.prototype.unbind = function(link)
     {
         remove_class(link, 'js-waypoint-trigger');
     }
