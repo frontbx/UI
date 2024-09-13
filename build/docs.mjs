@@ -280,7 +280,7 @@ DocsBuilder.prototype._genSrcDestFiles = function()
  */
 DocsBuilder.prototype._getPageTemplate = function()
 {
-    return FS.readFileSync(`${DOCS_SRC_DIR}/templates/page.html`, 'utf8', (err, data) => data);
+    return FS.readFileSync(`${DOCS_SRC_DIR}/templates/template.html`, 'utf8', (err, data) => data);
 }
 
 /**
