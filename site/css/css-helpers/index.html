@@ -265,1126 +265,836 @@
     </li>
 </ul></div>
         <div class="container-fluid main-container relative js-main-container">
-            <article class="docs-body"><h1 id="flex-grid">Flex Grid</h1>
+            <article class="docs-body"><h1 id="css-helopers">CSS Helopers</h1>
 <p>FrontBx provides a number of helper classes to use throughout your markup to quickly and easily apply common styling.</p>
 <hr />
 <ul>
-<li><a href="#backgrounds">Backgrounds</a>   </li>
-<li><a href="#borders">Borders</a>       </li>
-<li><a href="#centering">Centering</a>     </li>
-<li><a href="#colors">Colors</a>        </li>
-<li><a href="#displays">Displays</a>      </li>
-<li><a href="#floats">Floats</a>        </li>
-<li><a href="#lists">Lists</a>     </li>
-<li><a href="#margins">Margins</a>       </li>
+<li><a href="#raised">Raised</a></li>
+<li><a href="#backgrounds">Backgrounds</a></li>
+<li><a href="#borders">Borders</a></li>
+<li><a href="#centering">Centering</a></li>
+<li><a href="#colors">Colors</a></li>
+<li><a href="#displays">Displays</a></li>
+<li><a href="#floats">Floats</a></li>
+<li><a href="#flex">Flex</a></li>
+<li><a href="#margins">Margins</a></li>
 <li><a href="#paddings">Paddings</a></li>
 <li><a href="#positions">Positions</a></li>
-<li><a href="#raised">Raised</a></li>
 <li><a href="#transitions">Transitions</a></li>
 <li><a href="#typography">Typography</a></li>
 </ul>
+<hr />
+<h3 id="raised">Raised</h3>
+<table>
+<thead>
+<tr>
+<th id="helper_class">Helper Class</th>
+<th id="css_value">CSS Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.raised-1</code></td>
+<td><code>var(--fbx-raised-level-one);</code></td>
+</tr>
+<tr>
+<td><code>.raised-2</code></td>
+<td><code>var(--fbx-raised-level-two);</code></td>
+</tr>
+<tr>
+<td><code>.raised-3</code></td>
+<td><code>var(--fbx-raised-level-three);</code></td>
+</tr>
+<tr>
+<td><code>.flat</code></td>
+<td><code>box-shadow: none !important;</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h3 id="backgrounds">Backgrounds</h3>
 <table>
 <thead>
 <tr>
-<th id="class">Class</th>
-<th id="example">Example</th>
-<th id="behavior">Behavior</th>
+<th id="helper_class">Helper Class</th>
+<th id="css_value">CSS Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>.flex-row</code></td>
-<td><code>.flex-row</code></td>
-<td>Wraps around flex children. Sets any child <code>.col</code> to full width</td>
+<td><code>.bg-transparent</code></td>
+<td><code>background-color: transparent;</code></td>
+</tr>
+<tr>
+<td><code>.bg-gray</code></td>
+<td><code>background-color: var(--fbx-gray);</code></td>
+</tr>
+<tr>
+<td><code>.bg-gray-100</code></td>
+<td><code>background-color: var(--fbx-gray-100);</code></td>
+</tr>
+<tr>
+<td><code>.bg-gray-200</code></td>
+<td><code>background-color: var(--fbx-gray-200);</code></td>
+</tr>
+<tr>
+<td><code>.bg-gray-300</code></td>
+<td><code>background-color: var(--fbx-gray-300);</code></td>
+</tr>
+<tr>
+<td><code>.bg-gray-400</code></td>
+<td><code>background-color: var(--fbx-gray-400);</code></td>
+</tr>
+<tr>
+<td><code>.bg-gray-500</code></td>
+<td><code>background-color: var(--fbx-gray-500);</code></td>
+</tr>
+<tr>
+<td><code>.bg-gray-600</code></td>
+<td><code>background-color: var(--fbx-gray-600);</code></td>
+</tr>
+<tr>
+<td><code>.bg-gray-700</code></td>
+<td><code>background-color: var(--fbx-gray-700);</code></td>
+</tr>
+<tr>
+<td><code>.bg-gray-800</code></td>
+<td><code>background-color: var(--fbx-gray-800);</code></td>
+</tr>
+<tr>
+<td><code>.bg-gray-900</code></td>
+<td><code>background-color: var(--fbx-gray-900);</code></td>
+</tr>
+<tr>
+<td><code>.bg-primary</code></td>
+<td><code>background-color: var(--fbx-theme-primary);</code></td>
+</tr>
+<tr>
+<td><code>.bg-secondary</code></td>
+<td><code>background-color: var(--fbx-theme-secondary);</code></td>
+</tr>
+<tr>
+<td><code>.bg-info</code></td>
+<td><code>background-color: var(--fbx-theme-info);</code></td>
+</tr>
+<tr>
+<td><code>.bg-success</code></td>
+<td><code>background-color: var(--fbx-theme-success);</code></td>
+</tr>
+<tr>
+<td><code>.bg-warning</code></td>
+<td><code>background-color: var(--fbx-theme-warning);</code></td>
+</tr>
+<tr>
+<td><code>.bg-danger</code></td>
+<td><code>background-color: var(--fbx-theme-danger);</code></td>
+</tr>
+<tr>
+<td><code>.bg-white</code></td>
+<td><code>background-color: var(--fbx-color-white);</code></td>
+</tr>
+<tr>
+<td><code>.bg-black</code></td>
+<td><code>background-color: var(--fbx-color-black);</code></td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h3 id="borders">Borders</h3>
+<table>
+<thead>
+<tr>
+<th id="helper_class">Helper Class</th>
+<th id="css_value">CSS Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.no-border</code></td>
+<td><code>border: 0;</code></td>
+</tr>
+<tr>
+<td><code>.border-s</code></td>
+<td><code>border-bottom: 1px solid;</code></td>
+</tr>
+<tr>
+<td><code>.border-n</code></td>
+<td><code>border-top: 1px solid;</code></td>
+</tr>
+<tr>
+<td><code>.border-e</code></td>
+<td><code>border-left: 1px solid;</code></td>
+</tr>
+<tr>
+<td><code>.border-w</code></td>
+<td><code>border-right: 1px solid;</code></td>
+</tr>
+<tr>
+<td><code>.border-gray</code></td>
+<td><code>border-color: var(--fbx-gray);</code></td>
+</tr>
+<tr>
+<td><code>.border-gray-100</code></td>
+<td><code>border-color: var(--fbx-gray-100);</code></td>
+</tr>
+<tr>
+<td><code>.border-gray-200</code></td>
+<td><code>border-color: var(--fbx-gray-200);</code></td>
+</tr>
+<tr>
+<td><code>.border-gray-300</code></td>
+<td><code>border-color: var(--fbx-gray-300);</code></td>
+</tr>
+<tr>
+<td><code>.border-gray-400</code></td>
+<td><code>border-color: var(--fbx-gray-400);</code></td>
+</tr>
+<tr>
+<td><code>.border-gray-500</code></td>
+<td><code>border-color: var(--fbx-gray-500);</code></td>
+</tr>
+<tr>
+<td><code>.border-gray-600</code></td>
+<td><code>border-color: var(--fbx-gray-600);</code></td>
+</tr>
+<tr>
+<td><code>.border-gray-700</code></td>
+<td><code>border-color: var(--fbx-gray-700);</code></td>
+</tr>
+<tr>
+<td><code>.border-gray-800</code></td>
+<td><code>border-color: var(--fbx-gray-800);</code></td>
+</tr>
+<tr>
+<td><code>.border-gray-900</code></td>
+<td><code>border-color: var(--fbx-gray-900);</code></td>
+</tr>
+<tr>
+<td><code>.border-primary</code></td>
+<td><code>border-color: var(--fbx-theme-primary);</code></td>
+</tr>
+<tr>
+<td><code>.border-secondary</code></td>
+<td><code>border-color: var(--fbx-theme-secondary);</code></td>
+</tr>
+<tr>
+<td><code>.border-info</code></td>
+<td><code>border-color: var(--fbx-theme-info);</code></td>
+</tr>
+<tr>
+<td><code>.border-success</code></td>
+<td><code>border-color: var(--fbx-theme-success);</code></td>
+</tr>
+<tr>
+<td><code>.border-warning</code></td>
+<td><code>border-color: var(--fbx-theme-warning);</code></td>
+</tr>
+<tr>
+<td><code>.border-danger</code></td>
+<td><code>border-color: var(--fbx-theme-danger);</code></td>
+</tr>
+<tr>
+<td><code>.border-white</code></td>
+<td><code>border-color: var(--fbx-color-white);</code></td>
+</tr>
+<tr>
+<td><code>.border-black</code></td>
+<td><code>border-color: var(--fbx-color-black);</code></td>
+</tr>
+<tr>
+<td><code>.border-radius</code></td>
+<td><code>border-radius: var(--fbx-border-radius);</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h3 id="centering">Centering</h3>
+<table>
+<thead>
+<tr>
+<th id="helper_class">Helper Class</th>
+<th id="css_value">CSS Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.center-horizontal</code></td>
+<td><code>float: none;margin-left: auto;margin-right: auto;</code></td>
+</tr>
+<tr>
+<td><code>.center-vertical</code></td>
+<td><code>display: inline-block;vertical-align: middle;</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h3 id="colors">Colors</h3>
+<table>
+<thead>
+<tr>
+<th id="helper_class">Helper Class</th>
+<th id="css_value">CSS Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.color-transparent</code></td>
+<td><code>color: transparent;</code></td>
+</tr>
+<tr>
+<td><code>.color-gray</code></td>
+<td><code>color: var(--fbx-gray);</code></td>
+</tr>
+<tr>
+<td><code>.color-gray-100</code></td>
+<td><code>color: var(--fbx-gray-100);</code></td>
+</tr>
+<tr>
+<td><code>.color-gray-200</code></td>
+<td><code>color: var(--fbx-gray-200);</code></td>
+</tr>
+<tr>
+<td><code>.color-gray-300</code></td>
+<td><code>color: var(--fbx-gray-300);</code></td>
+</tr>
+<tr>
+<td><code>.color-gray-400</code></td>
+<td><code>color: var(--fbx-gray-400);</code></td>
+</tr>
+<tr>
+<td><code>.color-gray-500</code></td>
+<td><code>color: var(--fbx-gray-500);</code></td>
+</tr>
+<tr>
+<td><code>.color-gray-600</code></td>
+<td><code>color: var(--fbx-gray-600);</code></td>
+</tr>
+<tr>
+<td><code>.color-gray-700</code></td>
+<td><code>color: var(--fbx-gray-700);</code></td>
+</tr>
+<tr>
+<td><code>.color-gray-800</code></td>
+<td><code>color: var(--fbx-gray-800);</code></td>
+</tr>
+<tr>
+<td><code>.color-gray-900</code></td>
+<td><code>color: var(--fbx-gray-900);</code></td>
+</tr>
+<tr>
+<td><code>.color-primary</code></td>
+<td><code>color: var(--fbx-theme-primary);</code></td>
+</tr>
+<tr>
+<td><code>.color-secondary</code></td>
+<td><code>color: var(--fbx-theme-secondary);</code></td>
+</tr>
+<tr>
+<td><code>.color-info</code></td>
+<td><code>color: var(--fbx-theme-info);</code></td>
+</tr>
+<tr>
+<td><code>.color-success</code></td>
+<td><code>color: var(--fbx-theme-success);</code></td>
+</tr>
+<tr>
+<td><code>.color-warning</code></td>
+<td><code>color: var(--fbx-theme-warning);</code></td>
+</tr>
+<tr>
+<td><code>.color-danger</code></td>
+<td><code>color: var(--fbx-theme-danger);</code></td>
+</tr>
+<tr>
+<td><code>.color-white</code></td>
+<td><code>color: var(--fbx-color-white);</code></td>
+</tr>
+<tr>
+<td><code>.color-black</code></td>
+<td><code>color: var(--fbx-color-black);</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h3 id="displays">Displays</h3>
+<table>
+<thead>
+<tr>
+<th id="helper_class">Helper Class</th>
+<th id="css_value">CSS Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.hide-overflow</code></td>
+<td><code>overflow: hidden;</code></td>
+</tr>
+<tr>
+<td><code>.show-overflow</code></td>
+<td><code>overflow: visible;</code></td>
+</tr>
+<tr>
+<td><code>.scroll-overflow</code></td>
+<td><code>overflow: scroll;</code></td>
+</tr>
+<tr>
+<td><code>.block</code></td>
+<td><code>display: block;</code></td>
+</tr>
+<tr>
+<td><code>.inline</code></td>
+<td><code>display: inline;</code></td>
+</tr>
+<tr>
+<td><code>.inline-block</code></td>
+<td><code>display: inline-block;</code></td>
+</tr>
+<tr>
+<td><code>.table</code></td>
+<td><code>display: table;</code></td>
+</tr>
+<tr>
+<td><code>.table-cell</code></td>
+<td><code>display: table-cell;</code></td>
+</tr>
+<tr>
+<td><code>.visibility-show</code></td>
+<td><code>visibility: visible;</code></td>
+</tr>
+<tr>
+<td><code>.visibility-hide</code></td>
+<td><code>visibility: hidden;</code></td>
+</tr>
+<tr>
+<td><code>.opacity-hide</code></td>
+<td><code>opacity: 0;</code></td>
+</tr>
+<tr>
+<td><code>.opacity-show</code></td>
+<td><code>opacity: 1;</code></td>
+</tr>
+<tr>
+<td><code>.hidden</code></td>
+<td><code>display: none;</code></td>
+</tr>
+<tr>
+<td><code>.no-select</code></td>
+<td><code>user-select: none;</code></td>
+</tr>
+<tr>
+<td><code>.sr-only</code></td>
+<td>Hides element off screen</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h3 id="floats">Floats</h3>
+<table>
+<thead>
+<tr>
+<th id="helper_class">Helper Class</th>
+<th id="css_value">CSS Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.float-left</code></td>
+<td><code>float: left;</code></td>
+</tr>
+<tr>
+<td><code>.float-right</code></td>
+<td><code>float: right;</code></td>
+</tr>
+<tr>
+<td><code>.float-none</code></td>
+<td><code>float: none;</code></td>
+</tr>
+<tr>
+<td><code>.float-clear</code></td>
+<td><code>clear: both;</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
-<h3 id="lists">Lists</h3>
+<h3 id="flex">Flex</h3>
+<table>
+<thead>
+<tr>
+<th id="helper_class">Helper Class</th>
+<th id="css_value">CSS Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.align-self-start</code></td>
+<td><code>align-self: flex-start;</code></td>
+</tr>
+<tr>
+<td><code>.align-self-end</code></td>
+<td><code>align-self: flex-end;</code></td>
+</tr>
+<tr>
+<td><code>.align-self-center</code></td>
+<td><code>align-self: center;</code></td>
+</tr>
+<tr>
+<td><code>.align-self-baseline</code></td>
+<td><code>align-self: baseline;</code></td>
+</tr>
+<tr>
+<td><code>.align-self-stretch</code></td>
+<td><code>align-self: stretch;</code></td>
+</tr>
+<tr>
+<td><code>.flex-content-left</code></td>
+<td><code>justify-content: flex-start;</code></td>
+</tr>
+<tr>
+<td><code>.flex-content-right</code></td>
+<td><code>justify-content: flex-end;</code></td>
+</tr>
+<tr>
+<td><code>.flex-content-top</code></td>
+<td><code>align-items: flex-start;</code></td>
+</tr>
+<tr>
+<td><code>.flex-content-bottom</code></td>
+<td><code>align-items: flex-end;</code></td>
+</tr>
+<tr>
+<td><code>.flex-content-center-x</code></td>
+<td><code>justify-content: center;</code></td>
+</tr>
+<tr>
+<td><code>.flex-content-center-y</code></td>
+<td><code>align-items: center;</code></td>
+</tr>
+<tr>
+<td><code>.flex-content-center</code></td>
+<td><code>justify-content: center;align-items: center; align-content: center;</code></td>
+</tr>
+<tr>
+<td><code>.flex-content-y-stretch</code></td>
+<td><code>align-items: stretch;</code></td>
+</tr>
+<tr>
+<td><code>.flex-content-y-baseline</code></td>
+<td><code>align-items: baseline;</code></td>
+</tr>
+<tr>
+<td><code>.flex-content-x-between</code></td>
+<td><code>justify-content: space-between;</code></td>
+</tr>
+<tr>
+<td><code>.flex-content-x-around</code></td>
+<td><code>justify-content: space-around;</code></td>
+</tr>
+<tr>
+<td><code>.flex-content-x-evenly</code></td>
+<td><code>justify-content: space-evenly;</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h3 id="margins">Margins</h3>
+<table>
+<thead>
+<tr>
+<th id="helper_class">Helper Class</th>
+<th id="css_value">CSS Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.no-margin</code></td>
+<td><code>margin: 0;</code></td>
+</tr>
+<tr>
+<td><code>.margin-5</code></td>
+<td><code>margin: 0.5rem;</code></td>
+</tr>
+<tr>
+<td><code>.margin-10</code></td>
+<td><code>margin: 1rem;</code></td>
+</tr>
+<tr>
+<td><code>.margin-15</code></td>
+<td><code>margin: 1.5rem;</code></td>
+</tr>
+<tr>
+<td><code>.margin-20</code></td>
+<td><code>margin: 2rem;</code></td>
+</tr>
+<tr>
+<td><code>.margin-25</code></td>
+<td><code>margin: 2.5rem;</code></td>
+</tr>
+<tr>
+<td><code>.margin-30</code></td>
+<td><code>margin: 3rem;</code></td>
+</tr>
+<tr>
+<td><code>.margin-35</code></td>
+<td><code>margin: 3.5rem;</code></td>
+</tr>
+<tr>
+<td><code>.margin-40</code></td>
+<td><code>margin: 4rem;</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h3 id="paddings">Paddings</h3>
+<table>
+<thead>
+<tr>
+<th id="helper_class">Helper Class</th>
+<th id="css_value">CSS Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.no-padding</code></td>
+<td><code>padding: 0;</code></td>
+</tr>
+<tr>
+<td><code>.pad-5</code></td>
+<td><code>padding: 0.5rem;</code></td>
+</tr>
+<tr>
+<td><code>.pad-10</code></td>
+<td><code>padding: 1rem;</code></td>
+</tr>
+<tr>
+<td><code>.pad-15</code></td>
+<td><code>padding: 1.5rem;</code></td>
+</tr>
+<tr>
+<td><code>.pad-20</code></td>
+<td><code>padding: 2rem;</code></td>
+</tr>
+<tr>
+<td><code>.pad-25</code></td>
+<td><code>padding: 2.5rem;</code></td>
+</tr>
+<tr>
+<td><code>.pad-30</code></td>
+<td><code>padding: 3rem;</code></td>
+</tr>
+<tr>
+<td><code>.pad-35</code></td>
+<td><code>padding: 3.5rem;</code></td>
+</tr>
+<tr>
+<td><code>.pad-40</code></td>
+<td><code>padding: 4rem;</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h3 id="positions">Positions</h3>
-<hr />
-<h3 id="raised">Raised</h3>
+<table>
+<thead>
+<tr>
+<th id="helper_class">Helper Class</th>
+<th id="css_value">CSS Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.relative</code></td>
+<td><code>position: relative;</code></td>
+</tr>
+<tr>
+<td><code>.absolute</code></td>
+<td><code>position: absolute;</code></td>
+</tr>
+<tr>
+<td><code>.static</code></td>
+<td><code>position: static;</code></td>
+</tr>
+<tr>
+<td><code>.fixed</code></td>
+<td><code>position: fixed;</code></td>
+</tr>
+<tr>
+<td><code>.top-0</code></td>
+<td><code>top: 0;</code></td>
+</tr>
+<tr>
+<td><code>.bottom-0</code></td>
+<td><code>bottom: 0;</code></td>
+</tr>
+<tr>
+<td><code>.right-0</code></td>
+<td><code>right: 0;</code></td>
+</tr>
+<tr>
+<td><code>.left-0</code></td>
+<td><code>left: 0;</code></td>
+</tr>
+<tr>
+<td><code>.top-50</code></td>
+<td><code>top: 50%;</code></td>
+</tr>
+<tr>
+<td><code>.bottom-50</code></td>
+<td><code>bottom: 50%;</code></td>
+</tr>
+<tr>
+<td><code>.right-50</code></td>
+<td><code>right: 50%;</code></td>
+</tr>
+<tr>
+<td><code>.left-50</code></td>
+<td><code>left: 50%;</code></td>
+</tr>
+<tr>
+<td><code>.full-width</code></td>
+<td><code>width: 100%;</code></td>
+</tr>
+<tr>
+<td><code>.full-height</code></td>
+<td><code>height: 100%;</code></td>
+</tr>
+<tr>
+<td><code>.width-50</code></td>
+<td><code>width: 50%;</code></td>
+</tr>
+<tr>
+<td><code>.width-0</code></td>
+<td><code>width: 0;</code></td>
+</tr>
+<tr>
+<td><code>.width-auto</code></td>
+<td><code>width: auto;</code></td>
+</tr>
+<tr>
+<td><code>.height-auto</code></td>
+<td><code>height: auto;</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h3 id="transitions">Transitions</h3>
+<table>
+<thead>
+<tr>
+<th id="helper_class">Helper Class</th>
+<th id="css_value">CSS Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.webkit-gl</code></td>
+<td><code>-webkit-transform: translate3d(0, 0, 0);</code></td>
+</tr>
+<tr>
+<td><code>.no-transition</code></td>
+<td><code>transition: 0s linear;</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h3 id="typography">Typography</h3>
-<hr />
-<h3 id="introduction">Introduction</h3>
-<p>Grid systems are used for creating page layouts through a series of rows and columns that house your content. Before CSS <code>flex</code> was introduced the common way of doing things was through a 12 column grid system.</p>
-<p>However with <code>flex</code>, the way grids and columns are structured is different. There are pros and cons to both, but once you become accustomed to using <code>flex</code> it is essentially just a native way to skin a cat.</p>
-<p>The biggest problem with <code>flex</code> and a grid system is that it isn't really designed for mobile-first semantically speaking. i.e it defaults to packing in as many columns that fit - which normally isn't what you want on mobile-first.</p>
-<p>In FrontBx, the Flex Grid is designed to mobile-first. Meaning all children of a row will default to full-width unless overridden at a breakpoint. This makes it far easier to design grid layouts with less markup and less styling.</p>
-<p>Here is a breakdown of how it works:</p>
-<ul>
-<li>Use rows (<code>.flex-row</code>) to wrap columns.</li>
-<li><code>.col</code> should be applied to native elements or wrapped if you don't want their styling effected.</li>
-<li>Apply row spacing, gutters and breakpoint changes to the parent <code>flex-row</code> using modifier classes.</li>
-<li>Grid columns are created by specifying the number of columns you want on the parent <code>flex-row</code>.</li>
-</ul>
-<hr />
-<h3 id="responsive-breakpoints">Responsive breakpoints</h3>
-<p>Because FrontBx is mobile first, all screen-size specific grid classes will be applied to the breakpoint and above. For example a <code>.flex-col-md-12</code> class will apply to medium screen sizes and above, but not below. The grid system includes all the necessary screen-size specific classes.</p>
-<p>The grid system uses both CSS Variables and Sass variables so Customization can be made both pre and post compilation.</p>
-<p>Customization of breakpoints via Sass can be made in the <code>src/scss/_config.scss</code> file in FrontBx's source.</p>
-<pre><code class="file-path language-file-path">src/scss/_config.scss</code></pre>
-<pre><code class="sass language-sass">$breakpoint-xs:                 0 !default;
-$breakpoint-sm:                 576px !default;
-$breakpoint-md:                 768px !default;
-$breakpoint-lg:                 992px !default;
-$breakpoint-xl:                 1200px !default;
-
-$breakpoints:
-(
-    'xs':                       $breakpoint-xs,
-    'sm':                       $breakpoint-sm,
-    'md':                       $breakpoint-md,
-    'lg':                       $breakpoint-lg,
-    'xl':                       $breakpoint-xl,
-) !default;</code></pre>
-<p><br></p>
-<p>Or via CSS variables on the <code>:root</code></p>
-<pre><code class="file-path language-file-path">src/scss/_config.scss</code></pre>
-<pre><code class="css language-css">:root
-{
-    --fbx-breakpoint-xs: 0;
-    --fbx-breakpoint-sm: 576px;
-    --fbx-breakpoint-md: 768px;
-    --fbx-breakpoint-lg: 992px;
-    --fbx-breakpoint-xl: 1200px;
-}</code></pre>
-<hr />
-<h3 id="rows">Rows</h3>
-<p>Rows are used to as the main wrapper element to contain columns. They will span full-width unless they're in a nested grid.</p>
-<div class="code-content-example">
-    <div class="flex-row">
-        <div class="col">
-            <div class="bg-salmon fill"><code>.flex-row</code></div>
-        </div>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;div class="flex-row"&gt;&lt;/div&gt;</code></pre>
-<h4 id="responsive-rows">Responsive rows</h4>
-<p>FrontBx's grid system comes with mobile-first fully responsive set of helpers to display rows according to screen size. You can use these helpers as modifiers on <code>.flex-row</code> to hide or show the row at different breakpoints.</p>
-<p>The table below outlines the available options.</p>
-<p>The example below shows two rows. The first that displays on mobile (<code>&lt;md</code> breakpoint) and a second that displays on desktop (<code>&gt;md</code> breakpoint).</p>
-<div class="code-content-example">
-    <div class="flex-row xs-flex sm-flex">
-        <div class="col">
-            <div class="bg-salmon fill small"><code>.flex-row.xs-flex.sm-flex ></code><br><code>.col</code></div>
-        </div>
-    </div>
-    <div class="flex-row md-flex lg-flex xl-flex">
-        <div class="col">
-            <div class="bg-salmon fill small"><code>.flex-row.md-flex.lg-flex.xl-flex ></code><br><code>.col</code></div>
-        </div>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;div class="flex-row xs-flex sm-flex"&gt;
-...
-&lt;/div&gt;
-&lt;div class="flex-row md-flex lg-flex xl-flex"&gt;
-...
-&lt;/div&gt;</code></pre>
-<h4 id="fluid-rows">Fluid rows</h4>
-<p><code>.flex-row-fluid</code> acts how you would expect native flex to behave. It distributes content evenly allowing each <code>.col</code> to shrink or grow as necessary to fill available space.</p>
-<p>With <code>.flex-row-fluid</code> you can set an individual <code>.col</code> width too - other columns automatically will adjust as necessary.</p>
-<div class="code-content-example">
-    <div class="flex-row-fluid col-gaps-xs">
-        <div class="col">
-            <div class="bg-teal fill">.col</div>
-        </div>
-        <div class="col col-6">
-            <div class="bg-salmon fill">.col-6</div>
-        </div>
-        <div class="col">
-            <div class="bg-bb-blue fill">.col</div>
-        </div>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;div class="flex-row-fluid"&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-    &lt;div class="col col-6"&gt;&lt;/div&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-<hr />
-<h3 id="columns">Columns</h3>
-<p>With FrontBx's flex grid system is incredibly flexible, so there are multiple ways to specify column widths depending on your needs.</p>
-<ol>
-<li><strong>On the parent <code>.flex-row</code></strong><br />
-Suitable when your columns are all evenly sized. Individual child <code>.col</code> width can be specified, while siblings retain specified width.</li>
-<li><strong>On child parent <code>.col</code> elements</strong><br />
-Suitable when your columns need specific sizing and you don't want them to grow or shrink</li>
-<li><strong>Combination</strong><br />
-Suitable when you have multiple columns at one size but want a few exceptions.</li>
-<li><strong>Fluid <code>.flex-rows</code></strong><br />
-Defaults to evenly distributing sizes and spacing. Can be used with any combination of the above. </li>
-</ol>
-<h4 id="row-columns">Row Columns</h4>
-<p>Setting column width via the <code>.flex-row</code> is easy to setup via modifier classes. Simply add <code>.flex-cols-*</code> with your desired column sizings:</p>
 <table>
 <thead>
 <tr>
-<th id="usage">Usage</th>
-<th id="class">Class</th>
-<th id="options">Options</th>
-<th id="example">Example</th>
-<th id="behavior">Behavior</th>
+<th id="helper_class">Helper Class</th>
+<th id="css_value">CSS Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Column size</td>
-<td><code>.flex-cols-*</code></td>
-<td><code>1-12</code></td>
-<td><code>.flex-cols-6</code></td>
-<td>Sizes child <code>.col</code> elements based on specified value.</td>
+<td><code>.sans-serif</code></td>
+<td><code>font-family: var(--fbx-font-sans-serif);</code></td>
+</tr>
+<tr>
+<td><code>.monospace</code></td>
+<td><code>font-family: var(--fbx-font-monospace);</code></td>
+</tr>
+<tr>
+<td><code>.serif</code></td>
+<td><code>font-family: var(--fbx-font-serif);</code></td>
+</tr>
+<tr>
+<td><code>.heading-font</code></td>
+<td><code>font-family: var(--fbx-font-headings);</code></td>
+</tr>
+<tr>
+<td><code>.text-lightest</code></td>
+<td><code>font-weight: 100;</code></td>
+</tr>
+<tr>
+<td><code>.text-light</code></td>
+<td><code>font-weight: 300;</code></td>
+</tr>
+<tr>
+<td><code>.text-normal</code></td>
+<td><code>font-weight: 400;</code></td>
+</tr>
+<tr>
+<td><code>.text-bold</code></td>
+<td><code>font-weight: 500;</code></td>
+</tr>
+<tr>
+<td><code>.text-bolder</code></td>
+<td><code>font-weight: 600;</code></td>
+</tr>
+<tr>
+<td><code>.text-boldest</code></td>
+<td><code>font-weight: 900;</code></td>
+</tr>
+<tr>
+<td><code>.font-italic</code></td>
+<td><code>font-style: italic;</code></td>
+</tr>
+<tr>
+<td><code>.font-ellipses</code></td>
+<td><code>overflow: hidden;text-overflow: ellipsis;white-space: nowrap;</code></td>
+</tr>
+<tr>
+<td><code>.font-strike</code></td>
+<td><code>text-decoration: line-through;</code></td>
+</tr>
+<tr>
+<td><code>.uppercase</code></td>
+<td><code>text-transform: uppercase;</code></td>
+</tr>
+<tr>
+<td><code>.lowercase</code></td>
+<td><code>text-transform: lowercase;</code></td>
+</tr>
+<tr>
+<td><code>.capitalize</code></td>
+<td><code>text-transform: capitalize;</code></td>
+</tr>
+<tr>
+<td><code>.underline</code></td>
+<td><code>text-decoration: underline;</code></td>
+</tr>
+<tr>
+<td><code>.no-text-decoration</code></td>
+<td><code>text-decoration: none;</code></td>
+</tr>
+<tr>
+<td><code>.text-left</code></td>
+<td><code>text-align: left;</code></td>
+</tr>
+<tr>
+<td><code>.text-right</code></td>
+<td><code>text-align: right;</code></td>
+</tr>
+<tr>
+<td><code>.text-center</code></td>
+<td><code>text-align: center;</code></td>
+</tr>
+<tr>
+<td><code>.nowrap</code></td>
+<td><code>white-space: nowrap;</code></td>
 </tr>
 </tbody>
-</table>
-<p>This example shows setting even column widths via the parent <code>.flex-row</code>:</p>
-<div class="code-content-example">
-    <div class="flex-row">
-        <div class="col">
-            <div class="bg-salmon fill">.col</div>
-        </div>
-    </div>
-    <div class="flex-row pole-xxs"></div>
-    <div class="flex-row flex-cols-3 col-gaps-xs row-gaps-xs">
-        <div class="col">
-            <div class="bg-bb-blue fill">.col</div>
-        </div>
-        <div class="col">
-            <div class="bg-teal fill">.col</div>
-        </div>
-        <div class="col">
-            <div class="bg-bb-blue fill">.col</div>
-        </div>
-        <div class="col">
-            <div class="bg-teal fill small">.col</div>
-        </div>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;div class="flex-row"&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="flex-row flex-cols-3"&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-<h4 id="child-columns">Child Columns</h4>
-<p>The core base class of FrontBx layouts is the <code>.col</code>. The table below outlines the classes and formats made available when implementing layouts using child columns.</p>
-<table>
-<thead>
-<tr>
-<th id="usage">Usage</th>
-<th id="class">Class</th>
-<th id="options">Options</th>
-<th id="example">Example</th>
-<th id="behavior">Behavior</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Column base</td>
-<td><code>.col</code></td>
-<td>n/a</td>
-<td><code>.col</code></td>
-<td>Defaults to full width.</td>
-</tr>
-<tr>
-<td>Column size</td>
-<td><code>.col-*</code></td>
-<td><code>1-12</code></td>
-<td><code>.col-6</code></td>
-<td>Sizes element based on specified value.</td>
-</tr>
-</tbody>
-</table>
-<p>And here we set the width via the child <code>.col</code> elements:</p>
-<div class="code-content-example">
-    <div class="flex-row">
-        <div class="col col-12">
-            <div class="bg-salmon fill">.col-12</div>
-        </div>
-    </div>
-    <div class="flex-row pole-xxs"></div>
-    <div class="flex-row col-gaps-xs row-gaps-xs">
-        <div class="col col-3">
-            <div class="bg-bb-blue fill small">.col-3</div>
-        </div>
-        <div class="col col-3">
-            <div class="bg-teal fill small">.col-3</div>
-        </div>
-        <div class="col col-3">
-            <div class="bg-bb-blue fill small">.col-3</div>
-        </div>
-        <div class="col col-3">
-            <div class="bg-teal fill small">.col-3</div>
-        </div>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;div class="flex-row"&gt;
-    &lt;div class="col col-12"&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="flex-row"&gt;
-    &lt;div class="col col-3"&gt;&lt;/div&gt;
-    &lt;div class="col col-3"&gt;&lt;/div&gt;
-    &lt;div class="col col-3"&gt;&lt;/div&gt;
-    &lt;div class="col col-3"&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-<h4 id="using-both">Using both</h4>
-<p>You can set the base column-width via the parent <code>.flex-row</code> and adjust individual columns. Remaining columns will remain their size defined by the parent:</p>
-<div class="code-content-example">
-    <div class="flex-row flex-cols-3 col-gaps-xs row-gaps-xs">
-        <div class="col">
-            <div class="bg-bb-blue fill small">.flex-cols-3 > .col</div>
-        </div>
-        <div class="col col-6">
-            <div class="bg-salmon fill small">.col-6</div>
-        </div>
-        <div class="col col-6">
-            <div class="bg-salmon fill small">.col-6</div>
-        </div>
-        <div class="col">
-            <div class="bg-teal fill small">.flex-cols-3 > .col</div>
-        </div>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;div class="flex-row flex-cols-3"&gt;
-    &lt;div class="col col"&gt;&lt;/div&gt;
-    &lt;div class="col col-6"&gt;&lt;/div&gt;
-    &lt;div class="col col-6"&gt;&lt;/div&gt;
-    &lt;div class="col col"&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-<div class="code-content-example">
-    <div class="flex-row flex-cols-3 col-gaps-xs row-gaps-xs">
-        <div class="col col-6">
-            <div class="bg-salmon fill small">.col-6</div>
-        </div>
-        <div class="col col-6">
-            <div class="bg-salmon fill small">.col-6</div>
-        </div>
-        <div class="col">
-            <div class="bg-bb-blue fill small">.flex-cols-3 > .col</div>
-        </div>
-        <div class="col">
-            <div class="bg-teal fill small">.flex-cols-3 > .col</div>
-        </div>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;div class="flex-row flex-cols-3"&gt;
-    &lt;div class="col col-6"&gt;&lt;/div&gt;
-    &lt;div class="col col-6"&gt;&lt;/div&gt;
-    &lt;div class="col col"&gt;&lt;/div&gt;
-    &lt;div class="col col"&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-<hr />
-<h3 id="responsive-columns">Responsive Columns</h3>
-<p>The flex grid system comes with a mobile-first fully responsive set of helpers to size column layouts according to screen size.</p>
-<p>Because flex by default spaces children evenly, FrontBx has made all flex columns full-width at mobile size. You then overwrite their widths either individually or via the parent <code>.flex-row</code> at breakpoints:</p>
-<h4 id="responsive-row-columns">Responsive row columns</h4>
-<p>Setting responsive column width via the <code>.flex-row</code> is easy to setup via modifier classes. Simply add <code>.flex-cols-[breakpoint]-[size]</code> with your desired column sizings.</p>
-<p>The table below outlines the available options.</p>
-<table>
-<thead>
-<tr>
-<th id="usage">Usage</th>
-<th id="class">Class</th>
-<th id="options">Options</th>
-<th id="example">Example</th>
-<th id="behavior">Behavior</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Breakpoint size</td>
-<td><code>.flex-cols-[breakpoint]-[size]</code></td>
-<td><code>xxs</code>, <code>xs</code>,<code>sm</code>,<code>md</code>,<code>lg</code>,<code>xl</code> &amp; <code>1-12</code></td>
-<td><code>.flex-col-sm-3</code></td>
-<td>Sizes child <code>.col</code> elements to width on breakpoint and up</td>
-</tr>
-</tbody>
-</table>
-<p>This example shows setting even column widths at <code>.col-6</code> on mobile and <code>.col-3'</code> at breakpoint <code>lg</code> and above via parent <code>.flex-row</code>:</p>
-<div class="code-content-example">
-    <div class="flex-row flex-cols-3 flex-cols-lg-6 col-gaps-xs row-gaps-xs">
-        <div class="col">
-            <div class="bg-bb-blue fill small">.flex-cols-3.flex-cols-lg-6 > .col</div>
-        </div>
-        <div class="col">
-            <div class="bg-teal fill small">.flex-cols-3.flex-cols-lg-6 > .col</div>
-        </div>
-        <div class="col">
-            <div class="bg-bb-blue fill small">.flex-cols-3.flex-cols-lg-6 > .col</div>
-        </div>
-        <div class="col">
-            <div class="bg-teal fill small">.flex-cols-3.flex-cols-lg-6 > .col</div>
-        </div>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;div class="flex-row flex-cols-3 flex-cols-lg-6"&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-<h4 id="responsive-child-columns">Responsive child columns</h4>
-<p>Setting responsive column width via the child <code>.col</code> elements is easy to setup via modifier classes. Simply add <code>.col-[breakpoint]-[size]</code> with your desired column sizings.</p>
-<table>
-<thead>
-<tr>
-<th id="usage">Usage</th>
-<th id="class">Class</th>
-<th id="options">Options</th>
-<th id="example">Example</th>
-<th id="behavior">Behavior</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Breakpoint size</td>
-<td><code>.col-[breakpoint]-[size]</code></td>
-<td><code>xxs</code>, <code>xs</code>,<code>sm</code>,<code>md</code>,<code>lg</code>,<code>xl</code> &amp; <code>1-12</code></td>
-<td><code>.flex-col-sm-3</code></td>
-<td>Sizes <code>.col</code> element to width on breakpoint and up</td>
-</tr>
-</tbody>
-</table>
-<p>This example shows setting even column widths at <code>.col-6</code> on mobile and <code>.col-3'</code> at breakpoint <code>lg</code> and above via child <code>.col</code> elements:</p>
-<div class="code-content-example">
-    <div class="flex-row col-gaps-xs row-gaps-xs">
-        <div class="col col-3 col-md-6">
-            <div class="bg-bb-blue fill small">.col-3.col-md-6</div>
-        </div>
-        <div class="col col-3 col-md-6">
-            <div class="bg-teal fill small">.col-3.col-md-6</div>
-        </div>
-        <div class="col col-3 col-md-6">
-            <div class="bg-bb-blue fill small">.col-3.col-md-6</div>
-        </div>
-        <div class="col col-3 col-md-6">
-            <div class="bg-bb-blue fill small">.col-3.col-md-6</div>
-        </div>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;div class="flex-row"&gt;
-    &lt;div class="col-3 col-md-6"&gt;&lt;/div&gt;
-    &lt;div class="col-3 col-md-6"&gt;&lt;/div&gt;
-    &lt;div class="col-3 col-md-6"&gt;&lt;/div&gt;
-    &lt;div class="col-3 col-md-6"&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-<h4 id="responsive-parent-child">Responsive parent child</h4>
-<p>This example shows setting even column widths at <code>.col-6</code> on mobile and <code>.col-3'</code> at breakpoint <code>lg</code> and above via parent <code>.flex-row</code> with one column set to <code>.col-12</code> at breakpoint <code>lg</code> and above:</p>
-<div class="code-content-example">
-    <div class="flex-row flex-cols-3 flex-cols-lg-6 col-gaps-xs row-gaps-xs">
-        <div class="col col-lg-12">
-            <div class="bg-salmon fill small">.flex-cols-3.flex-cols-lg-6 > .col</div>
-        </div>
-        <div class="col">
-            <div class="bg-teal fill small">.flex-cols-3.flex-cols-lg-6 > .col</div>
-        </div>
-        <div class="col">
-            <div class="bg-bb-blue fill small">.flex-cols-3.flex-cols-lg-6 > .col</div>
-        </div>
-        <div class="col">
-            <div class="bg-teal fill small">.flex-cols-3.flex-cols-lg-6 > .col</div>
-        </div>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;div class="flex-row flex-cols-3 flex-cols-lg-6"&gt;
-    &lt;div class="col col-lg-12"&gt;&lt;/div&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-<hr />
-<h3 id="column-gaps">Column Gaps</h3>
-<p>Column gaps define the spacing between columns in a row and can be set via the parent <code>.flex-row</code> with modifier classes. By default there are no column gaps in a <code>.flex-row</code> unless specified.</p>
-<table>
-<thead>
-<tr>
-<th id="usage">Usage</th>
-<th id="class">Class</th>
-<th id="options">Options</th>
-<th id="example">Example</th>
-<th id="behavior">Behavior</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Gap size</td>
-<td><code>.col-gaps-[size]</code></td>
-<td><code>xxs</code>, <code>xs</code>,<code>sm</code>,<code>md</code>,<code>lg</code>,<code>xl</code></td>
-<td><code>.col-gaps-xs</code></td>
-<td>Spaces horizontal gaps between columns to size</td>
-</tr>
-</tbody>
-</table>
-<div class="code-content-example">
-    <div class="flex-row flex-cols-6 col-gaps-xs row-gaps-xs">
-        <div class="col">
-            <div class="bg-bb-blue fill small">.col</div>
-        </div>
-        <div class="col">
-            <div class="bg-teal fill small">.col</div>
-        </div>
-        <div class="col">
-            <div class="bg-bb-blue fill small">.col</div>
-        </div>
-        <div class="col">
-            <div class="bg-teal fill small">.col</div>
-        </div>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;div class="flex-row flex-cols-6 col-gaps-xs"&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-<h4 id="responsive-column-gaps">Responsive column gaps</h4>
-<p>FrontBx's grid system comes with mobile-first fully responsive set of helpers to size gutters according to screen size. The table below outlines the available options.</p>
-<table>
-<thead>
-<tr>
-<th id="usage">Usage</th>
-<th id="class">Class</th>
-<th id="options">Options</th>
-<th id="example">Example</th>
-<th id="behavior">Behavior</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Breakpoint gap size</td>
-<td><code>.col-gaps-[breakpoint]-[size]</code></td>
-<td><code>xs</code>, <code>xs</code>,<code>sm</code>,<code>md</code>,<code>lg</code>,<code>xl</code> &amp; <code>xxs</code>, <code>xs</code>, <code>xs</code>,<code>sm</code>,<code>md</code>,<code>lg</code>,<code>xl</code></td>
-<td><code>.col-gaps-md-lg</code></td>
-<td>Spaces horizontal gaps between columns to size at breakpoint and up</td>
-</tr>
-</tbody>
-</table>
-<p>The example below shows column gaps set to <code>xs</code> on mobile and <code>lg</code> on breakpoint <code>&gt;=md</code>:</p>
-<div class="code-content-example">
-    <div class="flex-row flex-cols-6 col-gaps-xs col-gaps-md-lg row-gaps-xs">
-        <div class="col">
-            <div class="bg-bb-blue fill small">.col-gaps-xs > .col</div>
-        </div>
-        <div class="col">
-            <div class="bg-teal fill small">.col-gaps-xs > .col</div>
-        </div>
-        <div class="col">
-            <div class="bg-bb-blue fill small">.col-gaps-xs > .col</div>
-        </div>
-        <div class="col">
-            <div class="bg-teal fill small">.col-gaps-xs > .col</div>
-        </div>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;div class="flex-row flex-cols-6 col-gaps-xs"&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-<hr />
-<h3 id="row-gaps">Row Gaps</h3>
-<p>Row gaps define the spacing between rows. With FrontBx' flex grid, you set this via the parent <code>.flex-row</code>.</p>
-<table>
-<thead>
-<tr>
-<th id="usage">Usage</th>
-<th id="class">Class</th>
-<th id="options">Options</th>
-<th id="example">Example</th>
-<th id="behavior">Behavior</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Gap size</td>
-<td><code>.row-gaps-[size]</code></td>
-<td><code>xxs</code>, <code>xs</code>,<code>sm</code>,<code>md</code>,<code>lg</code>,<code>xl</code></td>
-<td><code>.col-gaps-xs</code></td>
-<td>Spaces vertical gaps between column rows to size</td>
-</tr>
-</tbody>
-</table>
-<div class="code-content-example">
-    <div class="flex-row row-gaps-sm">
-        <div class="col">
-            <div class="bg-salmon fill small">.row-gaps-lg > .col</div>
-        </div>
-        <div class="col">
-            <div class="bg-salmon fill small">.row-gaps-lg > .col</div>
-        </div>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;div class="flex-row row-gaps-sm"&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-<h4 id="responsive-row-gaps">Responsive row gaps</h4>
-<p>FrontBx's grid system comes with mobile-first fully responsive set of helpers to size row gaps according to screen size. The table below outlines the available options.</p>
-<table>
-<thead>
-<tr>
-<th id="usage">Usage</th>
-<th id="class">Class</th>
-<th id="options">Options</th>
-<th id="example">Example</th>
-<th id="behavior">Behavior</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Breakpoint gap size</td>
-<td><code>.row-gaps-[breakpoint]-[size]</code></td>
-<td><code>xs</code>, <code>xs</code>,<code>sm</code>,<code>md</code>,<code>lg</code>,<code>xl</code> &amp; <code>xxs</code>, <code>xs</code>, <code>xs</code>,<code>sm</code>,<code>md</code>,<code>lg</code>,<code>xl</code></td>
-<td><code>.col-gaps-md-lg</code></td>
-<td>Spaces vertical gaps between column rows to size at breakpoint and up</td>
-</tr>
-</tbody>
-</table>
-<p>The example below shows row gaps set to <code>xs</code> on mobile and <code>lg</code> on breakpoint <code>&gt;=md</code>:</p>
-<div class="code-content-example">
-    <div class="flex-row row-gaps-xs row-gaps-md-lg">
-        <div class="col">
-            <div class="bg-salmon fill small">.row-gaps-xs.row-gaps-md-lg > .col</div>
-        </div>
-        <div class="col">
-            <div class="bg-salmon fill small">.row-gaps-xs.row-gaps-md-lg > .col</div>
-        </div>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;div class="flex-row row-gaps-xs row-gaps-md-lg"&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-<hr />
-<h3 id="gutters">Gutters</h3>
-<p>Gutters can be used to push columns away from each other.</p>
-<table>
-<thead>
-<tr>
-<th id="usage">Usage</th>
-<th id="class">Class</th>
-<th id="options">Options</th>
-<th id="example">Example</th>
-<th id="behavior">Behavior</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Gutter size</td>
-<td><code>.gutter-[size]</code></td>
-<td><code>xxs</code>, <code>xs</code>,<code>sm</code>,<code>md</code>,<code>lg</code>,<code>xl</code></td>
-<td><code>.gutter-lg</code></td>
-<td>Applies margin size gutter to both sides of the column</td>
-</tr>
-<tr>
-<td>Gutter side</td>
-<td><code>.gutter-[side]</code></td>
-<td><code>l</code>, <code>r</code></td>
-<td><code>.gutter-r</code></td>
-<td>Applies margin to left or right gutter only</td>
-</tr>
-<tr>
-<td>No gutter</td>
-<td><code>.no-gutter</code></td>
-<td>None</td>
-<td><code>.no-gutter</code></td>
-<td>Sets horizontal margins to zero</td>
-</tr>
-<tr>
-<td>Auto gutter</td>
-<td><code>.auto-gutter</code></td>
-<td>None</td>
-<td><code>.auto-gutter</code></td>
-<td>Sets horizontal margins to auto</td>
-</tr>
-</tbody>
-</table>
-<div class="code-content-example">
-    <div class="flex-row">
-        <div class="col col-6 gutter-xs gutter-r">
-            <div class="bg-bb-blue fill">.gutter-xs.gutter-r</div>
-        </div>
-        <div class="col col-6 gutter-xs gutter-l">
-            <div class="bg-teal fill">.gutter-xs.gutter-r</div>
-        </div>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;div class="flex-row"&gt;
-    &lt;div class="col col-6 gutter-xs gutter-r"&gt;&lt;/div&gt;
-    &lt;div class="col col-6 gutter-xs gutter-l"&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-<div class="code-content-example">
-    <div class="flex-row align-cols-center-x">
-        <div class="col col-md-4 gutter-xs gutter-r">
-            <div class="bg-bb-blue fill small">.col-md-4.gutter-xs.gutter-r</div>
-        </div>
-        <div class="col col-md-4 gutter-xs gutter-l">
-            <div class="bg-teal fill small">.col-md-4.gutter-xs.gutter-r</div>
-        </div>
-    </div>
-    <div class="flex-row pole-xs pole-n row-gaps-xs">
-        <div class="col col-md-4 auto-gutter gutter-r">
-            <div class="bg-bb-blue fill small">.col-md-4.auto-gutter.gutter-r</div>
-        </div>
-        <div class="col col-md-4">
-            <div class="bg-teal fill small">.col-md-4</div>
-        </div>
-    </div>
-    <div class="flex-row row-gaps-xs pole-xs pole-n">
-        <div class="col col-md-4 auto-gutter">
-            <div class="bg-teal fill small">.col-md-4.auto-gutter</div>
-        </div>
-        <div class="col col-md-4 auto-gutter">
-            <div class="bg-bb-blue fill small">.col-md-4.auto-gutter</div>
-        </div>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;div class="flex-row align-cols-center-x"&gt;
-    &lt;div class="col col-md-4 gutter-xs gutter-r"&gt;&lt;/div&gt;
-    &lt;div class="col col-md-4 gutter-xs gutter-l"&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="flex-row"&gt;
-    &lt;div class="col col-md-4 auto-gutter gutter-r"&gt;&lt;/div&gt;
-    &lt;div class="col col-md-4"&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="flex-row"&gt;
-    &lt;div class="col col-md-4 auto-gutter"&gt;&lt;/div&gt;
-    &lt;div class="col col-md-4 auto-gutter"&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-<h4 id="responsive-gutters">Responsive gutters</h4>
-<p>FrontBx's grid system comes with mobile-first fully responsive set of helpers to size gutters according to screen size. The table below outlines the available options.</p>
-<table>
-<thead>
-<tr>
-<th id="usage">Usage</th>
-<th id="class">Class</th>
-<th id="options">Options</th>
-<th id="example">Example</th>
-<th id="behavior">Behavior</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Breakpoint size</td>
-<td><code>.gutter-[breakpoint]-[size]</code></td>
-<td><code>xxs</code>,<code>xs</code>,<code>sm</code>,<code>md</code>,<code>lg</code>,<code>xl</code></td>
-<td><code>.gutter-md-lg</code></td>
-<td>Applies horizontal margin size gutter to both sides of element at specified breakpoint and up</td>
-</tr>
-<tr>
-<td>Breakpoint side</td>
-<td><code>.gutter-[breakpoint]-[side]</code></td>
-<td><code>l</code>, <code>r</code></td>
-<td><code>.gutter-md-r</code></td>
-<td>Applies horizontal margin to left or right gutter only - at specified breakpoint and up</td>
-</tr>
-<tr>
-<td>No gutter</td>
-<td><code>.no-gutter-[breakpoint]</code></td>
-<td><code>xxs</code>,<code>xs</code>,<code>sm</code>,<code>md</code>,<code>lg</code>,<code>xl</code></td>
-<td><code>.no-gutter-md</code></td>
-<td>Sets no horizontal margin at specified breakpoint and up</td>
-</tr>
-<tr>
-<td>Auto gutter</td>
-<td><code>.auto-gutter-[breakpoint]</code></td>
-<td>None</td>
-<td><code>.auto-gutter</code></td>
-<td>Sets horizontal margins to auto</td>
-</tr>
-</tbody>
-</table>
-<div class="code-content-example">
-    <div class="flex-row">
-        <div class="col col-6 gutter-xs gutter-r gutter-md-lg gutter-lg-r">
-            <div class="bg-bb-blue fill small">.gutter-xs.gutter-r<br>.gutter-md-lg.gutter-lg-r</div>
-        </div>
-        <div class="col col-6 gutter-xs gutter-l gutter-md-lg gutter-lg-l">
-            <div class="bg-teal fill small">.gutter-xs.gutter-l<br>.gutter-md-lg.gutter-lg-l</div>
-        </div>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;div class="flex-row"&gt;
-    &lt;div class="col col-6 gutter-xs gutter-r gutter-md-lg gutter-lg-r"&gt;
-        ...
-    &lt;/div&gt;
-    &lt;div class="col col-6 gutter-xs gutter-l gutter-md-lg gutter-lg-l"&gt;
-        ...
-    &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-<hr />
-<h3 id="alignment">Alignment</h3>
-<p>Alignment can be thought of in two ways.</p>
-<ol>
-<li>The positioning of available free-space within a grid.</li>
-<li>The positioning of items within a grid.</li>
-</ol>
-<p>With FrontBx's flex grid, we define alignment by option two as this just makes more sense and is simpler. With FrontBx's flex grid, you set this via the parent <code>.flex-row</code> using the <code>.align-cols-[position]</code> modifier classes.</p>
-<p>The table below outlines the available alignment options:</p>
-<p><strong>Axis alignments</strong></p>
-<table>
-<thead>
-<tr>
-<th id="class">Class</th>
-<th id="behavior">Behavior</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>.align-cols-left</code></td>
-<td>Aligns items to left of container</td>
-</tr>
-<tr>
-<td><code>.align-cols-right</code></td>
-<td>Aligns items to right of container</td>
-</tr>
-<tr>
-<td><code>.align-cols-top</code></td>
-<td>Aligns items to top of container</td>
-</tr>
-<tr>
-<td><code>.align-cols-bottom</code></td>
-<td>Aligns items to bottom of container</td>
-</tr>
-<tr>
-<td><code>.align-cols-center-x</code></td>
-<td>Aligns items to horizontal center of container</td>
-</tr>
-<tr>
-<td><code>.align-cols-center-y</code></td>
-<td>Aligns items to vertical center of container</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Spacing alignments</strong></p>
-<table>
-<thead>
-<tr>
-<th id="class">Class</th>
-<th id="behavior">Behavior</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>.align-cols-y-stretch</code></td>
-<td>Makes all items full width vertically</td>
-</tr>
-<tr>
-<td><code>.align-cols-y-baseline</code></td>
-<td>Aligns items to vertical baseline of items</td>
-</tr>
-<tr>
-<td><code>.align-cols-x-between</code></td>
-<td>Distributes any space between items horizontally</td>
-</tr>
-<tr>
-<td><code>.align-cols-x-around</code></td>
-<td>Distributes any space around items horizontally</td>
-</tr>
-<tr>
-<td><code>.align-cols-x-evenly</code></td>
-<td>Distributes any space evenly between items and around items horizontally</td>
-</tr>
-</tbody>
-</table>
-<div class="code-content-example flex-show-h-space">
-    <div class="flex-row flex-cols-2 col-gaps-xs align-cols-center-x">
-        <div class="col">
-            <div class="bg-bb-blue fill small">.col-gaps-xs > .col</div>
-        </div>
-        <div class="col">
-            <div class="bg-teal fill small">.col-gaps-xs > .col</div>
-        </div>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;div class="flex-row flex-cols-2 align-cols-center-x"&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-<div class="code-content-example flex-show-v-space">
-    <div class="flex-row flex-cols-6 col-gaps-xs align-cols-center-y">
-        <div class="col">
-            <div class="bg-bb-blue fill small">.col-gaps-xs > .col</div>
-        </div>
-        <div class="col">
-            <div class="bg-teal fill small">.col-gaps-xs > .col</div>
-        </div>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;div class="flex-row flex-cols-6 align-cols-center-y"&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-<h4 id="responsive-alignment">Responsive Alignment</h4>
-<p>All alignment classes are available through breakpoint specific targeting with <code>.align-cols-[breakpoint]-[position]</code> modifier classes. The table below outlines the available alignment options:</p>
-<p>* <em>For the sake of brevity, breakponts are <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code> amd <code>xl</code></em></p>
-<p><strong>Axis alignments</strong></p>
-<table>
-<thead>
-<tr>
-<th id="class">Class</th>
-<th id="behavior">Behavior</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>.align-cols-[breakpoint]-left</code></td>
-<td>Aligns items to left of container at specified breakpoint and up</td>
-</tr>
-<tr>
-<td><code>.align-cols-[breakpoint]-right</code></td>
-<td>Aligns items to right of container at specified breakpoint and up</td>
-</tr>
-<tr>
-<td><code>.align-cols-[breakpoint]-top</code></td>
-<td>Aligns items to top of container at specified breakpoint and up</td>
-</tr>
-<tr>
-<td><code>.align-cols-[breakpoint]-bottom</code></td>
-<td>Aligns items to bottom of container at specified breakpoint and up</td>
-</tr>
-<tr>
-<td><code>.align-cols-[breakpoint]-center-x</code></td>
-<td>Aligns items to horizontal center of container at specified breakpoint and up</td>
-</tr>
-<tr>
-<td><code>.align-cols-[breakpoint]-center-y</code></td>
-<td>Aligns items to vertical center of container at specified breakpoint and up</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Spacing alignments</strong></p>
-<table>
-<thead>
-<tr>
-<th id="class">Class</th>
-<th id="behavior">Behavior</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>.align-cols-[breakpoint]-y-stretch</code></td>
-<td>Makes all items full width vertically at specified breakpoint and up</td>
-</tr>
-<tr>
-<td><code>.align-cols-[breakpoint]-y-baseline</code></td>
-<td>Aligns items to vertical baseline of items at specified breakpoint and up</td>
-</tr>
-<tr>
-<td><code>.align-cols-[breakpoint]-x-between</code></td>
-<td>Distributes any space between items horizontally at specified breakpoint and up</td>
-</tr>
-<tr>
-<td><code>.align-cols-[breakpoint]-x-around</code></td>
-<td>Distributes any space around items horizontally at specified breakpoint and up</td>
-</tr>
-<tr>
-<td><code>.align-cols-[breakpoint]-x-evenly</code></td>
-<td>Distributes any space evenly between items and around items horizontally at specified breakpoint and up</td>
-</tr>
-</tbody>
-</table>
-<div class="code-content-example flex-show-h-space">
-    <div class="flex-row flex-cols-2 col-gaps-xs align-cols-md-center-x">
-        <div class="col">
-            <div class="bg-bb-blue fill">.col</div>
-        </div>
-        <div class="col">
-            <div class="bg-teal fill">.col</div>
-        </div>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;div class="flex-row flex-cols-2 align-cols-md-center-x"&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-<div class="code-content-example flex-show-v-space">
-    <div class="flex-row flex-cols-6 col-gaps-xs align-cols-md-center-y">
-        <div class="col">
-            <div class="bg-bb-blue fill">.col</div>
-        </div>
-        <div class="col">
-            <div class="bg-teal fill">.col</div>
-        </div>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;div class="flex-row flex-cols-6 align-cols-md-center-y"&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-    &lt;div class="col"&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-<h3 id="order">Order</h3>
-<p>Use <code>.order-[num]</code> classes to re-arrange content within a grid.</p>
-<table>
-<thead>
-<tr>
-<th id="usage">Usage</th>
-<th id="class">Class</th>
-<th id="options">Options</th>
-<th id="example">Example</th>
-<th id="behavior">Behavior</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Order value</td>
-<td><code>.order-[num]</code></td>
-<td><code>1-5</code></td>
-<td><code>.order-2</code></td>
-<td>Sets column order in grid</td>
-</tr>
-</tbody>
-</table>
-<div class="code-content-example">
-    <div class="flex-row flex-cols-4 col-gaps-xs row-gaps-xs">
-        <div class="col">
-            <div class="bg-salmon fill small">1. <code>.col</code> no order</div>
-        </div>
-        <div class="col order-5">
-            <div class="bg-bb-blue fill small">2. <code>.col</code> <code>.order-5</code></div>
-        </div>
-        <div class="col order-1">
-            <div class="bg-teal fill small">3. <code>.col</code> <code>.order-1</code></div>
-        </div>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;div class="flex-row flex-cols-4 col-gaps-xs row-gaps-xs"&gt;
-        &lt;div class="col"&gt;&lt;/div&gt;
-        &lt;div class="col order-5"&gt;&lt;/div&gt;
-        &lt;div class="col order-1"&gt;&lt;/div&gt;
-    &lt;/div&gt;</code></pre>
-<h4 id="responsive-order">Responsive order</h4>
-<p>Responsive order can be used through <code>.order-[breakpoint]-[num]</code> classes to re-arrange content at breakpoints and up.</p>
-<table>
-<thead>
-<tr>
-<th id="usage">Usage</th>
-<th id="class">Class</th>
-<th id="options">Options</th>
-<th id="example">Example</th>
-<th id="behavior">Behavior</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Order value</td>
-<td><code>.order-[breakpoint]-[num]</code></td>
-<td><code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code> &amp; <code>1-5</code></td>
-<td><code>.order-md-2</code></td>
-<td>Sets column order in grid at breakpoint and up</td>
-</tr>
-</tbody>
-</table>
-<div class="code-content-example">
-    <div class="flex-row flex-cols-4 col-gaps-xs row-gaps-xs">
-        <div class="col">
-            <div class="bg-salmon fill small">1. <code>.col</code> no order</div>
-        </div>
-        <div class="col order-md-5">
-            <div class="bg-bb-blue fill small">2. <code>.col</code> <code>.order-md-5</code></div>
-        </div>
-        <div class="col order-md-1">
-            <div class="bg-teal fill small">3. <code>.col</code> <code>.order-md-1</code></div>
-        </div>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;div class="flex-row flex-cols-4 col-gaps-xs row-gaps-xs"&gt;
-        &lt;div class="col"&gt;&lt;/div&gt;
-        &lt;div class="col order-md-5"&gt;&lt;/div&gt;
-        &lt;div class="col order-md-1"&gt;&lt;/div&gt;
-    &lt;/div&gt;</code></pre>
-<h3 id="css-customization">CSS Customization</h3>
-<p>The grid system uses a combination of both local CSS variables on all components for enhanced component customization and styling. The base values are used by the UI to create all the sizing. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>
-<p>Customization via Sass can be made in the <code>src/scss/_config.scss</code> file in FrontBx's source.</p>
-<pre><code class="file-path language-file-path">`src/scss/_config.scss`</code></pre>
-<pre><code class="sass language-sass">$grid-gutters:
-(
-    'xxs':                      0.5rem,
-    'xs':                       1rem,
-    'sm':                       2.0rem,
-    'md':                       2.5rem,
-    'lg':                       3.0rem,
-    'xl':                       3.5rem,
-) !default;
-
-// Grid poles
-$grid-poles:
-(
-    'xxs':                      0.5rem,
-    'xs':                       1rem,
-    'sm':                       3.0rem,
-    'md':                       6.0rem,
-    'lg':                       8.0rem,
-    'xl':                       10.0rem,
-) !default;</code></pre>
-<p><br></p>
-<pre><code class="file-path language-file-path">src/scss/grid/_base.scss</code></pre>
-<pre><code class="sass language-sass">/* Row */
-.row
-{
-    --fbx-row-width: 100%;
-    width: var(--fbx-row-width);
-}
-
-/* Columns */
-.col
-{
-    --fbx-col-width: 0;
-    --fbx-col-push: initial;
-    --fbx-col-pull: initial;
-
-    width: var(--fbx-col-width);
-    left:  var(--fbx-col-pull);
-    right: var(--fbx-col-push); 
-}
-
-/* Gutters base */
-[class*="gutter-"],
-.no-gutter
-{
-    --fbx-gutter-l: initial;
-    --fbx-gutter-r: initial;
-    padding-left: var(--fbx-gutter-l);
-    padding-right: var(--fbx-gutter-r);
-}
-
-/* Poles base */
-[class*="pole-"],
-.no-pole
-{
-    --fbx-pole-n: initial;
-    --fbx-pole-s: initial;
-    padding-top: var(--fbx-pole-n);
-    padding-bottom: var(--fbx-pole-s);
-}</code></pre></article>
+</table></article>
         </div>
         <footer class="site-footer">
             <div class="container-fluid clearfix">

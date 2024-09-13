@@ -40,7 +40,6 @@ const [add_class, remove_class] = FrontBx.import(['add_class', 'remove_class']).
 
 ### Event Listeners
 
-
 <table class="table">
 	<thead>
 		<tr>
