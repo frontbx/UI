@@ -2472,54 +2472,6 @@ _.prototype.array_has = function(path, object)
     return !this.is_undefined(this.array_get(path, object));
 }
 /**
- * Merges multiple objects or arrays into the original.
- *
- * @param   {object|array} First array then any number of array or objects to merge into
- * @returns {object|array}
- */
-_.prototype.array_merge = function()
-{
-    let args = TO_ARR.call(arguments);
-
-    if (args.length === 0)
-    {
-        throw new Error('Nothing to merge.');
-    }
-    else if (args.length === 1)
-    {
-        return args[1];
-    }
-
-    var clone = false;
-
-    // Clone deep
-    this.each(args, function(i, arg)
-    {
-        if (arg = 'CLONE_FLAG_TRUE')
-        {
-            clone = true;
-
-            return false;
-        }
-    });
-
-    let first = args.shift();
-    let fType = this.is_array(first) ? 'array' : 'obj';
-
-    this.each(args, function(i, arg)
-    {
-        if (!this.is_array(arg) && !this.is_object(arg))
-        {
-            throw new Error('Arguments must be an array or object.');
-        }
-
-        first = fType === 'array' ? [...first, ...arg] : {...first, ...arg};
-
-    }, this);
-
-    return first;
-}
-/**
  * Set a key using dot/bracket notation on an object or array.
  *
  * @param   {string}       path   Path to set
@@ -2599,7 +2551,7 @@ _.prototype.each = function(obj, callback)
         {
             key   = isArray ? i : keys[i];
             val   = isArray ? obj[i] : obj[key];
-            clbkVal = callback.apply(thisArg, this.array_merge([key, val], args));
+            clbkVal = callback.apply(thisArg, [...[key, val], ...args]);
 
             if (clbkVal === false)
             {
@@ -2718,7 +2670,7 @@ _.prototype.map = function(obj, callback)
         {
             key   = isArray ? i : keys[i];
             val   = isArray ? obj[i] : obj[key];
-            clbkVal = callback.apply(thisArg, this.array_merge([key, val], args));
+            clbkVal = callback.apply(thisArg, [...[key, val], ...args]);
 
             if (clbkVal === false)
             {
@@ -4075,7 +4027,7 @@ _.prototype.form_values = function(form)
  * @return {bool}
  */
 _.prototype.has_class = function(DOMElement, className)
-{
+{    
     let ret = false;
 
     if (this.is_array(className))
@@ -4107,6 +4059,8 @@ _.prototype.has_class = function(DOMElement, className)
     className = className.trim();
 
     if (className[0] === '.') className = className.slice(1);
+
+    if (!DOMElement || !DOMElement.classList) return false;
 
     return DOMElement.classList.contains(className);
 }
@@ -4168,20 +4122,6 @@ _.prototype.inner_HTML = function(DOMElement, content, append)
     this.trigger_event(window, `FrontBx:dom:mutate`, { DOMElement: DOMElement });
 }
 /**
- * Replaces element's innerText without destroying childnodes
- *
- * @access {public}
- * @param  {DOMElement}   el   Target element
- * @param  {string} text Text to replace
- */
-_.prototype.inner_Text = function(el, text)
-{
-    if (el.childNodes[0])
-    {
-        el.childNodes[0].nodeValue = text;
-    }
-}
-/**
  * Gets an input element's value
  *
  * @access {public}
@@ -4190,15 +4130,19 @@ _.prototype.inner_Text = function(el, text)
  */
 _.prototype.input_value = function(input)
 {
-    if (input.type == "number" || this.is_numeric(input.value))
+    if (input.type == 'radio')
+    {
+        return this.attr(input, 'checked') ? this.attr(input, 'name') : undefined;
+    }
+    if (input.type == 'checkbox')
+    {
+        ret = this.attr(input, 'checked');
+    }
+    if (input.type == 'number')
     {
         return input.value.includes('.') ? parseInt(input.value) : parseFloat(input.value);
     }
-    if (input.type == "select")
-    {
-        return input.options[input.selectedIndex].value;
-    }
-    if (input.type == "file")
+    if (input.type == 'file')
     {
         if (input.multiple == true)
         {
@@ -4208,7 +4152,9 @@ _.prototype.input_value = function(input)
         return input.files[0];
     }
 
-    return input.value;
+    let ret = input.type == 'select' ? input.options[input.selectedIndex].value : input.value;
+
+    return this.is_numeric(ret) ? (input.value.includes('.') ? parseInt(input.value) : parseFloat(input.value)) : ret.trim();
 }
 /**
  * Create and insert a new node
@@ -4307,6 +4253,7 @@ _.prototype.next = function(el, type)
     {
         return el.nextSibling;
     }
+    
     var next = el.nextSibling;
 
     while (next !== document.body && typeof next !== "undefined" && next !== null)
@@ -4728,14 +4675,6 @@ _.prototype.trigger_event = function(DOMElement, eventName, data)
         }
     }
 }
-/**
- * Closest parent node by type/class or array of either
- *
- * @access {public}
- * @param  {DOMElement}   el   Target element
- * @param  {string} type Node type to find
- * @return {node\null}
- */
 _.prototype.traverse_up = function(DOMElement, callback, origional)
 {    
     origional = typeof origional === "undefined" ? DOMElement : origional;
@@ -4748,21 +4687,48 @@ _.prototype.traverse_up = function(DOMElement, callback, origional)
         return origional;
     }
 
-    var parent = DOMElement.parentNode;
-
-    return this.traverse_up(parent, callback, origional);
+    return this.traverse_up(DOMElement.parentNode, callback, origional);
 }
 
 _.prototype.traverse_down = function(DOMElement, callback)
 {
+    if (typeof DOMElement === "undefined" || DOMElement === null) return;
+
+    let children = this.find_all('*', DOMElement);
+
+    let ret = false;
+
+    this.each(children, (i, child) => 
+    {
+        if (callback(child))
+        {
+            ret = child;
+
+            return false;
+        }
+    });
+
+    return ret;
 }
 
 _.prototype.traverse_next = function(DOMElement, callback)
 {
+    // Stop on document
+    if (DOMElement === document || typeof DOMElement === "undefined" || DOMElement === null) return;
+
+    if (callback(DOMElement)) return true;
+
+    return this.traverse_next(DOMElement.nextSibling, callback);
 }
 
 _.prototype.traverse_prev = function(DOMElement, callback)
 {
+    // Stop on document
+    if (DOMElement === document || typeof DOMElement === "undefined" || DOMElement === null) return;
+
+    if (callback(DOMElement))  return true;
+
+    return this.traverse_prev(DOMElement.previousSibling, callback);
 }
 
 /**
@@ -5773,38 +5739,6 @@ _.prototype.bind = function(func, context)
     return bound;
 }
 /**
- * Creates a new object in 'dot.notation'
- * 
- * @param   {Object} obj Object
- * @returns {Object} 
- */
-_.prototype.dotify = function(obj)
-{
-    var res = {};
-
-    function recurse(obj, current)
-    {
-        for (var key in obj)
-        {
-            var value = obj[key];
-            var newKey = (current ? current + '.' + key : key); // joined key with dot
-
-            if (value && typeof value === 'object' && !(value instanceof Date))
-            {
-                recurse(value, newKey); // it's a nested object, so do it again
-            }
-            else
-            {
-                res[newKey] = value; // it's not an object, so set the property
-            }
-        }
-    }
-
-    recurse(obj);
-
-    return res;
-}
-/**
  * Extends a function with prototype inheritance.
  *
  * @param   {function}           superType    Base function to extend
@@ -5971,55 +5905,6 @@ _.prototype.join_obj = function(obj, seperator, glue, recursive, trimLast)
     if (ret === `${glue}${seperator}` || ret.trim() === '') return '';
 
     return trimLast ? this.rtrim(this.ltrim(ret, glue), seperator) : this.ltrim(ret, glue).trim() + glue;
-}
-/**
- * Deep merge two objects.
- * 
- * @param   {object} target
- * @param   {object} ...sources
- * @returns {object}
- */
-_.prototype.merge_deep = function()
-{
-    let args = TO_ARR.call(arguments);
-
-    // No args
-    if (args.length === 0)
-    {
-        throw new Error('Nothing to merge.');
-    }
-    // Single arg
-    else if (args.length === 1)
-    {
-        return args[1];
-    }
-
-    // Must be an object
-    if (!this.is_object(args[0]))
-    {
-        throw new Error('Arguments must be an object.');
-    }
-
-    // Remove first and cache
-    let first = args.shift();
-
-    this.each(args, function(i, arg)
-    {
-        if (!this.is_object(arg))
-        {
-            throw new Error('Arguments must be an object.');
-        }
-
-        let cloned = this.clone_deep(arg, first);
-
-        this.each(cloned, function(k, v)
-        {
-            first[k] = v;
-        });
-        
-    }, this);
-
-    return first;
 }
 /**
  * Returns object properties and methods as array of keys.
@@ -13774,7 +13659,7 @@ Container.singleton('_', _);
      * 
      * @var {Function}
      */
-    const [find, add_class, on, closest, has_class, remove_class, off, attr, css, dom_element, extend] = FrontBx.import(['find','add_class','on','closest','has_class','remove_class','off','attr','css','dom_element','extend']).from('_');
+    const [find, add_class, on, closest, has_class, remove_class, off, attr, css, dom_element, map, extend] = FrontBx.import(['find','add_class','on','closest','has_class','remove_class','off','attr','css','dom_element','map','extend']).from('_');
 
     /**
      * Dropdown Buttons
@@ -13857,6 +13742,24 @@ Container.singleton('_', _);
                 attr(check.parentNode, 'style', false);
             }
         }
+    }
+
+    /**
+     * @inheritdoc
+     * 
+     */
+    Menu.prototype.template = function(props)
+    {
+        return dom_element({tag: 'ul', class: `menu ${props.classes ? props.classes : ''} ${props.dense ? 'menu-dense' : ''} ${props.ellipsis ? 'menu-ellipsis' : ''} ${ props.selectable ? `js-select-menu` : '' }`}, null, map(props.items, (i, item) =>
+            {
+                return dom_element({tag: 'li', class: `${item.state} ${props.selected && (props.selected === item.value || props.selected === item.text) ? 'selected' : null}`}, null,
+                [
+                    item.left ? dom_element({tag: 'span', class: 'item-left', innerHTML: item.left}) : null,
+                    dom_element({tag: 'span', class: 'item-body', innerText: item.body || item.text || item }),
+                    item.right ? dom_element({tag: 'span', class: 'item-right', innerHTML: item.right}) : null,
+                ])
+            })
+        );
     }
 
     // Load into FrontBx DOM core
@@ -14819,7 +14722,7 @@ Container.singleton('_', _);
 
         var clicked  = this;
         var targetEl = $('#' + clicked.dataset.collapseTarget);
-        var duration = parseInt(clicked.dataset.collapseSpeed) || 350;
+        var duration = parseInt(clicked.dataset.collapseSpeed) || 225;
         var easing   = clicked.dataset.collapseEasing || 'easeOutExpo';
         var opacity  = bool(clicked.dataset.withOpacity);
         var closing  = has_class(clicked, 'active');
@@ -15028,8 +14931,6 @@ Container.singleton('_', _);
      */
     Dropdown.prototype._clickHandler = function(e, button)
     {
-        e = e || window.event;
-
         var active = find('.js-drop-trigger.drop-active');
 
         if (active) this._hideDrop(active);
@@ -15087,8 +14988,6 @@ Container.singleton('_', _);
      */
     Dropdown.prototype._windowClick = function(e)
     {
-        e = e || window.event;
-
         if (closest(e.target, '.js-drop-trigger'))
         {
             return;
@@ -15404,7 +15303,7 @@ Container.singleton('_', _);
      * 
      * @var {Function}
      */
-    const [$, add_event_listener, remove_event_listener, has_class, in_dom, parse_url, extend]  = FrontBx.import(['$','add_event_listener','remove_event_listener','has_class','in_dom','parse_url','extend']).from('_');
+    const [find, add_event_listener, remove_event_listener, has_class, in_dom, parse_url, extend]  = FrontBx.import(['find','add_event_listener','remove_event_listener','has_class','in_dom','parse_url','extend']).from('_');
 
     /**
      * Has the page loaded?
@@ -15459,17 +15358,17 @@ Container.singleton('_', _);
      */
     WayPoints.prototype._eventHandler = function(e)
     {
-        e = e || window.event;
-        
-        e.preventDefault();
-
         let trigger   = this;
-        let id        = trigger.dataset.waypointTarget;
+        let id        = trigger.dataset.waypointTarget || trigger.href.split('#').pop();
         let speed     = parseInt(trigger.dataset.waypointSpeed) || 500;
         let easing    = trigger.dataset.waypointEasing || 'easeInOutCubic';
         let updateUrl = trigger.dataset.updateUrl === 'false' ? false : true;
 
-        FrontBx.SmoothScroll('#' + id, { easing: easing, speed: speed, updateUrl: updateUrl });
+        if (id && id[0] !== '#') id = `#${id}`;
+
+        FrontBx.SmoothScroll(id, { easing: easing, speed: speed, updateUrl: updateUrl });
+
+        return false;
     }
 
     /**
@@ -15481,7 +15380,7 @@ Container.singleton('_', _);
     {
         var url = parse_url(window.location.href);
 
-        let targetEl = url.hash && url.hash !== '' ? $(url.hash) : false;
+        let targetEl = url.hash && url.hash !== '' ? find(url.hash) : false;
 
         if (!in_dom(targetEl) || !has_class(targetEl, '.js-waypoint')) return;
        

@@ -35,6 +35,7 @@ _.prototype.next = function(el, type)
     {
         return el.nextSibling;
     }
+    
     var next = el.nextSibling;
 
     while (next !== document.body && typeof next !== "undefined" && next !== null)

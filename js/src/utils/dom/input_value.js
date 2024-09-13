@@ -7,15 +7,19 @@
  */
 _.prototype.input_value = function(input)
 {
-    if (input.type == "number" || this.is_numeric(input.value))
+    if (input.type == 'radio')
+    {
+        return this.attr(input, 'checked') ? this.attr(input, 'name') : undefined;
+    }
+    if (input.type == 'checkbox')
+    {
+        ret = this.attr(input, 'checked');
+    }
+    if (input.type == 'number')
     {
         return input.value.includes('.') ? parseInt(input.value) : parseFloat(input.value);
     }
-    if (input.type == "select")
-    {
-        return input.options[input.selectedIndex].value;
-    }
-    if (input.type == "file")
+    if (input.type == 'file')
     {
         if (input.multiple == true)
         {
@@ -25,5 +29,7 @@ _.prototype.input_value = function(input)
         return input.files[0];
     }
 
-    return input.value;
+    let ret = input.type == 'select' ? input.options[input.selectedIndex].value : input.value;
+
+    return this.is_numeric(ret) ? (input.value.includes('.') ? parseInt(input.value) : parseFloat(input.value)) : ret.trim();
 }

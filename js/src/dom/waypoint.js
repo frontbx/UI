@@ -12,7 +12,7 @@
      * 
      * @var {Function}
      */
-    const [$, add_event_listener, remove_event_listener, has_class, in_dom, parse_url, extend]  = FrontBx.import(['$','add_event_listener','remove_event_listener','has_class','in_dom','parse_url','extend']).from('_');
+    const [find, add_event_listener, remove_event_listener, has_class, in_dom, parse_url, extend]  = FrontBx.import(['find','add_event_listener','remove_event_listener','has_class','in_dom','parse_url','extend']).from('_');
 
     /**
      * Has the page loaded?
@@ -67,17 +67,17 @@
      */
     WayPoints.prototype._eventHandler = function(e)
     {
-        e = e || window.event;
-        
-        e.preventDefault();
-
         let trigger   = this;
-        let id        = trigger.dataset.waypointTarget;
+        let id        = trigger.dataset.waypointTarget || trigger.href.split('#').pop();
         let speed     = parseInt(trigger.dataset.waypointSpeed) || 500;
         let easing    = trigger.dataset.waypointEasing || 'easeInOutCubic';
         let updateUrl = trigger.dataset.updateUrl === 'false' ? false : true;
 
-        FrontBx.SmoothScroll('#' + id, { easing: easing, speed: speed, updateUrl: updateUrl });
+        if (id && id[0] !== '#') id = `#${id}`;
+
+        FrontBx.SmoothScroll(id, { easing: easing, speed: speed, updateUrl: updateUrl });
+
+        return false;
     }
 
     /**
@@ -89,7 +89,7 @@
     {
         var url = parse_url(window.location.href);
 
-        let targetEl = url.hash && url.hash !== '' ? $(url.hash) : false;
+        let targetEl = url.hash && url.hash !== '' ? find(url.hash) : false;
 
         if (!in_dom(targetEl) || !has_class(targetEl, '.js-waypoint')) return;
        

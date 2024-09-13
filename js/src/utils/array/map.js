@@ -38,7 +38,7 @@ _.prototype.map = function(obj, callback)
         {
             key   = isArray ? i : keys[i];
             val   = isArray ? obj[i] : obj[key];
-            clbkVal = callback.apply(thisArg, this.array_merge([key, val], args));
+            clbkVal = callback.apply(thisArg, [...[key, val], ...args]);
 
             if (clbkVal === false)
             {

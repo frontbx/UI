@@ -65,7 +65,7 @@
 
         var clicked  = this;
         var targetEl = $('#' + clicked.dataset.collapseTarget);
-        var duration = parseInt(clicked.dataset.collapseSpeed) || 350;
+        var duration = parseInt(clicked.dataset.collapseSpeed) || 225;
         var easing   = clicked.dataset.collapseEasing || 'easeOutExpo';
         var opacity  = bool(clicked.dataset.withOpacity);
         var closing  = has_class(clicked, 'active');

@@ -41,10 +41,14 @@
         column-gap: var(--fbx-menu-item-pad-x);
     }
     
+    > a, > li
+    {
+        padding: var(--fbx-menu-item-pad-y) var(--fbx-menu-item-pad-x);
+    }
+
     > *
     {
         margin: 0;
-        padding: var(--fbx-menu-item-pad-y) var(--fbx-menu-item-pad-x);
         background-color: var(--fbx-menu-item-bg);
         column-gap: var(--fbx-menu-item-pad-x);
         border-radius: var(--fbx-menu-radius);
@@ -149,5 +153,11 @@
         --fbx-menu-item-pad-y: #{_minusPercent($menu-item-pad-y, 50)};
         --fbx-menu-item-pad-x: #{_minusPercent($menu-item-pad-x, 20)};
         --fbx-menu-divider-space: #{_minusPercent($menu-divider-space, 40)};
+    }
+
+    // Nested menus
+    .menu > a, .menu > li
+    {
+        margin-left: calc(var(--fbx-menu-item-pad-x) / 2);
     }
 }

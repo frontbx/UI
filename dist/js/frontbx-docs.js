@@ -183,6 +183,38 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 }());
 
 /**
+ * Converts article link menu to waypoints
+ *
+ */
+(function()
+{
+    const [Component] = FrontBx.get('Component');
+    const [find_all, add_class, remove_class, is_array_last, extend]  = FrontBx.import(['find_all','add_class','remove_class','is_array_last','extend']).from('_');
+
+    const ArticleWaypoints = function()
+    {        
+        this.super('.docs-body > h1 + p + hr + ul li > a, .docs-body > h1 + p + p + hr + ul li > a, .docs-body > h1 + p + p + p + hr + ul li > a');
+    }
+
+    ArticleWaypoints.prototype.bind = function(link)
+    {
+    	add_class(link, 'js-waypoint-trigger');
+
+    	if (is_array_last(link, this._DOMElements)) FrontBx.dom().refresh('WayPoints');
+    }
+
+    ArticleWaypoints.prototype.unbind = function(block)
+    {
+        remove_class(link, 'js-waypoint-trigger');
+    }
+
+    FrontBx.dom().register('ArticleWaypoints', extend(Component, ArticleWaypoints), true);
+
+}());
+
+
+
+/**
  * DEMOS
  *
  */

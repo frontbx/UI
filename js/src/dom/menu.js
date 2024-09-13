@@ -12,7 +12,7 @@
      * 
      * @var {Function}
      */
-    const [find, add_class, on, closest, has_class, remove_class, off, attr, css, dom_element, extend] = FrontBx.import(['find','add_class','on','closest','has_class','remove_class','off','attr','css','dom_element','extend']).from('_');
+    const [find, add_class, on, closest, has_class, remove_class, off, attr, css, dom_element, map, extend] = FrontBx.import(['find','add_class','on','closest','has_class','remove_class','off','attr','css','dom_element','map','extend']).from('_');
 
     /**
      * Dropdown Buttons
@@ -95,6 +95,24 @@
                 attr(check.parentNode, 'style', false);
             }
         }
+    }
+
+    /**
+     * @inheritdoc
+     * 
+     */
+    Menu.prototype.template = function(props)
+    {
+        return dom_element({tag: 'ul', class: `menu ${props.classes ? props.classes : ''} ${props.dense ? 'menu-dense' : ''} ${props.ellipsis ? 'menu-ellipsis' : ''} ${ props.selectable ? `js-select-menu` : '' }`}, null, map(props.items, (i, item) =>
+            {
+                return dom_element({tag: 'li', class: `${item.state} ${props.selected && (props.selected === item.value || props.selected === item.text) ? 'selected' : null}`}, null,
+                [
+                    item.left ? dom_element({tag: 'span', class: 'item-left', innerHTML: item.left}) : null,
+                    dom_element({tag: 'span', class: 'item-body', innerText: item.body || item.text || item }),
+                    item.right ? dom_element({tag: 'span', class: 'item-right', innerHTML: item.right}) : null,
+                ])
+            })
+        );
     }
 
     // Load into FrontBx DOM core

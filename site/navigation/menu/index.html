@@ -195,7 +195,6 @@
             <li class="menu-item active"><a href="../../navigation/menu/index.html">Menu</a></li>
             <li class="menu-item "><a href="../../navigation/pagination/index.html">Pagination</a></li>
             <li class="menu-item "><a href="../../navigation/tabs/index.html">Tabs</a></li>
-            <li class="menu-item "><a href="../../navigation/breadcrumbs/index.html">Breadcrumbs</a></li>
             <li class="menu-item "><a href="../../navigation/waypoints/index.html">Waypoints</a></li>
         </ul>
     </li>
@@ -266,7 +265,427 @@
     </li>
 </ul></div>
         <div class="container-fluid main-container relative js-main-container">
-            <article class="docs-body"></article>
+            <article class="docs-body"><h1 id="menu">Menu</h1>
+<p>Menus display a list of choices on a temporary or permanent surfaces.</p>
+<hr />
+<ul>
+<li><a href="#markup">Markup</a></li>
+<li><a href="#menu-contents">Menu contents</a></li>
+<li><a href="#dense-menu">Dense Menu</a></li>
+<li><a href="#menu-overflow">Menu overflow</a></li>
+<li><a href="#states">States</a></li>
+<li><a href="#css-customization">CSS Customization</a></li>
+<li><a href="#javascript-instantiation">JavaScript Instantiation</a></li>
+</ul>
+<hr />
+<h3 id="markup">Markup</h3>
+<p>Menu's are used throughout FrontBx and can be optionally integrating into many components such as <a href="../../surfaces/cards/index.html">Cards</a>, <a href="../../forms/dropdown/index.html">Dropdowns</a>, <a href="../../surfaces/drawer/index.html">Drawer</a>, <a href="../../surfaces/backdrop/index.html">Backdrop</a> and more.</p>
+<p>Creating a basic menu is as simple as creating a list under the <code>.menu</code> class:</p>
+<div class="code-content-example">
+    <div class="flex-row align-cols-center flex-cols-6 flex-cols-lg-4">
+        <ul class="menu"> 
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+            <li>Item 5</li>
+        </ul>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;ul class="menu"&gt; 
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+    &lt;li&gt;Item 4&lt;/li&gt;
+    &lt;li&gt;Item 5&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<hr />
+<h3 id="menu-contents">Menu contents</h3>
+<p>Menu items come with handy alignment content helpers <code>.item-left</code>, <code>.item-right</code> and <code>.item-body</code> helper to help delineate content:</p>
+<p>Additionally, the <code>.menu-divider</code> and <code>.menu-header</code> can be used to layout content</p>
+<div class="code-content-example">
+    <div class="flex-row align-cols-center flex-cols-6 flex-cols-lg-4">
+        <ul class="menu">
+            <li class="menu-header">Menu</li>
+            <li>
+                <span class="item-left"><span class="fa fa-inbox color-gray-500"></span></span>
+                <span class="item-body">Inbox</span>
+                <span class="item-right"><span class="label">4</span></span>
+            </li>
+            <li>
+                <span class="item-left"><span class="fa fa-flag color-gray-500"></span></span>
+                <span class="item-body">Flagged</span>
+                <span class="item-right"><span class="label">23</span></span>
+            </li>
+            <li>
+                <span class="item-left"><span class="fa fa-note-sticky color-gray-500"></span></span>
+                <span class="item-body">Drafts</span>
+                <span class="item-right"><span class="label">3</span></span>
+            </li>
+            <li>
+                <span class="item-left"><span class="fa fa-paper-plane color-gray-500"></span></span>
+                <span class="item-body">Sent</span>
+                <span class="item-right"><span class="status status-xs"></span></span>
+            </li>
+            <li class="menu-divider"></li>
+            <li>
+                <span class="item-left"><span class="fa fa-circle-minus color-gray-500"></span></span>
+                <span class="item-body">Junk</span>
+                <span class="item-right"><span class="status status-xs status-warning"></span></span>
+            </li>
+            <li>
+                <span class="item-left"><span class="fa fa-trash color-gray-500"></span></span>
+                <span class="item-body">Trash</span>
+                <span class="item-right"><span class="status status-xs status-danger"></span></span>
+            </li>
+        </ul>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;ul class="menu"&gt;
+    &lt;li class="menu-header"&gt;Menu&lt;/li&gt;
+    &lt;li&gt;
+        &lt;span class="item-left"&gt;&lt;span class="fa fa-inbox color-gray-500"&gt;&lt;/span&gt;&lt;/span&gt;
+        &lt;span class="item-body"&gt;Inbox&lt;/span&gt;
+        &lt;span class="item-right"&gt;&lt;span class="label"&gt;4&lt;/span&gt;&lt;/span&gt;
+    &lt;/li&gt;
+    ...
+    &lt;li class="menu-divider"&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<hr />
+<h3 id="dense-menu">Dense menu</h3>
+<p>For larger menus with multiple items, you can use the <code>.menu-dense</code> modifier on <code>.menu</code> to reduce the padding and text size:</p>
+<div class="code-content-example">
+    <div class="flex-row align-cols-center flex-cols-6 flex-cols-lg-4">
+        <ul class="menu menu-dense">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+            <li>Item 5</li>
+            <li>Item 6</li>
+        </ul>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;ul class="menu menu-dense"&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+    &lt;li&gt;Item 4&lt;/li&gt;
+    &lt;li&gt;Item 5&lt;/li&gt;
+    &lt;li&gt;Item 6&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<hr />
+<h3 id="menu-overflow">Menu overflow</h3>
+<p>Adding the  <code>.menu-ellipsis</code> modifier on <code>.menu</code> enables text overflow ellipsis. Ensure your text is nested inside <code>.item-body</code> for this to work:</p>
+<div class="code-content-example">
+    <div class="flex-row align-cols-center flex-cols-6 flex-cols-lg-4">
+        <ul class="menu menu-ellipsis">
+            <li>
+                <div class="item-body">
+                    Officia cillum nisi ea velit
+                </div>
+            </li>
+            <li>
+                <div class="item-body">
+                    Lorem ipsum dolor anim commodo elit in consectetur tempor amet dolor quis dolore laborum proident irure in.
+                </div>
+            </li>
+            <li>
+                <div class="item-body">
+                    Minim velit laboris in aliquip.
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;ul class="menu menu-ellipsis"&gt;
+    &lt;li&gt;
+        &lt;div class="item-body"&gt;
+            Officia cillum nisi ea velit
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="item-body"&gt;
+            Lorem ipsum dolor anim commodo elit in consectetur tempor amet dolor quis dolore laborum proident irure in.
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="item-body"&gt;
+            Minim velit laboris in aliquip.
+        &lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<hr />
+<h3 id="states">States</h3>
+<p>Menu items come with a handful of convenient states to help with different use-cases. Add the classes <code>.active</code> <code>.selected</code> or <code>.disabled</code> to a menu item to help provide context:</p>
+<div class="code-content-example">
+    <div class="flex-row align-cols-center flex-cols-6 flex-cols-lg-4">
+        <ul class="menu">
+            <li>Default</li>
+            <li class="hover">hover</li>
+            <li>Default</li>
+            <li class="active">.active</li>
+            <li>Default</li>
+            <li class="selected">.selected</li>
+            <li>Default</li>
+            <li class="disabled">.disabled</li>
+        </ul>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;ul class="menu"&gt;
+    &lt;li&gt;Default&lt;/li&gt;
+    &lt;li class="hover"&gt;hover&lt;/li&gt;
+    &lt;li&gt;Default&lt;/li&gt;
+    &lt;li class="active"&gt;.active&lt;/li&gt;
+    &lt;li&gt;Default&lt;/li&gt;
+    &lt;li class="selected"&gt;.selected&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<hr />
+<h3 id="css-customization">CSS Customization</h3>
+<p>Menu uses local CSS variables on <code>.menu</code> along with Sass variables for enhanced component customization and styling. The base values are used by the UI to create all the styling. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>
+<div class="code-content-example">
+    <div class="flex-row align-cols-center flex-cols-6 flex-cols-lg-4">
+        <style scoped>
+            .custom-menu
+            {
+                --fbx-menu-bg: var(--fbx-black);
+                --fbx-menu-color: var(--fbx-white);
+                --fbx-menu-item-color-hover: var(--fbx-white);
+                --fbx-menu-item-color-active: var(--fbx-theme-primary);
+                --fbx-menu-item-color-selected: var(--fbx-theme-primary);
+                --fbx-menu-item-bg-hover: var(--fbx-gray-900);
+                --fbx-menu-item-bg-active: var(--fbx-gray-900);
+                --fbx-menu-item-bg-selected: var(--fbx-gray-900);
+                --fbx-menu-divider-color: var(--fbx-gray-600);
+            }
+        </style>
+        <ul class="menu custom-menu"> 
+            <li>
+                <span class="item-left"><span class="fa fa-inbox color-gray-800"></span></span>
+                <span class="item-body">Inbox</span>
+                <span class="item-right"><span class="label bg-gray-800">4</span></span>
+            </li>
+            <li>
+                <span class="item-left"><span class="fa fa-flag color-gray-800"></span></span>
+                <span class="item-body">Flagged</span>
+                <span class="item-right"><span class="label bg-gray-800">23</span></span>
+            </li>
+            <li>
+                <span class="item-left"><span class="fa fa-note-sticky color-gray-800"></span></span>
+                <span class="item-body">Drafts</span>
+                <span class="item-right"><span class="label bg-gray-800">3</span></span>
+            </li>
+            <li>
+                <span class="item-left"><span class="fa fa-paper-plane color-gray-800"></span></span>
+                <span class="item-body">Sent</span>
+                <span class="item-right"><span class="status status-xs bg-gray-800"></span></span>
+            </li>
+            <li>
+                <span class="item-left"><span class="fa fa-circle-minus color-gray-800"></span></span>
+                <span class="item-body">Junk</span>
+                <span class="item-right"><span class="status status-xs status-warning"></span></span>
+            </li>
+            <li>
+                <span class="item-left"><span class="fa fa-trash color-gray-800"></span></span>
+                <span class="item-body">Trash</span>
+                <span class="item-right"><span class="status status-xs status-danger"></span></span>
+            </li>
+        </ul>
+    </div>
+</div>
+<pre><code class="css language-css">.custom-menu
+{
+    --fbx-menu-bg: var(--fbx-black);
+    --fbx-menu-color: var(--fbx-white);
+    --fbx-menu-item-color-hover: var(--fbx-white);
+    --fbx-menu-item-color-active: var(--fbx-theme-primary);
+    --fbx-menu-item-color-selected: var(--fbx-theme-primary);
+    --fbx-menu-item-bg-hover: var(--fbx-gray-900);
+    --fbx-menu-item-bg-active: var(--fbx-gray-900);
+    --fbx-menu-item-bg-selected: var(--fbx-gray-900);
+    --fbx-menu-divider-color: var(--fbx-gray-600);
+}</code></pre>
+<p>Customization via Sass can be made in the <code>src/scss/_config.scss</code> file in FrontBx's source.</p>
+<pre><code class="file-path language-file-path">`src/scss/_config.scss`</code></pre>
+<pre><code class="sass language-sass">$menu-bg:                       var(--fbx-white) !default;
+$menu-color:                    var(--fbx-gray-700) !default;
+$menu-font-size:                1.3rem !default;
+$menu-font-weight:              $text-normal !default;
+$menu-radius:                   var(--fbx-border-radius) !default;
+$menu-container-padding:        3px !default;
+$menu-item-bg:                  transparent !default;
+$menu-item-color-hover:         var(--fbx-gray-700) !default;
+$menu-item-color-active:        var(--fbx-theme-primary) !default;
+$menu-item-color-checked:       var(--fbx-white) !default;
+$menu-item-color-selected:      var(--fbx-white) !default;
+$menu-item-bg-hover:            var(--fbx-theme-primary-100) !default;
+$menu-item-bg-active:           var(--fbx-theme-primary-200) !default;
+$menu-item-bg-selected:         var(--fbx-theme-primary) !default;
+$menu-item-bg-checked:          var(--fbx-theme-primary) !default;
+$menu-item-pad-y:               10px !default;
+$menu-item-pad-x:               12px !default;
+$menu-item-v-space:             2px !default;
+$menu-divider-color:            var(--fbx-gray-200) !default;
+$menu-divider-space:            5px;</code></pre>
+<pre><code class="css language-css">.menu {
+    --fbx-menu-bg: var(--fbx-white);
+    --fbx-menu-color: var(--fbx-gray-700);
+    --fbx-menu-container-padding: 3px;
+    --fbx-menu-radius: var(--fbx-border-radius);
+    --fbx-menu-font-size: 1.3rem;
+    --fbx-menu-font-weight: 400;
+    --fbx-menu-item-color-hover: var(--fbx-gray-700);
+    --fbx-menu-item-color-active: var(--fbx-theme-primary);
+    --fbx-menu-item-color-checked: var(--fbx-white);
+    --fbx-menu-item-color-selected: var(--fbx-white);
+    --fbx-menu-item-bg: transparent;
+    --fbx-menu-item-bg-hover: var(--fbx-theme-primary-100);
+    --fbx-menu-item-bg-checked: var(--fbx-theme-primary);
+    --fbx-menu-item-bg-active: var(--fbx-theme-primary-200);
+    --fbx-menu-item-bg-selected: var(--fbx-theme-primary);
+    --fbx-menu-item-pad-y: 10px;
+    --fbx-menu-item-pad-x: 12px;
+    --fbx-menu-item-v-space: 2px;
+    --fbx-menu-divider-color: var(--fbx-gray-200);
+    --fbx-menu-divider-space: 5px;
+}</code></pre>
+<hr />
+<h3 id="javascript-instantiation">JavaScript Instantiation</h3>
+<p>Menu can be instantiated via JavaScript to generate dynamic content on the fly. To create a Menu dynamically, use FrontBx's <code>Component.Create</code> method either via the <code>FrontBx.Dom</code> or the Menu Component directly:</p>
+<div class="code-content-example">
+    <div class="flex-row align-cols-center flex-cols-6 flex-cols-lg-4 js-insert-container"></div>
+    <div class="flex-row-fluid align-cols-center pole-sm pole-n">
+        <button class="btn js-insert-trigger">Insert menu</button>
+    </div>
+</div>
+<pre><code class="JavaScript language-JavaScript">let options =
+{
+    dense: false,
+    selectable: true,
+    ellipsis: false,
+    items:
+    [
+        'Option One',
+        {
+            left: '&lt;span class="fa fa-sun"&gt;&lt;/span&gt;',
+            body: 'Option Two'
+        },
+        {
+            left: '&lt;span class="fa fa-sun"&gt;&lt;/span&gt;',
+            body: 'Option 3',
+            right: '&lt;span class="fa fa-user"&gt;&lt;/span&gt;',
+        }
+    ]
+};
+
+let container = document.querySelector('.my-container');
+
+// Via Hibble dom
+FrontBx.Dom().create('Menu', options, container);
+
+// Or via Component directly
+FrontBx.Dom().component('Menu').create(options, container);</code></pre>
+<script type="text/javascript">
+let options =
+{
+    dense: false,
+    selectable: true,
+    ellipsis: false,
+    items:
+    [
+        'Item One',
+        {
+            left: '<span class="fa fa-inbox"></span>',
+            body: 'Item Two',
+            right: '<span class="label">4</span>',
+        },
+        {
+            left: '<span class="fa fa-flag"></span>',
+            body: 'Item Two',
+            right: '<span class="label">3</span>',
+        }
+    ]
+};
+
+window.addEventListener('load', () =>
+    FrontBx.DocsDemo('.js-insert-trigger', (e, btn) =>
+    FrontBx.Dom().create('Menu', options, document.querySelector('.js-insert-container')))
+
+);
+</script>
+<p>Below are the available options:</p>
+<table>
+<thead>
+<tr>
+<th id="option">Option</th>
+<th id="default">Default</th>
+<th id="example">Example</th>
+<th id="behavior">Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>classes</code></td>
+<td><code>''</code></td>
+<td><code>my-button</code></td>
+<td>Additional class name(s) on <code>&lt;ul&gt;</code> element.</td>
+</tr>
+<tr>
+<td><code>dense</code></td>
+<td><code>false</code></td>
+<td><code>true</code></td>
+<td>Makes dense menu</td>
+</tr>
+<tr>
+<td><code>ellipsis</code></td>
+<td><code>false</code></td>
+<td><code>true</code></td>
+<td>Enables menu item text overflow ellipsis</td>
+</tr>
+<tr>
+<td><code>selectable</code></td>
+<td><code>false</code></td>
+<td><code>true</code></td>
+<td>Enables selectable items.</td>
+</tr>
+<tr>
+<td><code>selected</code></td>
+<td><code>null</code></td>
+<td><code>option 2</code></td>
+<td>Text or value of default selected item when <code>selectable</code> true</td>
+</tr>
+<tr>
+<td><code>items</code></td>
+<td><code>[]</code></td>
+<td><code>['option 1', 'option 2']</code></td>
+<td>Array of menu items as text or objects with sub item properties</td>
+</tr>
+<tr>
+<td><code>items.item.left</code></td>
+<td><code>null</code></td>
+<td><code>{left:&lt;span class="fa fa-sun"&gt;&lt;/span&gt;'</code></td>
+<td>Optional HTML string of optional menu item left</td>
+</tr>
+<tr>
+<td><code>items.item.right</code></td>
+<td><code>null</code></td>
+<td><code>{right: '&lt;span class="fa fa-user"&gt;&lt;/span&gt;'</code></td>
+<td>Optional HTML string of optional menu item right</td>
+</tr>
+<tr>
+<td><code>items.item.body</code></td>
+<td><code>null</code></td>
+<td><code>{right: 'Option 1'</code></td>
+<td>Optional HTML string or text of optional menu item body</td>
+</tr>
+<tr>
+<td><code>items.item.state</code></td>
+<td><code>null</code></td>
+<td><code>{state: 'selected'</code></td>
+<td>Optional menu item state class</td>
+</tr>
+</tbody>
+</table></article>
         </div>
         <footer class="site-footer">
             <div class="container-fluid clearfix">

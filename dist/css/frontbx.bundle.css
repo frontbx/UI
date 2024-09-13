@@ -4366,9 +4366,11 @@ blockquote[class*=bq-] pre {
   -moz-column-gap: var(--fbx-menu-item-pad-x);
        column-gap: var(--fbx-menu-item-pad-x);
 }
+.menu > a, .menu > li {
+  padding: var(--fbx-menu-item-pad-y) var(--fbx-menu-item-pad-x);
+}
 .menu > * {
   margin: 0;
-  padding: var(--fbx-menu-item-pad-y) var(--fbx-menu-item-pad-x);
   background-color: var(--fbx-menu-item-bg);
   -moz-column-gap: var(--fbx-menu-item-pad-x);
        column-gap: var(--fbx-menu-item-pad-x);
@@ -4450,6 +4452,9 @@ blockquote[class*=bq-] pre {
   --fbx-menu-item-pad-y: 5px;
   --fbx-menu-item-pad-x: 9.6px;
   --fbx-menu-divider-space: 3px;
+}
+.menu .menu > a, .menu .menu > li {
+  margin-left: calc(var(--fbx-menu-item-pad-x) / 2);
 }
 
 /* navigation/hamburger */
@@ -6101,6 +6106,7 @@ button:not(.btn) + .drop-menu:not(.drop-n):not(.drop-ne):not(.drop-nw) {
   align-items: center;
   align-content: center;
   justify-content: center;
+  flex-wrap: nowrap;
   -moz-column-gap: 6px;
        column-gap: 6px;
 }

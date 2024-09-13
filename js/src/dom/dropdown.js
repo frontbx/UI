@@ -95,8 +95,6 @@
      */
     Dropdown.prototype._clickHandler = function(e, button)
     {
-        e = e || window.event;
-
         var active = find('.js-drop-trigger.drop-active');
 
         if (active) this._hideDrop(active);
@@ -154,8 +152,6 @@
      */
     Dropdown.prototype._windowClick = function(e)
     {
-        e = e || window.event;
-
         if (closest(e.target, '.js-drop-trigger'))
         {
             return;

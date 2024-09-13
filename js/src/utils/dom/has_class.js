@@ -7,7 +7,7 @@
  * @return {bool}
  */
 _.prototype.has_class = function(DOMElement, className)
-{
+{    
     let ret = false;
 
     if (this.is_array(className))
@@ -39,6 +39,8 @@ _.prototype.has_class = function(DOMElement, className)
     className = className.trim();
 
     if (className[0] === '.') className = className.slice(1);
+
+    if (!DOMElement || !DOMElement.classList) return false;
 
     return DOMElement.classList.contains(className);
 }
