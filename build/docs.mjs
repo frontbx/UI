@@ -107,6 +107,9 @@ const DocsBuilder = function()
         // Create HTML and write
         FS.writeFileSync(dest, this._genDocsPage(src, dest), {encoding: 'utf8', flag: 'a+'});
     });
+
+    // Write index.html
+    FS.writeFileSync(`${DOCS_DEST_DIR}/index.html`, this._genDocsPage(`${DOCS_SRC_DIR}/templates/index.html`, `${DOCS_DEST_DIR}/index.html`), {encoding: 'utf8', flag: 'a+'});
 }
 
 /**
