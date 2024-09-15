@@ -112,24 +112,11 @@ The fallback image is set via the JavaScript LazyLoad module from the variable `
 When inserting elements into the DOM after the page has loaded, for example using dynamic content via `Ajax`, you can refresh the `LazyLoad` module via the FrontBx's `dom`.
 
 <div class="code-content-example">
-    <div class="flex-row-fluid align-cols-center col-gaps-xs js-image-insert">
+    <div class="flex-row-fluid align-cols-center col-gaps-xs js-refresh-lazyload-container">
     </div>
     <div class="flex-row-fluid align-cols-center pole-sm pole-n">
-        <button class="btn js-trigger-image">Insert Image</button>
+        <button class="btn js-refresh-lazyload-btn">Insert Image</button>
     </div>
-    <script type="text/javascript">
-        window.addEventListener('FrontBx:ready', function()
-        {
-            const wrapper = document.querySelector('.js-image-insert');
-
-            document.querySelector('.js-trigger-image').addEventListener('click', () =>
-            {
-                wrapper.innerHTML += '<div class="avatar avatar-xl"><img alt="Trump" data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" /></div>';
-
-                FrontBx.dom().refresh('LazyLoad', wrapper);
-            });
-        });
-    </script>
 </div>
 
 ```javascript

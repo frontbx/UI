@@ -295,15 +295,6 @@
 {
     text  : `Hello! I'm a notification.`,
 });</code></pre>
-<script type="text/javascript">
-window.addEventListener('load', () =>
-    FrontBx.DocsDemo('.js-notif-trigger-1', () =>
-        FrontBx.Notification({
-            text  : `Hello! I'm a notification.`,
-        })
-    )
-);
-</script>
 <hr />
 <h3 id="position">Position</h3>
 <p>Use the <code>position</code> option to set a notification in a desired position on the screen:</p>
@@ -326,17 +317,6 @@ window.addEventListener('load', () =>
 {
     text  : `Hello! I'm a notification.`,
 });</code></pre>
-<script type="text/javascript">
-window.addEventListener('load', () =>
-    FrontBx.DocsDemo('.js-notif-triggers-pos', (e, trigger) =>
-    {
-        FrontBx.Notification({
-            text: 'Hello! I\'m a notification.',
-            position: trigger.innerText.trim()
-        })
-    })
-);
-</script>
 <hr />
 <h3 id="content">Content</h3>
 <p>Notifications have a few options for different use-cases. Use the provided options to add text and actions to a Notification:</p>
@@ -387,33 +367,6 @@ let notif4 = FrontBx.Notification(
     variant : `success`, 
     text    : `Hello! I'm a notification.`,
 });</code></pre>
-<script type="text/javascript">
-window.addEventListener('load', () =>
-{
-    FrontBx.DocsDemo('.js-notif-trigger-2', () => FrontBx.Notification(
-    {
-        btn  : `Dismiss`,
-        text : `Hello! I'm a notification.`,
-    }));
-    FrontBx.DocsDemo('.js-notif-trigger-3', () => FrontBx.Notification(
-    {
-        icon : `bell`,
-        text : `Hello! I'm a notification.`,
-    }));
-    FrontBx.DocsDemo('.js-notif-trigger-4', () => FrontBx.Notification(
-    {
-        btn        : `Danger`,
-        btnVariant : `danger`,
-        text       : `Hello! I'm a notification.`,
-    }));
-    FrontBx.DocsDemo('.js-notif-trigger-5', () => FrontBx.Notification(
-    {
-        icon    : `check`,
-        variant : `success`, 
-        text    : `Hello! I'm a notification.`,
-    }));
-});
-</script>
 <hr />
 <h3 id="timeout">Timeout</h3>
 <p>Notifications auto-dismiss after 6 seconds by default. You can set a different timeout in milliseconds on the <code>timeout</code> option, or set it to <code>false</code> if you don't want it to auto-dismiss.</p>
@@ -434,30 +387,6 @@ let notif2 =FrontBx.Notification(
     text  : `Hello! I'm a notification.`,
     timeout: 10000,
 });</code></pre>
-<script type="text/javascript">
-window.addEventListener('load', () =>
-{
-    FrontBx.DocsDemo('.js-notif-trigger-6', () => FrontBx.Notification(
-    {
-        text: 'Hello! You need to click me to dismiss.',
-        timeout: false,
-    }));
-
-    FrontBx.DocsDemo('.js-notif-trigger-7', function()
-    {
-        let start = 10;
-        let i     = 1;
-        let timer = setInterval(() => this._.find('.js-time', notif.domElement()).innerText = (start - i++), 1000);
-
-        let notif = FrontBx.Notification(
-        {
-            text: 'Hello! I\'ll disappear in <span class="js-time">10</span> seconds.',
-            timeout: 10000,
-            callbackDismiss: () => clearInterval(timer)
-        });
-    });
-});
-</script>
 <hr />
 <h3 id="methods">Methods</h3>
 <p>Once a Notification instance is created, there are a few methods to interact with it:</p>

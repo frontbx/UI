@@ -114,7 +114,7 @@ validator.showResult('success');
 Below is an example form using the validator. In a real request, you would use FrontBx's `Ajax` component, however for this example we just use a `timeout`. Check the console log for more details.
 
 <div class="code-content-example">
-    <form class="flex-row row-gaps-xs align-cols-center js-form">
+    <form class="flex-row row-gaps-xs align-cols-center">
         <div class="col-12 col-md-8">
 			<div class="row pole-xs pole-s">
 				<div class="form-field row">
@@ -173,7 +173,7 @@ Below is an example form using the validator. In a real request, you would use F
 		        </div>
 		    </div>
 		    <div class="row pole-xs pole-s">
-				<button type="submit" class="btn with-loading">
+				<button type="submit" class="btn with-loading js-form-validatior-btn">
 					<span class="loader loader-1"></span>
 					Submit
 				</button>
@@ -215,65 +215,6 @@ Below is an example form using the validator. In a real request, you would use F
 		</div>
 	</form>
 </div>
-
-<script type="text/javascript">
-window.addEventListener('FrontBx:ready', function()
-{
-	/* Helpers */
-	const [find, has_class, add_class, remove_class, on] = FrontBx.import(['find', 'has_class', 'add_class', 'remove_class', 'on']).from('_');
-
-	// Instantiate validator and cache vars
-	const DOMElementform = find('.js-form');
-	const validator = FrontBx.FormValidator(DOMElementform);
-	const submitBtn = find('button[type=submit]', DOMElementform);
-	let fakeAjax;
-
-	on(submitBtn, 'click', function(e)
-	{
-		console.log('submitting');
-
-		// Stop the form from submitting via POST
-	    e = e || window.event;
-
-	    e.preventDefault();
-
-	    // Don't submit if the form if it is being submitted
-	    if (has_class(submitBtn, 'active')) return;
-
-	    // Cache result class from radio
-	    var result = validator.form().result;
-
-	    // Clear all invalid input classes and form results
-	    validator.clearInvalid();
-
-	    // Clear fake ajax timeout
-	    clearTimeout(fakeAjax);
-
-	    console.log(result);
-
-	    // Validation
-	    if (validator.isValid())
-	    {
-	    	// Button active
-	        add_class(submitBtn, 'active');
-
-	        // Here you would send a real ajax request
-	        fakeAjax = setTimeout(function()
-	        { 
-	            validator.showResult(result);
-
-	            remove_class(submitBtn, 'active');
-
-	        }, 500);
-	    }
-	    else
-	    {
-	        validator.showInvalid();
-	    }
-	});
-})
-
-</script>
 
 ```javascript
 

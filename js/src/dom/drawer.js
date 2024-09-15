@@ -87,10 +87,13 @@
         if (content[0] === '#')
         {
             content = find(content);
+            
+            if (content)
+            {
+                content.style.display = 'none';
 
-            content.style.display = 'none';
-
-            document.body.appendChild(content);
+                document.body.appendChild(content);
+            }
         }
 
         drawer.destroy();

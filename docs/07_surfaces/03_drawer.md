@@ -32,21 +32,6 @@ const drawer = FrontBx.Drawer({
 });
 ```
 
-<script type="text/javascript">
-const DRAWER_MENU = '<ul class="menu"><li><span class="item-left"><span class="fa fa-inbox color-gray-500"></span></span><span class="item-body">Inbox</span><span class="item-right"><span class="label">4</span></span>  </li>  <li><span class="item-left"><span class="fa fa-flag color-gray-500"></span></span><span class="item-body">Flagged</span><span class="item-right"><span class="label">23</span></span>  </li>  <li><span class="item-left"><span class="fa fa-note-sticky color-gray-500"></span></span><span class="item-body">Drafts</span><span class="item-right"><span class="label">3</span></span>  </li>  <li><span class="item-left"><span class="fa fa-paper-plane color-gray-500"></span></span><span class="item-body">Sent</span><span class="item-right"><span class="status status-xs"></span></span>  </li>  <li><span class="item-left"><span class="fa fa-circle-minus color-gray-500"></span></span><span class="item-body">Junk</span><span class="item-right"><span class="status status-xs status-warning"></span></span>  </li>  <li><span class="item-left"><span class="fa fa-trash color-gray-500"></span></span><span class="item-body">Trash</span><span class="item-right"><span class="status status-xs status-danger"></span></span>  </li> </ul>';
-window.addEventListener('load', () =>
-{
-    let drawer;
-
-    FrontBx.DocsDemo('.js-dw-trigger-1', () =>
-    {
-        if (drawer) return drawer.open();
-
-        drawer = FrontBx.Drawer({ content : DRAWER_MENU });
-    })
-});
-</script>
-
 ---
 
 ### Direction
@@ -68,19 +53,6 @@ const drawer = FrontBx.Drawer({
     direction: 'right'
 });
 ```
-<script type="text/javascript">
-window.addEventListener('load', () =>
-{
-    let drawer;
-
-    FrontBx.DocsDemo('.js-dw-trigger-2, .js-dw-trigger-3, .js-dw-trigger-4, .js-dw-trigger-5', (e, btn) =>
-    {
-        if (drawer) drawer.destroy();
-
-        drawer = FrontBx.Drawer({ direction : btn.innerText.toLowerCase().trim(), content : DRAWER_MENU });
-    })
-});
-</script>
 
 ---
 
@@ -119,7 +91,7 @@ Drawer will automatically wrap and unwrap page content when the it is invoked or
 
 ```javascript
 const drawer = FrontBx.Drawer({
-    content   : '...',
+    content    : '...',
     persistent : true,
 });
 ```

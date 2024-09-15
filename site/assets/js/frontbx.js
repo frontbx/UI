@@ -3981,33 +3981,31 @@ _.prototype.form_values = function(form)
     var inputs = this.form_inputs(form);
     var ret    = {};
     
-    this.each(inputs, function(i, input)
+    this.each(inputs, (i, input) =>
     {
-        let name = input.name;
+        let key = this.attr(input, 'name');
 
-        if (input.type === 'radio')
+        let val = this.input_value(input);
+
+        if (input.type !== 'radio')
         {
-            if (this.attr(input, 'checked')) ret[name] = this.input_value(input);
-        }
-        else if (input.type === 'checkbox')
-        {
-            ret[name] = this.attr(input, 'checked');
+            ret[key] = val;
         }
         else
         {
-            ret[name] = this.input_value(input);
+            if (val) ret[key] = val;
         }
-        if (name.includes('[]'))
+
+        if (key.includes('[]'))
         {
-            if (!ret[name] || !this.is_array(ret[name]))
+            if (!ret[key] || !this.is_array(ret[key]))
             {
-                ret[name] = [];
+                ret[key] = [];
             }
 
-            ret[name].push(this.input_value(input));
+            ret[key].push(val);
         }
-
-    }, this);
+    });
    
     return ret;
 }
@@ -4123,13 +4121,13 @@ _.prototype.inner_HTML = function(DOMElement, content, append)
  */
 _.prototype.input_value = function(input)
 {
-    if (input.type == 'radio')
-    {
-        return this.attr(input, 'checked') ? this.attr(input, 'name') : undefined;
-    }
     if (input.type == 'checkbox')
     {
-        ret = this.attr(input, 'checked');
+        return this.attr(input, 'checked');
+    }
+    if (input.type == 'radio')
+    {
+        return this.attr(input, 'checked') ? this.attr(input, 'value') : undefined;
     }
     if (input.type == 'number')
     {
@@ -7443,12 +7441,10 @@ Container.singleton('_', _);
      * @access public
      */
     LazyLoad.prototype.construct = function(context)
-    {       
+    {               
         this._queue = new Queue(15);
 
-        let nodes = Array.prototype.slice.call(document.querySelectorAll('.js-lazyload'));
-
-        if (context !== document) nodes.unshift(context);
+        let nodes = Array.prototype.slice.call(context.querySelectorAll('.js-lazyload'));
 
         if (nodes.length >= 1)
         {
@@ -9453,8 +9449,10 @@ Container.singleton('_', _);
      * and https://github.com/uxitten/xwiper
      * plus a bunch more of my own code.
      */
-    class TinyGesture {
-        constructor(element, options) {
+    class TinyGesture
+    {
+        constructor(element, options)
+        {
             this.element = element;
             this.touch1 = null;
             this.touch2 = null;
@@ -14206,10 +14204,13 @@ Container.singleton('_', _);
         if (content[0] === '#')
         {
             content = find(content);
+            
+            if (content)
+            {
+                content.style.display = 'none';
 
-            content.style.display = 'none';
-
-            document.body.appendChild(content);
+                document.body.appendChild(content);
+            }
         }
 
         drawer.destroy();
@@ -14330,9 +14331,12 @@ Container.singleton('_', _);
         {
             content = find(content);
 
-            content.style.display = 'none';
+            if (content)
+            {
+                content.style.display = 'none';
 
-            document.body.appendChild(content);
+                document.body.appendChild(content);
+            }
         }
 
         frontdrop.destroy();
@@ -14452,9 +14456,12 @@ Container.singleton('_', _);
         {
             content = find(content);
 
-            content.style.display = 'none';
+            if (content)
+            {
+                content.style.display = 'none';
 
-            document.body.appendChild(content);
+                document.body.appendChild(content);
+            }
         }
 
         backdrop.destroy();

@@ -382,36 +382,6 @@ FrontBx.Dom().create('Menu', options, container);
 FrontBx.Dom().component('Menu').create(options, container);
 ```
 
-<script type="text/javascript">
-let options =
-{
-    dense: false,
-    selectable: true,
-    ellipsis: false,
-    items:
-    [
-        'Item One',
-        {
-            left: '<span class="fa fa-inbox"></span>',
-            body: 'Item Two',
-            right: '<span class="label">4</span>',
-        },
-        {
-            left: '<span class="fa fa-flag"></span>',
-            body: 'Item Two',
-            right: '<span class="label">3</span>',
-        }
-    ]
-};
-
-window.addEventListener('load', () =>
-    FrontBx.DocsDemo('.js-insert-trigger', (e, btn) =>
-    FrontBx.Dom().create('Menu', options, document.querySelector('.js-insert-container')))
-
-);
-</script>
-
-
 Below are the available options:
 
 

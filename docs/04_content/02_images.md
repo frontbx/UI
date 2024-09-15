@@ -6,7 +6,7 @@ FrontBx comes with a set of handy image utilities for setting image dimensions a
 
 *   [Aspect ratios](#aspect-ratios)
 *   [Dimensions](#aspect-ratios)
-*   [JavaScript Instantiation](#javaScript-instantiation)
+*   [JavaScript Instantiation](#javascript-instantiation)
 
 ---
 
@@ -122,9 +122,11 @@ Dimensions for both **image** and **Background image** elements can be set via C
 Images can be instantiated via JavaScript to generate dynamic content on the fly. To create an image dynamically, use FrontBx's `Component.Create` method either via the `FrontBx.Dom` or the `Image` Component directly:
 
 <div class="code-content-example">
-    <div class="flex-row-fluid align-cols-center-x align-cols-top col-gaps-xs row-gaps-xs">
-    	<div class="col-3 js-img-container">
-    	</div>
+    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-sm">
+    	<div class="col-3 js-insert-img-container"></div>
+    </div>
+    <div class="flex-row-fluid align-cols-center">
+        <button class="btn js-insert-img-btn">Insert image</button>
     </div>
 </div>
 
@@ -146,23 +148,6 @@ FrontBx.Dom().create('Image', options, container);
 // Or via Component directly
 FrontBx.Dom().component('Image').create(options, container);
 ```
-
-<script>
-window.addEventListener('FrontBx:ready', () => 
-{
-	let options =
-	{
-		src: '../../assets/img/trump-hero.jpg',
-		alt: 'Trump',
-		lazy: true,
-		ratio: '1/1',
-		background: false,
-	};
-
-	FrontBx.Dom().create('Image', options, FrontBx._().find('.js-img-container'));
-});
-
-</script>
 
 Below are the available options:
 

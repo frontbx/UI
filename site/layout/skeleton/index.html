@@ -712,53 +712,6 @@
         </form>
     </div>
 </div>
-<script type="text/javascript">
-const sandbox = function()
-{
-    /* Helpers */
-    const [$, add_event_listener, form_values, each, has_class, add_class, remove_class] = FrontBx.import(['$', 'add_event_listener', 'form_values', 'each', 'has_class', 'add_class', 'remove_class']).from('_');
-
-    // Instantiate validator and cache vars
-    const DOMElementform    = $('.js-skeleton-form');
-    const DOMElementCard    = $('.js-skeleton-card');
-    const DOMElementInsert  = $('.js-insert-skeletons', DOMElementform);
-    const DOMElementDestroy = $('.js-destroy-skeletons', DOMElementform);
-    var skeletons           = [];
-
-    add_event_listener(DOMElementInsert, 'click', function(e)
-    {
-        // Stop the form from submitting via POST
-        e = e || window.event;
-
-        e.preventDefault();
-
-        if (has_class(DOMElementDestroy, 'active')) return;
-
-        let form    = form_values(DOMElementform);
-        let height  = form.variant === 'block' ? '100px' : null;
-        let options = { count: form.count, height: height, variant: `${form.style} ${form.variant} ${form.textblock}`.trim() };
-
-        skeletons.push(FrontBx.Skeleton(DOMElementCard, options));
-    });
-
-    add_event_listener(DOMElementDestroy, 'click', function(e)
-    {
-        // Stop the form from submitting via POST
-        e = e || window.event;
-
-        e.preventDefault();
-
-        if (has_class(DOMElementDestroy, 'active')) return;
-
-        add_class(DOMElementDestroy, 'active');
-
-        each(skeletons, (i, skeleton) => skeleton.fade_out(() => remove_class(DOMElementDestroy, 'active')));
-    });
-};
-
-window.addEventListener('FrontBx:ready', sandbox);
-
-</script>
 <h3 id="javascript-utility">JavaScript Utility</h3>
 <p>FrontBx comes with a handy JavaScript utility component for creating skeletons on the fly. You can create a skeleton by calling <code>Skeleton</code> via the container.</p>
 <h4 id="usage">Usage</h4>
@@ -902,68 +855,6 @@ const options      =
 };
 
 FrontBx.Skeleton(cardWrapper).load(options);</code></pre>
-<script type="text/javascript">
-(function()
-{
-    const loader = function()
-    {
-        /* Helpers */
-        const [$, each] = FrontBx.import(['$', 'each']).from('_');
-        const [cardWrapper, triggerLoad, triggerReset] = [$('.js-skeleton-loader-card'), $('.js-load-content'), $('.js-reset-skeletons')];
-        const contents  = 
-        {
-            '.js-card-header-left' : '<div class="avatar"><img class="img-responsive js-lazyload lazyload grayscale lazy-loaded" src="../../assets/img/trump-avatar.jpg"></div>',
-            '.js-card-header-content' : '<div class="text-bold">The Don</div><div class="color-gray font-italic">Make America Great Again</div>',
-            '.js-card-media' : '<img data-src="../../assets/img/trump-hero.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-hero_thumb.jpg" />',
-            '.js-card-title' : '<h5 class="text-bold">MAGA Country</h5>',
-            '.js-card-text' : '<p>Veniam laboris do sit sunt dolore incididunt fugiat id enim ut ullamco enim deserunt fugiat.</p>',
-        };
-
-        let options =
-        [
-            { selector: '.js-card-header-left', variant: 'circle wave', width: '40px',height: '40px'},
-            { selector: '.js-card-header-content', variant: 'text-block', lines: 2},
-            { selector: '.js-card-media', variant: 'block wave', aspectratio: '16/9'},
-            { selector: '.js-card-title', variant: 'h5'},
-            { selector: '.js-card-text', variant: 'text-block', lines: 3},
-        ];
-
-        var skeletons = [];
-        var loaded    = false;
-        var skeleton;
-
-        const makeSkeletons = () =>
-        {            
-            each(options, (i, option) => $(option.selector, cardWrapper).innerHTML = '' );
-
-            skeleton = FrontBx.Skeleton(cardWrapper, options);
-        };
-
-        triggerLoad.addEventListener('click', () =>
-        {
-            if (loaded) return;
-
-            skeleton.load(contents);
-
-            FrontBx.dom().refresh('LazyLoad', cardWrapper);
-
-            loaded = true;
-        });
-
-        triggerReset.addEventListener('click', () =>
-        {
-            loaded = false;
-
-            makeSkeletons();
-        });
-
-        makeSkeletons();
-    }
-
-    window.addEventListener('FrontBx:ready', loader);
-})();
-
-</script>
 <hr />
 <h3 id="css-customization">CSS Customization</h3>
 <p>Skeleton uses local CSS variables on all <code>.skeleton</code> for enhanced component customization and styling. The base values are used by the UI to create all the sizing. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>

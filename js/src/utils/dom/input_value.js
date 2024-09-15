@@ -7,13 +7,13 @@
  */
 _.prototype.input_value = function(input)
 {
-    if (input.type == 'radio')
-    {
-        return this.attr(input, 'checked') ? this.attr(input, 'name') : undefined;
-    }
     if (input.type == 'checkbox')
     {
-        ret = this.attr(input, 'checked');
+        return this.attr(input, 'checked');
+    }
+    if (input.type == 'radio')
+    {
+        return this.attr(input, 'checked') ? this.attr(input, 'value') : undefined;
     }
     if (input.type == 'number')
     {

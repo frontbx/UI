@@ -92,9 +92,12 @@
         {
             content = find(content);
 
-            content.style.display = 'none';
+            if (content)
+            {
+                content.style.display = 'none';
 
-            document.body.appendChild(content);
+                document.body.appendChild(content);
+            }
         }
 
         backdrop.destroy();

@@ -31,26 +31,6 @@ const frontdrop = FrontBx.Frontdrop( {
 });
 ```
 
-<script type="text/javascript">
-const SKELETONS = 
-[
-    { lines: 1, variant: 'block-h3' },
-    { lines: 6, variant: 'text-block' },
-    { lines: 1, variant: 'block-h4' },
-    { lines: 8, variant: 'text-block' },
-];
-window.addEventListener('load', () =>
-{
-    let frontdrop = FrontBx.Frontdrop(
-    {
-        callbackBuilt: (container, drawer, overlay) => FrontBx.Skeleton(FrontBx._().find('.card-block .container-fluid', container), SKELETONS),
-        state: 'collapsed'
-    });
-
-    FrontBx.DocsDemo('.js-fd-trigger-1', () => frontdrop.closed() ? frontdrop.open() : frontdrop.close());
-});
-</script>
-
 ---
 
 ### Confirm Button
@@ -73,20 +53,6 @@ const frontdrop = FrontBx.Frontdrop( {
     }
 });
 ```
-
-<script type="text/javascript">
-window.addEventListener('load', () =>
-{
-    let frontdrop = FrontBx.Frontdrop(
-    {
-        callbackBuilt: (container, drawer, overlay) => FrontBx.Skeleton(FrontBx._().find('.card-block .container-fluid', container), SKELETONS),
-        state: 'collapsed',
-        confirmBtn: 'Confirm Choice',
-    });
-
-    FrontBx.DocsDemo('.js-fd-trigger-2', () => frontdrop.closed() ? frontdrop.open() : frontdrop.close());
-});
-</script>
 
 ---
 

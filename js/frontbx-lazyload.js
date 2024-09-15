@@ -77,12 +77,10 @@
      * @access public
      */
     LazyLoad.prototype.construct = function(context)
-    {       
+    {               
         this._queue = new Queue(15);
 
-        let nodes = Array.prototype.slice.call(document.querySelectorAll('.js-lazyload'));
-
-        if (context !== document) nodes.unshift(context);
+        let nodes = Array.prototype.slice.call(context.querySelectorAll('.js-lazyload'));
 
         if (nodes.length >= 1)
         {

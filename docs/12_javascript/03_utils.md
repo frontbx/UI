@@ -1284,36 +1284,6 @@ animate($('.js-animate-example'), {
 });
 ````
 
-<script type="text/javascript">
-window.addEventListener('load', () =>
-{
-    /* Helpers */
-    const [find, animate, add_event_listener] = FrontBx.import(['find', 'animate', 'add_event_listener']).from('_');
-
-    FrontBx.DocsDemo('.js-animate-trigger', (e, ) =>
-        animate(find('.js-animate-example'),
-        {
-            width: 
-            {
-                to : '500px',
-                duration: 1000,
-            },
-            height: 
-            {
-                to : '200px',
-                duration: 1000,
-            },
-            backgroundColor: 
-            {
-                to : '#b324ea',
-                duration: 2000,
-            },
-            
-        })
-    );
-});
-</script>
-
 ---
 
 ### Animate CSS
@@ -1485,37 +1455,6 @@ animate($('.js-animate-css-example'),
     },
 });
 ````
-
-<script type="text/javascript">
-window.addEventListener('load', () =>
-{
-    /* Helpers */
-    const [find, animate, add_event_listener] = FrontBx.import(['find', 'animate', 'add_event_listener']).from('_');
-
-    FrontBx.DocsDemo('.js-animate-css-trigger', (e, ) =>
-        animate(find('.js-animate-css-example'),
-        {
-            width: 
-            {
-                to : '500px',
-                duration: 1000,
-            },
-            height: 
-            {
-                to : '200px',
-                duration: 1000,
-            },
-            backgroundColor: 
-            {
-                to : '#b324ea',
-                duration: 2000,
-            },
-            
-        })
-    );
-});
-</script>
-
 
 ---
 

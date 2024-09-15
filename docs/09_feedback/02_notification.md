@@ -32,16 +32,6 @@ let notif = FrontBx.Notification(
 });
 ```
 
-<script type="text/javascript">
-window.addEventListener('load', () =>
-    FrontBx.DocsDemo('.js-notif-trigger-1', () =>
-        FrontBx.Notification({
-            text  : `Hello! I'm a notification.`,
-        })
-    )
-);
-</script>
-
 ---
 
 ### Position
@@ -71,18 +61,6 @@ let notif = FrontBx.Notification(
     text  : `Hello! I'm a notification.`,
 });
 ```
-
-<script type="text/javascript">
-window.addEventListener('load', () =>
-    FrontBx.DocsDemo('.js-notif-triggers-pos', (e, trigger) =>
-    {
-        FrontBx.Notification({
-            text: 'Hello! I\'m a notification.',
-            position: trigger.innerText.trim()
-        })
-    })
-);
-</script>
 
 ---
 
@@ -142,34 +120,6 @@ let notif4 = FrontBx.Notification(
 });
 ```
 
-<script type="text/javascript">
-window.addEventListener('load', () =>
-{
-    FrontBx.DocsDemo('.js-notif-trigger-2', () => FrontBx.Notification(
-    {
-        btn  : `Dismiss`,
-        text : `Hello! I'm a notification.`,
-    }));
-    FrontBx.DocsDemo('.js-notif-trigger-3', () => FrontBx.Notification(
-    {
-        icon : `bell`,
-        text : `Hello! I'm a notification.`,
-    }));
-    FrontBx.DocsDemo('.js-notif-trigger-4', () => FrontBx.Notification(
-    {
-        btn        : `Danger`,
-        btnVariant : `danger`,
-        text       : `Hello! I'm a notification.`,
-    }));
-    FrontBx.DocsDemo('.js-notif-trigger-5', () => FrontBx.Notification(
-    {
-        icon    : `check`,
-        variant : `success`, 
-        text    : `Hello! I'm a notification.`,
-    }));
-});
-</script>
-
 ---
 
 ### Timeout
@@ -196,31 +146,6 @@ let notif2 =FrontBx.Notification(
     timeout: 10000,
 });
 ```
-
-<script type="text/javascript">
-window.addEventListener('load', () =>
-{
-    FrontBx.DocsDemo('.js-notif-trigger-6', () => FrontBx.Notification(
-    {
-        text: 'Hello! You need to click me to dismiss.',
-        timeout: false,
-    }));
-   
-    FrontBx.DocsDemo('.js-notif-trigger-7', function()
-    {
-        let start = 10;
-        let i     = 1;
-        let timer = setInterval(() => this._.find('.js-time', notif.domElement()).innerText = (start - i++), 1000);
-
-        let notif = FrontBx.Notification(
-        {
-            text: 'Hello! I\'ll disappear in <span class="js-time">10</span> seconds.',
-            timeout: 10000,
-            callbackDismiss: () => clearInterval(timer)
-        });
-    });
-});
-</script>
 
 ---
 

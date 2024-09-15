@@ -276,7 +276,7 @@
 <ul>
 <li><a href="#aspect-ratios">Aspect ratios</a></li>
 <li><a href="#aspect-ratios">Dimensions</a></li>
-<li><a href="#javaScript-instantiation">JavaScript Instantiation</a></li>
+<li><a href="#javascript-instantiation">JavaScript Instantiation</a></li>
 </ul>
 <hr />
 <h3 id="aspect-ratios">Aspect ratios</h3>
@@ -403,9 +403,11 @@
 <h3 id="javascript-instantiation">JavaScript Instantiation</h3>
 <p>Images can be instantiated via JavaScript to generate dynamic content on the fly. To create an image dynamically, use FrontBx's <code>Component.Create</code> method either via the <code>FrontBx.Dom</code> or the <code>Image</code> Component directly:</p>
 <div class="code-content-example">
-    <div class="flex-row-fluid align-cols-center-x align-cols-top col-gaps-xs row-gaps-xs">
-        <div class="col-3 js-img-container">
-        </div>
+    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-sm">
+        <div class="col-3 js-insert-img-container"></div>
+    </div>
+    <div class="flex-row-fluid align-cols-center">
+        <button class="btn js-insert-img-btn">Insert image</button>
     </div>
 </div>
 <pre><code class="JavaScript language-JavaScript">let options =
@@ -424,22 +426,6 @@ FrontBx.Dom().create('Image', options, container);
 
 // Or via Component directly
 FrontBx.Dom().component('Image').create(options, container);</code></pre>
-<script>
-window.addEventListener('FrontBx:ready', () => 
-{
-    let options =
-    {
-        src: '../../assets/img/trump-hero.jpg',
-        alt: 'Trump',
-        lazy: true,
-        ratio: '1/1',
-        background: false,
-    };
-
-    FrontBx.Dom().create('Image', options, FrontBx._().find('.js-img-container'));
-});
-
-</script>
 <p>Below are the available options:</p>
 <table>
 <thead>

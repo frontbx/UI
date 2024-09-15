@@ -817,31 +817,13 @@ src/scss/components/table.scss
 Table can be instantiated via JavaScript to generate dynamic content on the fly. To create a Table dynamically, use FrontBx's `Component.Create` method either via the `FrontBx.Dom` or the Table Component directly:
 
 <div class="code-content-example">
-    <div class="card flat js-table-container"></div>
+    <div class="flex-row align-cols-center row-gaps-xs">
+        <div class="card flat js-insert-table-container"></div>
+    </div>
+    <div class="flex-row-fluid align-cols-center pole-xs pole-n">
+        <button class="btn js-insert-table-btn">Insert table</button>
+    </div>
 </div>
-
-<script>
-window.addEventListener('FrontBx:ready', () =>
-{
-    let options =
-    {
-        head: ['Dessert (100g serving)', 'Calories', 'Fat (g)', 'Carbs (g)', 'Protein (g)'],
-        rows:
-        [
-            ['Frozen yoghurt', 159, 6.0, 24, 4.0],
-            ['Ice cream sandwich', 237, 9.0, 37, 4.3],
-            ['Eclair', 262, 16.0, 24, 6.0],
-            ['Cupcake', 305, 3.7, 67, 4.3],
-            ['Gingerbread', 356, 16.0, 49, 3.9],
-        ]
-    };
-
-    let container = document.querySelector('.js-table-container');
-
-    // Via Hibble dom
-    FrontBx.Dom().create('Table', options, container);
-});
-</script>
 
 ```JavaScript
 let options =

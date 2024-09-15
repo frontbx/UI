@@ -31,29 +31,6 @@ const backdrop = FrontBx.Backdrop( {
 });
 ```
 
-<script type="text/javascript">
-const SKELETONS = 
-[
-    { lines: 1, variant: 'block-h3' },
-    { lines: 6, variant: 'text-block' },
-    { lines: 1, variant: 'block-h4' },
-    { lines: 3, variant: 'text-block' },
-];
-window.addEventListener('load', () =>
-{
-    let backdrop = FrontBx.Backdrop(
-    {
-        callbackBuilt: (container, drawer, overlay) => {
-            let pad = FrontBx._().dom_element({tag: 'div', class: 'pad-20',}, FrontBx._().find('.js-drawer-dialog', container));
-            FrontBx.Skeleton(pad, SKELETONS)
-        },
-        state: 'collapsed',
-    });
-
-    FrontBx.DocsDemo('.js-bd-trigger-1', () => backdrop.closed() ? backdrop.open() : backdrop.close());
-});
-</script>
-
 ---
 
 ### Push Body
@@ -71,23 +48,6 @@ const backdrop = FrontBx.Backdrop( {
     content : '...',
 });
 ```
-
-<script type="text/javascript">
-window.addEventListener('load', () =>
-{
-    let backdrop = FrontBx.Backdrop(
-    {
-        callbackBuilt: (container, drawer, overlay) => {
-            let pad = FrontBx._().dom_element({tag: 'div', class: 'pad-20',}, FrontBx._().find('.js-drawer-dialog', container));
-            FrontBx.Skeleton(pad, SKELETONS)
-        },
-        state: 'collapsed',
-        pushbody: true,
-    });
-
-    FrontBx.DocsDemo('.js-bd-trigger-2', () => backdrop.closed() ? backdrop.open() : backdrop.close());
-});
-</script>
 
 ---
 

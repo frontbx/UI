@@ -10,33 +10,31 @@ _.prototype.form_values = function(form)
     var inputs = this.form_inputs(form);
     var ret    = {};
     
-    this.each(inputs, function(i, input)
+    this.each(inputs, (i, input) =>
     {
-        let name = input.name;
+        let key = this.attr(input, 'name');
 
-        if (input.type === 'radio')
+        let val = this.input_value(input);
+
+        if (input.type !== 'radio')
         {
-            if (this.attr(input, 'checked')) ret[name] = this.input_value(input);
-        }
-        else if (input.type === 'checkbox')
-        {
-            ret[name] = this.attr(input, 'checked');
+            ret[key] = val;
         }
         else
         {
-            ret[name] = this.input_value(input);
+            if (val) ret[key] = val;
         }
-        if (name.includes('[]'))
+
+        if (key.includes('[]'))
         {
-            if (!ret[name] || !this.is_array(ret[name]))
+            if (!ret[key] || !this.is_array(ret[key]))
             {
-                ret[name] = [];
+                ret[key] = [];
             }
 
-            ret[name].push(this.input_value(input));
+            ret[key].push(val);
         }
-
-    }, this);
+    });
    
     return ret;
 }

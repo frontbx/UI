@@ -294,25 +294,6 @@
 <pre><code class="javascript language-javascript">const frontdrop = FrontBx.Frontdrop( {
     content : '...',
 });</code></pre>
-<script type="text/javascript">
-const SKELETONS = 
-[
-    { lines: 1, variant: 'block-h3' },
-    { lines: 6, variant: 'text-block' },
-    { lines: 1, variant: 'block-h4' },
-    { lines: 8, variant: 'text-block' },
-];
-window.addEventListener('load', () =>
-{
-    let frontdrop = FrontBx.Frontdrop(
-    {
-        callbackBuilt: (container, drawer, overlay) => FrontBx.Skeleton(FrontBx._().find('.card-block .container-fluid', container), SKELETONS),
-        state: 'collapsed'
-    });
-
-    FrontBx.DocsDemo('.js-fd-trigger-1', () => frontdrop.closed() ? frontdrop.open() : frontdrop.close());
-});
-</script>
 <hr />
 <h3 id="confirm-button">Confirm Button</h3>
 <p>Pass a text value to <code>confirmBtn</code> to add a persistent confirmation button a Frontdrop. Additionally, if the Frontdrop requires validation to be closed you can pass a callback to <code>callbackValidate</code> to run your own validation and validate if the Frontdrop should close.</p>
@@ -329,19 +310,6 @@ window.addEventListener('load', () =>
         return true;
     }
 });</code></pre>
-<script type="text/javascript">
-window.addEventListener('load', () =>
-{
-    let frontdrop = FrontBx.Frontdrop(
-    {
-        callbackBuilt: (container, drawer, overlay) => FrontBx.Skeleton(FrontBx._().find('.card-block .container-fluid', container), SKELETONS),
-        state: 'collapsed',
-        confirmBtn: 'Confirm Choice',
-    });
-
-    FrontBx.DocsDemo('.js-fd-trigger-2', () => frontdrop.closed() ? frontdrop.open() : frontdrop.close());
-});
-</script>
 <hr />
 <h3 id="swipeable">Swipeable</h3>
 <p>By default, the Frontdrop element itself is Swipeable when expanded. You can make the a frontdrop swipeable with on the window when open or closed by adding the <code>swipeable</code> option. This means you can open and close the frontdrop by simply swiping up or down on the window itself at any time.</p>

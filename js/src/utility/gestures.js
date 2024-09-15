@@ -10,8 +10,10 @@
      * and https://github.com/uxitten/xwiper
      * plus a bunch more of my own code.
      */
-    class TinyGesture {
-        constructor(element, options) {
+    class TinyGesture
+    {
+        constructor(element, options)
+        {
             this.element = element;
             this.touch1 = null;
             this.touch2 = null;
