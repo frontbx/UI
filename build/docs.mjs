@@ -448,6 +448,8 @@ DocsBuilder.prototype._getAssetsPath = function(path)
 {
     let count = path.toLowerCase().split(DOCS_SRC_DIR.toLowerCase()).pop().split('/').filter((x) => x !== '').length;
 
+    if (path.includes('index.html')) return '';
+
     return BACK_DIR_CHAR.repeat(path.includes('.html') ? count - 1 : count);
 }
 

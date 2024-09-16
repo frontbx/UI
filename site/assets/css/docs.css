@@ -753,7 +753,7 @@ div.code-toolbar>.toolbar>.toolbar-item>button:hover
 {
     font-size: 11px;
 }
-.docs-body p > a
+.docs-body p > a:not(.btn)
 {
     text-decoration: underline;
 }

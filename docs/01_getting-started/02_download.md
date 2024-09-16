@@ -18,7 +18,7 @@ Download ready-to-use compiled code for FrontBx to easily drop into your project
 Compiled and minified CSS bundles (see CSS files comparison)
 Compiled and minified JavaScript plugins (see JS files comparison)
 
-<a href="" class="btn btn-primary">Download</a>
+<a target="blank" href="https://download-directory.github.io/?url=https%3A%2F%2Fgithub.com%2Ffrontbx%2Fui%2Ftree%2Fmain%2Fdist" class="btn btn-primary">Download</a>
 
 ### Source files
 
