@@ -35,7 +35,7 @@
   --fbx-color-coralred: #ff3a24;
   --fbx-color-ash: #838c92;
   --fbx-color-gray: #9597a0;
-  --fbx-color-black: #323232;
+  --fbx-color-black: #2b2b2b;
   --fbx-color-white: #FFFFFF;
   /* Palette base RGB */
   --fbx-gray-rgb: 149, 151, 160;
@@ -70,7 +70,7 @@
   --fbx-color-coralred-rgb: 255, 58, 36;
   --fbx-color-ash-rgb: 131, 140, 146;
   --fbx-color-gray-rgb: 149, 151, 160;
-  --fbx-color-black-rgb: 50, 50, 50;
+  --fbx-color-black-rgb: 43, 43, 43;
   --fbx-color-white-rgb: 255, 255, 255;
   /* Context shades */
   /* primary */
@@ -144,15 +144,15 @@
   --fbx-gray-800: #686a70;
   --fbx-gray-900: #595b60;
   /* Black */
-  --fbx-black-100: #ebebeb;
-  --fbx-black-200: #d6d6d6;
-  --fbx-black-300: #999999;
-  --fbx-black-400: #7a7a7a;
-  --fbx-black-500: #303030;
-  --fbx-black-600: #282828;
-  --fbx-black-700: #262626;
-  --fbx-black-800: #232323;
-  --fbx-black-900: #1e1e1e;
+  --fbx-black-100: #606060;
+  --fbx-black-200: #4b4b4b;
+  --fbx-black-300: #404040;
+  --fbx-black-400: #363636;
+  --fbx-black-500: #272727;
+  --fbx-black-600: #222222;
+  --fbx-black-700: #202020;
+  --fbx-black-800: #1c1c1c;
+  --fbx-black-900: #1a1a1a;
   /* White */
   --fbx-white-100: white;
   --fbx-white-200: white;
@@ -191,7 +191,7 @@
   --fbx-theme-danger-rgb: var(--fbx-color-coralred-rgb);
   /* Base Colors */
   --fbx-white: #FFFFFF;
-  --fbx-black: #323232;
+  --fbx-black: #2b2b2b;
   --fbx-gray: #9597a0;
   --fbx-body-bg: #fafafa;
   --fbx-body-color: #1d1d1d;
@@ -310,9 +310,150 @@
 }
 
 /* config-dark */
+/* ---------------------------------- ROOT DARK ------------------------------------ */
+/* --------------------------------------------------------------------------------- */
 .fbx-darkmode:root {
-  --fbx-body-bg: var(--fbx-black-900);
+  --fbx-body-bg: var(--fbx-black);
   --fbx-body-color: var(--fbx-white);
+}
+
+/* ----------------------------------- CONTENT DARK ------------------------------------- */
+/* --------------------------------------------------------------------------------- */
+.fbx-darkmode {
+  /* ---------------------------------- SURFACES DARK ------------------------------------- */
+  /* -------------------------------------------------------------------------------------- */
+  /* ---------------------------------- NAVIGATION DARK ----------------------------------- */
+  /* --------------------------------------------------------------------------------- */
+  /* ------------------------------------ IMAGES DARK ------------------------------------- */
+  /* --------------------------------------------------------------------------------- */
+  /* ------------------------------------ INLINE DARK ------------------------------------- */
+  /* --------------------------------------------------------------------------------- */
+  /* ----------------------------------- BUTTONS DARK ------------------------------------- */
+  /* --------------------------------------------------------------------------------- */
+  /* ------------------------------------ FORMS DARK -------------------------------------- */
+  /* --------------------------------------------------------------------------------- */
+  /* ----------------------------------- FEEDBACK DARK ------------------------------------- */
+  /* --------------------------------------------------------------------------------- */
+  /* ----------------------------------- UTILITY DARK ------------------------------------- */
+  /* --------------------------------------------------------------------------------- */
+}
+.fbx-darkmode blockquote:not([class]),
+.fbx-darkmode blockquote.bq:not([class*=bq-]) {
+  border-left: 0.5em solid var(--fbx-black-200);
+  color: var(--fbx-black-gray-200);
+  background: var(--fbx-black-300);
+}
+.fbx-darkmode blockquote:not([class]) footer,
+.fbx-darkmode blockquote.bq:not([class*=bq-]) footer {
+  color: var(--fbx-black-gray-200);
+}
+.fbx-darkmode blockquote:not([class]) footer cite,
+.fbx-darkmode blockquote.bq:not([class*=bq-]) footer cite {
+  color: var(--fbx-black-gray-400);
+}
+.fbx-darkmode blockquote:not([class]) p,
+.fbx-darkmode blockquote.bq:not([class*=bq-]) p {
+  color: inherit;
+}
+.fbx-darkmode blockquote:not([class]) a,
+.fbx-darkmode blockquote.bq:not([class*=bq-]) a {
+  color: var(--fbx-link-color);
+}
+.fbx-darkmode code {
+  color: #74dfc4;
+}
+.fbx-darkmode pre, .fbx-darkmode code {
+  background-color: var(--fbx-black-900);
+  border: 1px solid var(--fbx-black-900);
+}
+.fbx-darkmode pre, .fbx-darkmode pre > code {
+  color: var(--fbx-white);
+}
+.fbx-darkmode .table {
+  --fbx-table-color: var(--fbx-gray-100);
+  --fbx-table-border-color: var(--fbx-black-900);
+  --fbx-table-head-bg: var(--fbx-black-900);
+  --fbx-table-head-color: var(--fbx-white);
+  --fbx-table-bg-hover: var(--fbx-black-900);
+  --fbx-table-caption-color: var(--fbx-gray);
+  --fbx-table-bg-alternate: var(--fbx-black-900);
+  --fbx-table-selected-color: var(--fbx-white);
+  --fbx-table-selected-bg: var(--fbx-theme-info);
+}
+.fbx-darkmode .list {
+  --fbx-list-bg: var(--fbx-black-700);
+  --fbx-list-color: var(--fbx-gray-100);
+  --fbx-list-item-color-hover: var(--fbx-gray-200);
+  --fbx-list-item-color-active: var(--fbx-gray-300);
+  --fbx-list-item-color-selected: var(--fbx-white);
+  --fbx-list-item-bg: transparent;
+  --fbx-list-item-bg-hover: var(--fbx-black-500);
+  --fbx-list-item-bg-active: var(--fbx-theme-info-900);
+  --fbx-list-item-bg-selected: var(--fbx-theme-info);
+  --fbx-list-divider-color: var(--fbx-black-300);
+}
+.fbx-darkmode .lazyload {
+  --fbx-lazyload-falback-bg: var(--fbx-black-100);
+}
+.fbx-darkmode .skeleton {
+  --fbx-skeleton-bg-1: rgba(255, 255, 255, 0.4);
+  --fbx-skeleton-bg-2: rgba(255, 255, 255, 0.7);
+}
+.fbx-darkmode .card {
+  --fbx-card-bg: var(--fbx-black-700);
+  --fbx-card-bg-focus: var(--fbx-black-700);
+  --fbx-card-color: var(--fbx-gray-100);
+  --fbx-card-title-color: var(--fbx-body-color);
+  --fbx-card-border-color: var(--fbx-black-900);
+  --fbx-card-divider-color: var(--fbx-gray-900);
+  --fbx-card-media-bg: var(--fbx-gray-100);
+}
+.fbx-darkmode .paper {
+  --fbx-paper-bg: var(--fbx-black-700);
+  --fbx-paper-border-color: var(--fbx-black-600);
+}
+.fbx-darkmode .drawer-container {
+  --fbx-drawer-bg: var(--fbx-black-700);
+  --fbx-drawer-overlay-bg: rgb(255 255 255 / 57%);
+  --fbx-drawer-overlay-bg-dark: rgb(75 75 75 / 74%);
+  --fbx-drawer-border-color: var(--fbx-black-500);
+}
+.fbx-darkmode .drawer-container.frontdrop.drawer-bottom {
+  --fbx-drawer-bg: var(--fbx-black-700);
+  --fbx-drawer-overlay-bg: rgb(255 255 255 / 57%);
+  --fbx-drawer-overlay-bg-dark: rgb(75 75 75 / 74%);
+}
+.fbx-darkmode .drawer-container.backdrop {
+  --fbx-drawer-bg: var(--fbx-theme-primary);
+}
+.fbx-darkmode .menu {
+  --fbx-menu-bg: var(--fbx-black-700);
+  --fbx-menu-color: var(--fbx-gray-100);
+  --fbx-menu-item-color-hover: var(--fbx-gray-200);
+  --fbx-menu-item-color-active: var(--fbx-theme-primary);
+  --fbx-menu-item-color-checked: var(--fbx-white);
+  --fbx-menu-item-color-selected: var(--fbx-white);
+  --fbx-menu-item-bg: transparent;
+  --fbx-menu-item-bg-hover: var(--fbx-black-400);
+  --fbx-menu-item-bg-checked: var(--fbx-theme-primary);
+  --fbx-menu-item-bg-active: var(--fbx-theme-primary-900);
+  --fbx-menu-item-bg-selected: var(--fbx-theme-primary);
+  --fbx-menu-divider-color: var(--fbx-black-400);
+}
+.fbx-darkmode .btn {
+  --fbx-btn-bg-color: var(--fbx-black-300);
+  --fbx-btn-color: var(--fbx-gray-100);
+  --fbx-btn-loader-color: var(--fbx-btn-color);
+  --fbx-btn-color-hover: var(--fbx-white);
+  --fbx-btn-bg-color-hover: var(--fbx-black-200);
+  --fbx-btn-color-active: var(--fbx-white);
+  --fbx-btn-bg-color-active: var(--fbx-black-200);
+}
+.fbx-darkmode .drop-container {
+  --fbx-dropdown-bg: var(--fbx-black-400);
+}
+.fbx-darkmode .drop-container .menu {
+  --fbx-menu-item-bg-hover: var(--fbx-black-600);
 }
 
 /* base/reset */
@@ -672,9 +813,12 @@ samp {
 }
 
 blockquote:not([class]) {
-  padding: 0 1em;
+  padding: 1em;
   color: var(--fbx-gray);
-  border-left: 0.25em solid var(--fbx-gray-300);
+  border-left: 0.5em solid var(--fbx-gray-300);
+  border-radius: var(--fbx-border-radius);
+  border: none;
+  box-shadow: none;
 }
 blockquote:not([class]) > :first-child {
   margin-top: 0;
@@ -812,6 +956,7 @@ code, pre {
 code {
   padding: 0.2rem 0.4rem;
   color: crimson;
+  overflow: hidden;
 }
 
 pre {
@@ -8147,7 +8292,7 @@ form.success .msg-success {
   border-radius: var(--fbx-popover-radius);
   max-width: var(--fbx-popover-max-width);
   box-shadow: var(--fbx-popover-shadow);
-  --fbx-popover-shadow: rgba(35, 35, 35, 0.2) 0px 3px 1px -2px, rgba(35, 35, 35, 0.14) 0px 2px 2px 0px, rgba(35, 35, 35, 0.12) 0px 1px 5px 0px;
+  --fbx-popover-shadow: rgba(30, 30, 30, 0.2) 0px 3px 1px -2px, rgba(30, 30, 30, 0.14) 0px 2px 2px 0px, rgba(30, 30, 30, 0.12) 0px 1px 5px 0px;
   background-color: var(--fbx-popover-bg);
   color: var(--fbx-popover-color);
   z-index: var(--fbx-zindex-popover);

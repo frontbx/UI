@@ -43,15 +43,15 @@
     --fbx-gray-800: #{_darker($gray, 30%)};
     --fbx-gray-900: #{_darker($gray, 40%)};
     /* Black */
-    --fbx-black-100: #{_lighter($black, 90%)};
-    --fbx-black-200: #{_lighter($black, 80%)};
-    --fbx-black-300: #{_lighter($black, 50%)};
-    --fbx-black-400: #{_lighter($black, 35%)};
+    --fbx-black-100: #{_lighter($black, 25%)};
+    --fbx-black-200: #{_lighter($black, 15%)};
+    --fbx-black-300: #{_lighter($black, 10%)};
+    --fbx-black-400: #{_lighter($black, 5%)};
     // Default is between 400 and 500 (i.e 450)
-    --fbx-black-500: #{_darker($black, 5%)};
+    --fbx-black-500: #{_darker($black, 10%)};
     --fbx-black-600: #{_darker($black, 20%)};
     --fbx-black-700: #{_darker($black, 25%)};
-    --fbx-black-800: #{_darker($black, 30%)};
+    --fbx-black-800: #{_darker($black, 35%)};
     --fbx-black-900: #{_darker($black, 40%)};
     /* White */
     --fbx-white-100: #{_lighter($white, 90%)};

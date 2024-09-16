@@ -552,7 +552,6 @@ pre[class*="language-"] {
     color: #e53935;
 }
 
-
 /*
  * Laserwave Theme originally by Jared Jones for Visual Studio Code
  * https://github.com/Jaredk3nt/laserwave
@@ -1241,3 +1240,128 @@ iframe
     padding: 5px 5px;
 }
 
+/* Darkmode  */
+.fbx-darkmode code[class*="language-"],
+.fbx-darkmode pre[class*="language-"] {
+    background: var(--fbx-black-900);
+    color: var(--fbx-gray-100);
+}
+
+.fbx-darkmode code[class*="language-"]::-moz-selection,
+.fbx-darkmode pre[class*="language-"]::-moz-selection,
+.fbx-darkmode code[class*="language-"] ::-moz-selection,
+.fbx-darkmode pre[class*="language-"] ::-moz-selection {
+    background: var(--fbx-black-900);
+    color: var(--fbx-black-100);
+}
+
+.fbx-darkmode code[class*="language-"]::-moz-selection,
+.fbx-darkmode pre[class*="language-"]::-moz-selection,
+.fbx-darkmode code[class*="language-"] ::-moz-selection,
+.fbx-darkmode pre[class*="language-"] ::-moz-selection {
+    background: var(--fbx-black-900);
+    color: var(--fbx-black-100);
+}
+
+.fbx-darkmode code[class*="language-"]::selection,
+.fbx-darkmode pre[class*="language-"]::selection,
+.fbx-darkmode code[class*="language-"] ::selection,
+.fbx-darkmode pre[class*="language-"] ::selection {
+    background: var(--fbx-black-900);
+    color:var(--fbx-black-100);
+}
+.fbx-darkmode .token.comment,
+.fbx-darkmode .token.prolog,
+.fbx-darkmode .token.cdata {
+    color: #91889b
+}
+
+.fbx-darkmode .token.punctuation {
+    color: #7b6995
+}
+
+.fbx-darkmode .token.builtin,
+.fbx-darkmode .token.constant,
+.fbx-darkmode .token.boolean {
+    color: #ffe261
+}
+
+.fbx-darkmode .token.number {
+    color: #b381c5
+}
+
+.fbx-darkmode .token.important,
+.fbx-darkmode .token.atrule,
+.fbx-darkmode .token.property,
+.fbx-darkmode .token.keyword {
+    color: #40b4c4
+}
+
+.fbx-darkmode .token.doctype,
+.fbx-darkmode .token.operator,
+.fbx-darkmode .token.inserted,
+.fbx-darkmode .token.tag,
+.fbx-darkmode .token.class-name,
+.fbx-darkmode .token.symbol {
+    color: #74dfc4
+}
+
+.fbx-darkmode .token.attr-name,
+.fbx-darkmode .token.function,
+.fbx-darkmode .token.deleted,
+.fbx-darkmode .token.selector {
+    color: #eb64b9
+}
+
+.fbx-darkmode .token.attr-value,
+.fbx-darkmode .token.regex,
+.fbx-darkmode .token.char,
+.fbx-darkmode .token.string {
+    color: #b4dce7
+}
+
+.fbx-darkmode .token.entity,
+.fbx-darkmode .token.url,
+.fbx-darkmode .token.variable {
+    color: #fff
+}
+
+.fbx-darkmode .token.bold {
+    font-weight: bold
+}
+
+.fbx-darkmode .token.italic {
+    font-style: italic
+}
+
+.fbx-darkmode .token.entity {
+    cursor: help
+}
+
+.fbx-darkmode .token.namespace {
+    opacity: .7
+}
+
+.fbx-darkmode pre[class*="language-sass"] .token.variable-line,
+.fbx-darkmode pre[class*="language-scss"] .token.variable-line {
+    color: #74dfc4
+}
+
+.fbx-darkmode pre[class*="language-sass"] .token.variable,
+.fbx-darkmode pre[class*="language-scss"] .token.variable {
+    color: #eb64b9
+}
+
+.fbx-darkmode pre[class*="language-file"]>code
+{
+    color: var(--fbx-color-babyblue)
+}
+
+.fbx-darkmode .code-content-example
+{
+    border: 1px solid var(--fbx-black-900);
+}
+.fbx-darkmode hr
+{
+    background: var(--fbx-black-300);
+}

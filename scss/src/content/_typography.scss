@@ -179,9 +179,12 @@ samp
 
 blockquote:not([class])
 {
-    padding: 0 1em;
+    padding: 1em;
     color: var(--fbx-gray);
-    border-left: 0.25em solid var(--fbx-gray-300);
+    border-left: 0.5em solid var(--fbx-gray-300);
+    border-radius: var(--fbx-border-radius);
+    border: none;
+    box-shadow: none;
 
     >
     {
@@ -362,6 +365,7 @@ code
 {
     padding: .2rem .4rem;
     color: crimson;
+    overflow: hidden;
 }
 pre
 {

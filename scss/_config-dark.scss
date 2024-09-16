@@ -1,5 +1,183 @@
+/* ---------------------------------- ROOT DARK ------------------------------------ */
+/* --------------------------------------------------------------------------------- */
 .fbx-darkmode:root
 {
-    --fbx-body-bg:    var(--fbx-black-900);
+    --fbx-body-bg:    var(--fbx-black);
     --fbx-body-color: var(--fbx-white);
 }
+
+/* ----------------------------------- CONTENT DARK ------------------------------------- */
+/* --------------------------------------------------------------------------------- */
+.fbx-darkmode
+{
+    blockquote:not([class]),
+    blockquote.bq:not([class*=bq-])
+    {
+        border-left: 0.5em solid var(--fbx-black-200);
+        color: var(--fbx-black-gray-200);
+        background: var(--fbx-black-300);
+
+        footer
+        {
+            color: var(--fbx-black-gray-200);
+
+            cite
+            {
+                color: var(--fbx-black-gray-400);
+            }
+        }
+        p
+        {
+            color: inherit;
+        }
+        a
+        {
+            color: var(--fbx-link-color);
+        }
+    }
+    code
+    {
+        color: #74dfc4;
+    }
+    pre, code
+    {
+        background-color: var(--fbx-black-900);
+        border: 1px solid var(--fbx-black-900);
+    }
+    pre, pre > code
+    {
+        color: var(--fbx-white);
+    }
+
+    .table
+    {    
+        --fbx-table-color: var(--fbx-gray-100);
+        --fbx-table-border-color: var(--fbx-black-900);
+        --fbx-table-head-bg: var(--fbx-black-900);
+        --fbx-table-head-color: var(--fbx-white);
+        --fbx-table-bg-hover: var(--fbx-black-900);
+        --fbx-table-caption-color: var(--fbx-gray);
+        --fbx-table-bg-alternate: var(--fbx-black-900);
+        --fbx-table-selected-color: var(--fbx-white);
+        --fbx-table-selected-bg: var(--fbx-theme-info);
+    }
+    .list
+    {
+        --fbx-list-bg: var(--fbx-black-700);
+        --fbx-list-color: var(--fbx-gray-100);
+        --fbx-list-item-color-hover: var(--fbx-gray-200);
+        --fbx-list-item-color-active: var(--fbx-gray-300);
+        --fbx-list-item-color-selected: var(--fbx-white);
+        --fbx-list-item-bg: transparent;
+        --fbx-list-item-bg-hover: var(--fbx-black-500);
+        --fbx-list-item-bg-active: var(--fbx-theme-info-900);
+        --fbx-list-item-bg-selected: var(--fbx-theme-info);
+        --fbx-list-divider-color: var(--fbx-black-300);
+    }
+    .lazyload
+    {
+        --fbx-lazyload-falback-bg: var(--fbx-black-100);
+    }
+
+/* ---------------------------------- SURFACES DARK ------------------------------------- */
+/* -------------------------------------------------------------------------------------- */
+    .skeleton
+    {
+        --fbx-skeleton-bg-1: rgba(255, 255, 255, 0.4);
+        --fbx-skeleton-bg-2: rgba(255, 255, 255, 0.7);
+    }
+    .card
+    {
+        --fbx-card-bg: var(--fbx-black-700);
+        --fbx-card-bg-focus: var(--fbx-black-700);
+        --fbx-card-color: var(--fbx-gray-100);
+        --fbx-card-title-color: var(--fbx-body-color);
+        --fbx-card-border-color: var(--fbx-black-900);
+        --fbx-card-divider-color: var(--fbx-gray-900);
+        --fbx-card-media-bg: var(--fbx-gray-100);
+    }
+    .paper
+    {
+        --fbx-paper-bg: var(--fbx-black-700);
+        --fbx-paper-border-color: var(--fbx-black-600);
+    }
+    .drawer-container
+    {
+        --fbx-drawer-bg: var(--fbx-black-700);
+        --fbx-drawer-overlay-bg: rgb(255 255 255 / 57%);
+        --fbx-drawer-overlay-bg-dark: rgb(75 75 75 / 74%);
+        --fbx-drawer-border-color: var(--fbx-black-500);
+    }
+    .drawer-container.frontdrop.drawer-bottom
+    {
+        --fbx-drawer-bg: var(--fbx-black-700);
+        --fbx-drawer-overlay-bg: rgb(255 255 255 / 57%);
+        --fbx-drawer-overlay-bg-dark: rgb(75 75 75 / 74%);
+    }
+    .drawer-container.backdrop
+    {
+        --fbx-drawer-bg: var(--fbx-theme-primary);
+    }
+
+/* ---------------------------------- NAVIGATION DARK ----------------------------------- */
+/* --------------------------------------------------------------------------------- */
+    .menu
+    {
+        --fbx-menu-bg: var(--fbx-black-700);
+        --fbx-menu-color: var(--fbx-gray-100);
+        --fbx-menu-item-color-hover: var(--fbx-gray-200);
+        --fbx-menu-item-color-active: var(--fbx-theme-primary);
+        --fbx-menu-item-color-checked: var(--fbx-white);
+        --fbx-menu-item-color-selected: var(--fbx-white);
+        --fbx-menu-item-bg: transparent;
+        --fbx-menu-item-bg-hover: var(--fbx-black-400);
+        --fbx-menu-item-bg-checked: var(--fbx-theme-primary);
+        --fbx-menu-item-bg-active: var(--fbx-theme-primary-900);
+        --fbx-menu-item-bg-selected: var(--fbx-theme-primary);
+        --fbx-menu-divider-color: var(--fbx-black-400);
+    }
+
+/* ------------------------------------ IMAGES DARK ------------------------------------- */
+/* --------------------------------------------------------------------------------- */
+
+
+/* ------------------------------------ INLINE DARK ------------------------------------- */
+/* --------------------------------------------------------------------------------- */
+
+
+/* ----------------------------------- BUTTONS DARK ------------------------------------- */
+/* --------------------------------------------------------------------------------- */
+    .btn
+    {
+        --fbx-btn-bg-color: var(--fbx-black-300);
+        --fbx-btn-color: var(--fbx-gray-100);
+ 
+        --fbx-btn-loader-color: var(--fbx-btn-color);
+        
+        --fbx-btn-color-hover: var(--fbx-white);
+        --fbx-btn-bg-color-hover: var(--fbx-black-200);
+        --fbx-btn-color-active: var(--fbx-white);
+        --fbx-btn-bg-color-active: var(--fbx-black-200);
+    }
+    .drop-container
+    {
+        --fbx-dropdown-bg: var(--fbx-black-400);
+    }
+    .drop-container .menu
+    {
+        --fbx-menu-item-bg-hover: var(--fbx-black-600);
+    }
+        
+
+/* ------------------------------------ FORMS DARK -------------------------------------- */
+/* --------------------------------------------------------------------------------- */
+
+
+/* ----------------------------------- FEEDBACK DARK ------------------------------------- */
+/* --------------------------------------------------------------------------------- */
+
+
+/* ----------------------------------- UTILITY DARK ------------------------------------- */
+/* --------------------------------------------------------------------------------- */
+}
+

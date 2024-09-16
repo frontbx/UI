@@ -1096,12 +1096,11 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
     	theme === this._theme ? add_class(item, 'selected') : remove_class(item, 'selected');
 
-    	console.log(item);	
     }
 
-    InitialThemeLinks.prototype.unbind = function(list)
+    InitialThemeLinks.prototype.unbind = function(item)
     {
-        console.log(item);		
+    	remove_class(item, 'selected')
     }
 
     FrontBx.dom().register('ThemeSwitcher', extend(Component, ThemeSwitcher), true);

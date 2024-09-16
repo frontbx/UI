@@ -16013,7 +16013,7 @@
          */
         Table.prototype.bind = function(node)
         {            
-            on(node, 'click', this._eventHandler);
+            on(node, 'click', this._eventHandler, this);
         }
     
         /**
@@ -16022,7 +16022,7 @@
          */
         Table.prototype.unbind = function(node)
         {
-            off(node, 'click', this._eventHandler);
+            off(node, 'click', this._eventHandler, this);
         }
     
         /**
@@ -16031,19 +16031,21 @@
          * @param {event|null} e JavaScript click event
          * @access {private}
          */
-        Table.prototype._eventHandler = function(e)
+        Table.prototype._eventHandler = function(e, row)
         {
             e = e || window.event;
             
-            if (has_class(this, 'selected')) return;
+            if (has_class(row, 'selected')) return;
     
-            var table = closest(this, '.js-select-table');
+            var table = closest(row, 'table');
     
-            remove_class(find('tr.selected', table), 'selected');
-            
-            add_class(this, 'selected');
+            let selected = find('tr.selected', table);
     
-            trigger_event(table, 'frontbx:table:selected', {item: this});
+            if (selected) remove_class(selected, 'selected');
+    
+            add_class(row, 'selected');
+    
+            trigger_event(table, 'frontbx:table:selected', { item: row });
         }
     
         /**
