@@ -4,8 +4,8 @@ FrontBx's handy Lazyload utility lets you gracefully load images asynchronously 
 
 ---
 
-*   [Setup](#setuop)
-*   [Markup](#Markup)
+*   [Setup](#setup)
+*   [Markup](#markup)
 *   [Background image](#background-image)
 *   [Fallback](#fallback)
 *   [Dynamic Content](#dynamic-content)

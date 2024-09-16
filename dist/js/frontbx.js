@@ -11065,7 +11065,7 @@ Container.singleton('_', _);
      * 
      * @var {Function}
      */
-    const [find, in_dom, normalize_url, is_string, coordinates, animate] = FrontBx.import(['find','in_dom','normalize_url','is_string','coordinates','animate']).from('_');
+    const [find, in_dom, normalize_url, is_string, coordinates, height, animate] = FrontBx.import(['find','in_dom','normalize_url','is_string','coordinates','height','animate']).from('_');
 
     /**
      * Default options
@@ -11097,6 +11097,18 @@ Container.singleton('_', _);
         let url = normalize_url(window.location.href);
 
         let isHashable = is_string(nodeOrId);
+
+        let fixednav = find('.navbar.navbar-fixed');
+
+        if (fixednav)
+        {
+            let h = height(fixednav);
+
+            if (pos >= h)
+            {
+                pos = pos - h;
+            }
+        }
 
         const complete = function()
         {
@@ -14231,9 +14243,12 @@ Container.singleton('_', _);
         {
             content = find(content);
 
-            content.style.display = 'none';
+            if (content)
+            {
+                content.style.display = 'none';
 
-            document.body.appendChild(content);
+                document.body.appendChild(content);
+            }
         }
 
         modal.destroy();

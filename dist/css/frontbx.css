@@ -400,31 +400,34 @@
   --fbx-skeleton-bg-2: rgba(255, 255, 255, 0.7);
 }
 .fbx-darkmode .card {
-  --fbx-card-bg: var(--fbx-black-700);
-  --fbx-card-bg-focus: var(--fbx-black-700);
+  --fbx-card-bg: var(--fbx-black-900);
+  --fbx-card-bg-focus: var(--fbx-black-900);
   --fbx-card-color: var(--fbx-gray-100);
   --fbx-card-title-color: var(--fbx-body-color);
-  --fbx-card-border-color: var(--fbx-black-900);
-  --fbx-card-divider-color: var(--fbx-gray-900);
+  --fbx-card-border-color: var(--fbx-black-500);
+  --fbx-card-divider-color: var(--fbx-black-300);
   --fbx-card-media-bg: var(--fbx-gray-100);
 }
 .fbx-darkmode .paper {
-  --fbx-paper-bg: var(--fbx-black-700);
+  --fbx-paper-bg: var(--fbx-black-900);
   --fbx-paper-border-color: var(--fbx-black-600);
 }
 .fbx-darkmode .drawer-container {
-  --fbx-drawer-bg: var(--fbx-black-700);
+  --fbx-drawer-bg: var(--fbx-black-900);
   --fbx-drawer-overlay-bg: rgb(255 255 255 / 57%);
   --fbx-drawer-overlay-bg-dark: rgb(75 75 75 / 74%);
   --fbx-drawer-border-color: var(--fbx-black-500);
 }
 .fbx-darkmode .drawer-container.frontdrop.drawer-bottom {
-  --fbx-drawer-bg: var(--fbx-black-700);
+  --fbx-drawer-bg: var(--fbx-black-900);
   --fbx-drawer-overlay-bg: rgb(255 255 255 / 57%);
   --fbx-drawer-overlay-bg-dark: rgb(75 75 75 / 74%);
 }
 .fbx-darkmode .drawer-container.backdrop {
   --fbx-drawer-bg: var(--fbx-theme-primary);
+}
+.fbx-darkmode .navbar {
+  background-color: var(--fbx-theme-primary-900);
 }
 .fbx-darkmode .menu {
   --fbx-menu-bg: var(--fbx-black-700);
@@ -454,6 +457,36 @@
 }
 .fbx-darkmode .drop-container .menu {
   --fbx-menu-item-bg-hover: var(--fbx-black-600);
+}
+.fbx-darkmode .form-field {
+  --fbx-input-bg: transparent;
+  --fbx-input-color: #ffffff;
+  --fbx-input-border-color: var(--fbx-black-200);
+  --fbx-input-color-label: rgba(255,255,255, 0.6);
+  --fbx-input-color-placeholder: rgba(255,255,255, 0.2);
+  --fbx-input-addon-bg: transparent;
+  --fbx-input-addon-color: rgba(255,255,255, 0.9);
+  --fbx-input-bg-focus: transparent;
+  --fbx-special-placeholder-color: rgba(255,255,255, 0.2);
+  --fbx-input-addon-bg: rgba(255,255,255,0.2);
+}
+.fbx-darkmode .form-field > label:first-child {
+  color: #ffffff;
+}
+.fbx-darkmode .form-field .input-addon {
+  border-color: #ffffff;
+}
+.fbx-darkmode .form-field input:not([type=radio]):not([type=checkbox]):not([type=range]) + label,
+.fbx-darkmode .form-field textarea + label,
+.fbx-darkmode .form-field select + label {
+  background-color: var(--fbx-body-bg);
+}
+.fbx-darkmode .msg {
+  --fbx-msg-bg: var(--fbx-black-900);
+  --fbx-msg-color: var(--fbx-white);
+}
+.fbx-darkmode .notification-wrap .msg {
+  --fbx-msg-bg: var(--fbx-black-200);
 }
 
 /* base/reset */

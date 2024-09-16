@@ -802,7 +802,6 @@ div.code-toolbar>.toolbar>.toolbar-item>button:hover
 {
     background-color: #7de3b5;
 }
-
 .code-content-example + .code-toolbar,
 .code-content-example + .code-toolbar > pre,
 .code-content-example + pre
@@ -972,6 +971,11 @@ table .big-code code
 .bg-body-color
 {
     background-color: var(--fbx-body-color);
+}
+.code-content-example .msg,
+.code-content-example .notification-wrap
+{
+    z-index: unset;
 }
 
 /* Slider  */

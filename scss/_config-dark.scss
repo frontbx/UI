@@ -88,29 +88,29 @@
     }
     .card
     {
-        --fbx-card-bg: var(--fbx-black-700);
-        --fbx-card-bg-focus: var(--fbx-black-700);
+        --fbx-card-bg: var(--fbx-black-900);
+        --fbx-card-bg-focus: var(--fbx-black-900);
         --fbx-card-color: var(--fbx-gray-100);
         --fbx-card-title-color: var(--fbx-body-color);
-        --fbx-card-border-color: var(--fbx-black-900);
-        --fbx-card-divider-color: var(--fbx-gray-900);
+        --fbx-card-border-color: var(--fbx-black-500);
+        --fbx-card-divider-color: var(--fbx-black-300);
         --fbx-card-media-bg: var(--fbx-gray-100);
     }
     .paper
     {
-        --fbx-paper-bg: var(--fbx-black-700);
+        --fbx-paper-bg: var(--fbx-black-900);
         --fbx-paper-border-color: var(--fbx-black-600);
     }
     .drawer-container
     {
-        --fbx-drawer-bg: var(--fbx-black-700);
+        --fbx-drawer-bg: var(--fbx-black-900);
         --fbx-drawer-overlay-bg: rgb(255 255 255 / 57%);
         --fbx-drawer-overlay-bg-dark: rgb(75 75 75 / 74%);
         --fbx-drawer-border-color: var(--fbx-black-500);
     }
     .drawer-container.frontdrop.drawer-bottom
     {
-        --fbx-drawer-bg: var(--fbx-black-700);
+        --fbx-drawer-bg: var(--fbx-black-900);
         --fbx-drawer-overlay-bg: rgb(255 255 255 / 57%);
         --fbx-drawer-overlay-bg-dark: rgb(75 75 75 / 74%);
     }
@@ -121,6 +121,10 @@
 
 /* ---------------------------------- NAVIGATION DARK ----------------------------------- */
 /* --------------------------------------------------------------------------------- */
+    .navbar
+    {
+        background-color: var(--fbx-theme-primary-900);
+    }
     .menu
     {
         --fbx-menu-bg: var(--fbx-black-700);
@@ -172,6 +176,52 @@
 /* ------------------------------------ FORMS DARK -------------------------------------- */
 /* --------------------------------------------------------------------------------- */
 
+    .form-field
+    {
+        
+        --fbx-input-bg: transparent;
+        --fbx-input-color: #ffffff;
+        --fbx-input-border-color: var(--fbx-black-200);
+        --fbx-input-color-label: rgba(255,255,255, 0.6);
+        --fbx-input-color-placeholder: rgba(255,255,255, 0.2);
+        
+        // Addons
+        --fbx-input-addon-bg: transparent;
+        --fbx-input-addon-color: rgba(255,255,255, 0.9);
+       
+        // Used internally for states
+        --fbx-input-bg-focus: transparent;
+        --fbx-special-placeholder-color: rgba(255,255,255, 0.2);
+        --fbx-input-addon-bg: rgba(255,255,255,0.2);
+
+        // Label first child
+        > label:first-child
+        {
+            color: #ffffff;
+        }
+        .input-addon
+        {
+            border-color: #ffffff;
+        }
+    }
+    .form-field input:not([type="radio"]):not([type="checkbox"]):not([type="range"]) + label,
+    .form-field textarea + label,
+    .form-field select + label,
+    { 
+        background-color: var(--fbx-body-bg);
+    }
+
+    .msg
+    {
+        --fbx-msg-bg: var(--fbx-black-900);
+        --fbx-msg-color: var(--fbx-white);
+    }
+    .notification-wrap .msg
+    {
+        --fbx-msg-bg: var(--fbx-black-200);
+    }
+    
+    
 
 /* ----------------------------------- FEEDBACK DARK ------------------------------------- */
 /* --------------------------------------------------------------------------------- */
