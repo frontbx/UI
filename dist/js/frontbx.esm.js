@@ -11379,7 +11379,7 @@ Container.singleton('_', _);
      * 
      * @var {Function}
      */
-    const [find_all, add_class, attr, bool, closest, each, form_inputs, form_values, in_dom, input_value, is_callable, is_empty, remove_class] = FrontBx.import(['find_all','add_class','attr','bool','closest','each','form_inputs','form_values','in_dom','input_value','is_callable','is_empty','remove_class']).from('_');
+    const [find_all, add_class, attr, bool, closest, each, form_inputs, form_values, on, off, input_value, is_callable, is_empty, remove_class] = FrontBx.import(['find_all','add_class','attr','bool','closest','each','form_inputs','form_values','on','off','input_value','is_callable','is_empty','remove_class']).from('_');
 
     /**
      * Validator functions
@@ -11389,6 +11389,8 @@ Container.singleton('_', _);
      */
     const VALIDATORS = 
     {
+        specialchars: ['!', '"', '`', '#', '$', '%', '&', '\'', '(', ')', '*', '+', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '{', '|', '}', '~'],
+
         email: function(value)
         {
             var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -11396,18 +11398,26 @@ Container.singleton('_', _);
         },
         name: function(value)
         {
-            var re = /^[A-z _-]+$/;
-            return re.test(value);
-        },
-        numeric: function(value)
-        {
-            var re = /^[\d]+$/;
-            return re.test(value);
+            return /[^A-z'\ -'❜]/.test(value) === false;
         },
         password: function(value)
-        {
-            var re = /^(?=.*[^a-zA-Z]).{6,40}$/;
-            return re.test(value);
+        {   
+            if (!VALIDATORS.minlength(value, 6) || !VALIDATORS.maxlength(value, 40)) return false;
+
+            let chars = `${value}`;
+            let valid = false;
+
+            each(VALIDATORS.specialchars, (i, char) =>
+            {
+                if (value.includes(char))
+                {
+                    valid = true;
+
+                    return false;
+                }
+            });
+
+            return valid;
         },
         url: function(value)
         {
@@ -11416,13 +11426,59 @@ Container.singleton('_', _);
         },
         alpha: function(value)
         {
-            var re = /^[A-z _-]+$/;
-            return re.test(value);
+            return /[^A-z]/.test(value) === false;
+        },
+        alphaspace: function(value)
+        {
+            return /[^A-z ]/.test(value) === false;
         },
         alphanumeric: function(value)
         {
-            var re = /^[A-z0-9]+$/;
-            return re.test(value);
+            return /[^A-z0-9]/.test(value) === false;
+        },
+        alphadash: function(value)
+        {
+            return /[^A-z-]/.test(value) === false;
+        },
+        alphadot: function(value)
+        {
+            return /[^A-z\.]/.test(value) === false;
+        },
+        alphadashdot: function(value)
+        {
+            return /[^A-z\.-]/.test(value) === false;
+        },
+        alphadashes: function(value)
+        {
+            return /[^A-z-_]/.test(value) === false;
+        },
+        alphadashesdot: function(value)
+        {
+            return /[^A-z-_\.]/.test(value) === false;
+        },
+        alphanumericdash: function(value)
+        {
+            return /[^A-z0-9-]/.test(value) === false;
+        },
+        alphanumericdot: function(value)
+        {
+            return /[^A-z0-9\.]/.test(value) === false;
+        },
+        alphanumericdashdot: function(value)
+        {
+            return /[^A-z0-9\.-]/.test(value) === false;
+        },
+        alphanumericdashesdot: function(value)
+        {
+            return /[^A-z0-9\._-]/.test(value) === false;
+        },
+        numeric: function(value)
+        {
+            return /[^0-9]/.test(value) === false;
+        },
+        numericdecimal: function(value)
+        {
+            return /[^0-9\.]/.test(value) === false;
         },
         list: function(value)
         {
@@ -11468,11 +11524,15 @@ Container.singleton('_', _);
         },
         minlength: function(value, min)
         {
-            return value.length >= min;
+            value = `${value}`;
+
+            return value.length >= parseInt(min);
         },
         maxlength: function(value, max)
         {
-            return value.length <= max;
+            value = `${value}`;
+
+            return value.length <= parseInt(max);
         }
     };
 
@@ -11486,55 +11546,63 @@ Container.singleton('_', _);
     const FormValidator = function(form)
     {
         // Save inputs
-        this._DOMElementForm = form;
-        this._DOMElementsFormFields = find_all('.form-field', form);
+        this._formEl = form;
         this._inputs = form_inputs(form);
 
         // Defaults
-        this._rulesIndex = [];
-        this._invalids   = [];
-        this._formObj    = {};
+        this._ruleSets = [];
+        this._formObj  = {};
+        this._valid    = false;
 
         // Initialize
-        this._indexValidations();
+        this._buildRuleSets();
     }
 
     /**
-     *  Is the form valid?
+     * Validate the form.
      *
      * @access {public}
      * @return {boolean}
      */
-    FormValidator.prototype.isValid = function()
+    FormValidator.prototype.validate = function()
     {
-        return this._validateForm();
-    }
+        // Remove all listeners
+        this._unListen();
 
-    /**
-     * Show invalid inputs
-     *
-     * @access {public}
-     */
-    FormValidator.prototype.showInvalid = function()
-    {
+        // Clear any invalids
         this._clearForm();
 
-        each(this._invalids, function(i, input)
+        // Validate inputs
+        this._validateRuleSets();
+
+        // Show invalid inputs
+        each(this._ruleSets, (i, ruleset) =>
         {
-            var fieldWrap = closest(input, '.form-field');
-
-            if (in_dom(fieldWrap)) add_class(fieldWrap, 'danger');
+            if (!ruleset.valid) this._devalidateField(ruleset.node, ruleset.failClass);
         });
+
+        // Listen to input changes.
+        this._listen();
+
+        return this._valid;
     }
 
     /**
-     * Remove errored inputs
+     * Validate the form.
      *
      * @access {public}
+     * @return {boolean}
      */
-    FormValidator.prototype.clearInvalid = function()
+    FormValidator.prototype.destroy = function()
     {
+        this._unListen();
+
         this._clearForm();
+
+        each(this._ruleSets, (i, ruleset) =>
+        {
+            this._validateField(ruleset.node, ruleset.failClass);
+        });
     }
 
     /**
@@ -11546,7 +11614,7 @@ Container.singleton('_', _);
     {
         this._clearForm();
 
-        add_class(this._DOMElementForm, result);
+        add_class(this._formEl, result);
     }
 
     /**
@@ -11572,38 +11640,40 @@ Container.singleton('_', _);
      */
     FormValidator.prototype.form = function()
     {
-        return form_values(this._DOMElementForm);
+        return form_values(this._formEl);
     }
 
     /**
-     * Index form inputs by name and rules
+     * Build validation rule sets.
      *
-     * @access {public}
+     * @access {private}
      */
-    FormValidator.prototype._indexValidations = function()
+    FormValidator.prototype._buildRuleSets = function()
     {
-        each(this._inputs, function(i, input)
+        each(this._inputs, (i, input) =>
         {
-            // No name
+            // No name or radio
             if (!input.name) return;
 
-            this._rulesIndex.push(
-            {
-                node:       input,
-                required:   bool(attr(input, 'data-js-required')),
-                minlength:  attr(input, 'data-js-min-length'),
-                maxlength:  attr(input, 'data-js-max-length'),
-                validation: this._validationFunc(attr(input, 'data-js-validation')),
-                valid:      true,
-            });
+            let node = input;
 
-        }, this);
+            let required   = bool(attr(input, 'data-js-required') || attr(input, 'required'));
+            let minlength  = attr(input, 'data-js-min-length') || attr(input, 'minlength');
+            let maxlength  = attr(input, 'data-js-max-length') || attr(input, 'maxlength');
+            let valid      = true;
+            let validation = this._validationFunc(attr(input, 'data-js-validation'));
+            let failClass  = attr(input, 'data-js-validation-fail') || 'danger'; 
+
+            this._ruleSets.push({node, required, minlength, maxlength, validation, failClass, valid});
+        });
     }
 
     /**
-     * Index form inputs by name and rules
+     * Returns the validation callback function by name.
      *
-     * @access {public}
+     * @access {private}
+     * @param  {String}   name Validation name
+     * @return {Function}
      */
     FormValidator.prototype._validationFunc = function(name)
     {
@@ -11617,72 +11687,143 @@ Container.singleton('_', _);
     }
 
     /**
-     * Validate the form inputs
+     * Validate all rule sets.
      *
      * @access {private}
-     * @return {boolean}
+     * @return {Boolean}
      */
-    FormValidator.prototype._validateForm = function()
+    FormValidator.prototype._validateRuleSets = function()
     {
-        this._invalids = [];
-        this._isValid  = true;
+        this._valid = true;
 
-        each(this._rulesIndex, function(i, ruleset)
+        each(this._ruleSets, (i, ruleset) => { this._validateRuleSet(ruleset) });
+        
+        return this._valid;
+    }
+
+    /**
+     * Validate an individual ruleset.
+     *
+     * @access {private}
+     * @param  {Object}  ruleset Ruleset to validate
+     * @return {Boolean}
+     */
+    FormValidator.prototype._validateRuleSet = function(ruleset)
+    {
+        let value = input_value(ruleset.node);
+
+        // Skip radios, they don't have any validation
+        if (ruleset.node.type === 'radio') return true;
+        
+        if (ruleset.required && is_empty(value))
         {
-            let input = ruleset.node;
-            let value = input_value(ruleset.node);
+            this._valid = false;
+            ruleset.valid = false;
+        }
+        else if (ruleset.minlength && !VALIDATORS.minlength.call(null, value, ruleset.minlength))
+        {
+            this._valid = false;
+            ruleset.valid = false;
+        }
+        else if (ruleset.maxlength && !VALIDATORS.maxlength.call(null, value, ruleset.maxlength))
+        {
+            this._valid = false;
+            ruleset.valid = false;
+        }
+        else if (is_callable(ruleset.validation) && !ruleset.validation.call(null, value))
+        {
+            this._valid = false;
+            ruleset.valid = false;
+        }
+        else
+        {
+            ruleset.valid = true;
+        }
 
-            // Skip radios, they don't have any validation
-            if (input.type === 'radio') return;
-            
-            if (ruleset.required && is_empty(value))
-            {
-                this._devalidate(input);
-            }
-            else if (ruleset.minlength && !VALIDATORS.minlength.call(null, value, ruleset.minlength))
-            {
-                this._devalidate(input);
-            }
-            else if (ruleset.maxlength && !VALIDATORS.maxlength.call(null, value, ruleset.maxlength))
-            {
-                this._devalidate(input);
-            }
-            else if (is_callable(ruleset.validation) && !ruleset.validation.call(null, value))
-            {
-                this._devalidate(input);
-            }
-
-        }, this);
-
-        return this._isValid;
+        return ruleset.valid;
     }
 
     /**
-     * Mark an input as not valid (internally)
+     * Listen to input
      *
      * @access {private}
-     * @return {obj}
+     * @param  {HTMLElement} node Input
      */
-    FormValidator.prototype._devalidate = function(node)
+    FormValidator.prototype._listen = function()
     {
-        this._isValid = false;
-
-        this._invalids.push(node);
+        each(this._ruleSets, (i, ruleset) => 
+        {
+            on(ruleset.node, 'input, change', this._liveValidate, this);
+        });
     }
 
     /**
-     * Clear form result and input errors
+     * Listen to inputs.
      *
      * @access {private}
-     * @return {obj}
+     */
+    FormValidator.prototype._unListen = function()
+    {
+        each(this._ruleSets, (i, ruleset) => 
+        {
+            off(ruleset.node, 'input, change', this._liveValidate, this);
+        });
+    }
+
+    /**
+     * Live validate an input.
+     *
+     * @access {private}
+     * @param  {Object}      e     Event
+     * @param  {HTMLElement} input Input
+     */
+    FormValidator.prototype._liveValidate = function(e, input)
+    {
+        each(this._ruleSets, (i, ruleset) => 
+        {
+            if (ruleset.node === input)
+            {
+                let valid = this._validateRuleSet(ruleset);
+
+                valid ? this._validateField(input, ruleset.failClass) : this._devalidateField(input, ruleset.failClass);
+            }
+        });
+    }
+
+    /**
+     * Show form field as valid.
+     *
+     * @access {private}
+     * @param  {HTMLElement} node Input
+     */
+    FormValidator.prototype._validateField = function(input, failClass)
+    {
+        let fieldWrap = closest(input, '.form-field');
+
+        if (fieldWrap) remove_class(fieldWrap, ['info', 'success', 'warning', 'danger', failClass]);
+    }
+
+    /**
+     * Show form field as invalid.
+     *
+     * @access {private}
+     */
+    FormValidator.prototype._devalidateField = function(input, failClass)
+    {
+        let fieldWrap = closest(input, '.form-field');
+
+        if (fieldWrap) add_class(fieldWrap, failClass);
+    }
+
+    /**
+     * Clear form results.
+     *
+     * @access {private}
      */
     FormValidator.prototype._clearForm = function()
     {
         // Remove the form result
-        remove_class(this._DOMElementForm, ['info', 'success', 'warning', 'danger']);
-
-        // Make all input elements 'valid' - i.e hide the error msg and styles.
-        remove_class(this._DOMElementsFormFields, ['info', 'success', 'warning', 'danger']);
+        remove_class(this._formEl, ['info', 'success', 'warning', 'danger']);
     }
 
     // Load into container

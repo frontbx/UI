@@ -272,7 +272,7 @@
         <div class="container-fluid main-container relative js-main-container">
             <article class="docs-body"><h1 id="form-validation">Form Validation</h1>
 <hr />
-<p>FrontBx's <code>FormValidator</code> provides a powerful module to validate and interact with your forms an easily and quickly.</p>
+<p>FrontBx's <code>FormValidator</code> provides a powerful component to easily validate forms.</p>
 <hr />
 <ul>
 <li><a href="#Instantiation">Instantiation</a></li>
@@ -286,46 +286,163 @@
 <pre><code class="javascript language-javascript">const validator = FrontBx.FormValidator(document.querySelector.$('#myform'));</code></pre>
 <hr />
 <h3 id="markup">Markup</h3>
-<p>To setup a form for validation, you can use one of the prebuilt validations under the <code>data-js-validation</code> attribute on any input:</p>
+<p>To setup a form for validation, use one of the pre-built validation rules as the <code>data-js-validation</code> attribute on any input:</p>
 <pre><code class="html language-html">&lt;input type="email" name="email" data-js-validation="email"&gt;</code></pre>
-<p>Prebuilt <code>data-js-validation</code> values are: <code>email</code> <code>name</code> <code>creditcard</code> <code>password</code> <code>url</code> <code>list</code> <code>alpha</code> <code>numeric</code> <code>alpha-numeric</code></p>
-<pre><code class="html language-html">&lt;input type="email" name="email" data-js-validation="email"&gt;
-&lt;input type="text" name="name" data-js-validation="name"&gt;
-&lt;input type="text" name="creditcard" data-js-validation="creditcard"&gt;
-&lt;input type="text" name="password" data-js-validation="password"&gt;
-&lt;input type="text" name="url" data-js-validation="url"&gt;
-&lt;input type="text" name="list" data-js-validation="list"&gt;
-&lt;input type="text" name="username" data-js-validation="alpha"&gt;
-&lt;input type="text" name="phone" data-js-validation="numeric"&gt;
-&lt;input type="text" name="user" data-js-validation="alpha-numeric"&gt;</code></pre>
-<p>The <code>data-js-min-length</code> specifies the value must be <code>&gt;=</code> a length in characters.</p>
-<pre><code class="html language-html">&lt;input type="text" name="name"  data-js-min-length="5"&gt;</code></pre>
-<p>The <code>data-js-max-length</code> specifies the value must be <code>&lt;=</code> a length in characters.</p>
-<pre><code class="html language-html">&lt;input type="text" name="name"  data-js-max-length="20"&gt;</code></pre>
+<table>
+<thead>
+<tr>
+<th id="rule">Rule</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>email</code></td>
+<td>Validates against a valid email address.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Validates against alpha-space characters with addition of <code>-</code> <code>"</code>, <code>'</code> <code>❜</code>.</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>Validates against minlength 6, maxlength 40, and inclusive of a special character.</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>Validates against a valid URL.</td>
+</tr>
+<tr>
+<td><code>alpha</code></td>
+<td>Allows alpha characters.</td>
+</tr>
+<tr>
+<td><code>alphaspace</code></td>
+<td>Allows alpha characters with spaces.</td>
+</tr>
+<tr>
+<td><code>alphanumeric</code></td>
+<td>Allows alpha characters with numbers.</td>
+</tr>
+<tr>
+<td><code>alphadash</code></td>
+<td>Allows alpha characters with numbers.</td>
+</tr>
+<tr>
+<td><code>alphadot</code></td>
+<td>Allows alpha characters with dots.</td>
+</tr>
+<tr>
+<td><code>alphadashdot</code></td>
+<td>Allows alpha characters with hyphens.</td>
+</tr>
+<tr>
+<td><code>alphadashes</code></td>
+<td>Allows alpha characters with hyphens and underscores.</td>
+</tr>
+<tr>
+<td><code>alphadashesdot</code></td>
+<td>Allows alpha characters with hyphens and dots.</td>
+</tr>
+<tr>
+<td><code>alphanumericdash</code></td>
+<td>Allows alpha characters, numbers, and hyphens.</td>
+</tr>
+<tr>
+<td><code>alphanumericdot</code></td>
+<td>Allows alpha characters, numbers, and dots.</td>
+</tr>
+<tr>
+<td><code>alphanumericdashdot</code></td>
+<td>Allows alpha characters, numbers, hyphens and dots.</td>
+</tr>
+<tr>
+<td><code>alphanumericdashesdot</code></td>
+<td>Allows alpha characters, numbers, hyphens, underscores and dots.</td>
+</tr>
+<tr>
+<td><code>numeric</code></td>
+<td>Allows alpha numbers.</td>
+</tr>
+<tr>
+<td><code>numericdecimal</code></td>
+<td>Allows alpha numbers and dots.</td>
+</tr>
+<tr>
+<td><code>list</code></td>
+<td>Must be a comma seperated list of characters.</td>
+</tr>
+<tr>
+<td><code>creditcard</code></td>
+<td>Validates against a valid credit card</td>
+</tr>
+</tbody>
+</table>
+<p>Additionally, you can validate an input as <code>required</code> as well as validate the length of an input by providing the following attributes:</p>
+<table>
+<thead>
+<tr>
+<th id="attribute">Attribute</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data-js-required</code></td>
+<td>Value must not be empty</td>
+</tr>
+<tr>
+<td><code>data-js-minlength</code></td>
+<td>Validates against <code>&gt;=</code> length</td>
+</tr>
+<tr>
+<td><code>data-js-maxlength</code></td>
+<td>Validates against <code>&lt;=</code> length</td>
+</tr>
+<tr>
+<td><code>required</code></td>
+<td>Value must not be empty</td>
+</tr>
+<tr>
+<td><code>minlength</code></td>
+<td>Validates against <code>&gt;=</code> length</td>
+</tr>
+<tr>
+<td><code>maxlength</code></td>
+<td>Validates against <code>&lt;=</code> length</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="html language-html">&lt;!-- Data attributes --&gt;
+&lt;input type="text" name="name" data-js-required="true" data-js-min-length="5" data-js-max-length="30"&gt;
+
+&lt;!-- Native attributes --&gt;
+&lt;input type="text" name="name" required="true" minlength="5" maxlength="30"&gt;</code></pre>
+<hr />
 <h3 id="validating">Validating</h3>
-<p>Instantiate a <code>FormValidator</code> via FrontBx's <code>Container</code>, passing the target <code>&lt;form&gt;</code> DOMElement as the parameter.</p>
+<p>Instantiate a <code>FormValidator</code> instance via FrontBx's <code>Container</code>, passing the target <code>&lt;form&gt;</code> DOMElement as the parameter.</p>
 <pre><code class="javascript language-javascript">const validator = FrontBx.FormValidator(document.querySelector.$('#myform'));</code></pre>
-<p>The <code>isValid</code> method will check if the form is valid based on any validation input attributes:</p>
-<pre><code class="javascript language-javascript">if (validator.isValid())
+<p>The <code>validate</code> method will run validation on all inputs based on any validation attributes and return a <code>Boolean</code>. Any invalid <code>.form-field</code> elements will then be shown as invalid.</p>
+<pre><code class="javascript language-javascript">if (validator.validate())
 {
     // do stuff
 }</code></pre>
-<p>The <code>showInvalid</code> method add the appropriate <code>context</code> class to any FrontBx <code>.form-fields</code> to show them as invalid:</p>
-<pre><code class="javascript language-javascript">if (validator.isValid())
-{
-    validator.showInvalid();
-}</code></pre>
-<p>The <code>clearInvalid</code> method clears any <code>context</code> classes on all <code>.form-fields</code>:</p>
-<pre><code class="javascript language-javascript">validator.clearInvalid();</code></pre>
-<p>The <code>form</code> method returns an object with all the key/values from the forms inputs (it will handle multi inputs ass well e.g <code>&lt;input name="foo[]"/&gt;</code>)</p>
-<pre><code class="javascript language-javascript">var form = validator.form();</code></pre>
-<p>The <code>append</code> method appends a key/pair to the form object from the form and returns it. Useful when you need to add something to an Ajax request like a <code>CSRF</code> token.</p>
-<pre><code class="javascript language-javascript">var form = validator.append('secret_key', '$FDS#$T$@');</code></pre>
-<p>The <code>showResult</code> method will add the context class to form, which in turns displays the appropriate form result:</p>
+<p>Additionally, once <code>validate</code> is called on a form, any inputs that fail validation, will get a listener that listens for any changes and live validates the input whenever its value changes.</p>
+<blockquote>
+  <p>See the <a href="../../forms/inputs/index.html#states">Input states</a> documentation for details on input states.</p>
+</blockquote>
+<p>The <code>form</code> method returns a key/value object of all <code>input</code>, <code>textarea</code> and <code>select</code> elements in the form.</p>
+<pre><code class="javascript language-javascript">let form = validator.form();</code></pre>
+<p>The <code>append</code> method appends a key/value pair to the form object from the <code>form</code> and returns it. Useful when you need to add something to an Ajax request like a <code>CSRF</code> token.</p>
+<pre><code class="javascript language-javascript">let form = validator.append('secret_key', '$FDS#$T$@');</code></pre>
+<p>The <code>showResult</code> method will add the context class to <code>&lt;form&gt;</code>, which in turns displays the appropriate form result:</p>
 <pre><code class="javascript language-javascript">validator.showResult('success');</code></pre>
+<blockquote>
+  <p>See the <a href="../../forms/results/index.html">Form results</a> documentation for details on form result markup.</p>
+</blockquote>
 <hr />
 <h3 id="example">Example</h3>
-<p>Below is an example form using the validator. In a real request, you would use FrontBx's <code>Ajax</code> component, however for this example we just use a <code>timeout</code>. Check the console log for more details.</p>
+<p>Below is an example form using the validator. In a real request, you would use FrontBx's <code>Ajax</code> component or submit the form manually, however for this example we just use a <code>timeout</code>. Check the console log for more details.</p>
 <div class="code-content-example">
     <form class="flex-row row-gaps-xs align-cols-center">
         <div class="col-12 col-md-8">
@@ -334,21 +451,21 @@
                     <input type="text" name="name" id="name" data-js-required="true" data-js-validation="name">
                     <label for="name">Name</label>
                 </div>
-                <p class="help-danger">* You need to enter your name.</p>
+                <p class="help-danger">* That doesn't look right, make sure you enter a valid name.</p>
             </div>
             <div class="row pole-xs pole-s">
                 <div class="form-field row">
                     <input type="email" name="email" id="email" data-js-required="true" data-js-validation="email">
                     <label for="email">Email</label>
                 </div>
-                <p class="help-danger">* You need to enter your email address.</p>
+                <p class="help-danger">* That doesn't look right, make sure you enter a valid email.</p>
             </div>
             <div class="row pole-xs pole-s">
                 <div class="form-field row">
                     <input type="password" name="password" id="password" data-js-required="true" data-js-validation="password">
                     <label for="password">Password</label>
                 </div>
-                <p class="help-danger">* Passwords must include a number or special character.</p>
+                <p class="help-danger">* Passwords must be between 6-40 characters and include a special character.</p>
             </div>
             <div class="row pole-xs pole-s">
                 <div class="form-field row">
@@ -428,52 +545,126 @@
         </div>
     </form>
 </div>
+<pre><code class="html language-html">&lt;form id="my-form"&gt;
+
+    &lt;!-- name --&gt;
+    &lt;div class="row pole-xs pole-s"&gt;
+        &lt;div class="form-field row"&gt;
+            &lt;input type="text" name="name" id="name" data-js-required="true" data-js-validation="name"&gt;
+            &lt;label for="name"&gt;Name&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;p class="help-danger"&gt;* Please enter a valid name.&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Email --&gt;
+    &lt;div class="row pole-xs pole-s"&gt;
+        &lt;div class="form-field row"&gt;
+            &lt;input type="email" name="email" id="email" data-js-required="true" data-js-validation="email"&gt;
+            &lt;label for="email"&gt;Email&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;p class="help-danger"&gt;* Please enter a valid email address.&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Password --&gt;
+    &lt;div class="row pole-xs pole-s"&gt;
+        &lt;div class="form-field row"&gt;
+            &lt;input type="password" name="password" id="password" data-js-required="true" data-js-validation="password"&gt;
+            &lt;label for="password"&gt;Password&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;p class="help-danger"&gt;* Passwords must include a number or special character.&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Submit --&gt;
+    &lt;div class="row pole-xs pole-s"&gt;
+        &lt;button type="submit" class="btn with-loading js-form-validatior-btn"&gt;
+            &lt;span class="loader loader-1"&gt;&lt;/span&gt;
+            Submit
+        &lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Results --&gt;
+    &lt;div class="form-result"&gt;
+        &lt;div class="msg msg-info" aria-hidden="true"&gt;
+            &lt;div class="msg-icon"&gt;
+                &lt;span class="fa fa-bell icon"&gt;&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="msg-body"&gt;
+                &lt;p&gt;Please check your email to activate your account&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="msg msg-success" aria-hidden="true"&gt;
+            &lt;div class="msg-icon"&gt;
+                &lt;span class="fa fa-check icon"&gt;&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="msg-body"&gt;
+                &lt;p&gt;Hooorayy! Your message was successfully sent!&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="msg msg-warning" aria-hidden="true"&gt;
+            &lt;div class="msg-icon"&gt;
+                &lt;span class="fa fa-triangle-exclamation icon"&gt;&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="msg-body"&gt;
+                &lt;p&gt;There was an unknown error. Please try again later or contact support.&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="msg msg-danger" aria-hidden="true"&gt;
+            &lt;div class="msg-icon"&gt;
+                &lt;span class="fa fa-xmark icon"&gt;&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="msg-body"&gt;
+                &lt;p&gt;You have been banned from creating an account with us.&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/form&gt;</code></pre>
 <pre><code class="javascript language-javascript">/* Helpers */
-const [find, has_class, add_class, remove_class, on] = FrontBx.import(['find', 'has_class', 'add_class', 'remove_class', 'on']).from('Helper');
+const [find, has_class, add_class, remove_class, on] = FrontBx.import(['find', 'has_class', 'add_class', 'remove_class', 'on']).from('_');
 
 // Instantiate validator and cache vars
-const form      = find('.js-form');
+const form      = find('#my-form');
 const validator = FrontBx.FormValidator(form);
 const submitBtn = find('button[type=submit]', form);
 let fakeAjax;
 
 on(submitBtn, 'click', function(e)
 {
-    // Stop the form from submitting via POST
-    e = e || window.event;
-    e.preventDefault();
-
     // Don't submit if the form if it is being submitted
-    if (has_class(submitBtn, 'active')) return;
+    if (has_class(submitBtn, 'active')) return false;
 
-    // Clear all invalid input classes and form results
-    validator.clearInvalid();
+    // Validate the form
+    let valid = validator.validate();
 
     // Clear fake ajax timeout
     clearTimeout(fakeAjax);
 
-    // Validation
-    if (validator.isValid())
+    // If validated, submit the form
+    if (valid)
     {
-        // Button active
+        // Button shown as active
         add_class(submitBtn, 'active');
 
         // No Ajax?
-        // form.submit()
+        // form.submit(); return false;
 
         // Here you would send a real ajax request
-        fakeAjax = setTimeout(function()
+        fakeAjax = setTimeout(() =&gt;
         { 
+            // Usually you would get the result from server here from the Ajax request
+            let result = 'success';
+
+            // Show 'success', 'info', 'danger' or 'warning' results
             validator.showResult('success');
 
+            // remove btn active
             remove_class(submitBtn, 'active');
 
         }, 3000);
     }
-    else
-    {
-        validator.showInvalid();
-    }
+
+    // Stop the form from submitting via POST
+    return false;
 });</code></pre></article>
         </div>
         <footer class="site-footer">

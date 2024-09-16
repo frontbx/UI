@@ -547,32 +547,35 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
 	// Instantiate validator and cache vars
 	let fakeAjax;
+	let validator;
 
 	FrontBx.DocsDemo('.js-form-validatior-btn', (e, submitBtn) =>
 	{
-		const DOMElementform = closest(submitBtn, 'form');
+		if (validator) validator.destroy();
 
-		const validator = FrontBx.FormValidator(DOMElementform);
-
-		console.log('submitting');
+		validator = FrontBx.FormValidator(closest(submitBtn, 'form'));
 
 	    // Don't submit if the form if it is being submitted
 	    if (has_class(submitBtn, 'active')) return false;
 
-	    // Cache result class from radio
-	    var result = validator.form().result;
+	    // Validate to the form
+	    let valid = validator.validate();
 
-	    // Clear all invalid input classes and form results
-	    validator.clearInvalid();
+	    console.log('Running validation....');
+	    console.log(`Form is [${valid ? 'valid' : 'invalid'}]`);
 
 	    // Clear fake ajax timeout
 	    clearTimeout(fakeAjax);
 
 	    // Validation
-	    if (validator.isValid())
+	    if (valid)
 	    {
-	    	// Button active
-	        add_class(submitBtn, 'active');
+	    	console.log(`Submitting form over Ajax...`);
+
+	    	add_class(submitBtn, 'active');
+
+	    	// Fake result from ajax
+	    	var result = validator.form().result;
 
 	        // Here you would send a real ajax request
 	        fakeAjax = setTimeout(function()
@@ -581,13 +584,10 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
 	            remove_class(submitBtn, 'active');
 
-	        }, 500);
+	        }, 1500);
 	    }
-	    else
-	    {
-	        validator.showInvalid();
-	    }
-
+	    
+	    // Return false stop form submitting...
 	    return false;
 	});
 
@@ -859,7 +859,6 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     FrontBx.dom().register('BQs', extend(Component, BQs), true);
 
 }());
-
 
 
 /**
