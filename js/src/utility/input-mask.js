@@ -5,7 +5,7 @@
      * 
      * @var {functions}
      */
-    const [on, off, _map, is_regexp] = FrontBx.import(['on', 'off', 'map', 'is_regexp']).from('_');
+    const [on, off, _map, is_regexp] = frontbx.import(['on', 'off', 'map', 'is_regexp']).from('_');
 
     /**
      * Regex masks
@@ -250,6 +250,6 @@
     }
 
     // SET IN IOC
-    FrontBx.set('InputMasker', InputMasker);
+    frontbx.set('InputMasker', InputMasker);
 
 })();

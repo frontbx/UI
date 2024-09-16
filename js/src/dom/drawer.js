@@ -1,13 +1,13 @@
 (function()
 {
-    const [Component] = FrontBx.get('Component');
+    const [Component] = frontbx.get('Component');
 
     /**
      * Helper functions
      * 
      * @var {Function}
      */
-    const [find, each, is_undefined, attr, on, off, to_camel_case, add_class, remove_class, extend] = FrontBx.import(['find','each','is_undefined','attr','on','off','to_camel_case','add_class','remove_class','extend']).from('_');
+    const [find, each, is_undefined, attr, on, off, to_camel_case, add_class, remove_class, extend] = frontbx.import(['find','each','is_undefined','attr','on','off','to_camel_case','add_class','remove_class','extend']).from('_');
 
     /**
      * Available data attributes.
@@ -65,7 +65,7 @@
             }
         });
 
-        let drawer = FrontBx.Drawer(options);
+        let drawer = frontbx.Drawer(options);
 
         this.drawers.set(node, drawer);
 
@@ -115,7 +115,7 @@
         drawer.closed() ? drawer.open() : drawer.close();
     }
 
-    // Load into FrontBx DOM core
-    FrontBx.dom().register('Drawer', extend(Component, Drawer));
+    // Load into frontbx DOM core
+    frontbx.dom().register('Drawer', extend(Component, Drawer));
     
 })();

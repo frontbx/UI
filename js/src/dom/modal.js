@@ -5,14 +5,14 @@
      * 
      * @var {class}
      */
-    const [Component] = FrontBx.get('Component');
+    const [Component] = frontbx.get('Component');
 
     /**
      * Helper functions
      * 
      * @var {Function}
      */
-    const [find, each, is_undefined, attr, on, off, to_camel_case, extend] = FrontBx.import(['find','each','is_undefined','attr','on','off','to_camel_case','extend']).from('_');
+    const [find, each, is_undefined, attr, on, off, to_camel_case, extend] = frontbx.import(['find','each','is_undefined','attr','on','off','to_camel_case','extend']).from('_');
 
     /**
      * Available data attributes.
@@ -64,7 +64,7 @@
             }
         });
 
-        let modal = FrontBx.Modal(options);
+        let modal = frontbx.Modal(options);
 
         this.modals.set(node, modal);
 
@@ -113,6 +113,6 @@
         modal.closed() ? modal.open() : modal.close();
     }
 
-    // Load into FrontBx DOM core
-    FrontBx.dom().register('Modal', extend(Component, Modal));
+    // Load into frontbx DOM core
+    frontbx.dom().register('Modal', extend(Component, Modal));
 })();

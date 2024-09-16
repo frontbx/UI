@@ -26,7 +26,7 @@ A Frontdrop can be created via FrontBx's Container with the `Frontdrop` method:
 </div>
 
 ```javascript
-const frontdrop = FrontBx.Frontdrop( {
+const frontdrop = frontbx.Frontdrop( {
     content : '...',
 });
 ```
@@ -44,7 +44,7 @@ Pass a text value to `confirmBtn` to add a persistent confirmation button a Fron
 </div>
 
 ```javascript
-const frontdrop = FrontBx.Frontdrop( {
+const frontdrop = frontbx.Frontdrop( {
     content          : '...',
     confirmBtn       : 'Confirm Choice',
     callbackValidate : () => {
@@ -67,7 +67,7 @@ By default, the Frontdrop element itself is Swipeable when expanded. You can mak
 </div>
 
 ```javascript
-const frontdrop = FrontBx.Frontdrop({
+const frontdrop = frontbx.Frontdrop({
     content   : '...',
     swipeable : true
 });
@@ -86,7 +86,7 @@ By default, the Frontdrop element will hide completely when collapsed. You can m
 </div>
 
 ```javascript
-const frontdrop = FrontBx.Frontdrop({
+const frontdrop = frontbx.Frontdrop({
     content   : '...',
     peekable  : true
 });

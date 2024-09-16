@@ -5,7 +5,7 @@
      * 
      * @var {Function}
      */
-    const [find, find_all, each, dom_element, add_class, toggle_class, on, off, has_class, remove_class, remove_from_dom, css, height, width, preapend, scroll_pos, animate_css, rendered_style] = FrontBx.import(['find','find_all','each','dom_element','add_class','toggle_class','on','off','has_class','remove_class','remove_from_dom', 'css', 'height', 'width', 'preapend', 'scroll_pos', 'animate_css', 'rendered_style']).from('_');
+    const [find, find_all, each, dom_element, add_class, toggle_class, on, off, has_class, remove_class, remove_from_dom, css, height, width, preapend, scroll_pos, animate_css, rendered_style] = frontbx.import(['find','find_all','each','dom_element','add_class','toggle_class','on','off','has_class','remove_class','remove_from_dom', 'css', 'height', 'width', 'preapend', 'scroll_pos', 'animate_css', 'rendered_style']).from('_');
 
     /**
      * Default options
@@ -576,7 +576,7 @@
         {
             let context = this._options.persistent ? this._drawer : this._containerWrap;
             
-            FrontBx.dom().refresh(context);
+            frontbx.dom().refresh(context);
         }
 
         if (this._options.responsive && this._options.persistent) 
@@ -588,7 +588,7 @@
 
         let directions = SWIPE_DIRECTIONS[this._options.direction];
 
-        this._gestures = FrontBx.TinyGesture(this._options.swipeable ? window : this._drawer, { mouseSupport: true, velocityThreshold: 3, threshold: (type, self) => this._options.swipeable ? 20 : 3 });
+        this._gestures = frontbx.TinyGesture(this._options.swipeable ? window : this._drawer, { mouseSupport: true, velocityThreshold: 3, threshold: (type, self) => this._options.swipeable ? 20 : 3 });
 
         this._gestures.on(directions[0], () => this.open() );
 
@@ -606,6 +606,6 @@
     }
 
     // Load into container 
-    FrontBx.set('Drawer', Drawer);
+    frontbx.set('Drawer', Drawer);
 
 })();

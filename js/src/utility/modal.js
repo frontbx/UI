@@ -5,7 +5,7 @@
      * 
      * @var {Function}
      */
-    const [find, dom_element, add_class, on, off, remove_class, remove_from_dom, hide_aria, show_aria] = FrontBx.import(['find','dom_element','add_class','on','off','remove_class','remove_from_dom','hide_aria','show_aria']).from('_');
+    const [find, dom_element, add_class, on, off, remove_class, remove_from_dom, hide_aria, show_aria] = frontbx.import(['find','dom_element','add_class','on','off','remove_class','remove_from_dom','hide_aria','show_aria']).from('_');
 
     /**
      * Default options
@@ -257,7 +257,7 @@
 
         this._overlay.offsetHeight;
 
-        if (!this._options.fromHTML) FrontBx.dom().refresh(this._modal);
+        if (!this._options.fromHTML) frontbx.dom().refresh(this._modal);
 
         if (this._state === 'open')
         {
@@ -312,6 +312,6 @@
     }
 
     // Load into container 
-    FrontBx.set('Modal', Modal);
+    frontbx.set('Modal', Modal);
 
 })();

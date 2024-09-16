@@ -5,14 +5,14 @@
      * 
      * @var {class}
      */
-    const [Component] = FrontBx.get('Component');
+    const [Component] = frontbx.get('Component');
 
      /**
      * Helper functions
      * 
      * @var {Function}
      */
-    const [find, each, is_undefined, attr, on, off, to_camel_case, add_class, remove_class, extend] = FrontBx.import(['find','each','is_undefined','attr','on','off','to_camel_case','add_class','remove_class','extend']).from('_');
+    const [find, each, is_undefined, attr, on, off, to_camel_case, add_class, remove_class, extend] = frontbx.import(['find','each','is_undefined','attr','on','off','to_camel_case','add_class','remove_class','extend']).from('_');
 
     /**
      * Available data attributes.
@@ -70,7 +70,7 @@
             }
         });
 
-        let backdrop = FrontBx.Backdrop(options);
+        let backdrop = frontbx.Backdrop(options);
 
         this.drawers.set(node, backdrop);
 
@@ -119,7 +119,7 @@
         backdrop.closed() ? backdrop.open() : backdrop.close();
     }
 
-    // Load into FrontBx DOM core
-    FrontBx.dom().register('Backdrop', extend(Component, Backdrop));
+    // Load into frontbx DOM core
+    frontbx.dom().register('Backdrop', extend(Component, Backdrop));
 
 })();

@@ -5,7 +5,7 @@
      * 
      * @var {Function}
      */
-    const [find, add_class, on, in_dom, remove_class, remove_from_dom, dom_element] = FrontBx.import(['find','add_class','on','in_dom','remove_class','remove_from_dom','dom_element']).from('_');
+    const [find, add_class, on, in_dom, remove_class, remove_from_dom, dom_element] = frontbx.import(['find','add_class','on','in_dom','remove_class','remove_from_dom','dom_element']).from('_');
 
     /**
      * Default options
@@ -211,6 +211,6 @@
     }
 
     // Add to container
-    FrontBx.set('Notification', Notification);
+    frontbx.set('Notification', Notification);
 
 })();

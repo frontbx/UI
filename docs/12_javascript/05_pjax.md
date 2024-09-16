@@ -165,7 +165,7 @@ echo '<div>Hello World!</div>';
 If Pjax is not supported on your server however, you can still send an entire HTML `document`. Pjax will parse the code and replace the document body.
 
 ```JavaScript
-FrontBx.require('Pjax').invoke('/foo/bar');
+frontbx.require('Pjax').invoke('/foo/bar');
 ```
 
 ```php
@@ -201,7 +201,7 @@ echo '
 The Pjax Component can be accessed directly via FrontBx's container using the `Pjax` key.
 
 ```JavaScript
-let pjax = FrontBx.Pjax();
+let pjax = frontbx.Pjax();
 ```
 
 To make a request, use the `request` method:

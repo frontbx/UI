@@ -1,5 +1,5 @@
 /**
- * Boot and initialize FrontBx core
+ * Boot and initialize frontbx core
  *
  * @author    {Joe J. Howard}
  * @copyright {Joe J. Howard}
@@ -7,6 +7,6 @@
  */
 (function()
 {
-	FrontBx.boot();
+	frontbx.boot();
 
 })();

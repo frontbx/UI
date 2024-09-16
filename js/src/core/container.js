@@ -345,7 +345,7 @@
     }
 
     /**
-     * Loads container into global namespace as "FrontBx"
+     * Loads container into global namespace as "frontbx"
      *
      */
     if (!window.Container)

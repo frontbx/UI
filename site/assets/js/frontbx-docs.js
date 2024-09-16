@@ -15,13 +15,13 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 !function(){function t(t){var e=document.createElement("textarea");e.value=t.getText(),e.style.top="0",e.style.left="0",e.style.position="fixed",document.body.appendChild(e),e.focus(),e.select();try{var o=document.execCommand("copy");setTimeout((function(){o?t.success():t.error()}),1)}catch(e){setTimeout((function(){t.error(e)}),1)}document.body.removeChild(e)}"undefined"!=typeof Prism&&"undefined"!=typeof document&&(Prism.plugins.toolbar?Prism.plugins.toolbar.registerButton("copy-to-clipboard",(function(e){var o=e.element,n=function(t){var e={copy:"Copy","copy-error":"Press Ctrl+C to copy","copy-success":"Copied!","copy-timeout":5e3};for(var o in e){for(var n="data-prismjs-"+o,c=t;c&&!c.hasAttribute(n);)c=c.parentElement;c&&(e[o]=c.getAttribute(n))}return e}(o),c=document.createElement("button");c.className="copy-to-clipboard-button",c.setAttribute("type","button");var r=document.createElement("span");return c.appendChild(r),u("copy"),function(e,o){e.addEventListener("click",(function(){!function(e){navigator.clipboard?navigator.clipboard.writeText(e.getText()).then(e.success,(function(){t(e)})):t(e)}(o)}))}(c,{getText:function(){return o.textContent},success:function(){u("copy-success"),i()},error:function(){u("copy-error"),setTimeout((function(){!function(t){window.getSelection().selectAllChildren(t)}(o)}),1),i()}}),c;function i(){setTimeout((function(){u("copy")}),n["copy-timeout"])}function u(t){r.textContent=n[t],c.setAttribute("data-copy-state",t)}})):console.warn("Copy to Clipboard plugin loaded before Toolbar plugin."))}();
 
 /**
- * Highlight code manually so it's registered to FrontBx's DOM
+ * Highlight code manually so it's registered to frontbx's DOM
  *
  */
 (function()
 {
-    const [Component] = FrontBx.get('Component');
-    const [add_class, find, closest, attr, extend] = FrontBx.import(['add_class', 'find', 'closest', 'attr', 'extend']).from('_');
+    const [Component] = frontbx.get('Component');
+    const [add_class, find, closest, attr, extend] = frontbx.import(['add_class', 'find', 'closest', 'attr', 'extend']).from('_');
 
     const Highlighter = function()
     {        
@@ -59,7 +59,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
         toolbar.parentNode.replaceChild(block.parentNode, toolbar);
     }
 
-    FrontBx.dom().register('Highlighter', extend(Component, Highlighter), true);
+    frontbx.dom().register('Highlighter', extend(Component, Highlighter), true);
 
 }());
 
@@ -69,8 +69,8 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-	const [Component]   = FrontBx.get('Component');
-	const [find, width, on, off, trigger_event, extend] = FrontBx.import(['find', 'width', 'on', 'off', 'trigger_event', 'extend']).from('_');
+	const [Component]   = frontbx.get('Component');
+	const [find, width, on, off, trigger_event, extend] = frontbx.import(['find', 'width', 'on', 'off', 'trigger_event', 'extend']).from('_');
 	
     var WINDOW_LISTENING = false;
 
@@ -128,7 +128,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
         }
     }
 
-    FrontBx.dom().register('DocDrawer', extend(Component, DocDrawer), true);
+    frontbx.dom().register('DocDrawer', extend(Component, DocDrawer), true);
 }());
 
 /**
@@ -137,9 +137,9 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-	const [Component] = FrontBx.get('Component');
+	const [Component] = frontbx.get('Component');
 
-	const [on, off, is_array_last, extend] = FrontBx.import(['on','off','is_array_last','extend']).from('_');
+	const [on, off, is_array_last, extend] = frontbx.import(['on','off','is_array_last','extend']).from('_');
 
 	let GUIID = 0;
 
@@ -175,12 +175,12 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
    		demo.prototype.unbinder = unbinder;
 
-   		demo.prototype._ = FrontBx._();
+   		demo.prototype._ = frontbx._();
 
-   		FrontBx.Dom().register(`_DOCS_DEMO_${GUIID++}`, demo);
+   		frontbx.Dom().register(`_DOCS_DEMO_${GUIID++}`, demo);
    	}
 
-    FrontBx.set('docsDemo', docsDemo);
+    frontbx.set('docsDemo', docsDemo);
 
 })();
 
@@ -190,8 +190,8 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-	FrontBx.DocsDemo('.js-modal-trigger-1', () => 
-	    FrontBx.Modal({
+	frontbx.DocsDemo('.js-modal-trigger-1', () => 
+	    frontbx.Modal({
 	        title            : 'Use X\'s location service?',
 	        content          : 'Let X help apps determine location. This means sending anonymous location data to X, even when no apps are running.',
 	        cancelBtn        : 'Disagree',
@@ -220,7 +220,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
         </div>
     </div>`;
 
-	FrontBx.DocsDemo('.js-modal-trigger-2', () => FrontBx.Modal({
+	frontbx.DocsDemo('.js-modal-trigger-2', () => frontbx.Modal({
         content : demo2Content,
         custom: true,
         closeAnywhere: true
@@ -235,10 +235,10 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
         confirmBtn       : 'Agree',
     };
 
-    FrontBx.DocsDemo('.js-modal-trigger-3', () => FrontBx.Modal({...options, scroll: 'modal'}));
-    FrontBx.DocsDemo('.js-modal-trigger-4', () => FrontBx.Modal({...options, scroll: 'content'}));
+    frontbx.DocsDemo('.js-modal-trigger-3', () => frontbx.Modal({...options, scroll: 'modal'}));
+    frontbx.DocsDemo('.js-modal-trigger-4', () => frontbx.Modal({...options, scroll: 'content'}));
 
-	FrontBx.DocsDemo('.js-modal-trigger-5', () => FrontBx.Modal({
+	frontbx.DocsDemo('.js-modal-trigger-5', () => frontbx.Modal({
         title : 'Subscribe for $1?',
         content : 'Subscribe for $1 and get all my posts for free!',
         cancelBtn : 'Nah',
@@ -248,7 +248,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
         closeAnywhere: false,
     }));
 
-	const [dom_element] = FrontBx.import(['dom_element']).from('_');
+	const [dom_element] = frontbx.import(['dom_element']).from('_');
 
     const blurb = dom_element({tag: 'p', class: 'pole-xs pole-s', innerText: 'To subscribe to this website, please enter your email address here. We will send updates occasionally.'});
 
@@ -257,9 +257,9 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
         dom_element({tag: 'label', for: 'email', innerText: 'Email'}),
     ]);
 
-    FrontBx.DocsDemo('.js-modal-trigger-6', function()
+    frontbx.DocsDemo('.js-modal-trigger-6', function()
     {
-        FrontBx.Modal({
+        frontbx.Modal({
             title: 'Subscribe',
             content: [blurb.cloneNode(true), form.cloneNode(true)],
             cancelBtn : 'Cancel',
@@ -297,7 +297,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 	    ]
 	};
 
-    FrontBx.DocsDemo('.js-insert-trigger', (e, btn) => FrontBx.Dom().create('Menu', options, document.querySelector('.js-insert-container')))
+    frontbx.DocsDemo('.js-insert-trigger', (e, btn) => frontbx.Dom().create('Menu', options, document.querySelector('.js-insert-container')))
 
 }());
 
@@ -320,9 +320,9 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
         ]
     };
 
-    const [find] = FrontBx.import(['find']).from('_');
+    const [find] = frontbx.import(['find']).from('_');
 
-    FrontBx.DocsDemo('.js-insert-table-btn', () => FrontBx.Dom().create('Table', options, find('.js-insert-table-container')));
+    frontbx.DocsDemo('.js-insert-table-btn', () => frontbx.Dom().create('Table', options, find('.js-insert-table-container')));
 
 }());
 
@@ -341,9 +341,9 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 		background: false,
 	};
 
-	const [find] = FrontBx.import(['find']).from('_');
+	const [find] = frontbx.import(['find']).from('_');
 
-	FrontBx.DocsDemo('.js-insert-img-btn', () => FrontBx.Dom().create('Image', options, find('.js-insert-img-container')));
+	frontbx.DocsDemo('.js-insert-img-btn', () => frontbx.Dom().create('Image', options, find('.js-insert-img-container')));
 
 }());
 
@@ -353,17 +353,17 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-	const [find] = FrontBx.import(['find']).from('_');
+	const [find] = frontbx.import(['find']).from('_');
 
 	const img = '<div class="avatar avatar-xl"><img alt="Trump" data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" /></div>';
 
-	FrontBx.DocsDemo('.js-refresh-lazyload-btn', () =>
+	frontbx.DocsDemo('.js-refresh-lazyload-btn', () =>
 	{
 		let container = find('.js-refresh-lazyload-container');
 
 		container.innerHTML += img;
 
-		FrontBx.dom().refresh('LazyLoad', container);
+		frontbx.dom().refresh('LazyLoad', container);
 	});
 
 }());
@@ -374,11 +374,11 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-	const [find, form_values, each, has_class, add_class, remove_class] = FrontBx.import(['find','form_values','each','has_class','add_class','remove_class']).from('_');
+	const [find, form_values, each, has_class, add_class, remove_class] = frontbx.import(['find','form_values','each','has_class','add_class','remove_class']).from('_');
 
 	let skeletons = [];
 
-	FrontBx.DocsDemo('.js-insert-skeletons', function()
+	frontbx.DocsDemo('.js-insert-skeletons', function()
     {
     	const DOMElementform = find('.js-skeleton-form');
 	    const DOMElementCard = find('.js-skeleton-card');
@@ -389,13 +389,13 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
         let height  = form.variant === 'block' ? '100px' : null;
         let options = { count: form.count, height: height, variant: `${form.style} ${form.variant} ${form.textblock}`.trim() };
         
-        skeletons.push(FrontBx.Skeleton(DOMElementCard, options));
+        skeletons.push(frontbx.Skeleton(DOMElementCard, options));
 
         return false;
 
     }, () => skeletons = []);
 
-    FrontBx.DocsDemo('.js-destroy-skeletons', function(e, btn)
+    frontbx.DocsDemo('.js-destroy-skeletons', function(e, btn)
     {
     	if (has_class(btn, 'active') || skeletons.length === 0) return false;
 
@@ -416,9 +416,9 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-	const [Component] = FrontBx.get('Component');
+	const [Component] = frontbx.get('Component');
 
-	const [find, each, on, off, extend] = FrontBx.import(['find','each','on','off','extend']).from('_');
+	const [find, each, on, off, extend] = frontbx.import(['find','each','on','off','extend']).from('_');
 
 	const contents = 
     {
@@ -461,7 +461,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
     		this.skeleton.load(contents);
 
-        	FrontBx.dom().refresh('LazyLoad', this.cardWrapper);
+        	frontbx.dom().refresh('LazyLoad', this.cardWrapper);
 
         	this.loaded = true;
     	});
@@ -491,10 +491,10 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     {
     	each(options, (i, option) => find(option.selector, this.cardWrapper).innerHTML = '' );
 
-        this.skeleton = FrontBx.Skeleton(this.cardWrapper, options);
+        this.skeleton = frontbx.Skeleton(this.cardWrapper, options);
    	}
 
-    FrontBx.dom().register('SkeletonLoader', extend(Component, SkeletonLoader), true);
+    frontbx.dom().register('SkeletonLoader', extend(Component, SkeletonLoader), true);
 
 })();
 
@@ -504,9 +504,9 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-    const [find, animate] = FrontBx.import(['find', 'animate']).from('_');
+    const [find, animate] = frontbx.import(['find', 'animate']).from('_');
 
-    FrontBx.DocsDemo('.js-animate-css-trigger', () =>
+    frontbx.DocsDemo('.js-animate-css-trigger', () =>
         animate(find('.js-animate-css-example'),
         {
             width: 
@@ -528,7 +528,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
         })
     );
 
-    FrontBx.DocsDemo('.js-animate-trigger', () =>
+    frontbx.DocsDemo('.js-animate-trigger', () =>
         animate(find('.js-animate-example'),
         {
             width: 
@@ -559,17 +559,17 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 (function()
 {
 	/* Helpers */
-	const [find, closest, has_class, add_class, remove_class] = FrontBx.import(['find', 'closest', 'has_class', 'add_class', 'remove_class']).from('_');
+	const [find, closest, has_class, add_class, remove_class] = frontbx.import(['find', 'closest', 'has_class', 'add_class', 'remove_class']).from('_');
 
 	// Instantiate validator and cache vars
 	let fakeAjax;
 	let validator;
 
-	FrontBx.DocsDemo('.js-form-validatior-btn', (e, submitBtn) =>
+	frontbx.DocsDemo('.js-form-validatior-btn', (e, submitBtn) =>
 	{
 		if (validator) validator.destroy();
 
-		validator = FrontBx.FormValidator(closest(submitBtn, 'form'));
+		validator = frontbx.FormValidator(closest(submitBtn, 'form'));
 
 	    // Don't submit if the form if it is being submitted
 	    if (has_class(submitBtn, 'active')) return false;
@@ -615,54 +615,54 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-	FrontBx.DocsDemo('.js-notif-trigger-1', () =>
-        FrontBx.Notification({
+	frontbx.DocsDemo('.js-notif-trigger-1', () =>
+        frontbx.Notification({
             text  : `Hello! I'm a notification.`,
         })
     );
-    FrontBx.DocsDemo('.js-notif-trigger-2', () => FrontBx.Notification(
+    frontbx.DocsDemo('.js-notif-trigger-2', () => frontbx.Notification(
     {
         btn  : `Dismiss`,
         text : `Hello! I'm a notification.`,
     }));
-    FrontBx.DocsDemo('.js-notif-trigger-3', () => FrontBx.Notification(
+    frontbx.DocsDemo('.js-notif-trigger-3', () => frontbx.Notification(
     {
         icon : `bell`,
         text : `Hello! I'm a notification.`,
     }));
-    FrontBx.DocsDemo('.js-notif-trigger-4', () => FrontBx.Notification(
+    frontbx.DocsDemo('.js-notif-trigger-4', () => frontbx.Notification(
     {
         btn        : `Danger`,
         btnVariant : `danger`,
         text       : `Hello! I'm a notification.`,
     }));
-    FrontBx.DocsDemo('.js-notif-trigger-5', () => FrontBx.Notification(
+    frontbx.DocsDemo('.js-notif-trigger-5', () => frontbx.Notification(
     {
         icon    : `check`,
         variant : `success`, 
         text    : `Hello! I'm a notification.`,
     }));
-    FrontBx.DocsDemo('.js-notif-trigger-6', () => FrontBx.Notification(
+    frontbx.DocsDemo('.js-notif-trigger-6', () => frontbx.Notification(
     {
         text: 'Hello! You need to click me to dismiss.',
         timeout: false,
     }));
-    FrontBx.DocsDemo('.js-notif-trigger-7', function()
+    frontbx.DocsDemo('.js-notif-trigger-7', function()
     {
         let start = 10;
         let i     = 1;
         let timer = setInterval(() => this._.find('.js-time', notif.domElement()).innerText = (start - i++), 1000);
 
-        let notif = FrontBx.Notification(
+        let notif = frontbx.Notification(
         {
             text: 'Hello! I\'ll disappear in <span class="js-time">10</span> seconds.',
             timeout: 10000,
             callbackDismiss: () => clearInterval(timer)
         });
     });
-    FrontBx.DocsDemo('.js-notif-triggers-pos', (e, trigger) =>
+    frontbx.DocsDemo('.js-notif-triggers-pos', (e, trigger) =>
     {
-        FrontBx.Notification({
+        frontbx.Notification({
             text: 'Hello! I\'m a notification.',
             position: trigger.innerText.trim()
         })
@@ -679,11 +679,11 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 	const DRAWER_MENU = '<ul class="menu"><li><span class="item-left"><span class="fa fa-inbox color-gray-500"></span></span><span class="item-body">Inbox</span><span class="item-right"><span class="label">4</span></span>  </li>  <li><span class="item-left"><span class="fa fa-flag color-gray-500"></span></span><span class="item-body">Flagged</span><span class="item-right"><span class="label">23</span></span>  </li>  <li><span class="item-left"><span class="fa fa-note-sticky color-gray-500"></span></span><span class="item-body">Drafts</span><span class="item-right"><span class="label">3</span></span>  </li>  <li><span class="item-left"><span class="fa fa-paper-plane color-gray-500"></span></span><span class="item-body">Sent</span><span class="item-right"><span class="status status-xs"></span></span>  </li>  <li><span class="item-left"><span class="fa fa-circle-minus color-gray-500"></span></span><span class="item-body">Junk</span><span class="item-right"><span class="status status-xs status-warning"></span></span>  </li>  <li><span class="item-left"><span class="fa fa-trash color-gray-500"></span></span><span class="item-body">Trash</span><span class="item-right"><span class="status status-xs status-danger"></span></span>  </li> </ul>';
     
     let drawer1;
-    FrontBx.DocsDemo('.js-dw-trigger-1', () =>
+    frontbx.DocsDemo('.js-dw-trigger-1', () =>
     {        
         if (drawer1) return drawer1.open();
 
-        drawer1 = FrontBx.Drawer({ content : DRAWER_MENU });
+        drawer1 = frontbx.Drawer({ content : DRAWER_MENU });
     },
     () =>
     { 
@@ -696,11 +696,11 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     });
 
     let drawer2;
-    FrontBx.DocsDemo('.js-dw-trigger-2, .js-dw-trigger-3, .js-dw-trigger-4, .js-dw-trigger-5', (e, btn) =>
+    frontbx.DocsDemo('.js-dw-trigger-2, .js-dw-trigger-3, .js-dw-trigger-4, .js-dw-trigger-5', (e, btn) =>
     {
         if (drawer2) drawer2.destroy();
 
-        drawer2 = FrontBx.Drawer({ direction : btn.innerText.toLowerCase().trim(), content : DRAWER_MENU });
+        drawer2 = frontbx.Drawer({ direction : btn.innerText.toLowerCase().trim(), content : DRAWER_MENU });
     },
     () =>
     { 
@@ -729,15 +729,15 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 	];
 
     let backdrop1;
-    FrontBx.DocsDemo('.js-bd-trigger-1', () =>
+    frontbx.DocsDemo('.js-bd-trigger-1', () =>
     {        
         if (backdrop1) return backdrop1.closed() ? backdrop1.open() : backdrop1.close();
 
-        backdrop1 = FrontBx.Backdrop(
+        backdrop1 = frontbx.Backdrop(
 	    {
 	        callbackBuilt: (container, drawer, overlay) => {
-	            let pad = FrontBx._().dom_element({tag: 'div', class: 'pad-20',}, FrontBx._().find('.js-drawer-dialog', container));
-	            FrontBx.Skeleton(pad, SKELETONS)
+	            let pad = frontbx._().dom_element({tag: 'div', class: 'pad-20',}, frontbx._().find('.js-drawer-dialog', container));
+	            frontbx.Skeleton(pad, SKELETONS)
 	        },
 	        state: 'collapsed',
 	    }); 
@@ -753,15 +753,15 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     });
 
     let backdrop2;
-    FrontBx.DocsDemo('.js-bd-trigger-1', () =>
+    frontbx.DocsDemo('.js-bd-trigger-1', () =>
     {        
         if (backdrop2) return backdrop2.closed() ? backdrop2.open() : backdrop2.close();
         
-        backdrop2 = FrontBx.Backdrop(
+        backdrop2 = frontbx.Backdrop(
 	    {
 	        callbackBuilt: (container, drawer, overlay) => {
-	            let pad = FrontBx._().dom_element({tag: 'div', class: 'pad-20',}, FrontBx._().find('.js-drawer-dialog', container));
-	            FrontBx.Skeleton(pad, SKELETONS)
+	            let pad = frontbx._().dom_element({tag: 'div', class: 'pad-20',}, frontbx._().find('.js-drawer-dialog', container));
+	            frontbx.Skeleton(pad, SKELETONS)
 	        },
 	        state: 'collapsed',
 	        pushbody: true,
@@ -793,20 +793,20 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 	    { lines: 8, variant: 'text-block' },
 	];
 
-    let frontdrop1 = FrontBx.Frontdrop(
+    let frontdrop1 = frontbx.Frontdrop(
     {
-        callbackBuilt: (container, drawer, overlay) => FrontBx.Skeleton(FrontBx._().find('.card-block .container-fluid', container), SKELETONS),
+        callbackBuilt: (container, drawer, overlay) => frontbx.Skeleton(frontbx._().find('.card-block .container-fluid', container), SKELETONS),
         state: 'collapsed'
     });
-    FrontBx.DocsDemo('.js-fd-trigger-1', () => frontdrop1.closed() ? frontdrop1.open() : frontdrop1.close());
+    frontbx.DocsDemo('.js-fd-trigger-1', () => frontdrop1.closed() ? frontdrop1.open() : frontdrop1.close());
 
-    let frontdrop2 = FrontBx.Frontdrop(
+    let frontdrop2 = frontbx.Frontdrop(
     {
-        callbackBuilt: (container, drawer, overlay) => FrontBx.Skeleton(FrontBx._().find('.card-block .container-fluid', container), SKELETONS),
+        callbackBuilt: (container, drawer, overlay) => frontbx.Skeleton(frontbx._().find('.card-block .container-fluid', container), SKELETONS),
         state: 'collapsed',
         confirmBtn: 'Confirm Choice',
     });
-    FrontBx.DocsDemo('.js-fd-trigger-2', () => frontdrop2.closed() ? frontdrop2.open() : frontdrop2.close());
+    frontbx.DocsDemo('.js-fd-trigger-2', () => frontdrop2.closed() ? frontdrop2.open() : frontdrop2.close());
 
 }());
 
@@ -816,8 +816,8 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-    const [Component] = FrontBx.get('Component');
-    const [add_class, extend] = FrontBx.import(['add_class', 'extend']).from('_');
+    const [Component] = frontbx.get('Component');
+    const [add_class, extend] = frontbx.import(['add_class', 'extend']).from('_');
 
     const RTables = function()
     {        
@@ -844,7 +844,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     	if (wrapper) wrapper.parentNode.replaceChild(table, wrapper);
     }
 
-    FrontBx.dom().register('RTables', extend(Component, RTables), true);
+    frontbx.dom().register('RTables', extend(Component, RTables), true);
 
 }());
 
@@ -854,8 +854,8 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-    const [Component] = FrontBx.get('Component');
-    const [add_class, extend] = FrontBx.import(['add_class', 'extend']).from('_');
+    const [Component] = frontbx.get('Component');
+    const [add_class, extend] = frontbx.import(['add_class', 'extend']).from('_');
 
     const BQs = function()
     {        
@@ -872,7 +872,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     	
     }
 
-    FrontBx.dom().register('BQs', extend(Component, BQs), true);
+    frontbx.dom().register('BQs', extend(Component, BQs), true);
 
 }());
 
@@ -883,8 +883,8 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-    const [Component] = FrontBx.get('Component');
-    const [find_all, add_class, remove_class, is_array_last, extend]  = FrontBx.import(['find_all','add_class','remove_class','is_array_last','extend']).from('_');
+    const [Component] = frontbx.get('Component');
+    const [find_all, add_class, remove_class, is_array_last, extend]  = frontbx.import(['find_all','add_class','remove_class','is_array_last','extend']).from('_');
 
     const ArticleWaypoints = function()
     {        
@@ -895,7 +895,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     {
     	add_class(link, 'js-waypoint-trigger');
 
-    	if (is_array_last(link, this._DOMElements)) FrontBx.dom().refresh('WayPoints');
+    	if (is_array_last(link, this._DOMElements)) frontbx.dom().refresh('WayPoints');
     }
 
     ArticleWaypoints.prototype.unbind = function(link)
@@ -903,7 +903,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
         remove_class(link, 'js-waypoint-trigger');
     }
 
-    FrontBx.dom().register('ArticleWaypoints', extend(Component, ArticleWaypoints), true);
+    frontbx.dom().register('ArticleWaypoints', extend(Component, ArticleWaypoints), true);
 
 }());
 
@@ -913,9 +913,9 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-	const [Component] = FrontBx.get('Component');
+	const [Component] = frontbx.get('Component');
 
-	const [on, off, each, css, find, add_class, remove_class, dom_element, is_array_last, closest, extend] = FrontBx.import(['on','off', 'each', 'css','find','add_class','remove_class','dom_element','is_array_last','closest','extend']).from('_');
+	const [on, off, each, css, find, add_class, remove_class, dom_element, is_array_last, closest, extend] = frontbx.import(['on','off', 'each', 'css','find','add_class','remove_class','dom_element','is_array_last','closest','extend']).from('_');
 
 	const ColorPlayground = function()
     {        
@@ -1006,12 +1006,12 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     	{
     		this._codeEl.innerText = styles;
 
-    		FrontBx.dom().refresh('Highlighter', this._codeWrapper);
+    		frontbx.dom().refresh('Highlighter', this._codeWrapper);
     	}
     }
 
 
-    FrontBx.dom().register('ColorPlayground', extend(Component, ColorPlayground), true);
+    frontbx.dom().register('ColorPlayground', extend(Component, ColorPlayground), true);
 
 }());
 
@@ -1022,9 +1022,9 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-	const [Component] = FrontBx.get('Component');
+	const [Component] = frontbx.get('Component');
 
-	const [find_all, each, on, off, attr, add_class, remove_class, extend] = FrontBx.import(['find_all','each','on','off', 'attr','add_class','remove_class','extend']).from('_');
+	const [find_all, each, on, off, attr, add_class, remove_class, extend] = frontbx.import(['find_all','each','on','off', 'attr','add_class','remove_class','extend']).from('_');
 
 	const ThemeSwitcher = function()
     {
@@ -1103,8 +1103,8 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     	remove_class(item, 'selected')
     }
 
-    FrontBx.dom().register('ThemeSwitcher', extend(Component, ThemeSwitcher), true);
+    frontbx.dom().register('ThemeSwitcher', extend(Component, ThemeSwitcher), true);
 
-    FrontBx.dom().register('InitialThemeLinks', extend(Component, InitialThemeLinks), true);
+    frontbx.dom().register('InitialThemeLinks', extend(Component, InitialThemeLinks), true);
 
 }());

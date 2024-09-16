@@ -5,14 +5,14 @@
      * 
      * @var {class}
      */
-    const [Component] = FrontBx.get('Component');
+    const [Component] = frontbx.get('Component');
 
     /**
      * Helper functions
      * 
      * @var {Function}
      */
-    const [find, each, is_undefined, attr, on, off, to_camel_case, add_class, remove_class, extend] = FrontBx.import(['find','each','is_undefined','attr','on','off','to_camel_case','add_class','remove_class','extend']).from('_');
+    const [find, each, is_undefined, attr, on, off, to_camel_case, add_class, remove_class, extend] = frontbx.import(['find','each','is_undefined','attr','on','off','to_camel_case','add_class','remove_class','extend']).from('_');
 
     /**
      * Available data attributes.
@@ -70,7 +70,7 @@
             }
         });
 
-        let frontdrop = FrontBx.Frontdrop(options);
+        let frontdrop = frontbx.Frontdrop(options);
 
         this.drawers.set(node, frontdrop);
 
@@ -120,7 +120,7 @@
         frontdrop.closed() ? frontdrop.open() : frontdrop.close();
     }
 
-    // Load into FrontBx DOM core
-    FrontBx.dom().register('Frontdrop', extend(Component, Frontdrop));
+    // Load into frontbx DOM core
+    frontbx.dom().register('Frontdrop', extend(Component, Frontdrop));
     
 })();

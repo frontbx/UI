@@ -171,7 +171,7 @@ If you need to add a custom input mask using JavaScript, you can instantiate a m
 ```javascript
 const input = document.querySelector('#my-input');
 
-const mask = FrontBx.InputMasker(input, '[A-z0-9-]',  'xxxx--xxxx--xxxx--xxxx');
+const mask = frontbx.InputMasker(input, '[A-z0-9-]',  'xxxx--xxxx--xxxx--xxxx');
 
 if (someEvent)
 {

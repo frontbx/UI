@@ -289,7 +289,7 @@
 <hr />
 <h3 id="access">Access</h3>
 <p>FrontBx's Dom Component can be accessed globally via the Inversion container through the <code>dom</code> key.</p>
-<pre><code class="javascript language-javascript">const dom = FrontBx.Dom();</code></pre>
+<pre><code class="javascript language-javascript">const dom = frontbx.Dom();</code></pre>
 <hr />
 <h3 id="components">Components</h3>
 <p>FrontBx uses a specific design pattern for DOM components. In FrontBx a DOM component is a JavaScript Class or Object Function that when "mounted" binds listeners or alters the Live DOM. FrontBx uses a base <code>Component</code> base that is extended to help build Components easily. </p>
@@ -298,7 +298,7 @@
 <p>Once the FrontBx's DOM has loaded, if the Live DOM is altered, mutated or updated in any way FrontBx's Dom can be "refreshed", which removes any redundant listeners on nodes that were removed and checks for any new elements that need binding.</p>
 <h4 id="usage">Usage</h4>
 <p>The base Component can be retrieved via the container:</p>
-<pre><code class="javascript language-javascript">const [Component] = FrontBx.get('Component');</code></pre>
+<pre><code class="javascript language-javascript">const [Component] = frontbx.get('Component');</code></pre>
 <p>In an extended component's <code>constructor</code>, <code>this.super</code> method should be called with a selector string, which constructs the base <code>Component</code> and queries any DOM selectors to <code>this._DOMElements</code>;</p>
 <pre><code class="javascript language-javascript">const Buttons = function()
 {
@@ -310,12 +310,12 @@
 <p>Once <code>this.super</code> has been called and the Component has been constructed, the Component will loop through each node and call <code>bind</code> on the component</p>
 <pre><code class="javascript language-javascript">Buttons.prototype.bind = function(node)
 {
-    FrontBx._().on(node, 'click', this._handler, this);
+    frontbx._().on(node, 'click', this._handler, this);
 }</code></pre>
 <p>If FrontBx's Dom gets refreshed or the module gets refreshed specifically, <code>unbind</code> will be called with each DOM element:</p>
 <pre><code class="javascript language-javascript">Buttons.prototype.unbind = function(node)
 {
-    FrontBx._().off(node, 'click', this._handler, this);
+    frontbx._().off(node, 'click', this._handler, this);
 }</code></pre>
 <blockquote>
   <p>Dom components must contain a <code>bind</code> and <code>unbind</code> method which gets called by the base Component whenever FrontBx's Dom is refreshed.</p>
@@ -333,9 +333,9 @@
 <p>Or refresh all Dom Components to a context element:</p>
 <pre><code class="javascript language-javascript">dom.refresh(document.querySelector('.wrapper'));</code></pre>
 <p>Below is a simple example of a complete Dom Component that console logs click events on buttons:</p>
-<pre><code class="javascript language-javascript">const [Component] = FrontBx.get('Component');
+<pre><code class="javascript language-javascript">const [Component] = frontbx.get('Component');
 
-const [on, off, extend] = FrontBx.import(['on','off','extend']).from('_');
+const [on, off, extend] = frontbx.import(['on','off','extend']).from('_');
 
 const Buttons = function()
 {
@@ -362,23 +362,23 @@ Buttons.prototype._handler = function(e, node)
     console.log(e, node);
 }
 
-FrontBx.Dom().register('Buttons', extend(Component, Buttons));</code></pre>
+frontbx.Dom().register('Buttons', extend(Component, Buttons));</code></pre>
 <h4 id="instantiation">Instantiation</h4>
 <p>By default, FrontBx DOM Components are instantiated by HTML. However most Components offer JavaScript Instantiation to generate content dynamically.</p>
 <p>JavaScript Components can be instantiated either directly via the Component, or via FrontBx's Dom with <code>Component.create</code> and will always return a DOMElement node.</p>
-<pre><code class="JavaScript language-JavaScript">let dropdown = FrontBx.Dom().component('Dropdown').create(options);
+<pre><code class="JavaScript language-JavaScript">let dropdown = frontbx.Dom().component('Dropdown').create(options);
 
 document.querySelector('div').appendChild(dropdown);</code></pre>
-<pre><code class="JavaScript language-JavaScript">let dropdown = FrontBx.Dom().create('Dropdown', options);
+<pre><code class="JavaScript language-JavaScript">let dropdown = frontbx.Dom().create('Dropdown', options);
 
 document.querySelector('div').appendChild(dropdown);</code></pre>
 <p>Adding a second paramter to <code>Component.create</code> will append the returned DOMElement node to the target element</p>
-<pre><code class="JavaScript language-JavaScript">FrontBx.Dom().create('Dropdown', options, document.querySelector('.div'));</code></pre>
+<pre><code class="JavaScript language-JavaScript">frontbx.Dom().create('Dropdown', options, document.querySelector('.div'));</code></pre>
 <h4 id="dynamic-content">Dynamic Content</h4>
 <p>When creating your own component, if you want a Component use <code>Component.create</code> use the <code>template</code> method to return a DOM element. The method will receive an object of passed properties merged with <code>this.defaultProps</code> on the Component.</p>
-<pre><code class="javascript language-javascript">const [Component] = FrontBx.get('Component');
+<pre><code class="javascript language-javascript">const [Component] = frontbx.get('Component');
 
-const [dom_element] = FrontBx.import(['dom_element']).from('_');
+const [dom_element] = frontbx.import(['dom_element']).from('_');
 
 const Buttons = function()
 {
@@ -395,9 +395,9 @@ Buttons.prototype.template = function(props)
     return dom_element({tag: 'button', class: props.class, innerText: props.text});
 }
 
-FrontBx.Dom().register('Buttons', extend(Component, Buttons));
+frontbx.Dom().register('Buttons', extend(Component, Buttons));
 
-const button = FrontBx.Dom().create('Buttons', {text: 'Click me!'});</code></pre>
+const button = frontbx.Dom().create('Buttons', {text: 'Click me!'});</code></pre>
 <hr />
 <h3 id="events">Events</h3>
 <p>FrontBx will dispatch various events when DOM components are interacted with or the Live DOM is updated. All FrontBx events contain their data in <code>event.detail</code>.</p>

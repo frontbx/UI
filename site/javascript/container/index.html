@@ -285,68 +285,68 @@
 <hr />
 <h3 id="usage">Usage</h3>
 <p>FrontBx uses an Inversion control Container to hold all components and related peripherals. The FrontBx application and Container can be globally accessed via the <code>FrontBx</code> variable. This is the only globally available variable</p>
-<pre><code class="javascript language-javascript">let frontbx = FrontBx;</code></pre>
+<pre><code class="javascript language-javascript">let fbx = frontbx;</code></pre>
 <p>To set a value into the Container use the <code>set</code> method:</p>
-<pre><code class="javascript language-javascript">FrontBx.set('foo bar', 'Awesome!');</code></pre>
+<pre><code class="javascript language-javascript">fbx.set('foo bar', 'Awesome!');</code></pre>
 <p>To retrieve a value use the <code>get</code> method:</p>
-<pre><code class="javascript language-javascript">let awesome = FrontBx.get('foo bar');</code></pre>
+<pre><code class="javascript language-javascript">let awesome = fbx.get('foo bar');</code></pre>
 <p>The has method checks if a key is stored in the Container:</p>
-<pre><code class="javascript language-javascript">if (FrontBx.has('foo bar'))</code></pre>
+<pre><code class="javascript language-javascript">if (fbx.has('foo bar'))</code></pre>
 <p>The <code>delete</code> method will delete a key value pair from the Container:</p>
-<pre><code class="javascript language-javascript">FrontBx.delete('app');</code></pre>
+<pre><code class="javascript language-javascript">fbx.delete('app');</code></pre>
 <p>Any key-value pair set to the Container can also be retrieved using a direct method call. FrontBx converts the key <code>CamelCase</code> when adding to the Container:</p>
-<pre><code class="javascript language-javascript">let awesome = FrontBx.FooBar();</code></pre>
+<pre><code class="javascript language-javascript">let awesome = fbx.FooBar();</code></pre>
 <hr />
 <h4 id="functions">Functions</h4>
 <p>You can set any variable you like to a key, including functions, instantiated instances and Object Functions. Functions that can instantiate an instance will automatically get created with any provided arguments:</p>
-<pre><code class="javascript language-javascript">FrontBx.set('do something', (arg1, arg2) =&gt; console.log(arg1, arg2));
+<pre><code class="javascript language-javascript">fbx.set('do something', (arg1, arg2) =&gt; console.log(arg1, arg2));
 
 // Or via method
-FrontBx.DoSomething('foo', 'bar');</code></pre>
+fbx.DoSomething('foo', 'bar');</code></pre>
 <p>Here is am example of setting an instance as key / value pair. The same instance will be returned each time the key is retrieved:</p>
 <pre><code class="javascript language-javascript">const app = function(a, b)
 {
     console.log(a, b);
 }
 
-FrontBx.set('app', new App(1, 2) );
+fbx.set('app', new App(1, 2) );
 
 // Retrieve via get
-let instance = FrontBx.get('app');
+let instance = fbx.get('app');
 
 // Or directly via method
-let instance = FrontBx.App();</code></pre>
+let instance = fbx.App();</code></pre>
 <p>With the example below, a new instance will be created each time the key is retrieved with any arguments passed on:</p>
 <pre><code class="javascript language-javascript">const app = function(a, b)
 {
     console.log(a, b);
 }
 
-FrontBx.set('app', app);
+fbx.set('app', app);
 
 // Retrieve via get
-let instance1 = FrontBx.get('app', 1, 2);
+let instance1 = fbx.get('app', 1, 2);
 
 // Or directly via method
-let instance2 = FrontBx.App(1, 2);</code></pre>
+let instance2 = fbx.App(1, 2);</code></pre>
 <p>The <code>singleton</code> method takes a Object Function and returns the same instance no matter how many times it's called. The instance will only be created when it's first called:</p>
 <pre><code class="javascript language-javascript">const app = function(a, b)
 {
     console.log(a, b);
 }
 
-FrontBx.set('app', app);
+fbx.set('app', app);
 
 // Retrieve via get 
-let instance = FrontBx.get('app', 1, 2);
+let instance = fbx.get('app', 1, 2);
 
 // Or directly via method
-let instance = FrontBx.App(1, 2);</code></pre>
-<p>When setting a function as a key/value pair, if you require reference to underlying function itself (rather than it being called or instantiated), pass the <code>FrontBx.IMPORT_AS_REF</code> to retrieve the function:</p>
-<pre><code class="javascript language-javascript">FrontBx.set('do something', (arg1, arg2) =&gt; console.log(arg1, arg2));
+let instance = fbx.App(1, 2);</code></pre>
+<p>When setting a function as a key/value pair, if you require reference to underlying function itself (rather than it being called or instantiated), pass the <code>fbx.IMPORT_AS_REF</code> to retrieve the function:</p>
+<pre><code class="javascript language-javascript">fbx.set('do something', (arg1, arg2) =&gt; console.log(arg1, arg2));
 
 // Or via method
-let callback = FrontBx.DoSomething(FrontBx.IMPORT_AS_REF);
+let callback = fbx.DoSomething(fbx.IMPORT_AS_REF);
 
 callback('foo', 'bar');</code></pre>
 <hr />
@@ -363,15 +363,15 @@ app.prototype.bar = function()
     return `${this.foo}bar`;
 }
 
-FrontBx.set('App', new app);</code></pre>
-<pre><code class="javascript language-javascript">let [bar] = FrontBx.import(['bar']).from('App');
+fbx.set('App', new app);</code></pre>
+<pre><code class="javascript language-javascript">let [bar] = fbx.import(['bar']).from('App');
 
 console.log(bar());</code></pre>
 <p>This design pattern is used throughout FrontBx for dependency injection using the <code>Utils</code> library which is set via the underscore (<code>_</code>) key in FrontBx' container.</p>
 <p>For example to import the <code>add_class</code> and <code>remove_class</code> functions, you would use the code below:</p>
-<pre><code class="javascript language-javascript">let [add_class, remove_class] = FrontBx.import(['add_class', 'remove_class']).from('_');</code></pre>
+<pre><code class="javascript language-javascript">let [add_class, remove_class] = fbx.import(['add_class', 'remove_class']).from('_');</code></pre>
 <p>Although this is longer than accessing the method normally, if you're reusing the method multiple times it will ultimately save code space and memory to cache it.</p>
-<pre><code class="javascript language-javascript">FrontBx._().remove_class(node, 'bar');</code></pre>
+<pre><code class="javascript language-javascript">fbx._().remove_class(node, 'bar');</code></pre>
 <blockquote>
   <p>For more information on using FrontBx`s utility library - checkout the <a href="../utils/index.html">JS Utils Page</a></p>
 </blockquote></article>

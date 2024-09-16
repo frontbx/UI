@@ -5,7 +5,7 @@
      * 
      * @var {object}
      */
-    const Helper = FrontBx._();
+    const Helper = frontbx._();
 
     /**
      * Input masker
@@ -63,13 +63,13 @@
 
             if (mask)
             {
-                this._masks.push(FrontBx.InputMasker(input, mask, format));
+                this._masks.push(frontbx.InputMasker(input, mask, format));
             }
 
         }, this);
     }
 
-    // Load into FrontBx DOM core
-    FrontBx.dom().register('InputMasks', InputMasks);
+    // Load into frontbx DOM core
+    frontbx.dom().register('InputMasks', InputMasks);
 
 })();

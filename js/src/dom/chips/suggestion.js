@@ -5,14 +5,14 @@
      * 
      * @var {class}
      */
-    const [Component] = FrontBx.get('Component');
+    const [Component] = frontbx.get('Component');
 
     /**
      * Helper functions
      * 
      * @var {Function}
      */
-    const [$, add_event_listener, attr, closest, has_class, in_dom, remove_event_listener, remove_from_dom, trigger_event, extend] = FrontBx.import(['$','add_event_listener','attr','closest','has_class','in_dom','remove_event_listener','remove_from_dom','trigger_event','extend']).from('_');
+    const [$, add_event_listener, attr, closest, has_class, in_dom, remove_event_listener, remove_from_dom, trigger_event, extend] = frontbx.import(['$','add_event_listener','attr','closest','has_class','in_dom','remove_event_listener','remove_from_dom','trigger_event','extend']).from('_');
 
     /**
      * Chip suggestions.
@@ -72,7 +72,7 @@
         // Chips input
         if (has_class(_input, '.js-chips-input'))
         {
-            FrontBx.dom().component('ChipInputs').addChip(_text, _input);
+            frontbx.dom().component('ChipInputs').addChip(_text, _input);
 
             remove_from_dom(this);
 
@@ -88,7 +88,7 @@
         remove_from_dom(this);
     }
 
-    // Load into FrontBx DOM core
-    FrontBx.dom().register('ChipSuggestions', extend(Component, ChipSuggestions));
+    // Load into frontbx DOM core
+    frontbx.dom().register('ChipSuggestions', extend(Component, ChipSuggestions));
 
 })();

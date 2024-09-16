@@ -5,7 +5,7 @@
      * 
      * @var {Function}
      */
-    const [add_class, animate, attr, css, dom_element, each, find, find_all, _for, is_object, map, nth_siblings, off, on, preapend, remove_class, rendered_style, width, remove_from_dom, inline_style] = FrontBx.import(['add_class','animate','attr','css','dom_element','each','find','find_all','for','is_object','map','nth_siblings','off','on','preapend','remove_class','rendered_style','width','remove_from_dom','inline_style']).from('_');
+    const [add_class, animate, attr, css, dom_element, each, find, find_all, _for, is_object, map, nth_siblings, off, on, preapend, remove_class, rendered_style, width, remove_from_dom, inline_style] = frontbx.import(['add_class','animate','attr','css','dom_element','each','find','find_all','for','is_object','map','nth_siblings','off','on','preapend','remove_class','rendered_style','width','remove_from_dom','inline_style']).from('_');
 
     /**
      * Default options
@@ -779,7 +779,7 @@
     {
         let wrapper = this.DOMElementWrapper;
 
-        const gestures = FrontBx.TinyGesture(this.DOMElementWrapper, { mouseSupport: this.options.mouseSupport, velocityThreshold: this.options.velocityThreshold, threshold: this.options.threshold });
+        const gestures = frontbx.TinyGesture(this.DOMElementWrapper, { mouseSupport: this.options.mouseSupport, velocityThreshold: this.options.velocityThreshold, threshold: this.options.threshold });
 
         this._resetDragVars();
 
@@ -1147,6 +1147,6 @@
     }
 
     // Load into container
-    FrontBx.set('_Slider', _Slider);
+    frontbx.set('_Slider', _Slider);
 
 })();

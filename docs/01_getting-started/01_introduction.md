@@ -93,7 +93,7 @@ For details on lazy loading images - [see the LazyLoad page](../../images/lazylo
 
 ### Boilerplate
 
-Below is a simple HTML5 Boilerplate to get up and running quickly with FrontBx.
+Below is a simple HTML5 Boilerplate to get up and running quickly with frontbx.
 
 ```html
 <!doctype html>
@@ -150,7 +150,7 @@ Below is a simple HTML5 Boilerplate to get up and running quickly with FrontBx.
     -->
 
     <!-- Boot FrontBx
-    <script type="text/javascript">FrontBx.boot();</script>
+    <script type="text/javascript">frontbx.boot();</script>
     -->
   </body>
 </html>
@@ -160,6 +160,6 @@ Below is a simple HTML5 Boilerplate to get up and running quickly with FrontBx.
 
 ### Next Steps
 
-If you're not wanting to create a custom build, or do not require access to FrontBx's source, you can jump straight to the [Content Section](../../content/typography/index.html) to get started with familiarizing yourself with FrontBx.
+If you're not wanting to create a custom build, or do not require access to FrontBx's source, you can jump straight to the [Content Section](../../content/typography/index.html) to get started with familiarizing yourself with frontbx.
 
 Otherwise, head over the the [Installation Page](../installation/index.html) to get started on getting FrontBx installed.

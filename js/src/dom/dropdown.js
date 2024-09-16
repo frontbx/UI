@@ -5,14 +5,14 @@
      * 
      * @var {class}
      */
-    const [Component] = FrontBx.get('Component');
+    const [Component] = frontbx.get('Component');
 
     /**
      * Helper functions
      * 
      * @var {Function}
      */
-    const [find, find_all, map, add_class, on, closest, has_class, is_string, hide_aria, remove_class, off, show_aria, attr, css, dom_element, extend] = FrontBx.import(['find','find_all','map','add_class','on','closest','has_class','is_string','hide_aria','remove_class','off','show_aria','attr','css','dom_element','extend']).from('_');
+    const [find, find_all, map, add_class, on, closest, has_class, is_string, hide_aria, remove_class, off, show_aria, attr, css, dom_element, extend] = frontbx.import(['find','find_all','map','add_class','on','closest','has_class','is_string','hide_aria','remove_class','off','show_aria','attr','css','dom_element','extend']).from('_');
 
     /**
      * Dropdown Buttons
@@ -219,7 +219,7 @@
         ]);
     }
 
-    // Load into FrontBx DOM core
-    FrontBx.dom().register('Dropdown', extend(Component, Dropdown));
+    // Load into frontbx DOM core
+    frontbx.dom().register('Dropdown', extend(Component, Dropdown));
 
 })();

@@ -719,7 +719,7 @@
 <h3 id="javascript-utility">JavaScript Utility</h3>
 <p>FrontBx comes with a handy JavaScript utility component for creating skeletons on the fly. You can create a skeleton by calling <code>Skeleton</code> via the container.</p>
 <h4 id="usage">Usage</h4>
-<pre><code class="javascript language-javascript">const skeleton = FrontBx.Skeleton(DOMElement, options);</code></pre>
+<pre><code class="javascript language-javascript">const skeleton = frontbx.Skeleton(DOMElement, options);</code></pre>
 <p>The component will build the skeleton(s) with the supplied options and append them to the the <code>DOMElement</code>.</p>
 <p>Once you have created a <code>Skeleton</code> instance, you can destroy it via the <code>destroy</code> method. The skeleton(s) will be removed from the <code>DOMElement</code> wrapper.</p>
 <pre><code class="javascript language-javascript">skeleton.destroy();</code></pre>
@@ -785,7 +785,7 @@
     height: '60px'
 };
 
-const skeleton = FrontBx.Skeleton(DOMElement, options);</code></pre>
+const skeleton = frontbx.Skeleton(DOMElement, options);</code></pre>
 <p>When creating a multi-line text-block variant (<code>text-block</code> <code>block-h1</code> <code>block-h2</code> <code>block-h3</code> <code>block-h4</code> <code>block-h5</code> <code>block-h6</code>), any other options apart from <code>count</code> or <code>lines</code> will be ignored.</p>
 <p>There are no modifier options for these skeletons. Additionally, the JS component will set a random width on each skeleton to give a natural text paragraph look.</p>
 <pre><code class="javascript language-javascript">const options  = {
@@ -793,20 +793,20 @@ const skeleton = FrontBx.Skeleton(DOMElement, options);</code></pre>
     variant: 'text-block',
 };
 
-const skeleton = FrontBx.Skeleton(DOMElement, options);</code></pre>
+const skeleton = frontbx.Skeleton(DOMElement, options);</code></pre>
 <p>You can also provide options as an array to add multiple skeletons to single container element:</p>
 <pre><code class="javascript language-javascript">const options = [
     { lines: 2, variant: 'h3-block' },
     { lines: 6, variant: 'text-block' },
 ];
 
-const skeleton = FrontBx.Skeleton(DOMElement, options);</code></pre>
+const skeleton = frontbx.Skeleton(DOMElement, options);</code></pre>
 <p>Or if you need more control to a layout you can provide an optional child <code>selector</code> key for each variant-set. The skeleton will get inserted into the the selector element rather than the parent wrapper element.</p>
 <pre><code class="javascript language-javascript">const options = [
     { selector: '.js-heading', lines: 2, variant: 'h3-block'},
     { selector: '.js-text', lines: 6, variant: 'text-block' },
 ];
-const skeleton = FrontBx.Skeleton(DOMElement, options);</code></pre>
+const skeleton = frontbx.Skeleton(DOMElement, options);</code></pre>
 <h4 id="loading-content">Loading Content</h4>
 <p>Once you have reference to a <code>Skeleton</code> instance, you can gracefully load your own content in via the <code>load</code> method.</p>
 <p>The method accepts both html as a <code>string</code> or an <code>HTMLDomElement</code> node with an optional callback when the animation completes.</p>
@@ -847,7 +847,7 @@ skeleton.load(content);</code></pre>
         <button class=" btn js-reset-skeletons">Reset</button>
     </div>
 </div>
-<pre><code class="JavaScript language-JavaScript">const [find]       = FrontBx.import(['find']).from('_');
+<pre><code class="JavaScript language-JavaScript">const [find]       = frontbx.import(['find']).from('_');
 const cardWrapper  = find('.js-skeleton-loader-card');
 const options      = 
 {
@@ -858,7 +858,7 @@ const options      =
     '.js-card-text' : '&lt;p&gt;...&lt;/p&gt;',
 };
 
-FrontBx.Skeleton(cardWrapper).load(options);</code></pre>
+frontbx.Skeleton(cardWrapper).load(options);</code></pre>
 <hr />
 <h3 id="css-customization">CSS Customization</h3>
 <p>Skeleton uses local CSS variables on all <code>.skeleton</code> for enhanced component customization and styling. The base values are used by the UI to create all the sizing. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>

@@ -5,14 +5,14 @@
      * 
      * @var {class}
      */
-    const [Component] = FrontBx.get('Component');
+    const [Component] = frontbx.get('Component');
 
     /**
      * Helper functions
      * 
      * @var {Function}
      */
-    const [find, add_event_listener, remove_event_listener, has_class, in_dom, parse_url, extend]  = FrontBx.import(['find','add_event_listener','remove_event_listener','has_class','in_dom','parse_url','extend']).from('_');
+    const [find, add_event_listener, remove_event_listener, has_class, in_dom, parse_url, extend]  = frontbx.import(['find','add_event_listener','remove_event_listener','has_class','in_dom','parse_url','extend']).from('_');
 
     /**
      * Has the page loaded?
@@ -75,7 +75,7 @@
 
         if (id && id[0] !== '#') id = `#${id}`;
 
-        FrontBx.SmoothScroll(id, { easing: easing, speed: speed, updateUrl: updateUrl });
+        frontbx.SmoothScroll(id, { easing: easing, speed: speed, updateUrl: updateUrl });
 
         return false;
     }
@@ -98,17 +98,17 @@
 
         const scroll = function()
         {
-            FrontBx.SmoothScroll(url.hash, { easing: easing, speed: speed, updateUrl: false });
+            frontbx.SmoothScroll(url.hash, { easing: easing, speed: speed, updateUrl: false });
 
-            remove_event_listener(window, 'FrontBx:ready', scroll);
+            remove_event_listener(window, 'frontbx:ready', scroll);
         }
 
         window.scrollTo(0, 0);
 
-        add_event_listener(window, 'FrontBx:ready', scroll);
+        add_event_listener(window, 'frontbx:ready', scroll);
     }
 
-    // Load into FrontBx DOM core
-    FrontBx.dom().register('WayPoints', extend(Component, WayPoints));
+    // Load into frontbx DOM core
+    frontbx.dom().register('WayPoints', extend(Component, WayPoints));
 
 })();

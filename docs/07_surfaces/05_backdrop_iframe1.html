@@ -35,7 +35,7 @@
 
             let drawer;
 
-            FrontBx.DocsDemo('.js-bd-trigger', (e, btn) => 
+            frontbx.DocsDemo('.js-bd-trigger', (e, btn) => 
             {
                 let direction = btn.innerText.toLowerCase().trim();
 
@@ -56,7 +56,7 @@
                     drawer.destroy();
                 }
 
-                drawer = FrontBx.Backdrop(
+                drawer = frontbx.Backdrop(
                 {
                     direction: direction,
                     content: `

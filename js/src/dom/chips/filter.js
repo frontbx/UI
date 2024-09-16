@@ -5,14 +5,14 @@
      * 
      * @var {class}
      */
-    const [Component] = FrontBx.get('Component');
+    const [Component] = frontbx.get('Component');
 
     /**
      * Helper functions
      * 
      * @var {Function}
      */
-    const [add_event_listener, remove_event_listener, toggle_class, extend] = FrontBx.import(['add_event_listener','remove_event_listener','toggle_class', 'extend']).from('_');
+    const [add_event_listener, remove_event_listener, toggle_class, extend] = frontbx.import(['add_event_listener','remove_event_listener','toggle_class', 'extend']).from('_');
 
     /**
      * Filter chips
@@ -61,7 +61,7 @@
         toggle_class(this, 'checked');
     }
 
-    // Load into FrontBx DOM core
-    FrontBx.dom().register('FilterChips', extend(Component, FilterChips));
+    // Load into frontbx DOM core
+    frontbx.dom().register('FilterChips', extend(Component, FilterChips));
 
 })();

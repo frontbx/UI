@@ -5,14 +5,14 @@
      * 
      * @var {class}
      */
-    const [Component] = FrontBx.get('Component');
+    const [Component] = frontbx.get('Component');
 
     /**
      * Helper functions
      * 
      * @var {Function}
      */
-    const [find, attr, add_class, on, closest, has_class, is_empty, remove_class, off, extend] = FrontBx.import(['find','attr','add_class','on','closest','has_class','is_empty','remove_class','off','extend']).from('_');
+    const [find, attr, add_class, on, closest, has_class, is_empty, remove_class, off, extend] = frontbx.import(['find','attr','add_class','on','closest','has_class','is_empty','remove_class','off','extend']).from('_');
 
     /**
      * Tab Nav
@@ -70,6 +70,6 @@
         return false;
     }   
 
-    // Load into FrontBx DOM core
-    FrontBx.dom().register('TabNav', extend(Component, TabNav));
+    // Load into frontbx DOM core
+    frontbx.dom().register('TabNav', extend(Component, TabNav));
 })();

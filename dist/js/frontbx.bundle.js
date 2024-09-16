@@ -1,11 +1,11 @@
 /*!
-  * FrontBx v0.1.0
+  * frontbx v0.1.0
   * 
   */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.FrontBx = factory());
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.frontbx = factory());
 })(this, (function () { 'use strict';
   
     // Core
@@ -556,7 +556,7 @@
         }
     
         /**
-         * Loads container into global namespace as "FrontBx"
+         * Loads container into global namespace as "frontbx"
          *
          */
         if (!window.Container)
@@ -6987,7 +6987,7 @@
         delete window['Container'];
     
         // Set global
-        window.FrontBx = app;
+        window.frontbx = app;
     
     })();
     (function()
@@ -6997,7 +6997,7 @@
          *
          * @var {Function}
          */
-        const [each, trigger_event, collect_garbage, is_undefined, is_string, is_htmlElement] = FrontBx.import(['each', 'trigger_event', 'collect_garbage', 'is_undefined', 'is_string', 'is_htmlElement']).from('_');
+        const [each, trigger_event, collect_garbage, is_undefined, is_string, is_htmlElement] = frontbx.import(['each', 'trigger_event', 'collect_garbage', 'is_undefined', 'is_string', 'is_htmlElement']).from('_');
     
         /**
          * Prefix for container.
@@ -7054,7 +7054,7 @@
     
             this.components.push(name);
     
-            FrontBx.singleton(this._normaliseKey(name), component);
+            frontbx.singleton(this._normaliseKey(name), component);
     
             if (invoke || this._isReady)
             {
@@ -7069,7 +7069,7 @@
          */
         Dom.prototype.component = function(name)
         {
-            return FrontBx.get(this._normaliseKey(name));
+            return frontbx.get(this._normaliseKey(name));
         }
     
         /**
@@ -7114,7 +7114,7 @@
          */
         Dom.prototype._bindComponent = function(name, context, isRefresh)
         {                
-            let component = FrontBx.get(this._normaliseKey(name));
+            let component = frontbx.get(this._normaliseKey(name));
     
             if (this._hasMethod(component, 'construct') && isRefresh)
             {
@@ -7134,7 +7134,7 @@
          */
         Dom.prototype._unbindComponent = function(name, context)
         {            
-            let component = FrontBx.get(this._normaliseKey(name));
+            let component = frontbx.get(this._normaliseKey(name));
     
             if (this._hasMethod(component, 'destruct'))
             {
@@ -7226,12 +7226,12 @@
         }
     
         // Load into container and invoke
-        FrontBx.singleton('Dom', Dom);
+        frontbx.singleton('Dom', Dom);
         
     })();
     (function()
     {
-        const [find_all, each, closest, is_empty] = FrontBx.import(['find_all','each','closest','is_empty']).from('_');
+        const [find_all, each, closest, is_empty] = frontbx.import(['find_all','each','closest','is_empty']).from('_');
     
         /**
          * Component base class
@@ -7331,7 +7331,7 @@
     
             if (appendTo) appendTo.appendChild(node);
     
-            FrontBx.Dom().refresh(node);
+            frontbx.Dom().refresh(node);
     
             return node;
         }
@@ -7368,7 +7368,7 @@
         }
     
         // Register
-        FrontBx.set('Component', [Component]);
+        frontbx.set('Component', [Component]);
     
     })();
     
@@ -7482,7 +7482,7 @@
                 return;
             }
     
-            const [each, closest] = FrontBx.import(['each', 'closest']).from('_');
+            const [each, closest] = frontbx.import(['each', 'closest']).from('_');
     
             each(this._DOMElements, function(i, DOMElement)
             {                
@@ -7655,16 +7655,16 @@
             return node.nodeName.toLowerCase() === 'img';
         }
     
-        if (!window.FrontBx)
+        if (!window.frontbx)
         {
             window.addEventListener('DOMContentLoaded', () =>
             {
                 // Invoke and start loading images
                 const lazy = new LazyLoad();
     
-                // Listen for FrontBx:ready and register into dom
+                // Listen for frontbx:ready and register into dom
                 // Will not be invoked unless dom().refresh() is called
-                FrontBx.dom().register('LazyLoad', lazy, false);
+                frontbx.dom().register('LazyLoad', lazy, false);
             })
         }
         
@@ -7673,7 +7673,7 @@
     // vendors
     (function()
     {
-        /* NProgress, (c) 2013, 2014 Rico Sta. Cruz - http://ricostacruz.com/nprogress * @license MIT */
+            /* NProgress, (c) 2013, 2014 Rico Sta. Cruz - http://ricostacruz.com/nprogress * @license MIT */
             var NProgress = {};
     
             NProgress.version = '0.2.0';
@@ -7692,13 +7692,13 @@
                 template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
             };
     
-        /**
-        * Updates configuration.
-        *
-        *     NProgress.configure({
-        *       minimum: 0.1
-        *     });
-        */
+            /**
+            * Updates configuration.
+            *
+            *     NProgress.configure({
+            *       minimum: 0.1
+            *     });
+            */
             NProgress.configure = function(options) {
                 var key, value;
                 for (key in options) {
@@ -8158,7 +8158,7 @@
         }
     
         // Load into container 
-        FrontBx.singleton('NProgress', NProgress);
+        frontbx.singleton('NProgress', NProgress);
     
     })();
     
@@ -8171,7 +8171,7 @@
          * 
          * @var {Function}
          */
-        const [each, is_function, is_object, is_array_last, is_empty, callable_name] = FrontBx.import(['each','is_function','is_object','is_array_last','is_empty','callable_name']).from('_');
+        const [each, is_function, is_object, is_array_last, is_empty, callable_name] = frontbx.import(['each','is_function','is_object','is_array_last','is_empty','callable_name']).from('_');
     
         /**
          * Named callbacks
@@ -8684,7 +8684,7 @@
             return s.join('&');
         }
     
-        FrontBx.set('Ajax', Ajax);
+        frontbx.set('Ajax', Ajax);
     })();
     (function()
     {
@@ -8693,7 +8693,7 @@
          * 
          * @var {Function}
          */
-        const [find, find_all, on, each, map, in_array, in_dom, is_empty, is_string, scroll_pos, trigger_event, normalize_url, inner_HTML, extend] = FrontBx.import(['find','find_all','on','each','map','in_array','in_dom','is_empty','is_string','scroll_pos','trigger_event','normalize_url','inner_HTML','extend']).from('_');
+        const [find, find_all, on, each, map, in_array, in_dom, is_empty, is_string, scroll_pos, trigger_event, normalize_url, inner_HTML, extend] = frontbx.import(['find','find_all','on','each','map','in_array','in_dom','is_empty','is_string','scroll_pos','trigger_event','normalize_url','inner_HTML','extend']).from('_');
     
         /**
          * Are we listening for state changes ?
@@ -8775,7 +8775,7 @@
                 window.history.pushState(state, '', state.id);
             }
     
-            FrontBx.NProgress().start();
+            frontbx.NProgress().start();
     
             this.success((response) =>
             {            
@@ -8801,7 +8801,7 @@
     
                 this._reset();
     
-                FrontBx.NProgress().done();
+                frontbx.NProgress().done();
     
             })._call();
         }
@@ -8870,7 +8870,7 @@
     
             this._appendScripts(currScripts, responseScripts, () =>
             {
-                FrontBx.dom().refresh(targetEl === document.body ? document : targetEl);
+                frontbx.dom().refresh(targetEl === document.body ? document : targetEl);
     
                 trigger_event(window, 'frontbx:Pjax:success', {options});
             });
@@ -9077,7 +9077,7 @@
         }
     
         // Pjax is singleton
-        FrontBx.singleton('Pjax', extend(FrontBx.Ajax().constructor, Pjax));
+        frontbx.singleton('Pjax', extend(frontbx.Ajax().constructor, Pjax));
     
     })();
     (function()
@@ -9086,7 +9086,7 @@
          * 
          * @var {Helper} obj
          */
-        const [find, each, _for, is_array, is_object, in_array, is_undefined, is_callable, is_htmlElement, in_dom, is_empty, animate, add_class, remove_class, width, height, inline_style, rendered_style, css, is_array_last, dom_element] = FrontBx.import(['find','each','for','is_array', 'is_object', 'in_array','is_undefined','is_callable','is_htmlElement','in_dom','is_empty','animate', 'add_class','remove_class', 'width', 'height', 'inline_style', 'rendered_style', 'css', 'is_array_last','dom_element']).from('_');
+        const [find, each, _for, is_array, is_object, in_array, is_undefined, is_callable, is_htmlElement, in_dom, is_empty, animate, add_class, remove_class, width, height, inline_style, rendered_style, css, is_array_last, dom_element] = frontbx.import(['find','each','for','is_array', 'is_object', 'in_array','is_undefined','is_callable','is_htmlElement','in_dom','is_empty','animate', 'add_class','remove_class', 'width', 'height', 'inline_style', 'rendered_style', 'css', 'is_array_last','dom_element']).from('_');
     
         /**
         * Wrappers that need "position:relative" to hide overflow.
@@ -9445,7 +9445,7 @@
         }
     
         // Add to container
-        FrontBx.set('Skeleton', Skeleton);
+        frontbx.set('Skeleton', Skeleton);
     
     })();
     (function()
@@ -9767,7 +9767,7 @@
         }
         catch (err) { }
     
-        FrontBx.set('TinyGesture', TinyGesture);
+        frontbx.set('TinyGesture', TinyGesture);
     
     })();
     (function()
@@ -9777,7 +9777,7 @@
          * 
          * @var {Function}
          */
-        const [find, find_all, each, dom_element, add_class, toggle_class, on, off, has_class, remove_class, remove_from_dom, css, height, width, preapend, scroll_pos, animate_css, rendered_style] = FrontBx.import(['find','find_all','each','dom_element','add_class','toggle_class','on','off','has_class','remove_class','remove_from_dom', 'css', 'height', 'width', 'preapend', 'scroll_pos', 'animate_css', 'rendered_style']).from('_');
+        const [find, find_all, each, dom_element, add_class, toggle_class, on, off, has_class, remove_class, remove_from_dom, css, height, width, preapend, scroll_pos, animate_css, rendered_style] = frontbx.import(['find','find_all','each','dom_element','add_class','toggle_class','on','off','has_class','remove_class','remove_from_dom', 'css', 'height', 'width', 'preapend', 'scroll_pos', 'animate_css', 'rendered_style']).from('_');
     
         /**
          * Default options
@@ -10348,7 +10348,7 @@
             {
                 let context = this._options.persistent ? this._drawer : this._containerWrap;
                 
-                FrontBx.dom().refresh(context);
+                frontbx.dom().refresh(context);
             }
     
             if (this._options.responsive && this._options.persistent) 
@@ -10360,7 +10360,7 @@
     
             let directions = SWIPE_DIRECTIONS[this._options.direction];
     
-            this._gestures = FrontBx.TinyGesture(this._options.swipeable ? window : this._drawer, { mouseSupport: true, velocityThreshold: 3, threshold: (type, self) => this._options.swipeable ? 20 : 3 });
+            this._gestures = frontbx.TinyGesture(this._options.swipeable ? window : this._drawer, { mouseSupport: true, velocityThreshold: 3, threshold: (type, self) => this._options.swipeable ? 20 : 3 });
     
             this._gestures.on(directions[0], () => this.open() );
     
@@ -10378,7 +10378,7 @@
         }
     
         // Load into container 
-        FrontBx.set('Drawer', Drawer);
+        frontbx.set('Drawer', Drawer);
     
     })();
     (function()
@@ -10388,14 +10388,14 @@
          * 
          * @var {Function}
          */
-        const [on, find, dom_element, extend] = FrontBx.import(['on','find','dom_element','extend']).from('_');
+        const [on, find, dom_element, extend] = frontbx.import(['on','find','dom_element','extend']).from('_');
     
         /**
          * Helper functions
          * 
          * @var {Function}
          */
-        const Drawer = FrontBx.Drawer(FrontBx.IMPORT_AS_REF);
+        const Drawer = frontbx.Drawer(frontbx.IMPORT_AS_REF);
     
         /**
          * @var {obj}
@@ -10494,7 +10494,7 @@
         }
     
         // Load into container 
-        FrontBx.set('Frontdrop', extend(Drawer, Frontdrop));
+        frontbx.set('Frontdrop', extend(Drawer, Frontdrop));
     
     })();
     (function()
@@ -10504,14 +10504,14 @@
          * 
          * @var {Function}
          */
-        const [on, find, dom_element, extend] = FrontBx.import(['on','find','dom_element','extend']).from('_');
+        const [on, find, dom_element, extend] = frontbx.import(['on','find','dom_element','extend']).from('_');
     
         /**
          * Helper functions
          * 
          * @var {Function}
          */
-        const Drawer = FrontBx.Drawer(FrontBx.IMPORT_AS_REF);
+        const Drawer = frontbx.Drawer(frontbx.IMPORT_AS_REF);
     
         /**
          * Module constructor
@@ -10533,7 +10533,7 @@
         }
     
         // Load into container 
-        FrontBx.set('Backdrop', extend(Drawer, Backdrop));
+        frontbx.set('Backdrop', extend(Drawer, Backdrop));
     })();
     (function()
     {
@@ -10542,7 +10542,7 @@
          * 
          * @var {Function}
          */
-        const [find, dom_element, add_class, on, off, remove_class, remove_from_dom, hide_aria, show_aria] = FrontBx.import(['find','dom_element','add_class','on','off','remove_class','remove_from_dom','hide_aria','show_aria']).from('_');
+        const [find, dom_element, add_class, on, off, remove_class, remove_from_dom, hide_aria, show_aria] = frontbx.import(['find','dom_element','add_class','on','off','remove_class','remove_from_dom','hide_aria','show_aria']).from('_');
     
         /**
          * Default options
@@ -10794,7 +10794,7 @@
     
             this._overlay.offsetHeight;
     
-            if (!this._options.fromHTML) FrontBx.dom().refresh(this._modal);
+            if (!this._options.fromHTML) frontbx.dom().refresh(this._modal);
     
             if (this._state === 'open')
             {
@@ -10849,7 +10849,7 @@
         }
     
         // Load into container 
-        FrontBx.set('Modal', Modal);
+        frontbx.set('Modal', Modal);
     
     })();
     (function()
@@ -10859,7 +10859,7 @@
          * 
          * @var {Function}
          */
-        const [find, add_class, on, in_dom, remove_class, remove_from_dom, dom_element] = FrontBx.import(['find','add_class','on','in_dom','remove_class','remove_from_dom','dom_element']).from('_');
+        const [find, add_class, on, in_dom, remove_class, remove_from_dom, dom_element] = frontbx.import(['find','add_class','on','in_dom','remove_class','remove_from_dom','dom_element']).from('_');
     
         /**
          * Default options
@@ -11065,7 +11065,7 @@
         }
     
         // Add to container
-        FrontBx.set('Notification', Notification);
+        frontbx.set('Notification', Notification);
     
     })();
     (function()
@@ -11075,7 +11075,7 @@
          * 
          * @var {Function}
          */
-        const [find, in_dom, normalize_url, is_string, coordinates, height, animate] = FrontBx.import(['find','in_dom','normalize_url','is_string','coordinates','height','animate']).from('_');
+        const [find, in_dom, normalize_url, is_string, coordinates, height, animate] = frontbx.import(['find','in_dom','normalize_url','is_string','coordinates','height','animate']).from('_');
     
         /**
          * Default options
@@ -11129,8 +11129,8 @@
         }
     
     
-        // Load into FrontBx DOM core
-        FrontBx.set('SmoothScroll', SmoothScroll);
+        // Load into frontbx DOM core
+        frontbx.set('SmoothScroll', SmoothScroll);
     
     })();
     (function()
@@ -11140,7 +11140,7 @@
          * 
          * @var {functions}
          */
-        const [on, off, _map, is_regexp] = FrontBx.import(['on', 'off', 'map', 'is_regexp']).from('_');
+        const [on, off, _map, is_regexp] = frontbx.import(['on', 'off', 'map', 'is_regexp']).from('_');
     
         /**
          * Regex masks
@@ -11385,7 +11385,7 @@
         }
     
         // SET IN IOC
-        FrontBx.set('InputMasker', InputMasker);
+        frontbx.set('InputMasker', InputMasker);
     
     })();
     (function()
@@ -11395,7 +11395,7 @@
          * 
          * @var {Function}
          */
-        const [find_all, add_class, attr, bool, closest, each, form_inputs, form_values, on, off, input_value, is_callable, is_empty, remove_class] = FrontBx.import(['find_all','add_class','attr','bool','closest','each','form_inputs','form_values','on','off','input_value','is_callable','is_empty','remove_class']).from('_');
+        const [find_all, add_class, attr, bool, closest, each, form_inputs, form_values, on, off, input_value, is_callable, is_empty, remove_class] = frontbx.import(['find_all','add_class','attr','bool','closest','each','form_inputs','form_values','on','off','input_value','is_callable','is_empty','remove_class']).from('_');
     
         /**
          * Validator functions
@@ -11842,7 +11842,7 @@
         }
     
         // Load into container
-        FrontBx.set('FormValidator', FormValidator);
+        frontbx.set('FormValidator', FormValidator);
     
     })();
     
@@ -11854,7 +11854,7 @@
          * 
          * @var {Function}
          */
-        const [add_class, animate, attr, css, dom_element, each, find, find_all, _for, is_object, map, nth_siblings, off, on, preapend, remove_class, rendered_style, width, remove_from_dom, inline_style] = FrontBx.import(['add_class','animate','attr','css','dom_element','each','find','find_all','for','is_object','map','nth_siblings','off','on','preapend','remove_class','rendered_style','width','remove_from_dom','inline_style']).from('_');
+        const [add_class, animate, attr, css, dom_element, each, find, find_all, _for, is_object, map, nth_siblings, off, on, preapend, remove_class, rendered_style, width, remove_from_dom, inline_style] = frontbx.import(['add_class','animate','attr','css','dom_element','each','find','find_all','for','is_object','map','nth_siblings','off','on','preapend','remove_class','rendered_style','width','remove_from_dom','inline_style']).from('_');
     
         /**
          * Default options
@@ -12628,7 +12628,7 @@
         {
             let wrapper = this.DOMElementWrapper;
     
-            const gestures = FrontBx.TinyGesture(this.DOMElementWrapper, { mouseSupport: this.options.mouseSupport, velocityThreshold: this.options.velocityThreshold, threshold: this.options.threshold });
+            const gestures = frontbx.TinyGesture(this.DOMElementWrapper, { mouseSupport: this.options.mouseSupport, velocityThreshold: this.options.velocityThreshold, threshold: this.options.threshold });
     
             this._resetDragVars();
     
@@ -12996,7 +12996,7 @@
         }
     
         // Load into container
-        FrontBx.set('_Slider', _Slider);
+        frontbx.set('_Slider', _Slider);
     
     })();
     (function()
@@ -13006,14 +13006,14 @@
          * 
          * @var {Class}
          */
-        const [Component] = FrontBx.get('Component');
+        const [Component] = frontbx.get('Component');
     
         /**
          * Helper functions
          * 
          * @var {Function}
          */
-        const [attr, each, map, extend, dom_element, json_decode] = FrontBx.import(['attr', 'each', 'map', 'extend', 'dom_element', 'json_decode']).from('_');
+        const [attr, each, map, extend, dom_element, json_decode] = frontbx.import(['attr', 'each', 'map', 'extend', 'dom_element', 'json_decode']).from('_');
     
         /**
          * Slider instances.
@@ -13044,7 +13044,7 @@
     
             options = !options ? {} : json_decode(options);
     
-            SLIDERS.push(FrontBx._Slider(node, options));
+            SLIDERS.push(frontbx._Slider(node, options));
         }
     
         /**
@@ -13075,8 +13075,8 @@
             return dom_element({tag: 'div', class: 'slider js-slider'}, null, props.slides);
         }
     
-        // Load into FrontBx DOM core
-        FrontBx.dom().register('Slider', extend(Component, Slider));
+        // Load into frontbx DOM core
+        frontbx.dom().register('Slider', extend(Component, Slider));
     })();
     (function()
     {
@@ -13085,7 +13085,7 @@
          * 
          * @var {Function}
          */
-        const [in_dom, coordinates] = FrontBx.import(['in_dom','coordinates']).from('_');
+        const [in_dom, coordinates] = frontbx.import(['in_dom','coordinates']).from('_');
     
         /**
          * Popover Handler
@@ -13197,7 +13197,7 @@
         }
     
         // Set into container for private use
-        FrontBx.set('PopHandler', PopHandler);
+        frontbx.set('PopHandler', PopHandler);
     
     })();
     (function()
@@ -13207,14 +13207,14 @@
          * 
          * @var {class}
          */
-        const [Component] = FrontBx.get('Component');
+        const [Component] = frontbx.get('Component');
     
         /**
          * JS Helper reference
          * 
          * @var {object}
          */
-        const [find, find_all, add_class, on, closest, has_class, is_empty, remove_class, off, each, extend] = FrontBx.import(['find', 'find_all', 'add_class', 'on', 'closest', 'has_class', 'is_empty', 'remove_class', 'off', 'each', 'extend']).from('_');
+        const [find, find_all, add_class, on, closest, has_class, is_empty, remove_class, off, each, extend] = frontbx.import(['find', 'find_all', 'add_class', 'on', 'closest', 'has_class', 'is_empty', 'remove_class', 'off', 'each', 'extend']).from('_');
     
         var HOVER_TIMER;
     
@@ -13302,7 +13302,7 @@
                 pop.classList.remove('hidden');
             }
     
-            let popHandler = FrontBx.get('PopHandler',
+            let popHandler = frontbx.get('PopHandler',
             {
                 target: trigger,
                 direction: direction,
@@ -13527,8 +13527,8 @@
             }
         }
     
-        // Load into FrontBx DOM core
-        FrontBx.dom().register('Popover', extend(Component, Popover));
+        // Load into frontbx DOM core
+        frontbx.dom().register('Popover', extend(Component, Popover));
     
     }());
     
@@ -13588,8 +13588,8 @@
             return chip;
         }
     
-        // Load into FrontBx DOM core
-        FrontBx.set('Chip', createChip);
+        // Load into frontbx DOM core
+        frontbx.set('Chip', createChip);
     
     })();
     (function()
@@ -13599,14 +13599,14 @@
          * 
          * @var {class}
          */
-        const [Component] = FrontBx.get('Component');
+        const [Component] = frontbx.get('Component');
     
         /**
          * Helper functions
          * 
          * @var {Function}
          */
-        const [$, $All, add_event_listener, closest, first_children, in_array, input_value, is_empty, remove_event_listener, remove_from_dom, extend] = FrontBx.import(['$','$All','add_event_listener','closest','first_children','in_array','input_value','is_empty','remove_event_listener','remove_from_dom','extend']).from('_');
+        const [$, $All, add_event_listener, closest, first_children, in_array, input_value, is_empty, remove_event_listener, remove_from_dom, extend] = frontbx.import(['$','$All','add_event_listener','closest','first_children','in_array','input_value','is_empty','remove_event_listener','remove_from_dom','extend']).from('_');
     
         /**
          * Chip inputs
@@ -13745,7 +13745,7 @@
          */
         ChipInputs.prototype.addChip = function(_value, _wrapper, _icon)
         {
-            let chip = FrontBx.Chip({
+            let chip = frontbx.Chip({
                 text       : _value.trim(),
                 removeable : true,
                 input      : _wrapper.dataset.inputName,
@@ -13756,7 +13756,7 @@
     
             add_event_listener($('.js-remove-btn', chip), 'click', this._removeChip);
     
-            FrontBx.dom().refresh('Ripple', _wrapper);
+            frontbx.dom().refresh('Ripple', _wrapper);
         }
     
         /**
@@ -13795,8 +13795,8 @@
             return _result;
         }
     
-        // Load into FrontBx DOM core
-        FrontBx.dom().register('ChipInputs', extend(Component, ChipInputs));
+        // Load into frontbx DOM core
+        frontbx.dom().register('ChipInputs', extend(Component, ChipInputs));
     
     })();
     (function()
@@ -13806,14 +13806,14 @@
          * 
          * @var {class}
          */
-        const [Component] = FrontBx.get('Component');
+        const [Component] = frontbx.get('Component');
     
         /**
          * Helper functions
          * 
          * @var {Function}
          */
-        const [find, add_class, on, closest, has_class, remove_class, off, attr, css, dom_element, map, trigger_event, extend] = FrontBx.import(['find','add_class','on','closest','has_class','remove_class','off','attr','css','dom_element','map','trigger_event','extend']).from('_');
+        const [find, add_class, on, closest, has_class, remove_class, off, attr, css, dom_element, map, trigger_event, extend] = frontbx.import(['find','add_class','on','closest','has_class','remove_class','off','attr','css','dom_element','map','trigger_event','extend']).from('_');
     
         /**
          * Dropdown Buttons
@@ -13918,8 +13918,8 @@
             );
         }
     
-        // Load into FrontBx DOM core
-        FrontBx.dom().register('Menu', extend(Component, Menu));
+        // Load into frontbx DOM core
+        frontbx.dom().register('Menu', extend(Component, Menu));
     
     })();
     (function()
@@ -13929,14 +13929,14 @@
          * 
          * @var {class}
          */
-        const [Component] = FrontBx.get('Component');
+        const [Component] = frontbx.get('Component');
     
         /**
          * Helper functions
          * 
          * @var {Function}
          */
-        const [$, add_event_listener, attr, closest, has_class, in_dom, remove_event_listener, remove_from_dom, trigger_event, extend] = FrontBx.import(['$','add_event_listener','attr','closest','has_class','in_dom','remove_event_listener','remove_from_dom','trigger_event','extend']).from('_');
+        const [$, add_event_listener, attr, closest, has_class, in_dom, remove_event_listener, remove_from_dom, trigger_event, extend] = frontbx.import(['$','add_event_listener','attr','closest','has_class','in_dom','remove_event_listener','remove_from_dom','trigger_event','extend']).from('_');
     
         /**
          * Chip suggestions.
@@ -13996,7 +13996,7 @@
             // Chips input
             if (has_class(_input, '.js-chips-input'))
             {
-                FrontBx.dom().component('ChipInputs').addChip(_text, _input);
+                frontbx.dom().component('ChipInputs').addChip(_text, _input);
     
                 remove_from_dom(this);
     
@@ -14012,8 +14012,8 @@
             remove_from_dom(this);
         }
     
-        // Load into FrontBx DOM core
-        FrontBx.dom().register('ChipSuggestions', extend(Component, ChipSuggestions));
+        // Load into frontbx DOM core
+        frontbx.dom().register('ChipSuggestions', extend(Component, ChipSuggestions));
     
     })();
     (function()
@@ -14023,14 +14023,14 @@
          * 
          * @var {class}
          */
-        const [Component] = FrontBx.get('Component');
+        const [Component] = frontbx.get('Component');
     
         /**
          * Helper functions
          * 
          * @var {Function}
          */
-        const [$, add_class, add_event_listener, closest, has_class, remove_class, remove_event_listener, trigger_event, extend] = FrontBx.import(['$','add_class','add_event_listener','closest','has_class','remove_class','remove_event_listener','trigger_event','extend']).from('_');
+        const [$, add_class, add_event_listener, closest, has_class, remove_class, remove_event_listener, trigger_event, extend] = frontbx.import(['$','add_class','add_event_listener','closest','has_class','remove_class','remove_event_listener','trigger_event','extend']).from('_');
     
         /**
          * Choice chips
@@ -14094,8 +14094,8 @@
             }
         }
     
-        // Load into FrontBx DOM core
-        FrontBx.dom().register('ChoiceChips', extend(Component, ChoiceChips));
+        // Load into frontbx DOM core
+        frontbx.dom().register('ChoiceChips', extend(Component, ChoiceChips));
     
     })();
     (function()
@@ -14105,14 +14105,14 @@
          * 
          * @var {class}
          */
-        const [Component] = FrontBx.get('Component');
+        const [Component] = frontbx.get('Component');
     
         /**
          * Helper functions
          * 
          * @var {Function}
          */
-        const [add_event_listener, remove_event_listener, toggle_class, extend] = FrontBx.import(['add_event_listener','remove_event_listener','toggle_class', 'extend']).from('_');
+        const [add_event_listener, remove_event_listener, toggle_class, extend] = frontbx.import(['add_event_listener','remove_event_listener','toggle_class', 'extend']).from('_');
     
         /**
          * Filter chips
@@ -14161,8 +14161,8 @@
             toggle_class(this, 'checked');
         }
     
-        // Load into FrontBx DOM core
-        FrontBx.dom().register('FilterChips', extend(Component, FilterChips));
+        // Load into frontbx DOM core
+        frontbx.dom().register('FilterChips', extend(Component, FilterChips));
     
     })();
     (function()
@@ -14172,14 +14172,14 @@
          * 
          * @var {class}
          */
-        const [Component] = FrontBx.get('Component');
+        const [Component] = frontbx.get('Component');
     
         /**
          * Helper functions
          * 
          * @var {Function}
          */
-        const [find, each, is_undefined, attr, on, off, to_camel_case, extend] = FrontBx.import(['find','each','is_undefined','attr','on','off','to_camel_case','extend']).from('_');
+        const [find, each, is_undefined, attr, on, off, to_camel_case, extend] = frontbx.import(['find','each','is_undefined','attr','on','off','to_camel_case','extend']).from('_');
     
         /**
          * Available data attributes.
@@ -14231,7 +14231,7 @@
                 }
             });
     
-            let modal = FrontBx.Modal(options);
+            let modal = frontbx.Modal(options);
     
             this.modals.set(node, modal);
     
@@ -14280,19 +14280,19 @@
             modal.closed() ? modal.open() : modal.close();
         }
     
-        // Load into FrontBx DOM core
-        FrontBx.dom().register('Modal', extend(Component, Modal));
+        // Load into frontbx DOM core
+        frontbx.dom().register('Modal', extend(Component, Modal));
     })();
     (function()
     {
-        const [Component] = FrontBx.get('Component');
+        const [Component] = frontbx.get('Component');
     
         /**
          * Helper functions
          * 
          * @var {Function}
          */
-        const [find, each, is_undefined, attr, on, off, to_camel_case, add_class, remove_class, extend] = FrontBx.import(['find','each','is_undefined','attr','on','off','to_camel_case','add_class','remove_class','extend']).from('_');
+        const [find, each, is_undefined, attr, on, off, to_camel_case, add_class, remove_class, extend] = frontbx.import(['find','each','is_undefined','attr','on','off','to_camel_case','add_class','remove_class','extend']).from('_');
     
         /**
          * Available data attributes.
@@ -14350,7 +14350,7 @@
                 }
             });
     
-            let drawer = FrontBx.Drawer(options);
+            let drawer = frontbx.Drawer(options);
     
             this.drawers.set(node, drawer);
     
@@ -14400,8 +14400,8 @@
             drawer.closed() ? drawer.open() : drawer.close();
         }
     
-        // Load into FrontBx DOM core
-        FrontBx.dom().register('Drawer', extend(Component, Drawer));
+        // Load into frontbx DOM core
+        frontbx.dom().register('Drawer', extend(Component, Drawer));
         
     })();
     (function()
@@ -14411,14 +14411,14 @@
          * 
          * @var {class}
          */
-        const [Component] = FrontBx.get('Component');
+        const [Component] = frontbx.get('Component');
     
         /**
          * Helper functions
          * 
          * @var {Function}
          */
-        const [find, each, is_undefined, attr, on, off, to_camel_case, add_class, remove_class, extend] = FrontBx.import(['find','each','is_undefined','attr','on','off','to_camel_case','add_class','remove_class','extend']).from('_');
+        const [find, each, is_undefined, attr, on, off, to_camel_case, add_class, remove_class, extend] = frontbx.import(['find','each','is_undefined','attr','on','off','to_camel_case','add_class','remove_class','extend']).from('_');
     
         /**
          * Available data attributes.
@@ -14476,7 +14476,7 @@
                 }
             });
     
-            let frontdrop = FrontBx.Frontdrop(options);
+            let frontdrop = frontbx.Frontdrop(options);
     
             this.drawers.set(node, frontdrop);
     
@@ -14526,8 +14526,8 @@
             frontdrop.closed() ? frontdrop.open() : frontdrop.close();
         }
     
-        // Load into FrontBx DOM core
-        FrontBx.dom().register('Frontdrop', extend(Component, Frontdrop));
+        // Load into frontbx DOM core
+        frontbx.dom().register('Frontdrop', extend(Component, Frontdrop));
         
     })();
     (function()
@@ -14537,14 +14537,14 @@
          * 
          * @var {class}
          */
-        const [Component] = FrontBx.get('Component');
+        const [Component] = frontbx.get('Component');
     
          /**
          * Helper functions
          * 
          * @var {Function}
          */
-        const [find, each, is_undefined, attr, on, off, to_camel_case, add_class, remove_class, extend] = FrontBx.import(['find','each','is_undefined','attr','on','off','to_camel_case','add_class','remove_class','extend']).from('_');
+        const [find, each, is_undefined, attr, on, off, to_camel_case, add_class, remove_class, extend] = frontbx.import(['find','each','is_undefined','attr','on','off','to_camel_case','add_class','remove_class','extend']).from('_');
     
         /**
          * Available data attributes.
@@ -14602,7 +14602,7 @@
                 }
             });
     
-            let backdrop = FrontBx.Backdrop(options);
+            let backdrop = frontbx.Backdrop(options);
     
             this.drawers.set(node, backdrop);
     
@@ -14651,8 +14651,8 @@
             backdrop.closed() ? backdrop.open() : backdrop.close();
         }
     
-        // Load into FrontBx DOM core
-        FrontBx.dom().register('Backdrop', extend(Component, Backdrop));
+        // Load into frontbx DOM core
+        frontbx.dom().register('Backdrop', extend(Component, Backdrop));
     
     })();
     (function()
@@ -14662,14 +14662,14 @@
          * 
          * @var {class}
          */
-        const [Component] = FrontBx.get('Component');
+        const [Component] = frontbx.get('Component');
     
         /**
          * Helper functions
          * 
          * @var {Function}
          */
-        const [find, each, is_undefined, attr, on, off, to_camel_case, extend] = FrontBx.import(['find','each','is_undefined','attr','on','off','to_camel_case','extend']).from('_');
+        const [find, each, is_undefined, attr, on, off, to_camel_case, extend] = frontbx.import(['find','each','is_undefined','attr','on','off','to_camel_case','extend']).from('_');
     
         /**
          * Available data attributes.
@@ -14732,11 +14732,11 @@
                 }
             });
     
-            FrontBx.Notification(options);
+            frontbx.Notification(options);
         }
     
-        // Load into FrontBx DOM core
-        FrontBx.dom().register('Notification', extend(Component, Notification));
+        // Load into frontbx DOM core
+        frontbx.dom().register('Notification', extend(Component, Notification));
     
     })();
     (function()
@@ -14746,14 +14746,14 @@
          * 
          * @var {class}
          */
-        const [Component] = FrontBx.get('Component');
+        const [Component] = frontbx.get('Component');
     
         /**
          * Helper functions
          * 
          * @var {Function}
          */
-        const [on, off, attr, bool, extend]  = FrontBx.import(['on','off','attr','bool','extend']).from('_');
+        const [on, off, attr, bool, extend]  = frontbx.import(['on','off','attr','bool','extend']).from('_');
     
         /**
          * URLS Requested
@@ -14814,13 +14814,13 @@
     
             if (element) element = element[0] !== '#' ? `#${element}` : element;
     
-            FrontBx.Pjax().request(url, {once, element, cacheBust, pushstate, urlhash});
+            frontbx.Pjax().request(url, {once, element, cacheBust, pushstate, urlhash});
     
             return false;
         }
     
-        // Load into FrontBx DOM core
-        FrontBx.dom().register('PjaxLinks', extend(Component, PjaxLinks));
+        // Load into frontbx DOM core
+        frontbx.dom().register('PjaxLinks', extend(Component, PjaxLinks));
     
     })();
     (function()
@@ -14830,14 +14830,14 @@
          * 
          * @var {class}
          */
-        const [Component] = FrontBx.get('Component');
+        const [Component] = frontbx.get('Component');
     
         /**
          * Helper functions
          * 
          * @var {Function}
          */
-        const [$, add_event_listener, animate, bool, has_class, is_node_type, remove_event_listener, toggle_class, trigger_event, extend] = FrontBx.import(['$','add_event_listener','animate','bool','has_class','is_node_type','remove_event_listener','toggle_class','trigger_event','extend']).from('_');
+        const [$, add_event_listener, animate, bool, has_class, is_node_type, remove_event_listener, toggle_class, trigger_event, extend] = frontbx.import(['$','add_event_listener','animate','bool','has_class','is_node_type','remove_event_listener','toggle_class','trigger_event','extend']).from('_');
     
         /**
          * Toggle height on click
@@ -14911,8 +14911,8 @@
             toggle_class(clicked, 'active');
         }
     
-        // Load into FrontBx DOM core
-        FrontBx.dom().register('Collapse', extend(Component, Collapse));
+        // Load into frontbx DOM core
+        frontbx.dom().register('Collapse', extend(Component, Collapse));
     })();
     (function()
     {
@@ -14921,14 +14921,14 @@
          * 
          * @var {class}
          */
-        const [Component] = FrontBx.get('Component');
+        const [Component] = frontbx.get('Component');
     
         /**
          * Helper functions
          * 
          * @var {Function}
          */
-        const [find, add_event_listener, remove_event_listener, has_class, add_class, remove_class, closest, trigger_event, dom_element, map, extend] = FrontBx.import(['find','add_event_listener','remove_event_listener','has_class','add_class','remove_class','closest','trigger_event','dom_element', 'map','extend']).from('_');
+        const [find, add_event_listener, remove_event_listener, has_class, add_class, remove_class, closest, trigger_event, dom_element, map, extend] = frontbx.import(['find','add_event_listener','remove_event_listener','has_class','add_class','remove_class','closest','trigger_event','dom_element', 'map','extend']).from('_');
     
         /**
          * Toggle active on lists
@@ -14999,8 +14999,8 @@
             );
         }
     
-        // Load into FrontBx DOM core
-        FrontBx.dom().register('List', extend(Component, List));
+        // Load into frontbx DOM core
+        frontbx.dom().register('List', extend(Component, List));
     })();
     (function()
     {
@@ -15009,14 +15009,14 @@
          * 
          * @var {class}
          */
-        const [Component] = FrontBx.get('Component');
+        const [Component] = frontbx.get('Component');
     
         /**
          * Helper functions
          * 
          * @var {Function}
          */
-        const [find, find_all, map, add_class, on, closest, has_class, is_string, hide_aria, remove_class, off, show_aria, attr, css, dom_element, extend] = FrontBx.import(['find','find_all','map','add_class','on','closest','has_class','is_string','hide_aria','remove_class','off','show_aria','attr','css','dom_element','extend']).from('_');
+        const [find, find_all, map, add_class, on, closest, has_class, is_string, hide_aria, remove_class, off, show_aria, attr, css, dom_element, extend] = frontbx.import(['find','find_all','map','add_class','on','closest','has_class','is_string','hide_aria','remove_class','off','show_aria','attr','css','dom_element','extend']).from('_');
     
         /**
          * Dropdown Buttons
@@ -15223,8 +15223,8 @@
             ]);
         }
     
-        // Load into FrontBx DOM core
-        FrontBx.dom().register('Dropdown', extend(Component, Dropdown));
+        // Load into frontbx DOM core
+        frontbx.dom().register('Dropdown', extend(Component, Dropdown));
     
     })();
     (function()
@@ -15234,14 +15234,14 @@
          * 
          * @var {class}
          */
-        const [Component] = FrontBx.get('Component');
+        const [Component] = frontbx.get('Component');
     
         /**
          * Helper functions
          * 
          * @var {Function}
          */
-        const [find, attr, add_class, on, closest, has_class, is_empty, remove_class, off, extend] = FrontBx.import(['find','attr','add_class','on','closest','has_class','is_empty','remove_class','off','extend']).from('_');
+        const [find, attr, add_class, on, closest, has_class, is_empty, remove_class, off, extend] = frontbx.import(['find','attr','add_class','on','closest','has_class','is_empty','remove_class','off','extend']).from('_');
     
         /**
          * Tab Nav
@@ -15299,8 +15299,8 @@
             return false;
         }   
     
-        // Load into FrontBx DOM core
-        FrontBx.dom().register('TabNav', extend(Component, TabNav));
+        // Load into frontbx DOM core
+        frontbx.dom().register('TabNav', extend(Component, TabNav));
     })();
     (function()
     {
@@ -15309,7 +15309,7 @@
          * 
          * @var {object}
          */
-        const Helper = FrontBx._();
+        const Helper = frontbx._();
     
         /**
          * Input masker
@@ -15367,14 +15367,14 @@
     
                 if (mask)
                 {
-                    this._masks.push(FrontBx.InputMasker(input, mask, format));
+                    this._masks.push(frontbx.InputMasker(input, mask, format));
                 }
     
             }, this);
         }
     
-        // Load into FrontBx DOM core
-        FrontBx.dom().register('InputMasks', InputMasks);
+        // Load into frontbx DOM core
+        frontbx.dom().register('InputMasks', InputMasks);
     
     })();
     (function()
@@ -15384,14 +15384,14 @@
          * 
          * @var {class}
          */
-        const [Component] = FrontBx.get('Component');
+        const [Component] = frontbx.get('Component');
     
         /**
          * Helper functions
          * 
          * @var {function}
          */
-        const [add_event_listener, animate_css, closest, has_class, remove_from_dom, remove_event_listener, trigger_event, extend] = FrontBx.import(['add_event_listener','animate_css','closest','has_class','remove_from_dom','remove_event_listener','trigger_event','extend']).from('_');
+        const [add_event_listener, animate_css, closest, has_class, remove_from_dom, remove_event_listener, trigger_event, extend] = frontbx.import(['add_event_listener','animate_css','closest','has_class','remove_from_dom','remove_event_listener','trigger_event','extend']).from('_');
     
         /**
          * Message closers
@@ -15453,8 +15453,8 @@
             }});
         }
     
-        // Load into FrontBx DOM core
-        FrontBx.dom().register('MessageClosers', extend(Component, MessageClosers));
+        // Load into frontbx DOM core
+        frontbx.dom().register('MessageClosers', extend(Component, MessageClosers));
     
     })();
     (function()
@@ -15464,14 +15464,14 @@
          * 
          * @var {class}
          */
-        const [Component] = FrontBx.get('Component');
+        const [Component] = frontbx.get('Component');
     
         /**
          * Helper functions
          * 
          * @var {Function}
          */
-        const [find, add_event_listener, remove_event_listener, has_class, in_dom, parse_url, extend]  = FrontBx.import(['find','add_event_listener','remove_event_listener','has_class','in_dom','parse_url','extend']).from('_');
+        const [find, add_event_listener, remove_event_listener, has_class, in_dom, parse_url, extend]  = frontbx.import(['find','add_event_listener','remove_event_listener','has_class','in_dom','parse_url','extend']).from('_');
     
         /**
          * Has the page loaded?
@@ -15534,7 +15534,7 @@
     
             if (id && id[0] !== '#') id = `#${id}`;
     
-            FrontBx.SmoothScroll(id, { easing: easing, speed: speed, updateUrl: updateUrl });
+            frontbx.SmoothScroll(id, { easing: easing, speed: speed, updateUrl: updateUrl });
     
             return false;
         }
@@ -15557,18 +15557,18 @@
     
             const scroll = function()
             {
-                FrontBx.SmoothScroll(url.hash, { easing: easing, speed: speed, updateUrl: false });
+                frontbx.SmoothScroll(url.hash, { easing: easing, speed: speed, updateUrl: false });
     
-                remove_event_listener(window, 'FrontBx:ready', scroll);
+                remove_event_listener(window, 'frontbx:ready', scroll);
             }
     
             window.scrollTo(0, 0);
     
-            add_event_listener(window, 'FrontBx:ready', scroll);
+            add_event_listener(window, 'frontbx:ready', scroll);
         }
     
-        // Load into FrontBx DOM core
-        FrontBx.dom().register('WayPoints', extend(Component, WayPoints));
+        // Load into frontbx DOM core
+        frontbx.dom().register('WayPoints', extend(Component, WayPoints));
     
     })();
     (function()
@@ -15578,14 +15578,14 @@
          * 
          * @var {class}
          */
-        const [Component] = FrontBx.get('Component');
+        const [Component] = frontbx.get('Component');
     
         /**
          * Helper functions
          * 
          * @var {function}
          */
-        const [$, add_class, add_event_listener, closest, in_dom, input_value, remove_class, remove_event_listener, extend] = FrontBx.import(['$','add_class','add_event_listener','closest','in_dom','input_value','remove_class','remove_event_listener','extend']).from('_');
+        const [$, add_class, add_event_listener, closest, in_dom, input_value, remove_class, remove_event_listener, extend] = frontbx.import(['$','add_class','add_event_listener','closest','in_dom','input_value','remove_class','remove_event_listener','extend']).from('_');
     
         /**
          * Adds classes to inputs
@@ -15745,8 +15745,8 @@
             }
         }
     
-        // Load into FrontBx DOM core
-        FrontBx.dom().register('Inputs', extend(Component, Inputs));
+        // Load into frontbx DOM core
+        frontbx.dom().register('Inputs', extend(Component, Inputs));
     })();
     (function()
     {
@@ -15755,14 +15755,14 @@
          * 
          * @var {class}
          */
-        const [Component] = FrontBx.get('Component');
+        const [Component] = frontbx.get('Component');
     
         /**
          * Helper functions
          * 
          * @var {Function}
          */
-        const [find, add_class, on, animate_css, closest, coordinates, css, has_class, height, in_array, in_dom, inline_style, preapend, remove_class, off, rendered_style, traverse_up, trigger_event, width, extend] = FrontBx.import(['find','add_class','on','animate_css','closest','coordinates','css','has_class','height','in_array','in_dom','inline_style','preapend','remove_class','off','rendered_style','traverse_up','trigger_event','width','extend']).from('_');
+        const [find, add_class, on, animate_css, closest, coordinates, css, has_class, height, in_array, in_dom, inline_style, preapend, remove_class, off, rendered_style, traverse_up, trigger_event, width, extend] = frontbx.import(['find','add_class','on','animate_css','closest','coordinates','css','has_class','height','in_array','in_dom','inline_style','preapend','remove_class','off','rendered_style','traverse_up','trigger_event','width','extend']).from('_');
     
         /**
          * Wrappers that need "position:relative" to hide overflow.
@@ -15990,8 +15990,8 @@
             preapend(ripple, wrapper);
         }
     
-        // Load into FrontBx DOM core
-        FrontBx.dom().register('Ripple', extend(Component, Ripple));
+        // Load into frontbx DOM core
+        frontbx.dom().register('Ripple', extend(Component, Ripple));
     
     })();
     (function()
@@ -16001,14 +16001,14 @@
          * 
          * @var {class}
          */
-        const [Component] = FrontBx.get('Component');
+        const [Component] = frontbx.get('Component');
     
         /**
          * Helper functions
          * 
          * @var {Function}
          */
-        const [find, on, off, has_class, add_class, remove_class, closest, trigger_event, dom_element, map, is_object, extend] = FrontBx.import(['find','on','off','has_class','add_class','remove_class','closest','trigger_event','dom_element','map','is_object','extend']).from('_');
+        const [find, on, off, has_class, add_class, remove_class, closest, trigger_event, dom_element, map, is_object, extend] = frontbx.import(['find','on','off','has_class','add_class','remove_class','closest','trigger_event','dom_element','map','is_object','extend']).from('_');
     
         /**
          * Toggle active on tables
@@ -16085,8 +16085,8 @@
             return dom_element({tag: 'table', class: `table ${props.classes ? props.classes : ''} ${props.dense ? 'table-dense' : ''} ${ props.selectable ? `js-select-table` : '' }`}, null, [head, body]);
         }
     
-        // Load into FrontBx DOM core
-        FrontBx.dom().register('Table', extend(Component, Table));
+        // Load into frontbx DOM core
+        frontbx.dom().register('Table', extend(Component, Table));
     
     })();
     (function()
@@ -16103,14 +16103,14 @@
          * 
          * @var {class}
          */
-        const [Component] = FrontBx.get('Component');
+        const [Component] = frontbx.get('Component');
     
         /**
          * Helper functions
          * 
          * @var {Function}
          */
-        const [is_undefined, map, dom_element, extend] = FrontBx.import(['is_undefined','map','dom_element','extend']).from('_');
+        const [is_undefined, map, dom_element, extend] = frontbx.import(['is_undefined','map','dom_element','extend']).from('_');
     
         /**
          * Helper functions
@@ -16177,14 +16177,14 @@
             return image;
         }
     
-        // Load into FrontBx DOM core
-        FrontBx.dom().register('Image', extend(Component, Image));
+        // Load into frontbx DOM core
+        frontbx.dom().register('Image', extend(Component, Image));
         
     })();
     
     // boot frontbx
     /**
-     * Boot and initialize FrontBx core
+     * Boot and initialize frontbx core
      *
      * @author    {Joe J. Howard}
      * @copyright {Joe J. Howard}
@@ -16192,11 +16192,11 @@
      */
     (function()
     {
-    	FrontBx.boot();
+    	frontbx.boot();
     
     })();
  	
-    const index_umd = FrontBx;
+    const index_umd = frontbx;
 
  	return index_umd;
 }));

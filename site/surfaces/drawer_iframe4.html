@@ -58,7 +58,7 @@
         <script src="../assets/js/frontbx.bundle.min.js"></script>
         <script src="../assets/js/frontbx-docs.js"></script>
         <script type="text/javascript">
-            let drawer = FrontBx.Drawer(
+            let drawer = frontbx.Drawer(
             {
                 persistent    : true,
                 peekable      : true,
@@ -101,7 +101,7 @@
         
             });
 
-            FrontBx.DocsDemo('.js-dw-trigger', () => drawer.state() === 'expanded' ? drawer.close() : drawer.open());
+            frontbx.DocsDemo('.js-dw-trigger', () => drawer.state() === 'expanded' ? drawer.close() : drawer.open());
         </script>
 
     </body>

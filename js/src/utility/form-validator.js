@@ -5,7 +5,7 @@
      * 
      * @var {Function}
      */
-    const [find_all, add_class, attr, bool, closest, each, form_inputs, form_values, on, off, input_value, is_callable, is_empty, remove_class] = FrontBx.import(['find_all','add_class','attr','bool','closest','each','form_inputs','form_values','on','off','input_value','is_callable','is_empty','remove_class']).from('_');
+    const [find_all, add_class, attr, bool, closest, each, form_inputs, form_values, on, off, input_value, is_callable, is_empty, remove_class] = frontbx.import(['find_all','add_class','attr','bool','closest','each','form_inputs','form_values','on','off','input_value','is_callable','is_empty','remove_class']).from('_');
 
     /**
      * Validator functions
@@ -452,6 +452,6 @@
     }
 
     // Load into container
-    FrontBx.set('FormValidator', FormValidator);
+    frontbx.set('FormValidator', FormValidator);
 
 })();

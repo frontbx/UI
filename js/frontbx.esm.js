@@ -7,6 +7,6 @@
 
 import './frontbx.js';
 
-const FrontBx = window.FrontBx;
+const frontbx = window.frontbx;
 
-export default FrontBx;
+export default frontbx;

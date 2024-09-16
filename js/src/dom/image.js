@@ -12,14 +12,14 @@
      * 
      * @var {class}
      */
-    const [Component] = FrontBx.get('Component');
+    const [Component] = frontbx.get('Component');
 
     /**
      * Helper functions
      * 
      * @var {Function}
      */
-    const [is_undefined, map, dom_element, extend] = FrontBx.import(['is_undefined','map','dom_element','extend']).from('_');
+    const [is_undefined, map, dom_element, extend] = frontbx.import(['is_undefined','map','dom_element','extend']).from('_');
 
     /**
      * Helper functions
@@ -86,7 +86,7 @@
         return image;
     }
 
-    // Load into FrontBx DOM core
-    FrontBx.dom().register('Image', extend(Component, Image));
+    // Load into frontbx DOM core
+    frontbx.dom().register('Image', extend(Component, Image));
     
 })();

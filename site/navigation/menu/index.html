@@ -560,7 +560,7 @@ $menu-divider-space:            5px;</code></pre>
 }</code></pre>
 <hr />
 <h3 id="javascript-instantiation">JavaScript Instantiation</h3>
-<p>Menu can be instantiated via JavaScript to generate dynamic content on the fly. To create a Menu dynamically, use FrontBx's <code>Component.Create</code> method either via the <code>FrontBx.Dom</code> or the Menu Component directly:</p>
+<p>Menu can be instantiated via JavaScript to generate dynamic content on the fly. To create a Menu dynamically, use FrontBx's <code>Component.Create</code> method either via the <code>frontbx.Dom</code> or the Menu Component directly:</p>
 <div class="code-content-example">
     <div class="flex-row align-cols-center flex-cols-6 flex-cols-lg-4 js-insert-container"></div>
     <div class="flex-row-fluid align-cols-center pole-sm pole-n">
@@ -590,10 +590,10 @@ $menu-divider-space:            5px;</code></pre>
 let container = document.querySelector('.my-container');
 
 // Via Hibble dom
-FrontBx.Dom().create('Menu', options, container);
+frontbx.Dom().create('Menu', options, container);
 
 // Or via Component directly
-FrontBx.Dom().component('Menu').create(options, container);</code></pre>
+frontbx.Dom().component('Menu').create(options, container);</code></pre>
 <p>Below are the available options:</p>
 <table>
 <thead>

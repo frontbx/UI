@@ -5,14 +5,14 @@
      * 
      * @var {class}
      */
-    const [Component] = FrontBx.get('Component');
+    const [Component] = frontbx.get('Component');
 
     /**
      * Helper functions
      * 
      * @var {function}
      */
-    const [$, add_class, add_event_listener, closest, in_dom, input_value, remove_class, remove_event_listener, extend] = FrontBx.import(['$','add_class','add_event_listener','closest','in_dom','input_value','remove_class','remove_event_listener','extend']).from('_');
+    const [$, add_class, add_event_listener, closest, in_dom, input_value, remove_class, remove_event_listener, extend] = frontbx.import(['$','add_class','add_event_listener','closest','in_dom','input_value','remove_class','remove_event_listener','extend']).from('_');
 
     /**
      * Adds classes to inputs
@@ -172,6 +172,6 @@
         }
     }
 
-    // Load into FrontBx DOM core
-    FrontBx.dom().register('Inputs', extend(Component, Inputs));
+    // Load into frontbx DOM core
+    frontbx.dom().register('Inputs', extend(Component, Inputs));
 })();

@@ -27,7 +27,7 @@ To display a Modal, call the `Modal` Component via FrontBx's Container:
 </div>
 
 ```javascript
-let modal = FrontBx.Modal({
+let modal = frontbx.Modal({
     title            : 'Use X\'s location service?',
     content          : 'Let X help apps determine location. This means sending anonymous location data to X, even when no apps are running.',
     cancelBtn        : 'Disagree',
@@ -50,7 +50,7 @@ By default the Modal will structure provided `content` and `title` into a card e
 </div>
 
 ```javascript
-let modal = FrontBx.Modal({
+let modal = frontbx.Modal({
     content: '...',
     custom: true,
     closeAnywhere: true
@@ -73,7 +73,7 @@ The example below shows the difference:
 </div>
 
 ```javascript
-let modal = FrontBx.Modal({
+let modal = frontbx.Modal({
     title   : '...',
     content : '...',
     scrollable: 'modal',
@@ -105,7 +105,7 @@ The example below shows a simple example of a modal that slides in from the bott
 ```
 
 ```javascript
-let modal = FrontBx.Modal({
+let modal = frontbx.Modal({
     title : 'Subscribe for $1?',
     content : 'Subscribe for $1 and get all my posts for free!',
     cancelBtn : 'Nah',
@@ -142,7 +142,7 @@ See the [Options Section](#options) for a full list of callbacks.
 </div>
 
 ```javascript
-FrontBx.Modal( {
+frontbx.Modal( {
     title: 'Subscribe',
     content: '....',
     callbackOpen: (modal) => find('.js-modal-input', modal).focus(),

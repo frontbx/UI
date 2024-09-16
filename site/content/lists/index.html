@@ -861,7 +861,7 @@ $list-divider-space:            5px;</code></pre>
 }</code></pre>
 <hr />
 <h3 id="javascript-instantiation">JavaScript Instantiation</h3>
-<p>List can be instantiated via JavaScript to generate dynamic content on the fly. To create a List dynamically, use FrontBx's <code>Component.Create</code> method either via the <code>FrontBx.Dom</code> or the List Component directly:</p>
+<p>List can be instantiated via JavaScript to generate dynamic content on the fly. To create a List dynamically, use FrontBx's <code>Component.Create</code> method either via the <code>frontbx.Dom</code> or the List Component directly:</p>
 <pre><code class="JavaScript language-JavaScript">let options =
 {
     dense: false,
@@ -885,10 +885,10 @@ $list-divider-space:            5px;</code></pre>
 let container = document.querySelector('.my-container');
 
 // Via Hibble dom
-FrontBx.Dom().create('List', options, container);
+frontbx.Dom().create('List', options, container);
 
 // Or via Component directly
-FrontBx.Dom().component('List').create(options, container);</code></pre>
+frontbx.Dom().component('List').create(options, container);</code></pre>
 <p>Below are the available options:</p>
 <table>
 <thead>

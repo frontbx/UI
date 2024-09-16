@@ -5,14 +5,14 @@
      * 
      * @var {class}
      */
-    const [Component] = FrontBx.get('Component');
+    const [Component] = frontbx.get('Component');
 
     /**
      * Helper functions
      * 
      * @var {Function}
      */
-    const [$, add_class, add_event_listener, closest, has_class, remove_class, remove_event_listener, trigger_event, extend] = FrontBx.import(['$','add_class','add_event_listener','closest','has_class','remove_class','remove_event_listener','trigger_event','extend']).from('_');
+    const [$, add_class, add_event_listener, closest, has_class, remove_class, remove_event_listener, trigger_event, extend] = frontbx.import(['$','add_class','add_event_listener','closest','has_class','remove_class','remove_event_listener','trigger_event','extend']).from('_');
 
     /**
      * Choice chips
@@ -76,7 +76,7 @@
         }
     }
 
-    // Load into FrontBx DOM core
-    FrontBx.dom().register('ChoiceChips', extend(Component, ChoiceChips));
+    // Load into frontbx DOM core
+    frontbx.dom().register('ChoiceChips', extend(Component, ChoiceChips));
 
 })();

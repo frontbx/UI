@@ -64,7 +64,7 @@ import 'frontbx/dist/css/frontbx.bundle.min.css';
 Import FrontBx's JavaScript by adding this line to your app’s entry point (usually `index.js` or `app.js`):
 
 ```JavaScript
-import FrontBx from 'frontbx';
+import frontbx from 'frontbx';
 ```
 
 > FrontBx does not currently offer importing components individually, however this is roadmapped for future releases.

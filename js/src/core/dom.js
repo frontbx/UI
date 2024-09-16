@@ -5,7 +5,7 @@
      *
      * @var {Function}
      */
-    const [each, trigger_event, collect_garbage, is_undefined, is_string, is_htmlElement] = FrontBx.import(['each', 'trigger_event', 'collect_garbage', 'is_undefined', 'is_string', 'is_htmlElement']).from('_');
+    const [each, trigger_event, collect_garbage, is_undefined, is_string, is_htmlElement] = frontbx.import(['each', 'trigger_event', 'collect_garbage', 'is_undefined', 'is_string', 'is_htmlElement']).from('_');
 
     /**
      * Prefix for container.
@@ -62,7 +62,7 @@
 
         this.components.push(name);
 
-        FrontBx.singleton(this._normaliseKey(name), component);
+        frontbx.singleton(this._normaliseKey(name), component);
 
         if (invoke || this._isReady)
         {
@@ -77,7 +77,7 @@
      */
     Dom.prototype.component = function(name)
     {
-        return FrontBx.get(this._normaliseKey(name));
+        return frontbx.get(this._normaliseKey(name));
     }
 
     /**
@@ -122,7 +122,7 @@
      */
     Dom.prototype._bindComponent = function(name, context, isRefresh)
     {                
-        let component = FrontBx.get(this._normaliseKey(name));
+        let component = frontbx.get(this._normaliseKey(name));
 
         if (this._hasMethod(component, 'construct') && isRefresh)
         {
@@ -142,7 +142,7 @@
      */
     Dom.prototype._unbindComponent = function(name, context)
     {            
-        let component = FrontBx.get(this._normaliseKey(name));
+        let component = frontbx.get(this._normaliseKey(name));
 
         if (this._hasMethod(component, 'destruct'))
         {
@@ -234,6 +234,6 @@
     }
 
     // Load into container and invoke
-    FrontBx.singleton('Dom', Dom);
+    frontbx.singleton('Dom', Dom);
     
 })();

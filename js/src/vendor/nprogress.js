@@ -1,6 +1,6 @@
 (function()
 {
-    /* NProgress, (c) 2013, 2014 Rico Sta. Cruz - http://ricostacruz.com/nprogress * @license MIT */
+        /* NProgress, (c) 2013, 2014 Rico Sta. Cruz - http://ricostacruz.com/nprogress * @license MIT */
         var NProgress = {};
 
         NProgress.version = '0.2.0';
@@ -19,13 +19,13 @@
             template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
         };
 
-    /**
-    * Updates configuration.
-    *
-    *     NProgress.configure({
-    *       minimum: 0.1
-    *     });
-    */
+        /**
+        * Updates configuration.
+        *
+        *     NProgress.configure({
+        *       minimum: 0.1
+        *     });
+        */
         NProgress.configure = function(options) {
             var key, value;
             for (key in options) {
@@ -485,6 +485,6 @@
     }
 
     // Load into container 
-    FrontBx.singleton('NProgress', NProgress);
+    frontbx.singleton('NProgress', NProgress);
 
 })();

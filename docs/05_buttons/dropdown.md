@@ -847,7 +847,7 @@ src/scss/components/menu.scss
 
 ### JavaScript Instantiation
 
-Dropdown can be instantiated via JavaScript to generate dynamic content on the fly. To create a Dropdown dynamically, use FrontBx's `Component.Create` method either via the `FrontBx.Dom` or the Dropdown Component directly:
+Dropdown can be instantiated via JavaScript to generate dynamic content on the fly. To create a Dropdown dynamically, use FrontBx's `Component.Create` method either via the `frontbx.Dom` or the Dropdown Component directly:
 
 ```JavaScript
 let options =
@@ -871,10 +871,10 @@ let options =
 let container = document.querySelector('.my-container');
 
 // Via Hibble dom
-FrontBx.Dom().create('Dropdown', options, container);
+frontbx.Dom().create('Dropdown', options, container);
 
 // Or via Component directly
-FrontBx.Dom().component('Dropdown').create(options, container);
+frontbx.Dom().component('Dropdown').create(options, container);
 ```
 
 Below are the available options

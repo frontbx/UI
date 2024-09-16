@@ -405,7 +405,7 @@
 }</code></pre>
 <hr />
 <h3 id="javascript-instantiation">JavaScript Instantiation</h3>
-<p>Images can be instantiated via JavaScript to generate dynamic content on the fly. To create an image dynamically, use FrontBx's <code>Component.Create</code> method either via the <code>FrontBx.Dom</code> or the <code>Image</code> Component directly:</p>
+<p>Images can be instantiated via JavaScript to generate dynamic content on the fly. To create an image dynamically, use FrontBx's <code>Component.Create</code> method either via the <code>frontbx.Dom</code> or the <code>Image</code> Component directly:</p>
 <div class="code-content-example">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-sm">
         <div class="col-3 js-insert-img-container"></div>
@@ -426,10 +426,10 @@
 let container = document.querySelector('.js-img-container');
 
 // Via Hibble dom
-FrontBx.Dom().create('Image', options, container);
+frontbx.Dom().create('Image', options, container);
 
 // Or via Component directly
-FrontBx.Dom().component('Image').create(options, container);</code></pre>
+frontbx.Dom().component('Image').create(options, container);</code></pre>
 <p>Below are the available options:</p>
 <table>
 <thead>

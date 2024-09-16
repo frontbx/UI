@@ -120,7 +120,7 @@ When inserting elements into the DOM after the page has loaded, for example usin
 </div>
 
 ```javascript
-FrontBx.dom().refresh('LazyLoad', wrapper);
+frontbx.dom().refresh('LazyLoad', wrapper);
 ```
 
 ---

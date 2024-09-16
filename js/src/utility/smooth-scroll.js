@@ -5,7 +5,7 @@
      * 
      * @var {Function}
      */
-    const [find, in_dom, normalize_url, is_string, coordinates, height, animate] = FrontBx.import(['find','in_dom','normalize_url','is_string','coordinates','height','animate']).from('_');
+    const [find, in_dom, normalize_url, is_string, coordinates, height, animate] = frontbx.import(['find','in_dom','normalize_url','is_string','coordinates','height','animate']).from('_');
 
     /**
      * Default options
@@ -59,7 +59,7 @@
     }
 
 
-    // Load into FrontBx DOM core
-    FrontBx.set('SmoothScroll', SmoothScroll);
+    // Load into frontbx DOM core
+    frontbx.set('SmoothScroll', SmoothScroll);
 
 })();

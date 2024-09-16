@@ -26,7 +26,7 @@ A Backdrop can be created via FrontBx's Container with the `Backdrop` method:
 </div>
 
 ```javascript
-const backdrop = FrontBx.Backdrop( {
+const backdrop = frontbx.Backdrop( {
     content : '...',
 });
 ```
@@ -44,7 +44,7 @@ By default, the Backdrop element will adapt the dimensions of the body. You can 
 </div>
 
 ```javascript
-const backdrop = FrontBx.Backdrop( {
+const backdrop = frontbx.Backdrop( {
     content : '...',
 });
 ```
@@ -62,7 +62,7 @@ Drawer direction can be manged by passing `left|right|top|bottom` to  `direction
 </div>
 
 ```javascript
-const drawer = FrontBx.Drawer({
+const drawer = frontbx.Drawer({
     content : '<ul>...</ul>',
     direction: 'right'
 });
@@ -81,7 +81,7 @@ By default, the Backdrop element itself is Swipeable when expanded. You can make
 </div>
 
 ```javascript
-const backdrop = FrontBx.Backdrop({
+const backdrop = frontbx.Backdrop({
     content   : '...',
     swipeable : true
 });

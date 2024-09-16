@@ -81,7 +81,7 @@ The table below outlines the available options and their respective effects on t
 To manually Initialize a Slider to Markup in the DOM, use FrontBx's Container and the `_Slider` method:
 
 ```JavaScript
-let slider = FrontBx.Slider(DOMElement, options);
+let slider = frontbx.Slider(DOMElement, options);
 ```
 
 The `next` method animates moving to the next slide:
@@ -134,7 +134,7 @@ slider.destroy();
 
 ### Dynamic JavaScript Instantiation
 
-For dynamically generated content, Sliders can be instantiated via JavaScript to generate dynamic content on the fly with FrontBx's `Component.Create` method either via the `FrontBx.Dom` or the `Slider` Component directly.
+For dynamically generated content, Sliders can be instantiated via JavaScript to generate dynamic content on the fly with FrontBx's `Component.Create` method either via the `frontbx.Dom` or the `Slider` Component directly.
 
 The `slides` value can be either an array or `HTML` strings or an Array/NodeList of `HTMLElements`.
 
@@ -155,10 +155,10 @@ let options =
 let container = document.querySelector('.my-container');
 
 // Via Hibble dom
-let slider = FrontBx.Dom().create('Slider', options, container);
+let slider = frontbx.Dom().create('Slider', options, container);
 
 // Or via Component directly
-let slider = FrontBx.Dom().component('Slider').create(options, container);
+let slider = frontbx.Dom().component('Slider').create(options, container);
 ```
 
 ---

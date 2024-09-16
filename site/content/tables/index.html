@@ -1010,7 +1010,7 @@ $table-selected-bg:             var(--fbx-theme-info) !default;</code></pre>
 }</code></pre>
 <hr />
 <h3 id="javascript-instantiation">JavaScript Instantiation</h3>
-<p>Table can be instantiated via JavaScript to generate dynamic content on the fly. To create a Table dynamically, use FrontBx's <code>Component.Create</code> method either via the <code>FrontBx.Dom</code> or the Table Component directly:</p>
+<p>Table can be instantiated via JavaScript to generate dynamic content on the fly. To create a Table dynamically, use FrontBx's <code>Component.Create</code> method either via the <code>frontbx.Dom</code> or the Table Component directly:</p>
 <div class="code-content-example">
     <div class="flex-row align-cols-center row-gaps-xs">
         <div class="card flat js-insert-table-container"></div>
@@ -1037,10 +1037,10 @@ $table-selected-bg:             var(--fbx-theme-info) !default;</code></pre>
 let container = document.querySelector('.js-table-container');
 
 // Via Hibble dom
-FrontBx.Dom().create('Table', options, container);
+frontbx.Dom().create('Table', options, container);
 
 // Or via Component directly
-FrontBx.Dom().component('Table').create(options, container);</code></pre>
+frontbx.Dom().component('Table').create(options, container);</code></pre>
 <p>Below are the available options:</p>
 <table>
 <thead>

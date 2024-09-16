@@ -5,14 +5,14 @@
      * 
      * @var {Function}
      */
-    const [on, find, dom_element, extend] = FrontBx.import(['on','find','dom_element','extend']).from('_');
+    const [on, find, dom_element, extend] = frontbx.import(['on','find','dom_element','extend']).from('_');
 
     /**
      * Helper functions
      * 
      * @var {Function}
      */
-    const Drawer = FrontBx.Drawer(FrontBx.IMPORT_AS_REF);
+    const Drawer = frontbx.Drawer(frontbx.IMPORT_AS_REF);
 
     /**
      * Module constructor
@@ -34,5 +34,5 @@
     }
 
     // Load into container 
-    FrontBx.set('Backdrop', extend(Drawer, Backdrop));
+    frontbx.set('Backdrop', extend(Drawer, Backdrop));
 })();

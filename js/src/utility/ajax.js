@@ -5,7 +5,7 @@
      * 
      * @var {Function}
      */
-    const [each, is_function, is_object, is_array_last, is_empty, callable_name] = FrontBx.import(['each','is_function','is_object','is_array_last','is_empty','callable_name']).from('_');
+    const [each, is_function, is_object, is_array_last, is_empty, callable_name] = frontbx.import(['each','is_function','is_object','is_array_last','is_empty','callable_name']).from('_');
 
     /**
      * Named callbacks
@@ -518,5 +518,5 @@
         return s.join('&');
     }
 
-    FrontBx.set('Ajax', Ajax);
+    frontbx.set('Ajax', Ajax);
 })();

@@ -5,14 +5,14 @@
      * 
      * @var {class}
      */
-    const [Component] = FrontBx.get('Component');
+    const [Component] = frontbx.get('Component');
 
     /**
      * Helper functions
      * 
      * @var {Function}
      */
-    const [find, add_class, on, closest, has_class, remove_class, off, attr, css, dom_element, map, trigger_event, extend] = FrontBx.import(['find','add_class','on','closest','has_class','remove_class','off','attr','css','dom_element','map','trigger_event','extend']).from('_');
+    const [find, add_class, on, closest, has_class, remove_class, off, attr, css, dom_element, map, trigger_event, extend] = frontbx.import(['find','add_class','on','closest','has_class','remove_class','off','attr','css','dom_element','map','trigger_event','extend']).from('_');
 
     /**
      * Dropdown Buttons
@@ -117,7 +117,7 @@
         );
     }
 
-    // Load into FrontBx DOM core
-    FrontBx.dom().register('Menu', extend(Component, Menu));
+    // Load into frontbx DOM core
+    frontbx.dom().register('Menu', extend(Component, Menu));
 
 })();

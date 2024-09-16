@@ -498,7 +498,7 @@ FrontBx comes with a handy JavaScript utility component for creating skeletons o
 #### Usage
 
 ```javascript
-const skeleton = FrontBx.Skeleton(DOMElement, options);
+const skeleton = frontbx.Skeleton(DOMElement, options);
 ```
 
 The component will build the skeleton(s) with the supplied options and append them to the the `DOMElement`.
@@ -544,7 +544,7 @@ const options  = {
     height: '60px'
 };
 
-const skeleton = FrontBx.Skeleton(DOMElement, options);
+const skeleton = frontbx.Skeleton(DOMElement, options);
 ```
 
 When creating a multi-line text-block variant (`text-block` `block-h1` `block-h2` `block-h3` `block-h4` `block-h5` `block-h6`), any other options apart from `count` or `lines` will be ignored.
@@ -557,7 +557,7 @@ const options  = {
     variant: 'text-block',
 };
 
-const skeleton = FrontBx.Skeleton(DOMElement, options);
+const skeleton = frontbx.Skeleton(DOMElement, options);
 ```
 
 You can also provide options as an array to add multiple skeletons to single container element:
@@ -568,7 +568,7 @@ const options = [
     { lines: 6, variant: 'text-block' },
 ];
 
-const skeleton = FrontBx.Skeleton(DOMElement, options);
+const skeleton = frontbx.Skeleton(DOMElement, options);
 ```
 
 Or if you need more control to a layout you can provide an optional child `selector` key for each variant-set. The skeleton will get inserted into the the selector element rather than the parent wrapper element.
@@ -578,7 +578,7 @@ const options = [
     { selector: '.js-heading', lines: 2, variant: 'h3-block'},
     { selector: '.js-text', lines: 6, variant: 'text-block' },
 ];
-const skeleton = FrontBx.Skeleton(DOMElement, options);
+const skeleton = frontbx.Skeleton(DOMElement, options);
 ```
 
 #### Loading Content
@@ -634,7 +634,7 @@ The example below shows swapping out the contents of card component. Click the `
 </div>
 
 ```JavaScript
-const [find]       = FrontBx.import(['find']).from('_');
+const [find]       = frontbx.import(['find']).from('_');
 const cardWrapper  = find('.js-skeleton-loader-card');
 const options      = 
 {
@@ -645,7 +645,7 @@ const options      =
     '.js-card-text' : '<p>...</p>',
 };
 
-FrontBx.Skeleton(cardWrapper).load(options);
+frontbx.Skeleton(cardWrapper).load(options);
 ```
 
 ---

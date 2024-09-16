@@ -18,7 +18,7 @@ FrontBx's `FormValidator` provides a powerful component to easily validate forms
 The `FormValidator` can be accessed through FrontBx's `Container`, providing your target `<form>` DOMElement as a parameter.
 
 ```javascript
-const validator = FrontBx.FormValidator(document.querySelector.$('#myform'));
+const validator = frontbx.FormValidator(document.querySelector.$('#myform'));
 ```
 
 ---
@@ -82,7 +82,7 @@ Additionally, you can validate an input as `required` as well as validate the le
 Instantiate a `FormValidator` instance via FrontBx's `Container`, passing the target `<form>` DOMElement as the parameter.
 
 ```javascript
-const validator = FrontBx.FormValidator(document.querySelector.$('#myform'));
+const validator = frontbx.FormValidator(document.querySelector.$('#myform'));
 ```
 
 The `validate` method will run validation on all inputs based on any validation attributes and return a `Boolean`. Any invalid `.form-field` elements will then be shown as invalid.
@@ -318,11 +318,11 @@ Below is an example form using the validator. In a real request, you would use F
 ```javascript
 
 /* Helpers */
-const [find, has_class, add_class, remove_class, on] = FrontBx.import(['find', 'has_class', 'add_class', 'remove_class', 'on']).from('_');
+const [find, has_class, add_class, remove_class, on] = frontbx.import(['find', 'has_class', 'add_class', 'remove_class', 'on']).from('_');
 
 // Instantiate validator and cache vars
 const form      = find('#my-form');
-const validator = FrontBx.FormValidator(form);
+const validator = frontbx.FormValidator(form);
 const submitBtn = find('button[type=submit]', form);
 let fakeAjax;
 

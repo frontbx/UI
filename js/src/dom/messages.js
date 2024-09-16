@@ -5,14 +5,14 @@
      * 
      * @var {class}
      */
-    const [Component] = FrontBx.get('Component');
+    const [Component] = frontbx.get('Component');
 
     /**
      * Helper functions
      * 
      * @var {function}
      */
-    const [add_event_listener, animate_css, closest, has_class, remove_from_dom, remove_event_listener, trigger_event, extend] = FrontBx.import(['add_event_listener','animate_css','closest','has_class','remove_from_dom','remove_event_listener','trigger_event','extend']).from('_');
+    const [add_event_listener, animate_css, closest, has_class, remove_from_dom, remove_event_listener, trigger_event, extend] = frontbx.import(['add_event_listener','animate_css','closest','has_class','remove_from_dom','remove_event_listener','trigger_event','extend']).from('_');
 
     /**
      * Message closers
@@ -74,7 +74,7 @@
         }});
     }
 
-    // Load into FrontBx DOM core
-    FrontBx.dom().register('MessageClosers', extend(Component, MessageClosers));
+    // Load into frontbx DOM core
+    frontbx.dom().register('MessageClosers', extend(Component, MessageClosers));
 
 })();

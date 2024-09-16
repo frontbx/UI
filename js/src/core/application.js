@@ -50,6 +50,6 @@
     delete window['Container'];
 
     // Set global
-    window.FrontBx = app;
+    window.frontbx = app;
 
 })();

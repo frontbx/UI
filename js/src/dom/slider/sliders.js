@@ -5,14 +5,14 @@
      * 
      * @var {Class}
      */
-    const [Component] = FrontBx.get('Component');
+    const [Component] = frontbx.get('Component');
 
     /**
      * Helper functions
      * 
      * @var {Function}
      */
-    const [attr, each, map, extend, dom_element, json_decode] = FrontBx.import(['attr', 'each', 'map', 'extend', 'dom_element', 'json_decode']).from('_');
+    const [attr, each, map, extend, dom_element, json_decode] = frontbx.import(['attr', 'each', 'map', 'extend', 'dom_element', 'json_decode']).from('_');
 
     /**
      * Slider instances.
@@ -43,7 +43,7 @@
 
         options = !options ? {} : json_decode(options);
 
-        SLIDERS.push(FrontBx._Slider(node, options));
+        SLIDERS.push(frontbx._Slider(node, options));
     }
 
     /**
@@ -74,6 +74,6 @@
         return dom_element({tag: 'div', class: 'slider js-slider'}, null, props.slides);
     }
 
-    // Load into FrontBx DOM core
-    FrontBx.dom().register('Slider', extend(Component, Slider));
+    // Load into frontbx DOM core
+    frontbx.dom().register('Slider', extend(Component, Slider));
 })();

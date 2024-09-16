@@ -403,7 +403,7 @@
 <hr />
 <h3 id="javascript-instantiation">JavaScript Instantiation</h3>
 <p>To manually Initialize a Slider to Markup in the DOM, use FrontBx's Container and the <code>_Slider</code> method:</p>
-<pre><code class="JavaScript language-JavaScript">let slider = FrontBx.Slider(DOMElement, options);</code></pre>
+<pre><code class="JavaScript language-JavaScript">let slider = frontbx.Slider(DOMElement, options);</code></pre>
 <p>The <code>next</code> method animates moving to the next slide:</p>
 <pre><code class="JavaScript language-JavaScript">slider.next();</code></pre>
 <p>The <code>previous</code> method animates moving to the previous slide:</p>
@@ -428,7 +428,7 @@ slider.stop();</code></pre>
 <pre><code class="JavaScript language-JavaScript">slider.destroy();</code></pre>
 <hr />
 <h3 id="dynamic-javascript-instantiation">Dynamic JavaScript Instantiation</h3>
-<p>For dynamically generated content, Sliders can be instantiated via JavaScript to generate dynamic content on the fly with FrontBx's <code>Component.Create</code> method either via the <code>FrontBx.Dom</code> or the <code>Slider</code> Component directly.</p>
+<p>For dynamically generated content, Sliders can be instantiated via JavaScript to generate dynamic content on the fly with FrontBx's <code>Component.Create</code> method either via the <code>frontbx.Dom</code> or the <code>Slider</code> Component directly.</p>
 <p>The <code>slides</code> value can be either an array or <code>HTML</code> strings or an Array/NodeList of <code>HTMLElements</code>.</p>
 <pre><code class="JavaScript language-JavaScript">let options =
 {
@@ -446,10 +446,10 @@ slider.stop();</code></pre>
 let container = document.querySelector('.my-container');
 
 // Via Hibble dom
-let slider = FrontBx.Dom().create('Slider', options, container);
+let slider = frontbx.Dom().create('Slider', options, container);
 
 // Or via Component directly
-let slider = FrontBx.Dom().component('Slider').create(options, container);</code></pre>
+let slider = frontbx.Dom().component('Slider').create(options, container);</code></pre>
 <hr />
 <h3 id="css-customization">CSS Customization</h3>
 <p>Slider uses local CSS variables on <code>.slider</code> along with Sass variables for enhanced component customization and styling. The base values are used by the UI to create all the styling. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>

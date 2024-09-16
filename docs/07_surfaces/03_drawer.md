@@ -28,7 +28,7 @@ A Drawer can be created via FrontBx's Container with the `Drawer` method:
 </div>
 
 ```javascript
-const drawer = FrontBx.Drawer({
+const drawer = frontbx.Drawer({
     content : '<ul>...</ul>',
 });
 ```
@@ -49,7 +49,7 @@ Drawer direction can be manged by passing `left|right|top|bottom` to  `direction
 </div>
 
 ```javascript
-const drawer = FrontBx.Drawer({
+const drawer = frontbx.Drawer({
     content : '<ul>...</ul>',
     direction: 'right'
 });
@@ -70,7 +70,7 @@ You can make the drawer swipeable on the window element itself instead by adding
 </div>
 
 ```javascript
-const drawer = FrontBx.Drawer({
+const drawer = frontbx.Drawer({
     content   : '...',
     swipeable : true
 });
@@ -91,7 +91,7 @@ Drawer will automatically wrap and unwrap page content when the it is invoked or
 </div>
 
 ```javascript
-const drawer = FrontBx.Drawer({
+const drawer = frontbx.Drawer({
     content    : '...',
     persistent : true,
 });
@@ -114,7 +114,7 @@ Drawer will automatically wrap and unwrap page content when the it is invoked or
 </div>
 
 ```javascript
-const drawer = FrontBx.Drawer({
+const drawer = frontbx.Drawer({
     content    : '...',
     persistent : true,
 });
@@ -133,7 +133,7 @@ On persistent left and right drawers, adding the `peekable` option, allows the d
 </div>
 
 ```javascript
-const drawer = FrontBx.Drawer({
+const drawer = frontbx.Drawer({
     content   : '...',
     persistent : true,
     peekable : true,

@@ -19,7 +19,7 @@ FrontBx's Dom Component is used throughout the library to manage interactions wi
 FrontBx's Dom Component can be accessed globally via the Inversion container through the `dom` key.
 
 ```javascript
-const dom = FrontBx.Dom();
+const dom = frontbx.Dom();
 ```
 
 ---
@@ -40,7 +40,7 @@ Once the FrontBx's DOM has loaded, if the Live DOM is altered, mutated or update
 The base Component can be retrieved via the container:
 
 ```javascript
-const [Component] = FrontBx.get('Component');
+const [Component] = frontbx.get('Component');
 ```
 
 In an extended component's `constructor`, `this.super` method should be called with a selector string, which constructs the base `Component` and queries any DOM selectors to `this._DOMElements`;
@@ -60,7 +60,7 @@ Once `this.super` has been called and the Component has been constructed, the Co
 ```javascript
 Buttons.prototype.bind = function(node)
 {
-	FrontBx._().on(node, 'click', this._handler, this);
+	frontbx._().on(node, 'click', this._handler, this);
 }
 ```
 
@@ -69,7 +69,7 @@ If FrontBx's Dom gets refreshed or the module gets refreshed specifically, `unbi
 ```javascript
 Buttons.prototype.unbind = function(node)
 {
-	FrontBx._().off(node, 'click', this._handler, this);
+	frontbx._().off(node, 'click', this._handler, this);
 }
 ```
 
@@ -112,9 +112,9 @@ dom.refresh(document.querySelector('.wrapper'));
 Below is a simple example of a complete Dom Component that console logs click events on buttons:
 
 ```javascript
-const [Component] = FrontBx.get('Component');
+const [Component] = frontbx.get('Component');
 
-const [on, off, extend] = FrontBx.import(['on','off','extend']).from('_');
+const [on, off, extend] = frontbx.import(['on','off','extend']).from('_');
 
 const Buttons = function()
 {
@@ -141,7 +141,7 @@ Buttons.prototype._handler = function(e, node)
 	console.log(e, node);
 }
 
-FrontBx.Dom().register('Buttons', extend(Component, Buttons));
+frontbx.Dom().register('Buttons', extend(Component, Buttons));
 ```
 
 #### Instantiation
@@ -151,13 +151,13 @@ By default, FrontBx DOM Components are instantiated by HTML. However most Compon
 JavaScript Components can be instantiated either directly via the Component, or via FrontBx's Dom with `Component.create` and will always return a DOMElement node.
 
 ```JavaScript
-let dropdown = FrontBx.Dom().component('Dropdown').create(options);
+let dropdown = frontbx.Dom().component('Dropdown').create(options);
 
 document.querySelector('div').appendChild(dropdown);
 ```
 
 ```JavaScript
-let dropdown = FrontBx.Dom().create('Dropdown', options);
+let dropdown = frontbx.Dom().create('Dropdown', options);
 
 document.querySelector('div').appendChild(dropdown);
 ```
@@ -165,7 +165,7 @@ document.querySelector('div').appendChild(dropdown);
 Adding a second paramter to `Component.create` will append the returned DOMElement node to the target element
 
 ```JavaScript
-FrontBx.Dom().create('Dropdown', options, document.querySelector('.div'));
+frontbx.Dom().create('Dropdown', options, document.querySelector('.div'));
 ```
 
 
@@ -175,9 +175,9 @@ When creating your own component, if you want a Component use `Component.create`
 
 
 ```javascript
-const [Component] = FrontBx.get('Component');
+const [Component] = frontbx.get('Component');
 
-const [dom_element] = FrontBx.import(['dom_element']).from('_');
+const [dom_element] = frontbx.import(['dom_element']).from('_');
 
 const Buttons = function()
 {
@@ -194,9 +194,9 @@ Buttons.prototype.template = function(props)
 	return dom_element({tag: 'button', class: props.class, innerText: props.text});
 }
 
-FrontBx.Dom().register('Buttons', extend(Component, Buttons));
+frontbx.Dom().register('Buttons', extend(Component, Buttons));
 
-const button = FrontBx.Dom().create('Buttons', {text: 'Click me!'});
+const button = frontbx.Dom().create('Buttons', {text: 'Click me!'});
 ```
 
 ---

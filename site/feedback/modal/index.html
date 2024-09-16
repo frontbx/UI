@@ -296,7 +296,7 @@
         <button class="js-modal-trigger-1 btn">Basic Modal</button>
     </div>
 </div>
-<pre><code class="javascript language-javascript">let modal = FrontBx.Modal({
+<pre><code class="javascript language-javascript">let modal = frontbx.Modal({
     title            : 'Use X\'s location service?',
     content          : 'Let X help apps determine location. This means sending anonymous location data to X, even when no apps are running.',
     cancelBtn        : 'Disagree',
@@ -313,7 +313,7 @@
         <button class="js-modal-trigger-2 btn">Custom Modal</button>
     </div>
 </div>
-<pre><code class="javascript language-javascript">let modal = FrontBx.Modal({
+<pre><code class="javascript language-javascript">let modal = frontbx.Modal({
     content: '...',
     custom: true,
     closeAnywhere: true
@@ -328,7 +328,7 @@
         <button class="js-modal-trigger-4 btn">Scroll "content"</button>
     </div>
 </div>
-<pre><code class="javascript language-javascript">let modal = FrontBx.Modal({
+<pre><code class="javascript language-javascript">let modal = frontbx.Modal({
     title   : '...',
     content : '...',
     scrollable: 'modal',
@@ -349,7 +349,7 @@
     align-items: flex-end;
     padding-bottom: 50px;
 }</code></pre>
-<pre><code class="javascript language-javascript">let modal = FrontBx.Modal({
+<pre><code class="javascript language-javascript">let modal = frontbx.Modal({
     title : 'Subscribe for $1?',
     content : 'Subscribe for $1 and get all my posts for free!',
     cancelBtn : 'Nah',
@@ -377,7 +377,7 @@
         <button class="js-modal-trigger-6 btn">Show form</button>
     </div>
 </div>
-<pre><code class="javascript language-javascript">FrontBx.Modal( {
+<pre><code class="javascript language-javascript">frontbx.Modal( {
     title: 'Subscribe',
     content: '....',
     callbackOpen: (modal) =&gt; find('.js-modal-input', modal).focus(),

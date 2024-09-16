@@ -317,6 +317,6 @@
     }
     catch (err) { }
 
-    FrontBx.set('TinyGesture', TinyGesture);
+    frontbx.set('TinyGesture', TinyGesture);
 
 })();

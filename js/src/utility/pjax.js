@@ -5,7 +5,7 @@
      * 
      * @var {Function}
      */
-    const [find, find_all, on, each, map, in_array, in_dom, is_empty, is_string, scroll_pos, trigger_event, normalize_url, inner_HTML, extend] = FrontBx.import(['find','find_all','on','each','map','in_array','in_dom','is_empty','is_string','scroll_pos','trigger_event','normalize_url','inner_HTML','extend']).from('_');
+    const [find, find_all, on, each, map, in_array, in_dom, is_empty, is_string, scroll_pos, trigger_event, normalize_url, inner_HTML, extend] = frontbx.import(['find','find_all','on','each','map','in_array','in_dom','is_empty','is_string','scroll_pos','trigger_event','normalize_url','inner_HTML','extend']).from('_');
 
     /**
      * Are we listening for state changes ?
@@ -87,7 +87,7 @@
             window.history.pushState(state, '', state.id);
         }
 
-        FrontBx.NProgress().start();
+        frontbx.NProgress().start();
 
         this.success((response) =>
         {            
@@ -113,7 +113,7 @@
 
             this._reset();
 
-            FrontBx.NProgress().done();
+            frontbx.NProgress().done();
 
         })._call();
     }
@@ -182,7 +182,7 @@
 
         this._appendScripts(currScripts, responseScripts, () =>
         {
-            FrontBx.dom().refresh(targetEl === document.body ? document : targetEl);
+            frontbx.dom().refresh(targetEl === document.body ? document : targetEl);
 
             trigger_event(window, 'frontbx:Pjax:success', {options});
         });
@@ -389,6 +389,6 @@
     }
 
     // Pjax is singleton
-    FrontBx.singleton('Pjax', extend(FrontBx.Ajax().constructor, Pjax));
+    frontbx.singleton('Pjax', extend(frontbx.Ajax().constructor, Pjax));
 
 })();

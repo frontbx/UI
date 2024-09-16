@@ -5,14 +5,14 @@
      * 
      * @var {class}
      */
-    const [Component] = FrontBx.get('Component');
+    const [Component] = frontbx.get('Component');
 
     /**
      * Helper functions
      * 
      * @var {Function}
      */
-    const [on, off, attr, bool, extend]  = FrontBx.import(['on','off','attr','bool','extend']).from('_');
+    const [on, off, attr, bool, extend]  = frontbx.import(['on','off','attr','bool','extend']).from('_');
 
     /**
      * URLS Requested
@@ -73,12 +73,12 @@
 
         if (element) element = element[0] !== '#' ? `#${element}` : element;
 
-        FrontBx.Pjax().request(url, {once, element, cacheBust, pushstate, urlhash});
+        frontbx.Pjax().request(url, {once, element, cacheBust, pushstate, urlhash});
 
         return false;
     }
 
-    // Load into FrontBx DOM core
-    FrontBx.dom().register('PjaxLinks', extend(Component, PjaxLinks));
+    // Load into frontbx DOM core
+    frontbx.dom().register('PjaxLinks', extend(Component, PjaxLinks));
 
 })();

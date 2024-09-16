@@ -54,7 +54,7 @@
         return chip;
     }
 
-    // Load into FrontBx DOM core
-    FrontBx.set('Chip', createChip);
+    // Load into frontbx DOM core
+    frontbx.set('Chip', createChip);
 
 })();

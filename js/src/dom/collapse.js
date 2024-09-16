@@ -5,14 +5,14 @@
      * 
      * @var {class}
      */
-    const [Component] = FrontBx.get('Component');
+    const [Component] = frontbx.get('Component');
 
     /**
      * Helper functions
      * 
      * @var {Function}
      */
-    const [$, add_event_listener, animate, bool, has_class, is_node_type, remove_event_listener, toggle_class, trigger_event, extend] = FrontBx.import(['$','add_event_listener','animate','bool','has_class','is_node_type','remove_event_listener','toggle_class','trigger_event','extend']).from('_');
+    const [$, add_event_listener, animate, bool, has_class, is_node_type, remove_event_listener, toggle_class, trigger_event, extend] = frontbx.import(['$','add_event_listener','animate','bool','has_class','is_node_type','remove_event_listener','toggle_class','trigger_event','extend']).from('_');
 
     /**
      * Toggle height on click
@@ -86,6 +86,6 @@
         toggle_class(clicked, 'active');
     }
 
-    // Load into FrontBx DOM core
-    FrontBx.dom().register('Collapse', extend(Component, Collapse));
+    // Load into frontbx DOM core
+    frontbx.dom().register('Collapse', extend(Component, Collapse));
 })();

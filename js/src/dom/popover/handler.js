@@ -5,7 +5,7 @@
      * 
      * @var {Function}
      */
-    const [in_dom, coordinates] = FrontBx.import(['in_dom','coordinates']).from('_');
+    const [in_dom, coordinates] = frontbx.import(['in_dom','coordinates']).from('_');
 
     /**
      * Popover Handler
@@ -117,6 +117,6 @@
     }
 
     // Set into container for private use
-    FrontBx.set('PopHandler', PopHandler);
+    frontbx.set('PopHandler', PopHandler);
 
 })();

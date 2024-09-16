@@ -26,14 +26,14 @@ The documentation below is broken down into logical groupings.
 FrontBx's Utility Component can be accessed globally via the Inversion container through the `_` key.
 
 ```javascript
-const utils = FrontBx._();
+const utils = frontbx._();
 ```
 
 You can also `import` and cache specific functions from the utility library, which reduces memory and is more performant. For example:
 
 
 ```javascript
-const [add_class, remove_class] = FrontBx.import(['add_class', 'remove_class']).from('_');
+const [add_class, remove_class] = frontbx.import(['add_class', 'remove_class']).from('_');
 ```
 
 ---

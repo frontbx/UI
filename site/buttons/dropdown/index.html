@@ -1013,7 +1013,7 @@ $menu-divider-space:            5px;</code></pre>
 }</code></pre>
 <hr />
 <h3 id="javascript-instantiation">JavaScript Instantiation</h3>
-<p>Dropdown can be instantiated via JavaScript to generate dynamic content on the fly. To create a Dropdown dynamically, use FrontBx's <code>Component.Create</code> method either via the <code>FrontBx.Dom</code> or the Dropdown Component directly:</p>
+<p>Dropdown can be instantiated via JavaScript to generate dynamic content on the fly. To create a Dropdown dynamically, use FrontBx's <code>Component.Create</code> method either via the <code>frontbx.Dom</code> or the Dropdown Component directly:</p>
 <pre><code class="JavaScript language-JavaScript">let options =
 {
     anchorText: 'Basic',
@@ -1035,10 +1035,10 @@ $menu-divider-space:            5px;</code></pre>
 let container = document.querySelector('.my-container');
 
 // Via Hibble dom
-FrontBx.Dom().create('Dropdown', options, container);
+frontbx.Dom().create('Dropdown', options, container);
 
 // Or via Component directly
-FrontBx.Dom().component('Dropdown').create(options, container);</code></pre>
+frontbx.Dom().component('Dropdown').create(options, container);</code></pre>
 <p>Below are the available options</p>
 <table>
 <thead>

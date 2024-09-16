@@ -5,14 +5,14 @@
      * 
      * @var {class}
      */
-    const [Component] = FrontBx.get('Component');
+    const [Component] = frontbx.get('Component');
 
     /**
      * JS Helper reference
      * 
      * @var {object}
      */
-    const [find, find_all, add_class, on, closest, has_class, is_empty, remove_class, off, each, extend] = FrontBx.import(['find', 'find_all', 'add_class', 'on', 'closest', 'has_class', 'is_empty', 'remove_class', 'off', 'each', 'extend']).from('_');
+    const [find, find_all, add_class, on, closest, has_class, is_empty, remove_class, off, each, extend] = frontbx.import(['find', 'find_all', 'add_class', 'on', 'closest', 'has_class', 'is_empty', 'remove_class', 'off', 'each', 'extend']).from('_');
 
     var HOVER_TIMER;
 
@@ -100,7 +100,7 @@
             pop.classList.remove('hidden');
         }
 
-        let popHandler = FrontBx.get('PopHandler',
+        let popHandler = frontbx.get('PopHandler',
         {
             target: trigger,
             direction: direction,
@@ -325,7 +325,7 @@
         }
     }
 
-    // Load into FrontBx DOM core
-    FrontBx.dom().register('Popover', extend(Component, Popover));
+    // Load into frontbx DOM core
+    frontbx.dom().register('Popover', extend(Component, Popover));
 
 }());

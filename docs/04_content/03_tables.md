@@ -814,7 +814,7 @@ src/scss/components/table.scss
 
 ### JavaScript Instantiation
 
-Table can be instantiated via JavaScript to generate dynamic content on the fly. To create a Table dynamically, use FrontBx's `Component.Create` method either via the `FrontBx.Dom` or the Table Component directly:
+Table can be instantiated via JavaScript to generate dynamic content on the fly. To create a Table dynamically, use FrontBx's `Component.Create` method either via the `frontbx.Dom` or the Table Component directly:
 
 <div class="code-content-example">
     <div class="flex-row align-cols-center row-gaps-xs">
@@ -844,10 +844,10 @@ let options =
 let container = document.querySelector('.js-table-container');
 
 // Via Hibble dom
-FrontBx.Dom().create('Table', options, container);
+frontbx.Dom().create('Table', options, container);
 
 // Or via Component directly
-FrontBx.Dom().component('Table').create(options, container);
+frontbx.Dom().component('Table').create(options, container);
 ```
 
 Below are the available options:

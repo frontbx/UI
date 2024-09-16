@@ -294,9 +294,9 @@
 <p>The documentation below is broken down into logical groupings.</p>
 <h3 id="access">Access</h3>
 <p>FrontBx's Utility Component can be accessed globally via the Inversion container through the <code>_</code> key.</p>
-<pre><code class="javascript language-javascript">const utils = FrontBx._();</code></pre>
+<pre><code class="javascript language-javascript">const utils = frontbx._();</code></pre>
 <p>You can also <code>import</code> and cache specific functions from the utility library, which reduces memory and is more performant. For example:</p>
-<pre><code class="javascript language-javascript">const [add_class, remove_class] = FrontBx.import(['add_class', 'remove_class']).from('_');</code></pre>
+<pre><code class="javascript language-javascript">const [add_class, remove_class] = frontbx.import(['add_class', 'remove_class']).from('_');</code></pre>
 <hr />
 <h3 id="event-listeners">Event Listeners</h3>
 <table class="table">

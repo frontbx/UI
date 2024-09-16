@@ -427,7 +427,7 @@ echo '&lt;div&gt;Hello World!&lt;/div&gt;';</code></pre>
 
 echo '&lt;div&gt;Hello World!&lt;/div&gt;';</code></pre>
 <p>If Pjax is not supported on your server however, you can still send an entire HTML <code>document</code>. Pjax will parse the code and replace the document body.</p>
-<pre><code class="JavaScript language-JavaScript">FrontBx.require('Pjax').invoke('/foo/bar');</code></pre>
+<pre><code class="JavaScript language-JavaScript">frontbx.require('Pjax').invoke('/foo/bar');</code></pre>
 <pre><code class="php language-php">header('Content-Type: text/html; charset=utf-8');
 
 echo '
@@ -449,7 +449,7 @@ echo '
 <hr />
 <h3 id="javascript-usage">JavaScript Usage</h3>
 <p>The Pjax Component can be accessed directly via FrontBx's container using the <code>Pjax</code> key.</p>
-<pre><code class="JavaScript language-JavaScript">let pjax = FrontBx.Pjax();</code></pre>
+<pre><code class="JavaScript language-JavaScript">let pjax = frontbx.Pjax();</code></pre>
 <p>To make a request, use the <code>request</code> method:</p>
 <pre><code class="JavaScript language-JavaScript">let pjax.request(url, options, success, error, complete, abort, headers);</code></pre>
 <p>Pjax extends FrontBx's Ajax Component so the callbacks folllow the same principles. For details on callbacks, see the <a href="/docs/javascript/pjax/index.html#arguments">Ajax Documentation</a></p>

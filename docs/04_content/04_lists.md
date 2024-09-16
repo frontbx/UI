@@ -668,7 +668,7 @@ src/scss/components/list.scss
 
 ### JavaScript Instantiation
 
-List can be instantiated via JavaScript to generate dynamic content on the fly. To create a List dynamically, use FrontBx's `Component.Create` method either via the `FrontBx.Dom` or the List Component directly:
+List can be instantiated via JavaScript to generate dynamic content on the fly. To create a List dynamically, use FrontBx's `Component.Create` method either via the `frontbx.Dom` or the List Component directly:
 
 ```JavaScript
 let options =
@@ -694,10 +694,10 @@ let options =
 let container = document.querySelector('.my-container');
 
 // Via Hibble dom
-FrontBx.Dom().create('List', options, container);
+frontbx.Dom().create('List', options, container);
 
 // Or via Component directly
-FrontBx.Dom().component('List').create(options, container);
+frontbx.Dom().component('List').create(options, container);
 ```
 
 Below are the available options:

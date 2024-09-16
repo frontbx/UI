@@ -119,7 +119,7 @@ Dimensions for both **image** and **Background image** elements can be set via C
 
 ### JavaScript Instantiation
 
-Images can be instantiated via JavaScript to generate dynamic content on the fly. To create an image dynamically, use FrontBx's `Component.Create` method either via the `FrontBx.Dom` or the `Image` Component directly:
+Images can be instantiated via JavaScript to generate dynamic content on the fly. To create an image dynamically, use FrontBx's `Component.Create` method either via the `frontbx.Dom` or the `Image` Component directly:
 
 <div class="code-content-example">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-sm">
@@ -143,10 +143,10 @@ let options =
 let container = document.querySelector('.js-img-container');
 
 // Via Hibble dom
-FrontBx.Dom().create('Image', options, container);
+frontbx.Dom().create('Image', options, container);
 
 // Or via Component directly
-FrontBx.Dom().component('Image').create(options, container);
+frontbx.Dom().component('Image').create(options, container);
 ```
 
 Below are the available options:

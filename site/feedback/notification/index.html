@@ -295,7 +295,7 @@
         <button class="js-notif-trigger-1 btn">Show Notification</button>
     </div>
 </div>
-<pre><code class="JavaScript language-JavaScript">let notif = FrontBx.Notification(
+<pre><code class="JavaScript language-JavaScript">let notif = frontbx.Notification(
 {
     text  : `Hello! I'm a notification.`,
 });</code></pre>
@@ -317,7 +317,7 @@
         <button class="js-notif-triggers-pos btn">bottom-right</button>
     </div>
 </div>
-<pre><code class="JavaScript language-JavaScript">let notif = FrontBx.Notification(
+<pre><code class="JavaScript language-JavaScript">let notif = frontbx.Notification(
 {
     text  : `Hello! I'm a notification.`,
 });</code></pre>
@@ -343,21 +343,21 @@
     </div>
 </div>
 <pre><code class="JavaScript language-JavaScript">/* WITH BUTTON */
-let notif1 = FrontBx.Notification(
+let notif1 = frontbx.Notification(
 {
     btn  : `Dismiss`,
     text : `Hello! I'm a notification.`,
 });
 
 /* WITH ICON */
-let notif2 = FrontBx.Notification(
+let notif2 = frontbx.Notification(
 {
     icon : `bell`,
     text : `Hello! I'm a notification.`,
 });
 
 /* WITH BUTTON VARIANT */
-let notif3 = FrontBx.Notification(
+let notif3 = frontbx.Notification(
 {
     btn        : `Danger`,
     btnVariant : `danger`,
@@ -365,7 +365,7 @@ let notif3 = FrontBx.Notification(
 });
 
 /* WITH MESSAGE VARIANT */
-let notif4 = FrontBx.Notification(
+let notif4 = frontbx.Notification(
 {
     icon    : `check`,
     variant : `success`, 
@@ -380,13 +380,13 @@ let notif4 = FrontBx.Notification(
         <button class="js-notif-trigger-7 btn">Timeout</button>
     </div>
 </div>
-<pre><code class="JavaScript language-JavaScript">let notif1 = FrontBx.Notification(
+<pre><code class="JavaScript language-JavaScript">let notif1 = frontbx.Notification(
 {
     text  : `Hello! I'm a notification.`,
     timeout: false,
 });
 
-let notif2 =FrontBx.Notification(
+let notif2 =frontbx.Notification(
 {
     text  : `Hello! I'm a notification.`,
     timeout: 10000,
@@ -399,7 +399,7 @@ let notif2 =FrontBx.Notification(
 <p>The <code>domElement</code> method returns the notification HTMLElement, which is wrapped in a positioning element:</p>
 <pre><code class="javascript language-javascript">notification.domElement();</code></pre>
 <p>The <code>callbackValidate</code> option when creating the notification allows you to run your own validation on whether the notification can be dismissed. Return <code>true</code> from this function to allow it or <code>false</code> if the user needs to take some sort of action:</p>
-<pre><code class="javascript language-javascript">let notif = FrontBx.Notification(
+<pre><code class="javascript language-javascript">let notif = frontbx.Notification(
 {
     text  : `Hello! I'm a notification.`,
 

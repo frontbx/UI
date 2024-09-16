@@ -48,7 +48,7 @@
 
             let drawer;
 
-            FrontBx.DocsDemo('.js-dw-trigger', (e, btn) => 
+            frontbx.DocsDemo('.js-dw-trigger', (e, btn) => 
             {
                 let direction = btn.innerText.toLowerCase().trim();
 
@@ -67,7 +67,7 @@
                     drawer.destroy();
                 }
 
-                drawer = FrontBx.Drawer(
+                drawer = frontbx.Drawer(
                 {
                     persistent: true,
                     direction: direction,

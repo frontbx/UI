@@ -5,14 +5,14 @@
      * 
      * @var {class}
      */
-    const [Component] = FrontBx.get('Component');
+    const [Component] = frontbx.get('Component');
 
     /**
      * Helper functions
      * 
      * @var {Function}
      */
-    const [$, $All, add_event_listener, closest, first_children, in_array, input_value, is_empty, remove_event_listener, remove_from_dom, extend] = FrontBx.import(['$','$All','add_event_listener','closest','first_children','in_array','input_value','is_empty','remove_event_listener','remove_from_dom','extend']).from('_');
+    const [$, $All, add_event_listener, closest, first_children, in_array, input_value, is_empty, remove_event_listener, remove_from_dom, extend] = frontbx.import(['$','$All','add_event_listener','closest','first_children','in_array','input_value','is_empty','remove_event_listener','remove_from_dom','extend']).from('_');
 
     /**
      * Chip inputs
@@ -151,7 +151,7 @@
      */
     ChipInputs.prototype.addChip = function(_value, _wrapper, _icon)
     {
-        let chip = FrontBx.Chip({
+        let chip = frontbx.Chip({
             text       : _value.trim(),
             removeable : true,
             input      : _wrapper.dataset.inputName,
@@ -162,7 +162,7 @@
 
         add_event_listener($('.js-remove-btn', chip), 'click', this._removeChip);
 
-        FrontBx.dom().refresh('Ripple', _wrapper);
+        frontbx.dom().refresh('Ripple', _wrapper);
     }
 
     /**
@@ -201,7 +201,7 @@
         return _result;
     }
 
-    // Load into FrontBx DOM core
-    FrontBx.dom().register('ChipInputs', extend(Component, ChipInputs));
+    // Load into frontbx DOM core
+    frontbx.dom().register('ChipInputs', extend(Component, ChipInputs));
 
 })();

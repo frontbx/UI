@@ -26,7 +26,7 @@ To display a notification, call the `Notifications` module with your options via
 </div>
 
 ```JavaScript
-let notif = FrontBx.Notification(
+let notif = frontbx.Notification(
 {
 	text  : `Hello! I'm a notification.`,
 });
@@ -56,7 +56,7 @@ Available positions are:  `top-left` `top` `top-right` `left` `right` `bottom-le
 </div>
 
 ```JavaScript
-let notif = FrontBx.Notification(
+let notif = frontbx.Notification(
 {
     text  : `Hello! I'm a notification.`,
 });
@@ -90,21 +90,21 @@ Notifications have a few options for different use-cases. Use the provided optio
 
 ```JavaScript
 /* WITH BUTTON */
-let notif1 = FrontBx.Notification(
+let notif1 = frontbx.Notification(
 {
     btn  : `Dismiss`,
     text : `Hello! I'm a notification.`,
 });
 
 /* WITH ICON */
-let notif2 = FrontBx.Notification(
+let notif2 = frontbx.Notification(
 {
     icon : `bell`,
     text : `Hello! I'm a notification.`,
 });
 
 /* WITH BUTTON VARIANT */
-let notif3 = FrontBx.Notification(
+let notif3 = frontbx.Notification(
 {
     btn        : `Danger`,
     btnVariant : `danger`,
@@ -112,7 +112,7 @@ let notif3 = FrontBx.Notification(
 });
 
 /* WITH MESSAGE VARIANT */
-let notif4 = FrontBx.Notification(
+let notif4 = frontbx.Notification(
 {
     icon    : `check`,
     variant : `success`, 
@@ -134,13 +134,13 @@ Notifications auto-dismiss after 6 seconds by default. You can set a different t
 </div>
 
 ```JavaScript
-let notif1 = FrontBx.Notification(
+let notif1 = frontbx.Notification(
 {
     text  : `Hello! I'm a notification.`,
     timeout: false,
 });
 
-let notif2 =FrontBx.Notification(
+let notif2 =frontbx.Notification(
 {
     text  : `Hello! I'm a notification.`,
     timeout: 10000,
@@ -168,7 +168,7 @@ notification.domElement();
 The `callbackValidate` option when creating the notification allows you to run your own validation on whether the notification can be dismissed. Return `true` from this function to allow it or `false` if the user needs to take some sort of action:
 
 ```javascript
-let notif = FrontBx.Notification(
+let notif = frontbx.Notification(
 {
     text  : `Hello! I'm a notification.`,
 

@@ -107,7 +107,7 @@
             return;
         }
 
-        const [each, closest] = FrontBx.import(['each', 'closest']).from('_');
+        const [each, closest] = frontbx.import(['each', 'closest']).from('_');
 
         each(this._DOMElements, function(i, DOMElement)
         {                
@@ -280,16 +280,16 @@
         return node.nodeName.toLowerCase() === 'img';
     }
 
-    if (!window.FrontBx)
+    if (!window.frontbx)
     {
         window.addEventListener('DOMContentLoaded', () =>
         {
             // Invoke and start loading images
             const lazy = new LazyLoad();
 
-            // Listen for FrontBx:ready and register into dom
+            // Listen for frontbx:ready and register into dom
             // Will not be invoked unless dom().refresh() is called
-            FrontBx.dom().register('LazyLoad', lazy, false);
+            frontbx.dom().register('LazyLoad', lazy, false);
         })
     }
     

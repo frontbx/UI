@@ -1,6 +1,6 @@
 (function()
 {
-    const [find_all, each, closest, is_empty] = FrontBx.import(['find_all','each','closest','is_empty']).from('_');
+    const [find_all, each, closest, is_empty] = frontbx.import(['find_all','each','closest','is_empty']).from('_');
 
     /**
      * Component base class
@@ -100,7 +100,7 @@
 
         if (appendTo) appendTo.appendChild(node);
 
-        FrontBx.Dom().refresh(node);
+        frontbx.Dom().refresh(node);
 
         return node;
     }
@@ -137,6 +137,6 @@
     }
 
     // Register
-    FrontBx.set('Component', [Component]);
+    frontbx.set('Component', [Component]);
 
 })();

@@ -22,11 +22,11 @@
                 { lines: 2, variant: 'block-h4' },
                 { lines: 6, variant: 'text-block' },
             ];
-            const frontdrop = FrontBx.Frontdrop(
+            const frontdrop = frontbx.Frontdrop(
             {
                 swipeable:       true,
                 state:           'expanded',
-                callbackBuilt: (container, drawer, overlay) => FrontBx.Skeleton(FrontBx._().find('.card-block .container-fluid', container), SKELETONS),
+                callbackBuilt: (container, drawer, overlay) => frontbx.Skeleton(frontbx._().find('.card-block .container-fluid', container), SKELETONS),
             });
         </script>
     </body>
