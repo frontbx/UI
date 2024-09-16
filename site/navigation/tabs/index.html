@@ -275,13 +275,18 @@
 </ul></div>
         <div class="container-fluid main-container relative js-main-container">
             <article class="docs-body"><h1 id="tabs">Tabs</h1>
+<p>Tabs make it easy to explore and switch between content on a compact surface.</p>
 <hr />
 <ul>
 <li><a href="#markup">Markup</a></li>
-<li><a href="#variants">Variants</a></li>
+<li><a href="#variants">Variants</a><ul>
+<li><a href="#bordered">Bordered</a></li>
+<li><a href="#centered">Centered</a></li>
+<li><a href="#buttons">Buttons</a></li>
+<li><a href="#chips">Chips</a></li></ul></li>
 </ul>
 <hr />
-<h3 id="basic-example">Basic example</h3>
+<h3 id="markup">Markup</h3>
 <p>Tabs are super simple to setup and require very little custom markup. Below are the steps required to setup:</p>
 <ol>
 <li>Create a list with the <code>.tab-nav</code> <code>.js-tab-nav</code> class names.<br />
@@ -344,6 +349,7 @@
 &lt;/div&gt;</code></pre>
 <hr />
 <h3 id="variants">Variants</h3>
+<h4 id="bordered">Bordered</h4>
 <p>Tabs come in with a handy pre-styled second variant - <code>.tab-border</code>. Add this for more traditional styled tabs</p>
 <div class="code-content-example">
     <ul class="tab-nav tab-border js-tab-nav">
@@ -369,6 +375,7 @@
         &lt;a href="#" data-tab="panel-3"&gt;Tab 3&lt;/a&gt;
     &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
+<h4 id="centered">Centered</h4>
 <p>Add the <code>.tab-centered</code> class to center the navigation:</p>
 <div class="code-content-example">
     <ul class="tab-nav tab-centered js-tab-nav">
@@ -394,6 +401,7 @@
         &lt;a href="#" data-tab="panel-3"&gt;Tab 3&lt;/a&gt;
     &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
+<h4 id="buttons">Buttons</h4>
 <p>Because styling and JavaScript functionality of tabs are split with <code>.js-</code> classes, you can use other FrontBx components to create your own styled tabs:</p>
 <p>Here is an example FrontBx's <code>.btn</code> for the navigation:</p>
 <div class="code-content-example">
@@ -408,6 +416,7 @@
     &lt;button type="button" class="btn" data-tab="panel-2"&gt;Tab 2&lt;/button&gt;
     &lt;button type="button" class="btn" data-tab="panel-3"&gt;Tab 3&lt;/button&gt;
 &lt;/div&gt;</code></pre>
+<h4 id="chips">Chips</h4>
 <p>Here's another example using FrontBx <code>.chip</code> components:</p>
 <div class="code-content-example">
     <ul class="list-unstyled js-tab-nav" data-active-class="selected">

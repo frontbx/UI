@@ -140,6 +140,23 @@
         --fbx-menu-item-bg-selected: var(--fbx-theme-primary);
         --fbx-menu-divider-color: var(--fbx-black-400);
     }
+    .pagination
+    {
+        --fbx-pagination-color: var(--fbx-gray-100);
+        --fbx-pagination-hover-color: var(--fbx-theme-primary);
+        --fbx-pagination-hover-bg: var(--fbx-theme-primary-900);
+        --fbx-pagination-border-color: var(--fbx-black-300);
+        --fbx-pagination-active-color: var(--fbx-white);
+        --fbx-pagination-active-bg: var(--fbx-theme-primary);
+    }
+    .tab-nav
+    {
+        --fbx-tab-nav-color: var(--fbx-gray-500);
+        --fbx-tab-nav-color-active: var(--fbx-body-color);
+        --fbx-tab-nav-color-highlight: var(--fbx-theme-primary);
+        --fbx-tab-nav-divider-color: var(--fbx-black-200);
+    }
+
 
 /* ------------------------------------ IMAGES DARK ------------------------------------- */
 /* --------------------------------------------------------------------------------- */

@@ -1,14 +1,20 @@
 # Tabs
 
+Tabs make it easy to explore and switch between content on a compact surface.
+
 ---
 
 *   [Markup](#markup)
 *   [Variants](#variants)
+    *   [Bordered](#bordered)
+    *   [Centered](#centered)
+    *   [Buttons](#buttons)
+    *   [Chips](#chips)
 
 ---
 
 
-### Basic example
+### Markup
 
 Tabs are super simple to setup and require very little custom markup. Below are the steps required to setup:
 
@@ -79,6 +85,9 @@ Here's a basic example
 
 ### Variants
 
+
+#### Bordered
+
 Tabs come in with a handy pre-styled second variant - `.tab-border`. Add this for more traditional styled tabs
 
 <div class="code-content-example">
@@ -108,6 +117,8 @@ Tabs come in with a handy pre-styled second variant - `.tab-border`. Add this fo
     </li>
 </ul>
 ```
+
+#### Centered
 
 Add the `.tab-centered` class to center the navigation:
 
@@ -139,6 +150,8 @@ Add the `.tab-centered` class to center the navigation:
 </ul>
 ```
 
+#### Buttons
+
 Because styling and JavaScript functionality of tabs are split with `.js-` classes, you can use other FrontBx components to create your own styled tabs:
 
 Here is an example FrontBx's `.btn` for the navigation:
@@ -158,6 +171,8 @@ Here is an example FrontBx's `.btn` for the navigation:
     <button type="button" class="btn" data-tab="panel-3">Tab 3</button>
 </div>
 ```
+
+#### Chips
 
 Here's another example using FrontBx `.chip` components:
 

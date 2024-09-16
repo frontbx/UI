@@ -11122,7 +11122,7 @@
     
             const complete = function()
             {
-                window.location.hash = nodeOrId;
+                window.history.replaceState({}, "", nodeOrId);
             }
     
             animate(window, { property : 'scrollTo', to: `0, ${pos}`,  easing: options.easing, duration: options.speed, callback: isHashable && options.updateURL ? complete : null});
