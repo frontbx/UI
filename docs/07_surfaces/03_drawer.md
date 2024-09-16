@@ -8,6 +8,7 @@ Drawer provides access to an elevated surface providing additional app functiona
 *   [Direction](#direction)
 *   [Swipeable](#swipeable)
 *   [Persistent](#persistent)
+*   [Pushbody](#pushbody)
 *   [Peekable](#peekable)
 *   [Methods](#methods)
 *   [Options](#options)
@@ -98,13 +99,36 @@ const drawer = FrontBx.Drawer({
 
 ---
 
+### Pushbody
+
+Enabling `pushbody` on persistent drawers, pushes the body content rather than allowing it to adapt in size, this is a great option for situations where you want to target both mobile and desktop
+
+ When the drawer opens or closes, the main page content is pushed or pulled adapts in width/height based on the drawer size.
+
+Drawer will automatically wrap and unwrap page content when the it is invoked or destroyed.
+
+<div class="code-content-example">
+    <div class="row" style="height: 450px">
+        <iframe src="../drawer_iframe3.html"></iframe>
+    </div>
+</div>
+
+```javascript
+const drawer = FrontBx.Drawer({
+    content    : '...',
+    persistent : true,
+});
+```
+
+---
+
 ### Peekable
 
 On persistent left and right drawers, adding the `peekable` option, allows the drawer to collapse into a fixed width when closed. When expanded, it appears as the standard persistent navigation drawer.
 
 <div class="code-content-example">
     <div class="row" style="height: 450px">
-        <iframe src="../drawer_iframe3.html"></iframe>
+        <iframe src="../drawer_iframe4.html"></iframe>
     </div>
 </div>
 

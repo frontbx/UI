@@ -59,7 +59,7 @@
         --fbx-table-caption-color: var(--fbx-gray);
         --fbx-table-bg-alternate: var(--fbx-black-900);
         --fbx-table-selected-color: var(--fbx-white);
-        --fbx-table-selected-bg: var(--fbx-theme-info);
+        --fbx-table-selected-bg: var(--fbx-theme-primary-900);
     }
     .list
     {
@@ -96,6 +96,14 @@
         --fbx-card-divider-color: var(--fbx-black-300);
         --fbx-card-media-bg: var(--fbx-gray-100);
     }
+    .card .table
+    {
+        --fbx-table-border-color: var(--fbx-black-400);
+        --fbx-table-head-bg: var(--fbx-black-400);
+        --fbx-table-bg-hover: var(--fbx-black-500);
+        --fbx-table-bg-alternate: var(--fbx-black-500);
+    }
+
     .paper
     {
         --fbx-paper-bg: var(--fbx-black-900);
@@ -123,8 +131,17 @@
 /* --------------------------------------------------------------------------------- */
     .navbar
     {
-        background-color: var(--fbx-theme-primary-900);
+        background-color: var(--fbx-theme-primary-800);
     }
+    .navbar .nav-logo
+    {
+        color: var(--fbx-white);
+    }
+    .navbar .nav-logo:hover
+    {
+        color: var(--fbx-theme-primary);
+    }
+
     .menu
     {
         --fbx-menu-bg: var(--fbx-black-700);
@@ -157,15 +174,6 @@
         --fbx-tab-nav-divider-color: var(--fbx-black-200);
     }
 
-
-/* ------------------------------------ IMAGES DARK ------------------------------------- */
-/* --------------------------------------------------------------------------------- */
-
-
-/* ------------------------------------ INLINE DARK ------------------------------------- */
-/* --------------------------------------------------------------------------------- */
-
-
 /* ----------------------------------- BUTTONS DARK ------------------------------------- */
 /* --------------------------------------------------------------------------------- */
     .btn
@@ -188,11 +196,9 @@
     {
         --fbx-menu-item-bg-hover: var(--fbx-black-600);
     }
-        
 
 /* ------------------------------------ FORMS DARK -------------------------------------- */
 /* --------------------------------------------------------------------------------- */
-
     .form-field
     {
         
@@ -227,7 +233,9 @@
     { 
         background-color: var(--fbx-body-bg);
     }
-
+    
+/* ----------------------------------- FEEDBACK DARK ------------------------------------- */
+/* --------------------------------------------------------------------------------- */
     .msg
     {
         --fbx-msg-bg: var(--fbx-black-900);
@@ -237,12 +245,11 @@
     {
         --fbx-msg-bg: var(--fbx-black-200);
     }
-    
-    
-
-/* ----------------------------------- FEEDBACK DARK ------------------------------------- */
-/* --------------------------------------------------------------------------------- */
-
+    .modal-overlay
+    {
+        --fbx-modal-overlay-bg: rgb(255 255 255 / 57%);
+        --fbx-modal-overlay-bg-dark: rgb(75 75 75 / 74%);
+    }
 
 /* ----------------------------------- UTILITY DARK ------------------------------------- */
 /* --------------------------------------------------------------------------------- */

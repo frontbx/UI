@@ -14289,7 +14289,7 @@ Container.singleton('_', _);
      * 
      * @var {Array}
      */
-    const DATA_ATTRIBUTES = ['content','direction','overlay','persistent','peekable','swipeable','classes','state','easing','animation-time','responsive'];
+    const DATA_ATTRIBUTES = ['content','direction','overlay','persistent','pushbody','peekable','swipeable','classes','state','easing','animation-time','responsive'];
 
     /**
      * Drawer

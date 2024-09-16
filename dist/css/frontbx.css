@@ -324,10 +324,6 @@
   /* -------------------------------------------------------------------------------------- */
   /* ---------------------------------- NAVIGATION DARK ----------------------------------- */
   /* --------------------------------------------------------------------------------- */
-  /* ------------------------------------ IMAGES DARK ------------------------------------- */
-  /* --------------------------------------------------------------------------------- */
-  /* ------------------------------------ INLINE DARK ------------------------------------- */
-  /* --------------------------------------------------------------------------------- */
   /* ----------------------------------- BUTTONS DARK ------------------------------------- */
   /* --------------------------------------------------------------------------------- */
   /* ------------------------------------ FORMS DARK -------------------------------------- */
@@ -378,7 +374,7 @@
   --fbx-table-caption-color: var(--fbx-gray);
   --fbx-table-bg-alternate: var(--fbx-black-900);
   --fbx-table-selected-color: var(--fbx-white);
-  --fbx-table-selected-bg: var(--fbx-theme-info);
+  --fbx-table-selected-bg: var(--fbx-theme-primary-900);
 }
 .fbx-darkmode .list {
   --fbx-list-bg: var(--fbx-black-700);
@@ -408,6 +404,12 @@
   --fbx-card-divider-color: var(--fbx-black-300);
   --fbx-card-media-bg: var(--fbx-gray-100);
 }
+.fbx-darkmode .card .table {
+  --fbx-table-border-color: var(--fbx-black-400);
+  --fbx-table-head-bg: var(--fbx-black-400);
+  --fbx-table-bg-hover: var(--fbx-black-500);
+  --fbx-table-bg-alternate: var(--fbx-black-500);
+}
 .fbx-darkmode .paper {
   --fbx-paper-bg: var(--fbx-black-900);
   --fbx-paper-border-color: var(--fbx-black-600);
@@ -427,7 +429,13 @@
   --fbx-drawer-bg: var(--fbx-theme-primary);
 }
 .fbx-darkmode .navbar {
-  background-color: var(--fbx-theme-primary-900);
+  background-color: var(--fbx-theme-primary-800);
+}
+.fbx-darkmode .navbar .nav-logo {
+  color: var(--fbx-white);
+}
+.fbx-darkmode .navbar .nav-logo:hover {
+  color: var(--fbx-theme-primary);
 }
 .fbx-darkmode .menu {
   --fbx-menu-bg: var(--fbx-black-700);
@@ -501,6 +509,10 @@
 }
 .fbx-darkmode .notification-wrap .msg {
   --fbx-msg-bg: var(--fbx-black-200);
+}
+.fbx-darkmode .modal-overlay {
+  --fbx-modal-overlay-bg: rgb(255 255 255 / 57%);
+  --fbx-modal-overlay-bg-dark: rgb(75 75 75 / 74%);
 }
 
 /* base/reset */
