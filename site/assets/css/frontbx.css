@@ -203,7 +203,7 @@
   --fbx-font-serif: Georgia, Times New Roman, Times, serif;
   --fbx-font-monospace: Menlo, Monaco, Consolas, Courier New, monospace;
   --fbx-base-font-family: var(--fbx-font-sans-serif);
-  --fbx-base-font-size: 1.45rem;
+  --fbx-base-font-size: 1.6rem;
   --fbx-base-line-height: 1.8;
   --fbx-base-font-weight: 400;
   --fbx-font-smoothing: true;
@@ -214,19 +214,19 @@
   --fbx-headings-font-weight: 500;
   --fbx-headings-spacer: 0.75em;
   /* Headings sizes */
-  --fbx-text-size-h1: 4.495rem;
-  --fbx-text-size-h2: 3.77rem;
-  --fbx-text-size-h3: 3.19rem;
-  --fbx-text-size-h4: 2.32rem;
-  --fbx-text-size-h5: 1.74rem;
-  --fbx-text-size-h6: 1.45rem;
+  --fbx-text-size-h1: 4.96rem;
+  --fbx-text-size-h2: 4.16rem;
+  --fbx-text-size-h3: 3.52rem;
+  --fbx-text-size-h4: 2.56rem;
+  --fbx-text-size-h5: 1.92rem;
+  --fbx-text-size-h6: 1.6rem;
   /* Paragraph sizes */
-  --fbx-text-size-p1: 2.61rem;
-  --fbx-text-size-p2: 2.03rem;
-  --fbx-text-size-p3: 1.595rem;
-  --fbx-text-size-p4: 1.305rem;
-  --fbx-text-size-p5: 1.16rem;
-  --fbx-text-size-p6: 1.015rem;
+  --fbx-text-size-p1: 2.88rem;
+  --fbx-text-size-p2: 2.24rem;
+  --fbx-text-size-p3: 1.76rem;
+  --fbx-text-size-p4: 1.44rem;
+  --fbx-text-size-p5: 1.28rem;
+  --fbx-text-size-p6: 1.12rem;
   /* Raised Levels */
   --fbx-raised-level-one: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
   --fbx-raised-level-two: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
