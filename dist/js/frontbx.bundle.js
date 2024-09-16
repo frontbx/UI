@@ -4118,9 +4118,9 @@
             DOMElement.innerHTML = content;
         }
     
-        this.trigger_event(DOMElement, `FrontBx:dom:mutate`);
+        this.trigger_event(DOMElement, `frontbx:dom:mutate`);
     
-        this.trigger_event(window, `FrontBx:dom:mutate`, { DOMElement: DOMElement });
+        this.trigger_event(window, `frontbx:dom:mutate`, { DOMElement: DOMElement });
     }
     /**
      * Gets an input element's value
@@ -4466,14 +4466,14 @@
             {
                 this.remove_event_listener(children[i]);
     
-                this.trigger_event(children[i], `FrontBx:dom:remove`);
+                this.trigger_event(children[i], `frontbx:dom:remove`);
             }
     
             this.remove_event_listener(el);
     
-            this.trigger_event(el, `FrontBx:dom:remove`);
+            this.trigger_event(el, `frontbx:dom:remove`);
     
-            this.trigger_event(window, `FrontBx:dom:remove`, { DOMElement: el });
+            this.trigger_event(window, `frontbx:dom:remove`, { DOMElement: el });
         }
     }
     /**
@@ -4623,7 +4623,7 @@
      * @param  {mixed}        data         Extra data to pass to custom events 
      */
     _.prototype.trigger_event = function(DOMElement, eventName, data)
-    {
+    {    
         if (this.in_array(eventName.toLowerCase(), DOC_EVENTS))
         {
             if ('createEvent' in document)
@@ -4641,17 +4641,18 @@
         }
         else
         {
-            // Actual object
-            if (!this.is_constructed(data) && this.is_object(data))
+            let detail = { DOMElement: DOMElement, name: eventName };
+            
+            if (this.is_object(data))
             {
-                data = { ...{ DOMElement: DOMElement, name: eventName }, ...data};
+                detail = { ...detail, ...data }
             }
             else
             {
-                data = { DOMElement: DOMElement, name: eventName, state: data };
+                detail = { ...detail, state: data };
             }
     
-            const event = new CustomEvent(eventName, { detail: data });
+            const event = new CustomEvent(eventName, { detail: detail });
     
             DOMElement.dispatchEvent(event);
     
@@ -4665,9 +4666,9 @@
                 {
                     let subevent = i === (count -1) ? base : `${base}:${events.join(':')}`;
     
-                    data.name = eventName;
+                    detail.name = eventName;
     
-                    const evt = new CustomEvent(subevent, { detail: data });
+                    const evt = new CustomEvent(subevent, { detail: detail });
     
                     DOMElement.dispatchEvent(evt);
     
@@ -6963,7 +6964,7 @@
         {        
             this.dom().boot();
     
-            this._().trigger_event(window, 'FrontBx:ready', this);
+            this._().trigger_event(window, 'frontbx:ready', this);
         }
     
         /**
@@ -6977,7 +6978,7 @@
             return this.Dom();
         }
     
-        Container._().trigger_event(window, 'FrontBx:loading');
+        Container._().trigger_event(window, 'frontbx:loading');
     
         const app = Container._().extend(Container, new Application);
     
@@ -7090,7 +7091,7 @@
          */
         Dom.prototype._dispatchReady = function()
         {
-            trigger_event(window, 'FrontBx:dom:ready', {dom: this});
+            trigger_event(window, 'frontbx:dom:ready', {dom: this});
         }
     
         /**
@@ -7102,7 +7103,7 @@
          */
         Dom.prototype._dispatchComponent = function(name, event, component, context)
         {
-            trigger_event(window, `FrontBx:dom:${event}:${name}`, { component: component, context: context});
+            trigger_event(window, `frontbx:dom:${event}:${name}`, { component: component, context: context});
         }
     
         /**
@@ -7194,7 +7195,7 @@
                 }
             }, this);
     
-            trigger_event(window, `FrontBx:dom:refresh`, { context: context});
+            trigger_event(window, `frontbx:dom:refresh`, { context: context});
     
             if (globalRefresh) this._dispatchReady();
         }
@@ -8758,7 +8759,7 @@
             let data = options.cacheBust ? { t: Date.now().toString() } : {};
             
             // Fire the start event
-            trigger_event(window, 'FrontBx:Pjax:start', { options });
+            trigger_event(window, 'frontbx:Pjax:start', { options });
     
             // Set response handlers
             this._setResponseHandlers('GET', options.url, data, success, error, complete, abort, headers);
@@ -8784,13 +8785,13 @@
             })
             .error((response) =>
             {
-                trigger_event(window, 'FrontBx:Pjax:error', { options });
+                trigger_event(window, 'frontbx:Pjax:error', { options });
     
                 if (_error) this._makeCallback(_error, this._xhr, [response]);
             })
             .abort((response) =>
             {
-                rigger_event(window, 'FrontBx:Pjax:abort', { options });
+                rigger_event(window, 'frontbx:Pjax:abort', { options });
     
                 if (_abort) this._makeCallback(_abort, this, [response, false]);
             })
@@ -8871,7 +8872,7 @@
             {
                 FrontBx.dom().refresh(targetEl === document.body ? document : targetEl);
     
-                trigger_event(window, 'FrontBx:Pjax:success', {options});
+                trigger_event(window, 'frontbx:Pjax:success', {options});
             });
     
             if (!options.keepScroll || targetEl === document.body) window.scrollTo(0, 0);
@@ -13800,7 +13801,7 @@
          * 
          * @var {Function}
          */
-        const [find, add_class, on, closest, has_class, remove_class, off, attr, css, dom_element, map, extend] = FrontBx.import(['find','add_class','on','closest','has_class','remove_class','off','attr','css','dom_element','map','extend']).from('_');
+        const [find, add_class, on, closest, has_class, remove_class, off, attr, css, dom_element, map, trigger_event, extend] = FrontBx.import(['find','add_class','on','closest','has_class','remove_class','off','attr','css','dom_element','map','trigger_event','extend']).from('_');
     
         /**
          * Dropdown Buttons
@@ -13883,6 +13884,8 @@
                     attr(check.parentNode, 'style', false);
                 }
             }
+    
+            trigger_event(menu, 'frontbx:menu:selected', {item: item});
         }
     
         /**
@@ -14877,7 +14880,7 @@
             var opacity  = bool(clicked.dataset.withOpacity);
             var closing  = has_class(clicked, 'active');
     
-            trigger_event(targetEl, 'collapse:toggle', closing ? 'close' : 'open');
+            trigger_event(targetEl, 'frontbx:collapse:toggle', closing ? 'close' : 'open');
     
             var options  = 
             {
@@ -14886,7 +14889,7 @@
                 from: closing ? 'auto' : '0px',
                 duration: duration, 
                 easing: easing,
-                callback: () => { trigger_event(targetEl, 'collapse:toggled', closing ? 'close' : 'open'); }
+                callback: () => { trigger_event(targetEl, 'frontbx:collapse:toggled', closing ? 'close' : 'open'); }
             };
     
             animate(targetEl, options);
@@ -14960,7 +14963,7 @@
             
             add_class(this, 'selected');
     
-            trigger_event(list, 'list:selected', {item: this});
+            trigger_event(list, 'frontbx:list:selected', {item: this});
         }
     
         /**
@@ -15420,7 +15423,7 @@
             let msg      = closest(this, '.msg');
             let toRemove = msg;
     
-            trigger_event(msg, 'message:close');
+            trigger_event(msg, 'frontbx:message:close');
     
             if (has_class(this, 'js-rmv-parent'))
             {
@@ -15429,7 +15432,7 @@
     
             animate_css(toRemove, { opacity: 0, duration: 500, easing: 'easeInOutCubic', callback: function()
             {
-                trigger_event(msg, 'message:closed');
+                trigger_event(msg, 'frontbx:message:closed');
     
                 remove_from_dom(toRemove);
             }});
@@ -16040,7 +16043,7 @@
             
             add_class(this, 'selected');
     
-            trigger_event(table, 'table:selected', {item: this});
+            trigger_event(table, 'frontbx:table:selected', {item: this});
         }
     
         /**

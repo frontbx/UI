@@ -21,8 +21,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 (function()
 {
     const [Component] = FrontBx.get('Component');
-    const [add_class, extend] = FrontBx.import(['add_class', 'extend']).from('_');
-    const BLOCKS      = new Map;
+    const [add_class, find, closest, attr, extend] = FrontBx.import(['add_class', 'find', 'closest', 'attr', 'extend']).from('_');
 
     const Highlighter = function()
     {        
@@ -31,16 +30,33 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
     Highlighter.prototype.bind = function(block)
     {
-    	BLOCKS.set(block, block.innerHTML);
-
         Prism.highlightElement(block);
+
+        let copyBtn = find('.toolbar .copy-to-clipboard-button', closest(block, 'div'));
+
+        if (copyBtn)
+        {
+        	add_class(copyBtn, 'tooltipped, tooltipped-ne');
+
+        	attr(copyBtn, 'data-tooltip', 'Copy to clipboard');
+        }
+
+        let div = closest(block, 'div');
+
+        add_class(div, block.className.replaceAll(' ', ','));
     }
 
     Highlighter.prototype.unbind = function(block)
     {
-        block.innerHTML = BLOCKS.get(block);
+    	let code = block.innerText;
 
-        BLOCKS.delete(block);
+        block.innerHTML = ''; 
+
+        block.innerHTML = code;
+
+        let toolbar = closest(block, '.code-toolbar');
+
+        toolbar.parentNode.replaceChild(block.parentNode, toolbar);
     }
 
     FrontBx.dom().register('Highlighter', extend(Component, Highlighter), true);
@@ -891,3 +907,205 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
 }());
 
+/**
+ * Docs color playground
+ *
+ */
+(function()
+{
+	const [Component] = FrontBx.get('Component');
+
+	const [on, off, each, css, find, add_class, remove_class, dom_element, is_array_last, closest, extend] = FrontBx.import(['on','off', 'each', 'css','find','add_class','remove_class','dom_element','is_array_last','closest','extend']).from('_');
+
+	const ColorPlayground = function()
+    {        
+    	this._theme = localStorage.getItem('fbx-docs-color-theme') || 'var(--fbx-color-beetroot)';
+
+    	this._activeSwatch;
+
+        this.super('.js-docs-playground-swatches .docs-swatch');
+
+        this._appendStyles();
+    }
+
+    ColorPlayground.prototype.bind = function(swatch)
+    {
+    	on(swatch, 'click', this._makeSelection, this);
+
+    	if (is_array_last(swatch, this._DOMElements))
+    	{
+    		this._codeWrapper = find('.js-docs-playground-code');
+
+    		this._codeEl = find('.js-docs-playground-code code');
+
+    		this._setDefaultSwatch();
+    	}
+    }
+
+    ColorPlayground.prototype.unbind = function(swatch)
+    {
+        off(swatch, 'click', this._makeSelection, this);
+    }
+
+    ColorPlayground.prototype._setDefaultSwatch = function()
+    {
+    	each(this._DOMElements, (i, swatch) =>
+    	{
+    		let color = css(swatch, 'background');
+
+    		if (color === this._theme)
+    		{
+    			this._activeSwatch = swatch;
+
+    			this._theme = css(swatch, 'background');
+
+    			add_class(swatch, 'active');
+
+    			return false;
+    		}
+    	});
+    }
+
+    ColorPlayground.prototype._makeSelection = function(e, swatch)
+    {
+        let color  = css(swatch, 'background');
+    	let active = find('.js-docs-playground-swatches .docs-swatch')
+
+    	if (this._activeSwatch) remove_class(this._activeSwatch, 'active');
+
+    	add_class(swatch, 'active');
+
+    	this._theme = color;
+
+    	this._activeSwatch = swatch;
+
+    	localStorage.setItem('fbx-docs-color-theme', color);
+
+    	this._appendStyles();
+    }
+
+    ColorPlayground.prototype._appendStyles = function()
+    {
+    	let shade  = this._theme.replace('--fbx-color-', '--fbx-docs-').replace(')', '').replace('var(', '').trim();
+    	let styles = `:root {
+	--fbx-theme-primary: ${this._theme};
+	--fbx-theme-primary-rgb: ${this._theme.replace(')', '-rgb)')};
+	--fbx-theme-primary-100: var(${shade}-100);
+    --fbx-theme-primary-200: var(${shade}-200);
+    --fbx-theme-primary-300: var(${shade}-300);
+    --fbx-theme-primary-400: var(${shade}-400);
+    --fbx-theme-primary-500: var(${shade}-500);
+    --fbx-theme-primary-600: var(${shade}-600);
+    --fbx-theme-primary-700: var(${shade}-700);
+    --fbx-theme-primary-800: var(${shade}-800);
+    --fbx-theme-primary-900: var(${shade}-900);
+}`;
+    	let style = dom_element({tag: 'style'}, find('head'), styles);
+
+    	if (this._codeEl)
+    	{
+    		this._codeEl.innerText = styles;
+
+    		FrontBx.dom().refresh('Highlighter', this._codeWrapper);
+    	}
+    }
+
+
+    FrontBx.dom().register('ColorPlayground', extend(Component, ColorPlayground), true);
+
+}());
+
+
+/**
+ * Theme switcher
+ *
+ */
+(function()
+{
+	const [Component] = FrontBx.get('Component');
+
+	const [find_all, each, on, off, attr, add_class, remove_class, extend] = FrontBx.import(['find_all','each','on','off', 'attr','add_class','remove_class','extend']).from('_');
+
+	const ThemeSwitcher = function()
+    {
+    	let theme = localStorage.getItem('fbx-docs-base-theme') || 'light';
+
+    	localStorage.setItem('fbx-docs-base-theme', theme);
+
+    	this._setTheme(theme);
+
+        this.super('.js-docs-theme-menu');
+    }
+
+    ThemeSwitcher.prototype.bind = function(list)
+    {
+    	on(list, 'frontbx:menu:selected', this._toggleTheme, this);	
+    }
+
+    ThemeSwitcher.prototype.unbind = function(list)
+    {
+        off(list, 'frontbx:menu:selected', this._toggleTheme, this);	
+    }
+
+    ThemeSwitcher.prototype._toggleTheme = function(e)
+    {
+    	let list = e.detail.DOMElement;
+
+    	let theme = attr(e.detail.item, 'data-theme');
+
+    	this._setTheme(theme);
+
+    	this._theme = theme;
+
+    	localStorage.setItem('fbx-docs-base-theme', theme);
+    }
+
+    ThemeSwitcher.prototype._setTheme = function(theme)
+    {
+    	if (theme === 'dark')
+    	{
+    		add_class(document.documentElement, 'fbx-darkmode');
+    	}
+    	else if (theme === 'auto')
+    	{
+    		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    		{
+    			add_class(document.documentElement, 'fbx-darkmode');
+    		}
+    		else
+    		{
+    			remove_class(document.documentElement, 'fbx-darkmode');
+    		}
+    	}
+    	else
+    	{
+    		remove_class(document.documentElement, 'fbx-darkmode');
+    	}
+    }
+
+    const InitialThemeLinks = function()
+    {
+    	this._theme = localStorage.getItem('fbx-docs-base-theme') || 'light';
+
+        this.super('.js-docs-theme-menu > li');
+    }
+
+    InitialThemeLinks.prototype.bind = function(item)
+    {
+    	let theme = attr(item, 'data-theme');
+
+    	theme === this._theme ? add_class(item, 'selected') : remove_class(item, 'selected');
+
+    	console.log(item);	
+    }
+
+    InitialThemeLinks.prototype.unbind = function(list)
+    {
+        console.log(item);		
+    }
+
+    FrontBx.dom().register('ThemeSwitcher', extend(Component, ThemeSwitcher), true);
+
+    FrontBx.dom().register('InitialThemeLinks', extend(Component, InitialThemeLinks), true);
+
+}());

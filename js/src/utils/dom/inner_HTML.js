@@ -21,7 +21,7 @@ _.prototype.inner_HTML = function(DOMElement, content, append)
         DOMElement.innerHTML = content;
     }
 
-    this.trigger_event(DOMElement, `FrontBx:dom:mutate`);
+    this.trigger_event(DOMElement, `frontbx:dom:mutate`);
 
-    this.trigger_event(window, `FrontBx:dom:mutate`, { DOMElement: DOMElement });
+    this.trigger_event(window, `frontbx:dom:mutate`, { DOMElement: DOMElement });
 }

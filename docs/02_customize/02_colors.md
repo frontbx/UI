@@ -9,6 +9,8 @@ FrontBx provides an extensive CSS color system for enhanced styling, component c
 *	[Grays](#grays)
 	* [Usage](#gray-usage)
 *	[Color Palette](#color-palette)
+	* [Playground](#playground)
+	* [Palette](#palette-colors)
 	* [Usage](#palette-usage)
 * [Sass](#sass)
 	* [theme-colors](#theme-colors)
@@ -109,10 +111,57 @@ All gray shades are available via FrontBx's utility [helper classes](../../css/c
 
 ### Color Palette
 
-FrontBx comes with a palette of colors via both CSS ans Sass variables for changing theme colors, customizing components or building out custom UI.  The table below outlines theme colors:
+FrontBx comes with a palette of colors via both CSS ans Sass variables for changing theme colors, customizing components or building out custom UI.
 
-With color palette, the Sass variable will point directly the actual hex color value.
- 
+
+#### Playground
+
+Use the playground below to adjust the documentation colors:
+
+<div class="code-content-example js-docs-playground-swatches">
+	<div class="docs-playground-swatches">
+		<div class="flex-row-fluid">
+			<div class="docs-swatch" style="background: var(--fbx-color-teal)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-turquoise)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-greensea)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-emerland)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-nephritis)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-babyblue)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-peterrive)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-belizehol)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-amethyst)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-wisteria)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-wetasphalt)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-midnightblue)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-sunflower)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-orange)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-carrot)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-salmon)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-pumpkin)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-alizarin)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-pomegranate)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-clouds)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-silver)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-concrete)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-asbestos)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-neongreen)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-skyblue)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-beetroot)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-hotpink)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-pineapple)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-coralred)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-ash)"></div>
+		</div>
+	</div>
+</div>
+<div class="js-docs-playground-code">
+	<pre><code class="css language-css"></code></pre>
+</div>
+
+
+#### Palette<a id='palette-colors'></a>
+
+With color palette, the Sass variable will point directly the actual hex color value. The table below outlines theme colors:
 
 | Swatch                                                                            | CSS Variable               | Sass Variable   |
 |:---------------------------------------------------------------------------------:|----------------------------|-----------------|

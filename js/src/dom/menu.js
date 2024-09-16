@@ -12,7 +12,7 @@
      * 
      * @var {Function}
      */
-    const [find, add_class, on, closest, has_class, remove_class, off, attr, css, dom_element, map, extend] = FrontBx.import(['find','add_class','on','closest','has_class','remove_class','off','attr','css','dom_element','map','extend']).from('_');
+    const [find, add_class, on, closest, has_class, remove_class, off, attr, css, dom_element, map, trigger_event, extend] = FrontBx.import(['find','add_class','on','closest','has_class','remove_class','off','attr','css','dom_element','map','trigger_event','extend']).from('_');
 
     /**
      * Dropdown Buttons
@@ -95,6 +95,8 @@
                 attr(check.parentNode, 'style', false);
             }
         }
+
+        trigger_event(menu, 'frontbx:menu:selected', {item: item});
     }
 
     /**

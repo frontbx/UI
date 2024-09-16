@@ -46,29 +46,29 @@ Use the directional classes `.tooltipped-[direction]` to change the direction of
 </div> 
 
 ```html
-    <button class="btn tooltipped tooltipped-ne" data-tooltip="Hello World!">
-        .tooltipped-ne
-    </button> 
-    <button class="btn tooltipped tooltipped-n" data-tooltip="Hello World!">
-        .tooltipped-n
-    </button>
-    <button class="btn tooltipped tooltipped-nw" data-tooltip="Hello World!">
-        .tooltipped-nw
-    </button>
-    <button class="btn tooltipped tooltipped-se" data-tooltip="Hello World!">
-        .tooltipped-se
-    </button> 
-    <button class="btn tooltipped tooltipped-s" data-tooltip="Hello World!">
-        .tooltipped-s
-    </button>
-    <button class="btn tooltipped tooltipped-sw" data-tooltip="Hello World!">
-        .tooltipped-sw
-    </button>
-    <button class="btn tooltipped tooltipped-e" data-tooltip="Hello World!">
-        .tooltipped-e
-    </button>
-    <button class="btn tooltipped tooltipped-w" data-tooltip="Hello World!">
-        .tooltipped-w
+<button class="btn tooltipped tooltipped-ne" data-tooltip="Hello World!">
+    .tooltipped-ne
+</button> 
+<button class="btn tooltipped tooltipped-n" data-tooltip="Hello World!">
+    .tooltipped-n
+</button>
+<button class="btn tooltipped tooltipped-nw" data-tooltip="Hello World!">
+    .tooltipped-nw
+</button>
+<button class="btn tooltipped tooltipped-se" data-tooltip="Hello World!">
+    .tooltipped-se
+</button> 
+<button class="btn tooltipped tooltipped-s" data-tooltip="Hello World!">
+    .tooltipped-s
+</button>
+<button class="btn tooltipped tooltipped-sw" data-tooltip="Hello World!">
+    .tooltipped-sw
+</button>
+<button class="btn tooltipped tooltipped-e" data-tooltip="Hello World!">
+    .tooltipped-e
+</button>
+<button class="btn tooltipped tooltipped-w" data-tooltip="Hello World!">
+    .tooltipped-w
     </button>
 ```
 

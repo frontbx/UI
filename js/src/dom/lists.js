@@ -62,7 +62,7 @@
         
         add_class(this, 'selected');
 
-        trigger_event(list, 'list:selected', {item: this});
+        trigger_event(list, 'frontbx:list:selected', {item: this});
     }
 
     /**

@@ -33,12 +33,12 @@
                         </a>
                     </li>
                     <li class="md lg xl">
-                        <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white">
+                        <a href="../../getting-started/download/index.html" class="btn-unstyled btn-white">
                             <span class="fa fa-download"></span>
                         </a>
                     </li>
                     <li class="md lg xl">
-                        <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white">
+                        <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white">
                             <span class="fa fa-sliders"></span>
                         </a>
                     </li>
@@ -50,16 +50,16 @@
                                 <span class="caret-s"></span>
                             </button>
                             <div class="drop-menu drop-se js-drop-menu">
-                                <ul class="menu js-select-menu"> 
-                                    <li>
+                                <ul class="menu js-select-menu js-docs-theme-menu"> 
+                                    <li data-theme="light">
                                         <span class="item-left"><span class="fa fa-sun"></span></span>
                                         <span class="item-body">Light</span>
                                     </li>
-                                    <li>
+                                    <li data-theme="dark">
                                         <span class="item-left"><span class="fa fa-cloud-moon"></span></span>
                                         <span class="item-body">Dark</span>
                                     </li>
-                                    <li>
+                                    <li data-theme="auto">
                                         <span class="item-left"><span class="fa fa-circle-half-stroke"></span></span>
                                         <span class="item-body">Auto</span>
                                     </li>
@@ -79,34 +79,38 @@
             <ul class="menu">
                 <li class="menu-header">Explore</li>
                 <li>
-                    <a href="/site/getting-started/download/index.html">
+                    <a href="https://github.com/frontbx/ui" target="_blank">
                         <span class="item-left"><span class="fa-brands fa-github"></span></span>
                         <span class="item-body">Github</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/site/getting-started/download/index.html">
+                    <a href="../../getting-started/download/index.html">
                         <span class="item-left"><span class="fa fa-download"></span></span>
                         <span class="item-body">Download</span>
                     </a>
                 </li>
+            </ul>
+            <ul class="menu">
                 <li class="menu-header">Colors</li>
                 <li>
-                    <a href="/site/getting-started/download/index.html">
+                    <a href="../../customize/colors/index.html#playground">
                         <span class="item-left"><span class="fa fa-sliders"></span></span>
                         <span class="item-body">Edit Documentation colors</span>
                     </a>
                 </li>
+            </ul>
+            <ul class="menu js-select-menu js-docs-theme-menu">
                 <li class="menu-header">Mode</li>
-                <li>
+                <li data-theme="light">
                     <span class="item-left"><span class="fa fa-sun"></span></span>
                     <span class="item-body">Light</span>
                 </li>
-                <li>
+                <li data-theme="dark">
                     <span class="item-left"><span class="fa fa-cloud-moon"></span></span>
                     <span class="item-body">Dark</span>
                 </li>
-                <li>
+                <li data-theme="auto">
                     <span class="item-left"><span class="fa fa-circle-half-stroke"></span></span>
                     <span class="item-body">Auto</span>
                 </li>
@@ -279,6 +283,8 @@
 <li><a href="#grays">Grays</a><ul>
 <li><a href="#gray-usage">Usage</a></li></ul></li>
 <li><a href="#color-palette">Color Palette</a><ul>
+<li><a href="#playground">Playground</a></li>
+<li><a href="#palette-colors">Palette</a></li>
 <li><a href="#palette-usage">Usage</a></li></ul></li>
 <li><a href="#sass">Sass</a><ul>
 <li><a href="#theme-colors">theme-colors</a></li>
@@ -449,8 +455,50 @@
 &lt;/div&gt;</code></pre>
 <hr />
 <h3 id="color-palette">Color Palette</h3>
-<p>FrontBx comes with a palette of colors via both CSS ans Sass variables for changing theme colors, customizing components or building out custom UI.  The table below outlines theme colors:</p>
-<p>With color palette, the Sass variable will point directly the actual hex color value.</p>
+<p>FrontBx comes with a palette of colors via both CSS ans Sass variables for changing theme colors, customizing components or building out custom UI.</p>
+<h4 id="playground">Playground</h4>
+<p>Use the playground below to adjust the documentation colors:</p>
+<div class="code-content-example js-docs-playground-swatches">
+    <div class="docs-playground-swatches">
+        <div class="flex-row-fluid">
+            <div class="docs-swatch" style="background: var(--fbx-color-teal)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-turquoise)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-greensea)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-emerland)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-nephritis)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-babyblue)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-peterrive)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-belizehol)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-amethyst)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-wisteria)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-wetasphalt)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-midnightblue)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-sunflower)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-orange)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-carrot)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-salmon)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-pumpkin)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-alizarin)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-pomegranate)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-clouds)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-silver)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-concrete)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-asbestos)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-neongreen)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-skyblue)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-beetroot)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-hotpink)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-pineapple)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-coralred)"></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-ash)"></div>
+        </div>
+    </div>
+</div>
+<div class="js-docs-playground-code">
+    <pre><code class="css language-css"></code></pre>
+</div>
+<h4 id="palettea-idpalette-colorsa">Palette<a id='palette-colors'></a></h4>
+<p>With color palette, the Sass variable will point directly the actual hex color value. The table below outlines theme colors:</p>
 <table>
 <thead>
 <tr>

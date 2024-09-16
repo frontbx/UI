@@ -70,7 +70,7 @@
         var opacity  = bool(clicked.dataset.withOpacity);
         var closing  = has_class(clicked, 'active');
 
-        trigger_event(targetEl, 'collapse:toggle', closing ? 'close' : 'open');
+        trigger_event(targetEl, 'frontbx:collapse:toggle', closing ? 'close' : 'open');
 
         var options  = 
         {
@@ -79,7 +79,7 @@
             from: closing ? 'auto' : '0px',
             duration: duration, 
             easing: easing,
-            callback: () => { trigger_event(targetEl, 'collapse:toggled', closing ? 'close' : 'open'); }
+            callback: () => { trigger_event(targetEl, 'frontbx:collapse:toggled', closing ? 'close' : 'open'); }
         };
 
         animate(targetEl, options);

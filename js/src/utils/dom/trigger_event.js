@@ -7,7 +7,7 @@
  * @param  {mixed}        data         Extra data to pass to custom events 
  */
 _.prototype.trigger_event = function(DOMElement, eventName, data)
-{
+{    
     if (this.in_array(eventName.toLowerCase(), DOC_EVENTS))
     {
         if ('createEvent' in document)
@@ -25,17 +25,18 @@ _.prototype.trigger_event = function(DOMElement, eventName, data)
     }
     else
     {
-        // Actual object
-        if (!this.is_constructed(data) && this.is_object(data))
+        let detail = { DOMElement: DOMElement, name: eventName };
+        
+        if (this.is_object(data))
         {
-            data = { ...{ DOMElement: DOMElement, name: eventName }, ...data};
+            detail = { ...detail, ...data }
         }
         else
         {
-            data = { DOMElement: DOMElement, name: eventName, state: data };
+            detail = { ...detail, state: data };
         }
 
-        const event = new CustomEvent(eventName, { detail: data });
+        const event = new CustomEvent(eventName, { detail: detail });
 
         DOMElement.dispatchEvent(event);
 
@@ -49,9 +50,9 @@ _.prototype.trigger_event = function(DOMElement, eventName, data)
             {
                 let subevent = i === (count -1) ? base : `${base}:${events.join(':')}`;
 
-                data.name = eventName;
+                detail.name = eventName;
 
-                const evt = new CustomEvent(subevent, { detail: data });
+                const evt = new CustomEvent(subevent, { detail: detail });
 
                 DOMElement.dispatchEvent(evt);
 

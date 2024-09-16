@@ -99,7 +99,7 @@
      */
     Dom.prototype._dispatchReady = function()
     {
-        trigger_event(window, 'FrontBx:dom:ready', {dom: this});
+        trigger_event(window, 'frontbx:dom:ready', {dom: this});
     }
 
     /**
@@ -111,7 +111,7 @@
      */
     Dom.prototype._dispatchComponent = function(name, event, component, context)
     {
-        trigger_event(window, `FrontBx:dom:${event}:${name}`, { component: component, context: context});
+        trigger_event(window, `frontbx:dom:${event}:${name}`, { component: component, context: context});
     }
 
     /**
@@ -203,7 +203,7 @@
             }
         }, this);
 
-        trigger_event(window, `FrontBx:dom:refresh`, { context: context});
+        trigger_event(window, `frontbx:dom:refresh`, { context: context});
 
         if (globalRefresh) this._dispatchReady();
     }

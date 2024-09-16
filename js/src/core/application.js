@@ -27,7 +27,7 @@
     {        
         this.dom().boot();
 
-        this._().trigger_event(window, 'FrontBx:ready', this);
+        this._().trigger_event(window, 'frontbx:ready', this);
     }
 
     /**
@@ -41,7 +41,7 @@
         return this.Dom();
     }
 
-    Container._().trigger_event(window, 'FrontBx:loading');
+    Container._().trigger_event(window, 'frontbx:loading');
 
     const app = Container._().extend(Container, new Application);
 

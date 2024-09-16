@@ -824,6 +824,7 @@ pre > code {
   color: var(--fbx-black);
   border: none;
   background-color: transparent;
+  padding: 0;
 }
 
 /* content/images */
@@ -8235,8 +8236,8 @@ form.success .msg-success {
   --fbx-tooltip-radius: var(--fbx-border-radius);
   --fbx-tooltip-pad-y: 2px;
   --fbx-tooltip-pad-x: 8px;
-  --fbx-tooltop-target-space: 5px;
-  --fbx-tooltop-target-space-neg: -5px;
+  --fbx-tooltop-target-space: 8px;
+  --fbx-tooltop-target-space-neg: -8px;
   position: relative;
   overflow: visible !important;
 }

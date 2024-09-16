@@ -59,7 +59,7 @@
         let msg      = closest(this, '.msg');
         let toRemove = msg;
 
-        trigger_event(msg, 'message:close');
+        trigger_event(msg, 'frontbx:message:close');
 
         if (has_class(this, 'js-rmv-parent'))
         {
@@ -68,7 +68,7 @@
 
         animate_css(toRemove, { opacity: 0, duration: 500, easing: 'easeInOutCubic', callback: function()
         {
-            trigger_event(msg, 'message:closed');
+            trigger_event(msg, 'frontbx:message:closed');
 
             remove_from_dom(toRemove);
         }});

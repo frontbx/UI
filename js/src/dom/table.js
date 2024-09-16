@@ -62,7 +62,7 @@
         
         add_class(this, 'selected');
 
-        trigger_event(table, 'table:selected', {item: this});
+        trigger_event(table, 'frontbx:table:selected', {item: this});
     }
 
     /**

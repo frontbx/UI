@@ -71,7 +71,7 @@
         let data = options.cacheBust ? { t: Date.now().toString() } : {};
         
         // Fire the start event
-        trigger_event(window, 'FrontBx:Pjax:start', { options });
+        trigger_event(window, 'frontbx:Pjax:start', { options });
 
         // Set response handlers
         this._setResponseHandlers('GET', options.url, data, success, error, complete, abort, headers);
@@ -97,13 +97,13 @@
         })
         .error((response) =>
         {
-            trigger_event(window, 'FrontBx:Pjax:error', { options });
+            trigger_event(window, 'frontbx:Pjax:error', { options });
 
             if (_error) this._makeCallback(_error, this._xhr, [response]);
         })
         .abort((response) =>
         {
-            rigger_event(window, 'FrontBx:Pjax:abort', { options });
+            rigger_event(window, 'frontbx:Pjax:abort', { options });
 
             if (_abort) this._makeCallback(_abort, this, [response, false]);
         })
@@ -184,7 +184,7 @@
         {
             FrontBx.dom().refresh(targetEl === document.body ? document : targetEl);
 
-            trigger_event(window, 'FrontBx:Pjax:success', {options});
+            trigger_event(window, 'frontbx:Pjax:success', {options});
         });
 
         if (!options.keepScroll || targetEl === document.body) window.scrollTo(0, 0);

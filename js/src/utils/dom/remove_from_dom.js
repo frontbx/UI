@@ -23,13 +23,13 @@ _.prototype.remove_from_dom = function(el)
         {
             this.remove_event_listener(children[i]);
 
-            this.trigger_event(children[i], `FrontBx:dom:remove`);
+            this.trigger_event(children[i], `frontbx:dom:remove`);
         }
 
         this.remove_event_listener(el);
 
-        this.trigger_event(el, `FrontBx:dom:remove`);
+        this.trigger_event(el, `frontbx:dom:remove`);
 
-        this.trigger_event(window, `FrontBx:dom:remove`, { DOMElement: el });
+        this.trigger_event(window, `frontbx:dom:remove`, { DOMElement: el });
     }
 }
