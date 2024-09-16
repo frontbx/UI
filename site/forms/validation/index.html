@@ -423,11 +423,13 @@
 <p>Instantiate a <code>FormValidator</code> instance via FrontBx's <code>Container</code>, passing the target <code>&lt;form&gt;</code> DOMElement as the parameter.</p>
 <pre><code class="javascript language-javascript">const validator = FrontBx.FormValidator(document.querySelector.$('#myform'));</code></pre>
 <p>The <code>validate</code> method will run validation on all inputs based on any validation attributes and return a <code>Boolean</code>. Any invalid <code>.form-field</code> elements will then be shown as invalid.</p>
-<pre><code class="javascript language-javascript">if (validator.validate())
+<pre><code class="javascript language-javascript">let valid = validator.validate();
+
+if (valid)
 {
     // do stuff
 }</code></pre>
-<p>Additionally, once <code>validate</code> is called on a form, any inputs that fail validation, will get a listener that listens for any changes and live validates the input whenever its value changes.</p>
+<p>Additionally, once <code>validate</code> is called on a form, any inputs that fail validation will get a listener that listens for any changes and live validates the input whenever its value changes.</p>
 <blockquote>
   <p>See the <a href="../../forms/inputs/index.html#states">Input states</a> documentation for details on input states.</p>
 </blockquote>
@@ -440,6 +442,8 @@
 <blockquote>
   <p>See the <a href="../../forms/results/index.html">Form results</a> documentation for details on form result markup.</p>
 </blockquote>
+<p>Finally, the <code>destroy</code> method removes any listeners and reverts the form to it's original state.</p>
+<pre><code class="javascript language-javascript">validator.destroy();</code></pre>
 <hr />
 <h3 id="example">Example</h3>
 <p>Below is an example form using the validator. In a real request, you would use FrontBx's <code>Ajax</code> component or submit the form manually, however for this example we just use a <code>timeout</code>. Check the console log for more details.</p>

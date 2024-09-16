@@ -22,12 +22,12 @@
         display: block;
         position: absolute;
         border-radius: 50%;
-        width: calc(var(--fbx-checkbox-size) * 1.85);
-        height: calc(var(--fbx-checkbox-size) * 1.85);
+        width: calc(var(--fbx-checkbox-size) * 1.8);
+        height: calc(var(--fbx-checkbox-size) * 1.8);
         background-color:var(--fbx-checkbox-color);
         top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        left: calc(((( var(--fbx-checkbox-size) * 1.85) / 2) - (var(--fbx-checkbox-size) / 2)) * -1);
+        transform: translateY(-50%);
         opacity: 0;
         transition: opacity .15s $base-easing;
     }
@@ -39,7 +39,7 @@
         cursor: pointer;
         position: relative;
         margin: 0;
-        padding: 0 0 0 var(--fbx-checkbox-size);
+        padding: 0 0 0 calc(var(--fbx-checkbox-size) * 1.5);
         white-space: nowrap;
         min-width: var(--fbx-checkbox-size);
         height: var(--fbx-checkbox-size);
@@ -76,8 +76,9 @@
         @include glyph-icon;
         display: inline-block;
         position: absolute;
+        line-height: inherit;
         font-size: calc(var(--fbx-checkbox-size) * 0.8);
-        left: 2.5px;
+        left: calc(var(--fbx-checkbox-size) / 7);
         top: 50%;
         opacity: 0;
         transform: translateY(-50%) scale(0);

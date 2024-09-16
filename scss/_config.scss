@@ -323,10 +323,10 @@ $input-addon-bg:                var(--fbx-gray-100) !default;
 $input-addon-color:             var(--fbx-gray-400) !default;
 
 // Checkbox
-$checkbox-size:                 20px !default;
+$checkbox-size:                 24px !default;
 $checkbox-color:                var(--fbx-gray) !default;
 $checkbox-label-color:          var(--fbx-gray) !default;
-$checkbox-radius:               2px !default;
+$checkbox-radius:               var(--fbx-border-radius) !default;
 
 // Radio
 $radio-size:                    20px !default;

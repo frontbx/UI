@@ -6945,10 +6945,10 @@ input.unstyled:focus {
 .checkbox {
   display: inline-block;
   position: relative;
-  --fbx-checkbox-size: 20px;
+  --fbx-checkbox-size: 24px;
   --fbx-checkbox-color: var(--fbx-gray);
   --fbx-checkbox-label-color: var(--fbx-gray);
-  --fbx-checkbox-radius: 2px;
+  --fbx-checkbox-radius: var(--fbx-border-radius);
   height: var(--fbx-checkbox-size);
   min-width: var(--fbx-checkbox-size);
   line-height: var(--fbx-checkbox-size);
@@ -6959,12 +6959,12 @@ input.unstyled:focus {
   display: block;
   position: absolute;
   border-radius: 50%;
-  width: calc(var(--fbx-checkbox-size) * 1.85);
-  height: calc(var(--fbx-checkbox-size) * 1.85);
+  width: calc(var(--fbx-checkbox-size) * 1.8);
+  height: calc(var(--fbx-checkbox-size) * 1.8);
   background-color: var(--fbx-checkbox-color);
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: calc((var(--fbx-checkbox-size) * 1.85 / 2 - var(--fbx-checkbox-size) / 2) * -1);
+  transform: translateY(-50%);
   opacity: 0;
   transition: opacity 0.15s cubic-bezier(0, 0, 0.2, 1);
 }
@@ -6973,7 +6973,7 @@ input.unstyled:focus {
   cursor: pointer;
   position: relative;
   margin: 0;
-  padding: 0 0 0 var(--fbx-checkbox-size);
+  padding: 0 0 0 calc(var(--fbx-checkbox-size) * 1.5);
   white-space: nowrap;
   min-width: var(--fbx-checkbox-size);
   height: var(--fbx-checkbox-size);
@@ -7010,8 +7010,9 @@ input.unstyled:focus {
   text-rendering: auto;
   display: inline-block;
   position: absolute;
+  line-height: inherit;
   font-size: calc(var(--fbx-checkbox-size) * 0.8);
-  left: 2.5px;
+  left: calc(var(--fbx-checkbox-size) / 7);
   top: 50%;
   opacity: 0;
   transform: translateY(-50%) scale(0);
@@ -7052,13 +7053,13 @@ input.unstyled:focus {
   cursor: not-allowed;
 }
 .checkbox.checkbox-sm {
-  --fbx-checkbox-size: 15px;
+  --fbx-checkbox-size: 18px;
 }
 .checkbox.checkbox-md {
-  --fbx-checkbox-size: 19px;
+  --fbx-checkbox-size: 22.8px;
 }
 .checkbox.checkbox-lg {
-  --fbx-checkbox-size: 24px;
+  --fbx-checkbox-size: 28.8px;
 }
 
 .checkbox.checkbox-primary {

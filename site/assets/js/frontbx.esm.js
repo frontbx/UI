@@ -11588,10 +11588,9 @@ Container.singleton('_', _);
     }
 
     /**
-     * Validate the form.
+     * Destroy the validator.
      *
      * @access {public}
-     * @return {boolean}
      */
     FormValidator.prototype.destroy = function()
     {

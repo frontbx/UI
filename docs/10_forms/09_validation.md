@@ -88,13 +88,15 @@ const validator = FrontBx.FormValidator(document.querySelector.$('#myform'));
 The `validate` method will run validation on all inputs based on any validation attributes and return a `Boolean`. Any invalid `.form-field` elements will then be shown as invalid.
 
 ```javascript
-if (validator.validate())
+let valid = validator.validate();
+
+if (valid)
 {
     // do stuff
 }
 ```
 
-Additionally, once `validate` is called on a form, any inputs that fail validation, will get a listener that listens for any changes and live validates the input whenever its value changes.
+Additionally, once `validate` is called on a form, any inputs that fail validation will get a listener that listens for any changes and live validates the input whenever its value changes.
 
 > See the [Input states](../../forms/inputs/index.html#states) documentation for details on input states.
 
@@ -118,6 +120,12 @@ validator.showResult('success');
 
 > See the [Form results](../../forms/results/index.html) documentation for details on form result markup.
 
+
+Finally, the `destroy` method removes any listeners and reverts the form to it's original state.
+
+```javascript
+validator.destroy();
+```
 
 ---
 

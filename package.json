@@ -45,12 +45,12 @@
         "docs-build": "npm-run-all --parallel docs-build-md docs-build-assets-js docs-build-assets-css",
         "docs-build-md": "node build/docs.mjs",
         "docs-build-assets-js": "copyfiles -f dist/js/*.{js,map} site/assets/js",
-        "docs-build-assets-css": "copyfiles -f dist/css/*.{js,map} site/assets/css",
+        "docs-build-assets-css": "copyfiles -f dist/css/*.{css,map} site/assets/css",
         "docs-lint": "html-linter --config ./build/html-linter.json site/**/*.html",
         "docs-serve": "http-server -a localhost -p 8000 -c-1 -o /site/getting-started/introduction/index.html",
         "watch": "npm-run-all --parallel watch-*",
-        "watch-css-main": "nodemon --watch scss/ --ext scss --exec \"npm run css\"",
-        "watch-js-main": "nodemon --watch js/ --ext js --exec \"npm run js\"",
+        "watch-css": "nodemon --watch scss/ --ext scss --exec \"npm run css docs-build-assets-css\"",
+        "watch-js": "nodemon --watch js/ --ext js --exec \"npm run js docs-build-assets-js\"",
         "watch-docs": "nodemon --watch docs/ --ext md --exec \"npm run docs-build\""
     },
     "files": [
