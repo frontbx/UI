@@ -678,6 +678,15 @@ div.code-toolbar>.toolbar>.toolbar-item>button:hover
 {
     --fbx-menu-bg: var(--fbx-body-bg);
 }
+.doc-menu .menu-item
+{
+    padding: 0;
+}
+.doc-menu .menu-item a
+{
+    padding: var(--fbx-menu-item-pad-y) var(--fbx-menu-item-pad-x);    
+}
+
 .doc-menu .menu
 {
     --fbx-menu-item-pad-x: 20px;
@@ -711,7 +720,6 @@ div.code-toolbar>.toolbar>.toolbar-item>button:hover
 {
     font-weight: 500;
 }
-
 .doc-menu .menu-item-title .fa
 {
     transform: rotate(0deg);
@@ -724,6 +732,13 @@ div.code-toolbar>.toolbar>.toolbar-item>button:hover
 .doc-menu 
 {
     --fbx-menu-color: var(--fbx-body-color)
+}
+@media (min-width: 768px)
+{
+    body > .docs-drawer 
+    {
+        display: none !important;
+    }
 }
 
 /* PRE CODE IN TABLE */
