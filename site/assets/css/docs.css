@@ -574,6 +574,11 @@ div.code-toolbar>.toolbar>.toolbar-item>a, div.code-toolbar>.toolbar>.toolbar-it
     cursor: pointer;
     box-shadow: none;
 }
+.code-toolbar + *:not(.code-toolbar):not(hr)
+{
+    margin-top: 1em;
+}
+
 div.code-toolbar>.toolbar>.toolbar-item>button:hover
 {
     color: var(--fbx-theme-primary);

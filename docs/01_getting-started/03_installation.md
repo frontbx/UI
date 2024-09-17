@@ -57,6 +57,30 @@ Alternatively, you can use FrontBx's ready-to-use CSS by simply adding this line
 import 'frontbx/dist/css/frontbx.bundle.min.css';
 ```
 
+##### Icons
+
+FrontBx uses [FontAwesome](https://fontawesome.com/) for icons which are included in `frontbx.bundle.min.css`. However However if you prefer to have them loaded separately or don't need them, you can use `frontbx.min.css` which excludes icons and `frontbx-icons.min.css` which is the standalone icon CSS.
+
+```html
+<link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/css/frontbx.min.css" rel="stylesheet" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/css/frontbx-icons.min.css" rel="stylesheet" crossorigin="anonymous">
+```
+
+Additionally, icons be configured to be loaded locally (hosted on your own server) **OR** externally via a jsdelivr. By default, icons are set to be hosted locally and are stored in the `dist/fonts` directory. If you want to load them externally you can change this configuration in `src/scss/_config.scss` and run `npm run dist` or when running your own webpack build.
+
+```scss
+$local-icons: 'true' !default;
+$icons-url:   '../fonts/' !default;
+```
+
+```scss
+@import "~frontbx/scss/frontbx.bundle";
+
+$local-icons: 'true';
+$icons-url:   '/path-to-fonts/';
+```
+
+
 ---
 
 ### JavaScript

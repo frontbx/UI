@@ -275,13 +275,77 @@
 </ul></div>
         <div class="container-fluid main-container relative js-main-container" id="top">
             <article class="docs-body" id="article-body"><h1 id="sass">Sass</h1>
-<p>Use FrontBx's Sass source files to customize your own build prior to compiling into CSS.</p>
+<p>Learn how FrontBx's Sass is structured when running your own FrontBx build.</p>
+<hr />
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#sass-variables">Sass variables</a></li>
+<li><a href="#css-variables">CSS variables</a></li>
+</ul>
+<hr />
+<h3 id="introduction">Introduction</h3>
 <p>FrontBx's Sass configuration can be found in the <code>scss/_config.scss</code> and <code>scss/_config-dark.scss</code> files - with the latter being configuration for <strong>Dark Mode</strong>.</p>
-<p>The <code>scss/_config.scss</code> houses all the primary Sass variables for everything from setting theme colors to styling individual components. When FrontBx's CSS is compiled, <code>_config.scss</code> is one of the first files imported. From there all CSS <code>:root</code> variables are generated in <code>scss/src/base/_root.scss</code>. For individual components, the Sass variables are assigned to CSS variables which sets the default styling.</p>
-<p>Every Sass variable in FrontBx includes the <code>!default</code> flag allowing you to override the variable’s default value in your own Sass without modifying FrontBx's source code. To setup this up simply, create your own Sass stylesheet with your variables, then import FrontBX and compile:</p>
+<p>The <code>scss/_config.scss</code> file houses all the primary Sass variables for everything from setting theme colors to styling individual components.</p>
+<p>When FrontBx's CSS is compiled, <code>_config.scss</code> is one of the first files imported. From there all CSS <code>:root</code> variables are generated in <code>scss/src/base/_root.scss</code>.</p>
+<p>For individual components, the Sass variables are assigned to CSS variables which sets the default or contextual styling for a given component.</p>
+<p>Here is a very basic example of how that works:</p>
+<pre><code class="file-path language-file-path">src/scss/_config.scss</code></pre>
+<pre><code class="sass language-sass">$body-bg: #1d1d1d !default;</code></pre>
+<pre><code class="file-path language-file-path">scss/src/base/_root.scss</code></pre>
+<pre><code class="sass language-sass">:root
+{
+    --fbx-body-bg: #{$body-bg};
+}</code></pre>
+<pre><code class="file-path language-file-path">scss/src/base/_base.scss</code></pre>
+<pre><code class="sass language-sass">html, body
+{
+    background-color: var(--fbx-body-bg);
+}</code></pre>
+<h4 id="sass-variables">Sass Variables</h4>
+<p>Every Sass variable in FrontBx includes the <code>!default</code> flag allowing you to override the variable's default value in your own Sass without modifying FrontBx's source code. To setup this up simply, create your own Sass stylesheet with your variables, then import Frontbx and compile:</p>
 <pre><code class="sass language-sass">$body-bg: #1d1d1d;
 
-@import "../node_modules/frontbx/scss/frontbx";</code></pre></article>
+@import "../node_modules/frontbx/scss/frontbx";</code></pre>
+<p>In cases where you need access to Sass variables without before Frontbx compiles, you can import Frontbx variables through the <code>scss/src/_variables.scss</code> file:</p>
+<pre><code class="sass language-sass">@import "../node_modules/frontbx/scss/src/variables";
+
+$my-color: $body-bg;</code></pre>
+<hr />
+<h4 id="css-variables">CSS Variables</h4>
+<p>When Sass is compiled into CSS, Frontbx assigns global CSS variables to <code>:root</code>. For individual components, CSS variables are assigned locally to their selector.</p>
+<p>Sometime local CSS variables will reference a global variable. This allows a single global variable on <code>:root</code> to adjust styling across multiple components.</p>
+<pre><code class="css language-css">/* Applied globally to root  */
+:root
+{
+    --fbx-base-font-size: 1.6rem;
+}
+
+/* Applied locally to selector  */
+.text
+{
+    font-size: var(--fbx-base-font-size);
+}</code></pre>
+<p>Other times, local CSS variables on a selector are explicit, and can be changed by either overwritting them - or applying a modifier class which has a variable override.</p>
+<p>This design pattern allows a high level of customization directly from CSS without the need to run your own build process.</p>
+<p>Here is a very simple example of change the background color of a <a href="../../surfaces/paper/index.html">Paper component</a> - one of Frontbx's most basic components.</p>
+<div class="code-content-example paper-example">
+    <style scoped>
+    .custom-paper, .fbx-darkmode .custom-paper
+    {
+        --fbx-paper-bg: #7de3b5;
+        --fbx-paper-radius: 10px;
+    }
+    </style>
+       <div class="flex-row col-gaps-sm row-gaps-sm align-cols-center pole-sm ">
+        <div class="paper paper-rounded raised-1 col col-3 custom-paper"></div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="paper custom-paper"&gt;&lt;/div&gt;</code></pre>
+<pre><code class="css language-css">.custom-paper, .fbx-darkmode .custom-paper
+{
+    --fbx-paper-bg: green;
+    --fbx-paper-radius: 10px;
+}</code></pre></article>
         </div>
         <footer class="site-footer">
             <div class="container-fluid">

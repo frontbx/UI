@@ -340,6 +340,17 @@
 <pre><code class="scss language-scss">@import '~frontbx/scss/variables';</code></pre>
 <p>Alternatively, you can use FrontBx's ready-to-use CSS by simply adding this line to your project's entry point:</p>
 <pre><code class="JavaScript language-JavaScript">import 'frontbx/dist/css/frontbx.bundle.min.css';</code></pre>
+<h5 id="icons">Icons</h5>
+<p>FrontBx uses <a href="https://fontawesome.com/">FontAwesome</a> for icons which are included in <code>frontbx.bundle.min.css</code>. However However if you prefer to have them loaded separately or don't need them, you can use <code>frontbx.min.css</code> which excludes icons and <code>frontbx-icons.min.css</code> which is the standalone icon CSS.</p>
+<pre><code class="html language-html">&lt;link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/css/frontbx.min.css" rel="stylesheet" crossorigin="anonymous"&gt;
+&lt;link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/css/frontbx-icons.min.css" rel="stylesheet" crossorigin="anonymous"&gt;</code></pre>
+<p>Additionally, icons be configured to be loaded locally (hosted on your own server) <strong>OR</strong> externally via a jsdelivr. By default, icons are set to be hosted locally and are stored in the <code>dist/fonts</code> directory. If you want to load them externally you can change this configuration in <code>src/scss/_config.scss</code> and run <code>npm run dist</code> or when running your own webpack build.</p>
+<pre><code class="scss language-scss">$local-icons: 'true' !default;
+$icons-url:   '../fonts/' !default;</code></pre>
+<pre><code class="scss language-scss">@import "~frontbx/scss/frontbx.bundle";
+
+$local-icons: 'true';
+$icons-url:   '/path-to-fonts/';</code></pre>
 <hr />
 <h3 id="javascript">JavaScript</h3>
 <p>Import FrontBx's JavaScript by adding this line to your app’s entry point (usually <code>index.js</code> or <code>app.js</code>):</p>

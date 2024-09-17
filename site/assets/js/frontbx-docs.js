@@ -1057,8 +1057,6 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     	this._appendStyles();
     }
 
-    
-
     frontbx.dom().register('ThemeColor', extend(Component, ThemeColor), true);
 
 }());
@@ -1103,15 +1101,19 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
     ColorPlayground.prototype._setDefaultSwatch = function()
     {
-    	let theme = frontbx.dom().component('ThemeColor').theme();
+    	let theme = frontbx.dom().component('ThemeColor');
+
+    	let color = theme.theme();
 
     	each(this._DOMElements, (i, swatch) =>
     	{
-    		let color = attr(swatch, 'data-swatch');
-
-    		if (color === theme)
+    		if (attr(swatch, 'data-swatch') === color)
     		{
     			add_class(swatch, 'active');
+
+    			this._codeEl.innerText = theme.styles();
+
+    			frontbx.dom().refresh('Highlighter', this._codeWrapper);
 
     			return false;
     		}
