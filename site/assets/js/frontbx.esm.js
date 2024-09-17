@@ -8832,15 +8832,24 @@ Container.singleton('_', _);
         let responseEl      = responseDoc.body;
 
         // Selector
-        if (is_string(options.element))
+        if (options.element && options.element !== 'body' && options.element !== document.body)
         {
-            targetEl = find(options.element);
-        }
-        // DOM Node
-        else if (in_dom(options.element))
-        {
-            // Target is options.element
-            targetEl = options.element;
+            if (is_string(options.element))
+            {
+                targetEl = find(options.element);
+
+                // Try to find the target element in the response
+                let tmpResponseEl = find(options.element, responseDoc);
+
+                if (tmpResponseEl) responseEl = tmpResponseEl;
+
+            }
+            // DOM Node
+            else if (in_dom(options.element))
+            {
+                // Target is options.element
+                targetEl = options.element;
+            }
         }
 
         // Push new state

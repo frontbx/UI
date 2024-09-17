@@ -51,7 +51,7 @@
         "watch": "npm-run-all --parallel watch-*",
         "watch-css": "nodemon --watch scss/ --ext scss --exec \"npm run css docs-build-assets-css\"",
         "watch-js": "nodemon --watch js/ --ext js --exec \"npm run js docs-build-assets-js\"",
-        "watch-docs": "nodemon --watch docs/ --ext md --exec \"npm run docs-build\""
+        "watch-docs": "nodemon --watch docs/ --ext md,html --exec \"npm run docs-build\""
     },
     "files": [
         "dist/{css,js}/*.{css,js,map}",

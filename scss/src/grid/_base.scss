@@ -78,7 +78,7 @@
 }
 .flex-row[class*="flex-cols-"] > *
 {
-    --fbx-col-flex: 1 0 0%;
+    --fbx-col-flex: 1 0 var(--fbx-col-width);
 }
 .flex-row > *[class*="col-"]
 {

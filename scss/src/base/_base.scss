@@ -77,4 +77,28 @@ body.no-scroll
 {
     --fbx-icon-size: 16px;
     font-size: var(--fbx-icon-size);
-} 
+}
+.icon-xs
+{
+    --fbx-icon-size: 10px;
+}
+.icon-sm
+{
+    --fbx-icon-size: 14px;
+}
+.icon-md
+{
+    --fbx-icon-size: 18px;
+}
+.icon-lg
+{
+    --fbx-icon-size: 24px;
+}
+.icon-xl
+{
+    --fbx-icon-size: 28px;
+}
+.icon-xxl
+{
+    --fbx-icon-size: 38px;
+}

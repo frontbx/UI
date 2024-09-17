@@ -1054,159 +1054,41 @@ table .big-code code
 /* Site footer */
 .site-footer
 {
-    background-color: #312f38;
-    color: #fff;
-}
-.site-footer .sitemap
-{
-    display: inline-block;
-    width: 100%;
-}
-.site-footer .sitemap li
-{
-    margin: 20px 0;
-    display: block;
-    text-align: center;
-}
-.site-footer .sitemap li a
-{
-    color: #fff;
-    position: relative;
-    transition: 0.2s ease;
-}
-.site-footer .sitemap li a:after
-{
-    content: "";
-    bottom: -8px;
-    height: 1px;
-    width: 0;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    position: absolute;
-    background-color: #f36;
-    transition: 0.2s ease;
-}
-.site-footer .sitemap li a:hover
-{
-    text-decoration: none;
-    color: #f36;
-}
-.site-footer .sitemap li a:hover:after
-{
-    width: 100%;
+    background-color: var(--fbx-black-900);
+    color: var(--fbx-gray-200);
+    padding: 60px 0;
 }
 .site-footer .logo
 {
-    height: 48px;
-    width: 100%;
-    margin-bottom: 20px;
-}
-.site-footer small
-{
-    text-align: center;
-    display: block;
-}
-.site-footer .social-links
-{
-    text-align: center;
-    padding: 50px 0;
-}
-.social-share
-{
-    display: inline-block;
-    height: 60px;
-    width: 60px;
-    font-size: 22px;
-    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
-    color: #fff;
-    border-radius: 2px;
-    transition: 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.3rem;
+}
+.site-footer .logo svg
+{
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    margin-right: 10px;
+    fill: var(--fbx-theme-primary);
+}
+.site-footer
+{
     text-align: center;
 }
-.social-share .icon
+@media (min-width: 768px)
 {
-    margin-top: 18px;
-    color: #fff;
-}
-.social-share .icon:hover
-{
-    color: #fff;
-}
-.social-share.facebook
-{
-    background-color: #3b5898;
-}
-.social-share.facebook:hover
-{
-    background-color: #31497e;
-}
-.social-share.twitter
-{
-    background-color: #1ab4ef;
-}
-.social-share.twitter:hover
-{
-    background-color: #179dd1;
-}
-.social-share.google
-{
-    background-color: #dc4a38;
-}
-.social-share.google:hover
-{
-    background-color: #bb3f2f;
-}
-.social-share.github
-{
-    background-color: #6e2a80;
-}
-.social-share.github:hover
-{
-    background-color: #5e246d;
-}
-.social-share.to-top
-{
-    background-color: #f36;
-}
-.social-share.to-top:hover
-{
-    background-color: #ff1a53;
-}
-@media (min-width: 576px)
-{
-    
     .site-footer
     {
-        padding: 60px 0;
-    }
-    .site-footer .sitemap li
-    {
-        padding-right: 20px;
-        margin: 5px 0;
-        display: inline-block;
-        text-align: left;
-    }
-    .site-footer .logo
-    {
-        width: 48px;
-        height: 48px;
-        margin-right: 20px;
-    }
-    .site-footer .social-links
-    {
-        text-align: right;
-        padding: 62px 0;
-    }
-    .site-footer .logo-link,
-    .site-footer small
-    {
-        display: inline-block;
-        float: left;
-        text-align: left;
+        text-align: unset;
     }
 }
+
+
 iframe
 {
     border: none;

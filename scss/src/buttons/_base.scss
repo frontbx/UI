@@ -89,7 +89,6 @@
     // Icon
     .fa, .fa-brands
     {
-        --fbx-icon-size: var(--fbx-btn-icon-size);
         display: inline; 
         color: var(--fbx-btn-icon-color);
         transition: color var(--fbx-ease-time-sm) $base-easing;
@@ -103,6 +102,11 @@
             font-size: 0px;
             word-spacing: 7px;
         }
+    }
+    .fa:not([class*="icon-"]),
+    .fa-brands:not([class*="icon-"])
+    {
+        --fbx-icon-size: var(--fbx-btn-icon-size);
     }
 
     // Caret

@@ -710,6 +710,30 @@ body.no-scroll {
   font-size: var(--fbx-icon-size);
 }
 
+.icon-xs {
+  --fbx-icon-size: 10px;
+}
+
+.icon-sm {
+  --fbx-icon-size: 14px;
+}
+
+.icon-md {
+  --fbx-icon-size: 18px;
+}
+
+.icon-lg {
+  --fbx-icon-size: 24px;
+}
+
+.icon-xl {
+  --fbx-icon-size: 28px;
+}
+
+.icon-xxl {
+  --fbx-icon-size: 38px;
+}
+
 /* ----------------------------------- CONTENT ------------------------------------- */
 /* --------------------------------------------------------------------------------- */
 /* content/typography */
@@ -1572,7 +1596,7 @@ blockquote[class*=bq-] pre {
 }
 
 .flex-row[class*=flex-cols-] > * {
-  --fbx-col-flex: 1 0 0%;
+  --fbx-col-flex: 1 0 var(--fbx-col-width);
 }
 
 .flex-row > *[class*=col-] {
@@ -5092,6 +5116,32 @@ blockquote[class*=bq-] pre {
   font-size: 140%;
 }
 
+/* inline-elements/fancylink */
+.fancy-link {
+  --fbx-link-color: var(--fbx-theme-primary);
+  position: relative;
+  transition: 0.2s ease;
+}
+.fancy-link:after {
+  content: "";
+  bottom: -8px;
+  height: 1px;
+  width: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  position: absolute;
+  background-color: var(--fbx-link-color);
+  transition: 0.2s ease;
+}
+.fancy-link:hover {
+  text-decoration: none;
+  color: var(--fbx-link-color);
+}
+.fancy-link:hover:after {
+  width: 100%;
+}
+
 /* inline-elements/badge */
 .badge {
   --fbx-badge-size: 7px;
@@ -5543,7 +5593,6 @@ blockquote[class*=bq-] pre {
   display: var(--fbx-btn-block);
 }
 .btn .fa, .btn .fa-brands {
-  --fbx-icon-size: var(--fbx-btn-icon-size);
   display: inline;
   color: var(--fbx-btn-icon-color);
   transition: color var(--fbx-ease-time-sm) cubic-bezier(0, 0, 0.2, 1);
@@ -5557,6 +5606,10 @@ blockquote[class*=bq-] pre {
   content: " ";
   font-size: 0px;
   word-spacing: 7px;
+}
+.btn .fa:not([class*=icon-]),
+.btn .fa-brands:not([class*=icon-]) {
+  --fbx-icon-size: var(--fbx-btn-icon-size);
 }
 .btn .caret-n,
 .btn .caret-s {
@@ -8933,6 +8986,10 @@ form.success .msg-success {
 }
 
 /* helpers/flex */
+.flex {
+  display: flex;
+}
+
 .align-self-start {
   align-self: flex-start;
 }

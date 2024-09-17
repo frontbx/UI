@@ -1,5 +1,7 @@
 .fancy-link
 {
+	--fbx-link-color: var(--fbx-theme-primary);
+
 	position: relative;
 	transition: .2s ease;
 	&:after
@@ -12,13 +14,13 @@
 		right: 0;
 		margin: 0 auto;
 		position: absolute;
-		background-color: $theme-primary;
+		background-color: var(--fbx-link-color);
 		transition: .2s ease;
 	}
 	&:hover
 	{
 		text-decoration: none;
-		color: $theme-primary;
+		color: var(--fbx-link-color);
 		&:after
 		{
 			width: 100%;

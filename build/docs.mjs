@@ -366,7 +366,7 @@ DocsBuilder.prototype._genHTMLDocsMenu = function(menu, currFile, dir, tabIndex)
                 let slug   = `${dir}/${name}/index.html`;
                 let back   = this._relativeLinkBack(slug, currFile.toLowerCase().split(DOCS_DEST_DIR.toLowerCase()).pop());
 
-                HTML += `${LB_CHRAR}${TAB_CHAR.repeat(tabIndex)}<li class="menu-item ${active}"><a href="${back}${slug}" class="js-pjax-link">${item}</a></li>`;
+                HTML += `${LB_CHRAR}${TAB_CHAR.repeat(tabIndex)}<li class="menu-item ${active}"><a data-pjax-target="#article-body"  href="${back}${slug}" class="js-pjax-link">${item}</a></li>`;
             }
         }
         else
