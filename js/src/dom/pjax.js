@@ -63,7 +63,7 @@
         let once      = attr(clicked, 'data-pjax-once') || false;
         let element   = attr(clicked, 'data-pjax-target');
         let cacheBust = bool(attr(clicked, 'data-pjax-nocache'));
-        let pushstate = !element ? true : false;
+        let pushstate = !element || attr(clicked, 'data-pjax-pushstate') ? true : false;
         let urlhash   = !element ? false : bool(attr(clicked, 'data-pjax-urlhash'));
 
         // Only request once
