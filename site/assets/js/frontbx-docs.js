@@ -88,7 +88,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 	    	
 	    	add_class(li, 'active');
 
-	    	//frontbx.get('docs-drawer').close();
+	    	frontbx.get('docs-drawer').close();
 	    }
 	});
 
@@ -100,7 +100,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-	const [find, toggle_class, remove_class, attr, width, on, off, trigger_event, extend] = frontbx.import(['find','toggle_class','remove_class','attr','width', 'on', 'off', 'trigger_event', 'extend']).from('_');
+	const [find, toggle_class, remove_class, attr, width, on, off, trigger_event, animate, extend] = frontbx.import(['find','toggle_class','remove_class','attr','width', 'on', 'off', 'trigger_event','animate','extend']).from('_');
 
 	const [Component] = frontbx.get('Component');
 	const menu = find('#docs-menu');
@@ -118,7 +118,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 		
 		attr(menu, 'style', false);
 
-		//frontbx.singleton('docs-drawer', drawer);
+		frontbx.set('docs-drawer', drawer);
 	}
 
     const DocDrawer = function()
@@ -134,8 +134,17 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
     	on(window, 'resize', this.resize(), this);
 
+    	on(window, 'frontbx:pjax:success', () => 
+
+    		animate(window, { property : 'scrollTo', to: '0, 0', duration: 300})
+
+    	);
+
     	trigger_event(window, 'resize');
     }
+
+
+    
 
     DocDrawer.prototype._toggleDrawer = function(e, trigger)
     {

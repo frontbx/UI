@@ -8757,7 +8757,7 @@ Container.singleton('_', _);
         let data = options.cacheBust ? { t: Date.now().toString() } : {};
         
         // Fire the start event
-        trigger_event(window, 'frontbx:Pjax:start', { options });
+        trigger_event(window, 'frontbx:pjax:start', { options });
 
         // Set response handlers
         this._setResponseHandlers('GET', options.url, data, success, error, complete, abort, headers);
@@ -8783,13 +8783,13 @@ Container.singleton('_', _);
         })
         .error((response) =>
         {
-            trigger_event(window, 'frontbx:Pjax:error', { options });
+            trigger_event(window, 'frontbx:pjax:error', { options });
 
             if (_error) this._makeCallback(_error, this._xhr, [response]);
         })
         .abort((response) =>
         {
-            trigger_event(window, 'frontbx:Pjax:abort', { options });
+            trigger_event(window, 'frontbx:pjax:abort', { options });
 
             if (_abort) this._makeCallback(_abort, this._xhr, [response, false]);
         })
@@ -8879,7 +8879,7 @@ Container.singleton('_', _);
         {
             frontbx.dom().refresh(targetEl === document.body ? document : targetEl);
 
-            trigger_event(window, 'frontbx:Pjax:success', {options});
+            trigger_event(window, 'frontbx:pjax:success', {options});
         });
 
         if (!options.keepScroll || targetEl === document.body) window.scrollTo(0, 0);
