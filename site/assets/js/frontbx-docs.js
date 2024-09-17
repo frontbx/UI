@@ -980,8 +980,6 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
 	const ThemeColor = function()
     {
-    	localStorage.setItem('fbx-docs-color-theme', 'var(--fbx-color-beetroot)');
-
     	this._theme = localStorage.getItem('fbx-docs-color-theme') || 'var(--fbx-color-beetroot)';
 
     	this._stylesheet;
