@@ -20,7 +20,7 @@
         "url": "https://github.com/frontbx/ui/issues"
     },
     "main": "dist/js/frontbx.bundle.js",
-    "module": "dist/js/bootstrap.esm.js",
+    "module": "dist/js/frontbx.esm.js",
     "sass": "scss/frontbx.bundle.scss",
     "style": "dist/css/frontbx.bundle.css",
     "scripts": {
