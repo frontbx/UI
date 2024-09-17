@@ -1287,3 +1287,7 @@ iframe
 {
     --fbx-menu-bg: var(--fbx-body-bg);
 }
+.fbx-darkmode #nprogress
+{
+    --fbx-nprogress-color: var(--fbx-black);
+}
