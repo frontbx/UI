@@ -38,8 +38,8 @@
      * 
      */
     PjaxLinks.prototype.bind = function(node)
-    {
-        on(node, 'click', this._eventHandler, this);
+    {        
+        on(node, 'click', this._requestHandler, this);
     }
 
     /**
@@ -48,7 +48,7 @@
      */
     PjaxLinks.prototype.unbind = function(node)
     {
-        off(node, 'click', this._eventHandler, this);
+        off(node, 'click', this._requestHandler, this);
     }
 
     /**
@@ -57,7 +57,7 @@
      * @param {event|null} e JavaScript click event
      * @access {private}
      */
-    PjaxLinks.prototype._eventHandler = function(e, clicked)
+    PjaxLinks.prototype._requestHandler = function(e, clicked)
     {
         let url       = clicked.href || attr(clicked, 'data-pjax-target');
         let once      = attr(clicked, 'data-pjax-once') || false;

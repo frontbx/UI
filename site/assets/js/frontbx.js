@@ -7221,7 +7221,7 @@ Container.singleton('_', _);
 })();
 (function()
 {
-    const [find_all, each, closest, is_empty] = frontbx.import(['find_all','each','closest','is_empty']).from('_');
+    const [find_all, each, map, closest, is_empty, array_unique] = frontbx.import(['find_all','each','map','closest','is_empty','array_unique']).from('_');
 
     /**
      * Component base class
@@ -7268,10 +7268,11 @@ Container.singleton('_', _);
     {
         if (is_empty(this._selector)) return;
 
-        let nodes = find_all(this._selector, context, context !== document);
+        let nodes = map(find_all(this._selector, context, context !== document), (i, node) => !this._DOMElements.includes(node) ? node : false);
 
         if (!is_empty(nodes))
         {
+
             this._DOMElements = [...this._DOMElements, ...nodes];
 
             each(nodes, (i, node) => this.bind(node), this);
@@ -8781,9 +8782,9 @@ Container.singleton('_', _);
         })
         .abort((response) =>
         {
-            rigger_event(window, 'frontbx:Pjax:abort', { options });
+            trigger_event(window, 'frontbx:Pjax:abort', { options });
 
-            if (_abort) this._makeCallback(_abort, this, [response, false]);
+            if (_abort) this._makeCallback(_abort, this._xhr, [response, false]);
         })
         .complete((response, successfull) =>
         {
@@ -14778,8 +14779,8 @@ Container.singleton('_', _);
      * 
      */
     PjaxLinks.prototype.bind = function(node)
-    {
-        on(node, 'click', this._eventHandler, this);
+    {        
+        on(node, 'click', this._requestHandler, this);
     }
 
     /**
@@ -14788,7 +14789,7 @@ Container.singleton('_', _);
      */
     PjaxLinks.prototype.unbind = function(node)
     {
-        off(node, 'click', this._eventHandler, this);
+        off(node, 'click', this._requestHandler, this);
     }
 
     /**
@@ -14797,7 +14798,7 @@ Container.singleton('_', _);
      * @param {event|null} e JavaScript click event
      * @access {private}
      */
-    PjaxLinks.prototype._eventHandler = function(e, clicked)
+    PjaxLinks.prototype._requestHandler = function(e, clicked)
     {
         let url       = clicked.href || attr(clicked, 'data-pjax-target');
         let once      = attr(clicked, 'data-pjax-once') || false;

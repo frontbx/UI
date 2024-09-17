@@ -14,124 +14,6 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 !function(){if("undefined"!=typeof Prism&&"undefined"!=typeof document){var e=[],t={},n=function(){};Prism.plugins.toolbar={};var a=Prism.plugins.toolbar.registerButton=function(n,a){var r;r="function"==typeof a?a:function(e){var t;return"function"==typeof a.onClick?((t=document.createElement("button")).type="button",t.addEventListener("click",(function(){a.onClick.call(this,e)}))):"string"==typeof a.url?(t=document.createElement("a")).href=a.url:t=document.createElement("span"),a.className&&t.classList.add(a.className),t.textContent=a.text,t},n in t?console.warn('There is a button with the key "'+n+'" registered already.'):e.push(t[n]=r)},r=Prism.plugins.toolbar.hook=function(a){var r=a.element.parentNode;if(r&&/pre/i.test(r.nodeName)&&!r.parentNode.classList.contains("code-toolbar")){var o=document.createElement("div");o.classList.add("code-toolbar"),r.parentNode.insertBefore(o,r),o.appendChild(r);var i=document.createElement("div");i.classList.add("toolbar");var l=e,d=function(e){for(;e;){var t=e.getAttribute("data-toolbar-order");if(null!=t)return(t=t.trim()).length?t.split(/\s*,\s*/g):[];e=e.parentElement}}(a.element);d&&(l=d.map((function(e){return t[e]||n}))),l.forEach((function(e){var t=e(a);if(t){var n=document.createElement("div");n.classList.add("toolbar-item"),n.appendChild(t),i.appendChild(n)}})),o.appendChild(i)}};a("label",(function(e){var t=e.element.parentNode;if(t&&/pre/i.test(t.nodeName)&&t.hasAttribute("data-label")){var n,a,r=t.getAttribute("data-label");try{a=document.querySelector("template#"+r)}catch(e){}return a?n=a.content:(t.hasAttribute("data-url")?(n=document.createElement("a")).href=t.getAttribute("data-url"):n=document.createElement("span"),n.textContent=r),n}})),Prism.hooks.add("complete",r)}}();
 !function(){function t(t){var e=document.createElement("textarea");e.value=t.getText(),e.style.top="0",e.style.left="0",e.style.position="fixed",document.body.appendChild(e),e.focus(),e.select();try{var o=document.execCommand("copy");setTimeout((function(){o?t.success():t.error()}),1)}catch(e){setTimeout((function(){t.error(e)}),1)}document.body.removeChild(e)}"undefined"!=typeof Prism&&"undefined"!=typeof document&&(Prism.plugins.toolbar?Prism.plugins.toolbar.registerButton("copy-to-clipboard",(function(e){var o=e.element,n=function(t){var e={copy:"Copy","copy-error":"Press Ctrl+C to copy","copy-success":"Copied!","copy-timeout":5e3};for(var o in e){for(var n="data-prismjs-"+o,c=t;c&&!c.hasAttribute(n);)c=c.parentElement;c&&(e[o]=c.getAttribute(n))}return e}(o),c=document.createElement("button");c.className="copy-to-clipboard-button",c.setAttribute("type","button");var r=document.createElement("span");return c.appendChild(r),u("copy"),function(e,o){e.addEventListener("click",(function(){!function(e){navigator.clipboard?navigator.clipboard.writeText(e.getText()).then(e.success,(function(){t(e)})):t(e)}(o)}))}(c,{getText:function(){return o.textContent},success:function(){u("copy-success"),i()},error:function(){u("copy-error"),setTimeout((function(){!function(t){window.getSelection().selectAllChildren(t)}(o)}),1),i()}}),c;function i(){setTimeout((function(){u("copy")}),n["copy-timeout"])}function u(t){r.textContent=n[t],c.setAttribute("data-copy-state",t)}})):console.warn("Copy to Clipboard plugin loaded before Toolbar plugin."))}();
 
-
-/**
- * Highlight code manually so it's registered to frontbx's DOM
- *
- */
-(function()
-{
-    const [Component] = frontbx.get('Component');
-    const [add_class, find, closest, attr, extend] = frontbx.import(['add_class', 'find', 'closest', 'attr', 'extend']).from('_');
-
-    const Highlighter = function()
-    {        
-        this.super('pre > code[class*=language-]');
-    }
-
-    Highlighter.prototype.bind = function(block)
-    {
-        Prism.highlightElement(block);
-
-        let copyBtn = find('.toolbar .copy-to-clipboard-button', closest(block, 'div'));
-
-        if (copyBtn)
-        {
-        	add_class(copyBtn, 'tooltipped, tooltipped-ne');
-
-        	attr(copyBtn, 'data-tooltip', 'Copy to clipboard');
-        }
-
-        let div = closest(block, 'div');
-
-        add_class(div, block.className.replaceAll(' ', ','));
-    }
-
-    Highlighter.prototype.unbind = function(block)
-    {
-    	let code = block.innerText;
-
-        block.innerHTML = ''; 
-
-        block.innerHTML = code;
-
-        let toolbar = closest(block, '.code-toolbar');
-
-        toolbar.parentNode.replaceChild(block.parentNode, toolbar);
-    }
-
-    frontbx.dom().register('Highlighter', extend(Component, Highlighter), true);
-
-}());
-
-/**
- * Responsive drawer.
- *
- */
-(function()
-{
-	const [Component]   = frontbx.get('Component');
-	const [find, width, on, off, trigger_event, extend] = frontbx.import(['find', 'width', 'on', 'off', 'trigger_event', 'extend']).from('_');
-	
-    var WINDOW_LISTENING = false;
-
-    const DocDrawer = function()
-    {
-        this.super('.docs-drawer');
-    }
-
-    DocDrawer.prototype.resize = function()
-    {
-    	return throttle(() =>
-    	{
-    		let x = width(window);
-
-	        if (x < 768 && this.inMain)
-	        {
-	            this.container.appendChild(this.drawer);
-
-	            this.inMain = false;
-	        }
-	        else if (x > 768 && !this.inMain)
-	        {
-	        	this.main.appendChild(this.drawer);
-
-	          	this.inMain = true;
-	        }
-
-    	}, 100);
-    }
-
-    DocDrawer.prototype.bind = function(node)
-    {
-       	if (!WINDOW_LISTENING)
-        {        	
-        	this.container = find('.docs-drawer');
-	    	this.drawer    = find('.docs-drawer .js-drawer-wrap');
-	    	this.main      = find('.main-container');
-	    	this.inMain    = false;
-
-        	on(window, 'resize', this.resize(), this);
-
-        	WINDOW_LISTENING = true;
-
-        	trigger_event(window, 'resize');
-        }
-    }
-
-    DocDrawer.prototype.unbind = function(node)
-    {
-    	if (WINDOW_LISTENING)
-        {
-        	off(window, 'resize', this.resize(), this);
-
-        	WINDOW_LISTENING = false;	
-        }
-    }
-
-    frontbx.dom().register('DocDrawer', extend(Component, DocDrawer), true);
-}());
-
 /**
  * DEMOS
  *
@@ -185,6 +67,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
 })();
 
+
 /**
  * Active classes on docs menu.
  *
@@ -192,7 +75,6 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 (function()
 {
 	const [find, add_class, remove_class, has_class] = frontbx.import(['find', 'add_class', 'remove_class', 'has_class']).from('_');
-
 
 	frontbx.DocsDemo('.js-docs-menu-link', (e, a) =>
 	{
@@ -205,10 +87,148 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 	    	if (curr) remove_class(curr.parentNode, 'active');
 	    	
 	    	add_class(li, 'active');
+
+	    	//frontbx.get('docs-drawer').close();
 	    }
 	});
 
 }());
+
+/**
+ * Docs Drawer
+ *
+ */
+(function()
+{
+	const [find, toggle_class, remove_class, attr, width, on, off, trigger_event, extend] = frontbx.import(['find','toggle_class','remove_class','attr','width', 'on', 'off', 'trigger_event', 'extend']).from('_');
+
+	const [Component] = frontbx.get('Component');
+	const menu = find('#docs-menu');
+	var drawer;
+
+	if (menu)
+	{
+		drawer = frontbx.Drawer({
+		    content : menu,
+		    state: 'collapsed,',
+		    swipeable : false,
+		    classes: 'docs-drawer',
+		    callbackClose: () => remove_class(find('.js-docs-drawer-trigger'), 'active')
+		});
+		
+		attr(menu, 'style', false);
+
+		//frontbx.singleton('docs-drawer', drawer);
+	}
+
+    const DocDrawer = function()
+    {
+    	this.main = find('.main-container');
+
+        this.super('.js-docs-drawer-trigger');
+    }
+
+    DocDrawer.prototype.bind = function(trigger)
+    {    	
+    	on(trigger, 'click', this._toggleDrawer, this);
+
+    	on(window, 'resize', this.resize(), this);
+
+    	trigger_event(window, 'resize');
+    }
+
+    DocDrawer.prototype._toggleDrawer = function(e, trigger)
+    {
+    	toggle_class(trigger, 'active');
+
+    	drawer.opened() ? drawer.close() : drawer.open();
+    }
+
+    DocDrawer.prototype.unbind = function(trigger)
+    {
+    	off(trigger, 'click', this._toggleDrawer, this);
+
+    	off(window, 'resize', this.resize(), this);
+    }
+
+    DocDrawer.prototype.resize = function()
+    {
+    	return throttle(() =>
+    	{
+    		let x = width(window);
+
+	        if (x < 768 && this.inMain)
+	        {
+	            drawer._containerWrap.appendChild(drawer._drawer);
+
+	            this.inMain = false;
+	        }
+	        else if (x > 768 && !this.inMain)
+	        {
+	        	this.main.appendChild(drawer._drawer);
+
+	        	this.inMain = true;
+	        }
+
+    	}, 100);
+    }
+
+    frontbx.dom().register('DocDrawer', extend(Component, DocDrawer), true);
+
+}());
+
+/**
+ * Highlight code manually so it's registered to frontbx's DOM
+ *
+ */
+(function()
+{
+    const [Component] = frontbx.get('Component');
+    const [add_class, find, closest, attr, extend] = frontbx.import(['add_class', 'find', 'closest', 'attr', 'extend']).from('_');
+
+    const Highlighter = function()
+    {        
+        this.super('pre > code[class*=language-]');
+    }
+
+    Highlighter.prototype.bind = function(block)
+    {
+        Prism.highlightElement(block);
+
+        let copyBtn = find('.toolbar .copy-to-clipboard-button', closest(block, 'div'));
+
+        if (copyBtn)
+        {
+        	add_class(copyBtn, 'tooltipped, tooltipped-ne');
+
+        	attr(copyBtn, 'data-tooltip', 'Copy to clipboard');
+        }
+
+        let div = closest(block, 'div');
+
+        add_class(div, block.className.replaceAll(' ', ','));
+    }
+
+    Highlighter.prototype.unbind = function(block)
+    {
+    	let code = block.innerText;
+
+        block.innerHTML = ''; 
+
+        block.innerHTML = code;
+
+        let toolbar = closest(block, '.code-toolbar');
+
+        toolbar.parentNode.replaceChild(block.parentNode, toolbar);
+    }
+
+    frontbx.dom().register('Highlighter', extend(Component, Highlighter), true);
+
+}());
+
+
+
+
 
 
 /**

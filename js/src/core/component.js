@@ -1,6 +1,6 @@
 (function()
 {
-    const [find_all, each, closest, is_empty] = frontbx.import(['find_all','each','closest','is_empty']).from('_');
+    const [find_all, each, map, closest, is_empty, array_unique] = frontbx.import(['find_all','each','map','closest','is_empty','array_unique']).from('_');
 
     /**
      * Component base class
@@ -47,10 +47,11 @@
     {
         if (is_empty(this._selector)) return;
 
-        let nodes = find_all(this._selector, context, context !== document);
+        let nodes = map(find_all(this._selector, context, context !== document), (i, node) => !this._DOMElements.includes(node) ? node : false);
 
         if (!is_empty(nodes))
         {
+
             this._DOMElements = [...this._DOMElements, ...nodes];
 
             each(nodes, (i, node) => this.bind(node), this);

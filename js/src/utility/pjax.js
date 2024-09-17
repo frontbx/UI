@@ -103,9 +103,9 @@
         })
         .abort((response) =>
         {
-            rigger_event(window, 'frontbx:Pjax:abort', { options });
+            trigger_event(window, 'frontbx:Pjax:abort', { options });
 
-            if (_abort) this._makeCallback(_abort, this, [response, false]);
+            if (_abort) this._makeCallback(_abort, this._xhr, [response, false]);
         })
         .complete((response, successfull) =>
         {
