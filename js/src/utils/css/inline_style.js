@@ -12,14 +12,23 @@ _.prototype.inline_style = function(element, prop)
 
     prop = this.css_prop_to_hyphen_case(prop);
 
-    if (prop.startsWith('--'))
-    {
-        return window.getComputedStyle(element).getPropertyValue(prop);
-    }
-    else if (!this.is_undefined(elementStyle[prop]))
+    // Native
+    if (!this.is_undefined(elementStyle[prop]) && elementStyle[prop] !== '')
     {
         const val = elementStyle.getPropertyValue(elementStyle[prop]) || elementStyle[prop];
         
         return val === '' ? undefined : val;
+    }
+
+    let styles = element.getAttribute('style');
+
+    if (styles && styles.includes(prop))
+    {
+        let style = styles.match(new RegExp(`${prop}\s?:[^;]+;?`));
+
+        if (style)
+        {
+            return this.rtrim(style[0].split(':').pop().trim(), ';').trim();
+        }
     }
 }
