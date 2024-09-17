@@ -4509,7 +4509,7 @@ blockquote[class*=bq-] pre {
   padding: 0;
   transition: color 0.25s ease;
 }
-.nav-menu > * > a, .nav-menu > * button:not(.btn) {
+.nav-menu > * > a:not(.btn), .nav-menu > * button:not(.btn) {
   padding: var(--fbx-nav-link-padding-y) var(--fbx-nav-link-padding-x);
   margin: 0;
   display: block;
@@ -4537,12 +4537,12 @@ blockquote[class*=bq-] pre {
 .nav-menu > * .fa {
   --fbx-icon-size: var(--fbx-nav-link-icon-size);
 }
-.nav-menu > * a {
+.nav-menu > * a:not(.btn) {
   color: inherit;
   display: block;
   text-decoration: none;
 }
-.nav-menu > * a:hover {
+.nav-menu > * a:not(.btn):hover {
   text-decoration: none;
 }
 .nav-menu > * > .fa-brands,

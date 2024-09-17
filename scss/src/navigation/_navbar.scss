@@ -126,7 +126,7 @@
 		padding: 0;
 		transition: color .25s ease;
 
-		> a, button:not(.btn)
+		> a:not(.btn), button:not(.btn)
 		{
 			padding: var(--fbx-nav-link-padding-y) var(--fbx-nav-link-padding-x);
 			margin: 0;
@@ -162,7 +162,7 @@
 		{
 		    --fbx-icon-size: var(--fbx-nav-link-icon-size);
 		}
-		a
+		a:not(.btn)
 		{
 			color: inherit;
 			display: block;

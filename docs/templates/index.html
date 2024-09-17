@@ -16,108 +16,28 @@
         </svg>
         <nav class="navbar navbar-fixed raised-1 bg-black">
             <div class="container-fluid">
-                <button class="hamburger xs sm js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-state="collapsed" data-content="#docs-menu" data-classes="docs-drawer">
-                    <span class="hamburger-bun  hamburger-bun--top"></span>
-                    <span class="hamburger-patty"></span>
-                    <span class="hamburger-bun  hamburger-bun--btm"></span>
-                </button>
                 <a class="nav-logo" href="/">
                     <svg viewBox="0 0 1451 1451"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg>
                     <span class="logo-text md-inline-block lg-inline-block xl-inline-block">FrontBx</span>
                 </a>
 
                 <ul class="nav-menu flex-content-right">
-                    <li class="md lg xl">
+                    <li>
+                        <a href="getting-started/introduction/" class="btn btn-pure btn-white">Documentation</a>
+                    </li>
+                    <li>
+                        <a href="getting-started/download/" class="btn btn-pure btn-white">Download</a>
+                    </li>
+                    <li>
                         <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Github">
                             <span class="fa-brands fa-github"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
-                        <a href="../../getting-started/download/index.html" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Download">
-                            <span class="fa fa-download"></span>
-                        </a>
-                    </li>
-                    <li class="md lg xl">
-                        <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
-                            <span class="fa fa-fill-drip"></span>
-                        </a>
-                    </li>
-                    
-                    <li class="md lg xl">
-                        <span class="drop-container">
-                            <button class="btn-unstyled btn-dropdown js-drop-trigger tooltipped tooltipped-s" role="button" type="button" title="toggle theme" data-tooltip="Theme mode">
-                                <span class="fa fa-cloud-sun"></span>
-                                <span class="caret-s"></span>
-                            </button>
-                            <div class="drop-menu drop-se js-drop-menu">
-                                <ul class="menu js-select-menu js-docs-theme-menu"> 
-                                    <li data-theme="light">
-                                        <span class="item-left"><span class="fa fa-sun"></span></span>
-                                        <span class="item-body">Light</span>
-                                    </li>
-                                    <li data-theme="dark">
-                                        <span class="item-left"><span class="fa fa-cloud-moon"></span></span>
-                                        <span class="item-body">Dark</span>
-                                    </li>
-                                    <li data-theme="auto">
-                                        <span class="item-left"><span class="fa fa-circle-half-stroke"></span></span>
-                                        <span class="item-body">Auto</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </span>
-                    </li>
-                    <li class="xs sm">
-                        <button class="btn-unstyled js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-direction="right" data-state="collapsed" data-content="#desktop-options-drawer">
-                            <span class="fa fa-ellipsis-vertical"></span>
-                        </button>
-                    </li>
                 </ul>
             </div>
         </nav>
-        <div id="desktop-options-drawer">
-            <ul class="menu">
-                <li class="menu-header">Explore</li>
-                <li>
-                    <a href="https://github.com/frontbx/ui" target="_blank">
-                        <span class="item-left"><span class="fa-brands fa-github"></span></span>
-                        <span class="item-body">Github</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="../../getting-started/download/index.html">
-                        <span class="item-left"><span class="fa fa-download"></span></span>
-                        <span class="item-body">Download</span>
-                    </a>
-                </li>
-            </ul>
-            <ul class="menu">
-                <li class="menu-header">Colors</li>
-                <li>
-                    <a href="../../customize/colors/index.html#playground">
-                        <span class="item-left"><span class="fa fa-fill-drip"></span></span>
-                        <span class="item-body">Edit Documentation colors</span>
-                    </a>
-                </li>
-            </ul>
-            <ul class="menu js-select-menu js-docs-theme-menu">
-                <li class="menu-header">Mode</li>
-                <li data-theme="light">
-                    <span class="item-left"><span class="fa fa-sun"></span></span>
-                    <span class="item-body">Light</span>
-                </li>
-                <li data-theme="dark">
-                    <span class="item-left"><span class="fa fa-cloud-moon"></span></span>
-                    <span class="item-body">Dark</span>
-                </li>
-                <li data-theme="auto">
-                    <span class="item-left"><span class="fa fa-circle-half-stroke"></span></span>
-                    <span class="item-body">Auto</span>
-                </li>
-            </ul>
-        </div>
-        <div class="container-fluid main-container relative js-main-container">
-            
+        <div class="container-fluid main-container relative js-main-container" id="top">
+           <h1>FrontBx UI</h1>
         </div>
         <footer class="site-footer">
             <div class="container-fluid">
@@ -159,7 +79,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/ui/customize/colors/index.html#playground" class="btn btn-success">
+                                    <a href="../../customize/colors/index.html#playground" class="btn btn-success">
                                         <span class="fa fa-fill-drip icon-sm"></span>
                                     </a>
                                 </li>
