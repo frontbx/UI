@@ -2616,7 +2616,24 @@ _.prototype.in_array = function(needle, haystack, strict)
 {
     strict = this.is_undefined(strict) ? false : strict;
     
-    if (!strict) return haystack.includes(needle);
+    if (!strict) 
+    {
+        if (this.is_object(haystack))
+        {
+            let ret = false;
+
+            this.each(haystack, (k, v) =>
+            {
+                ret = v === needle;
+
+                if (ret) return false;
+            });
+
+            return ret;
+        }
+
+        return haystack.includes(needle);
+    }
 
     let ret = false;
 
@@ -3299,7 +3316,7 @@ _.prototype.inline_style = function(element, prop)
     {
         return window.getComputedStyle(element).getPropertyValue(prop);
     }
-    else if (Object.hasOwn(elementStyle, prop))
+    else if (!this.is_undefined(elementStyle[prop]))
     {
         const val = elementStyle.getPropertyValue(elementStyle[prop]) || elementStyle[prop];
         

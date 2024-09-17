@@ -16,7 +16,7 @@ _.prototype.inline_style = function(element, prop)
     {
         return window.getComputedStyle(element).getPropertyValue(prop);
     }
-    else if (Object.hasOwn(elementStyle, prop))
+    else if (!this.is_undefined(elementStyle[prop]))
     {
         const val = elementStyle.getPropertyValue(elementStyle[prop]) || elementStyle[prop];
         

@@ -15,7 +15,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 !function(){function t(t){var e=document.createElement("textarea");e.value=t.getText(),e.style.top="0",e.style.left="0",e.style.position="fixed",document.body.appendChild(e),e.focus(),e.select();try{var o=document.execCommand("copy");setTimeout((function(){o?t.success():t.error()}),1)}catch(e){setTimeout((function(){t.error(e)}),1)}document.body.removeChild(e)}"undefined"!=typeof Prism&&"undefined"!=typeof document&&(Prism.plugins.toolbar?Prism.plugins.toolbar.registerButton("copy-to-clipboard",(function(e){var o=e.element,n=function(t){var e={copy:"Copy","copy-error":"Press Ctrl+C to copy","copy-success":"Copied!","copy-timeout":5e3};for(var o in e){for(var n="data-prismjs-"+o,c=t;c&&!c.hasAttribute(n);)c=c.parentElement;c&&(e[o]=c.getAttribute(n))}return e}(o),c=document.createElement("button");c.className="copy-to-clipboard-button",c.setAttribute("type","button");var r=document.createElement("span");return c.appendChild(r),u("copy"),function(e,o){e.addEventListener("click",(function(){!function(e){navigator.clipboard?navigator.clipboard.writeText(e.getText()).then(e.success,(function(){t(e)})):t(e)}(o)}))}(c,{getText:function(){return o.textContent},success:function(){u("copy-success"),i()},error:function(){u("copy-error"),setTimeout((function(){!function(t){window.getSelection().selectAllChildren(t)}(o)}),1),i()}}),c;function i(){setTimeout((function(){u("copy")}),n["copy-timeout"])}function u(t){r.textContent=n[t],c.setAttribute("data-copy-state",t)}})):console.warn("Copy to Clipboard plugin loaded before Toolbar plugin."))}();
 
 /**
- * DEMOS
+ * Fast Demo component
  *
  */
 (function()
@@ -28,24 +28,33 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
     const DemoComponent = function()
     {
+    	this.bound = false;
+
         this.super(this.selector);
     }
 
     DemoComponent.prototype.bind = function(node)
     {
         on(node, 'click', this._handler, this);
+
+        this.bound = true;
     }
 
     DemoComponent.prototype.unbind = function(node)
     {
         off(node, 'click', this._handler, this);
 
-        if (this.unbinder && is_array_last(node, this._DOMElements)) this.unbinder();
+        if (this.bound)
+        {
+        	if (this.unbinder) this.unbinder();
+
+        	this.bound = false;
+        }
     }
 
     DemoComponent.prototype._handler = function(e, node)
     {
-        return this.handler(e, node);
+        return this.handler.call(this, e, node);
     }
 
     function docsDemo(selector, handler, unbinder)
@@ -66,7 +75,6 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     frontbx.set('docsDemo', docsDemo);
 
 })();
-
 
 /**
  * Active classes on docs menu.
@@ -142,9 +150,6 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
     	trigger_event(window, 'resize');
     }
-
-
-    
 
     DocDrawer.prototype._toggleDrawer = function(e, trigger)
     {
