@@ -394,65 +394,83 @@ div.code-toolbar>.toolbar>.toolbar-item>button:hover
     color: var(--fbx-theme-primary);
 }
 
-
 /* Site header */
 .navbar .nav-logo svg
 {
     fill: var(--fbx-white);
 }
 
-.docs-body + .drawer-wrap,
-.docs-body + .drawer-wrap.disabled
+/* Sidebar layout */
+.main-container
 {
-    display: block !important;
-    transform: none !important;
-    position: absolute !important;
-    width: 280px !important;
-    top: 80px !important;
-    left: 0 !important;
-    height: 100% !important;
-    border-right: 1px solid var(--fbx-gray-200);
-    z-index: unset;
+    padding-top: 80px;
+    position: relative;
+    display: flex;
 }
-.docs-body + .drawer-wrap .drawer-header
+.main-container .docs-body
+{
+    flex: 0 0 100%;
+    width: 100%;
+}
+.main-container .drawer-wrap,
+.main-container .drawer-wrap.disabled,
+.main-container .drawer-wrap.closed
+{
+    display: flex !important;
+    transform: none !important;
+    position: unset !important;
+    width: 280px !important;
+    overflow-y: auto !important;
+    min-height: 100%  !important;
+    height: calc(100vh - 80px) !important;
+    border-right: none !important;
+    z-index: unset;
+    flex: 0 0 auto;
+    order: 1;
+}
+.main-container .drawer-wrap .drawer-header
 {
     display: none;
 }
-.docs-body + .drawer-wrap .drawer-dialog
+.main-container .drawer-wrap .drawer-dialog
 {
     overflow-y: auto;
-    min-height: calc(100vh - 80px);
-}
-.docs-body
-{
-    padding-top: 80px;
-    padding-bottom: 80px;
+    min-height: calc(100%);
+    width: 100%;
 }
 
 /* DESKTOP MENU  */
 @media (min-width: 768px)
 {
-    .main-container
-    {
-        overflow: hidden;
-    }
     body > .docs-drawer
     {
-       /* display: none;*/
+        display: none;
     }
-    .docs-body
+    .main-container .docs-body
     {
-        margin-left: 280px;
+        flex: 0 0 auto;
+        order: 2;
+    }
+    .main-container .docs-body
+    {
+        padding-left: 30px;
+        width: calc(100% - 280px);
+        border-left: 1px solid var(--fbx-gray-200);
+    }
+    .fbx-darkmode .main-container .docs-body
+    {
+        border-left: 1px solid var(--fbx-black-200);
     }
 }
 
-/* Main container  */
-.main-container
+.docs-body > *:first-child
 {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    margin-top: 45px !important;
 }
-
+.docs-body > *:last-child
+{
+    margin-bottom: 45px !important;
+}
 /* Docs Menu */
 .docs-drawer
 {
