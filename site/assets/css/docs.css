@@ -967,10 +967,10 @@ table .big-code code
 }
 .docs-playground-swatches .docs-swatch.active span
 {
-    display: none;
+    
 }
 
-.docs-playground-swatches .docs-swatch.active:after
+.docs-playground-swatches .docs-swatch.active span:after
 {
     content: "\f00c";
     font-family: var(--fa-style-family, "Font Awesome 6 Free");
@@ -983,13 +983,10 @@ table .big-code code
     line-height: 1;
     text-rendering: auto;
     display: inline-block;
-    font-size: 25px;
+    font-size: 14px;
     color: #ffffff;
     cursor: pointer;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    margin-left: 10px;
 }
 
 /* Site footer */
