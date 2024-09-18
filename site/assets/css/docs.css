@@ -950,13 +950,24 @@ table .big-code code
     border-radius: 0;
     box-shadow: none;
     height: 60px;
-    width: 60px;
     cursor: pointer;
     position: relative;
+    color:#ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    white-space: nowrap;
 }
 .docs-playground-swatches .docs-swatch.active
 {
     box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.8);
+}
+.docs-playground-swatches .docs-swatch.active
+{
+    display: none;
 }
 
 .docs-playground-swatches .docs-swatch.active:after
