@@ -311,6 +311,96 @@ $ash-700 : _darker($ash, 25%);
 $ash-800 : _darker($ash, 30%);
 $ash-900 : _darker($ash, 40%);
 
+$pastelteal-100 : _lighter($pastelteal, 90%);
+$pastelteal-200 : _lighter($pastelteal, 80%);
+$pastelteal-300 : _lighter($pastelteal, 50%);
+$pastelteal-400 : _lighter($pastelteal, 35%);
+$pastelteal-500 : _darker($pastelteal, 5%);
+$pastelteal-600 : _darker($pastelteal, 20%);
+$pastelteal-700 : _darker($pastelteal, 25%);
+$pastelteal-800 : _darker($pastelteal, 30%);
+$pastelteal-900 : _darker($pastelteal, 40%);
+
+$pastelgreen-100 : _lighter($pastelgreen, 90%);
+$pastelgreen-200 : _lighter($pastelgreen, 80%);
+$pastelgreen-300 : _lighter($pastelgreen, 50%);
+$pastelgreen-400 : _lighter($pastelgreen, 35%);
+$pastelgreen-500 : _darker($pastelgreen, 5%);
+$pastelgreen-600 : _darker($pastelgreen, 20%);
+$pastelgreen-700 : _darker($pastelgreen, 25%);
+$pastelgreen-800 : _darker($pastelgreen, 30%);
+$pastelgreen-900 : _darker($pastelgreen, 40%);
+
+$pastelblue-100 : _lighter($pastelblue, 90%);
+$pastelblue-200 : _lighter($pastelblue, 80%);
+$pastelblue-300 : _lighter($pastelblue, 50%);
+$pastelblue-400 : _lighter($pastelblue, 35%);
+$pastelblue-500 : _darker($pastelblue, 5%);
+$pastelblue-600 : _darker($pastelblue, 20%);
+$pastelblue-700 : _darker($pastelblue, 25%);
+$pastelblue-800 : _darker($pastelblue, 30%);
+$pastelblue-900 : _darker($pastelblue, 40%);
+
+$pastelpurple-100 : _lighter($pastelpurple, 90%);
+$pastelpurple-200 : _lighter($pastelpurple, 80%);
+$pastelpurple-300 : _lighter($pastelpurple, 50%);
+$pastelpurple-400 : _lighter($pastelpurple, 35%);
+$pastelpurple-500 : _darker($pastelpurple, 5%);
+$pastelpurple-600 : _darker($pastelpurple, 20%);
+$pastelpurple-700 : _darker($pastelpurple, 25%);
+$pastelpurple-800 : _darker($pastelpurple, 30%);
+$pastelpurple-900 : _darker($pastelpurple, 40%);
+
+$pastelpink-100 : _lighter($pastelpink, 90%);
+$pastelpink-200 : _lighter($pastelpink, 80%);
+$pastelpink-300 : _lighter($pastelpink, 50%);
+$pastelpink-400 : _lighter($pastelpink, 35%);
+$pastelpink-500 : _darker($pastelpink, 5%);
+$pastelpink-600 : _darker($pastelpink, 20%);
+$pastelpink-700 : _darker($pastelpink, 25%);
+$pastelpink-800 : _darker($pastelpink, 30%);
+$pastelpink-900 : _darker($pastelpink, 40%);
+
+$pastelred-100 : _lighter($pastelred, 90%);
+$pastelred-200 : _lighter($pastelred, 80%);
+$pastelred-300 : _lighter($pastelred, 50%);
+$pastelred-400 : _lighter($pastelred, 35%);
+$pastelred-500 : _darker($pastelred, 5%);
+$pastelred-600 : _darker($pastelred, 20%);
+$pastelred-700 : _darker($pastelred, 25%);
+$pastelred-800 : _darker($pastelred, 30%);
+$pastelred-900 : _darker($pastelred, 40%);
+
+$pastelcoral-100 : _lighter($pastelcoral, 90%);
+$pastelcoral-200 : _lighter($pastelcoral, 80%);
+$pastelcoral-300 : _lighter($pastelcoral, 50%);
+$pastelcoral-400 : _lighter($pastelcoral, 35%);
+$pastelcoral-500 : _darker($pastelcoral, 5%);
+$pastelcoral-600 : _darker($pastelcoral, 20%);
+$pastelcoral-700 : _darker($pastelcoral, 25%);
+$pastelcoral-800 : _darker($pastelcoral, 30%);
+$pastelcoral-900 : _darker($pastelcoral, 40%);
+
+$pastelorange-100 : _lighter($pastelorange, 90%);
+$pastelorange-200 : _lighter($pastelorange, 80%);
+$pastelorange-300 : _lighter($pastelorange, 50%);
+$pastelorange-400 : _lighter($pastelorange, 35%);
+$pastelorange-500 : _darker($pastelorange, 5%);
+$pastelorange-600 : _darker($pastelorange, 20%);
+$pastelorange-700 : _darker($pastelorange, 25%);
+$pastelorange-800 : _darker($pastelorange, 30%);
+$pastelorange-900 : _darker($pastelorange, 40%);
+
+$pastelyellow-100 : _lighter($pastelyellow, 90%);
+$pastelyellow-200 : _lighter($pastelyellow, 80%);
+$pastelyellow-300 : _lighter($pastelyellow, 50%);
+$pastelyellow-400 : _lighter($pastelyellow, 35%);
+$pastelyellow-500 : _darker($pastelyellow, 5%);
+$pastelyellow-600 : _darker($pastelyellow, 20%);
+$pastelyellow-700 : _darker($pastelyellow, 25%);
+$pastelyellow-800 : _darker($pastelyellow, 30%);
+$pastelyellow-900 : _darker($pastelyellow, 40%);
+
 $palette:
 (
     'teal':                     $teal,
@@ -337,7 +427,6 @@ $palette:
     'concrete':                 $concrete,
     'asbestos':                 $asbestos,
 
-    // Neons
     'neongreen':                $neongreen,
     'skyblue':                  $skyblue,
     'beetroot':                 $beetroot,
@@ -345,6 +434,16 @@ $palette:
     'pineapple':                $pineapple,
     'coralred':                 $coralred,
     'ash':                      $ash,
+
+    'pastelteal':               $pastelteal,
+    'pastelgreen':              $pastelgreen,
+    'pastelblue':               $pastelblue,
+    'pastelpurple':             $pastelpurple,
+    'pastelpink':               $pastelpink,
+    'pastelred':                $pastelred,
+    'pastelcoral':              $pastelcoral,
+    'pastelorange':             $pastelorange,
+    'pastelyellow':             $pastelyellow,
 
     // Gray
     'gray':                     $gray,

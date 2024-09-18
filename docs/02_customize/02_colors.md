@@ -121,6 +121,7 @@ Use the playground below to adjust the documentation colors:
 <div class="code-content-example js-docs-playground-swatches">
 	<div class="docs-playground-swatches">
 		<div class="flex-row-fluid">
+			<div class="col-12 pole-xs pole-s">Flat colors:</div>
 			<div class="docs-swatch" style="background: var(--fbx-color-teal)" data-swatch="var(--fbx-color-teal)"></div>
 			<div class="docs-swatch" style="background: var(--fbx-color-turquoise)" data-swatch="var(--fbx-color-turquoise)"></div>
 			<div class="docs-swatch" style="background: var(--fbx-color-greensea)" data-swatch="var(--fbx-color-greensea)"></div>
@@ -144,6 +145,7 @@ Use the playground below to adjust the documentation colors:
 			<div class="docs-swatch" style="background: var(--fbx-color-silver)" data-swatch="var(--fbx-color-silver)"></div>
 			<div class="docs-swatch" style="background: var(--fbx-color-concrete)" data-swatch="var(--fbx-color-concrete)"></div>
 			<div class="docs-swatch" style="background: var(--fbx-color-asbestos)" data-swatch="var(--fbx-color-asbestos)"></div>
+			<div class="col-12 pole-xs">Neon colors:</div>
 			<div class="docs-swatch" style="background: var(--fbx-color-neongreen)" data-swatch="var(--fbx-color-neongreen)"></div>
 			<div class="docs-swatch" style="background: var(--fbx-color-skyblue)" data-swatch="var(--fbx-color-skyblue)"></div>
 			<div class="docs-swatch" style="background: var(--fbx-color-beetroot)" data-swatch="var(--fbx-color-beetroot)"></div>
@@ -151,6 +153,16 @@ Use the playground below to adjust the documentation colors:
 			<div class="docs-swatch" style="background: var(--fbx-color-pineapple)" data-swatch="var(--fbx-color-pineapple)"></div>
 			<div class="docs-swatch" style="background: var(--fbx-color-coralred)" data-swatch="var(--fbx-color-coralred)"></div>
 			<div class="docs-swatch" style="background: var(--fbx-color-ash)" data-swatch="var(--fbx-color-ash)"></div>
+			<div class="col-12 pole-xs">Pastel colors:</div>
+			<div class="docs-swatch" style="background: var(--fbx-color-pastelteal)" data-swatch="var(--fbx-color-pastelteal)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-pastelgreen)" data-swatch="var(--fbx-color-pastelgreen)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-pastelblue)" data-swatch="var(--fbx-color-pastelblue)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-pastelpurple)" data-swatch="var(--fbx-color-pastelpurple)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-pastelpink)" data-swatch="var(--fbx-color-pastelpink)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-pastelred)" data-swatch="var(--fbx-color-pastelred)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-pastelcoral)" data-swatch="var(--fbx-color-pastelcoral)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-pastelorange)" data-swatch="var(--fbx-color-pastelorange)"></div>
+			<div class="docs-swatch" style="background: var(--fbx-color-pastelyellow)" data-swatch="var(--fbx-color-pastelyellow)"></div>
 		</div>
 	</div>
 </div>
@@ -195,6 +207,15 @@ With color palette, the Sass variable will point directly the actual hex color v
 | <div class="docs-swatch" style="background: var(--fbx-color-pineapple)"></div>    | `--fbx-color-pineapple`    | `$pineapple`    |
 | <div class="docs-swatch" style="background: var(--fbx-color-coralred)"></div>     | `--fbx-color-coralred`     | `$coralred`     |
 | <div class="docs-swatch" style="background: var(--fbx-color-ash)"></div>          | `--fbx-color-ash`          | `$ash`          |
+| <div class="docs-swatch" style="background: var(--fbx-color-pastelteal)"></div>   | `--fbx-color-pastelteal`   | $pastelteal     |
+| <div class="docs-swatch" style="background: var(--fbx-color-pastelgreen)"></div>  | `--fbx-color-pastelgreen`  | $pastelgreen    |
+| <div class="docs-swatch" style="background: var(--fbx-color-pastelblue)"></div>   | `--fbx-color-pastelblue`   | $pastelblue     |
+| <div class="docs-swatch" style="background: var(--fbx-color-pastelpurple)"></div> | `--fbx-color-pastelpurple` | $pastelpurple   |
+| <div class="docs-swatch" style="background: var(--fbx-color-pastelpink)"></div>   | `--fbx-color-pastelpink`   | $pastelpink     |
+| <div class="docs-swatch" style="background: var(--fbx-color-pastelred)"></div>    | `--fbx-color-pastelred`    | $pastelred      |
+| <div class="docs-swatch" style="background: var(--fbx-color-pastelcoral)"></div>  | `--fbx-color-pastelcoral`  | $pastelcoral    |
+| <div class="docs-swatch" style="background: var(--fbx-color-pastelorange)"></div> | `--fbx-color-pastelorange` | $pastelorange   |
+| <div class="docs-swatch" style="background: var(--fbx-color-pastelyellow)"></div> | `--fbx-color-pastelyellow` | $pastelyellow   |
 
 
 #### Usage<a id='palette-usage'></a>
