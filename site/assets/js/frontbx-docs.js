@@ -484,7 +484,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 	const contents = 
     {
         '.js-card-header-left' : '<div class="avatar"><img class="img-responsive js-lazyload lazyload grayscale lazy-loaded" src="../../assets/img/trump-avatar.jpg"></div>',
-        '.js-card-header-content' : '<div class="text-bold">The Don</div><div class="color-gray font-italic">Make America Great Again</div>',
+        '.js-card-header-content' : '<div class="text-bold">The Don</div><div class="color-gray font-italic small">Make America Great Again</div>',
         '.js-card-media' : '<img data-src="../../assets/img/trump-hero.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-hero_thumb.jpg" />',
         '.js-card-title' : '<h5 class="text-bold">MAGA Country</h5>',
         '.js-card-text' : '<p>Veniam laboris do sit sunt dolore incididunt fugiat id enim ut ullamco enim deserunt fugiat.</p>',

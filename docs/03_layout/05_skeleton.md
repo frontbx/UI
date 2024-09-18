@@ -491,6 +491,8 @@ Try the example below create a few skeletons
     </div>
 </div>
 
+---
+
 ### JavaScript Utility
 
 FrontBx comes with a handy JavaScript utility component for creating skeletons on the fly. You can create a skeleton by calling `Skeleton` via the container.
@@ -658,7 +660,7 @@ Customization via Sass can be made in the `src/scss/_config.scss` file in FrontB
 
 
 ```file-path
-`src/scss/_config.scss`
+src/scss/_config.scss
 ```
 ```sass
 $skeleton-bg-1:                 rgba(0, 0, 0, 0.2) !default;
@@ -671,23 +673,18 @@ $skeleton-text-radius:          var(--fbx-border-radius) !default;
 ```file-path
 src/scss/components/_skeleton.scss
 ```
-```sass
---fbx-skeleton-bg-1: #{$skeleton-bg-1};
---fbx-skeleton-bg-2: #{$skeleton-bg-2};
---fbx-bg-animation: #{1s ease-in-out infinite normal none running skeleton-pulse};
---fbx-skeleton-width: 100%;
---fbx-skeleton-height: 100%;
---fbx-skeleton-radius: 0;
---fbx-skeleton-margin: 0;
---fbx-skeleton-display: inline-block;
-
-display: var(--fbx-skeleton-display);
-width: var(--fbx-skeleton-width);
-height: var(--fbx-skeleton-height);
-border-radius: var(--fbx-skeleton-radius);
-animation: var(--fbx-bg-animation);
-background: var(--fbx-skeleton-bg-1);
-margin: var(--fbx-skeleton-margin);
+```css
+.skeleton
+{
+    --fbx-skeleton-bg-1: rgba(0, 0, 0, 0.2);
+    --fbx-skeleton-bg-2: rgba(0, 0, 0, 0.4);
+    --fbx-bg-animation: 1s ease-in-out infinite normal none running skeleton-pulse;
+    --fbx-skeleton-width: 100%;
+    --fbx-skeleton-height: 100%;
+    --fbx-skeleton-radius: 0;
+    --fbx-skeleton-margin: 0;
+    --fbx-skeleton-display: block;
+}
 ```
 
 The example below shows customization using CSS Variables:

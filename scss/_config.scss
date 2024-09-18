@@ -118,7 +118,7 @@ $icon-lg:                       30px !default;
 $icon-xl:                       45px !default;
 $icon-xxl:                      50px !default;
 
-// Base aesthetics
+// Base border radius
 $border-radius:                 5px !default;
 
 // Grid breakpoints
@@ -138,89 +138,21 @@ $raised-level-two:              rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 
 $raised-level-three:            rgba(0, 0, 0, 0.2) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px !default;
 $box-shadow-in:                 inset 0 5px 8px -2px rgba(0,0,0,.13) !default;
 
-// Button
-$btn-text-transform:            none !default;
-$btn-pad-x:                     1.6rem !default;
-$btn-pad-y:                     1.4rem !default;
-$btn-font-size:                 1.4rem !default;
-$btn-font-weight:               $text-bold !default;
-$btn-letter-spacing:            0 !default;
+// Lazyloading / images
+$lazyload-start-opacity:        0.6 !default;
+$lazyload-end-opacity:          1 !default;
+$lazyload-start-blur:           5px !default;
+$lazyload-end-blur:             0px !default;
+$lazyload-start-grayscale:      1 !default;
+$lazyload-end-grayscale:        0 !default;
+$lazyload-transition:           opacity 1s cubic-bezier(0.4, 0.0, 0.2, 1), filter 1s cubic-bezier(0.4, 0.0, 0.2, 1);
+$lazyload-falback-bg:           #d0d4d9;
 
-$btn-base-bg:                   var(--fbx-gray-200);
-$btn-base-color:                var(--fbx-gray-700);
+// Ripple
+$ripple-color:                  rgba(0, 0, 0, 0.15) !default;
 
-$btn-base-bg-hover:             var(--fbx-gray-300);
-$btn-base-color-hover:          var(--fbx-gray-700);
-
-$btn-base-bg-active:            var(--fbx-gray-400);
-$btn-base-color-active:         var(--fbx-gray-700);
-
-$btn-xs-pad-x:                  _minusPercent($btn-pad-x, 30) !default;
-$btn-xs-pad-y:                  _minusPercent($btn-pad-y, 30) !default;
-
-$btn-sm-pad-x:                  _minusPercent($btn-pad-x, 20) !default;
-$btn-sm-pad-y:                  _minusPercent($btn-pad-y, 20) !default;
-
-$btn-lg-pad-x:                  _addPercent($btn-pad-x, 30) !default;
-$btn-lg-pad-y:                  _addPercent($btn-pad-y, 30) !default;
-
-$btn-xl-pad-x:                  _addPercent($btn-pad-x, 50) !default;
-$btn-xl-pad-y:                  _addPercent($btn-pad-y, 50) !default;
-
-$circle-btn-font-size:          2.0rem !default;
-
-$btn-icon-font-size:            20px !default;
-
-$btn-group-radius:              var(--fbx-border-radius) !default;
-
-// Lists
-$list-bg:						var(--fbx-white) !default;
-$list-color:					var(--fbx-gray-700) !default;
-$list-font-size:				1.3rem !default;
-$list-item-bg:                  transparent !default;
-$list-item-color-hover:         var(--fbx-gray-700) !default;
-$list-item-color-active:        var(--fbx-gray-700) !default;
-$list-item-color-selected:      var(--fbx-white) !default;
-$list-item-bg-hover:            var(--fbx-gray-200) !default;
-$list-item-bg-active:           var(--fbx-theme-info-100) !default;
-$list-item-bg-selected:         var(--fbx-theme-info) !default;
-$list-item-pad-y:               10px !default;
-$list-item-pad-x:               12px !default;
-$list-divider-color:            var(--fbx-gray-200) !default;
-$list-divider-space:            5px;
-
-// Dropdown
-$dropdown-border-radius:        5px !default;
-$dropdown-min-width:            160px !default;
-$dropdown-max-width:            250px !default;
-$dropdown-height:               300px !default;
-$dropdown-shadow-level:         2 !default;
-$dropdown-bg:                   var(--fbx-white) !default;
-
-// Menu
-$menu-bg:						var(--fbx-white) !default;
-$menu-color:					var(--fbx-gray-700) !default;
-$menu-font-size:				1.3rem !default;
-$menu-font-weight:				$text-normal !default;
-$menu-radius:                   var(--fbx-border-radius) !default;
-$menu-container-padding:        3px !default;
-$menu-item-bg:                  transparent !default;
-$menu-item-color-hover:         var(--fbx-gray-700) !default;
-$menu-item-color-active:        var(--fbx-theme-primary) !default;
-$menu-item-color-checked:       var(--fbx-white) !default;
-$menu-item-color-selected:      var(--fbx-white) !default;
-$menu-item-bg-hover:            var(--fbx-theme-primary-100) !default;
-$menu-item-bg-active:           var(--fbx-theme-primary-200) !default;
-$menu-item-bg-selected:         var(--fbx-theme-primary) !default;
-$menu-item-bg-checked:          var(--fbx-theme-primary) !default;
-$menu-item-pad-y:               10px !default;
-$menu-item-pad-x:               12px !default;
-$menu-item-v-space:             2px !default;
-$menu-divider-color:            var(--fbx-gray-200) !default;
-$menu-divider-space:            5px;
-
-// Inline elements
-$badge-size:                    7px !default;
+// Nprogress
+$nprogress-color:               var(--fbx-theme-primary) !default;
 
 // Table
 $table-font-size:               1.3rem !default;
@@ -238,51 +170,36 @@ $table-caption-color:           var(--fbx-gray) !default;
 $table-selected-color:          var(--fbx-white) !default;
 $table-selected-bg:             var(--fbx-theme-info) !default;
 
+// Blockquotes
+$bq-bg:                         var(--fbx-gray-200) !default;
+$bq-radius:                     var(--fbx-border-radius) !default;
+$bq-pad-y:                      2rem !default;
+$bq-pad-x:                      2rem !default;
 
-// Messages
-$msg-bg:                        var(--fbx-black) !default;
-$msg-color:                     var(--fbx-white) !default;
-$msg-icon-color:                var(--fbx-theme-primary) !default;
-$msg-spacer-y:                  3rem !default;
-$msg-spacer-x:                  2rem !default;
-$msg-font-size:                 1.4rem !default;
-$msg-icon-font-size:			1.6rem !default;
-$msg-border-radius:             var(--fbx-border-radius) !default;
+// Hamburger
+$hamburger-color:               var(--fbx-body-color) !default;
+$hamburger-color-active:        var(--fbx-theme-primary) !default;
 
+// Badge
+$badge-size:                    7px !default;
 
-// Modals
-$modal-max-width:               680px !default;
-$modal-max-height:              80vh !default;
-$modal-shadow:                  3 !default; //0,1,2,3 
-$modal-overlay-bg:              rgba(255, 255, 255, 0.8) !default;
-$modal-overlay-bg-dark:         rgba(0, 0, 0, 0.5) !default;
-$modal-title-size:              1.8rem !default;
-$modal-transform-on:            translate3d(0px, 0px, 0px) !default;
-$modal-transform-off:           translate3d(0px, -50px, 0px) !default;
-$modal-transition:              opacity .225s ease-out .225s, transform .225s ease-out .225s !default;
-$modal-overlay-transition:      opacity .225s ease-out !default;
+// Labels
+$label-font-size:               1.1rem !default;
+$label-font-weight:             $text-bolder !default;
+$label-color:                   var(--fbx-white) !default;
+$label-bg:                      var(--fbx-gray-300) !default;
+$label-pad-y:                   4px !default;
+$label-pad-x:                   6px !default;
+$label-radius:                  var(--fbx-border-radius) !default;
 
+// Status
+$status-size:                   14px !default;
+$status-color:                  var(--fbx-gray-300) !default;
 
-// Drawer
-$drawer-bg:						var(--fbx-white) !default;
-$drawer-width:                  230px !default;
-$drawer-size-peekable:          80px !default;
-$drawer-overlay-bg:             rgba(255, 255, 255, 0.8) !default;
-$drawer-overlay-bg-dark:        rgba(0, 0, 0, 0.5) !default;
-$drawer-border-color:    		var(--fbx-gray-200) !default;
-
-// Frontdrop
-$frontdrop-height:               75vh !default;
-$frontdrop-peekable-height:      50px !default;
-$frontdrop-radius:               10px !default;
-$frontdrop-overlay-bg:           rgba(255, 255, 255, 0.8) !default;
-$frontdrop-overlay-bg-dark:      rgba(0, 0, 0, 0.5) !default;
-
-// Backdrop
-$backdrop-bg:					 var(--fbx-gray-700) !default;
-$backdrop-color:				 var(--fbx-white) !default;
-$backdrop-width:                 230px !default;
-$backdrop-size-peekable:         80px !default;
+// Avatar
+$avatar-size:                   40px !default;
+$avatar-bg:                     var(--fbx-gray-200) !default;
+$avatar-text-color:             inherit !default;
 
 // Paper
 $paper-bg:                      var(--fbx-white) !default;
@@ -312,6 +229,123 @@ $card-media-bg:                 var(--fbx-gray-100) !default;
 $card-landscape-img-sm:         80px !default;
 $card-landscape-img-md:         150px !default;
 $card-landscape-img-lg:         300px !default;
+
+// Skeleton
+$skeleton-bg-1:                 rgba(0, 0, 0, 0.2) !default;
+$skeleton-bg-2:                 rgba(0, 0, 0, 0.4) !default;
+$skeleton-text-radius:          var(--fbx-border-radius) !default;
+
+// Lists
+$list-bg:						var(--fbx-white) !default;
+$list-color:					var(--fbx-gray-700) !default;
+$list-font-size:				1.3rem !default;
+$list-item-bg:                  transparent !default;
+$list-item-color-hover:         var(--fbx-gray-700) !default;
+$list-item-color-active:        var(--fbx-gray-700) !default;
+$list-item-color-selected:      var(--fbx-white) !default;
+$list-item-bg-hover:            var(--fbx-gray-200) !default;
+$list-item-bg-active:           var(--fbx-theme-info-100) !default;
+$list-item-bg-selected:         var(--fbx-theme-info) !default;
+$list-item-pad-y:               10px !default;
+$list-item-pad-x:               12px !default;
+$list-divider-color:            var(--fbx-gray-200) !default;
+$list-divider-space:            5px;
+
+// Menu
+$menu-bg:						var(--fbx-white) !default;
+$menu-color:					var(--fbx-gray-700) !default;
+$menu-font-size:				1.3rem !default;
+$menu-font-weight:				$text-normal !default;
+$menu-radius:                   var(--fbx-border-radius) !default;
+$menu-container-padding:        3px !default;
+$menu-item-bg:                  transparent !default;
+$menu-item-color-hover:         var(--fbx-gray-700) !default;
+$menu-item-color-active:        var(--fbx-theme-primary) !default;
+$menu-item-color-checked:       var(--fbx-white) !default;
+$menu-item-color-selected:      var(--fbx-white) !default;
+$menu-item-bg-hover:            var(--fbx-theme-primary-100) !default;
+$menu-item-bg-active:           var(--fbx-theme-primary-200) !default;
+$menu-item-bg-selected:         var(--fbx-theme-primary) !default;
+$menu-item-bg-checked:          var(--fbx-theme-primary) !default;
+$menu-item-pad-y:               10px !default;
+$menu-item-pad-x:               12px !default;
+$menu-item-v-space:             2px !default;
+$menu-divider-color:            var(--fbx-gray-200) !default;
+$menu-divider-space:            5px;
+
+// Tabs
+$tab-nav-color:                 var(--fbx-gray-700) !default;
+$tab-nav-color-active:          var(--fbx-body-color) !default;
+$tab-nav-color-highlight:       var(--fbx-theme-primary) !default;
+$tab-nav-divider-color:         var(--fbx-gray-200) !default;
+$tab-nav-font-size:             1.3rem !default;
+$tab-nav-font-weight:           $text-normal !default;
+$tab-nav-font-weight-active:    $text-bold !default;
+$tab-nav-border-radius:         var(--fbx-border-radius) !default;
+$tab-nav-pad-y:                 0.8rem !default;
+$tab-nav-pad-x:                 0.4rem !default;
+$tab-transition:                $base-easing-time $base-easing !default;
+
+// Navbar
+$navbar-padding-x: 				0 !default;
+$navbar-padding-y: 				2rem !default;
+$navbar-color: 					var(--fbx-white) !default;
+$navbar-logo-size:				40px !default;
+
+// Nav menu
+$nav-link-padding-x: 			1rem  !default;
+$nav-link-padding-y: 			0.5rem  !default;
+$nav-link-spacing:  			1rem !default;
+$nav-link-font-size: 			1.4rem !default;
+$nav-link-icon-size: 			1.6rem !default;
+$nav-link-font-weight: 			$text-bold !default;
+$nav-link-color: 				rgba(255,255,255,0.85) !default;
+$nav-link-hover-color: 			#ffffff !default;
+$nav-link-active-color: 		#ffffff !default;
+
+// Pagination
+$pagination-radius:				var(--fbx-border-radius) !default;
+$pagination-color:				var(--fbx-gray) !default;
+$pagination-link-pad-x:			16px !default;
+$pagination-link-pad-y:			9px !default;
+$pagination-border-color:		var(--fbx-gray-300) !default;
+$pagination-hover-color:		var(--fbx-gray) !default;
+$pagination-hover-bg:			var(--fbx-theme-primary-200) !default;
+$pagination-active-color:		var(--fbx-white) !default;
+$pagination-active-bg:			var(--fbx-theme-primary) !default;
+
+// Button
+$btn-text-transform:            none !default;
+$btn-pad-x:                     1.6rem !default;
+$btn-pad-y:                     1.4rem !default;
+$btn-font-size:                 1.4rem !default;
+$btn-icon-font-size:            20px !default;
+$btn-font-weight:               $text-bold !default;
+$circle-btn-font-size:          2.0rem !default;
+$btn-letter-spacing:            0 !default;
+$btn-base-bg:                   var(--fbx-gray-200);
+$btn-base-color:                var(--fbx-gray-700);
+$btn-base-bg-hover:             var(--fbx-gray-300);
+$btn-base-color-hover:          var(--fbx-gray-700);
+$btn-base-bg-active:            var(--fbx-gray-400);
+$btn-base-color-active:         var(--fbx-gray-700);
+$btn-xs-pad-x:                  _minusPercent($btn-pad-x, 30) !default;
+$btn-xs-pad-y:                  _minusPercent($btn-pad-y, 30) !default;
+$btn-sm-pad-x:                  _minusPercent($btn-pad-x, 20) !default;
+$btn-sm-pad-y:                  _minusPercent($btn-pad-y, 20) !default;
+$btn-lg-pad-x:                  _addPercent($btn-pad-x, 30) !default;
+$btn-lg-pad-y:                  _addPercent($btn-pad-y, 30) !default;
+$btn-xl-pad-x:                  _addPercent($btn-pad-x, 50) !default;
+$btn-xl-pad-y:                  _addPercent($btn-pad-y, 50) !default;
+$btn-group-radius:              var(--fbx-border-radius) !default;
+
+// Dropdown
+$dropdown-border-radius:        5px !default;
+$dropdown-min-width:            160px !default;
+$dropdown-max-width:            250px !default;
+$dropdown-height:               300px !default;
+$dropdown-shadow-level:         2 !default;
+$dropdown-bg:                   var(--fbx-white) !default;
 
 // Inputs
 $input-font-size:               1.5rem !default;
@@ -358,28 +392,54 @@ $progress-bg:                   var(--fbx-gray-200) !default;
 $progress-color:                var(--fbx-gray) !default;
 $progress-gradient:             linear-gradient(to right,  #b0e2fe 0%,#b0b2fb 100%);
 
-// Tabs
-$tab-nav-color:                 var(--fbx-gray-700) !default;
-$tab-nav-color-active:          var(--fbx-body-color) !default;
-$tab-nav-color-highlight:       var(--fbx-theme-primary) !default;
-$tab-nav-divider-color:         var(--fbx-gray-200) !default;
-$tab-nav-font-size:             1.3rem !default;
-$tab-nav-font-weight:           $text-normal !default;
-$tab-nav-font-weight-active:    $text-bold !default;
-$tab-nav-border-radius:         var(--fbx-border-radius) !default;
-$tab-nav-pad-y:                 0.8rem !default;
-$tab-nav-pad-x:                 0.4rem !default;
-$tab-transition:                $base-easing-time $base-easing !default;
+// Messages
+$msg-bg:                        var(--fbx-black) !default;
+$msg-color:                     var(--fbx-white) !default;
+$msg-icon-color:                var(--fbx-theme-primary) !default;
+$msg-spacer-y:                  3rem !default;
+$msg-spacer-x:                  2rem !default;
+$msg-font-size:                 1.4rem !default;
+$msg-icon-font-size:			1.6rem !default;
+$msg-border-radius:             var(--fbx-border-radius) !default;
 
-// Lazyloading / images
-$lazyload-start-opacity:        0.6 !default;
-$lazyload-end-opacity:          1 !default;
-$lazyload-start-blur:           5px !default;
-$lazyload-end-blur:             0px !default;
-$lazyload-start-grayscale:      1 !default;
-$lazyload-end-grayscale:        0 !default;
-$lazyload-transition:           opacity 1s cubic-bezier(0.4, 0.0, 0.2, 1), filter 1s cubic-bezier(0.4, 0.0, 0.2, 1);
-$lazyload-falback-bg:           #d0d4d9;
+// Notifications
+$notification-max-width:        450px;
+$notification-bg:               var(--fbx-black) !default;
+$notification-color:            var(--fbx-white) !default;
+$notification-shadow:           3 !default;
+
+// Modals
+$modal-max-width:               680px !default;
+$modal-max-height:              80vh !default;
+$modal-shadow:                  3 !default; //0,1,2,3 
+$modal-overlay-bg:              rgba(255, 255, 255, 0.8) !default;
+$modal-overlay-bg-dark:         rgba(0, 0, 0, 0.5) !default;
+$modal-title-size:              1.8rem !default;
+$modal-transform-on:            translate3d(0px, 0px, 0px) !default;
+$modal-transform-off:           translate3d(0px, -50px, 0px) !default;
+$modal-transition:              opacity .225s ease-out .225s, transform .225s ease-out .225s !default;
+$modal-overlay-transition:      opacity .225s ease-out !default;
+
+// Drawer
+$drawer-bg:						var(--fbx-white) !default;
+$drawer-width:                  230px !default;
+$drawer-size-peekable:          80px !default;
+$drawer-overlay-bg:             rgba(255, 255, 255, 0.8) !default;
+$drawer-overlay-bg-dark:        rgba(0, 0, 0, 0.5) !default;
+$drawer-border-color:    		var(--fbx-gray-200) !default;
+
+// Frontdrop
+$frontdrop-height:               75vh !default;
+$frontdrop-peekable-height:      50px !default;
+$frontdrop-radius:               10px !default;
+$frontdrop-overlay-bg:           rgba(255, 255, 255, 0.8) !default;
+$frontdrop-overlay-bg-dark:      rgba(0, 0, 0, 0.5) !default;
+
+// Backdrop
+$backdrop-bg:					 var(--fbx-gray-700) !default;
+$backdrop-color:				 var(--fbx-white) !default;
+$backdrop-width:                 230px !default;
+$backdrop-size-peekable:         80px !default;
 
 // Slider
 $slider-bg:                     transparent !default;
@@ -404,14 +464,6 @@ $tooltip-pad-x:                 8px !default;
 $tooltop-target-space:          8px !default;
 $tooltop-target-space-neg:      -8px !default;
 
-// Avatar
-$avatar-size:                   40px !default;
-$avatar-bg:                     var(--fbx-gray-200) !default;
-$avatar-text-color:             inherit !default;
-
-// Nprogress
-$nprogress-color:               var(--fbx-theme-primary) !default;
-
 // Popovers
 $popover-max-width:             270px !default;
 $popover-shadow:                2 !default; // 0,1,2,3
@@ -420,86 +472,19 @@ $popover-title-size:            1.2rem !default;
 $popover-radius:                var(--fbx-border-radius) !default;
 $popover-pad-y:                 1rem !default;
 $popover-pad-x:                 1.5rem !default;
-
 $popover-bg-light:              var(--fbx-white) !default;     
 $popover-color-light:           var(--fbx-gray-600) !default;
 $popover-title-color-light:     var(--fbx-gray-700) !default;
 $popover-title-border-light:    1px solid var(--fbx-gray-300) !default;
-
 $popover-bg-dark:               var(--fbx-black) !default;
 $popover-color-dark:            var(--fbx-gray-400) !default;
 $popover-title-color-dark:      var(--fbx-white) !default;
 $popover-title-border-dark:     1px solid var(--fbx-gray-400) !default;
 
-// Labels
-$label-font-size:               1.1rem !default;
-$label-font-weight:             $text-bolder !default;
-$label-color:                   var(--fbx-white) !default;
-$label-bg:                      var(--fbx-gray-300) !default;
-$label-pad-y:                   4px !default;
-$label-pad-x:                   6px !default;
-$label-radius:                  var(--fbx-border-radius) !default;
-
-// Status
-$status-size:                   14px !default;
-$status-color:                  var(--fbx-gray-300) !default;
-
-// Blockquotes
-$bq-bg:                         var(--fbx-gray-200) !default;
-$bq-radius:                     var(--fbx-border-radius) !default;
-$bq-pad-y:                      2rem !default;
-$bq-pad-x:                      2rem !default;
-
-// Notifications
-$notification-max-width:        450px;
-$notification-bg:               var(--fbx-black) !default;
-$notification-color:            var(--fbx-white) !default;
-$notification-shadow:           3 !default;
-
-// Hamburger
-$hamburger-color:               var(--fbx-body-color) !default;
-$hamburger-color-active:        var(--fbx-theme-primary) !default;
-
 // Loading animations
 $loader-color1:                 var(--fbx-gray) !default;
 $loader-color2:                 var(--fbx-gray-300) !default;
 $loader-size:                   30px !default;
-
-// Ripple
-$ripple-color:                  rgba(0, 0, 0, 0.15) !default;
-
-// Skeleton
-$skeleton-bg-1:                 rgba(0, 0, 0, 0.2) !default;
-$skeleton-bg-2:                 rgba(0, 0, 0, 0.4) !default;
-$skeleton-text-radius:          var(--fbx-border-radius) !default;
-
-// Navbar
-$navbar-padding-x: 				0 !default;
-$navbar-padding-y: 				2rem !default;
-$navbar-color: 					var(--fbx-white) !default;
-$navbar-logo-size:				40px !default;
-
-// Nav menu
-$nav-link-padding-x: 			1rem  !default;
-$nav-link-padding-y: 			0.5rem  !default;
-$nav-link-spacing:  			1rem !default;
-$nav-link-font-size: 			1.4rem !default;
-$nav-link-icon-size: 			1.6rem !default;
-$nav-link-font-weight: 			$text-bold !default;
-$nav-link-color: 				rgba(255,255,255,0.85) !default;
-$nav-link-hover-color: 			#ffffff !default;
-$nav-link-active-color: 		#ffffff !default;
-
-// Pagination
-$pagination-radius:				var(--fbx-border-radius) !default;
-$pagination-color:				var(--fbx-gray) !default;
-$pagination-link-pad-x:			16px !default;
-$pagination-link-pad-y:			9px !default;
-$pagination-border-color:		var(--fbx-gray-300) !default;
-$pagination-hover-color:		var(--fbx-gray) !default;
-$pagination-hover-bg:			var(--fbx-theme-primary-200) !default;
-$pagination-active-color:		var(--fbx-white) !default;
-$pagination-active-bg:			var(--fbx-theme-primary) !default;
 
 // Responsive breakpoints
 $breakpoints:

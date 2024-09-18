@@ -746,6 +746,7 @@
         </form>
     </div>
 </div>
+<hr />
 <h3 id="javascript-utility">JavaScript Utility</h3>
 <p>FrontBx comes with a handy JavaScript utility component for creating skeletons on the fly. You can create a skeleton by calling <code>Skeleton</code> via the container.</p>
 <h4 id="usage">Usage</h4>
@@ -893,28 +894,23 @@ frontbx.Skeleton(cardWrapper).load(options);</code></pre>
 <h3 id="css-customization">CSS Customization</h3>
 <p>Skeleton uses local CSS variables on all <code>.skeleton</code> for enhanced component customization and styling. The base values are used by the UI to create all the sizing. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>
 <p>Customization via Sass can be made in the <code>src/scss/_config.scss</code> file in FrontBx's source.</p>
-<pre><code class="file-path language-file-path">`src/scss/_config.scss`</code></pre>
+<pre><code class="file-path language-file-path">src/scss/_config.scss</code></pre>
 <pre><code class="sass language-sass">$skeleton-bg-1:                 rgba(0, 0, 0, 0.2) !default;
 $skeleton-bg-2:                 rgba(0, 0, 0, 0.4) !default;
 $skeleton-text-radius:          var(--fbx-border-radius) !default;</code></pre>
 <p><br></p>
 <pre><code class="file-path language-file-path">src/scss/components/_skeleton.scss</code></pre>
-<pre><code class="sass language-sass">--fbx-skeleton-bg-1: #{$skeleton-bg-1};
---fbx-skeleton-bg-2: #{$skeleton-bg-2};
---fbx-bg-animation: #{1s ease-in-out infinite normal none running skeleton-pulse};
---fbx-skeleton-width: 100%;
---fbx-skeleton-height: 100%;
---fbx-skeleton-radius: 0;
---fbx-skeleton-margin: 0;
---fbx-skeleton-display: inline-block;
-
-display: var(--fbx-skeleton-display);
-width: var(--fbx-skeleton-width);
-height: var(--fbx-skeleton-height);
-border-radius: var(--fbx-skeleton-radius);
-animation: var(--fbx-bg-animation);
-background: var(--fbx-skeleton-bg-1);
-margin: var(--fbx-skeleton-margin);</code></pre>
+<pre><code class="css language-css">.skeleton
+{
+    --fbx-skeleton-bg-1: rgba(0, 0, 0, 0.2);
+    --fbx-skeleton-bg-2: rgba(0, 0, 0, 0.4);
+    --fbx-bg-animation: 1s ease-in-out infinite normal none running skeleton-pulse;
+    --fbx-skeleton-width: 100%;
+    --fbx-skeleton-height: 100%;
+    --fbx-skeleton-radius: 0;
+    --fbx-skeleton-margin: 0;
+    --fbx-skeleton-display: block;
+}</code></pre>
 <p>The example below shows customization using CSS Variables:</p>
 <div class="code-content-example">
     <style scoped>
