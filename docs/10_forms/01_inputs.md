@@ -27,12 +27,12 @@ The default variant for inputs is a *floating label* style input which comes in 
 
 <div class="code-content-example">
     <form class="row">
-        <div class="flex-row-fluid col-gaps-sm align-cols-center">
-            <div class="form-field">
+        <div class="flex-row flex-cols-12 flex-cols-md-6 col-gaps-sm row-gaps-sm align-cols-center">
+            <div class="form-field col-md-4">
                 <input name="text" id="example_1" type="text" placeholder="Enter some text...">
                 <label for="example_1">Default</label>
             </div>
-            <div class="form-field underlined">
+            <div class="form-field underlined col-md-4">
                 <input name="text" id="example_2" type="text" placeholder="Enter some text...">
                 <label for="example_2">.underline</label>
             </div>
@@ -59,21 +59,21 @@ The default variant for inputs is a *floating label* style input which comes in 
 In addition to the two base variants, inputs can be styled both without a label or with a label outside the input by simply omitting the `<label>` or placing it before the `<input>` inside the `.form-field`. Below is a simple example to showcase this:
 
 <div class="code-content-example">
-    <form class="row">
-       <div class="flex-row-fluid col-gaps-sm align-cols-center pole-sm pole-n">
-            <div class="form-field">
+    <form class="flex-row row-gaps-sm">
+        <div class="flex-row flex-cols-12 flex-cols-md-6 col-gaps-sm row-gaps-sm align-cols-center">
+            <div class="form-field col-md-4">
                 <input name="text" id="example_3" type="text" placeholder="No Label">
             </div>
-            <div class="form-field underlined">
+            <div class="form-field underlined col-md-4">
                 <input name="text" id="example_4" type="text" placeholder="No Label">
             </div>
         </div>
-        <div class="flex-row-fluid col-gaps-sm align-cols-center pole-sm pole-n">
-            <div class="form-field">
+        <div class="flex-row flex-cols-12 flex-cols-md-6 col-gaps-sm row-gaps-sm align-cols-center">
+           <div class="form-field col-md-4">
                 <label for="example_5">Outside label:</label>
                 <input name="text" id="example_5" type="text" placeholder="Enter some text...">
             </div>
-            <div class="form-field underlined">
+            <div class="form-field underlined col-md-4">
                 <label for="example_6">Outside label:</label>
                 <input name="text" id="example_6" type="text" placeholder="Enter some text...">
             </div>

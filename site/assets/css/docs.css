@@ -691,7 +691,8 @@ iframe
         padding-left: 0;
         padding-right: 0;
     }
-    .code-content-example, .fbx-darkmode .code-content-example
+    .code-content-example, .fbx-darkmode .code-content-example,
+    .docs-body > .code-toolbar > pre
     {
         border-left: none !important;
         border-right: none !important;
@@ -701,6 +702,7 @@ iframe
     {
         border-radius: 0;
     }
+
 }
 
 pre[class*="language-"]
