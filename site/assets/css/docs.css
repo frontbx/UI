@@ -233,6 +233,10 @@ pre[class*="language-bash"]
     margin-top: 3em;
     margin-bottom: 1em;
 }
+.docs-body > table
+{
+    margin: 0 0 var(--fbx-p-text-spacer) 0;
+}
 .docs-body table code
 {
     font-size: 11px;
@@ -245,19 +249,6 @@ pre[class*="language-bash"]
 {
     text-decoration: none;
 }
-.docs-body > .table-responsive
-{
-    margin: 30px 0;
-}
-.docs-body > h2,
-.docs-body > h3
-{
-    margin-top: 1em;
-}
-.docs-body > p
-{
-    margin-bottom: 2em;
-}
 
 /* Code examples  */
 .code-content-example
@@ -269,7 +260,7 @@ pre[class*="language-bash"]
     padding: 20px;
     background: transparent;
     border: 1px solid var(--fbx-gray-200);
-    margin: 30px 0 -1px 0;    
+    margin: var(--fbx-p-text-spacer) 0;    
 }
 .bd-example-container-sidebar
 {
@@ -292,20 +283,13 @@ pre[class*="language-bash"]
 }
 .bg-pastelblue
 {
-    background-color: #b0e2fe;
+    background-color: var(--fbx-color-pastelblue);
 }
 .bg-pastelteal
 {
-    background-color: #7de3b5;
+    background-color: var(--fbx-color-pastelteal);
 }
-.code-content-example + .code-toolbar,
-.code-content-example + .code-toolbar > pre,
-.code-content-example + pre
-{
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    margin-top: 0;
-}
+
 .code-toolbar.language-file-path
 {
     padding-bottom: 0;
