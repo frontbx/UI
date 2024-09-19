@@ -935,7 +935,7 @@ ul, ol {
   list-style: initial;
 }
 ul li, ol li {
-  margin-bottom: 0.5rem;
+  margin: 0;
 }
 
 ol {
@@ -943,17 +943,12 @@ ol {
 }
 
 ol ol, ol ul, ul ol, ul ul {
-  margin: 1rem 0 1rem 0;
+  margin: 0;
+  padding: 0 0 0 2em;
 }
 
-ul ul, ul ol {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-ol ol, ol ul {
-  margin-top: 0;
-  margin-bottom: 0;
+ul ul {
+  list-style: circle;
 }
 
 li > p {
@@ -6470,10 +6465,10 @@ button:not(.btn) + .drop-menu:not(.drop-n):not(.drop-ne):not(.drop-nw) {
   border-color: var(--fbx-theme-info);
 }
 .chips-input .btn-chip {
-  margin: 0.75rem 0;
+  margin: 0.9rem 0;
 }
 .chips-input .btn-chip:first-child {
-  margin-left: 1.6rem;
+  margin-left: 1.8rem;
 }
 .chips-input .form-field {
   display: flex;
@@ -6607,8 +6602,8 @@ input.unstyled {
   margin: 0;
   width: auto;
   max-width: inherit;
-  font-size: 1.5rem;
-  line-height: 1.5rem;
+  font-size: 1.6rem;
+  line-height: 1.6rem;
   color: var(--fbx-body-color);
 }
 input.unstyled:focus {
@@ -6618,10 +6613,10 @@ input.unstyled:focus {
 }
 
 .form-field {
-  --fbx-input-font-size: 1.5rem;
-  --fbx-input-line-height: 1.5rem;
-  --fbx-input-pad-y: 1.5rem;
-  --fbx-input-pad-x: 1.6rem;
+  --fbx-input-font-size: 1.6rem;
+  --fbx-input-line-height: 1.6rem;
+  --fbx-input-pad-y: 1.8rem;
+  --fbx-input-pad-x: 1.8rem;
   --fbx-input-bg: var(--fbx-body-bg);
   --fbx-input-color: var(--fbx-body-color);
   --fbx-input-color-label: var(--fbx-gray-400);
@@ -6634,8 +6629,8 @@ input.unstyled:focus {
   --fbx-input-border-size-w: 1px;
   --fbx-input-addon-bg: var(--fbx-gray-100);
   --fbx-input-addon-color: var(--fbx-gray-400);
-  --fbx-input-placeholder-font-size: 1.35rem;
-  --fbx-input-help-text-font-size: 1.125rem;
+  --fbx-input-placeholder-font-size: 1.44rem;
+  --fbx-input-help-text-font-size: 1.2rem;
   --fbx-input-box-shadow: none;
   --fbx-placeholder-opacity: 0;
   --fbx-input-focus-theme: var(--fbx-theme-info);
@@ -8105,7 +8100,7 @@ form.success .msg-success {
 }
 .skeleton.skeleton-input {
   --fbx-skeleton-radius: var(--fbx-border-radius);
-  --fbx-skeleton-height: 5.7rem;
+  --fbx-skeleton-height: 6.64rem;
   --fbx-skeleton-width: 100%;
   --fbx-skeleton-display: inline-block;
 }

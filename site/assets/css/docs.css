@@ -230,8 +230,7 @@ pre[class*="language-bash"]
     height: 1px;
     background: var(--fbx-gray-300);
     border: 0;
-    margin-top: 3em;
-    margin-bottom: 1em;
+    margin: 2em 0;
 }
 .docs-body > table
 {
@@ -248,6 +247,21 @@ pre[class*="language-bash"]
 .docs-body p > a:hover
 {
     text-decoration: none;
+}
+.docs-body > h1 + p + hr + ul,
+.docs-body > h1 + p + p + hr + ul,
+.docs-body > h1 + p + p + p + hr + ul
+{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 1.5rem;
+}
+.docs-body > h1 + p + hr + ul a,
+.docs-body > h1 + p + p + hr + ul a,
+.docs-body > h1 + p + p + p + hr + ul a
+{
+    color: var(--fbx-gray-900);
 }
 
 /* Code examples  */
