@@ -31,23 +31,23 @@ Here's is a basic example:
 
 <div class="code-content-example">
     <div class="slider js-slider" data-slider-options='{ "wrap": true }'>
-        <div class="bg-salmon">1</div>
-        <div class="bg-teal">2</div>
-        <div class="bg-bb-blue">3</div>
-        <div class="bg-salmon">4</div>
-        <div class="bg-teal">5</div>
-        <div class="bg-bb-blue">6</div>
+        <div class="bg-pastelpink">1</div>
+        <div class="bg-pastelteal">2</div>
+        <div class="bg-pastelblue">3</div>
+        <div class="bg-pastelpink">4</div>
+        <div class="bg-pastelteal">5</div>
+        <div class="bg-pastelblue">6</div>
     </div>
 </div>
 
 ```html
 <div class="slider js-slider" data-slider-options='{ "wrap": true }'>
-    <div class="bg-salmon">1</div>
-    <div class="bg-teal">2</div>
-    <div class="bg-bb-blue">3</div>
-    <div class="bg-salmon">4</div>
-    <div class="bg-teal">5</div>
-    <div class="bg-bb-blue">6</div>
+    <div class="bg-pastelpink">1</div>
+    <div class="bg-pastelteal">2</div>
+    <div class="bg-pastelblue">3</div>
+    <div class="bg-pastelpink">4</div>
+    <div class="bg-pastelteal">5</div>
+    <div class="bg-pastelblue">6</div>
 </div>
 ```
 

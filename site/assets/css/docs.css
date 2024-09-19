@@ -716,15 +716,15 @@ pre[class*="language-bash"]
     background-color: #f36;
     border-radius: 0.25rem;
 }
-.bg-salmon
+.bg-pastelpink
 {
-    background-color: #ed5d81;
+    background-color: var(--fbx-color-pastelpink);
 }
-.bg-bb-blue
+.bg-pastelblue
 {
     background-color: #b0e2fe;
 }
-.bg-teal
+.bg-pastelteal
 {
     background-color: #7de3b5;
 }
@@ -861,9 +861,6 @@ pre[class*="language-file-path"]
         }
     }
 }
-
-
-
 
 .code-content-example .skeleton-doc-col
 {
@@ -1079,7 +1076,7 @@ iframe
 }
 
 /* Full width on code blocks  */
-.docs-body > *:not(ul)
+.docs-body > *:not(ul):not(blockquote)
 {
     padding-left: var(--fbx-container-gutter-xs);
     padding-right: var(--fbx-container-gutter-xs)
@@ -1096,7 +1093,7 @@ iframe
 
 @media (min-width: 576px)
 {
-    .docs-body > *:not(ul)
+    .docs-body > *:not(ul):not(blockquote)
     {
         padding-left: var(--fbx-container-gutter-sm);
         padding-right: var(--fbx-container-gutter-sm);
@@ -1113,7 +1110,7 @@ iframe
 }
 @media (min-width: 768px)
 {
-    .docs-body > *:not(.code-content-example):not(ul)
+    .docs-body > *:not(.code-content-example):not(ul):not(blockquote)
     {
         padding-left: 0;
         padding-right: 0;

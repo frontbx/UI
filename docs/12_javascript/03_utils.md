@@ -1256,7 +1256,7 @@ Below is interactive demo to showcase animating various values, click the button
 
 <div class="code-content-example">
     <div class="row">
-        <div class="center-horizontal bg-teal fill js-animate-example" style="width: 300px;">animate me!</div>
+        <div class="center-horizontal bg-pastelteal fill js-animate-example" style="width: 300px;">animate me!</div>
     </div>
     <div class="flex-row-fluid align-cols-center pole-sm pole-n">
         <button type="button" class="btn js-animate-trigger">Animate</button>
@@ -1428,7 +1428,7 @@ Below is interactive demo to showcase animating various values, click the button
 
 <div class="code-content-example">
     <div class="row">
-        <div class="center-horizontal bg-teal fill js-animate-css-example" style="width: 300px;">animate me!</div>
+        <div class="center-horizontal bg-pastelteal fill js-animate-css-example" style="width: 300px;">animate me!</div>
     </div>
     <div class="flex-row-fluid align-cols-center pole-sm pole-n">
         <button type="button" class="btn js-animate-css-trigger">Animate</button>

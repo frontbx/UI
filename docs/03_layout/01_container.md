@@ -21,10 +21,10 @@ The fixed width `.container` will wrap layouts providing a `100%` width on scree
     <div class="parent-row-diagram"><code>.container</code></div>
     <div class="container">
         <div class="col col-9 gutter-xxs gutter-r">
-            <div class="bg-salmon fill"></div>
+            <div class="bg-pastelpink fill"></div>
         </div>
         <div class="col col-3 gutter-xxs gutter-l">
-            <div class="bg-bb-blue fill"></div>
+            <div class="bg-pastelblue fill"></div>
         </div>
     </div>
 </div>
@@ -45,10 +45,10 @@ The fluid width `.container-fluid` will wrap layouts providing a `100%` at all b
     <div class="parent-row-diagram"><code>.container-fluid</code></div>
     <div class="container-fluid">
         <div class="col col-9 gutter-xxs gutter-r">
-            <div class="bg-salmon fill"></div>
+            <div class="bg-pastelpink fill"></div>
         </div>
         <div class="col col-3 gutter-xxs gutter-l">
-            <div class="bg-bb-blue fill"></div>
+            <div class="bg-pastelblue fill"></div>
         </div>
     </div>
 </div>
@@ -69,10 +69,10 @@ Container gutters are left and right padding applied to the container element. T
     <div class="parent-row-diagram"><code>.container-fluid</code></div>
     <div class="container-fluid highlight-gutters">
         <div class="col col-9 gutter-xxs gutter-r">
-            <div class="bg-salmon fill"></div>
+            <div class="bg-pastelpink fill"></div>
         </div>
         <div class="col col-3 gutter-xxs gutter-l">
-            <div class="bg-bb-blue fill"></div>
+            <div class="bg-pastelblue fill"></div>
         </div>
     </div>
 </div>

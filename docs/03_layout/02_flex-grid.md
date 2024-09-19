@@ -111,7 +111,7 @@ Rows are used to as the main wrapper element to contain columns. They will span 
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row">
         <div class="col">
-            <div class="bg-salmon fill"><code>.col</code></div>
+            <div class="bg-pastelpink fill"><code>.col</code></div>
         </div>
     </div>
 </div>
@@ -136,13 +136,13 @@ The example below shows two rows. The first that displays on mobile (`<md` break
     <div class="parent-row-diagram"><code>.flex-row</code><code>.xs-flex</code><code>.sm-flex</code></div>
     <div class="flex-row xs-flex sm-flex">
         <div class="col">
-            <div class="bg-salmon fill"><code>.col</code></div>
+            <div class="bg-pastelpink fill"><code>.col</code></div>
         </div>
     </div>
     <div class="parent-row-diagram"><code>.flex-row</code><code>.md-flex</code><code>.lg-flex</code><code>.xl-flex</code></div>
     <div class="flex-row md-flex lg-flex xl-flex">
         <div class="col">
-            <div class="bg-salmon fill"><code>.col</code></div>
+            <div class="bg-pastelpink fill"><code>.col</code></div>
         </div>
     </div>
 </div>
@@ -166,13 +166,13 @@ With `.flex-row-fluid` you can set an individual `.col` width too - other column
     <div class="parent-row-diagram"><code>.flex-row-fluid</code></div>
     <div class="flex-row-fluid col-gaps-xs">
         <div class="col">
-            <div class="bg-teal fill"><code>.col</code></div>
+            <div class="bg-pastelteal fill"><code>.col</code></div>
         </div>
         <div class="col col-6">
-            <div class="bg-salmon fill"><code>.col-6</code></div>
+            <div class="bg-pastelpink fill"><code>.col-6</code></div>
         </div>
         <div class="col">
-            <div class="bg-bb-blue fill"><code>.col</code></div>
+            <div class="bg-pastelblue fill"><code>.col</code></div>
         </div>
     </div>
 </div>
@@ -215,23 +215,23 @@ This example shows setting even column widths via the parent `.flex-row`:
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row">
         <div class="col">
-            <div class="bg-salmon fill"><code>.col</code></div>
+            <div class="bg-pastelpink fill"><code>.col</code></div>
         </div>
     </div>
     <div class="flex-row pole-xs"></div>
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-3</code></div>
     <div class="flex-row flex-cols-3 col-gaps-xs row-gaps-xs">
         <div class="col">
-            <div class="bg-bb-blue fill"><code>.col</code></div>
+            <div class="bg-pastelblue fill"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-teal fill"><code>.col</code></div>
+            <div class="bg-pastelteal fill"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-bb-blue fill"><code>.col</code></div>
+            <div class="bg-pastelblue fill"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-teal fill"><code>.col</code></div>
+            <div class="bg-pastelteal fill"><code>.col</code></div>
         </div>
     </div>
 </div> 
@@ -263,23 +263,23 @@ Here we set the width via the child `.col` elements:
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row">
         <div class="col col-12">
-            <div class="bg-salmon fill"><code>.col-12</code></div>
+            <div class="bg-pastelpink fill"><code>.col-12</code></div>
         </div>
     </div>
     <div class="flex-row pole-xs"></div>
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row col-gaps-xs row-gaps-xs">
         <div class="col col-3">
-            <div class="bg-bb-blue fill small"><code>.col-3</code></div>
+            <div class="bg-pastelblue fill small"><code>.col-3</code></div>
         </div>
         <div class="col col-3">
-            <div class="bg-teal fill small"><code>.col-3</code></div>
+            <div class="bg-pastelteal fill small"><code>.col-3</code></div>
         </div>
         <div class="col col-3">
-            <div class="bg-bb-blue fill small"><code>.col-3</code></div>
+            <div class="bg-pastelblue fill small"><code>.col-3</code></div>
         </div>
         <div class="col col-3">
-            <div class="bg-teal fill small"><code>.col-3</code></div>
+            <div class="bg-pastelteal fill small"><code>.col-3</code></div>
         </div>
     </div>
 </div> 
@@ -304,22 +304,22 @@ This design pattern uses a combination of both the parent `.flex-row` and it's c
     <div class="parent-row-diagram"><code>.flex-row</code><code>flex-cols-3</code></div>
     <div class="flex-row flex-cols-3 col-gaps-xs row-gaps-xs">
         <div class="col col-6">
-            <div class="bg-salmon fill"><code>.col-6</code></div>
+            <div class="bg-pastelpink fill"><code>.col-6</code></div>
         </div>
         <div class="col col-6">
-            <div class="bg-salmon fill"><code>.col-6</code></div>
+            <div class="bg-pastelpink fill"><code>.col-6</code></div>
         </div>
         <div class="col">
-            <div class="bg-bb-blue fill"><code>.col</code></div>
+            <div class="bg-pastelblue fill"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-teal fill"><code>.col</code></div>
+            <div class="bg-pastelteal fill"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-teal fill"><code>.col</code></div>
+            <div class="bg-pastelteal fill"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-bb-blue fill"><code>.col</code></div>
+            <div class="bg-pastelblue fill"><code>.col</code></div>
         </div>
     </div>
 </div>
@@ -339,19 +339,19 @@ This design pattern uses a combination of both the parent `.flex-row` and it's c
     <div class="parent-row-diagram"><code>.flex-row</code><code>flex-cols-6</code></div>
     <div class="flex-row flex-cols-6 col-gaps-xs row-gaps-xs">
         <div class="col">
-            <div class="bg-salmon fill"><code>.col</code></div>
+            <div class="bg-pastelpink fill"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-salmon fill"><code>.col</code></div>
+            <div class="bg-pastelpink fill"><code>.col</code></div>
         </div>
         <div class="col col-4">
-            <div class="bg-bb-blue fill"><code>.col-4</code></div>
+            <div class="bg-pastelblue fill"><code>.col-4</code></div>
         </div>
         <div class="col col-4">
-            <div class="bg-teal fill"><code>.col-4</code></div>
+            <div class="bg-pastelteal fill"><code>.col-4</code></div>
         </div>
         <div class="col col-4">
-            <div class="bg-bb-blue fill"><code>.col-4</code></div>
+            <div class="bg-pastelblue fill"><code>.col-4</code></div>
         </div>
     </div>
 </div> 
@@ -390,16 +390,16 @@ This example shows setting even column widths at `.col-6` on mobile and `.col-3'
     <div class="parent-row-diagram"><code>.flex-row</code> <code>.flex-cols-3</code> <code>.flex-cols-lg-6</code></div>
     <div class="flex-row flex-cols-3 flex-cols-lg-6 col-gaps-xs row-gaps-xs">
         <div class="col">
-            <div class="bg-bb-blue fill"><code>.col</code></div>
+            <div class="bg-pastelblue fill"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-teal fill"><code>.col</code></div>
+            <div class="bg-pastelteal fill"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-teal fill"><code>.col</code></div>
+            <div class="bg-pastelteal fill"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-bb-blue fill"><code>.col</code></div>
+            <div class="bg-pastelblue fill"><code>.col</code></div>
         </div>
     </div>
 </div> 
@@ -427,16 +427,16 @@ This example shows setting even column widths at `.col-6` on mobile and `.col-4'
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row col-gaps-xs row-gaps-xs">
         <div class="col col-6 col-md-4">
-            <div class="bg-bb-blue fill small"><code>.col-6</code><code>.col-md-4</code></div>
+            <div class="bg-pastelblue fill small"><code>.col-6</code><code>.col-md-4</code></div>
         </div>
         <div class="col col-6 col-md-4">
-            <div class="bg-teal fill small"><code>.col-6</code><code>.col-md-4</code></div>
+            <div class="bg-pastelteal fill small"><code>.col-6</code><code>.col-md-4</code></div>
         </div>
         <div class="col col-6 col-md-4">
-            <div class="bg-bb-blue fill small"><code>.col-6</code><code>.col-md-4</code></div>
+            <div class="bg-pastelblue fill small"><code>.col-6</code><code>.col-md-4</code></div>
         </div>
         <div class="col col-6 col-md-12">
-            <div class="bg-salmon fill small"><code>.col-6</code><code>.col-md-12</code></div>
+            <div class="bg-pastelpink fill small"><code>.col-6</code><code>.col-md-12</code></div>
         </div>
     </div>
 </div> 
@@ -458,16 +458,16 @@ This example shows setting even column widths at `.col-6` on mobile and `.col-4'
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-6</code><code>.flex-cols-lg-4</code></div>
     <div class="flex-row flex-cols-6 flex-cols-lg-4 col-gaps-xs row-gaps-xs">
         <div class="col col-lg-12">
-            <div class="bg-salmon fill small"><code>.col</code><code>.col-lg-12</code></div>
+            <div class="bg-pastelpink fill small"><code>.col</code><code>.col-lg-12</code></div>
         </div>
         <div class="col">
-            <div class="bg-teal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal fill small"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-bb-blue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue fill small"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-teal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal fill small"><code>.col</code></div>
         </div>
     </div>
 </div> 
@@ -495,16 +495,16 @@ Column gaps define the spacing between columns in a row and can be set via the p
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-6</code><code>.col-gaps-lg</code></div>
     <div class="flex-row flex-cols-6 col-gaps-lg row-gaps-xs">
         <div class="col">
-            <div class="bg-bb-blue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue fill small"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-teal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal fill small"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-teal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal fill small"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-bb-blue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue fill small"><code>.col</code></div>
         </div>
     </div>
 </div> 
@@ -533,16 +533,16 @@ The example below shows column gaps set to `xs` on mobile and `lg` on breakpoint
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-6</code><code>.col-gaps-xs</code><code>.col-gaps-md-lg</code></div>
     <div class="flex-row flex-cols-6 col-gaps-xs col-gaps-md-lg row-gaps-xs">
         <div class="col">
-            <div class="bg-bb-blue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue fill small"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-teal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal fill small"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-teal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal fill small"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-bb-blue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue fill small"><code>.col</code></div>
         </div>
     </div>
 </div> 
@@ -570,16 +570,16 @@ Row gaps define the spacing between rows. With FrontBx' flex grid, you set this 
      <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-6</code><code>.row-gaps-md</code></div>
     <div class="flex-row flex-cols-6 row-gaps-md col-gaps-xs">
         <div class="col">
-            <div class="bg-bb-blue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue fill small"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-teal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal fill small"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-teal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal fill small"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-bb-blue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue fill small"><code>.col</code></div>
         </div>
     </div>
 </div> 
@@ -607,16 +607,16 @@ The example below shows row gaps set to `xs` on mobile and `lg` on breakpoint `>
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-6</code><code>.row-gaps-xs</code><code>.row-gaps-md-lg</code></div>
     <div class="flex-row flex-cols-6 row-gaps-xs row-gaps-md-lg col-gaps-xs">
         <div class="col">
-            <div class="bg-bb-blue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue fill small"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-teal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal fill small"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-teal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal fill small"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-bb-blue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue fill small"><code>.col</code></div>
         </div>
     </div>
 </div> 
@@ -647,10 +647,10 @@ Gutters can be used to push columns away from each other.
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row">
         <div class="col col-6 gutter-xs gutter-r">
-            <div class="bg-bb-blue fill small"><code>.gutter-xs</code><code>.gutter-r</code></div>
+            <div class="bg-pastelblue fill small"><code>.gutter-xs</code><code>.gutter-r</code></div>
         </div>
         <div class="col col-6 gutter-xs gutter-l">
-            <div class="bg-teal fill small"><code>.gutter-xs</code><code>.gutter-l</code></div>
+            <div class="bg-pastelteal fill small"><code>.gutter-xs</code><code>.gutter-l</code></div>
         </div>
     </div>
 </div> 
@@ -666,30 +666,30 @@ Gutters can be used to push columns away from each other.
     <div class="parent-row-diagram"><code>.flex-row</code><code>.align-cols-center-x</code></div>
     <div class="flex-row align-cols-center-x">
         <div class="col col-md-4 gutter-xs gutter-r">
-            <div class="bg-bb-blue fill smaller"><code>.col-md-4</code><code>.gutter-xs</code><br><code>.gutter-r</code></div>
+            <div class="bg-pastelblue fill smaller"><code>.col-md-4</code><code>.gutter-xs</code><br><code>.gutter-r</code></div>
         </div>
         <div class="col col-md-4 gutter-xs gutter-l">
-            <div class="bg-teal fill smaller"><code>.col-md-4</code><code>.gutter-xs</code><br><code>.gutter-l</code></div>
+            <div class="bg-pastelteal fill smaller"><code>.col-md-4</code><code>.gutter-xs</code><br><code>.gutter-l</code></div>
         </div>
     </div>
     <div class="row pole-xs"></div>
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row row-gaps-xs">
         <div class="col col-md-4 auto-gutter gutter-r">
-            <div class="bg-bb-blue fill smaller"><code>.col-md-4</code><code>.auto-gutter</code><br><code>.gutter-r</code></div>
+            <div class="bg-pastelblue fill smaller"><code>.col-md-4</code><code>.auto-gutter</code><br><code>.gutter-r</code></div>
         </div>
         <div class="col col-md-4">
-            <div class="bg-teal fill smaller"><code>.col-md-4</code></div>
+            <div class="bg-pastelteal fill smaller"><code>.col-md-4</code></div>
         </div>
     </div>
     <div class="row pole-xs"></div>
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row row-gaps-xs">
         <div class="col col-md-4 auto-gutter">
-            <div class="bg-teal fill smaller"><code>.col-md-4</code><code>.auto-gutter</code></div>
+            <div class="bg-pastelteal fill smaller"><code>.col-md-4</code><code>.auto-gutter</code></div>
         </div>
         <div class="col col-md-4 auto-gutter">
-            <div class="bg-bb-blue fill smaller"><code>.col-md-4</code><code>.auto-gutter</code></div>
+            <div class="bg-pastelblue fill smaller"><code>.col-md-4</code><code>.auto-gutter</code></div>
         </div>
     </div>
 </div>
@@ -726,10 +726,10 @@ FrontBx's grid system comes with mobile-first fully responsive set of helpers to
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row">
         <div class="col col-6 gutter-xs gutter-r gutter-md-lg gutter-lg-r">
-            <div class="bg-bb-blue fill small"><code>.gutter-xs</code><code>.gutter-r</code><br><code>.gutter-md-lg</code><code>.gutter-lg-r</code></div>
+            <div class="bg-pastelblue fill small"><code>.gutter-xs</code><code>.gutter-r</code><br><code>.gutter-md-lg</code><code>.gutter-lg-r</code></div>
         </div>
         <div class="col col-6 gutter-xs gutter-l gutter-md-lg gutter-lg-l">
-            <div class="bg-teal fill small"><code>.gutter-xs</code><code>.gutter-l</code><br><code>.gutter-md-lg</code><code>.gutter-lg-l</code></div>
+            <div class="bg-pastelteal fill small"><code>.gutter-xs</code><code>.gutter-l</code><br><code>.gutter-md-lg</code><code>.gutter-lg-l</code></div>
         </div>
     </div>
 </div>
@@ -766,13 +766,13 @@ The table below outlines the classes and formats made available for poles.
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row col-gaps-xs">
         <div class="col col-6 pole-xs">
-            <div class="bg-bb-blue fill small"><code>.col</code><code>.pole-xs</code></div>
+            <div class="bg-pastelblue fill small"><code>.col</code><code>.pole-xs</code></div>
         </div>
         <div class="col col-6 pole-xs">
-            <div class="bg-teal fill small"><code>.col</code><code>.pole-xs</code></div>
+            <div class="bg-pastelteal fill small"><code>.col</code><code>.pole-xs</code></div>
         </div>
         <div class="col col-12">
-            <div class="bg-salmon fill thin"><code>.col-12</code></div>
+            <div class="bg-pastelpink fill thin"><code>.col-12</code></div>
         </div>
     </div>
 </div> 
@@ -801,10 +801,10 @@ In the example below, the first col the poles are sized differently and differen
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row">
         <div class="col col-12 pole-xxs pole-lg-xs">
-            <div class="bg-salmon fill small"><code>.col</code><code>.pole-xxs</code><code>.pole-lg-xs</code></div>
+            <div class="bg-pastelpink fill small"><code>.col</code><code>.pole-xxs</code><code>.pole-lg-xs</code></div>
         </div>
         <div class="col col-12 pole-xxs pole-lg-xs">
-            <div class="bg-salmon fill small"><code>.col</code><code>.pole-xxs</code><code>.pole-lg-xs</code></div>
+            <div class="bg-pastelpink fill small"><code>.col</code><code>.pole-xxs</code><code>.pole-lg-xs</code></div>
         </div>
     </div>
 </div>
@@ -853,10 +853,10 @@ The table below outlines the available alignment options:
     <div class="parent-row-diagram"><code>.flex-row</code><code>.align-cols-center-x</code></div>
     <div class="flex-row flex-cols-3 col-gaps-xs align-cols-center-x">
         <div class="col">
-            <div class="bg-bb-blue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue fill small"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-teal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal fill small"><code>.col</code></div>
         </div>
         <div class="col col-12 pole-xs pole-s"></div>
     </div>
@@ -873,10 +873,10 @@ The table below outlines the available alignment options:
     <div class="parent-row-diagram"><code>.flex-row</code><code>.align-cols-center-y</code></div>
     <div class="flex-row flex-cols-3 col-gaps-xs align-cols-center-y">
         <div class="col">
-            <div class="bg-bb-blue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue fill small"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-teal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal fill small"><code>.col</code></div>
         </div>
     </div>
 </div> 
@@ -920,10 +920,10 @@ All alignment classes are available through breakpoint specific targeting with `
     <div class="parent-row-diagram"><code>.flex-row</code><code>.align-cols-md-center-x</code></div>
     <div class="flex-row flex-cols-2 col-gaps-xs align-cols-md-center-x">
         <div class="col">
-            <div class="bg-bb-blue fill">.col</div>
+            <div class="bg-pastelblue fill">.col</div>
         </div>
         <div class="col">
-            <div class="bg-teal fill">.col</div>
+            <div class="bg-pastelteal fill">.col</div>
         </div>
     </div>
 </div> 
@@ -939,10 +939,10 @@ All alignment classes are available through breakpoint specific targeting with `
     <div class="parent-row-diagram"><code>.flex-row</code><code>.align-cols-md-center-y</code></div>
     <div class="flex-row flex-cols-6 col-gaps-xs align-cols-md-center-y">
         <div class="col">
-            <div class="bg-bb-blue fill">.col</div>
+            <div class="bg-pastelblue fill">.col</div>
         </div>
         <div class="col">
-            <div class="bg-teal fill">.col</div>
+            <div class="bg-pastelteal fill">.col</div>
         </div>
     </div>
 </div> 
@@ -966,13 +966,13 @@ Use `.order-[num]` classes to re-arrange content within a grid.
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-4</code></div>
     <div class="flex-row flex-cols-4 col-gaps-xs row-gaps-xs">
         <div class="col">
-            <div class="bg-salmon fill small">1. <code>.col</code></div>
+            <div class="bg-pastelpink fill small">1. <code>.col</code></div>
         </div>
         <div class="col order-5">
-            <div class="bg-bb-blue fill small">2. <code>.col</code><code>.order-5</code></div>
+            <div class="bg-pastelblue fill small">2. <code>.col</code><code>.order-5</code></div>
         </div>
         <div class="col order-1">
-            <div class="bg-teal fill small">3. <code>.col</code> <code>.order-1</code></div>
+            <div class="bg-pastelteal fill small">3. <code>.col</code> <code>.order-1</code></div>
         </div>
     </div>
 </div> 
@@ -997,13 +997,13 @@ Responsive order can be used through `.order-[breakpoint]-[num]` classes to re-a
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-4</code></div>
     <div class="flex-row flex-cols-4 col-gaps-xs row-gaps-xs">
         <div class="col">
-            <div class="bg-salmon fill small">1. <code>.col</code></div>
+            <div class="bg-pastelpink fill small">1. <code>.col</code></div>
         </div>
         <div class="col order-md-5">
-            <div class="bg-bb-blue fill small">2. <code>.col</code><code>.order-md-5</code></div>
+            <div class="bg-pastelblue fill small">2. <code>.col</code><code>.order-md-5</code></div>
         </div>
         <div class="col order-md-1">
-            <div class="bg-teal fill small">3. <code>.col</code><code>.order-md-1</code></div>
+            <div class="bg-pastelteal fill small">3. <code>.col</code><code>.order-md-1</code></div>
         </div>
     </div>
 </div> 

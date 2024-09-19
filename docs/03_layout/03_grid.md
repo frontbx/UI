@@ -94,7 +94,7 @@ Rows are used to as a clearfixing wrapper element to contain columns. Empty rows
     <div class="parent-row-diagram"><code>.row</code></div>
     <div class="row">
         <div class="col col-12">
-            <div class="bg-salmon fill"><code>.col-12</code></div>
+            <div class="bg-pastelpink fill"><code>.col-12</code></div>
         </div>
     </div>
 </div>
@@ -117,13 +117,13 @@ The example below shows two rows. The first that displays on mobile (`<=md` brea
     <div class="parent-row-diagram"><code>.row</code><code>.xs</code><code>.sm</code></div>
     <div class="row xs sm pole-xs pole-s">
         <div class="col col-12">
-            <div class="bg-salmon fill"><code>.col-12</code></div>
+            <div class="bg-pastelpink fill"><code>.col-12</code></div>
         </div>
     </div>
     <div class="parent-row-diagram"><code>.row</code><code>.md</code><code>.lg</code><code>.xl</code></div>
     <div class="md lg xl row-lg">
         <div class="col col-12">
-            <div class="bg-teal fill"><code>.col-12</code></div>
+            <div class="bg-pastelteal fill"><code>.col-12</code></div>
         </div>
     </div>
 </div>
@@ -148,14 +148,14 @@ The core base class of FrontBx layouts is the `.col`. The table below outlines t
     <div class="parent-row-diagram"><code>.row</code></div>
     <div class="row">
         <div class="col col-12">
-            <div class="bg-salmon fill"><code>.col-12</code></div>
+            <div class="bg-pastelpink fill"><code>.col-12</code></div>
         </div>
         <div class="row pole-xs"></div>
         <div class="col col-6 gutter-xxs gutter-r">
-            <div class="bg-bb-blue fill"><code>.col-6</code></div>
+            <div class="bg-pastelblue fill"><code>.col-6</code></div>
         </div>
         <div class="col col-6 gutter-xxs gutter-l">
-            <div class="bg-teal fill"><code>.col-6</code></div>
+            <div class="bg-pastelteal fill"><code>.col-6</code></div>
         </div>
     </div>
 </div> 
@@ -180,14 +180,14 @@ FrontBx's grid system comes with mobile-first fully responsive set of helpers to
     <div class="parent-row-diagram"><code>.row</code></div>
     <div class="row">
         <div class="col col-6 col-lg-4 gutter-xs gutter-r">
-            <div class="bg-bb-blue fill small"><code>.col</code><code>.col-6</code><code>.col-lg-4</code></div>
+            <div class="bg-pastelblue fill small"><code>.col</code><code>.col-6</code><code>.col-lg-4</code></div>
         </div>
         <div class="col col-6 col-lg-4 gutter-xs gutter-l no-gutter-lg">
-            <div class="bg-teal fill small"><code>.col</code><code>.col-6</code><code>.col-lg-4</code></div>
+            <div class="bg-pastelteal fill small"><code>.col</code><code>.col-6</code><code>.col-lg-4</code></div>
         </div>
         <div class="row pole-xs xs sm md"></div>
         <div class="col col-12 col-lg-4 gutter-lg-xs gutter-lg-l">
-            <div class="bg-salmon fill small"><code>.col</code><code>.col-12</code><code>.col-lg-4</code></div>
+            <div class="bg-pastelpink fill small"><code>.col</code><code>.col-12</code><code>.col-lg-4</code></div>
         </div>
     </div>
 </div>
@@ -216,10 +216,10 @@ Gutters apply a padding size on the sides of columns. The table below outlines t
     <div class="parent-row-diagram"><code>.row</code></div>
     <div class="row">
         <div class="col col-6 gutter-xs gutter-r">
-            <div class="bg-bb-blue fill small"><code>.col</code><code>.gutter-xs</code><code>.gutter-r</code></div>
+            <div class="bg-pastelblue fill small"><code>.col</code><code>.gutter-xs</code><code>.gutter-r</code></div>
         </div>
         <div class="col col-6 gutter-xs gutter-l">
-            <div class="bg-teal fill small"><code>.col</code><code>.gutter-xs</code><code>.gutter-l</code></div>
+            <div class="bg-pastelteal fill small"><code>.col</code><code>.gutter-xs</code><code>.gutter-l</code></div>
         </div>
     </div>
 </div> 
@@ -247,17 +247,17 @@ The example below is a little more complicated. It shows how to space columns ev
     <div class="parent-row-diagram"><code>.row</code></div>
     <div class="row">
         <div class="col col-6 col-lg-3 gutter-xxs gutter-r gutter-lg-xs gutter-lg-r">
-            <div class="bg-bb-blue fill smaller"><code>.col</code><code>.gutter-xxs</code><code>.gutter-r</code><br><code>.gutter-lg-xs</code><code>.gutter-lg-r</code></div>
+            <div class="bg-pastelblue fill smaller"><code>.col</code><code>.gutter-xxs</code><code>.gutter-r</code><br><code>.gutter-lg-xs</code><code>.gutter-lg-r</code></div>
         </div>
         <div class="col col-6 col-lg-3 gutter-xxs gutter-l gutter-lg-xs gutter-lg-r">
-            <div class="bg-teal fill smaller"><code>.col</code><code>.gutter-xxs</code><code>.gutter-l</code><br><code>.gutter-lg-xs</code><code>.gutter-lg-r</code></div>
+            <div class="bg-pastelteal fill smaller"><code>.col</code><code>.gutter-xxs</code><code>.gutter-l</code><br><code>.gutter-lg-xs</code><code>.gutter-lg-r</code></div>
         </div>
         <div class="row xs sm md pole-xs"></div>
         <div class="col col-6 col-lg-3 gutter-xxs gutter-r gutter-lg-xs gutter-lg-r">
-            <div class="bg-teal fill smaller"><code>.col</code><code>.gutter-xxs</code><code>.gutter-r</code><br><code>.gutter-lg-xs</code><code>.gutter-lg-r</code></div>
+            <div class="bg-pastelteal fill smaller"><code>.col</code><code>.gutter-xxs</code><code>.gutter-r</code><br><code>.gutter-lg-xs</code><code>.gutter-lg-r</code></div>
         </div>
         <div class="col col-6 col-lg-3 gutter-xxs gutter-l gutter-lg-xs no-gutter-lg">
-            <div class="bg-bb-blue fill smaller"><code>.col</code><code>.gutter-xxs</code><code>.gutter-l</code><br><code>.gutter-lg-xs</code><code>.no-gutter-lg</code></div>
+            <div class="bg-pastelblue fill smaller"><code>.col</code><code>.gutter-xxs</code><code>.gutter-l</code><br><code>.gutter-lg-xs</code><code>.no-gutter-lg</code></div>
         </div>
     </div>
 </div> 
@@ -291,16 +291,16 @@ Poles are essentially vertical gutters. `.pole-n` applies a `padding-top` value 
     <div class="parent-row-diagram"><code>.row</code></div>
     <div class="row">
         <div class="col col-12">
-            <div class="bg-salmon fill thin small"><code>.col</code><code>.col-12</code></div>
+            <div class="bg-pastelpink fill thin small"><code>.col</code><code>.col-12</code></div>
         </div>
         <div class="col col-6 gutter-xxs gutter-r pole-xs">
-            <div class="bg-bb-blue fill small"><code>.col</code><code>.col-6</code><code>.pole-xs</code></div>
+            <div class="bg-pastelblue fill small"><code>.col</code><code>.col-6</code><code>.pole-xs</code></div>
         </div>
         <div class="col col-6 gutter-xxs gutter-l pole-xs">
-            <div class="bg-teal fill small"><code>.col</code><code>.col-6</code><code>.pole-xs</code></div>
+            <div class="bg-pastelteal fill small"><code>.col</code><code>.col-6</code><code>.pole-xs</code></div>
         </div>
         <div class="col col-12">
-            <div class="bg-salmon fill thin small"><code>.col</code><code>.col-12</code></div>
+            <div class="bg-pastelpink fill thin small"><code>.col</code><code>.col-12</code></div>
         </div>
     </div>
 </div> 
@@ -332,10 +332,10 @@ In the example below, the first col the poles are sized differently and differen
     <div class="parent-row-diagram"><code>row</code></div>
     <div class="row">
         <div class="col col-12 pole-xxs pole-lg-xs">
-            <div class="bg-salmon fill small"><code>.col</code><code>.pole-xxs</code><code>.pole-lg-xs</code></div>
+            <div class="bg-pastelpink fill small"><code>.col</code><code>.pole-xxs</code><code>.pole-lg-xs</code></div>
         </div>
         <div class="col col-12 pole-xxs pole-lg-xs">
-            <div class="bg-salmon fill small"><code>.col</code><code>.pole-xxs</code><code>.pole-lg-xs</code></div>
+            <div class="bg-pastelpink fill small"><code>.col</code><code>.pole-xxs</code><code>.pole-lg-xs</code></div>
         </div>
     </div>
 </div>
@@ -364,10 +364,10 @@ In the example below the second column is pushed to the left and the first is pu
     <div class="parent-row-diagram"><code>row</code></div>
     <div class="row">
         <div class="col col-8 col-pull-4 gutter-xxs gutter-l">
-            <div class="bg-teal fill small"><code>.col</code><code>.col-8</code><code>.col-pull-4</code></div>
+            <div class="bg-pastelteal fill small"><code>.col</code><code>.col-8</code><code>.col-pull-4</code></div>
         </div>
         <div class="col col-4 col-push-8 gutter-xxs gutter-r">
-            <div class="bg-bb-blue fill small"><code>.col</code><code>.col-4</code><code>.col-push-8</code></div>
+            <div class="bg-pastelblue fill small"><code>.col</code><code>.col-4</code><code>.col-push-8</code></div>
         </div>
     </div>
 </div> 
@@ -394,10 +394,10 @@ In the example below both columns are full width on mobile. On breakpoint (>=md)
     <div class="parent-row-diagram"><code>row</code></div>
     <div class="row">
         <div class="col col-12 col-md-8 col-md-pull-4 gutter-md-xxs gutter-md-l pole-xxs pole-s no-pole-md">
-            <div class="bg-teal fill smaller"><code>.col</code><code>.col-12</code><code>.col-md-8</code><code>.col-md-pull-4</code></div>
+            <div class="bg-pastelteal fill smaller"><code>.col</code><code>.col-12</code><code>.col-md-8</code><code>.col-md-pull-4</code></div>
         </div>
         <div class="col col-12 col-md-4 col-md-push-8 gutter-md-xxs gutter-md-r pole-xxs pole-n no-pole-md">
-            <div class="bg-bb-blue fill smaller"><code>.col</code><code>.col-12</code><code>.col-md-4</code><code>.col-md-push-8</code></div>
+            <div class="bg-pastelblue fill smaller"><code>.col</code><code>.col-12</code><code>.col-md-4</code><code>.col-md-push-8</code></div>
         </div>
     </div>
 </div>
