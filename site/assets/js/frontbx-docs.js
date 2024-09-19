@@ -169,7 +169,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     {
     	return throttle(() =>
     	{
-    		let x = width(window);
+    		let x = width(document.body);
 
 	        if (x < 768 && this.inMain)
 	        {
