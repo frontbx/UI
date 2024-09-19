@@ -385,12 +385,12 @@
 }
 .fbx-darkmode .table {
   --fbx-table-color: var(--fbx-gray-100);
-  --fbx-table-border-color: var(--fbx-black-900);
-  --fbx-table-head-bg: var(--fbx-black-900);
+  --fbx-table-border-color: var(--fbx-black-200);
+  --fbx-table-head-bg: var(--fbx-black-200);
   --fbx-table-head-color: var(--fbx-white);
-  --fbx-table-bg-hover: var(--fbx-black-900);
+  --fbx-table-bg-hover: var(--fbx-black-200);
   --fbx-table-caption-color: var(--fbx-gray);
-  --fbx-table-bg-alternate: var(--fbx-black-900);
+  --fbx-table-bg-alternate: var(--fbx-black-200);
   --fbx-table-selected-color: var(--fbx-white);
   --fbx-table-selected-bg: var(--fbx-theme-primary-900);
 }
@@ -1298,6 +1298,12 @@ pre > code {
   font-size: var(--fbx-table-font-size);
   color: var(--fbx-table-color);
   background-color: var(--fbx-table-bg);
+  /* Change these properties */
+  border-radius: var(--fbx-border-radius);
+  /* Don't change these properties */
+  border-spacing: 0;
+  border-collapse: separate;
+  overflow: hidden;
 }
 .table caption {
   color: var(--fbx-table-caption-color);
@@ -1331,12 +1337,20 @@ pre > code {
 .table th, .table td {
   background-color: var(--fbx-table-bg);
 }
-.table.table-bordered td, .table.table-bordered th {
+.table.table-bordered {
   border: 1px solid var(--fbx-table-border-color);
+}
+.table.table-bordered th:not(:last-child),
+.table.table-bordered td:not(:last-child) {
+  border-right: 1px solid var(--fbx-table-border-color);
 }
 .table.table-bordered thead th,
 .table.table-bordered tfoot th {
   border-color: var(--fbx-table-border-color);
+}
+.table.table-bordered > *:last-child > tr:last-child td,
+.table.table-bordered > *:last-child > tr:last-child th {
+  border-bottom: none;
 }
 .table.table-hover tbody tr:hover {
   background-color: var(--fbx-table-bg-hover);

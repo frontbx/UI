@@ -20,6 +20,14 @@
 	color: var(--fbx-table-color);
 	background-color: var(--fbx-table-bg);
 
+ 	/* Change these properties */
+	border-radius: var(--fbx-border-radius);
+
+	/* Don't change these properties */
+	border-spacing: 0;
+	border-collapse: separate;
+	overflow: hidden;
+
 	caption
 	{
 		color: var(--fbx-table-caption-color);
@@ -64,15 +72,26 @@
 	}
 	&.table-bordered
 	{
-		td, th
+		border: 1px solid var(--fbx-table-border-color);
+		
+		th:not(:last-child),
+		td:not(:last-child)
 		{
-			border: 1px solid var(--fbx-table-border-color);
+			border-right: 1px solid var(--fbx-table-border-color);
 		}
 		thead th,
 		tfoot th
 		{
 			border-color: var(--fbx-table-border-color);
 		}
+
+		> *:last-child > tr:last-child td,
+		> *:last-child > tr:last-child th
+		{
+			border-bottom: none;
+		}
+
+		
 	}
 	&.table-hover
 	{
