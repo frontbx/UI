@@ -271,10 +271,14 @@ pre[class*="language-bash"]
     border-radius: var(--fbx-border-radius);
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    padding: 20px;
+    padding: 40px 20px;
     background: transparent;
     border: 1px solid var(--fbx-gray-200);
     margin: var(--fbx-p-text-spacer) 0;    
+}
+.code-content-example > *:last-child
+{
+    margin-bottom: 0;
 }
 .bd-example-container-sidebar
 {

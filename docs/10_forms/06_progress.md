@@ -15,11 +15,9 @@ Custom styled progress bars can be used in upload forms or Ajax tasks with very 
 ### Markup
 
 <div class="code-content-example">
-	<div class="row floor-xs">
-	    <span class="progress-bar">
-	        <span class="progress" style="width: 20%"></span>
-	    </span>
-	</div>
+    <span class="progress-bar">
+        <span class="progress" style="width: 20%"></span>
+    </span>
 </div>
 
 ```html
@@ -36,37 +34,37 @@ Progress bars can be further contextualized using the `.progress-primary`, `.pro
 
 
 <div class="code-content-example">
-	<div class="row floor-xs">
+	<div class="row pole-sm pole-s">
 	    <span class="progress-bar progress-primary">
 	        <span class="progress" style="width: 20%"></span>
 	    </span>
 	</div>
-	<div class="row floor-xs">
+	<div class="row pole-sm pole-s">
 	    <span class="progress-bar progress-secondary">
 	        <span class="progress" style="width: 30%"></span>
 	    </span>
 	</div>
-	<div class="row floor-xs">
+	<div class="row pole-sm pole-s">
 	    <span class="progress-bar progress-info">
 	        <span class="progress" style="width: 40%"></span>
 	    </span>
 	</div>
-	<div class="row floor-xs">
+	<div class="row pole-sm pole-s">
 	    <span class="progress-bar progress-success">
 	        <span class="progress" style="width: 50%"></span>
 	    </span>
 	</div>
-	<div class="row floor-xs">
+	<div class="row pole-sm pole-s">
 	    <span class="progress-bar progress-warning">
 	        <span class="progress" style="width: 60%"></span>
 	    </span>
 	</div>
-	<div class="row floor-xs">
+	<div class="row pole-sm pole-s">
 	    <span class="progress-bar progress-danger">
 	        <span class="progress" style="width: 70%"></span>
 	    </span>
 	</div>
-	<div class="row floor-xs">
+	<div class="row">
 	    <span class="progress-bar progress-gradient">
 	        <span class="progress" style="width: 80%"></span>
 	    </span>
