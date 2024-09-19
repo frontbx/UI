@@ -218,24 +218,6 @@ ul, ol
 ol
 {
     list-style-type: decimal;
-
-    &.no-list
-    {
-        padding: 0;
-        list-style-type: none;
-    }
-    &[type="az"]
-    {
-        list-style-type: lower-alpha;
-    }
-    &[type="AZ"]
-    {
-        list-style-type: upper-alpha;
-    }
-    &[type="1"]
-    {
-        list-style-type: decimal;
-    }
 }
 
 // Nested lists
@@ -260,10 +242,6 @@ ol
     }
 }
 
-div > ol:not([type])
-{
-    list-style-type: decimal;
-}
 li
 {
     > p
@@ -335,14 +313,12 @@ dl dd:last-child
     list-style: none;
     margin: 0;
     padding: 0;
-    display: inline-block;
 
-    li
+    > li
     {
         list-style: none;
         margin: 0;
         padding: 0;
-        display: inline-block;
     }
 }
 

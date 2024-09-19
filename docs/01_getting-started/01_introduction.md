@@ -1,6 +1,6 @@
 # Introduction
 
-FrontBx is fast, dependency-free UI framework built with Sass, CSS and JavaScript.
+FrontBx is a fast, dependency-free UI framework built with Sass, CSS and JavaScript.
 
 ---
 

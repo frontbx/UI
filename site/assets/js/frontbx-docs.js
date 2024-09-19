@@ -880,32 +880,22 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     const [Component] = frontbx.get('Component');
     const [add_class, extend] = frontbx.import(['add_class', 'extend']).from('_');
 
-    const RTables = function()
+    const DocTables = function()
     {        
         this.super('.docs-body > table');
     }
 
-    RTables.prototype.bind = function(table)
+    DocTables.prototype.bind = function(table)
     {
-    	let wrapper = document.createElement('div');
-        
-        wrapper.className = 'table-responsive';
-       	
-       	add_class(table, ['table','table-dense', 'table-bordered']);
-        
-        wrapper.appendChild(table.cloneNode(true));
-        
-        table.parentNode.replaceChild(wrapper, table);
+    	add_class(table, 'table, table-minimal');
     }
 
-    RTables.prototype.unbind = function(table)
+    DocTables.prototype.unbind = function(table)
     {
-    	let wrapper = table.parentNode;
-
-    	if (wrapper) wrapper.parentNode.replaceChild(table, wrapper);
+    	
     }
 
-    frontbx.dom().register('RTables', extend(Component, RTables), true);
+    frontbx.dom().register('DocTables', extend(Component, DocTables), true);
 
 }());
 

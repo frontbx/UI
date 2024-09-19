@@ -7,6 +7,7 @@ FrontBx comes with a few different basic table stylings ready to go. Because tab
 ---
 
 *   [Basic table](#basic-table)
+*   [Minimal table](#minimal-table)
 *   [Bordered table](#bordered-table)
 *   [Alternate table](#alternate-table)
 *   [Raised Table](#raised-table)
@@ -25,38 +26,36 @@ FrontBx comes with a few different basic table stylings ready to go. Because tab
 For the most basic of table styling, simply add the `.table` class to a table.
 
 <div class="code-content-example">
-    <div class="card flat hide-overflow">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>John</td>
-                    <td>Foobar</td>
-                    <td>@fbar</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Joe</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>James</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>John</td>
+                <td>Foobar</td>
+                <td>@fbar</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Joe</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>James</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 ```html
@@ -92,6 +91,77 @@ For the most basic of table styling, simply add the `.table` class to a table.
 </table>
 ```
 
+---
+
+### Minimal table
+
+Minimal tables have minimal styling applied offering a more modern aesthetic. To make a minimal table add the `.table-minimal` class to a `.table`:
+
+<div class="code-content-example">
+    <table class="table table-minimal">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>John</td>
+                <td>Foobar</td>
+                <td>@fbar</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Joe</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>James</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+```html
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>John</td>
+            <td>Foobar</td>
+            <td>@fbar</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Joe</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>James</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+```
 
 ---
 
@@ -100,38 +170,36 @@ For the most basic of table styling, simply add the `.table` class to a table.
 To make a bordered table add the `.table-bordered` class to a `.table`:
 
 <div class="code-content-example">
-    <div class="card flat hide-overflow">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>John</td>
-                    <td>Foobar</td>
-                    <td>@fbar</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Joe</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>James</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>John</td>
+                <td>Foobar</td>
+                <td>@fbar</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Joe</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>James</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 ```html
@@ -174,38 +242,36 @@ To make a bordered table add the `.table-bordered` class to a `.table`:
 Add the `.table-alternate` class to a `.table` to add alternate background colors on rows:
 
 <div class="code-content-example">
-    <div class="card flat hide-overflow">
-        <table class="table table-alternate">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>John</td>
-                    <td>Foobar</td>
-                    <td>@fbar</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Joe</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>James</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <table class="table table-alternate">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>John</td>
+                <td>Foobar</td>
+                <td>@fbar</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Joe</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>James</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 ```html
@@ -248,38 +314,36 @@ Add the `.table-alternate` class to a `.table` to add alternate background color
 Make a table raised by adding the `.raised-1`, `.raised-2` or `.raised-3` classes.
 
 <div class="code-content-example">
-    <div class="card flat hide-overflow">
-        <table class="table table-bordered raised-1">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>John</td>
-                    <td>Foobar</td>
-                    <td>@fbar</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Joe</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>James</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <table class="table table-bordered raised-1">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>John</td>
+                <td>Foobar</td>
+                <td>@fbar</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Joe</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>James</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 ```html
@@ -322,38 +386,36 @@ Make a table raised by adding the `.raised-1`, `.raised-2` or `.raised-3` classe
 Adding the `.table-hover` class highlights the rows on hover.
 
 <div class="code-content-example">
-    <div class="card flat hide-overflow">
-        <table class="table table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>John</td>
-                    <td>Foobar</td>
-                    <td>@fbar</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Joe</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>James</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>John</td>
+                <td>Foobar</td>
+                <td>@fbar</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Joe</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>James</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 ```html
@@ -414,38 +476,36 @@ list.addEventListener('table:selected', event =>
 ```
 
 <div class="code-content-example">
-    <div class="card flat hide-overflow">
-        <table class="table js-select-table">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>John</td>
-                    <td>Foobar</td>
-                    <td>@fbar</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Joe</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>James</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <table class="table js-select-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>John</td>
+                <td>Foobar</td>
+                <td>@fbar</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Joe</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>James</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 ```html
@@ -489,40 +549,37 @@ list.addEventListener('table:selected', event =>
 A responsive table will scroll horizontally at smaller screen sizes. This is handy for tables with lots of text. Simply wrap the table in a `div` with the `.table-responsive` class.
 
 <div class="code-content-example">
-    <div class="card flat hide-overflow">
-        <div class="table-responsive">
-            <table class="table table-bordered">
-
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>John</td>
-                        <td>Foobar</td>
-                        <td>@fbar</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Joe</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>James</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>John</td>
+                    <td>Foobar</td>
+                    <td>@fbar</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Joe</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>James</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
@@ -569,38 +626,36 @@ A responsive table will scroll horizontally at smaller screen sizes. This is han
 Adding the `.table-dense` for a table with less padding in its cells:
 
 <div class="code-content-example">
-    <div class="card flat hide-overflow">
-        <table class="table table-dense">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>John</td>
-                    <td>Foobar</td>
-                    <td>@fbar</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Joe</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>James</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <table class="table table-dense">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>John</td>
+                <td>Foobar</td>
+                <td>@fbar</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Joe</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>James</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 ```html
@@ -643,50 +698,48 @@ Adding the `.table-dense` for a table with less padding in its cells:
 You can highlight table rows, cells, heads and foots using FrontBx's contextual classes. Simply add `.primary` `.info`, `.success`, `.warning`, or `.danger` to a table element to highlight it
 
 <div class="code-content-example">
-    <div class="card flat hide-overflow">
-        <table class="table table-bordered">
-            <thead class="primary">
-                <tr>
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>John</td>
-                    <td>Foobar</td>
-                    <td>@fbar</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>John</td>
-                    <td>Foobar</td>
-                    <td>@fbar</td>
-                </tr>
-                <tr class="primary color-white">
-                    <th scope="row">3</th>
-                    <td>Joe</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>James</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td class="primary color-white">James</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <table class="table table-bordered">
+        <thead class="primary">
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>John</td>
+                <td>Foobar</td>
+                <td>@fbar</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>John</td>
+                <td>Foobar</td>
+                <td>@fbar</td>
+            </tr>
+            <tr class="primary color-white">
+                <th scope="row">3</th>
+                <td>Joe</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td>James</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+            <tr>
+                <th scope="row">5</th>
+                <td class="primary color-white">James</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 

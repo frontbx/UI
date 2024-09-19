@@ -19,11 +19,7 @@
 	font-size: var(--fbx-table-font-size);
 	color: var(--fbx-table-color);
 	background-color: var(--fbx-table-bg);
-
- 	/* Change these properties */
 	border-radius: var(--fbx-border-radius);
-
-	/* Don't change these properties */
 	border-spacing: 0;
 	border-collapse: separate;
 	overflow: hidden;
@@ -100,11 +96,7 @@
 			background-color: var(--fbx-table-bg-hover);
 		}
 	}
-	&.table-transparent
-	{
-		--fbx-table-bg: transparent;
-		--fbx-table-bg-hover: transparent;
-	}
+
 	// Alternate table
 	&.table-alternate
 	{
@@ -112,6 +104,18 @@
 		{
 			background-color: var(--fbx-table-bg-alternate);
 		}
+	}
+
+	// Minimal table
+	&.table-minimal
+	{
+		--fbx-table-head-bg: transparent;
+
+		thead > tr > td, > thead > tr > th
+		{
+			border-bottom: 2px solid var(--fbx-table-head-color);
+		}
+
 	}
 
 	// Selected

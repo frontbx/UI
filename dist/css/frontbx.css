@@ -941,19 +941,6 @@ ul li, ol li {
 ol {
   list-style-type: decimal;
 }
-ol.no-list {
-  padding: 0;
-  list-style-type: none;
-}
-ol[type=az] {
-  list-style-type: lower-alpha;
-}
-ol[type=AZ] {
-  list-style-type: upper-alpha;
-}
-ol[type="1"] {
-  list-style-type: decimal;
-}
 
 ol ol, ol ul, ul ol, ul ul {
   margin: 1rem 0 1rem 0;
@@ -967,10 +954,6 @@ ul ul, ul ol {
 ol ol, ol ul {
   margin-top: 0;
   margin-bottom: 0;
-}
-
-div > ol:not([type]) {
-  list-style-type: decimal;
 }
 
 li > p {
@@ -1032,13 +1015,11 @@ dl dd:last-child {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: inline-block;
 }
-.list-unstyled li {
+.list-unstyled > li {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: inline-block;
 }
 
 code, pre {
@@ -1288,7 +1269,7 @@ pre > code {
   --fbx-table-cell-pad-x: 1.8rem;
   --fbx-table-border-color: var(--fbx-gray-200);
   --fbx-table-head-bg: var(--fbx-gray-200);
-  --fbx-table-head-color: var(--fbx-gray-900);
+  --fbx-table-head-color: var(--fbx-body-color);
   --fbx-table-head-weight: 500;
   --fbx-table-caption-color: var(--fbx-gray);
   --fbx-table-bg-alternate: rgba(0, 0, 0, 0.08);
@@ -1298,9 +1279,7 @@ pre > code {
   font-size: var(--fbx-table-font-size);
   color: var(--fbx-table-color);
   background-color: var(--fbx-table-bg);
-  /* Change these properties */
   border-radius: var(--fbx-border-radius);
-  /* Don't change these properties */
   border-spacing: 0;
   border-collapse: separate;
   overflow: hidden;
@@ -1355,12 +1334,14 @@ pre > code {
 .table.table-hover tbody tr:hover {
   background-color: var(--fbx-table-bg-hover);
 }
-.table.table-transparent {
-  --fbx-table-bg: transparent;
-  --fbx-table-bg-hover: transparent;
-}
 .table.table-alternate tbody tr:nth-child(even) {
   background-color: var(--fbx-table-bg-alternate);
+}
+.table.table-minimal {
+  --fbx-table-head-bg: transparent;
+}
+.table.table-minimal thead > tr > td, .table.table-minimal > thead > tr > th {
+  border-bottom: 2px solid var(--fbx-table-head-color);
 }
 .table > tbody > tr.selected > td,
 .table > tbody > tr.selected > th {
