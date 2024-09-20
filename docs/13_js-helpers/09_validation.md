@@ -1,0 +1,35 @@
+### Validation
+
+| link   | Function                                  | Description                                                                                                  |
+|:---:|-------------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| <a href="#is_constructed" class="js-waypoint-trigger">#</a> | `is_constructed`                          | Returns `true` if object is a constructed instance.                                                          |
+| <a href="#is_number" class="js-waypoint-trigger">#</a> | `is_number`                               | Returns `true` if value is `Float` or `Integer`.                                                             |
+| <a href="#callable_name" class="js-waypoint-trigger">#</a> | `callable_name`                           | Returns function name.                                                                                       |
+| <a href="#is_dataview" class="js-waypoint-trigger">#</a> | `is_dataview`                             | Returns `true` on `[object DataView]` types.                                                                 |
+| <a href="#is_numeric" class="js-waypoint-trigger">#</a> | `is_numeric`                              | Returns true on numeric `String` or `Float` or `Integer`                                                     |
+| <a href="#is_date" class="js-waypoint-trigger">#</a> | `is_date`                                 | Returns true on numeric `Date` types.                                                                        |
+| <a href="#is_object" class="js-waypoint-trigger">#</a> | `is_object`                               | Returns true if value is an `Object`.                                                                        |
+| <a href="#count" class="js-waypoint-trigger">#</a> | `count`                                   | Returns `Array`, `Object` length.                                                                            |
+| <a href="#is_empty" class="js-waypoint-trigger">#</a> | `is_empty`                                | Returns `true` on empty strings, `false`, `undefined`, `null`, `NaN`, `[]`, `{}`.                            |
+| <a href="#is_regexp" class="js-waypoint-trigger">#</a> | `is_regexp`                               | Returns true `RegExp` instance.                                                                              |
+| <a href="#in_dom" class="js-waypoint-trigger">#</a> | `in_dom`                                  | Returns true if element in live Dom.                                                                         |
+| <a href="#is_equal(a," class="js-waypoint-trigger">#</a> | `is_equal(a, b, strict)`                  | Returns `true` if values are equal (traverses nested element). If `strict` values must be the same instance. |
+| <a href="#is_set" class="js-waypoint-trigger">#</a> | `is_set`                                  | Returns `true` on `[object Set]`.                                                                            |
+| <a href="#is_args" class="js-waypoint-trigger">#</a> | `is_args`                                 | Returns `true` on `[object Arguments]`.                                                                      |
+| <a href="#is_function" class="js-waypoint-trigger">#</a> | `is_function`                             | Returns `true` on `Function`                                                                                 |
+| <a href="#is_string" class="js-waypoint-trigger">#</a> | `is_string`                               | Returns `true` on `String`                                                                                   |
+| <a href="#is_array" class="js-waypoint-trigger">#</a> | `is_array`                                | Returns `true` on `Array`                                                                                    |
+| <a href="#is_htmlElement" class="js-waypoint-trigger">#</a> | `is_htmlElement`                          | Returns `true` on any valid `HTMLElement`                                                                    |
+| <a href="#is_symbol" class="js-waypoint-trigger">#</a> | `is_symbol`                               | Returns `true` on `[object Symbol]`.                                                                         |
+| <a href="#is_bool" class="js-waypoint-trigger">#</a> | `is_bool`                                 | Returns `true` on `Boolean`.                                                                                 |
+| <a href="#is_json" class="js-waypoint-trigger">#</a> | `is_json`                                 | Returns `true` on valid `JSON` string.                                                                       |
+| <a href="#is_undefined" class="js-waypoint-trigger">#</a> | `is_undefined`                            | Returns `true` on `undefined`.                                                                               |
+| <a href="#is_buffer" class="js-waypoint-trigger">#</a> | `is_buffer`                               | Returns `true` on `[object ArrayBuffer]`.                                                                    |
+| <a href="#is_map" class="js-waypoint-trigger">#</a> | `is_map`                                  | Returns `true` on `[object Map]`.                                                                            |
+| <a href="#is_callable" class="js-waypoint-trigger">#</a> | `is_callable`                             | Returns `true` if value is a callable `Function` and not a constructable object function.                    |
+| <a href="#is_node_type(mixed_var," class="js-waypoint-trigger">#</a> | `is_node_type(mixed_var, tag)`            | Returns `true` if HTMLElement tagname matches value.                                                         |
+| <a href="#var_type" class="js-waypoint-trigger">#</a> | `var_type`                                | Returns `Object.prototype.toString` on variable.                                                             |
+| <a href="#is_class(mixed_var," class="js-waypoint-trigger">#</a> | `is_class(mixed_var, ?classname, strict)` | Checks if variable is an ES6 Class.                                                                          |
+| <a href="#is_nodelist" class="js-waypoint-trigger">#</a> | `is_nodelist`                             | returns `true` on nodelist.                                                                                  |
+| <a href="#is_constructable" class="js-waypoint-trigger">#</a> | `is_constructable`                        | returns `true` if value is constructable object function                                                     |
+| <a href="#is_null" class="js-waypoint-trigger">#</a> | `is_null`                                 | returns `true` if value is `null`                                                                            |

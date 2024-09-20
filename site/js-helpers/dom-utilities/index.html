@@ -267,11 +267,11 @@
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../forms/validation/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Validation</a></li>
         </ul>
     </li>
-    <li class="menu-item-title js-collapse " data-collapse-target="menu-utilities">
+    <li class="menu-item-title js-collapse active" data-collapse-target="menu-utilities">
         <span class="item-left"><span class="fa fa-chevron-right"></span></span>
         <span class="item-body">Utilities</span>
     </li>
-    <li  id="menu-utilities" class="menu-item-submenu">
+    <li style="height:auto" id="menu-utilities" class="menu-item-submenu">
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../utilities/ripple/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Ripple</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../utilities/tooltip/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Tooltip</a></li>
@@ -279,17 +279,34 @@
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../utilities/collapse/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Collapse</a></li>
         </ul>
     </li>
-    <li class="menu-item-title js-collapse active" data-collapse-target="menu-javascript">
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-javascript">
         <span class="item-left"><span class="fa fa-chevron-right"></span></span>
         <span class="item-body">Javascript</span>
     </li>
-    <li style="height:auto" id="menu-javascript" class="menu-item-submenu">
+    <li  id="menu-javascript" class="menu-item-submenu">
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../javascript/container/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Container</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../javascript/dom/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Dom</a></li>
-            <li class="menu-item active"><a data-pjax-target="#article-body" href="../../javascript/utililty-library/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Utililty Library</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../javascript/ajax/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Ajax</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../javascript/pjax/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Pjax</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse active" data-collapse-target="menu-js-helpers">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Js Helpers</span>
+    </li>
+    <li style="height:auto" id="menu-js-helpers" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../js-helpers/usage/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Usage</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../js-helpers/events/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Events</a></li>
+            <li class="menu-item active"><a data-pjax-target="#article-body" href="../../js-helpers/dom-utilities/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Dom Utilities</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../js-helpers/animate/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Animate</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../js-helpers/animate-css/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Animate Css</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../js-helpers/array/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Array</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../js-helpers/object/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Object</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../js-helpers/string/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">String</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../js-helpers/validation/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Validation</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../js-helpers/misc/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Misc</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse " data-collapse-target="menu-css">
@@ -304,292 +321,198 @@
 </ul></div>
         <div class="container-fluid docs-container" id="top">
             <div class="main-container js-main-container">
-                <article class="docs-body pole-sm" id="article-body"><h1 id="utility-library">Utility Library</h1>
-<p>FrontBx's JS Utility Library is used throughout the framework and provides a consistent API for common JavaScript functions.</p>
-<hr />
-<ul>
-<li><a href="#access">Access</a></li>
-<li><a href="#event-listeners">Event listeners</a></li>
-<li><a href="#dom-utilities">Dom Utilities</a></li>
-<li><a href="#animate">Animate</a></li>
-<li><a href="#animate-css">Animate css</a></li>
-<li><a href="#array">Array</a></li>
-<li><a href="#object">Object</a></li>
-<li><a href="#string">String</a></li>
-<li><a href="#validation">Validation</a></li>
-<li><a href="#misc">Misc</a></li>
-</ul>
-<hr />
-<p>FrontBx comes with a handy JavaScript utility library to help speed up production. The library is similar to something like jQuery, but with less bloat. This documentation provides a simple API reference, however for more in-depth detail you can view the library's source code which is well documented.</p>
-<p>The documentation below is broken down into logical groupings.</p>
-<h3 id="access">Access</h3>
-<p>FrontBx's Utility Library can be accessed globally via the Inversion container through the <code>_</code> key.</p>
-<pre><code class="javascript language-javascript">const utils = frontbx._();</code></pre>
-<p>You can also <code>import</code> and cache specific functions from the utility library, which reduces memory and is more performant. For example:</p>
-<pre><code class="javascript language-javascript">const [add_class, remove_class] = frontbx.import(['add_class', 'remove_class']).from('_');</code></pre>
-<hr />
-<h3 id="event-listeners">Event Listeners</h3>
+                <article class="docs-body pole-sm" id="article-body"><h1 id="dom-utilities">Dom Utilities</h1>
 <table>
 <thead>
 <tr>
+<th id="link" style="text-align:center;">link</th>
 <th id="function">Function</th>
 <th id="reference">Reference</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>on</code></td>
-<td>Adds a removable event listener to any HTMLElement.</td>
-</tr>
-<tr>
-<td><code>off</code></td>
-<td>Removes an event listener from any HTMLElement.</td>
-</tr>
-<tr>
-<td><code>clear_event_listeners</code></td>
-<td>Removes all event listeners from an element and all it's children.</td>
-</tr>
-<tr>
-<td><code>collect_garbage</code></td>
-<td>Removes all event listeners from elements no longer in the live DOM.</td>
-</tr>
-<tr>
-<td><code>event_listeners</code></td>
-<td>Returns an array of all attached event listeners on element.</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h4 id="on">on</h4>
-<p>Adds a removable event listener to any HTMLElement.</p>
-<pre><code class="javascript language-javascript">on(HTMLElement: element, String: event, Function: callback, ?Array|Mixed: args): Void</code></pre>
-<pre><code class="javascript language-javascript">// Anonymous function
-on(element, 'click', (event, element) =&gt; console.log(event, element));
-
-// Multiple event can also be added
-on(element, 'click, touchstart', (event, element) =&gt; console.log(event, element));
-
-// Regular function
-on(element, 'click', function(event, element)
-{
-    console.log(event, element, this);
-});
-
-// Function with "this" applied
-on(element, 'click', function(event, element)
-{
-    console.log(event, element, this);
-
-}, 'foo');
-
-// Function with "this" applied and arguements
-on(element, 'click', function(event, element, one, two)
-{
-    // this -&gt; 'foo'
-    console.log(event, element, this);
-
-}, ['foo', 'one', 'two']);</code></pre>
-<p><br></p>
-<h4 id="off">off</h4>
-<p>Removes an event listener from any HTMLElement.</p>
-<pre><code class="javascript language-javascript">off(HTMLElement: element, String: event, Function: callback, ?Array|Mixed: args): Void</code></pre>
-<pre><code class="javascript language-javascript">// Add the event listener
-let func = (event, element) =&gt; console.log(event, element);
-on(element, 'click', func);
-
-// Removes specific event listener
-off(element, 'click', func);
-
-// Removes all 'click' listeners
-off(element, 'click');
-
-// Removes all event listeners
-off(element);</code></pre>
-<p><br></p>
-<h4 id="clear_event_listeners">clear_event_listeners</h4>
-<p>Removes all event listeners from an element and all it's children.</p>
-<pre><code class="javascript language-javascript">clear_event_listeners(HTMLElement: element, Boolean: onlyChildren = false): Void</code></pre>
-<pre><code class="javascript language-javascript">// Removes all listeners including on any children
-clear_event_listeners(element);
-
-// Removes all listeners from children but not parent
-clear_event_listeners(element, true);</code></pre>
-<p><br></p>
-<h4 id="collect_garbage">collect_garbage</h4>
-<p>Removes all event listeners from elements no longer in the live DOM.</p>
-<pre><code class="javascript language-javascript">collect_garbage(): Void</code></pre>
-<p><br></p>
-<h4 id="event_listeners">event_listeners</h4>
-<p>Returns an array of all attached event listeners on element.</p>
-<pre><code class="javascript language-javascript">event_listeners(HTMLElement|String: element, ?String: eventName): array</code></pre>
-<pre><code class="javascript language-javascript">// [ { el: details.element, callback: details.callback, type: type } ]
-
-// Returns all event listeners
-let events = event_listeners();
-
-// Returns all 'click' event listeners
-let events = event_listeners('click');
-
-// Returns all event listeners on element
-let events = event_listeners(element);
-
-// Returns all 'click' event listeners on element
-let events = event_listeners(element, 'click');</code></pre>
-<hr />
-<h3 id="dom-utilities">Dom Utilities</h3>
-<table>
-<thead>
-<tr>
-<th id="function">Function</th>
-<th id="reference">Reference</th>
-</tr>
-</thead>
-<tbody>
-<tr>
+<td style="text-align:center;"><a href="#find" class="js-waypoint-trigger">#</a></td>
 <td><code>find</code></td>
 <td>Finds first single element by CSS selector and returns it.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#find_all" class="js-waypoint-trigger">#</a></td>
 <td><code>find_all</code></td>
 <td>Finds all elements by CSS selector and returns array.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#add_class" class="js-waypoint-trigger">#</a></td>
 <td><code>add_class</code></td>
 <td>Adds class(es) to HTMLElement(s).</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#remove_class" class="js-waypoint-trigger">#</a></td>
 <td><code>remove_class</code></td>
 <td>Removes class(es) to HTMLElement(s).</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#has_class" class="js-waypoint-trigger">#</a></td>
 <td><code>has_class</code></td>
 <td>Checks if an HTMLElement(s) have a class or classes.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#toggle_class" class="js-waypoint-trigger">#</a></td>
 <td><code>toggle_class</code></td>
 <td>Adds OR removes class(es) to HTMLElement(s).</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#attr" class="js-waypoint-trigger">#</a></td>
 <td><code>attr</code></td>
 <td>Sets, gets or removes any attribute on an HTMLElement.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#css" class="js-waypoint-trigger">#</a></td>
 <td><code>css</code></td>
 <td>Set, get or remove CSS value(s) on element. Note that this will only return inline styles, use <code>rendered_style</code> for currently displayed styles.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#rendered_style" class="js-waypoint-trigger">#</a></td>
 <td><code>rendered_style</code></td>
 <td>Returns currently rendered style attribute of an element.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#height" class="js-waypoint-trigger">#</a></td>
 <td><code>height</code></td>
 <td>Returns height in pixels of an element.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#width" class="js-waypoint-trigger">#</a></td>
 <td><code>width</code></td>
 <td>Returns element width in pixels.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#closest" class="js-waypoint-trigger">#</a></td>
 <td><code>closest</code></td>
 <td>Traverses up DOM tree to first parent by class name OR tag type and returns element if matched.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#closest_class" class="js-waypoint-trigger">#</a></td>
 <td><code>closest_class</code></td>
 <td>Traverses up DOM tree to first parent by class name and returns element if matched.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#coordinates" class="js-waypoint-trigger">#</a></td>
 <td><code>coordinates</code></td>
 <td>Returns an object of absolute coordinates of element relative to page.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#dom_element" class="js-waypoint-trigger">#</a></td>
 <td><code>dom_element</code></td>
 <td>Creates and returns an HTMLElement via an object of attributes. Attributes can be any HTML attribute to apply to the elem. Passing <code>on[Event]</code> will add an event listener to the element.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#first_children" class="js-waypoint-trigger">#</a></td>
 <td><code>first_children</code></td>
 <td>Returns immediate first children of element.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#form_inputs" class="js-waypoint-trigger">#</a></td>
 <td><code>form_inputs</code></td>
 <td>Returns all inputs, textarea and select elements of a form element.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#form_values" class="js-waypoint-trigger">#</a></td>
 <td><code>form_values</code></td>
 <td>Returns an key/value object of all form input, textarea and select element values.<br>Values are sanitized and are converted to <code>String</code> <code>Integer</code> <code>Float</code> where appropriate. Form inputs with a name <code>name[]</code> will be concatenated into an <code>Array</code>. Accepts radio and checkbox elements also.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#hide_aria" class="js-waypoint-trigger">#</a></td>
 <td><code>hide_aria</code></td>
 <td>Sets aria-hidden to true.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#in_viewport" class="js-waypoint-trigger">#</a></td>
 <td><code>in_viewport</code></td>
 <td>Returns true if element is in viewport.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#inner_HTML" class="js-waypoint-trigger">#</a></td>
 <td><code>inner_HTML</code></td>
 <td>Sets innerHTML of an element and clears any old event listeners.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#input_value" class="js-waypoint-trigger">#</a></td>
 <td><code>input_value</code></td>
 <td>Returns input value of an input, textarea or select element.<br>Values are sanitized and are converted to <code>String</code> <code>Integer</code> <code>Float</code> where appropriate.<br>Radio elements will return the input value when checked. Checkbox elements will return a boolean.<br>File inputs will return a file object or array when <code>multiple</code> is set.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#next" class="js-waypoint-trigger">#</a></td>
 <td><code>next</code></td>
 <td>Traverses forwards through siblings to first element by class name OR tag type and returns element if matched.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#next_untill_class" class="js-waypoint-trigger">#</a></td>
 <td><code>next_untill_class</code></td>
 <td>Traverses forwards through siblings to first element by class name and returns element if matched.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#nth_child" class="js-waypoint-trigger">#</a></td>
 <td><code>nth_child</code></td>
 <td>Returns nth direct child element of parent element if it exists.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#nth_siblings" class="js-waypoint-trigger">#</a></td>
 <td><code>nth_siblings</code></td>
 <td>Returns index of element relative to it's siblings. For example if the element is the second</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#preapend" class="js-waypoint-trigger">#</a></td>
 <td><code>preapend</code></td>
 <td>Appends HTMLElement as first child to an element.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#previous" class="js-waypoint-trigger">#</a></td>
 <td><code>previous</code></td>
 <td>Traverses backwards through siblings to first element by class name OR tag type and returns element if matched.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#previous_untill_class" class="js-waypoint-trigger">#</a></td>
 <td><code>previous_untill_class</code></td>
 <td>Traverses backwards through siblings to first element by class name and returns element if matched.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#remove_from_dom" class="js-waypoint-trigger">#</a></td>
 <td><code>remove_from_dom</code></td>
 <td>Removes element from DOM and clears any event listeners attached to it.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#scroll_pos" class="js-waypoint-trigger">#</a></td>
 <td><code>scroll_pos</code></td>
 <td>Returns scroll position of any element or viewport.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#show_aria" class="js-waypoint-trigger">#</a></td>
 <td><code>show_aria</code></td>
 <td>Sets aria-hidden to true</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#traverse_up" class="js-waypoint-trigger">#</a></td>
 <td><code>traverse_up</code></td>
 <td>Traverses up DOM tree and calls callback on each element until callback returns true.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#traverse_down" class="js-waypoint-trigger">#</a></td>
 <td><code>traverse_down</code></td>
 <td>Traverses down DOM tree and calls callback on each element until callback returns true.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#traverse_next" class="js-waypoint-trigger">#</a></td>
 <td><code>traverse_next</code></td>
 <td>Traverses next siblings and calls callback on each element until callback returns true.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#traverse_prev" class="js-waypoint-trigger">#</a></td>
 <td><code>traverse_prev</code></td>
 <td>Traverses next siblings and calls callback on each element until callback returns true.</td>
 </tr>
 <tr>
+<td style="text-align:center;"><a href="#trigger_event" class="js-waypoint-trigger">#</a></td>
 <td><code>trigger_event</code></td>
 <td>Triggers a custom or native DOM event on an element. Custom events are nestable with a colon value.</td>
 </tr>
@@ -893,878 +816,7 @@ let foo = function() {};
 foo.prototype.bar = function() {};
 
 // event.detail = { DOMElement: DOMElement, name: eventName, state: foo };
-trigger_event(element, 'foo', new foo);</code></pre>
-<hr />
-<h3 id="animate">Animate</h3>
-<table>
-<thead>
-<tr>
-<th id="function">Function</th>
-<th id="reference">Reference</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>animate</code></td>
-<td>Animates CSS property using JS key-frames and interpolation.</td>
-</tr>
-</tbody>
-</table>
-<p>Animates any transform, color, or numeric CSS property on an HTML DOM element via JavaScript keyframes.</p>
-<p>Creates an animation effect on CSS property via JavaScript keyframes and returns an Animation Object. Any existing animations under the same property on the element that are currently animating but not completed will be stopped and interrupted prior to starting.</p>
-<pre><code class="javascript language-javascript">animate(HTMLElement: element, Object: options[property, easing, duration, callback]): Object&lt;/code&gt;&lt;/pre&gt;</code></pre>
-<p>Syntax used to animate a single CSS property without explicitly providing a start value. The starting value will be determined by the currently rendered CSS style on the element. In the case that the start value for the property is not explicit set, animate will still be able to calculate the rendered value. Works on all values including those set to <code>auto</code>, <code>initial</code>, <code>unset</code>.</p>
-<pre><code class="javascript language-javascript">animate(node,
-{
-    height: '300px',
-    easing: 'easeInExpo',
-    duration: 1000,
-    callback: () =&gt; console.log('complete')
-});</code></pre>
-<pre><code class="javascript language-javascript">animate(HTMLElement: element, Object: options[property, from, to, easing, duration, callback]): Object</code></pre>
-<p>Syntax used to animate a single CSS property while explicitly providing a start value. The starting value will be determined by the currently rendered CSS style on the element. In the case that the start value for the property is not explicit set, animate will still be able to calculate the rendered value. Works on all values including those set to <code>auto</code>, <code>initial</code>, <code>unset</code>.</p>
-<pre><code class="javascript language-javascript">animate(node,
-{
-    property: 'height',
-    from: '10px',
-    to: '300px',
-    easing: 'easeInExpo',
-    duration: 1000,
-    callback: () =&gt; console.log('complete')
-});</code></pre>
-<pre><code class="javascript language-javascript">animate(HTMLElement: element, Object: options[...property: [to, from, easing, duration, callback] ]): Object</code></pre>
-<p>Syntax used to animate multiple CSS properties with independent animation options for each property.</p>
-<pre><code class="javascript language-javascript">animate(node,
-{
-    height: { from: '0px', to: '100px', duration: 350, easing: 'easeInOutElastic' },
-
-    opacity: { to: '0', duration: 500, easing: 'linear' }
-});</code></pre>
-<blockquote>
-  <p>When animating multiple CSS properties simultaneously, the provided callbacks will only be called once on the longest running animation once completed.</p>
-</blockquote>
-<p><strong>Animation Properties and Values</strong><br />
-Animated properties can be provided both in <code>camelCase</code> or <code>hyphen-case</code> (e.g <code>fontSize</code> or <code>font-size</code>).</p>
-<p>Animated property values should always be provided as a string value. When animating colors, currently only hexidemical colors are supported. Animating CSS <code>transform</code> is fully supported the same way any other animation is treated, with the exception of transform <code>matrix</code>.</p>
-<p>When animating numerical values that require a unit (e.g. <code>20px</code>), animate will convert any non <strong>px</strong> units to to <strong>px</strong>, including any existing start values if not provided explicitly. Animate supports all CSS units such as <code>%</code>, <code>em</code>, <code>rem</code> etc…</p>
-<p>In addition to style properties, some non-style properties such as <code>scrollTop</code> and <code>scrollLeft</code> and <code>scrollto</code> can be animated.</p>
-<p>In addition to explicit values, properties that support 'auto', 'initial', and 'unset' can also be animated. For example to animate the height of element from <strong>0</strong> to it's native height you can supply options as <code>{from: '0px', to: 'auto'}</code>.</p>
-<p><strong>Start Values</strong><br />
-Start values do not need to be provided explicitly. animate will compute any existing CSS property when not provided. It is however more performant to provide a start value so animate does not need to calculate the pre-animation rendered style on the element.</p>
-<p><strong>Duration</strong><br />
-Animation duration is provided as an integer in milliseconds and default to 500 milliseconds when not provided.</p>
-<p><strong>Callback</strong><br />
-When a callback is provided this function will be called when the animation completes with the target <code>Element</code> as the first parameter. When multiple CSS properties are animated under a single animation, the callback will only be called once, when the longest running animation completes.</p>
-<p>In addition to the default callback, <code>start</code>, <code>complete</code>, <code>fail</code> callbacks can be provided. An animation fails when it is either interrupted by another animation or is stopped explicitly. </p>
-<p><strong>Easings</strong><br />
-Easings must be provided in <code>camelCase</code>: Below is a full list of supported easing. For details on easing patterns take a look at <a href="https://easings.net/">easings.net</a>.</p>
-<table>
-<thead>
-<tr>
-<th id=""></th>
-<th id=""></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Basic:</strong></td>
-<td><code>linear</code> <code>ease</code> <code>easeIn</code> <code>easeOut</code> <code>easeInOut</code></td>
-</tr>
-<tr>
-<td><strong>Quad:</strong></td>
-<td><code>easeInQuad</code> <code>easeOutQuad</code> <code>easeInOutQuad</code></td>
-</tr>
-<tr>
-<td><strong>Cubic:</strong></td>
-<td><code>easeInCubic</code> <code>easeOutCubic</code> <code>easeInOutCubic</code></td>
-</tr>
-<tr>
-<td><strong>Quart:</strong></td>
-<td><code>easeInQuart</code> <code>easeOutQuart</code> <code>easeInOutQuart</code></td>
-</tr>
-<tr>
-<td><strong>Quint:</strong></td>
-<td><code>easeInQuint</code> <code>easeOutQuint</code> <code>easeInOutQuint</code></td>
-</tr>
-<tr>
-<td><strong>Sine:</strong></td>
-<td><code>easeInSine</code> <code>easeOutSine</code> <code>easeInOutSine</code></td>
-</tr>
-<tr>
-<td><strong>Expo:</strong></td>
-<td><code>easeInExpo</code> <code>easeOutExpo</code> <code>easeInOutExpo</code></td>
-</tr>
-<tr>
-<td><strong>Circ:</strong></td>
-<td><code>easeInCirc</code> <code>easeOutCirc</code> <code>easeInOutCirc</code></td>
-</tr>
-<tr>
-<td><strong>Back:</strong></td>
-<td><code>easeInBack</code> <code>easeOutBack</code> <code>easeInOutBack</code></td>
-</tr>
-<tr>
-<td><strong>Elastic:</strong></td>
-<td><code>easeInElastic</code> <code>easeOutElastic</code> <code>easeInOutElastic</code></td>
-</tr>
-<tr>
-<td><strong>Bounce:</strong></td>
-<td><code>easeInBounce</code> <code>easeOutBounce</code> <code>easeInOutBounce</code></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Transitions</strong><br />
-In rare cases where the CSS property being animated has a CSS transition value applied, this will be overridden while the animation runs. In the edge-case where a transition is applied as an inline style on the element, this will be removed while the animation runs. Once the animation completes, any inline transition properties that were applied will be restored.</p>
-<p><em>Note animate will only override the transition value of the property being animated, not all transitions - which ensures it doesn't have any adverse effects.</em></p>
-<p><strong>Return Values</strong><br />
-Animate will always return and <code>Animation</code> Object. Which have two available methods: <code>start</code>,  <code>stop</code>, and  <code>destroy</code>.</p>
-<p>Calling <code>Animation.stop</code> will immediately stop an animation at the current keyframe. Which can then be started again using <code>start</code>.</p>
-<p>Calling <code>Animation.destroy</code> will immediately stop an animation and destroy any keyframes.</p>
-<pre><code class="JavaScript language-JavaScript">let animation = animate(element, {height: '300px'});
-
-animation.stop();</code></pre>
-<p><strong>Sandbox</strong><br />
-Below is interactive demo to showcase animating various values, click the button to run the animation:</p>
-<div class="code-content-example">
-    <div class="row">
-        <div class="center-horizontal bg-pastelteal fill js-animate-example" style="width: 300px;">animate me!</div>
-    </div>
-    <div class="flex-row-fluid align-cols-center pole-sm pole-n">
-        <button type="button" class="btn js-animate-trigger">Animate</button>
-    </div>
-</div>
-<pre><code class="JavaScript language-JavaScript">animate($('.js-animate-example'), {
-    width: 
-    {
-        to : '500px',
-        duration: 1000,
-    },
-    height: 
-    {
-        to : '200px',
-        duration: 1000,
-    },
-    backgroundColor: 
-    {
-        to : '#b324ea',
-        duration: 2000,
-    },
-
-});</code></pre>
-<hr />
-<h3 id="animate-css">Animate CSS</h3>
-<table>
-<thead>
-<tr>
-<th id="function">Function</th>
-<th id="reference">Reference</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>animate_css</code></td>
-<td>Animates CSS property using JS key-frames and interpolation.</td>
-</tr>
-</tbody>
-</table>
-<p>Animates any animatable CSS property on an HTML DOM element via CSS transitions<br>Creates an animation effect on CSS property via CSS transitions and returns an Animation Object. Any existing animations under the same property on the element that are currently animating but not completed will be stopped and interrupted prior to starting.</td></p>
-<pre><code class="javascript language-javascript">animate(HTMLElement: element, Object: options[property, easing, duration, callback]): Object</code></pre>
-<p>Syntax used to animate a single CSS property without explicitly providing a start value. The starting value will be determined by the currently rendered CSS style on the element. In the case that the start value for the property is not explicit set, animate will still be able to calculate the rendered value. Works on all values including those set to <code>auto</code>, <code>initial</code>, <code>unset</code>.</p>
-<pre><code class="javascript language-javascript">animate(node,
-{
-    height: '300px',
-    easing: 'easeInExpo',
-    duration: 1000,
-    callback: () =&gt; console.log('complete')
-});</code></pre>
-<pre><code class="javascript language-javascript">animate(HTMLElement: element, Object: options[property, easing, duration, callback]): Object</code></pre>
-<p>Syntax used to animate a single CSS property while explicitly providing a start value. The starting value will be determined by the currently rendered CSS style on the element. In the case that the start value for the property is not explicit set, animate will still be able to calculate the rendered value. Works on all values including those set to <code>auto</code>, <code>initial</code>, <code>unset</code>.</p>
-<pre><code class="javascript language-javascript">animate(node,
-{
-    property: 'height',
-    from: '10px',
-    to: '300px',
-    easing: 'easeInExpo',
-    duration: 1000,
-    callback: () =&gt; console.log('complete')
-});</code></pre>
-<pre><code class="javascript language-javascript">animate(HTMLElement: element, Object: options[...property: [to, from, easing, duration, callback] ]): Object</code></pre>
-<p>Syntax used to animate multiple CSS properties with independent animation options for each property.</p>
-<pre><code class="javascript language-javascript">animate(node,
-{
-    height: { from: '0px', to: '100px', duration: 350, easing: 'easeInOutElastic' },
-
-    opacity: { to: '0', duration: 500, easing: 'linear' }
-});</code></pre>
-<p><strong>Animation Properties and Values</strong><br />
-Animated properties can be provided both in <code>camelCase</code> or <code>hyphen-case</code> (e.g <code>fontSize</code> or <code>font-size</code>).</p>
-<pre><code class="JavaScript language-JavaScript">animate_css(node, { property: 'background-color', from: '#000' to: '#fff' } );</code></pre>
-<p>Animated property values should always be provided as a string value e.g <code>200px</code>.</p>
-<p>In addition to explicit values, properties that support 'auto', 'initial', and 'unset' can also be animated. For example to animate the height of element from <strong>0</strong> to it's native height you can supply options as <code>{from: '0px', to: 'auto'}</code>.</p>
-<pre><code class="JavaScript language-JavaScript">animate_css(node, { property: 'height', from: '0px' to: 'auto' } );</code></pre>
-<p><strong>Start Values</strong><br />
-Start values do not need to be provided explicitly. <strong>animate_css</strong> will compute any existing CSS property when not provided. It is however more performant to provide a start value so <strong>animate_css</strong> does not need to calculate the pre-animation rendered style on the element.</p>
-<pre><code class="JavaScript language-JavaScript">animate_css(node, { property: 'height', to: '300px' } );</code></pre>
-<p><strong>Duration</strong><br />
-Animation duration is provided as an integer in milliseconds and default to 500 milliseconds when not provided.</p>
-<pre><code class="JavaScript language-JavaScript">animate_css(node, { height: '300px', duration: 1000 } );</code></pre>
-<p><strong>Callback</strong><br />
-When a callback is provided this function will be called when the animation completes with the target <code>Element</code> as the first parameter. When multiple CSS properties are animated under a single animation, the callback will only be called once, when the longest running animation completes.</p>
-<pre><code class="JavaScript language-JavaScript">animate_css(node, { height: '300px', callback: (node) =&gt; console.log('completed') } );</code></pre>
-<p>In addition to the default callback, <code>start</code>, <code>complete</code>, <code>fail</code> callbacks can be provided. An animation fails when it is either interrupted by another animation or is stopped explicitly. </p>
-<pre><code class="JavaScript language-JavaScript">animate_css(node, { 
-    height: '300px', 
-    start: (node) =&gt; console.log('start'),
-    complete: (node) =&gt; console.log('complete'),
-    fail: (node) =&gt; console.log('failed'), 
-});</code></pre>
-<p><strong>Easing</strong><br />
-Easings must be provided in <code>camelCase</code>: Below is a full list of supported easing. For details on easing patterns take a look at <a href="https://easings.net/">easings.net</a>.</p>
-<table>
-<thead>
-<tr>
-<th id=""></th>
-<th id=""></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Basic:</strong></td>
-<td><code>linear</code> <code>ease</code> <code>easeIn</code> <code>easeOut</code> <code>easeInOut</code></td>
-</tr>
-<tr>
-<td><strong>Quad:</strong></td>
-<td><code>easeInQuad</code> <code>easeOutQuad</code> <code>easeInOutQuad</code></td>
-</tr>
-<tr>
-<td><strong>Cubic:</strong></td>
-<td><code>easeInCubic</code> <code>easeOutCubic</code> <code>easeInOutCubic</code></td>
-</tr>
-<tr>
-<td><strong>Quart:</strong></td>
-<td><code>easeInQuart</code> <code>easeOutQuart</code> <code>easeInOutQuart</code></td>
-</tr>
-<tr>
-<td><strong>Quint:</strong></td>
-<td><code>easeInQuint</code> <code>easeOutQuint</code> <code>easeInOutQuint</code></td>
-</tr>
-<tr>
-<td><strong>Sine:</strong></td>
-<td><code>easeInSine</code> <code>easeOutSine</code> <code>easeInOutSine</code></td>
-</tr>
-<tr>
-<td><strong>Expo:</strong></td>
-<td><code>easeInExpo</code> <code>easeOutExpo</code> <code>easeInOutExpo</code></td>
-</tr>
-<tr>
-<td><strong>Circ:</strong></td>
-<td><code>easeInCirc</code> <code>easeOutCirc</code> <code>easeInOutCirc</code></td>
-</tr>
-<tr>
-<td><strong>Back:</strong></td>
-<td><code>easeInBack</code> <code>easeOutBack</code> <code>easeInOutBack</code></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Transitions</strong><br />
-In rare cases where the CSS property being animated has a CSS transition value applied, this will be overridden while the animation runs. In the edge-case where a transition is applied as an inline style on the element, this will be removed while the animation runs. Once the animation completes, any inline transition properties that were applied will be restored.</p>
-<p>Note <strong>animate_css</strong> will only override the transition value of the property being animated, not all transitions - which ensures it doesn't have any adverse effects.</p>
-<p><strong>Return Values</strong></p>
-<p><strong>animate_css</strong> will always return and <code>Animation</code> Object. Which have three available methods: <code>start</code>,  <code>stop</code>, and  <code>destroy</code>.</p>
-<p>Calling <code>Animation.stop</code> will immediately stop an animation and restore any styling to it's original state. The animation can then be started again using <code>start</code>.</p>
-<pre><code class="JavaScript language-JavaScript">let animation = animate(element, {height: '300px'});
-
-animation.stop();</code></pre>
-<p>Calling <code>Animation.destroy</code> will immediately stop an animation and destroy it so it can't be started again.</p>
-<pre><code class="JavaScript language-JavaScript">let animation = animate(element, {height: '300px'});
-
-animation.destroy();</code></pre>
-<p><strong>Sandbox</strong><br />
-Below is interactive demo to showcase animating various values, click the button to run the animation:</p>
-<div class="code-content-example">
-    <div class="row">
-        <div class="center-horizontal bg-pastelteal fill js-animate-css-example" style="width: 300px;">animate me!</div>
-    </div>
-    <div class="flex-row-fluid align-cols-center pole-sm pole-n">
-        <button type="button" class="btn js-animate-css-trigger">Animate</button>
-    </div>
-</div>
-<pre><code class="JavaScript language-JavaScript">animate($('.js-animate-css-example'),
-{
-    width: 
-    {
-        to : '500px',
-        duration: 1000,
-    },
-    height: 
-    {
-        to : '200px',
-        duration: 1000,
-    },
-    backgroundColor: 
-    {
-        to : '#b324ea',
-        duration: 2000,
-    },
-});</code></pre>
-<hr />
-<h3 id="array">Array</h3>
-<table>
-<thead>
-<tr>
-<th id="function">Function</th>
-<th id="description">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>each</code></td>
-<td>Loops through an array or object and runs a callback on each iteration. Returning <code>false</code> will break the loop.</td>
-</tr>
-<tr>
-<td><code>map</code></td>
-<td>Returns a new object or array by through and running a callback to accept or reject each iteration. Returning <code>false</code> rejects item. Returning <code>undefined</code> stops the loop. Any other return value will be set on the object or array under the current key/index.</td>
-</tr>
-<tr>
-<td><code>array_unique</code></td>
-<td>Filters out non-unique values from an array.</td>
-</tr>
-<tr>
-<td><code>array_filter</code></td>
-<td>Filters out empty items from an array or object and returns a new Array or Object.<br>Does not modify the original Array or Object, rather it will filter out empty items and return a new Object or Array.</td>
-</tr>
-<tr>
-<td><code>array_set</code></td>
-<td>Sets a value to array or object using <code>dot.notation</code>.<br>Sets key/value an pair to any nested array or object via <code>dot.notation</code>. If parent items do not exist in the path, they are created.</td>
-</tr>
-<tr>
-<td><code>array_get</code></td>
-<td>Returns an item from an array or object using <code>dot.notation</code>.<br>Returns the item indexed by the path or <code>undefined</code> if it does not exist.</td>
-</tr>
-<tr>
-<td><code>array_has</code></td>
-<td>Checks if an item from an array or object exists using <code>dot.notation</code> and returns a boolean.</td>
-</tr>
-<tr>
-<td><code>array_delete</code></td>
-<td>Deletes an item from an array or object exists using <code>dot.notation</code>.</td>
-</tr>
-<tr>
-<td><code>in_array</code></td>
-<td>Checks if an item exists in array or object.</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h4 id="each">each</h4>
-<p>Loops through an array or object and runs a callback on each iteration. Returning <code>false</code> will break the loop.</p>
-<pre><code class="javascript language-javascript">each(Array|Object: array, Function: callback, ?Mixed: this, ...args): Void</code></pre>
-<pre><code class="javascript language-javascript">// Loop an array
-each(['one','two','three'], (index, value) =&gt; console.log(index, value));
-
-// Loop an object
-each({foo: 'one', bar: 'two'}, (key, value) =&gt; console.log(key, value));
-
-// Stop loop
-each(['one','two','three'], (index, value) =&gt; index &gt;= 1 ? false : console.log(index));</code></pre>
-<p><br></p>
-<h4 id="map">map</h4>
-<p>Returns a new object or array by through and running a callback to accept or reject each iteration. Returning <code>false</code> rejects item. Returning <code>undefined</code> stops the loop. Any other return value will be set on the object or array under the current key/index.</p>
-<pre><code class="javascript language-javascript">map(Array|Object: array, Function: callback, ?Mixed: this, ...args): Void</code></pre>
-<pre><code class="javascript language-javascript">// Loop an array
-// [0,1,2]
-let arr = map(['one','two','three'], (index, value) =&gt; index);
-
-// {foo: 'foo', bar: 'bar'}
-map({foo: 'one', bar: 'two'}, (key, value) =&gt; key);
-
-// ['two']
-let arr = map(['one','two'], (index, value) =&gt; value !== 'one' ? value : undefined);</code></pre>
-<p><br></p>
-<h4 id="array_unique">array_unique</h4>
-<p>Filters out non-unique values from an array.</p>
-<pre><code class="javascript language-javascript">array_unique(Array|Object: array): Array</code></pre>
-<pre><code class="javascript language-javascript">// [0,1,2,3]
-let arr = array_unique([0,1,2,3,3]);</code></pre>
-<p><br></p>
-<h4 id="array_filter">array_filter</h4>
-<p>Filters out empty items from an array or object and returns a new Array or Object.<br>Does not modify the original Array or Object, rather it will filter out empty items and return a new Object or Array.</p>
-<pre><code class="javascript language-javascript">array_filter(Object|Array: array): Object|Array</code></pre>
-<pre><code class="javascript language-javascript">// [0, 1, 2, 3, 4, 5]
-let array = [0, 1, 2, null, undefined, 3, 4, '', 5];
-array = array_filter(array);
-
-// [0, 1, 2, 3, 4, 5, 6]
-let array = [0, 1, 2, null, undefined, 3, 4, '', [], 5, {}, 6];
-array = array_filter(array);</code></pre>
-<p><br></p>
-<h4 id="array_set">array_set</h4>
-<p>Sets a value to array or object using <code>dot.notation</code>.<br>Sets key/value an pair to any nested array or object via <code>dot.notation</code>. If parent items do not exist in the path, they are created.</p>
-<pre><code class="javascript language-javascript">array_set(String: path, Mixed: value, Object|Array: array): Void</code></pre>
-<p>To set an array key, use the array index with brackets <code>[num]</code>. For Objects simply use the Object key and a dot <code>.key</code>:</p>
-<pre><code class="javascript language-javascript">let array = [
-    {foo: 'foo'},
-    {bar: 'bar'}
-];
-
-/*
-[
-    {foo: 'bar'},
-    {bar: 'bar'}
-];
-*/
-array_set('[0].foo', 'bar', array);</code></pre>
-<pre><code class="javascript language-javascript">let obj = {
-    foo: [1,2,3],
-    bar: [4,5,6]
-};
-
-/*
-{
-    foo: [9,2,3],
-    bar: [4,5,6]
-};
-*/
-array_set('foo[0]', 9, obj);</code></pre>
-<p>On nested nested Arrays/Objects if the path does not exist it will be created automatically.</p>
-<pre><code class="javascript language-javascript">// [0, 1, 2, 3, 4, 5]
-let obj = {
-    foo: [
-        { bar: { baz: [1, 2, 3] } }
-    ]
-};
-
-/*
-{
-    foo: [
-        { bar: { baz: [1, 9, 3], foo: [3] } }
-    ]
-};
-
-*/
-array_set('foo[1].bar.baz[1]', 9, obj);
-
-array_set('foo[1].bar.foo[1]', 3, obj);</code></pre>
-<p><br></p>
-<h4 id="array_get">array_get</h4>
-<p>Returns an item from an array or object using <code>dot.notation</code>.<br>Returns the item indexed by the path or <code>undefined</code> if it does not exist.</p>
-<pre><code class="javascript language-javascript">array_get(String: path, Object|Array: array): Mixed</code></pre>
-<pre><code class="javascript language-javascript">let array = [ {foo: 'foo'} ];
-
-let foo = array_get('[0].foo', array);</code></pre>
-<p>To access an array key, use the array index with brackets <code>[num]</code>. For Objects simply use the Object key and a dot <code>.key</code>:</p>
-<pre><code class="javascript language-javascript">let array = [
-    {foo: 'foo'},
-    {bar: 'bar'}
-];
-
-// foo
-let foo = array_get('[0].foo', array);</code></pre>
-<pre><code class="javascript language-javascript">let obj = {
-    foo: [1,2,3],
-    bar: [4,5,6]
-};
-
-// 1
-let one = array_get('foo[0]', obj);</code></pre>
-<p><code>array_get</code> will work on deeply nested Arrays/Objects without having to run validation that the item exists first.</p>
-<pre><code class="javascript language-javascript">let obj = {
-    foo: [
-        { bar: { baz: [1, 2, 3] } }
-    ]
-};
-
-// Returns 2
-let two = array_get('foo[0].bar.baz[1]', obj);
-
-// Returns undefined
-let undef = array_get('foo[0].bar.baz[15]', obj);</code></pre>
-<p><br></p>
-<h4 id="array_has">array_has</h4>
-<p>Checks if an item from an array or object exists using <code>dot.notation</code> and returns a boolean.</p>
-<pre><code class="javascript language-javascript">array_has(String: path, Object|Array: array): Boolean</code></pre>
-<pre><code class="javascript language-javascript">let array = [ {foo: 'foo'} ];
-
-// true
-array_has('[0].foo', array);</code></pre>
-<p><br></p>
-<h4 id="array_delete">array_delete</h4>
-<pre><code class="javascript language-javascript">array_has(String: path, Object|Array: array): Void</code></pre>
-<pre><code class="javascript language-javascript">let array = [ {foo: 'foo'} ];
-
-// No need re-assign here as the original array is now modified.
-array_delete('[0].foo', array);</code></pre>
-<p><br></p>
-<h4 id="in_array">in_array</h4>
-<p>Checks if an item exists in array or object.</p>
-<pre><code class="javascript language-javascript">in_array(Mixed: needle, Object|Array: array, ?Boolean: strict = false): Void</code></pre>
-<pre><code class="javascript language-javascript">let array = [ 1, 2, 3 ];
-
-// true
-in_array(2, array);
-
-// false
-in_array(5, array);</code></pre>
-<p>When passing <code>strict</code> as <code>true</code>, values must be the same </p>
-<pre><code class="javascript language-javascript">let obj = { foo: 'bar' };
-let array = [obj];
-
-// true
-in_array(obj, array);
-
-// true
-in_array({ foo: 'bar' }, array);
-
-// false
-in_array({ foo: 'bar' }, array, true);</code></pre>
-<hr />
-<h3 id="object">Object</h3>
-<table>
-<thead>
-<tr>
-<th id="function">Function</th>
-<th id="description">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>extend</code></td>
-<td>Extends two objects, object functions.</td>
-</tr>
-<tr>
-<td><code>clone_deep</code></td>
-<td>Deep clones an object or array including all nested values.</td>
-</tr>
-<tr>
-<td><code>bind</code></td>
-<td>Binds a function to a context so it can be identified later if needed.</td>
-</tr>
-<tr>
-<td><code>flatten_obj</code></td>
-<td>Returns a new flattened version of an object and it's <code>prototype</code>(s) with its properties.</td>
-</tr>
-<tr>
-<td><code>object_props</code></td>
-<td>Returns an array of keys of all properties of an object and its <code>prototype</code>(s).</td>
-</tr>
-<tr>
-<td><code>prototypes</code></td>
-<td>Returns a flat array of of all nested prototypes of an object.</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h4 id="extend">extend</h4>
-<p>Extends two objects, object functions</p>
-<pre><code class="javascript language-javascript">extend(Object|Function: base, Object|Function: extension): Object|Function</code></pre>
-<pre><code class="javascript language-javascript">const Base = function(one, two)
-{
-    this.one = one;
-
-    this.two = two;
-
-    this.doSomething();
-}
-Base.prototype.doSomething = function()
-{
-    console.log(`${this.one} ${this.two}`);
-}
-
-const Extension = function(one, two)
-{
-    this.super(one, two);
-}
-
-const Extended = extend(Base, Extension);
-
-// hello world!
-let e = new Extended('hello', 'world!');</code></pre>
-<pre><code class="javascript language-javascript">const Base = function(one, two)
-{
-    this.one = one;
-
-    this.two = two;
-}
-Base.prototype.doSomething = function()
-{
-    console.log(`${this.one} ${this.two}`);
-}
-
-const Extension = function(one, two)
-{
-    this.one = one;
-
-    this.two = two;
-}
-
-const Extended = extend(new Base('foo', 'bar'), new Extension('hello', 'world'));
-
-// hello world!
-Extended.doSomething();</code></pre>
-<p><br></p>
-<h4 id="clone_deep">clone_deep</h4>
-<p>Deep clones an object or array including all nested values.</p>
-<pre><code class="javascript language-javascript">clone_deep(Mixed: original): Mixed</code></pre>
-<pre><code class="javascript language-javascript">let clone = clone_deep([ {foo: 'foo'} ]);
-
-let clone = clone_deep({foo : () =&gt; console.log('hello world')});</code></pre>
-<p><br></p>
-<h4 id="bind">bind</h4>
-<p>Binds a function to a context so it can be identified later if needed.</p>
-<pre><code class="javascript language-javascript">bind(Function: function, Mixed: context): Function</code></pre>
-<pre><code class="javascript language-javascript">function foo() { console.log(this); }
-
-let bound = bind(foo, 'bar');
-
-// bar
-bound();</code></pre>
-<p><br></p>
-<h4 id="flatten_obj">flatten_obj</h4>
-<p>Returns a new flattened version of an object and it's <code>prototype</code>(s) with its properties.</p>
-<pre><code class="javascript language-javascript">flatten_obj(Object: object, ?deep: deep = false): Object</code></pre>
-<pre><code class="javascript language-javascript">const WithProto = function(one, two) { }
-WithProto.prototype.doSomething = function() { }
-
-// { doSomething: function()... }
-let flat = flatten_obj(new WithProto);</code></pre>
-<p><br></p>
-<h4 id="object_props">object_props</h4>
-<p>Returns an array of keys of all properties of an object and its <code>prototype</code>(s).</p>
-<pre><code class="javascript language-javascript">object_props(Object: object, ?deep: deep = false): Array</code></pre>
-<pre><code class="javascript language-javascript">const WithProto = function(one, two) { this.foo = 'bar' }
-WithProto.prototype.doSomething = function() { }
-
-// [ 'foo', 'doSomething' ]
-let props = object_props(new WithProto);</code></pre>
-<p><br></p>
-<h4 id="prototypes">prototypes</h4>
-<p>Returns a flat array of of all nested prototypes of an object.</p>
-<pre><code class="javascript language-javascript">prototypes(Object: object): Array</code></pre>
-<pre><code class="javascript language-javascript">const WithProto = function(one, two) { this.foo = 'bar' }
-WithProto.prototype.doSomething = function() { }
-
-// { foo: 'bar', doSomething: function()... }
-let protos = prototypes(new WithProto);</code></pre>
-<hr />
-<h3 id="string">String</h3>
-<table>
-<thead>
-<tr>
-<th id="function">Function</th>
-<th id="description">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>camel_case_to_hyphen(String: str): String</code></td>
-<td>Converts string to <code>hyphen-case</code>.</td>
-</tr>
-<tr>
-<td><code>to_camel_case(String: str): String</code></td>
-<td>Converts string to <code>CamelCase</code></td>
-</tr>
-<tr>
-<td><code>replace(String: str, Array: search, Array: replace</code></td>
-<td>Replaces a charlist in a string</td>
-</tr>
-<tr>
-<td><code>json_decode(String: str): Object</code></td>
-<td>JSON decodes a string.</td>
-</tr>
-<tr>
-<td><code>json_encode(Object: Object): String</code></td>
-<td>JSON encodes an object</td>
-</tr>
-<tr>
-<td><code>lc_first(String: str): String</code></td>
-<td>Lowercases first char.</td>
-</tr>
-<tr>
-<td><code>uc_first(String: str): String</code></td>
-<td>Uppercases first char.</td>
-</tr>
-<tr>
-<td><code>uc_words(String: str): String</code></td>
-<td>Uppercases first char of each word.</td>
-</tr>
-<tr>
-<td><code>ltrim(String: str, ?Array: search): String</code></td>
-<td>Left trims optional char of char list from string.</td>
-</tr>
-<tr>
-<td><code>rtrim(String: str, ?Array: search): String</code></td>
-<td>Right trims optional char of char list from string.</td>
-</tr>
-<tr>
-<td><code>trim(String: str, ?Array: search): String</code></td>
-<td>Trims optional char of char list from both sides of string.</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="validation">Validation</h3>
-<table>
-<thead>
-<tr>
-<th id="function">Function</th>
-<th id="description">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>is_constructed</code></td>
-<td>Returns <code>true</code> if object is a constructed instance.</td>
-</tr>
-<tr>
-<td><code>is_number</code></td>
-<td>Returns <code>true</code> if value is <code>Float</code> or <code>Integer</code>.</td>
-</tr>
-<tr>
-<td><code>callable_name</code></td>
-<td>Returns function name.</td>
-</tr>
-<tr>
-<td><code>is_dataview</code></td>
-<td>Returns <code>true</code> on <code>[object DataView]</code> types.</td>
-</tr>
-<tr>
-<td><code>is_numeric</code></td>
-<td>Returns true on numeric <code>String</code> or <code>Float</code> or <code>Integer</code></td>
-</tr>
-<tr>
-<td><code>is_date</code></td>
-<td>Returns true on numeric <code>Date</code> types.</td>
-</tr>
-<tr>
-<td><code>is_object</code></td>
-<td>Returns true if value is an <code>Object</code>.</td>
-</tr>
-<tr>
-<td><code>count</code></td>
-<td>Returns <code>Array</code>, <code>Object</code> length.</td>
-</tr>
-<tr>
-<td><code>is_empty</code></td>
-<td>Returns <code>true</code> on empty strings, <code>false</code>, <code>undefined</code>, <code>null</code>, <code>NaN</code>, <code>[]</code>, <code>{}</code>.</td>
-</tr>
-<tr>
-<td><code>is_regexp</code></td>
-<td>Returns true <code>RegExp</code> instance.</td>
-</tr>
-<tr>
-<td><code>in_dom</code></td>
-<td>Returns true if element in live Dom.</td>
-</tr>
-<tr>
-<td><code>is_equal(a, b, strict)</code></td>
-<td>Returns <code>true</code> if values are equal (traverses nested element). If <code>strict</code> values must be the same instance.</td>
-</tr>
-<tr>
-<td><code>is_set</code></td>
-<td>Returns <code>true</code> on <code>[object Set]</code>.</td>
-</tr>
-<tr>
-<td><code>is_args</code></td>
-<td>Returns <code>true</code> on <code>[object Arguments]</code>.</td>
-</tr>
-<tr>
-<td><code>is_function</code></td>
-<td>Returns <code>true</code> on <code>Function</code></td>
-</tr>
-<tr>
-<td><code>is_string</code></td>
-<td>Returns <code>true</code> on <code>String</code></td>
-</tr>
-<tr>
-<td><code>is_array</code></td>
-<td>Returns <code>true</code> on <code>Array</code></td>
-</tr>
-<tr>
-<td><code>is_htmlElement</code></td>
-<td>Returns <code>true</code> on any valid <code>HTMLElement</code></td>
-</tr>
-<tr>
-<td><code>is_symbol</code></td>
-<td>Returns <code>true</code> on <code>[object Symbol]</code>.</td>
-</tr>
-<tr>
-<td><code>is_bool</code></td>
-<td>Returns <code>true</code> on <code>Boolean</code>.</td>
-</tr>
-<tr>
-<td><code>is_json</code></td>
-<td>Returns <code>true</code> on valid <code>JSON</code> string.</td>
-</tr>
-<tr>
-<td><code>is_undefined</code></td>
-<td>Returns <code>true</code> on <code>undefined</code>.</td>
-</tr>
-<tr>
-<td><code>is_buffer</code></td>
-<td>Returns <code>true</code> on <code>[object ArrayBuffer]</code>.</td>
-</tr>
-<tr>
-<td><code>is_map</code></td>
-<td>Returns <code>true</code> on <code>[object Map]</code>.</td>
-</tr>
-<tr>
-<td><code>is_callable</code></td>
-<td>Returns <code>true</code> if value is a callable <code>Function</code> and not a constructable object function.</td>
-</tr>
-<tr>
-<td><code>is_node_type(mixed_var, tag)</code></td>
-<td>Returns <code>true</code> if HTMLElement tagname matches value.</td>
-</tr>
-<tr>
-<td><code>var_type</code></td>
-<td>Returns <code>Object.prototype.toString</code> on variable.</td>
-</tr>
-<tr>
-<td><code>is_class(mixed_var, ?classname, strict)</code></td>
-<td>Checks if variable is an ES6 Class.</td>
-</tr>
-<tr>
-<td><code>is_nodelist</code></td>
-<td>returns <code>true</code> on nodelist.</td>
-</tr>
-<tr>
-<td><code>is_constructable</code></td>
-<td>returns <code>true</code> if value is constructable object function</td>
-</tr>
-<tr>
-<td><code>is_null</code></td>
-<td>returns <code>true</code> if value is <code>null</code></td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="misc">Misc</h3>
-<table>
-<thead>
-<tr>
-<th id="function">Function</th>
-<th id="description">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>is_retina</code></td>
-<td>Checks if display is high pixel density.</td>
-</tr>
-<tr>
-<td><code>parse_url</code></td>
-<td>Parses a URL and returns a URL Object.</td>
-</tr>
-<tr>
-<td><code>normalize_url</code></td>
-<td>Normalizes a URL consistently</td>
-</tr>
-<tr>
-<td><code>url_query</code></td>
-<td>Parses a URL query string and returns an object.</td>
-</tr>
-</tbody>
-</table>
-<hr /></article>
+trigger_event(element, 'foo', new foo);</code></pre></article>
             </div>
         </div>
         <footer class="site-footer">

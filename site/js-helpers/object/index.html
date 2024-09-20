@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Site meta tags  -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Build powerful, dynamic web interfaces on a fully responsive UI framework. Combining Sass for sleek styling, JavaScript for strong functionality, and HTML Frontbx is designed for serious developers.">
+        <meta name="author" content="Joe J. Howard">
+        <title>Frontbx · Versatile UI Framework for Dynamic Web Interfaces.</title>
+
+        <!-- Assets -->
+        <script src="../../assets/js/frontbx-lazyload.min.js"></script>
+        <link rel="stylesheet" href="../../assets/css/frontbx.bundle.css">
+        <link rel="stylesheet" href="../../assets/css/docs.css">
+
+        <!-- Favicons -->
+        <link rel="apple-touch-icon" href="../../assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+        <link rel="icon" href="../../assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+        <link rel="icon" href="../../assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+        <link rel="manifest" href="../../assets/img/favicons/manifest.json">
+        <link rel="mask-icon" href="../../assets/img/favicons/safari-pinned-tab.svg" color="#c349ff">
+        <link rel="icon" href="../../assets/img/favicons/favicon.ico">
+        <meta name="theme-color" content="#c349ff">
+
+        <!-- X -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Frontbx">
+        <meta name="twitter:description" content="Build powerful, dynamic web interfaces on a fully responsive UI framework. Combining Sass for sleek styling, JavaScript for strong functionality, and HTML Frontbx is designed for serious developers.">
+        <meta name="twitter:image" content="http://frontbx.github.io/ui/assets/img/frontbx-social.png">
+
+        <!-- Meta -->
+        <meta property="og:url" content="http://frontbx.github.io/ui">
+        <meta property="og:title" content="Frontbx">
+        <meta property="og:description" content="Build powerful, dynamic web interfaces on a fully responsive UI framework. Combining Sass for sleek styling, JavaScript for strong functionality, and HTML Frontbx is designed for serious developers.">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="http://frontbx.github.io/ui/assets/img/frontbx-social.png">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:width" content="2000">
+        <meta property="og:image:height" content="1000">
+    </head>
+    <body>
+        <svg style="display: none;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1451 1451" xml:space="preserve">
+            <g id="logo"><path d="M73.11,349.67c0,0,0,537.15,0,607c0,69.9,61.15,122.3,61.15,122.3s253.25,157.21,388.64,240.21 c135.38,82.96,205.26,30.55,205.26,30.55s454.18-152.83,552.31-188.6c98.13-35.79,98.4-130.2,98.4-130.2V415.16 c-4.39-69.86-86.53-105.02-86.53-105.02s-254.12-130.76-359.48-188.39C827.56,64.16,736.89,92.03,736.89,92.03 S243.44,236.14,151.73,262.31C60.03,288.53,73.11,349.67,73.11,349.67z M553.52,566.7c0,0-250.63-137.49-349.9-202.71 c-74.18-48.75,8.5-72.03,8.5-72.03s404.83-115.37,509.67-145.92c104.8-30.57,155.69,2.53,155.69,2.53L1266.2,338.8 c88.97,46.6,4.34,67.41,4.34,67.41s-43.1,13.45-105,32.91l1.65,422.15l-128.47-117.73L852.47,995.55l3.59-457.65 c-44.98,14.72-83,27.48-106.74,36.02C640.1,613.22,553.52,566.7,553.52,566.7z M178.62,405.64L547.95,627.8 c0,0,66.72,27.79,66.72,108.32c0,80.54,2.73,497.09,2.73,497.09s2.78,88.89-74.95,47.21c-77.78-41.62-361.06-219.37-361.06-219.37 s-63.83-30.49-63.83-99.97c0-77.76,0-508.22,0-508.22S109.18,363.99,178.62,405.64z"/></g>
+        </svg>
+        <nav class="navbar navbar-fixed raised-1 bg-black">
+            <div class="container-fluid">
+                <button class="hamburger xs sm js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
+                    <span class="hamburger-bun  hamburger-bun--top"></span>
+                    <span class="hamburger-patty"></span>
+                    <span class="hamburger-bun  hamburger-bun--btm"></span>
+                </button>
+                <a class="nav-logo" href="/">
+                    <svg viewBox="0 0 1451 1451"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg>
+                    <span class="logo-text md-inline-block lg-inline-block xl-inline-block">Frontbx</span>
+                </a>
+
+                <ul class="nav-menu flex-content-right">
+                    <li class="md lg xl">
+                        <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Github">
+                            <span class="fa-brands fa-github"></span>
+                        </a>
+                    </li>
+                    <li class="md lg xl">
+                        <a href="../../getting-started/download/index.html" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Download">
+                            <span class="fa fa-download"></span>
+                        </a>
+                    </li>
+                    <li class="md lg xl">
+                        <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
+                            <span class="fa fa-fill-drip"></span>
+                        </a>
+                    </li>
+                    
+                    <li class="md lg xl">
+                        <span class="drop-container">
+                            <button class="btn-unstyled btn-dropdown js-drop-trigger tooltipped tooltipped-s" role="button" type="button" title="toggle theme" data-tooltip="Theme mode">
+                                <span class="fa fa-cloud-sun"></span>
+                                <span class="caret-s"></span>
+                            </button>
+                            <div class="drop-menu drop-se js-drop-menu">
+                                <ul class="menu js-select-menu js-docs-theme-menu"> 
+                                    <li data-theme="light">
+                                        <span class="item-left"><span class="fa fa-sun"></span></span>
+                                        <span class="item-body">Light</span>
+                                    </li>
+                                    <li data-theme="dark">
+                                        <span class="item-left"><span class="fa fa-cloud-moon"></span></span>
+                                        <span class="item-body">Dark</span>
+                                    </li>
+                                    <li data-theme="auto">
+                                        <span class="item-left"><span class="fa fa-circle-half-stroke"></span></span>
+                                        <span class="item-body">Auto</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </span>
+                    </li>
+                    <li class="xs sm">
+                        <button class="btn-unstyled js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-direction="right" data-state="collapsed" data-content="#desktop-options-drawer">
+                            <span class="fa fa-ellipsis-vertical"></span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div id="desktop-options-drawer">
+            <ul class="menu">
+                <li class="menu-header">Explore</li>
+                <li>
+                    <a href="https://github.com/frontbx/ui" target="_blank">
+                        <span class="item-left"><span class="fa-brands fa-github"></span></span>
+                        <span class="item-body">Github</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../../getting-started/download/index.html">
+                        <span class="item-left"><span class="fa fa-download"></span></span>
+                        <span class="item-body">Download</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="menu">
+                <li class="menu-header">Colors</li>
+                <li>
+                    <a href="../../customize/colors/index.html#playground">
+                        <span class="item-left"><span class="fa fa-fill-drip"></span></span>
+                        <span class="item-body">Edit Documentation colors</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="menu js-select-menu js-docs-theme-menu">
+                <li class="menu-header">Mode</li>
+                <li data-theme="light">
+                    <span class="item-left"><span class="fa fa-sun"></span></span>
+                    <span class="item-body">Light</span>
+                </li>
+                <li data-theme="dark">
+                    <span class="item-left"><span class="fa fa-cloud-moon"></span></span>
+                    <span class="item-body">Dark</span>
+                </li>
+                <li data-theme="auto">
+                    <span class="item-left"><span class="fa fa-circle-half-stroke"></span></span>
+                    <span class="item-body">Auto</span>
+                </li>
+            </ul>
+        </div>
+        <div id="docs-menu" style="display:none;"><ul class="doc-menu menu">
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-getting-started">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Getting Started</span>
+    </li>
+    <li  id="menu-getting-started" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/introduction/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Introduction</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/download/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Download</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/installation/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Installation</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-customize">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Customize</span>
+    </li>
+    <li  id="menu-customize" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../customize/sass/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Sass</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../customize/colors/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Colors</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-layout">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Layout</span>
+    </li>
+    <li  id="menu-layout" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../layout/breakpoints/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Breakpoints</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../layout/container/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Container</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../layout/flex-grid/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Flex Grid</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../layout/grid/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Grid</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../layout/skeleton/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Skeleton</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-content">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Content</span>
+    </li>
+    <li  id="menu-content" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../content/typography/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Typography</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../content/images/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Images</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../content/tables/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Tables</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../content/lists/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Lists</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../content/inline-elements/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Inline Elements</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-buttons">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Buttons</span>
+    </li>
+    <li  id="menu-buttons" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../buttons/buttons/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Buttons</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../buttons/dropdown/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Dropdown</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-images">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Images</span>
+    </li>
+    <li  id="menu-images" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../images/lazyload/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Lazyload</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../images/slider/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Slider</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-surfaces">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Surfaces</span>
+    </li>
+    <li  id="menu-surfaces" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../surfaces/paper/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Paper</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../surfaces/cards/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Cards</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../surfaces/drawer/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Drawer</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../surfaces/frontdrop/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Frontdrop</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../surfaces/backdrop/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Backdrop</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-navigation">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Navigation</span>
+    </li>
+    <li  id="menu-navigation" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../navigation/navbar/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Navbar</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../navigation/menu/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Menu</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../navigation/pagination/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Pagination</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../navigation/tabs/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Tabs</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../navigation/waypoints/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Waypoints</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-feedback">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Feedback</span>
+    </li>
+    <li  id="menu-feedback" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../feedback/message/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Message</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../feedback/notification/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Notification</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../feedback/modal/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Modal</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-forms">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Forms</span>
+    </li>
+    <li  id="menu-forms" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../forms/inputs/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Inputs</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../forms/checkbox/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Checkbox</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../forms/radio/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Radio</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../forms/switch/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Switch</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../forms/chips/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Chips</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../forms/progress/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Progress</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../forms/input-mask/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Input Mask</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../forms/results/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Results</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../forms/validation/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Validation</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-utilities">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Utilities</span>
+    </li>
+    <li  id="menu-utilities" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../utilities/ripple/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Ripple</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../utilities/tooltip/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Tooltip</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../utilities/popover/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Popover</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../utilities/collapse/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Collapse</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-javascript">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Javascript</span>
+    </li>
+    <li  id="menu-javascript" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../javascript/container/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Container</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../javascript/dom/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Dom</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../javascript/ajax/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Ajax</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../javascript/pjax/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Pjax</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse active" data-collapse-target="menu-js-helpers">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Js Helpers</span>
+    </li>
+    <li style="height:auto" id="menu-js-helpers" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../js-helpers/usage/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Usage</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../js-helpers/events/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Events</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../js-helpers/dom-utilities/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Dom Utilities</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../js-helpers/animate/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Animate</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../js-helpers/animate-css/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Animate Css</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../js-helpers/array/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Array</a></li>
+            <li class="menu-item active"><a data-pjax-target="#article-body" href="../../js-helpers/object/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Object</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../js-helpers/string/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">String</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../js-helpers/validation/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Validation</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../js-helpers/misc/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Misc</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-css">
+        <span class="item-left"><span class="fa fa-chevron-right"></span></span>
+        <span class="item-body">Css</span>
+    </li>
+    <li  id="menu-css" class="menu-item-submenu">
+        <ul class="menu menu-dense">
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../css/css-helpers/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Css Helpers</a></li>
+        </ul>
+    </li>
+</ul></div>
+        <div class="container-fluid docs-container" id="top">
+            <div class="main-container js-main-container">
+                <article class="docs-body pole-sm" id="article-body"><h3 id="object">Object</h3>
+<table>
+<thead>
+<tr>
+<th id="link" style="text-align:center;">link</th>
+<th id="function">Function</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;"><a href="#extend" class="js-waypoint-trigger">#</a></td>
+<td><code>extend</code></td>
+<td>Extends two objects, object functions.</td>
+</tr>
+<tr>
+<td style="text-align:center;"><a href="#clone_deep" class="js-waypoint-trigger">#</a></td>
+<td><code>clone_deep</code></td>
+<td>Deep clones an object or array including all nested values.</td>
+</tr>
+<tr>
+<td style="text-align:center;"><a href="#bind" class="js-waypoint-trigger">#</a></td>
+<td><code>bind</code></td>
+<td>Binds a function to a context so it can be identified later if needed.</td>
+</tr>
+<tr>
+<td style="text-align:center;"><a href="#flatten_obj" class="js-waypoint-trigger">#</a></td>
+<td><code>flatten_obj</code></td>
+<td>Returns a new flattened version of an object and it's <code>prototype</code>(s) with its properties.</td>
+</tr>
+<tr>
+<td style="text-align:center;"><a href="#object_props" class="js-waypoint-trigger">#</a></td>
+<td><code>object_props</code></td>
+<td>Returns an array of keys of all properties of an object and its <code>prototype</code>(s).</td>
+</tr>
+<tr>
+<td style="text-align:center;"><a href="#prototypes" class="js-waypoint-trigger">#</a></td>
+<td><code>prototypes</code></td>
+<td>Returns a flat array of of all nested prototypes of an object.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h4 id="extend">extend</h4>
+<p>Extends two objects, object functions</p>
+<pre><code class="javascript language-javascript">extend(Object|Function: base, Object|Function: extension): Object|Function</code></pre>
+<pre><code class="javascript language-javascript">const Base = function(one, two)
+{
+    this.one = one;
+
+    this.two = two;
+
+    this.doSomething();
+}
+Base.prototype.doSomething = function()
+{
+    console.log(`${this.one} ${this.two}`);
+}
+
+const Extension = function(one, two)
+{
+    this.super(one, two);
+}
+
+const Extended = extend(Base, Extension);
+
+// hello world!
+let e = new Extended('hello', 'world!');</code></pre>
+<pre><code class="javascript language-javascript">const Base = function(one, two)
+{
+    this.one = one;
+
+    this.two = two;
+}
+Base.prototype.doSomething = function()
+{
+    console.log(`${this.one} ${this.two}`);
+}
+
+const Extension = function(one, two)
+{
+    this.one = one;
+
+    this.two = two;
+}
+
+const Extended = extend(new Base('foo', 'bar'), new Extension('hello', 'world'));
+
+// hello world!
+Extended.doSomething();</code></pre>
+<p><br></p>
+<h4 id="clone_deep">clone_deep</h4>
+<p>Deep clones an object or array including all nested values.</p>
+<pre><code class="javascript language-javascript">clone_deep(Mixed: original): Mixed</code></pre>
+<pre><code class="javascript language-javascript">let clone = clone_deep([ {foo: 'foo'} ]);
+
+let clone = clone_deep({foo : () =&gt; console.log('hello world')});</code></pre>
+<p><br></p>
+<h4 id="bind">bind</h4>
+<p>Binds a function to a context so it can be identified later if needed.</p>
+<pre><code class="javascript language-javascript">bind(Function: function, Mixed: context): Function</code></pre>
+<pre><code class="javascript language-javascript">function foo() { console.log(this); }
+
+let bound = bind(foo, 'bar');
+
+// bar
+bound();</code></pre>
+<p><br></p>
+<h4 id="flatten_obj">flatten_obj</h4>
+<p>Returns a new flattened version of an object and it's <code>prototype</code>(s) with its properties.</p>
+<pre><code class="javascript language-javascript">flatten_obj(Object: object, ?deep: deep = false): Object</code></pre>
+<pre><code class="javascript language-javascript">const WithProto = function(one, two) { }
+WithProto.prototype.doSomething = function() { }
+
+// { doSomething: function()... }
+let flat = flatten_obj(new WithProto);</code></pre>
+<p><br></p>
+<h4 id="object_props">object_props</h4>
+<p>Returns an array of keys of all properties of an object and its <code>prototype</code>(s).</p>
+<pre><code class="javascript language-javascript">object_props(Object: object, ?deep: deep = false): Array</code></pre>
+<pre><code class="javascript language-javascript">const WithProto = function(one, two) { this.foo = 'bar' }
+WithProto.prototype.doSomething = function() { }
+
+// [ 'foo', 'doSomething' ]
+let props = object_props(new WithProto);</code></pre>
+<p><br></p>
+<h4 id="prototypes">prototypes</h4>
+<p>Returns a flat array of of all nested prototypes of an object.</p>
+<pre><code class="javascript language-javascript">prototypes(Object: object): Array</code></pre>
+<pre><code class="javascript language-javascript">const WithProto = function(one, two) { this.foo = 'bar' }
+WithProto.prototype.doSomething = function() { }
+
+// { foo: 'bar', doSomething: function()... }
+let protos = prototypes(new WithProto);</code></pre></article>
+            </div>
+        </div>
+        <footer class="site-footer">
+            <div class="container-fluid">
+                <div class="flex-row flex-cols-12 flex-cols-md-6 align-cols-center-y">
+                    <div class="flex-row align-cols-left align-cols-left">
+                        <div class="flex-row-fluid align-cols-center align-cols-md-left align-cols-md-center-y col-gaps-md">
+                            <div>
+                                <a class="logo" href="/">
+                                    <svg viewBox="0 0 1451 1451"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg>
+                                    <span class="logo-text md-inline-block lg-inline-block xl-inline-block">Frontbx</span>
+                                </a>
+                            </div>
+                            <div class="col-12 col-md-7 col-lg-8 pole-xs pole-n no-pole-md">
+                                <small> © Frontbx UI 2024.
+                                <br> Designed &amp; developed with
+                                <span style="font-size:13px;color:#F36B5C;">♥</span> by Joe Howard. </small>
+                            </div>
+                        </div>
+                        <div class="flex-row pole-sm pole-n">
+                            <ul class="list-inline">
+                                <li>
+                                    <a href="http://frontbx.github.io/ui" target="_blank" class="fancy-link p6 color-gray-200">Documentation</a>
+                                </li>
+                                <li>
+                                    <a href="https://github.com/frontbx/ui" target="_blank" class="fancy-link p6 color-gray-200">Github</a>
+                                </li>
+                                <li>
+                                    <a href="../../getting-started/download/index.html" class="fancy-link p6 color-gray-200">Download</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col flex align-cols-center align-cols-md-right align-cols-md-center-y">
+                        <div class="pole-sm pole-n no-pole-md">
+                            <ul class="list-inline">
+                                <li>
+                                    <a href="http://frontbx.github.io/ui" target="_blank" class="btn btn-primary">
+                                        <span class="fa-brands fa-github icon-sm"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../../customize/colors/index.html#playground" class="btn btn-success">
+                                        <span class="fa fa-fill-drip icon-sm"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#top" class="btn btn-info js-waypoint-trigger">
+                                        <span class="fa fa-chevron-up icon-sm"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="../../assets/js/frontbx.bundle.min.js"></script>
+        <script src="../../assets/js/frontbx-docs.js"></script>
+    </body>
+</html>
