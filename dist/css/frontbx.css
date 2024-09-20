@@ -930,7 +930,7 @@ blockquote:not([class]) > :last-child {
 
 ul, ol {
   margin: 1em 0 2em 0;
-  padding: 0 0 0 4rem;
+  padding: 0 0 0 1.5em;
   list-style: disc;
   list-style: initial;
 }
@@ -944,7 +944,7 @@ ol {
 
 ol ol, ol ul, ul ol, ul ul {
   margin: 0;
-  padding: 0 0 0 2em;
+  padding: 0 0 0 1em;
 }
 
 ul ul {

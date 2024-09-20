@@ -32,7 +32,6 @@ Custom styled progress bars can be used in upload forms or Ajax tasks with very 
 
 Progress bars can be further contextualized using the `.progress-primary`, `.progress-secondary`,  `.progress-info`, `.progress-success`, `.progress-warning`, `.progress-danger`, `.progress-gradient` classes.
 
-
 <div class="code-content-example">
 	<div class="row pole-sm pole-s">
 	    <span class="progress-bar progress-primary">
@@ -86,8 +85,6 @@ src/scss/styles/forms/_progress.scss
 --fbx-progress-bg: #{$progress-bg};
 --fbx-progress-color: #{$progress-color};
 ```
-
-<br>
 
 Customization via Sass can be made in the `src/scss/_config.scss` file in FrontBx's source.
 
