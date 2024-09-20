@@ -305,7 +305,6 @@
         <div class="container-fluid docs-container" id="top">
             <div class="main-container js-main-container">
                 <article class="docs-body pole-sm" id="article-body"><h1 id="buttons">Buttons</h1>
-<hr />
 <p>FrontBx comes with a vast varietu of button options and styles, making it super simple to create buttons on just about any surface.</p>
 <hr />
 <ul>
@@ -314,7 +313,7 @@
 <li><a href="#outline-buttons">Outline button</a></li>
 <li><a href="#pure-buttons">Pure button</a></li>
 <li><a href="#raised-buttons">Raised buttons</a></li>
-<li><a href="#on-primary-buttons">On-Primary buttons</a></li>
+<li><a href="#on-backgrounds">On backgrounds</a></li>
 <li><a href="#circle-buttons">Circle buttons</a></li>
 <li><a href="#icon-buttons">Icon buttons</a></li>
 <li><a href="#button-sizes">Button sizes</a></li>
@@ -327,7 +326,7 @@
 <h3 id="basic-example">Basic example</h3>
 <p>Buttons can be created by simply adding the <code>.btn</code> class to a <code>&amp;lt;a&amp;gt;</code> or <code>&amp;lt;button&amp;gt;</code> element.</p>
 <div class="code-content-example">
-    <div class="container-fuid">
+    <div class="flex-row-fluid align-cols-center col-gaps-xs">
         <button class="btn" type="button">Button</button>
         <a class="btn" href="#">Button</a>
     </div>
@@ -338,7 +337,7 @@
 <h3 id="contextual-buttons">Contextual buttons</h3>
 <p>Add the contextual classes <code>.btn-primary</code>, <code>.btn-info</code>, <code>.btn-success</code>, <code>.btn-warning</code> and <code>.btn-danger</code> to contextualise button styling.</p>
 <div class="code-content-example">
-    <div class="container-fuid">
+    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn" type="button">.btn</button>
         <button class="btn btn-primary" type="button">.btn-primary</button>
         <button class="btn btn-info" type="button">.btn-info</button>
@@ -357,7 +356,7 @@
 <h3 id="outline-buttons">Outline buttons</h3>
 <p>Add the <code>.btn-outline</code> to any button to change the style to an outline.</p>
 <div class="code-content-example">
-    <div class="container-fuid">
+    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn btn-outline" type="button">.btn</button>
         <button class="btn btn-primary btn-outline" type="button">.btn-primary</button>
         <button class="btn btn-info btn-outline" type="button">.btn-info</button>
@@ -373,7 +372,7 @@
 <h3 id="pure-buttons">Pure buttons</h3>
 <p>Add the <code>.pure</code> class to any button to remove all borders and drop shadows.</p>
 <div class="code-content-example">
-    <div class="container-fuid">
+    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn btn-pure" type="button">.btn</button>
         <button class="btn btn-primary btn-pure" type="button">.btn-primary</button>
         <button class="btn btn-info btn-pure" type="button">.btn-info</button>
@@ -389,22 +388,22 @@
 <h3 id="raised-buttons">raised buttons</h3>
 <p>Add the <code>.raised-1</code>, <code>.raised-2</code>, or <code>.raised-3</code> classes to any button elevate its UI heirarchy:</p>
 <div class="code-content-example">
-    <div class="container-fuid text-center">
-        <button class="btn raised-1" type="button">.btn</button>
+    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
+        <button class="btn raised-1" type="button">.raised-1</button>
         &nbsp;&nbsp;
-        <button class="btn raised-2" type="button">.btn</button>
+        <button class="btn raised-2" type="button">.raised-2</button>
         &nbsp;&nbsp;
-        <button class="btn raised-3" type="button">.btn</button>
+        <button class="btn raised-3" type="button">.raised-3</button>
     </div>
 </div>
 <pre><code class="html language-html">&lt;button class="btn raised-1" type="button"&gt;.btn&lt;/button&gt;
 &lt;button class="btn raised-2" type="button"&gt;.btn&lt;/button&gt;
 &lt;button class="btn raised-3" type="button"&gt;.btn&lt;/button&gt;</code></pre>
 <hr />
-<h3 id="on-primary-buttons">On-Primary buttons</h3>
+<h3 id="on-backgrounds">On backgrounds</h3>
 <p>Add the contextual <code>.btn-white</code> class for buttons that are on a primary background.</p></p>
-<div class="code-content-example">
-    <div class="container-fuid bg-primary pad-20">
+<div class="code-content-example bg-primary">
+    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn btn-white" type="button">.btn-white</button>
         <button class="btn btn-white btn-outline" type="button">.btn-outline</button>
         <button class="btn btn-white btn-pure" type="button">.btn-pure</button>
@@ -419,7 +418,7 @@
 <h3 id="circle-buttons">Circle buttons</h3>
 <p>Add the <code>.btn-circle</code> class to any button to change the style to a circled type.</p>
 <div class="code-content-example">
-    <div class="container-fuid">
+    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn btn-primary btn-circle btn-xs" type="button">
             <span class="fa fa-headphones"></span>
         </button>
@@ -444,7 +443,7 @@
 <h3 id="icon-buttons">Icon buttons</h3>
 <p>You can add icons to buttons using the font awesome icon library. No special markup is needed. You can however use an html <code>&amp;nbsp;</code> spacing character if you want extra spacing.</p>
 <div class="code-content-example">
-    <div class="container-fuid">
+    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn" type="button">
             <span class="fa fa-headphones"></span>&nbsp;&nbsp;.btn
         </button>
@@ -478,7 +477,7 @@
 <h3 id="button-sizes">Button sizes</h3>
 <p>Buttons can be sized using 4 different sizing classes <code>.btn-xs</code>, <code>.btn-sm</code>, <code>.btn-lg</code> &amp; <code>.btn-xl</code>. The defauly <code>.btn</code> size sits in between the <code>.btn-sm</code>, <code>.btn-lg</code> sizes.</p>
 <div class="code-content-example">
-    <div class="container-fuid">
+    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn btn-xs" type="button"><span class="fa fa-heart"></span>.btn-xs</button>
         <button class="btn btn-sm" type="button"><span class="fa fa-heart"></span>.btn-sm</button>
         <button class="btn" type="button"><span class="fa fa-heart"></span>.btn</button>
@@ -496,7 +495,7 @@
 <p>Add one of FrontBx' loaders inside any button and give the button a <code>.with-loading</code> class. When the button has the <code>.active</code> class the loading animation will show</p>
 <pre><code class="html language-html">&lt;span class="loader loader-3"&gt;&lt;/span&gt;</code></pre>
 <div class="code-content-example">
-    <div class="container-fuid">
+    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn with-loading active" type="button">
             <span class="loader loader-1"></span> Loading...
         </button>
@@ -530,7 +529,7 @@
 <h3 id="button-groups">Button groups</h3>
 <p>Create groups by wrapping a set of buttons in a <code>.btn-group</code> classed element.</p>
 <div class="code-content-example">
-    <div class="container-fuid">
+    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <div class="btn-group floor-xs">
             <button class="btn btn-icon" type="button">
                 <span class="fa fa-headphones icon-md"></span>
@@ -545,6 +544,7 @@
                 <span class="fa fa-headphones icon-md"></span>
             </button>
         </div>
+        <div class="col-12"></div>
         <div class="btn-group btn-pill floor-xs">
             <button class="btn btn-outline" type="button">
                 <span class="fa fa-headphones icon-md"></span>
@@ -559,6 +559,7 @@
                 <span class="fa fa-headphones icon-md"></span>
             </button>
         </div>
+        <div class="col-12"></div>
         <div class="btn-group">
             <button class="btn btn-pure" type="button">
                 <span class="fa fa-headphones icon-md"></span>
@@ -582,22 +583,22 @@
 <h3 id="button-states">Button states</h3>
 <p>Button states are native, but work also with a class to use <code>.active</code>, <code>.hover</code>, <code>.disabled</code></p>
 <div class="code-content-example">
-    <div class="container-fuid">
+    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn" type="button">Normal</button>
         <button class="btn hover" type="button">Hover</button>
         <button class="btn active" type="button">Active</button>
         <button class="btn disabled" type="button">Disabled</button>
-        <div class="row roof-xs floor-xs"></div>
+        <div class="col-12"></div>
         <button class="btn btn-primary" type="button">Normal</button>
         <button class="btn btn-primary hover" type="button">Hover</button>
         <button class="btn btn-primary active" type="button">Active</button>
         <button class="btn btn-primary disabled" type="button">Disabled</button>
-        <div class="row roof-xs floor-xs"></div>
+        <div class="col-12"></div>
         <button class="btn btn-primary btn-outline" type="button">Normal</button>
         <button class="btn btn-primary btn-outline hover" type="button">Hover</button>
         <button class="btn btn-primary btn-outline active" type="button">Active</button>
         <button class="btn btn-primary btn-outline disabled" type="button">Disabled</button>
-        <div class="row roof-xs floor-xs"></div>
+        <div class="col-12"></div>
         <button class="btn btn-primary btn-pure" type="button">Normal</button>
         <button class="btn btn-primary btn-pure hover" type="button">Hover</button>
         <button class="btn btn-primary btn-pure active" type="button">Active</button>
@@ -609,28 +610,23 @@
 &lt;button class="btn active" type="button"&gt;Active&lt;/button&gt;
 &lt;button class="btn disabled" type="button"&gt;Disabled&lt;/button&gt;</code></pre>
 <p>States for <code>btn-white</code> will also work</p>
-<div class="code-content-example">
-    <div class="bg-primary pad-20">
+<div class="code-content-example bg-primary">
+    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn btn-white" type="button">Normal</button>
         <button class="btn btn-white hover" type="button">Hover</button>
         <button class="btn btn-white active" type="button">Active</button>
         <button class="btn btn-white disabled" type="button">Disabled</button>
-        <div class="row roof-xs floor-xs"></div>
-
+        <div class="col-12"></div>
         <button class="btn btn-white" type="button">Normal</button>
         <button class="btn btn-white hover" type="button">Hover</button>
         <button class="btn btn-white active" type="button">Active</button>
         <button class="btn btn-white disabled" type="button">Disabled</button>
-
-        <div class="row roof-xs floor-xs"></div>
-
+        <div class="col-12"></div>
         <button class="btn btn-white btn-outline" type="button">Normal</button>
         <button class="btn btn-white btn-outline hover" type="button">Hover</button>
         <button class="btn btn-white btn-outline active" type="button">Active</button>
         <button class="btn btn-white btn-outline disabled" type="button">Disabled</button>
-
-        <div class="row roof-xs floor-xs"></div>
-
+        <div class="col-12"></div>
         <button class="btn btn-white btn-pure" type="button">Normal</button>
         <button class="btn btn-white btn-pure hover" type="button">Hover</button>
         <button class="btn btn-white btn-pure active" type="button">Active</button>

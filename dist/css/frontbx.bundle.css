@@ -256,7 +256,7 @@
   /* Breakpoints */
   --fbx-breakpoint-xs: 0;
   --fbx-breakpoint-sm: 576px;
-  --fbx-breakpoint-md: 768px;
+  --fbx-breakpoint-md: 812px;
   --fbx-breakpoint-lg: 992px;
   --fbx-breakpoint-xl: 1200px;
   /* Gutters */
@@ -1432,7 +1432,7 @@ pre > code {
   padding: calc(var(--fbx-table-cell-pad-y) / 2) calc(var(--fbx-table-cell-pad-x) / 2);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 812px) {
   .table-responsive {
     width: 100%;
     margin-bottom: 15px;
@@ -2600,7 +2600,7 @@ blockquote[class*=bq-] pre {
   }
 }
 /* MD Grid */
-@media (min-width: 768px) {
+@media (min-width: 812px) {
   /* md Displays */
   /* Hide previous breakpoint */
   .sm,
@@ -4120,7 +4120,7 @@ blockquote[class*=bq-] pre {
   --fbx-input-bg: var(--fbx-card-bg);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 812px) {
   .card.card-landscape.responsive {
     align-items: stretch;
     flex-flow: row wrap;
@@ -4482,7 +4482,7 @@ blockquote[class*=bq-] pre {
   width: auto;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 812px) {
   .nav-logo {
     position: absolute;
     left: 50%;
@@ -6542,7 +6542,7 @@ button:not(.btn) + .drop-menu:not(.drop-n):not(.drop-ne):not(.drop-nw) {
     margin-top: 5px;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 812px) {
   .btn-block-sm {
     display: inline-block;
     width: auto;

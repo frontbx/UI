@@ -87,13 +87,13 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     const ArticleWaypoints = function()
     {        
         this.super('.docs-body > h1 + p + hr + ul li a, .docs-body > h1 + p + p + hr + ul li a, .docs-body > h1 + p + p + p + hr + ul li a');
-    	
-    	frontbx.dom().refresh('WayPoints');
     }
 
     ArticleWaypoints.prototype.bind = function(link)
-    {
+    {    	
     	add_class(link, 'js-waypoint-trigger');
+
+    	frontbx.dom().refresh('WayPoints', link.parentNode);
     }
 
     ArticleWaypoints.prototype.unbind = function(link)
@@ -117,8 +117,6 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     const ArticleTitles = function()
     {        
         this.super('.docs-body > h1, .docs-body > h2, .docs-body > h3, .docs-body > h4, .docs-body > h5, .docs-body > h6');
-    	
-    	frontbx.dom().refresh('WayPoints');
     }
 
     ArticleTitles.prototype.bind = function(title)
@@ -130,11 +128,13 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     		a.className = 'anchor-link js-waypoint-trigger';
 
     		a.innerHTML = '#';
- 	
- 			return;
     	}
-
-    	dom_element({tag: 'a', class: 'anchor-link js-waypoint-trigger', href: `#${title.id}`, ariaLabel: `Link to this section: ${title.innerText.trim()}`}, title, '#');
+    	else
+    	{
+    		dom_element({tag: 'a', class: 'anchor-link js-waypoint-trigger', href: `#${title.id}`, ariaLabel: `Link to this section: ${title.innerText.trim()}`}, title, '#');	
+    	}
+    	
+    	frontbx.dom().refresh('WayPoints', title);
     }
 
     ArticleTitles.prototype.unbind = function(title)
@@ -241,15 +241,15 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     {
     	return throttle(() =>
     	{
-    		let x = width(document.body);
+    		let x = width(window);
 
-	        if (x < 768 && this.inMain)
+	        if (x < 812 && this.inMain)
 	        {
 	            drawer._containerWrap.appendChild(drawer._drawer);
 
 	            this.inMain = false;
 	        }
-	        else if (x > 768 && !this.inMain)
+	        else if (x > 812 && !this.inMain)
 	        {
 	        	this.main.appendChild(drawer._drawer);
 
