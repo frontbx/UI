@@ -4537,13 +4537,15 @@
      */
     _.prototype.$ = function(selector, context)
     {
+        selector = selector.trim();
+    
         context = (typeof context === 'undefined' ? document : context);
     
-        let fchild = selector.trim().substring(0, 1) === '>';
+        let fchild = selector.substring(0, 1) === '>';
         let multi  = selector.includes(',');
     
         // Fast
-        if (!fchild && !multi) return context.querySelector(selector);
+        if (!fchild && !multi) return selector[0] === '#' ? context.getElementById(selector.substring(1)) : context.querySelector(selector);
     
         if (multi) selector = selector.replaceAll(/,\s?>/g, ', :scope >');
         
@@ -4571,11 +4573,13 @@
      */
     _.prototype.$All = function(selector, context, includeContextEl)
     {
+        selector = selector.trim();
+    
         context = (typeof context === 'undefined' ? document : context);
     
         includeContextEl = (typeof includeContextEl === 'undefined' ? false : includeContextEl && context !== document);
     
-        let fchild = selector.trim().substring(0, 1) === '>';
+        let fchild = selector.substring(0, 1) === '>';
         let multi  = selector.includes(',');
         let deleteParent = false;
     
@@ -4703,24 +4707,22 @@
             }
         }
     }
-    _.prototype.traverse_up = function(DOMElement, callback, origional)
+    _.prototype.traverse_up = function(DOMElement, callback)
     {    
-        origional = typeof origional === "undefined" ? DOMElement : origional;
-    
         // Stop on document
-        if (DOMElement === document || typeof DOMElement === "undefined" || DOMElement === null) return;
+        if (DOMElement === document || this.is_undefined(DOMElement) || DOMElement === null) return;
     
-        if (callback(DOMElement))
+        if (callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className.trim()))
         {
-            return origional;
+            return DOMElement;
         }
     
-        return this.traverse_up(DOMElement.parentNode, callback, origional);
+        return this.traverse_up(DOMElement.parentNode, callback);
     }
     
     _.prototype.traverse_down = function(DOMElement, callback)
     {
-        if (typeof DOMElement === "undefined" || DOMElement === null) return;
+        if (this.is_undefined(DOMElement) || DOMElement === null) return;
     
         let children = this.find_all('*', DOMElement);
     
@@ -4742,9 +4744,9 @@
     _.prototype.traverse_next = function(DOMElement, callback)
     {
         // Stop on document
-        if (DOMElement === document || typeof DOMElement === "undefined" || DOMElement === null) return;
+        if (DOMElement === document || this.is_undefined(DOMElement) || DOMElement === null) return;
     
-        if (callback(DOMElement)) return true;
+        if (callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className.trim())) return true;
     
         return this.traverse_next(DOMElement.nextSibling, callback);
     }
@@ -4752,9 +4754,9 @@
     _.prototype.traverse_prev = function(DOMElement, callback)
     {
         // Stop on document
-        if (DOMElement === document || typeof DOMElement === "undefined" || DOMElement === null) return;
+        if (DOMElement === document || this.is_undefined(DOMElement) || DOMElement === null) return;
     
-        if (callback(DOMElement))  return true;
+        if (callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className.trim()))  return true;
     
         return this.traverse_prev(DOMElement.previousSibling, callback);
     }

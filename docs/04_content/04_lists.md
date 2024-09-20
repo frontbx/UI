@@ -1,7 +1,5 @@
 # Lists
 
----
-
 FrontBx lists allow you to to display a continuous group of text or images quickly with very little markup. Because HTML lists are used frequently across third-party libraries and plugins, FrontBx lists are styled with the `.list` base class.
 
 ---

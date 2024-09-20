@@ -1,7 +1,5 @@
 # Tables
 
----
-
 FrontBx comes with a few different basic table stylings ready to go. Because tables are used frequently across third-party libraries and plugins, FrontBx tables are styled with the `.table` base class.
 
 ---

@@ -8,13 +8,15 @@
  */
 _.prototype.$ = function(selector, context)
 {
+    selector = selector.trim();
+
     context = (typeof context === 'undefined' ? document : context);
 
-    let fchild = selector.trim().substring(0, 1) === '>';
+    let fchild = selector.substring(0, 1) === '>';
     let multi  = selector.includes(',');
 
     // Fast
-    if (!fchild && !multi) return context.querySelector(selector);
+    if (!fchild && !multi) return selector[0] === '#' ? context.getElementById(selector.substring(1)) : context.querySelector(selector);
 
     if (multi) selector = selector.replaceAll(/,\s?>/g, ', :scope >');
     
@@ -42,11 +44,13 @@ _.prototype.find = function(selector, context)
  */
 _.prototype.$All = function(selector, context, includeContextEl)
 {
+    selector = selector.trim();
+
     context = (typeof context === 'undefined' ? document : context);
 
     includeContextEl = (typeof includeContextEl === 'undefined' ? false : includeContextEl && context !== document);
 
-    let fchild = selector.trim().substring(0, 1) === '>';
+    let fchild = selector.substring(0, 1) === '>';
     let multi  = selector.includes(',');
     let deleteParent = false;
 

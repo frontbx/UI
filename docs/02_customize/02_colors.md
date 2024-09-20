@@ -31,7 +31,7 @@ Theme colors are available in both CSS and Sass variables. When using the Sass v
 | Swatch                                        | CSS Variable             | Sass Variable       | Description                                                |
 |:---------------------------------------------:|--------------------------|---------------------|------------------------------------------------------------|
 | <div class="docs-swatch bg-body-bg"></div>    | `--fbx-body-bg`          | `$body-bg`          | Body background color.                                     |
-| <div class="docs-swatch bg-body-color"></div> | `--fbx-body-color`       | `$body-color`       | Body `color`                                               |
+| <div class="docs-swatch" style="background-color: var(--fbx-body-color)"></div> | `--fbx-body-color`       | `$body-color`       | Body `color`                                               |
 | <div class="docs-swatch bg-white"></div>      | `--fbx-white`            | `$white`            | Global `white` definition.                                 |
 | <div class="docs-swatch bg-black"></div>      | `--fbx-black`            | `$black`            | Global `black` definition.                                 |
 | <div class="docs-swatch bg-gray"></div>       | `--fbx-gray`             | `$gray`             | Global `gray` definition.                                  |

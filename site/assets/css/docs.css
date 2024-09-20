@@ -240,12 +240,16 @@ pre[class*="language-"]
 }
 
 /* Docs article */
-.docs-body > h1 + p + hr + ul,
-.docs-body > h1 + p + p + hr + ul,
-.docs-body > h1 + p + p + p + hr + ul
+.docs-body > ul,
+.docs-body > ul ul,
+.docs-body > ul ol
 {
     list-style: none;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+}
+.docs-body > ul li a:not(.btn)
+{
+    color: var(--fbx-gray-900);
 }
 .docs-body > .fbx-code-snippet
 {
@@ -274,6 +278,24 @@ pre[class*="language-"]
 .docs-body p > a:not(.btn):hover
 {
     text-decoration: none;
+}
+.anchor-link
+{
+    padding: 0 0.5rem;
+    font-weight: 400;
+    color: var(--fbx-theme-primary);
+    text-decoration: none;
+    opacity: 0;
+    transition: color 0.15s ease-in-out,opacity 0.15s ease-in-out;
+}
+
+.anchor-link:focus,
+.anchor-link:hover,
+:hover>.anchor-link,
+:target>.anchor-link {
+    color: var(--fbx-theme-primary);
+    text-decoration: none;
+    opacity: 1;
 }
 
 /* Code examples  */
@@ -463,7 +485,6 @@ pre[class*="language-file-path"] > code
 {
     margin-bottom: 10px;
 }
-
 .docs-swatch
 {
     display: inline-block;
@@ -476,40 +497,6 @@ pre[class*="language-file-path"] > code
 .code-content-example .card-header-content .skeleton-text-block
 {
     padding: 7px 0px;
-}
-
-.api-table + .table-responsive table > thead > tr > th
-{
-    background-color: var(--fbx-theme-primary);
-    background: var(--fbx-theme-primary);
-    border-top-left-radius: var(--fbx-border-radius);
-    border-top-right-radius: var(--fbx-border-radius);
-    overflow: hidden;
-    border: none;
-}
-.api-table + .table-responsive thead th code
-{
-    background: transparent;
-    border: none;
-    color: #ffff;
-    font-weight: bold;
-    font-size: 1.5rem;
-}
-table .pad
-{
-    display: block;
-    padding-left: 20px;
-}
-table .big-code code
-{
-    padding: 12px 15px;
-    display: block;
-    font-size: 1.3rem;
-    margin-top: 10px;
-}
-.bg-body-color
-{
-    background-color: var(--fbx-body-color);
 }
 .code-content-example .msg,
 .code-content-example .notification-wrap
@@ -712,6 +699,11 @@ iframe
 
 /* Darkmode  */
 .fbx-darkmode code[class*="language-"],.fbx-darkmode pre[class*="language-"]{background:var(--fbx-black-900);color:var(--fbx-gray-100)}.fbx-darkmode code[class*="language-"]::-moz-selection,.fbx-darkmode pre[class*="language-"]::-moz-selection,.fbx-darkmode code[class*="language-"] ::-moz-selection,.fbx-darkmode pre[class*="language-"] ::-moz-selection{background:var(--fbx-black-900);color:var(--fbx-black-100)}.fbx-darkmode code[class*="language-"]::-moz-selection,.fbx-darkmode pre[class*="language-"]::-moz-selection,.fbx-darkmode code[class*="language-"] ::-moz-selection,.fbx-darkmode pre[class*="language-"] ::-moz-selection{background:var(--fbx-black-900);color:var(--fbx-black-100)}.fbx-darkmode code[class*="language-"]::selection,.fbx-darkmode pre[class*="language-"]::selection,.fbx-darkmode code[class*="language-"] ::selection,.fbx-darkmode pre[class*="language-"] ::selection{background:var(--fbx-black-900);color:var(--fbx-black-100)}.fbx-darkmode .token.comment,.fbx-darkmode .token.prolog,.fbx-darkmode .token.cdata{color:#91889b}.fbx-darkmode .token.punctuation{color:#7b6995}.fbx-darkmode .token.builtin,.fbx-darkmode .token.constant,.fbx-darkmode .token.boolean{color:#ffe261}.fbx-darkmode .token.number{color:#b381c5}.fbx-darkmode .token.important,.fbx-darkmode .token.atrule,.fbx-darkmode .token.property,.fbx-darkmode .token.keyword{color:#40b4c4}.fbx-darkmode .token.doctype,.fbx-darkmode .token.operator,.fbx-darkmode .token.inserted,.fbx-darkmode .token.tag,.fbx-darkmode .token.class-name,.fbx-darkmode .token.symbol{color:#74dfc4}.fbx-darkmode .token.attr-name,.fbx-darkmode .token.function,.fbx-darkmode .token.deleted,.fbx-darkmode .token.selector{color:#eb64b9}.fbx-darkmode .token.attr-value,.fbx-darkmode .token.regex,.fbx-darkmode .token.char,.fbx-darkmode .token.string{color:#b4dce7}.fbx-darkmode .token.entity,.fbx-darkmode .token.url,.fbx-darkmode .token.variable{color:#fff}.fbx-darkmode .token.bold{font-weight:700}.fbx-darkmode .token.italic{font-style:italic}.fbx-darkmode .token.entity{cursor:help}.fbx-darkmode .token.namespace{opacity:.7}.fbx-darkmode pre[class*="language-sass"] .token.variable-line,.fbx-darkmode pre[class*="language-scss"] .token.variable-line{color:#74dfc4}.fbx-darkmode pre[class*="language-sass"] .token.variable,.fbx-darkmode pre[class*="language-scss"] .token.variable{color:#eb64b9}.fbx-darkmode pre[class*="language-file"]>code{color:var(--fbx-color-babyblue)}
+
+.fbx-darkmode .docs-body > ul li a:not(.btn)
+{
+    color: var(--fbx-gray-400);
+}
 
 .fbx-darkmode .code-content-example
 {

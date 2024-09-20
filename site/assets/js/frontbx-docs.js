@@ -76,6 +76,79 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 })();
 
 /**
+ * Converts article link menu to waypoints
+ *
+ */
+(function()
+{
+    const [Component] = frontbx.get('Component');
+    const [find, add_class, remove_class, extend]  = frontbx.import(['find','add_class','remove_class','extend']).from('_');
+
+    const ArticleWaypoints = function()
+    {        
+        this.super('.docs-body > h1 + p + hr + ul li a, .docs-body > h1 + p + p + hr + ul li a, .docs-body > h1 + p + p + p + hr + ul li a');
+    	
+    	frontbx.dom().refresh('WayPoints');
+    }
+
+    ArticleWaypoints.prototype.bind = function(link)
+    {
+    	add_class(link, 'js-waypoint-trigger');
+    }
+
+    ArticleWaypoints.prototype.unbind = function(link)
+    {
+        remove_class(link, 'js-waypoint-trigger');
+    }
+
+    frontbx.dom().register('ArticleWaypoints', extend(Component, ArticleWaypoints), true);
+
+}());
+
+/**
+ * Add anchor links to articles
+ *
+ */
+(function()
+{
+    const [Component] = frontbx.get('Component');
+    const [find, dom_element, remove_from_dom, extend]  = frontbx.import(['find','dom_element','remove_from_dom','extend']).from('_');
+
+    const ArticleTitles = function()
+    {        
+        this.super('.docs-body > h1, .docs-body > h2, .docs-body > h3, .docs-body > h4, .docs-body > h5, .docs-body > h6');
+    	
+    	frontbx.dom().refresh('WayPoints');
+    }
+
+    ArticleTitles.prototype.bind = function(title)
+    {    	
+    	let a = find('> a', title);
+
+    	if (a && a.id)
+    	{
+    		a.className = 'anchor-link js-waypoint-trigger';
+
+    		a.innerHTML = '#';
+ 	
+ 			return;
+    	}
+
+    	dom_element({tag: 'a', class: 'anchor-link js-waypoint-trigger', href: `#${title.id}`, ariaLabel: `Link to this section: ${title.innerText.trim()}`}, title, '#');
+    }
+
+    ArticleTitles.prototype.unbind = function(title)
+    {
+        let a = find('.js-waypoint-trigger', title);
+
+        if (a) remove_from_dom(a);
+    }
+
+    frontbx.dom().register('ArticleTitles', extend(Component, ArticleTitles), true);
+
+}());
+
+/**
  * Active classes on docs menu.
  *
  */
@@ -240,10 +313,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
 	      	setTimeout(() => remove_class(btn, 'copied'), 3000);
 	    }
-	    catch (err)
-	    {
-	    	
-	    }
+	    catch (err){ }
     }
 
     Highlighter.prototype.unbind = function(block)
@@ -946,36 +1016,6 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
 }());
 
-
-/**
- * Converts article link menu to waypoints
- *
- */
-(function()
-{
-    const [Component] = frontbx.get('Component');
-    const [find_all, add_class, remove_class, is_array_last, extend]  = frontbx.import(['find_all','add_class','remove_class','is_array_last','extend']).from('_');
-
-    const ArticleWaypoints = function()
-    {        
-        this.super('.docs-body > h1 + p + hr + ul li > a, .docs-body > h1 + p + p + hr + ul li > a, .docs-body > h1 + p + p + p + hr + ul li > a');
-    }
-
-    ArticleWaypoints.prototype.bind = function(link)
-    {
-    	add_class(link, 'js-waypoint-trigger');
-
-    	if (is_array_last(link, this._DOMElements)) frontbx.dom().refresh('WayPoints');
-    }
-
-    ArticleWaypoints.prototype.unbind = function(link)
-    {
-        remove_class(link, 'js-waypoint-trigger');
-    }
-
-    frontbx.dom().register('ArticleWaypoints', extend(Component, ArticleWaypoints), true);
-
-}());
 
 /**
  * Docs color theme
