@@ -7007,6 +7007,8 @@ Container.singleton('_', _);
     // Set global
     window.frontbx = app;
 
+    console.log(app);
+
 })();
 (function()
 {

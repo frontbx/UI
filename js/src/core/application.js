@@ -52,4 +52,6 @@
     // Set global
     window.frontbx = app;
 
+    console.log(app);
+
 })();

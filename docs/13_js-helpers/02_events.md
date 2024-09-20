@@ -1,18 +1,17 @@
 ### Events
 
-| link                                                               | Function                | Reference                                                            |
-|:------------------------------------------------------------------:|-------------------------|----------------------------------------------------------------------|
+| Reference                                                          | Function                | Description                                                          |
+|--------------------------------------------------------------------|-------------------------|----------------------------------------------------------------------|
 | <a href="#on" class="js-waypoint-trigger">#</a>                    | `on`                    | Adds a removable event listener to any HTMLElement.                  |
 | <a href="#off" class="js-waypoint-trigger">#</a>                   | `off`                   | Removes an event listener from any HTMLElement.                      |
 | <a href="#clear_event_listeners" class="js-waypoint-trigger">#</a> | `clear_event_listeners` | Removes all event listeners from an element and all it's children.   |
 | <a href="#collect_garbage" class="js-waypoint-trigger">#</a>       | `collect_garbage`       | Removes all event listeners from elements no longer in the live DOM. |
 | <a href="#event_listeners" class="js-waypoint-trigger">#</a>       | `event_listeners`       | Returns an array of all attached event listeners on element.         |
 
-<br>
-
 #### on
 
-Adds a removable event listener to any HTMLElement.
+Adds a removable event listener callback to an HTMLElement. Event names can be native browser events or custom event names.
+
 
 ```javascript
 on(HTMLElement: element, String: event, Function: callback, ?Array|Mixed: args): Void
@@ -45,7 +44,6 @@ on(element, 'click', function(event, element, one, two)
 	console.log(event, element, this);
 	
 }, ['foo', 'one', 'two']);
-
 ```
 
 <br>

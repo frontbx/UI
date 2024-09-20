@@ -314,9 +314,9 @@ dl dd:last-child
 code, pre
 {
     font-family: var(--fbx-font-monospace);
+    font-size: inherit;
     line-height: var(--fbx-base-line-height);
     color: crimson;
-    font-size: 1.2rem;
     -webkit-font-smoothing: auto;
     -moz-osx-font-smoothing: auto;
     -webkit-font-smoothing: initial;

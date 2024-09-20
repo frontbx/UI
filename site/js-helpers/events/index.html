@@ -325,42 +325,41 @@
 <table>
 <thead>
 <tr>
-<th id="link" style="text-align:center;">link</th>
-<th id="function">Function</th>
 <th id="reference">Reference</th>
+<th id="function">Function</th>
+<th id="description">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center;"><a href="#on" class="js-waypoint-trigger">#</a></td>
+<td><a href="#on" class="js-waypoint-trigger">#</a></td>
 <td><code>on</code></td>
 <td>Adds a removable event listener to any HTMLElement.</td>
 </tr>
 <tr>
-<td style="text-align:center;"><a href="#off" class="js-waypoint-trigger">#</a></td>
+<td><a href="#off" class="js-waypoint-trigger">#</a></td>
 <td><code>off</code></td>
 <td>Removes an event listener from any HTMLElement.</td>
 </tr>
 <tr>
-<td style="text-align:center;"><a href="#clear_event_listeners" class="js-waypoint-trigger">#</a></td>
+<td><a href="#clear_event_listeners" class="js-waypoint-trigger">#</a></td>
 <td><code>clear_event_listeners</code></td>
 <td>Removes all event listeners from an element and all it's children.</td>
 </tr>
 <tr>
-<td style="text-align:center;"><a href="#collect_garbage" class="js-waypoint-trigger">#</a></td>
+<td><a href="#collect_garbage" class="js-waypoint-trigger">#</a></td>
 <td><code>collect_garbage</code></td>
 <td>Removes all event listeners from elements no longer in the live DOM.</td>
 </tr>
 <tr>
-<td style="text-align:center;"><a href="#event_listeners" class="js-waypoint-trigger">#</a></td>
+<td><a href="#event_listeners" class="js-waypoint-trigger">#</a></td>
 <td><code>event_listeners</code></td>
 <td>Returns an array of all attached event listeners on element.</td>
 </tr>
 </tbody>
 </table>
-<p><br></p>
 <h4 id="on">on</h4>
-<p>Adds a removable event listener to any HTMLElement.</p>
+<p>Adds a removable event listener callback to an HTMLElement. Event names can be native browser events or custom event names.</p>
 <pre><code class="javascript language-javascript">on(HTMLElement: element, String: event, Function: callback, ?Array|Mixed: args): Void</code></pre>
 <pre><code class="javascript language-javascript">// Anonymous function
 on(element, 'click', (event, element) =&gt; console.log(event, element));
