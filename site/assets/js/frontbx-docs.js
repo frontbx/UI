@@ -243,13 +243,13 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     	{
     		let x = width(window);
 
-	        if (x < 812 && this.inMain)
+	        if (x < 992 && this.inMain)
 	        {
 	            drawer._containerWrap.appendChild(drawer._drawer);
 
 	            this.inMain = false;
 	        }
-	        else if (x > 812 && !this.inMain)
+	        else if (x > 992 && !this.inMain)
 	        {
 	        	this.main.appendChild(drawer._drawer);
 

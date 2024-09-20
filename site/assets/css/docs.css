@@ -141,7 +141,7 @@ pre[class*="language-"]
     min-height: calc(100%);
     width: 100%;
 }
-@media (min-width: 812px)
+@media (min-width: 992px)
 {
     body > .docs-drawer
     {
@@ -226,19 +226,6 @@ pre[class*="language-"]
     transform: rotate(90deg);
 }
 
-/* PRE CODE IN TABLE */
-.docs-body .table pre
-{
-    padding: 1rem 1.5rem;
-    margin-bottom: 10px;
-    display: block;
-}
-.docs-body .table pre > code
-{
-    padding: 0;
-    font-size: 12px;
-}
-
 /* Docs article */
 .docs-body > ul,
 .docs-body > ul ul,
@@ -251,7 +238,25 @@ pre[class*="language-"]
 {
     color: var(--fbx-gray-900);
 }
-.docs-body > .fbx-code-snippet
+.docs-body p > a:not(.btn)
+{
+    text-decoration: underline;
+}
+.docs-body p > a:not(.btn):hover
+{
+    text-decoration: none;
+}
+.docs-body > table
+{
+    margin: 0 0 1.5em 0;
+}
+.docs-body > table div
+{
+    display: table;
+}
+.docs-body > .fbx-code-snippet,
+.docs-body > pre,
+.docs-body > table pre
 {
     margin: 1.5em 0;
 }
@@ -263,22 +268,24 @@ pre[class*="language-"]
     border: 0;
     margin: 3em 0;
 }
-.docs-body > table
+
+/* PRE CODE IN TABLE */
+.docs-body .table pre:not([class*=language-])
 {
-    margin: 0 0 1.5em 0;
+    padding: 1rem 1.5rem;
+    margin-bottom: 10px;
+    display: block;
+}
+.docs-body .table pre > code
+{
+    padding: 0;
+    font-size: 12px;
 }
 .docs-body table code
 {
     font-size: 11px;
 }
-.docs-body p > a:not(.btn)
-{
-    text-decoration: underline;
-}
-.docs-body p > a:not(.btn):hover
-{
-    text-decoration: none;
-}
+
 .anchor-link
 {
     padding: 0 0.5rem;
@@ -463,7 +470,7 @@ pre[class*="language-file-path"] > code
     max-width: 120px;
 }
 
-@media (min-width: 812px)
+@media (min-width: 992px)
 {
     .code-content-example.paper-example .paper
     {
@@ -602,7 +609,7 @@ pre[class*="language-file-path"] > code
 {
     text-align: center;
 }
-@media (min-width: 812px)
+@media (min-width: 992px)
 {
     .site-footer
     {
@@ -675,7 +682,7 @@ iframe
         padding-right: var(--fbx-container-gutter-sm);
     }
 }
-@media (min-width: 812px)
+@media (min-width: 992px)
 {
     .docs-body > *:not(ul):not(ol):not(.fbx-code-snippet):not(.code-content-example)
     {
@@ -683,7 +690,7 @@ iframe
         padding-right: 0 !important;
     }
 }
-@media (max-width: 812px)
+@media (max-width: 992px)
 {
     .docs-container
     {

@@ -322,31 +322,32 @@ Make terms and descriptions line up side-by-side.
 Wrap inline snippets of code with `<code>`
 
 <div class="code-content-example">
-    <p>So you can wrap this `.class-name` in a `&lt;code&gt;` tag.</p>
+    <p>So you can wrap this <code>.class-name</code> in a <code>code</code> tag.</p>
 </div>
 
 ```html
 <p>...<code>...</code>...</p>
 ```
 
-<br>
-
 #### Code blocks
 
 Use a `<pre>` tag for snippets spanning multiple lines. You can also wrap a `<code>` tag inside a `<pre>` tag.
 
-
-<div class="code-content-example">
-    <pre>
-.foo
+<div class="code-content-example"><pre>.foo
 {
     color: red;
-}
-    </pre>
-</div>
+}</pre>
+<br>
+<pre><code>.foo
+{
+    color: red;
+    background: url('Culpa reprehenderit commodo commodo cillum minim enim aliquip deserunt dolor amet aliquip anim eiusmod dolor.')
+}</code></pre></div>
 
 ```html
 <pre>...</pre>
+
+<pre><code>...</code></pre>
 ```
 
 --- 

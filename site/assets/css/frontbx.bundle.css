@@ -1020,6 +1020,7 @@ dl dd:last-child {
 code, pre {
   font-family: var(--fbx-font-monospace);
   line-height: var(--fbx-base-line-height);
+  color: crimson;
   font-size: 1.2rem;
   -webkit-font-smoothing: auto;
   -moz-osx-font-smoothing: auto;
@@ -1028,25 +1029,25 @@ code, pre {
   background-color: var(--fbx-gray-200);
   border-radius: var(--fbx-border-radius);
   border: 1px solid var(--fbx-gray-200);
-}
-
-code {
-  padding: 0.2rem 0.4rem;
-  color: crimson;
-  overflow: hidden;
+  white-space: pre;
 }
 
 pre {
   padding: 1.5rem 2rem;
-  overflow: auto;
-  color: var(--fbx-black);
+  overflow-x: auto;
+  display: block;
+  width: 100%;
+}
+
+code {
+  padding: 0.2rem 0.4rem;
 }
 
 pre > code {
-  color: var(--fbx-black);
-  border: none;
-  background-color: transparent;
+  white-space: pre;
   padding: 0;
+  overflow: hidden;
+  border: none;
 }
 
 /* content/images */

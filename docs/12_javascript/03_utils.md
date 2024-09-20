@@ -11,7 +11,7 @@ FrontBx's JS Utility Component is used throughout the library and provides a con
 *	[Animate css](#animate-css)
 *	[Array](#array)
 *	[Object](#object)
-*	[String](#object)
+*	[String](#string)
 *	[Validation](#validation)
 *	[Misc](#misc)
 
@@ -40,22 +40,27 @@ const [add_class, remove_class] = frontbx.import(['add_class', 'remove_class']).
 
 ### Event Listeners
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>on</code></td>
-			<td>Adds a removable event listener to any HTMLElement.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">on(HTMLElement: element, String: event, Function: callback, ?Array|Mixed: args): Void</code></pre>
-				<pre><code class="javascript language-javascript">// Anonymous function
+| Function                | Reference                                                            |
+|-------------------------|----------------------------------------------------------------------|
+| `on`                    | Adds a removable event listener to any HTMLElement.                  |
+| `off`                   | Removes an event listener from any HTMLElement.                      |
+| `clear_event_listeners` | Removes all event listeners from an element and all it's children.   |
+| `collect_garbage`       | Removes all event listeners from elements no longer in the live DOM. |
+| `event_listeners`       | Returns an array of all attached event listeners on element.         |
+
+
+<br>
+
+#### on
+
+Adds a removable event listener to any HTMLElement.
+
+```javascript
+on(HTMLElement: element, String: event, Function: callback, ?Array|Mixed: args): Void
+```
+
+```javascript
+// Anonymous function
 on(element, 'click', (event, element) => console.log(event, element));
 
 // Multiple event can also be added
@@ -81,28 +86,21 @@ on(element, 'click', function(event, element, one, two)
 	console.log(event, element, this);
 	
 }, ['foo', 'one', 'two']);
-</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>off</code></td>
-			<td>Removes an event listener from any HTMLElement.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">off(HTMLElement: element, String: event, Function: callback, ?Array|Mixed: args): Void</code></pre>
-				<pre><code class="javascript language-javascript">// Add the event listener
+```
+
+<br>
+
+#### off
+
+Removes an event listener from any HTMLElement.
+
+```javascript
+off(HTMLElement: element, String: event, Function: callback, ?Array|Mixed: args): Void
+```
+
+```javascript
+// Add the event listener
 let func = (event, element) => console.log(event, element);
 on(element, 'click', func);
 
@@ -114,75 +112,50 @@ off(element, 'click');
 
 // Removes all event listeners
 off(element);
-</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>clear_event_listeners</code></td>
-			<td>Removes all event listeners from an element and all it's children.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">clear_event_listeners(HTMLElement: element, Boolean: onlyChildren = false): Void</code></pre>
-				<pre><code class="javascript language-javascript">// Removes all listeners including on any children
+```
+
+<br>
+
+#### clear_event_listeners
+
+Removes all event listeners from an element and all it's children.
+
+```javascript
+clear_event_listeners(HTMLElement: element, Boolean: onlyChildren = false): Void
+```
+
+```javascript
+// Removes all listeners including on any children
 clear_event_listeners(element);
 
 // Removes all listeners from children but not parent
 clear_event_listeners(element, true);
-</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>collect_garbage</code></td>
-			<td>Removes all event listeners from elements no longer in the live DOM.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">collect_garbage(): Void</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+```
 
+<br>
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>event_listeners</code></td>
-			<td>Returns an array of all attached event listeners on element.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">event_listeners(HTMLElement|String: element, ?String: eventName): array</code></pre>
-				<pre><code class="javascript language-javascript">// [ { el: details.element, callback: details.callback, type: type } ]
+#### collect_garbage
+
+Removes all event listeners from elements no longer in the live DOM.
+
+```javascript
+collect_garbage(): Void
+```
+
+<br>
+
+#### event_listeners
+
+Returns an array of all attached event listeners on element.
+
+```javascript
+event_listeners(HTMLElement|String: element, ?String: eventName): array
+```
+
+```javascript
+// [ { el: details.element, callback: details.callback, type: type } ]
 
 // Returns all event listeners
 let events = event_listeners();
@@ -195,194 +168,169 @@ let events = event_listeners(element);
 
 // Returns all 'click' event listeners on element
 let events = event_listeners(element, 'click');
-				</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+```
 
 ---
 
+
 ### Dom Utilities
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>find</code></td>
-			<td>Finds first single element by CSS selector and returns it.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">find(HTMLElement: element, ?HTMLElement: context = window): HTMLElement|Undefined</code></pre>
-				<pre><code class="javascript language-javascript">let div = find('div');
+| Function                | Reference                                                                                                                                                                                                                                                                                                                              |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `find`                  | Finds first single element by CSS selector and returns it.                                                                                                                                                                                                                                                                             |
+| `find_all`              | Finds all elements by CSS selector and returns array.                                                                                                                                                                                                                                                                                  |
+| `add_class`             | Adds class(es) to HTMLElement(s).                                                                                                                                                                                                                                                                                                      |
+| `remove_class`          | Removes class(es) to HTMLElement(s).                                                                                                                                                                                                                                                                                                   |
+| `has_class`             | Checks if an HTMLElement(s) have a class or classes.                                                                                                                                                                                                                                                                                   |
+| `toggle_class`          | Adds OR removes class(es) to HTMLElement(s).                                                                                                                                                                                                                                                                                           |
+| `attr`                  | Sets, gets or removes any attribute on an HTMLElement.                                                                                                                                                                                                                                                                                 |
+| `css`                   | Set, get or remove CSS value(s) on element. Note that this will only return inline styles, use `rendered_style` for currently displayed styles.                                                                                                                                                                                        |
+| `rendered_style`        | Returns currently rendered style attribute of an element.                                                                                                                                                                                                                                                                              |
+| `height`                | Returns height in pixels of an element.                                                                                                                                                                                                                                                                                                |
+| `width`                 | Returns element width in pixels.                                                                                                                                                                                                                                                                                                       |
+| `closest`               | Traverses up DOM tree to first parent by class name OR tag type and returns element if matched.                                                                                                                                                                                                                                        |
+| `closest_class`         | Traverses up DOM tree to first parent by class name and returns element if matched.                                                                                                                                                                                                                                                    |
+| `coordinates`           | Returns an object of absolute coordinates of element relative to page.                                                                                                                                                                                                                                                                 |
+| `dom_element`           | Creates and returns an HTMLElement via an object of attributes. Attributes can be any HTML attribute to apply to the elem. Passing `on[Event]` will add an event listener to the element.                                                                                                                                              |
+| `first_children`        | Returns immediate first children of element.                                                                                                                                                                                                                                                                                           |
+| `form_inputs`           | Returns all inputs, textarea and select elements of a form element.                                                                                                                                                                                                                                                                    |
+| `form_values`           | Returns an key/value object of all form input, textarea and select element values.<br>Values are sanitized and are converted to `String` `Integer` `Float` where appropriate. Form inputs with a name `name[]` will be concatenated into an `Array`. Accepts radio and checkbox elements also.                                         |
+| `hide_aria`             | Sets aria-hidden to true.                                                                                                                                                                                                                                                                                                              |
+| `in_viewport`           | Returns true if element is in viewport.                                                                                                                                                                                                                                                                                                |
+| `inner_HTML`            | Sets innerHTML of an element and clears any old event listeners.                                                                                                                                                                                                                                                                       |
+| `input_value`           | Returns input value of an input, textarea or select element.<br>Values are sanitized and are converted to `String` `Integer` `Float` where appropriate.<br>Radio elements will return the input value when checked. Checkbox elements will return a boolean.<br>File inputs will return a file object or array when `multiple` is set. |
+| `next`                  | Traverses forwards through siblings to first element by class name OR tag type and returns element if matched.                                                                                                                                                                                                                         |
+| `next_untill_class`     | Traverses forwards through siblings to first element by class name and returns element if matched.                                                                                                                                                                                                                                     |
+| `nth_child`             | Returns nth direct child element of parent element if it exists.                                                                                                                                                                                                                                                                       |
+| `nth_siblings`          | Returns index of element relative to it's siblings. For example if the element is the second                                                                                                                                                                                                                                           |
+| `preapend`              | Appends HTMLElement as first child to an element.                                                                                                                                                                                                                                                                                      |
+| `previous`              | Traverses backwards through siblings to first element by class name OR tag type and returns element if matched.                                                                                                                                                                                                                        |
+| `previous_untill_class` | Traverses backwards through siblings to first element by class name and returns element if matched.                                                                                                                                                                                                                                    |
+| `remove_from_dom`       | Removes element from DOM and clears any event listeners attached to it.                                                                                                                                                                                                                                                                |
+| `scroll_pos`            | Returns scroll position of any element or viewport.                                                                                                                                                                                                                                                                                    |
+| `show_aria`             | Sets aria-hidden to true                                                                                                                                                                                                                                                                                                               |
+| `traverse_up`           | Traverses up DOM tree and calls callback on each element until callback returns true.                                                                                                                                                                                                                                                  |
+| `traverse_down`         | Traverses down DOM tree and calls callback on each element until callback returns true.                                                                                                                                                                                                                                                |
+| `traverse_next`         | Traverses next siblings and calls callback on each element until callback returns true.                                                                                                                                                                                                                                                |
+| `traverse_prev`         | Traverses next siblings and calls callback on each element until callback returns true.                                                                                                                                                                                                                                                |
+| `trigger_event`         | Triggers a custom or native DOM event on an element. Custom events are nestable with a colon value.                                                                                                                                                                                                                                    |
+
+
+```javascript
+find(HTMLElement: element, ?HTMLElement: context = window): HTMLElement|Undefined
+```
+
+```javascript
+let div = find('div');
 
 let id = find('#foo');
 
 let clas = find('.foo.bar');
 
-let child = find('.foo', div);</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+let child = find('.foo', div);
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>find_all</code></td>
-			<td>Finds all elements by CSS selector and returns array.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">find(HTMLElement: element, ?HTMLElement: context = window): Array</code></pre>
-				<pre><code class="javascript language-javascript">let divs = find_all('div');
+<br>
+
+#### find_all
+
+```javascript
+find_all(HTMLElement: element, ?HTMLElement: context = window): Array
+```
+
+
+```javascript
+let divs = find_all('div');
 
 let classes = find_all('.foo.bar');
 
-let children = find_all('.foo', divs[0]);</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+let children = find_all('.foo', divs[0]);
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-	 	<tr>
-	    	<td><code>add_class</code></td>
-	    	<td>Adds class(es) to HTMLElement(s).</td>
-	  	</tr>
-	  	<tr>
-	    	<td colspan="2">
-	    		<pre><code class="javascript language-javascript">add_class(HTMLElement|Array: element, String|Array: className): Void</code></pre>
-	    		<pre><code class="javascript language-javascript">
+<br>
+
+#### add_class
+
+```javascript
+add_class(HTMLElement|Array: element, String|Array: className): Void
+```
+
+```javascript
+
 add_class(element, 'foo');
 
 add_class(element, 'foo, bar');
 
 add_class(element, '.foo.bar');
 
-add_class([element1, element2], ['foo', 'bar']);</code></pre>
-	    	</td>
-	  	</tr>
-	</tbody>
-</table>
+add_class([element1, element2], ['foo', 'bar']);
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>remove_class</code></td>
-			<td>Removes class(es) to HTMLElement(s).</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">remove_class(HTMLElement|Array: element, String|Array: className): Void</code></pre>
-	    		<pre><code class="javascript language-javascript">remove_class(element, 'foo');
+<br>
+
+#### remove_class
+
+```javascript
+remove_class(HTMLElement|Array: element, String|Array: className): Void
+```
+
+```javascript
+remove_class(element, 'foo');
 
 remove_class(element, 'foo, bar');
 
 remove_class(element, 'foo.bar');
 
-remove_class([element1, element2], ['foo', 'bar']);</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+remove_class([element1, element2], ['foo', 'bar']);
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>has_class</code></td>
-			<td>Checks if an HTMLElement(s) have a class or classes.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">has_class(HTMLElement: element, String|Array: className): Boolean</code></pre>
-				<pre><code class="javascript language-javascript">// Has class 'foo' or 'bar'
+<br>
+
+#### has_class
+
+```javascript
+has_class(HTMLElement: element, String|Array: className): Boolean
+```
+
+```javascript
+// Has class 'foo' or 'bar'
 if (has_class(element, 'foo, bar')) { }
 
 // Has class 'foo' or 'bar'
 if (has_class(element, ['foo', 'bar'])) { }
 
 // Has class foo and bar
-if (has_class(element, '.foo.bar')) { }</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+if (has_class(element, '.foo.bar')) { }
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>toggle_class</code></td>
-			<td>Adds OR removes class(es) to HTMLElement(s).</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">toggle_class(HTMLElement|Array: element, String|Array: className): Void</code></pre>
-	    		<pre><code class="javascript language-javascript">toggle_class(element, 'foo');
+<br>
+
+#### toggle_class
+
+```javascript
+toggle_class(HTMLElement|Array: element, String|Array: className): Void
+```
+
+```javascript
+toggle_class(element, 'foo');
 
 toggle_class(element, 'foo, bar');
 
 toggle_class(element, '.foo.bar');
 
-toggle_class([element1, element2], ['foo', 'bar']);</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+toggle_class([element1, element2], ['foo', 'bar']);
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>attr</code></td>
-			<td>Sets, gets or removes any attribute on an HTMLElement.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">attr(HTMLElement: element, ?String|Object: nameOrObect, ?Mixed: value): Mixed</code></pre>
-				<pre><code class="javascript language-javascript">// Get values
+<br>
+
+#### attr
+
+```javascript
+attr(HTMLElement: element, ?String|Object: nameOrObect, ?Mixed: value): Mixed
+```
+
+```javascript
+// Get values
 let id      = attr(element, 'id');
 let checked = attr(element, 'checked');
 let data    = attr(element, 'data-foo-bar');
@@ -404,28 +352,19 @@ attr(element, 'checked', null);
 attr(element, 'data-foo-bar', null);
 attr(element, 'aria-hidden', null);
 attr(element, 'style', null);
-attr(element, 'onClick', null);</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+attr(element, 'onClick', null);
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>css</code></td>
-			<td>Set, get or remove CSS value(s) on element. Note that this will only return inline styles, use <code>rendered_style</code> for currently displayed styles.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">css(HTMLElement: element, ?String|Object: property, ?Mixed: value): Mixed</code></pre>
-				<pre><code class="javascript language-javascript">// Get inline styles
+<br>
+
+#### css
+
+```javascript
+css(HTMLElement: element, ?String|Object: property, ?Mixed: value): Mixed
+```
+
+```javascript
+// Get inline styles
 let display = css(element, 'display');
 let cssVar  = css(element, '--foo-bar');
 
@@ -437,28 +376,19 @@ css(element, {display: 'block', color: 'red'});
 
 // Remove inline styles
 css(element, 'display', false);
-css(element, '--foo-bar', false);</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+css(element, '--foo-bar', false);
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>rendered_style</code></td>
-			<td>Returns currently rendered style attribute of an element.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">rendered_style(HTMLElement: element, ?String|Object: property, ?Mixed: value): Mixed</code></pre>
-				<pre><code class="javascript language-javascript">// e.g. 'block'
+<br>
+
+#### rendered_style
+
+```javascript
+rendered_style(HTMLElement: element, ?String|Object: property, ?Mixed: value): Mixed
+```
+
+```javascript
+// e.g. 'block'
 let display = rendered_style(element, 'display');
 
 // e.g. '20px'
@@ -466,115 +396,70 @@ let height = rendered_style(element, 'height');
 
 // e.g. '1.6rem'
 let fontSize = rendered_style(element, 'font-size');
-</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>height</code></td>
-			<td>Returns height in pixels of an element.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">height(HTMLElement: element): Integer</code></pre>
-				<pre><code class="javascript language-javascript">let y = height(element);</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>width</code></td>
-			<td>Returns element width in pixels.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">width(HTMLElement: element): Integer</code></pre>
-				<pre><code class="javascript language-javascript">let x = width(element);</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+<br>
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-	  	<tr>
-			<td><code>closest</code></td>
-			<td>Traverses up DOM tree to first parent by class name OR tag type and returns element if matched.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">closest(HTMLElement: element, String|Array: classNameOrTag): HTMLElement|null</code></pre>
-				<pre><code class="javascript language-javascript">let parent = closest(element, 'div');
+#### height
+
+```javascript
+height(HTMLElement: element): Integer
+```
+
+```javascript
+let y = height(element);
+```
+
+<br>
+
+#### width
+
+```javascript
+width(HTMLElement: element): Integer
+```
+
+```javascript
+let x = width(element);
+```
+
+<br>
+
+#### closest
+
+```javascript
+closest(HTMLElement: element, String|Array: classNameOrTag): HTMLElement|null
+```
+
+```javascript
+let parent = closest(element, 'div');
 let parent = closest(element, '.my-class');
-let parent = closest(element, ['div', '.my-class']);</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+let parent = closest(element, ['div', '.my-class']);
+```	
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>closest_class</code></td>
-			<td>Traverses up DOM tree to first parent by class name and returns element if matched.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">closest(HTMLElement: element, String|Array: className): HTMLElement</code></pre>
-				<pre><code class="javascript language-javascript">let parent = closest_class(element, '.foo');
-let parent = closest_class(element, ['.foo', '.bar']);</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+<br>
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>coordinates</code></td>
-			<td>Returns an object of absolute coordinates of element relative to page.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">coordinates(HTMLElement: element): Object</code></pre>
-				<pre><code class="javascript language-javascript">/*
+#### closest_class
+
+```javascript
+closest_class(HTMLElement: element, String|Array: className): HTMLElement
+```
+
+```javascript
+let parent = closest_class(element, '.foo');
+let parent = closest_class(element, ['.foo', '.bar']);
+```
+
+<br>
+
+#### coordinates
+
+```javascript
+coordinates(HTMLElement: element): Object
+```
+
+```javascript
+/*
 {
         top: 10,
         left: 20,
@@ -584,28 +469,19 @@ let parent = closest_class(element, ['.foo', '.bar']);</code></pre>
         width: 200,
     };
 */
-let position = coordinates(element, '.foo');</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+let position = coordinates(element, '.foo');
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>dom_element</code></td>
-			<td>Creates and returns an HTMLElement via an object of attributes. Attributes can be any HTML attribute to apply to the element. Passing <code>on[Event]</code> will add an event listener to the element.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">dom_element(Object: attributes, ?HTMLElement: appendTo, ?String|Array|HTMLElement: innerHTMLOrChildren): HTMLElement</code></pre>
-				<pre><code class="javascript language-javascript">let container = dom_element({tag: 'div', class: 'container'});
+<br>
+
+#### dom_element
+
+```javascript
+dom_element(Object: attributes, ?HTMLElement: appendTo, ?String|Array|HTMLElement: innerHTMLOrChildren): HTMLElement
+```
+
+```javascript
+let container = dom_element({tag: 'div', class: 'container'});
 
 let button = dom_element({tag: 'button', class: 'btn', type: 'button'}, null, 'Hello');
 
@@ -616,288 +492,158 @@ dom_element({tag: 'span'}, container, [button]);
 let button2 = dom_element({tag: 'button', class: 'btn', type: 'button', innerText: 'Hello'});
 
 // &lt;button class=&quot;btn&quot; type=&quot;button&quot;&gt;Hello&lt;/button&gt;
-let button3 = dom_element({tag: 'button', class: 'btn', type: 'button', innerHTML: '&lt;span class=&quot;fa fa-start&quot;&gt;&lt;/span&gt;'});</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+let button3 = dom_element({tag: 'button', class: 'btn', type: 'button', innerHTML: '&lt;span class=&quot;fa fa-start&quot;&gt;&lt;/span&gt;'});
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>first_children</code></td>
-			<td>Returns immediate first children of element.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">first_children(HTMLElement: element): Array</code></pre>
-				<pre><code class="javascript language-javascript">let children = first_children(element);</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+<br>
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>form_inputs</code></td>
-			<td>Returns all inputs, textarea and select elements of a form element.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">form_inputs(HTMLElement: element): Array</code></pre>
-				<pre><code class="javascript language-javascript">let inputs = form_inputs(element);</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+#### first_children
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>form_values</code></td>
-			<td>Returns an key/value object of all form input, textarea and select element values.<br>Values are sanitized and are converted to <code>String</code> <code>Integer</code> <code>Float</code> where appropriate. Form inputs with a name <code>name[]</code> will be concatenated into an <code>Array</code>. Accepts radio and checkbox elements also.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">form_values(HTMLElement: element): Object</code></pre>
-				<pre><code class="javascript language-javascript">let form = form_values(formElement);</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+```javascript
+first_children(HTMLElement: element): Array
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>hide_aria</code></td>
-			<td>Sets aria-hidden to true.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">hide_aria(HTMLElement: element): Void</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+```javascript
+let children = first_children(element);
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>in_viewport</code></td>
-			<td>Returns true if element is in viewport.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">in_viewport(HTMLElement: element): Boolean</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+<br>
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>inner_HTML</code></td>
-			<td>Sets innerHTML of an element and clears any old event listeners.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">inner_HTML(HTMLElement: element, String|Array: content, ?Boolean: append = false): Void</code></pre>
-				<pre><code class="javascript language-javascript">inner_HTML(element, 'Hello world!');
+#### form_inputs
 
-inner_HTML(element, '&lt;br&gt;More text', true)</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+```javascript
+form_inputs(HTMLElement: element): Array
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>input_value</code></td>
-			<td>Returns input value of an input, textarea or select element.<br>Values are sanitized and are converted to <code>String</code> <code>Integer</code> <code>Float</code> where appropriate.<br>Radio elements will return the input value when checked. Checkbox elements will return a boolean.<br>File inputs will return a file object or array when <code>multiple</code> is set.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">input_value(HTMLElement: element): String|Integer|Float|Boolean</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+```javascript
+let inputs = form_inputs(element);
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>next</code></td>
-			<td>Traverses forwards through siblings to first element by class name OR tag type and returns element if matched.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">next(HTMLElement: element, String|Array: classNameOrTag): HTMLElement|null</code></pre>
-				<pre><code class="javascript language-javascript">let sibling = next(element, 'div');
+<br>
+
+#### form_values
+
+```javascript
+form_values(HTMLElement: element): Object
+```
+
+```javascript
+let form = form_values(formElement);
+```
+
+<br>
+
+#### hide_aria
+
+```javascript
+hide_aria(HTMLElement: element): Void
+```
+
+<br>
+
+#### in_viewport
+
+```javascript
+in_viewport(HTMLElement: element): Boolean
+```
+
+<br>
+
+#### inner_HTML
+
+```javascript
+inner_HTML(HTMLElement: element, String|Array: content, ?Boolean: append = false): Void
+```
+
+```javascript
+inner_HTML(element, 'Hello world!');
+
+inner_HTML(element, '&lt;br&gt;More text', true)
+```
+
+<br>
+
+#### input_value
+
+```javascript
+input_value(HTMLElement: element): String|Integer|Float|Boolean
+```
+
+<br>
+
+#### next
+
+```javascript
+next(HTMLElement: element, String|Array: classNameOrTag): HTMLElement|null
+```
+
+```javascript
+let sibling = next(element, 'div');
 let sibling = next(element, '.my-class');
-let sibling = next(element, ['div', '.my-class']);</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+let sibling = next(element, ['div', '.my-class']);
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>next_untill_class</code></td>
-			<td>Traverses forwards through siblings to first element by class name and returns element if matched.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">next(HTMLElement: element, String|Array: className): HTMLElement|null</code></pre>
-				<pre><code class="javascript language-javascript">let sibling = next(element, '.foo');
-let sibling = next(element, ['.foo', '.bar']);</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+<br>
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>nth_child</code></td>
-			<td>Returns nth direct child element of parent element if it exists.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">nth_child(HTMLElement: element, Integer: n): HTMLElement|undefined</code></pre>
-				<pre><code class="javascript language-javascript">let first = nth_child(element, 0);
-let second = nth_child(element, 1);</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+#### next_untill_class
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>nth_siblings</code></td>
-			<td>Returns index of element relative to it's siblings. For example if the element is the second</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">nth_siblings(HTMLElement: element): Integer</code></pre>
-				<pre><code class="javascript language-javascript">
+```javascript
+next_untill_class(HTMLElement: element, String|Array: className): HTMLElement|null
+```
+
+```javascript
+let sibling = next_untill_class(element, '.foo');
+let sibling = next_untill_class(element, ['.foo', '.bar']);
+```
+
+<br>
+
+#### nth_child
+
+```javascript
+nth_child(HTMLElement: element, Integer: n): HTMLElement|undefined
+```
+
+```javascript
+let first = nth_child(element, 0);
+let second = nth_child(element, 1);
+```
+
+<br>
+
+#### nth_siblings
+
+```javascript
+nth_siblings(HTMLElement: element): Integer
+```
+
+```javascript
 // &lt;div&gt;1&lt;/div&gt;
 // &lt;div &gt;2&lt;/div&gt;
 // &lt;div class=&quot;three&quot;&gt;3&lt;/div&gt;
 
 // returns 2
-let position = nth_siblings(find('.three'));</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+let position = nth_siblings(find('.three'));
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>preapend</code></td>
-			<td>Appends HTMLElement as first child to an element.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">preapend(HTMLElement: element, HTMLElement: parent): Void</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+<br>
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>previous</code></td>
-			<td>Traverses backwards through siblings to first element by class name OR tag type and returns element if matched.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">previous(HTMLElement: element, String|Array: className): HTMLElement|null</code></pre>
-				<pre><code class="javascript language-javascript">// Finds previous div element
+#### preapend
+
+```javascript
+preapend(HTMLElement: element, HTMLElement: parent): Void
+```
+
+<br>
+
+#### previous
+
+```javascript
+previous(HTMLElement: element, String|Array: className): HTMLElement|null
+```
+
+```javascript
+// Finds previous div element
 let sibling = previous(element, 'div');
 
 // Finds previous div or span element
@@ -905,28 +651,19 @@ let sibling = previous(element, 'div, span');
 let sibling = previous(element, ['div', 'span']);
 
 // Finds previous element with class 'foo'
-let sibling = previous(element, '.foo');</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+let sibling = previous(element, '.foo');
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>previous_untill_class</code></td>
-			<td>Traverses backwards through siblings to first element by class name and returns element if matched.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">previous_untill_class(HTMLElement: element, String|Array: className): HTMLElement|null</code></pre>
-				<pre><code class="javascript language-javascript">// Finds previous element with class 'foo'
+<br>
+
+#### previous_untill_class
+
+```javascript
+previous_untill_class(HTMLElement: element, String|Array: className): HTMLElement|null
+```
+
+```javascript
+// Finds previous element with class 'foo'
 let sibling = previous_untill_class(element, 'foo');
 
 // Finds previous element with class 'foo' or 'bar'
@@ -934,192 +671,113 @@ let sibling = previous_untill_class(element, 'foo, bar');
 let sibling = previous_untill_class(element, ['foo', 'bar']);
 
 // Finds previous element with class 'foo' and 'bar'
-let sibling = previous_untill_class(element, 'foo.bar');</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+let sibling = previous_untill_class(element, 'foo.bar');
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>remove_from_dom</code></td>
-			<td>Removes element from DOM and clears any event listeners attached to it.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">remove_from_dom(HTMLElement: element): Void</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+<br>
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>scroll_pos</code></td>
-			<td>Returns scroll position of any element or viewport.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">scroll_pos(?HTMLElement: element = window): Object</code></pre>
-				<pre><code class="javascript language-javascript">// e.g { top: 20, left: 30 }
+#### remove_from_dom
+
+```javascript
+remove_from_dom(HTMLElement: element): Void
+```
+
+<br>
+
+#### scroll_pos
+
+```javascript
+scroll_pos(?HTMLElement: element = window): Object
+```
+
+```javascript
+// e.g { top: 20, left: 30 }
 
 // Window
 let scroll = scroll_pos();
 
 // element
-let scroll = scroll_pos(element);</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+let scroll = scroll_pos(element);
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>show_aria</code></td>
-			<td>Sets aria-hidden to true</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">show_aria(HTMLElement: element): Void</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+<br>
 
+#### show_aria
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>traverse_up</code></td>
-			<td>Traverses up DOM tree and calls callback on each element until callback returns true.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">traverse_up(HTMLElement: element, Function: callback): Void</code></pre>
-				<pre><code class="javascript language-javascript">traverse_up(element, (parent) =>
+```javascript
+show_aria(HTMLElement: element): Void
+```
+
+<br>
+
+#### traverse_up
+
+```javascript
+traverse_up(HTMLElement: element, Function: callback): Void
+```
+
+```javascript
+traverse_up(element, (parent) =>
 {
 	if (has_class(parent, 'foo')) return true;
-});</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+});
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>traverse_down</code></td>
-			<td>Traverses down DOM tree and calls callback on each element until callback returns true.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">traverse_down(HTMLElement: element, Function: callback): Void</code></pre>
-				<pre><code class="javascript language-javascript">traverse_down(element, (child) =>
+<br>
+
+#### traverse_down	
+
+```javascript
+traverse_down(HTMLElement: element, Function: callback): Void
+```
+
+```javascript
+traverse_down(element, (child) =>
 {
 	if (has_class(child, 'foo')) return true;
-});</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+});
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>traverse_next</code></td>
-			<td>Traverses next siblings and calls callback on each element until callback returns true.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">traverse_next(HTMLElement: element, Function: callback): Void</code></pre>
-				<pre><code class="javascript language-javascript">traverse_next(element, (sibling) =>
+<br>
+
+#### traverse_next
+
+```javascript
+traverse_next(HTMLElement: element, Function: callback): Void
+```
+
+```javascript
+traverse_next(element, (sibling) =>
 {
 	if (has_class(sibling, 'foo')) return true;
-});</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+});
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>traverse_prev</code></td>
-			<td>Traverses next siblings and calls callback on each element until callback returns true.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">traverse_prev(HTMLElement: element, Function: callback): Void</code></pre>
-				<pre><code class="javascript language-javascript">traverse_prev(element, (sibling) =>
+<br>
+
+#### traverse_prev
+
+```javascript
+traverse_prev(HTMLElement: element, Function: callback): Void
+```
+
+```javascript
+traverse_prev(element, (sibling) =>
 {
 	if (has_class(sibling, 'foo')) return true;
-});</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+});
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>trigger_event</code></td>
-			<td>Triggers a custom or native DOM event on an element. Custom events are nestable with a colon value.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">trigger_event(HTMLElement: element, String: event, ?Object: data = {}): Void</code></pre>
-				<pre><code class="javascript language-javascript">
+<br>
+
+#### trigger_event
+
+```javascript
+trigger_event(HTMLElement: element, String: event, ?Object: data = {}): Void
+```
+
+```javascript
+
 trigger_event(element, 'click');
 
 trigger_event(element, 'foo');
@@ -1133,42 +791,44 @@ let foo = function() {};
 foo.prototype.bar = function() {};
 
 // event.detail = { DOMElement: DOMElement, name: eventName, state: foo };
-trigger_event(element, 'foo', new foo);</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+trigger_event(element, 'foo', new foo);
+```
 
 ---
 
 ### Animate
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>animate</code></td>
-			<td>Animates any transform, color, or numeric CSS property on an HTML DOM element via JavaScript keyframes.<br>Creates an animation effect on CSS property via JavaScript keyframes and returns an Animation Object. Any existing animations under the same property on the element that are currently animating but not completed will be stopped and interrupted prior to starting.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				Syntax used to animate a single CSS property without explicitly providing a start value. The starting value will be determined by the currently rendered CSS style on the element. In the case that the start value for the property is not explicit set, animate will still be able to calculate the rendered value. Works on all values including those set to `auto`, `initial`, `unset`.
-				<pre><code class="javascript language-javascript">animate(HTMLElement: element, Object: options[property, easing, duration, callback]): Object</code></pre>
-				<pre><code class="javascript language-javascript">animate(node,
+| Function      | Reference                                                    |
+|---------------|--------------------------------------------------------------|
+| `animate`     | Animates CSS property using JS key-frames and interpolation. |
+
+Animates any transform, color, or numeric CSS property on an HTML DOM element via JavaScript keyframes.
+
+Creates an animation effect on CSS property via JavaScript keyframes and returns an Animation Object. Any existing animations under the same property on the element that are currently animating but not completed will be stopped and interrupted prior to starting.
+
+```javascript
+animate(HTMLElement: element, Object: options[property, easing, duration, callback]): Object</code></pre>
+```
+
+Syntax used to animate a single CSS property without explicitly providing a start value. The starting value will be determined by the currently rendered CSS style on the element. In the case that the start value for the property is not explicit set, animate will still be able to calculate the rendered value. Works on all values including those set to `auto`, `initial`, `unset`.
+
+```javascript
+animate(node,
 {
 	height: '300px',
 	easing: 'easeInExpo',
 	duration: 1000,
 	callback: () => console.log('complete')
-});</code></pre><br>
-				Syntax used to animate a single CSS property while explicitly providing a start value. The starting value will be determined by the currently rendered CSS style on the element. In the case that the start value for the property is not explicit set, animate will still be able to calculate the rendered value. Works on all values including those set to `auto`, `initial`, `unset`.
-				<pre><code class="javascript language-javascript">animate(HTMLElement: element, Object: options[property, easing, duration, callback]): Object</code></pre>
-				<pre><code class="javascript language-javascript">animate(node,
+});
+```
+
+```javascript
+animate(HTMLElement: element, Object: options[property, from, to, easing, duration, callback]): Object
+```
+Syntax used to animate a single CSS property while explicitly providing a start value. The starting value will be determined by the currently rendered CSS style on the element. In the case that the start value for the property is not explicit set, animate will still be able to calculate the rendered value. Works on all values including those set to `auto`, `initial`, `unset`.
+
+```javascript
+animate(node,
 {
 	property: 'height',
 	from: '10px',
@@ -1176,20 +836,23 @@ trigger_event(element, 'foo', new foo);</code></pre>
 	easing: 'easeInExpo',
 	duration: 1000,
 	callback: () => console.log('complete')
-});</code></pre><br>
-				Syntax used to animate multiple CSS properties with independent animation options for each property.
-				<pre><code class="javascript language-javascript">animate(HTMLElement: element, Object: options[...property: [to, from, easing, duration, callback] ]): Object</code></pre>
-				<pre><code class="javascript language-javascript">animate(node,
+});
+```
+
+```javascript
+animate(HTMLElement: element, Object: options[...property: [to, from, easing, duration, callback] ]): Object
+```
+
+Syntax used to animate multiple CSS properties with independent animation options for each property.
+
+```javascript
+animate(node,
 {
 	height: { from: '0px', to: '100px', duration: 350, easing: 'easeInOutElastic' },
 
 	opacity: { to: '0', duration: 500, easing: 'linear' }
-});</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
-
+});
+```
 
 > When animating multiple CSS properties simultaneously, the provided callbacks will only be called once on the longest running animation once completed.
 
@@ -1282,38 +945,42 @@ animate($('.js-animate-example'), {
     },
     
 });
-````
+```
 
 ---
 
 ### Animate CSS
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>animate_css</code></td>
-			<td>Animates any animatable CSS property on an HTML DOM element via CSS transitions<br>Creates an animation effect on CSS property via CSS transitions and returns an Animation Object. Any existing animations under the same property on the element that are currently animating but not completed will be stopped and interrupted prior to starting.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				Syntax used to animate a single CSS property without explicitly providing a start value. The starting value will be determined by the currently rendered CSS style on the element. In the case that the start value for the property is not explicit set, animate will still be able to calculate the rendered value. Works on all values including those set to `auto`, `initial`, `unset`.
-				<pre><code class="javascript language-javascript">animate(HTMLElement: element, Object: options[property, easing, duration, callback]): Object</code></pre>
-				<pre><code class="javascript language-javascript">animate(node,
+| Function      | Reference                                                    |
+|---------------|--------------------------------------------------------------|
+| `animate_css` | Animates CSS property using JS key-frames and interpolation. |
+
+Animates any animatable CSS property on an HTML DOM element via CSS transitions<br>Creates an animation effect on CSS property via CSS transitions and returns an Animation Object. Any existing animations under the same property on the element that are currently animating but not completed will be stopped and interrupted prior to starting.</td>
+
+```javascript
+animate(HTMLElement: element, Object: options[property, easing, duration, callback]): Object
+```
+
+Syntax used to animate a single CSS property without explicitly providing a start value. The starting value will be determined by the currently rendered CSS style on the element. In the case that the start value for the property is not explicit set, animate will still be able to calculate the rendered value. Works on all values including those set to `auto`, `initial`, `unset`.
+
+```javascript
+animate(node,
 {
 	height: '300px',
 	easing: 'easeInExpo',
 	duration: 1000,
 	callback: () => console.log('complete')
-});</code></pre><br>
-				Syntax used to animate a single CSS property while explicitly providing a start value. The starting value will be determined by the currently rendered CSS style on the element. In the case that the start value for the property is not explicit set, animate will still be able to calculate the rendered value. Works on all values including those set to `auto`, `initial`, `unset`.
-				<pre><code class="javascript language-javascript">animate(HTMLElement: element, Object: options[property, easing, duration, callback]): Object</code></pre>
-				<pre><code class="javascript language-javascript">animate(node,
+});
+```
+
+```javascript
+animate(HTMLElement: element, Object: options[property, easing, duration, callback]): Object
+```
+
+Syntax used to animate a single CSS property while explicitly providing a start value. The starting value will be determined by the currently rendered CSS style on the element. In the case that the start value for the property is not explicit set, animate will still be able to calculate the rendered value. Works on all values including those set to `auto`, `initial`, `unset`.
+
+```javascript
+animate(node,
 {
 	property: 'height',
 	from: '10px',
@@ -1321,19 +988,23 @@ animate($('.js-animate-example'), {
 	easing: 'easeInExpo',
 	duration: 1000,
 	callback: () => console.log('complete')
-});</code></pre><br>
-				Syntax used to animate multiple CSS properties with independent animation options for each property.
-				<pre><code class="javascript language-javascript">animate(HTMLElement: element, Object: options[...property: [to, from, easing, duration, callback] ]): Object</code></pre>
-				<pre><code class="javascript language-javascript">animate(node,
+});
+```
+
+```javascript
+animate(HTMLElement: element, Object: options[...property: [to, from, easing, duration, callback] ]): Object
+```
+
+Syntax used to animate multiple CSS properties with independent animation options for each property.
+
+```javascript
+animate(node,
 {
 	height: { from: '0px', to: '100px', duration: 350, easing: 'easeInOutElastic' },
 
 	opacity: { to: '0', duration: 500, easing: 'linear' }
-});</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+});
+```
 
 **Animation Properties and Values**
 Animated properties can be provided both in `camelCase` or `hyphen-case` (e.g `fontSize` or `font-size`).
@@ -1454,28 +1125,38 @@ animate($('.js-animate-css-example'),
         duration: 2000,
     },
 });
-````
+```
 
 ---
 
 ### Array
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>each</code></td>
-			<td>Loops through an array or object and runs a callback on each iteration. Returning <code>false</code> will break the loop.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">each(Array|Object: array, Function: callback, ?Mixed: this, ...args): Void</code></pre>
-				<pre><code class="javascript language-javascript">// Loop an array
+| Function       | Description                                                                                                                                                                                                                                                      |
+|----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `each`         | Loops through an array or object and runs a callback on each iteration. Returning `false` will break the loop.                                                                                                                                                   |
+| `map`          | Returns a new object or array by through and running a callback to accept or reject each iteration. Returning `false` rejects item. Returning `undefined` stops the loop. Any other return value will be set on the object or array under the current key/index. |
+| `array_unique` | Filters out non-unique values from an array.                                                                                                                                                                                                                     |
+| `array_filter` | Filters out empty items from an array or object and returns a new Array or Object.<br>Does not modify the original Array or Object, rather it will filter out empty items and return a new Object or Array.                                                      |
+| `array_set`    | Sets a value to array or object using `dot.notation`.<br>Sets key/value an pair to any nested array or object via `dot.notation`. If parent items do not exist in the path, they are created.                                                                    |
+| `array_get`    | Returns an item from an array or object using `dot.notation`.<br>Returns the item indexed by the path or `undefined` if it does not exist.                                                                                                                       |
+| `array_has`    | Checks if an item from an array or object exists using `dot.notation` and returns a boolean.                                                                                                                                                                     |
+| `array_delete` | Deletes an item from an array or object exists using `dot.notation`.                                                                                                                                                                                             |
+| `in_array`     | Checks if an item exists in array or object.                                                                                                                                                                                                                     |
+
+
+<br>
+
+#### each
+
+Loops through an array or object and runs a callback on each iteration. Returning `false` will break the loop.
+
+
+```javascript
+each(Array|Object: array, Function: callback, ?Mixed: this, ...args): Void
+```
+
+```javascript
+// Loop an array
 each(['one','two','three'], (index, value) => console.log(index, value));
 
 // Loop an object
@@ -1483,109 +1164,79 @@ each({foo: 'one', bar: 'two'}, (key, value) => console.log(key, value));
 
 // Stop loop
 each(['one','two','three'], (index, value) => index >= 1 ? false : console.log(index));
-</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>map</code></td>
-			<td>Returns a new object or array by through and running a callback to accept or reject each iteration. Returning <code>false</code> rejects item. Returning <code>undefined</code> stops the loop. Any other return value will be set on the object or array under the current key/index.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">each(Array|Object: array, Function: callback, ?Mixed: this, ...args): Void</code></pre>
-				<pre><code class="javascript language-javascript">// Loop an array
+<br>
+
+#### map
+
+Returns a new object or array by through and running a callback to accept or reject each iteration. Returning `false` rejects item. Returning `undefined` stops the loop. Any other return value will be set on the object or array under the current key/index.
+
+```javascript
+map(Array|Object: array, Function: callback, ?Mixed: this, ...args): Void
+```
+
+```javascript
+// Loop an array
 // [0,1,2]
 let arr = map(['one','two','three'], (index, value) => index);
 
 // {foo: 'foo', bar: 'bar'}
-each({foo: 'one', bar: 'two'}, (key, value) => key);
+map({foo: 'one', bar: 'two'}, (key, value) => key);
 
 // ['two']
 let arr = map(['one','two'], (index, value) => value !== 'one' ? value : undefined);
-</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>array_unique</code></td>
-			<td>Filters out non-unique values from an array.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">array_unique(Array|Object: array): Array</code></pre>
-				<pre><code class="javascript language-javascript">// [0,1,2,3]
-let arr = array_unique([0,1,2,3,3]);</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+<br>
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>array_filter</code></td>
-			<td>Filters out empty items from an array or object and returns a new Array or Object.<br>Does not modify the original Array or Object, rather it will filter out empty items and return a new Object or Array.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">array_filter(Object|Array: array): Object|Array</code></pre>
-				<pre><code class="javascript language-javascript">// [0, 1, 2, 3, 4, 5]
+#### array_unique
+
+Filters out non-unique values from an array.
+
+```javascript
+array_unique(Array|Object: array): Array
+```
+
+```javascript
+// [0,1,2,3]
+let arr = array_unique([0,1,2,3,3]);
+```
+
+<br>
+
+#### array_filter
+
+Filters out empty items from an array or object and returns a new Array or Object.<br>Does not modify the original Array or Object, rather it will filter out empty items and return a new Object or Array.
+
+```javascript
+array_filter(Object|Array: array): Object|Array
+```
+
+```javascript
+// [0, 1, 2, 3, 4, 5]
 let array = [0, 1, 2, null, undefined, 3, 4, '', 5];
 array = array_filter(array);
 
 // [0, 1, 2, 3, 4, 5, 6]
 let array = [0, 1, 2, null, undefined, 3, 4, '', [], 5, {}, 6];
 array = array_filter(array);
-</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>array_set</code></td>
-			<td>Sets a value to array or object using <code>dot.notation</code>.<br>Sets key/value an pair to any nested array or object via <code>dot.notation</code>. If parent items do not exist in the path, they are created.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">array_set(String: path, Mixed: value, Object|Array: array): Void</code></pre>
-				To set an array key, use the array index with brackets `[num]`. For Objects simply use the Object key and a dot <code>.key</code>:
-				<pre><code class="javascript language-javascript">let array = [
+<br>
+
+#### array_set
+
+Sets a value to array or object using `dot.notation`.<br>Sets key/value an pair to any nested array or object via `dot.notation`. If parent items do not exist in the path, they are created.
+
+```javascript
+array_set(String: path, Mixed: value, Object|Array: array): Void
+```
+
+To set an array key, use the array index with brackets `[num]`. For Objects simply use the Object key and a dot `.key`:
+
+```javascript
+let array = [
     {foo: 'foo'},
     {bar: 'bar'}
 ];
@@ -1597,8 +1248,11 @@ array = array_filter(array);
 ];
 */
 array_set('[0].foo', 'bar', array);
-				</code></pre>
-				<pre><code class="javascript language-javascript">let obj = {
+```
+
+```javascript
+
+let obj = {
     foo: [1,2,3],
     bar: [4,5,6]
 };
@@ -1610,11 +1264,12 @@ array_set('[0].foo', 'bar', array);
 };
 */
 array_set('foo[0]', 9, obj);
-</code></pre>
+```
 
 On nested nested Arrays/Objects if the path does not exist it will be created automatically.
 
-<pre><code class="javascript language-javascript">// [0, 1, 2, 3, 4, 5]
+```javascript
+// [0, 1, 2, 3, 4, 5]
 let obj = {
     foo: [
         { bar: { baz: [1, 2, 3] } }
@@ -1632,31 +1287,27 @@ let obj = {
 array_set('foo[1].bar.baz[1]', 9, obj);
 
 array_set('foo[1].bar.foo[1]', 3, obj);
-</code></pre></td></tr></tbody></table>
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>array_get</code></td>
-			<td>Returns an item from an array or object using <code>dot.notation</code>.<br>Returns the item indexed by the path or <code>undefined</code> if it does not exist.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">array_get(String: path, Object|Array: array): Mixed</code></pre>
-				<pre><code class="javascript language-javascript">let array = [ {foo: 'foo'} ];
+<br>
+
+#### array_get
+
+Returns an item from an array or object using `dot.notation`.<br>Returns the item indexed by the path or `undefined` if it does not exist.
+
+```javascript
+array_get(String: path, Object|Array: array): Mixed
+```
+
+```javascript
+let array = [ {foo: 'foo'} ];
 
 let foo = array_get('[0].foo', array);
-</code></pre>
-				To access an array key, use the array index with brackets <code>[num]</code>. For Objects simply use the Object key and a dot <code>.key</code>:
+```
+To access an array key, use the array index with brackets `[num]`. For Objects simply use the Object key and a dot `.key`:
 
+```javascript
 
-<pre><code class="javascript language-javascript">
 let array = [
     {foo: 'foo'},
     {bar: 'bar'}
@@ -1664,9 +1315,10 @@ let array = [
 
 // foo
 let foo = array_get('[0].foo', array);
-</code></pre>
+```
 
-<pre><code class="javascript language-javascript">
+```javascript
+
 let obj = {
     foo: [1,2,3],
     bar: [4,5,6]
@@ -1674,11 +1326,12 @@ let obj = {
 
 // 1
 let one = array_get('foo[0]', obj);
-</code></pre>
+```
 
-<code>array_get</code> will work on deeply nested Arrays/Objects without having to run validation that the item exists first.
+`array_get` will work on deeply nested Arrays/Objects without having to run validation that the item exists first.
 
-<pre><code class="javascript language-javascript">
+```javascript
+
 let obj = {
     foo: [
         { bar: { baz: [1, 2, 3] } }
@@ -1690,88 +1343,65 @@ let two = array_get('foo[0].bar.baz[1]', obj);
 
 // Returns undefined
 let undef = array_get('foo[0].bar.baz[15]', obj);
-</code></pre>
+```
 
-			</td>
-		</tr>
-	</tbody>
-</table>
+<br>
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>array_has</code></td>
-			<td>Checks if an item from an array or object exists using <code>dot.notation</code> and returns a boolean.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">array_has(String: path, Object|Array: array): Boolean</code></pre>
-				<pre><code class="javascript language-javascript">let array = [ {foo: 'foo'} ];
+#### array_has
+
+Checks if an item from an array or object exists using `dot.notation` and returns a boolean.
+
+
+```javascript
+array_has(String: path, Object|Array: array): Boolean
+```
+
+```javascript
+let array = [ {foo: 'foo'} ];
 
 // true
 array_has('[0].foo', array);
-</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>array_delete</code></td>
-			<td>Deletes an item from an array or object exists using <code>dot.notation</code>.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">array_has(String: path, Object|Array: array): Void</code></pre>
-				<pre><code class="javascript language-javascript">let array = [ {foo: 'foo'} ];
+<br>
+
+#### array_delete
+
+```javascript
+array_has(String: path, Object|Array: array): Void
+```
+
+```javascript
+let array = [ {foo: 'foo'} ];
 
 // No need re-assign here as the original array is now modified.
 array_delete('[0].foo', array);
-</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>in_array</code></td>
-			<td>Checks if an item exists in array or object.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">in_array(Mixed: needle, Object|Array: array, ?Boolean: strict = false): Void</code></pre>
-				<pre><code class="javascript language-javascript">let array = [ 1, 2, 3 ];
+<br>
+
+#### in_array
+
+Checks if an item exists in array or object.
+
+```javascript
+in_array(Mixed: needle, Object|Array: array, ?Boolean: strict = false): Void
+```
+
+```javascript
+let array = [ 1, 2, 3 ];
 
 // true
 in_array(2, array);
 
 // false
 in_array(5, array);
-</code></pre>
-				When passing <code>strict</code> as <code>true</code>, values must be the same 
-<pre><code class="javascript language-javascript">let obj = { foo: 'bar' };
+```
+
+When passing `strict` as `true`, values must be the same 
+
+```javascript
+let obj = { foo: 'bar' };
 let array = [obj];
 
 // true
@@ -1782,33 +1412,34 @@ in_array({ foo: 'bar' }, array);
 
 // false
 in_array({ foo: 'bar' }, array, true);
-</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
-
+```
 
 ---
 
 ### Object
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>extend</code></td>
-			<td>Extends two objects, object functions.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">extend(Object|Function: base, Object|Function: extension): Object|Function</code></pre>
-				<pre><code class="javascript language-javascript">const Base = function(one, two)
+| Function       | Description                                                                               |
+|----------------|-------------------------------------------------------------------------------------------|
+| `extend`       | Extends two objects, object functions.                                                    |
+| `clone_deep`   | Deep clones an object or array including all nested values.                               |
+| `bind`         | Binds a function to a context so it can be identified later if needed.                    |
+| `flatten_obj`  | Returns a new flattened version of an object and it's `prototype`(s) with its properties. |
+| `object_props` | Returns an array of keys of all properties of an object and its `prototype`(s).           |
+| `prototypes`   | Returns a flat array of of all nested prototypes of an object.                            |
+
+
+<br>
+
+#### extend
+
+Extends two objects, object functions
+
+```javascript
+extend(Object|Function: base, Object|Function: extension): Object|Function
+```
+
+```javascript
+const Base = function(one, two)
 {
 	this.one = one;
 
@@ -1830,9 +1461,10 @@ const Extended = extend(Base, Extension);
 
 // hello world!
 let e = new Extended('hello', 'world!');
-</code></pre>
+```
 
-<pre><code class="javascript language-javascript">const Base = function(one, two)
+```javascript
+const Base = function(one, two)
 {
 	this.one = one;
 
@@ -1854,139 +1486,96 @@ const Extended = extend(new Base('foo', 'bar'), new Extension('hello', 'world'))
 
 // hello world!
 Extended.doSomething();
-</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>clone_deep</code></td>
-			<td>Deep clones any variable.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">clone_deep(Mixed: original): Mixed</code></pre>
-				<pre><code class="javascript language-javascript">let clone = clone_deep([ {foo: 'foo'} ]);
+<br>
 
-let clone = clone_deep({foo : () => console.log('hello world')});</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+#### clone_deep
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>bind</code></td>
-			<td>Binds a function to a context so it can be identified later if needed.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">bind(Function: function, Mixed: context): Function</code></pre>
-				<pre><code class="javascript language-javascript">function foo() { console.log(this); }
+Deep clones an object or array including all nested values.
+
+```javascript
+clone_deep(Mixed: original): Mixed
+```
+
+```javascript
+let clone = clone_deep([ {foo: 'foo'} ]);
+
+let clone = clone_deep({foo : () => console.log('hello world')});
+```
+
+<br>
+
+#### bind
+
+Binds a function to a context so it can be identified later if needed.
+
+```javascript
+bind(Function: function, Mixed: context): Function
+```
+
+```javascript
+function foo() { console.log(this); }
 
 let bound = bind(foo, 'bar');
 
 // bar
 bound();
-</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>flatten_obj</code></td>
-			<td>Returns a new flattened version of an object and it's <code>prototype</code>(s) with its properties.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">flatten_obj(Object: object, ?deep: deep = false): Object</code></pre>
-				<pre><code class="javascript language-javascript">const WithProto = function(one, two) { }
+<br>
+
+#### flatten_obj
+
+Returns a new flattened version of an object and it's `prototype`(s) with its properties.
+
+```javascript
+flatten_obj(Object: object, ?deep: deep = false): Object
+```
+
+```javascript
+const WithProto = function(one, two) { }
 WithProto.prototype.doSomething = function() { }
 
 // { doSomething: function()... }
 let flat = flatten_obj(new WithProto);
-</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>object_props</code></td>
-			<td>Returns an array of keys of all properties of an object and its <code>prototype</code>(s).</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">object_props(Object: object, ?deep: deep = false): Array</code></pre>
-				<pre><code class="javascript language-javascript">const WithProto = function(one, two) { this.foo = 'bar' }
+<br>
+
+#### object_props
+
+Returns an array of keys of all properties of an object and its `prototype`(s).
+
+```javascript
+object_props(Object: object, ?deep: deep = false): Array
+```
+
+```javascript
+const WithProto = function(one, two) { this.foo = 'bar' }
 WithProto.prototype.doSomething = function() { }
 
 // [ 'foo', 'doSomething' ]
 let props = object_props(new WithProto);
-</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+```
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Function</th>
-			<th>Reference</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>prototypes</code></td>
-			<td>Returns a flat array of of all nested prototypes of an object.</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<pre><code class="javascript language-javascript">prototypes(Object: object): Array</code></pre>
-				<pre><code class="javascript language-javascript">const WithProto = function(one, two) { this.foo = 'bar' }
+<br>
+
+#### prototypes
+
+Returns a flat array of of all nested prototypes of an object.
+
+```javascript
+prototypes(Object: object): Array
+```
+
+```javascript
+const WithProto = function(one, two) { this.foo = 'bar' }
 WithProto.prototype.doSomething = function() { }
 
 // { foo: 'bar', doSomething: function()... }
 let protos = prototypes(new WithProto);
-</code></pre>
-			</td>
-		</tr>
-	</tbody>
-</table>
+```
 
 ---
 
