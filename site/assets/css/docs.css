@@ -531,7 +531,7 @@ pre[class*="language-file-path"] > code
 {
     border-radius: 0;
     -moz-column-gap: var(--fbx-slider-slides-gap);
-         column-gap: var(--fbx-slider-slides-gap);
+    column-gap: var(--fbx-slider-slides-gap);
 }
 .slider-viewport > .slide-group > *
 {

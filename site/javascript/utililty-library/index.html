@@ -287,7 +287,7 @@
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../javascript/container/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Container</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../javascript/dom/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Dom</a></li>
-            <li class="menu-item active"><a data-pjax-target="#article-body" href="../../javascript/utils/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Utils</a></li>
+            <li class="menu-item active"><a data-pjax-target="#article-body" href="../../javascript/utililty-library/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Utililty Library</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../javascript/ajax/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Ajax</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../javascript/pjax/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Pjax</a></li>
         </ul>
@@ -304,8 +304,8 @@
 </ul></div>
         <div class="container-fluid docs-container" id="top">
             <div class="main-container js-main-container">
-                <article class="docs-body pole-sm" id="article-body"><h1 id="utils">Utils</h1>
-<p>FrontBx's JS Utility Component is used throughout the library and provides a consistent API for common JavaScript functions</p>
+                <article class="docs-body pole-sm" id="article-body"><h1 id="utility-library">Utility Library</h1>
+<p>FrontBx's JS Utility Library is used throughout the framework and provides a consistent API for common JavaScript functions.</p>
 <hr />
 <ul>
 <li><a href="#access">Access</a></li>
@@ -323,7 +323,7 @@
 <p>FrontBx comes with a handy JavaScript utility library to help speed up production. The library is similar to something like jQuery, but with less bloat. This documentation provides a simple API reference, however for more in-depth detail you can view the library's source code which is well documented.</p>
 <p>The documentation below is broken down into logical groupings.</p>
 <h3 id="access">Access</h3>
-<p>FrontBx's Utility Component can be accessed globally via the Inversion container through the <code>_</code> key.</p>
+<p>FrontBx's Utility Library can be accessed globally via the Inversion container through the <code>_</code> key.</p>
 <pre><code class="javascript language-javascript">const utils = frontbx._();</code></pre>
 <p>You can also <code>import</code> and cache specific functions from the utility library, which reduces memory and is more performant. For example:</p>
 <pre><code class="javascript language-javascript">const [add_class, remove_class] = frontbx.import(['add_class', 'remove_class']).from('_');</code></pre>

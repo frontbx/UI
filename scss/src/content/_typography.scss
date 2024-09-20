@@ -344,3 +344,8 @@ pre > code
     overflow: hidden;
     border: none;
 }
+td > code,
+th > code
+{
+    white-space: pre-wrap;
+}

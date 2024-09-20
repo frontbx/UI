@@ -1050,6 +1050,11 @@ pre > code {
   border: none;
 }
 
+td > code,
+th > code {
+  white-space: pre-wrap;
+}
+
 /* content/images */
 .img-responsive {
   display: block;

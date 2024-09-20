@@ -1,6 +1,6 @@
-# Utils
+# Utility Library
 
-FrontBx's JS Utility Component is used throughout the library and provides a consistent API for common JavaScript functions
+FrontBx's JS Utility Library is used throughout the framework and provides a consistent API for common JavaScript functions.
 
 ---
 
@@ -23,7 +23,7 @@ The documentation below is broken down into logical groupings.
 
 ### Access
 
-FrontBx's Utility Component can be accessed globally via the Inversion container through the `_` key.
+FrontBx's Utility Library can be accessed globally via the Inversion container through the `_` key.
 
 ```javascript
 const utils = frontbx._();
