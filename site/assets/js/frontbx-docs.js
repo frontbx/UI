@@ -106,6 +106,40 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 }());
 
 /**
+ * Converts article menu's to responsive
+ *
+ */
+(function()
+{
+    const [Component] = frontbx.get('Component');
+    const [add_class, dom_element, extend]  = frontbx.import(['add_class','dom_element','extend']).from('_');
+
+    const ArticleTables = function()
+    {        
+        this.super('.docs-body > table');
+    }
+
+    ArticleTables.prototype.bind = function(table)
+    {    	
+    	let wrapper = dom_element({tag: 'div', class: 'table-responsive'});
+
+    	table.parentNode.replaceChild(wrapper, table);
+
+    	wrapper.appendChild(table);
+
+    	 add_class(table, 'table, table-minimal');
+    }
+
+    ArticleTables.prototype.unbind = function(table)
+    {
+        
+    }
+
+    frontbx.dom().register('ArticleTables', extend(Component, ArticleTables), true);
+
+}());
+
+/**
  * Add anchor links to articles
  *
  */
@@ -957,34 +991,6 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
         confirmBtn: 'Confirm Choice',
     });
     frontbx.DocsDemo('.js-fd-trigger-2', () => frontdrop2.closed() ? frontdrop2.open() : frontdrop2.close());
-
-}());
-
-/**
- * Responsive tables in articles
- *
- */
-(function()
-{
-    const [Component] = frontbx.get('Component');
-    const [add_class, extend] = frontbx.import(['add_class', 'extend']).from('_');
-
-    const DocTables = function()
-    {        
-        this.super('.docs-body > table');
-    }
-
-    DocTables.prototype.bind = function(table)
-    {
-    	add_class(table, 'table, table-minimal');
-    }
-
-    DocTables.prototype.unbind = function(table)
-    {
-    	
-    }
-
-    frontbx.dom().register('DocTables', extend(Component, DocTables), true);
 
 }());
 
