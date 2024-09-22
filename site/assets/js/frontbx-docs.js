@@ -14,6 +14,86 @@ Prism.languages.javascript=Prism.languages.extend("clike",{"class-name":[Prism.l
 Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?:\/\*[\s\S]*?\*\/|\/\/.*)/,lookbehind:!0},atrule:{pattern:/@[\w-](?:\([^()]+\)|[^()\s]|\s+(?!\s))*?(?=\s+[{;])/,inside:{rule:/@[\w-]+/}},url:/(?:[-a-z]+-)?url(?=\()/i,selector:{pattern:/(?=\S)[^@;{}()]?(?:[^@;{}()\s]|\s+(?!\s)|#\{\$[-\w]+\})+(?=\s*\{(?:\}|\s|[^}][^:{}]*[:{][^}]))/,inside:{parent:{pattern:/&/,alias:"important"},placeholder:/%[-\w]+/,variable:/\$[-\w]+|#\{\$[-\w]+\}/}},property:{pattern:/(?:[-\w]|\$[-\w]|#\{\$[-\w]+\})+(?=\s*:)/,inside:{variable:/\$[-\w]+|#\{\$[-\w]+\}/}}}),Prism.languages.insertBefore("scss","atrule",{keyword:[/@(?:content|debug|each|else(?: if)?|extend|for|forward|function|if|import|include|mixin|return|use|warn|while)\b/i,{pattern:/( )(?:from|through)(?= )/,lookbehind:!0}]}),Prism.languages.insertBefore("scss","important",{variable:/\$[-\w]+|#\{\$[-\w]+\}/}),Prism.languages.insertBefore("scss","function",{"module-modifier":{pattern:/\b(?:as|hide|show|with)\b/i,alias:"keyword"},placeholder:{pattern:/%[-\w]+/,alias:"selector"},statement:{pattern:/\B!(?:default|optional)\b/i,alias:"keyword"},boolean:/\b(?:false|true)\b/,null:{pattern:/\bnull\b/,alias:"keyword"},operator:{pattern:/(\s)(?:[-+*\/%]|[=!]=|<=?|>=?|and|not|or)(?=\s)/,lookbehind:!0}}),Prism.languages.scss.atrule.inside.rest=Prism.languages.scss;
 
 /**
+ * Highlight code manually so it's registered to frontbx's DOM
+ *
+ */
+(function()
+{
+    const [Component] = frontbx.get('Component');
+    const [find, on, off, add_class, remove_class, closest, attr, dom_element, extend] = frontbx.import(['find', 'on', 'off', 'add_class', 'remove_class', 'closest', 'attr', 'dom_element', 'extend']).from('_');
+
+    Prism.hooks.add('before-sanity-check', function (env)
+    {
+  		env.element.innerHTML = env.element.innerHTML.replace(/<br>/g, '\n');
+  		env.code = env.element.textContent;
+	});
+
+
+    const Highlighter = function()
+    {        
+        this.super('pre > code[class*=language-]');
+    }
+
+    Highlighter.prototype.bind = function(block)
+    {
+    	let lang = block.className.trim().split(' ').shift().trim();
+
+    	let div = dom_element({tag: 'div', class: 'fbx-code-snippet'});
+    	
+    	let pre = closest(block, 'pre');
+
+    	pre.parentNode.replaceChild(div, pre);
+
+       	div.appendChild(pre);
+
+    	attr(pre, 'data-lang', lang);
+
+        Prism.highlightElement(block);
+
+        let copyBtn = dom_element({tag: 'button', type: 'button', role: 'button', class: 'btn-unstyled fbx-clipboard tooltipped tooltipped-ne', dataTooltip: 'Copy to clipboard'}, div, dom_element({tag: 'span', class: 'fa fa-copy'}));
+
+        on(copyBtn, 'click', this._clipboard, this);
+
+        add_class(div, block.className.replaceAll(' ', ','));
+    }
+
+    Highlighter.prototype._clipboard = async function(e, btn)
+    {
+    	let pre  = find('pre', closest(btn, 'div'));
+    	let text = pre.innerText.trim();
+
+    	try
+    	{
+	    	await navigator.clipboard.writeText(text);
+
+	      	add_class(btn, 'copied');
+
+	      	setTimeout(() => remove_class(btn, 'copied'), 3000);
+	    }
+	    catch (err){ }
+    }
+
+    Highlighter.prototype.unbind = function(block)
+    {
+        let div     = closest(block, 'div');
+        let copyBtn = find('.fbx-clipboard', div);
+        let code    = block.innerText;
+
+        if (copyBtn) off(copyBtn, 'click', this._clipboard, this);
+
+        block.innerHTML = ''; 
+        block.innerText = code;
+
+        div.parentNode.replaceChild(block.parentNode, div);
+
+        copyBtn.parentNode.removeChild(copyBtn);
+    }
+
+    frontbx.dom().register('Highlighter', extend(Component, Highlighter), true);
+
+}());
+
+/**
  * Fast Demo component
  *
  */
@@ -297,76 +377,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
 }());
 
-/**
- * Highlight code manually so it's registered to frontbx's DOM
- *
- */
-(function()
-{
-    const [Component] = frontbx.get('Component');
-    const [find, on, off, add_class, remove_class, closest, attr, dom_element, extend] = frontbx.import(['find', 'on', 'off', 'add_class', 'remove_class', 'closest', 'attr', 'dom_element', 'extend']).from('_');
 
-    const Highlighter = function()
-    {        
-        this.super('pre > code[class*=language-]');
-    }
-
-    Highlighter.prototype.bind = function(block)
-    {
-    	let lang = block.className.trim().split(' ').shift().trim();
-
-    	let div = dom_element({tag: 'div', class: 'fbx-code-snippet'});
-    	
-    	let pre = closest(block, 'pre');
-
-    	pre.parentNode.replaceChild(div, pre);
-
-       	div.appendChild(pre);
-
-    	attr(pre, 'data-lang', lang);
-
-        Prism.highlightElement(block);
-
-        let copyBtn = dom_element({tag: 'button', type: 'button', role: 'button', class: 'btn-unstyled fbx-clipboard tooltipped tooltipped-ne', dataTooltip: 'Copy to clipboard'}, div, dom_element({tag: 'span', class: 'fa fa-copy'}));
-
-        on(copyBtn, 'click', this._clipboard, this);
-
-        add_class(div, block.className.replaceAll(' ', ','));
-    }
-
-    Highlighter.prototype._clipboard = async function(e, btn)
-    {
-    	let pre  = find('pre', closest(btn, 'div'));
-    	let text = pre.innerText.trim();
-
-    	try
-    	{
-	    	await navigator.clipboard.writeText(text);
-
-	      	add_class(btn, 'copied');
-
-	      	setTimeout(() => remove_class(btn, 'copied'), 3000);
-	    }
-	    catch (err){ }
-    }
-
-    Highlighter.prototype.unbind = function(block)
-    {
-        let div     = closest(block, 'div');
-        let copyBtn = find('.fbx-clipboard', div);
-        let code    = block.innerText;
-
-        if (copyBtn) off(copyBtn, 'click', this._clipboard, this);
-
-        block.innerHTML = ''; 
-        block.innerText = code;
-
-        div.parentNode.replaceChild(block.parentNode, div);
-    }
-
-    frontbx.dom().register('Highlighter', extend(Component, Highlighter), true);
-
-}());
 
 /**
  * Modal Demos
@@ -1166,7 +1177,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     		{
     			add_class(swatch, 'active');
 
-    			this._codeEl.innerText = theme.styles();
+    			this._codeEl.innerHTML = theme.styles();
 
     			frontbx.dom().refresh('Highlighter', this._codeWrapper);
 
@@ -1187,7 +1198,9 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
     	theme.setTheme(color);
 
-    	this._codeEl.innerText = theme.styles();
+    	this._codeEl.innerText = '';
+    			
+    	this._codeEl.innerHTML = theme.styles();
 
     	frontbx.dom().refresh('Highlighter', this._codeWrapper);
     }

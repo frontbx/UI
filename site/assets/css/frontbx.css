@@ -1055,6 +1055,10 @@ th > code {
   white-space: pre-wrap;
 }
 
+p > code {
+  font-size: 0.9em;
+}
+
 /* content/images */
 .img-responsive {
   display: block;
