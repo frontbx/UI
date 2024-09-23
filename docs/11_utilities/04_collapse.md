@@ -2,7 +2,7 @@
 
 ---
 
-FrontBx's Collapse utility offers an easy to use, simple HTML initialized way to toggle collpased content height via a trigger.
+Frontbx's Collapse utility offers an easy to use, simple HTML initialized way to toggle collpased content height via a trigger.
 
 The component uses a small amount of CSS, but mostly JavaScript to provide smooth and consistent transitions no matter the content size via animations
 
@@ -60,7 +60,7 @@ Extra options can be set via HTML `data-attributes` on the `.js-collapse` trigge
 
 ### JavaScript Behavior
 
-FrontBx fires a few custom events to attach onto when a a collapse trigger is clicked. The `event.detail.state` key will tell you weather the 
+Frontbx fires a few custom events to attach onto when a a collapse trigger is clicked. The `event.detail.state` key will tell you weather the 
 
 Not that the event is attached to the collapsing content rather than the trigger being clicked. 
 

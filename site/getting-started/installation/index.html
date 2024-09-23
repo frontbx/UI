@@ -322,25 +322,21 @@
         <div class="container-fluid docs-container" id="top">
             <div class="main-container js-main-container">
                 <article class="docs-body pole-sm" id="article-body"><h1 id="installation">Installation</h1>
-<p>Learn how to use FrontBx's included <code>npm</code> scripts to compile source code, and more.</p>
+<p>Get started installing and running Frontbx source code on custom builds.</p>
 <hr />
 <ul>
-<li><a href="#using-npm-scripts">Using npm scripts</a></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#npm-scripts">npm scripts</a></li>
 <li><a href="#sass">Sass</a></li>
 <li><a href="#javascript">JavaScript</a></li>
 </ul>
 <hr />
-<p>FrontBx uses <code>npm</code> scripts for its build system. The <code>package.json</code> file includes convenient methods for working with the framework, including compiling code, building documentation and more.</p>
-<p>To use the build system and run the documentation locally, you'll need a copy of FrontBx's source files and <code>Node</code>. Follow the steps below to get started:</p>
-<ol>
-<li>Download and install <a href="https://nodejs.org/en">Node.js</a>.</li>
-<li>Either download <a href="../download/index,html">FrontBx's sources</a> or fork <a href="https://github.com/frontbx/ui">FrontBx's git repository</a>.</li>
-<li>Navigate to the root directory and run <code>npm install</code> to install local dependencies listed in <code>package.json</code>.</li>
-<li>When completed, you'll be able to run the various commands provided from the command line.</li>
-</ol>
+<h3 id="overview">Overview</h3>
+<p>Once you have Frontbx's source code downloaded to your project and installed, you can then get started with running your own build. Frontbx uses <code>npm</code> scripts for its build system. The <code>package.json</code> file includes convenient methods for working with the framework, including compiling code, building documentation and more.</p>
+<p>Frontbx uses Sass and JavaScript as well as a number of other utility npm packages to compile into a build.</p>
 <hr />
-<h3 id="using-npm-scripts">Using npm scripts</h3>
-<p>The <code>package.json</code> file includes numerous tasks for developing a project. Run <code>npm run</code> to see all the npm scripts in your terminal. Primary tasks include:</p>
+<h3 id="npm-scripts">npm scripts</h3>
+<p>The <code>package.json</code> file includes a number of tasks for developing a project. Run <code>npm run</code> to see all the npm scripts in your terminal. Primary tasks include:</p>
 <table>
 <thead>
 <tr>
@@ -377,18 +373,18 @@
 </table>
 <hr />
 <h3 id="sass">Sass</h3>
-<p>FrontBx uses <a href="https://sass-lang.com/">Sass</a> for compiling Sass source files into CSS files (included in the build process). There are three access points you will want to use:</p>
+<p>Frontbx uses <a href="https://sass-lang.com/">Sass</a> for compiling Sass source files into CSS files (included in the build process). There are three access points you will want to use:</p>
 <ul>
-<li><code>scss/frontbx.scss</code> - Standalone FrontBx Sass ready to build without the icons.</li>
-<li><code>scss/frontbx.bundle.scss</code> - FrontBx Sass ready to build with the icons.</li>
-<li><code>scss/_variables.scss</code> - FrontBx Sass variables and configuration - no output.</li>
+<li><code>scss/frontbx.scss</code> - Standalone Frontbx Sass ready to build without the icons.</li>
+<li><code>scss/frontbx.bundle.scss</code> - Frontbx Sass ready to build with the icons.</li>
+<li><code>scss/_variables.scss</code> - Frontbx Sass variables and configuration - no output.</li>
 </ul>
 <pre><code class="scss language-scss">@import '~frontbx/scss/frontbx.bundle';</code></pre>
 <pre><code class="scss language-scss">@import '~frontbx/scss/variables';</code></pre>
-<p>Alternatively, you can use FrontBx's ready-to-use CSS by simply adding this line to your project's entry point:</p>
+<p>Alternatively, you can use Frontbx's ready-to-use CSS by simply adding this line to your project's entry point:</p>
 <pre><code class="JavaScript language-JavaScript">import 'frontbx/dist/css/frontbx.bundle.min.css';</code></pre>
 <h5 id="icons">Icons</h5>
-<p>FrontBx uses <a href="https://fontawesome.com/">FontAwesome</a> for icons which are included in <code>frontbx.bundle.min.css</code>. However However if you prefer to have them loaded separately or don't need them, you can use <code>frontbx.min.css</code> which excludes icons and <code>frontbx-icons.min.css</code> which is the standalone icon CSS.</p>
+<p>Frontbx uses <a href="https://fontawesome.com/">FontAwesome</a> for icons which are included in <code>frontbx.bundle.min.css</code>. However However if you prefer to have them loaded separately or don't need them, you can use <code>frontbx.min.css</code> which excludes icons and <code>frontbx-icons.min.css</code> which is the standalone icon CSS.</p>
 <pre><code class="html language-html">&lt;link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/css/frontbx.min.css" rel="stylesheet" crossorigin="anonymous"&gt;
 &lt;link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/css/frontbx-icons.min.css" rel="stylesheet" crossorigin="anonymous"&gt;</code></pre>
 <p>Additionally, icons be configured to be loaded locally (hosted on your own server) <strong>OR</strong> externally via a jsdelivr. By default, icons are set to be hosted locally and are stored in the <code>dist/fonts</code> directory. If you want to load them externally you can change this configuration in <code>src/scss/_config.scss</code> and run <code>npm run dist</code> or when running your own webpack build.</p>
@@ -400,10 +396,10 @@ $local-icons: 'true';
 $icons-url:   '/path-to-fonts/';</code></pre>
 <hr />
 <h3 id="javascript">JavaScript</h3>
-<p>Import FrontBx's JavaScript by adding this line to your app’s entry point (usually <code>index.js</code> or <code>app.js</code>):</p>
+<p>Import Frontbx's JavaScript by adding this line to your app’s entry point (usually <code>index.js</code> or <code>app.js</code>):</p>
 <pre><code class="JavaScript language-JavaScript">import frontbx from 'frontbx';</code></pre>
 <blockquote>
-  <p>FrontBx does not currently offer importing components individually, however this is roadmapped for future releases.</p>
+  <p>Frontbx does not currently offer importing components individually, however this is roadmapped for future releases.</p>
 </blockquote></article>
             </div>
         </div>

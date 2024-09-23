@@ -10,7 +10,7 @@
 
 ### Markup
 
-FrontBx comes with a simple CSS tooltip that's easy to use. Simple add the `.tooltipped` class with the direction `.tooltipped-[direction]` you want the toooltip to be displayed.
+Frontbx comes with a simple CSS tooltip that's easy to use. Simple add the `.tooltipped` class with the direction `.tooltipped-[direction]` you want the toooltip to be displayed.
 
 Then add the content you want displayed as the `data-tooltip` attribute.
 
@@ -78,7 +78,7 @@ Use the directional classes `.tooltipped-[direction]` to change the direction of
 
 The grid system uses a combination of both local CSS variables on all components for enhanced component customization and styling. The base values are used by the UI to create all the sizing. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in FrontBx's source.
+Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
 
 <div class="code-content-example">
     <div class="container-fuid text-center">

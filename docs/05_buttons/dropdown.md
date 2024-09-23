@@ -263,7 +263,7 @@ Dropdown offers three different options for selectable menus.
 2. `.js-check-menu` - Add this modifier class to the `.menu` to toggle the `.checked` class on items when clicked.
 3. `.js-active-menu` - Add this modifier class to the `.menu` to toggle the `.active` class on items when clicked.
 
-Note that when using the `.js-menu-check` modifier, FrontBx will automatically include a checkmark on the checked item.
+Note that when using the `.js-menu-check` modifier, Frontbx will automatically include a checkmark on the checked item.
 
 <div class="code-content-example">
     <div class="flex-row-fluid align-cols-center col-gaps-xs">
@@ -779,7 +779,7 @@ Dropdown uses local CSS variables on `.drop-container` and `.menu` along with Sa
 }
 ```
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in FrontBx's source.
+Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
 
 ```file-path
 `src/scss/_config.scss`
@@ -847,7 +847,7 @@ src/scss/components/menu.scss
 
 ### JavaScript Instantiation
 
-Dropdown can be instantiated via JavaScript to generate dynamic content on the fly. To create a Dropdown dynamically, use FrontBx's `Component.Create` method either via the `frontbx.Dom` or the Dropdown Component directly:
+Dropdown can be instantiated via JavaScript to generate dynamic content on the fly. To create a Dropdown dynamically, use Frontbx's `Component.Create` method either via the `frontbx.Dom` or the Dropdown Component directly:
 
 ```JavaScript
 let options =

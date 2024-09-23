@@ -43,7 +43,7 @@ Paper doesn't have a border radius by default, add the `.paper-rounded` modifier
 <div class="paper paper-rounded raised-1"></div>
 ```
 
-Use FrontBx' built in `raised-1` `raised-2` `raised-3` or `flat` modifier classes to give a paper emphasis:
+Use Frontbx' built in `raised-1` `raised-2` `raised-3` or `flat` modifier classes to give a paper emphasis:
 
 <div class="code-content-example paper-example">
    <div class="flex-row flex-cols-12 flex-cols-md-3 col-gaps-sm row-gaps-sm align-cols-center pole-sm">
@@ -65,7 +65,7 @@ Use FrontBx' built in `raised-1` `raised-2` `raised-3` or `flat` modifier classe
 
 Paper use a combination of local CSS variables on `.paper` and Sass variables for enhanced component customization and styling. The base values are used by the UI to create all the sizing. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in FrontBx's source.
+Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
 
 ```file-path
 src/scss/_config.scss

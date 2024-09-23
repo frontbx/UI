@@ -1,6 +1,6 @@
 # Colors
 
-FrontBx provides an extensive CSS color system for enhanced styling, component customization and beyond.
+Frontbx provides an extensive CSS color system for enhanced styling, component customization and beyond.
 
 ---
 
@@ -19,12 +19,12 @@ FrontBx provides an extensive CSS color system for enhanced styling, component c
 	
 ---
 
-FrontBx's color system is built using a combination of both CSS variables, Sass variables and Sass functions. 
+Frontbx's color system is built using a combination of both CSS variables, Sass variables and Sass functions. 
 
 
 ### Theme colors
 
-Theme colors are used for contextual styling on most FrontBx components and set the foundation for a theme's color styling.
+Theme colors are used for contextual styling on most Frontbx components and set the foundation for a theme's color styling.
 
 Theme colors are available in both CSS and Sass variables. When using the Sass variable, this will always point to the CSS variable - which is assigned to the actual color in `scss/src/base/_root.scss`. The table below outlines the core theme colors:
 
@@ -44,7 +44,7 @@ Theme colors are available in both CSS and Sass variables. When using the Sass v
 
 #### Usage<a id='theme-usage'></a>
 
-All theme colors are available via FrontBx's utility [helper classes](../../css/css-helpers/index.html) as `.bg-[name]` and `color-[name]` without the word `theme` (e.g. `bg-primary` or `color-success`).
+All theme colors are available via Frontbx's utility [helper classes](../../css/css-helpers/index.html) as `.bg-[name]` and `color-[name]` without the word `theme` (e.g. `bg-primary` or `color-success`).
 
 <div class="code-content-example">
 	<div class="flex-row align-cols-center">
@@ -74,7 +74,7 @@ When using any of the theme colors pre-compilation with Sass - the Sass variable
 
 ### Grays
 
-Grays are available in shades ranging from `100` (lightest) through `900` (darkest) with the default `$gray` variable sits in between `400` and `500`. Grays are available CSS variables `--fbx-gray-[num]`. The table below outlines the core color palette used by FrontBx:
+Grays are available in shades ranging from `100` (lightest) through `900` (darkest) with the default `$gray` variable sits in between `400` and `500`. Grays are available CSS variables `--fbx-gray-[num]`. The table below outlines the core color palette used by Frontbx:
 
 | Swatch                                      | CSS Variable    |
 |:-------------------------------------------:|-----------------|
@@ -91,7 +91,7 @@ Grays are available in shades ranging from `100` (lightest) through `900` (darke
 
 #### Usage<a id='gray-usage'></a>
 
-All gray shades are available via FrontBx's utility [helper classes](../../css/css-helpers/index.html) as `.bg-gray-[num]` and `color-gray-[num]`
+All gray shades are available via Frontbx's utility [helper classes](../../css/css-helpers/index.html) as `.bg-gray-[num]` and `color-gray-[num]`
 
 <div class="code-content-example">
 	<div class="flex-row align-cols-center">
@@ -111,7 +111,7 @@ All gray shades are available via FrontBx's utility [helper classes](../../css/c
 
 ### Color Palette
 
-FrontBx comes with a palette of colors via both CSS ans Sass variables for changing theme colors, customizing components or building out custom UI.
+Frontbx comes with a palette of colors via both CSS ans Sass variables for changing theme colors, customizing components or building out custom UI.
 
 
 #### Playground
@@ -238,7 +238,7 @@ However, they can still be used as CSS variables:
 </div>
 ```
 
-Setting FrontBx's core theme color via Sass is super simple:
+Setting Frontbx's core theme color via Sass is super simple:
 
 ```sass
 @import "../node_modules/frontbx/scss/frontbx/src/colors";
@@ -258,7 +258,7 @@ Alternatively, you can change a theme by simply changing the CSS variable on `:r
 }
 ```
 
-FrontBx uses a Sass function for gradients on theme colors to style the odd component, if changing the theme color via CSS you should also update these CSS variables:
+Frontbx uses a Sass function for gradients on theme colors to style the odd component, if changing the theme color via CSS you should also update these CSS variables:
 
 ```css
 :root
@@ -291,7 +291,7 @@ div {
 
 #### Theme colors<a id="sass-theme-colors"></a>
 
-FrontBx defines the following variables for use in a theme. Note that theme colors will point to a CSS variable defined in `:root` rather than the hex.
+Frontbx defines the following variables for use in a theme. Note that theme colors will point to a CSS variable defined in `:root` rather than the hex.
 
 ```scss
 // Contexts
@@ -366,7 +366,7 @@ $gray:                          #9597a0 !default;
 
 #### Shades
 
-FrontBx uses Sass functions to generate color shades (`100` -> `900`) for all palette colors and assign them as CSS Variables on `:root`. However doing this for all theme colors would obviously create a large amount of unnecessary CSS variables. 
+Frontbx uses Sass functions to generate color shades (`100` -> `900`) for all palette colors and assign them as CSS Variables on `:root`. However doing this for all theme colors would obviously create a large amount of unnecessary CSS variables. 
 
 You can also access **Base Color** shades (`100` -> `900`) via Sass variables:
 

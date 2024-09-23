@@ -1,6 +1,6 @@
 # Sass
 
-Learn how FrontBx's Sass is structured when running your own FrontBx build.
+Learn how Frontbx's Sass is structured when running your own Frontbx build.
 
 ----
 
@@ -13,11 +13,11 @@ Learn how FrontBx's Sass is structured when running your own FrontBx build.
 ### Introduction
 
 
-FrontBx's Sass configuration can be found in the `scss/_config.scss` and `scss/_config-dark.scss` files - with the latter being configuration for **Dark Mode**.
+Frontbx's Sass configuration can be found in the `scss/_config.scss` and `scss/_config-dark.scss` files - with the latter being configuration for **Dark Mode**.
 
 The `scss/_config.scss` file houses all the primary Sass variables for everything from setting theme colors to styling individual components.
 
-When FrontBx's CSS is compiled, `_config.scss` is one of the first files imported. From there all CSS `:root` variables are generated in `scss/src/base/_root.scss`.
+When Frontbx's CSS is compiled, `_config.scss` is one of the first files imported. From there all CSS `:root` variables are generated in `scss/src/base/_root.scss`.
 
 For individual components, the Sass variables are assigned to CSS variables which sets the default or contextual styling for a given component.
 
@@ -52,7 +52,7 @@ html, body
 
 #### Sass Variables
 
-Every Sass variable in FrontBx includes the `!default` flag allowing you to override the variable's default value in your own Sass without modifying FrontBx's source code. To setup this up simply, create your own Sass stylesheet with your variables, then import Frontbx and compile:
+Every Sass variable in Frontbx includes the `!default` flag allowing you to override the variable's default value in your own Sass without modifying Frontbx's source code. To setup this up simply, create your own Sass stylesheet with your variables, then import Frontbx and compile:
 
 ```sass
 $body-bg: #1d1d1d;

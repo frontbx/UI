@@ -1,6 +1,6 @@
 # Grid system
 
-FrontBx uses a powerful 12 column grid system for building layouts to fit any screen or size. It's recommended to use the Flex Grid where possible however there are still instances where you may want to use the regular grid.
+Frontbx uses a powerful 12 column grid system for building layouts to fit any screen or size. It's recommended to use the Flex Grid where possible however there are still instances where you may want to use the regular grid.
 
 ---
 
@@ -23,7 +23,7 @@ FrontBx uses a powerful 12 column grid system for building layouts to fit any sc
 
 ### Introduction
 
-Grid systems are used for creating page layouts through a series of rows and columns that house your content. Here's how the FrontBx grid system works:
+Grid systems are used for creating page layouts through a series of rows and columns that house your content. Here's how the Frontbx grid system works:
 
 *   Use rows (`.row`) to create horizontal groups of columns.
 *   Content should be placed within columns (`.col`).
@@ -36,11 +36,11 @@ Grid systems are used for creating page layouts through a series of rows and col
 
 ### Responsive breakpoints
 
-Because FrontBx is mobile first, all screen-size specific grid classes will be applied to the breakpoint and above. For example a `.col-md-12` class will apply to medium screen sizes and above, but not below. The grid system includes all the necessary screen-size specific classes.
+Because Frontbx is mobile first, all screen-size specific grid classes will be applied to the breakpoint and above. For example a `.col-md-12` class will apply to medium screen sizes and above, but not below. The grid system includes all the necessary screen-size specific classes.
 
 The grid system uses both CSS Variables and Sass variables so Customization can be made both pre and post compilation.
 
-Customization of breakpoints via Sass can be made in the `src/scss/_config.scss` file in FrontBx's source.
+Customization of breakpoints via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
 
 ```file-path
 src/scss/_config.scss
@@ -105,7 +105,7 @@ Rows are used to as a clearfixing wrapper element to contain columns. Empty rows
 
 ### Responsive Rows
 
-FrontBx's grid system comes with mobile-first fully responsive set of helpers to display rows according to screen size. The table below outlines the available options.
+Frontbx's grid system comes with mobile-first fully responsive set of helpers to display rows according to screen size. The table below outlines the available options.
 
 | Usage           | Class          | Options                  | Example      | Behavior                                     |
 |-----------------|----------------|--------------------------|--------------|----------------------------------------------|
@@ -137,7 +137,7 @@ The example below shows two rows. The first that displays on mobile (`<=md` brea
 
 ### Columns
 
-The core base class of FrontBx layouts is the `.col`. The table below outlines the classes and formats made available when implementing layouts using columns.
+The core base class of Frontbx layouts is the `.col`. The table below outlines the classes and formats made available when implementing layouts using columns.
 
 | Usage       | Class        | Options | Example  | Behavior                                       |
 |-------------|--------------|---------|----------|------------------------------------------------|
@@ -170,7 +170,7 @@ The core base class of FrontBx layouts is the `.col`. The table below outlines t
 
 #### Responsive Columns
 
-FrontBx's grid system comes with mobile-first fully responsive set of helpers to size column layouts according to screen size. The table below outlines the available options.
+Frontbx's grid system comes with mobile-first fully responsive set of helpers to size column layouts according to screen size. The table below outlines the available options.
 
 | Usage           | Class                      | Options                           | Example     | Behavior                                             |
 |-----------------|----------------------------|-----------------------------------|-------------|------------------------------------------------------|
@@ -233,7 +233,7 @@ Gutters apply a padding size on the sides of columns. The table below outlines t
 
 #### Responsive gutters
 
-FrontBx's grid system comes with mobile-first fully responsive set of helpers to size gutters according to screen size. The table below outlines the available options.
+Frontbx's grid system comes with mobile-first fully responsive set of helpers to size gutters according to screen size. The table below outlines the available options.
 
 | Usage           | Class          | Options                        | Example         | Behavior                                                                                       |
 |-----------------|----------------|--------------------------------|-----------------|------------------------------------------------------------------------------------------------|
@@ -318,7 +318,7 @@ Poles are essentially vertical gutters. `.pole-n` applies a `padding-top` value 
 
 #### Responsive poles
 
-FrontBx's grid system comes with mobile-first fully responsive set of helpers to size gutters according to screen size. The table below outlines the available options.
+Frontbx's grid system comes with mobile-first fully responsive set of helpers to size gutters according to screen size. The table below outlines the available options.
 
 | Usage           | Class        | Options                        | Example       | Behavior                                                                                         |
 |-----------------|--------------|--------------------------------|---------------|--------------------------------------------------------------------------------------------------|
@@ -381,7 +381,7 @@ In the example below the second column is pushed to the left and the first is pu
 
 #### Responsive Push & Pull
 
-FrontBx's grid system comes with mobile-first fully responsive set of helpers to order column layouts according to screen size. The table below outlines the available options.
+Frontbx's grid system comes with mobile-first fully responsive set of helpers to order column layouts according to screen size. The table below outlines the available options.
 
 | Usage                | Class                           | Options                           | Example          | Behavior                                          |
 |----------------------|---------------------------------|-----------------------------------|------------------|---------------------------------------------------|
@@ -415,7 +415,7 @@ In the example below both columns are full width on mobile. On breakpoint (>=md)
 
 The grid system uses a combination of both local CSS variables on all components for enhanced component customization and styling. The base values are used by the UI to create all the sizing. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in FrontBx's source.
+Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
 
 ```file-path
 `src/scss/_config.scss`

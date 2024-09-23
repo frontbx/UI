@@ -1,6 +1,6 @@
 # Buttons
 
-FrontBx comes with a vast varietu of button options and styles, making it super simple to create buttons on just about any surface.
+Frontbx comes with a vast varietu of button options and styles, making it super simple to create buttons on just about any surface.
 
 ---
 
@@ -253,7 +253,7 @@ Buttons can be sized using 4 different sizing classes `.btn-xs`, `.btn-sm`, `.bt
 
 ### Loading buttons
 
-Add one of FrontBx' loaders inside any button and give the button a `.with-loading` class. When the button has the `.active` class the loading animation will show
+Add one of Frontbx' loaders inside any button and give the button a `.with-loading` class. When the button has the `.active` class the loading animation will show
 
 ```html
 <span class="loader loader-3"></span>
@@ -432,7 +432,7 @@ States for `btn-white` will also work
 
 Buttons use local CSS variables on `.btn` for enhanced component customization and styling. The base values are used by the UI to create all the variants. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in FrontBx's source.
+Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
 
 ```file-path
 src/scss/styles/buttons/_base.scss

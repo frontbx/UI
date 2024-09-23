@@ -152,9 +152,9 @@ Add the `.tab-centered` class to center the navigation:
 
 #### Buttons
 
-Because styling and JavaScript functionality of tabs are split with `.js-` classes, you can use other FrontBx components to create your own styled tabs:
+Because styling and JavaScript functionality of tabs are split with `.js-` classes, you can use other Frontbx components to create your own styled tabs:
 
-Here is an example FrontBx's `.btn` for the navigation:
+Here is an example Frontbx's `.btn` for the navigation:
 
 <div class="code-content-example">
     <div class="flex-row-fluid col-gaps-xs align-cols-center js-tab-nav" data-active-class="btn-primary">
@@ -174,7 +174,7 @@ Here is an example FrontBx's `.btn` for the navigation:
 
 #### Chips
 
-Here's another example using FrontBx `.chip` components:
+Here's another example using Frontbx `.chip` components:
 
 <div class="code-content-example">
     <ul class="list-unstyled js-tab-nav" data-active-class="selected">

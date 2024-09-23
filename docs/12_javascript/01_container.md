@@ -1,6 +1,6 @@
 # Container
 
-FrontBx's components are all held via a single application interface. The only global variable in the window namespace is the global `FrontBx` object!
+Frontbx's components are all held via a single application interface. The only global variable in the window namespace is the global `Frontbx` object!
 
 ---
 
@@ -12,7 +12,7 @@ FrontBx's components are all held via a single application interface. The only g
 
 ### Usage
 
-FrontBx uses an Inversion control Container to hold all components and related peripherals. The FrontBx application and Container can be globally accessed via the `FrontBx` variable. This is the only globally available variable
+Frontbx uses an Inversion control Container to hold all components and related peripherals. The Frontbx application and Container can be globally accessed via the `Frontbx` variable. This is the only globally available variable
 
 
 ```javascript
@@ -43,7 +43,7 @@ The `delete` method will delete a key value pair from the Container:
 fbx.delete('app');
 ```
 
-Any key-value pair set to the Container can also be retrieved using a direct method call. FrontBx converts the key `CamelCase` when adding to the Container:
+Any key-value pair set to the Container can also be retrieved using a direct method call. Frontbx converts the key `CamelCase` when adding to the Container:
 
 ```javascript
 let awesome = fbx.FooBar();
@@ -128,7 +128,7 @@ callback('foo', 'bar');
 
 ### Dependency injection
 
-FrontBx comes with a handy Dependency injection utility to import functions, constants or any other properties from an object or instantiated Object Function. This means you only need to import the variables you require on a given piece of code.
+Frontbx comes with a handy Dependency injection utility to import functions, constants or any other properties from an object or instantiated Object Function. This means you only need to import the variables you require on a given piece of code.
 
 Here's a very basic example of setting an Object Function instance, then importing one of it's dependencies 
 
@@ -152,7 +152,7 @@ let [bar] = fbx.import(['bar']).from('App');
 console.log(bar());
 ```
 
-This design pattern is used throughout FrontBx for dependency injection using the `Utils` library which is set via the underscore (`_`) key in FrontBx' container.
+This design pattern is used throughout Frontbx for dependency injection using the `Utils` library which is set via the underscore (`_`) key in Frontbx' container.
 
 For example to import the `add_class` and `remove_class` functions, you would use the code below:
 
@@ -166,4 +166,4 @@ Although this is longer than accessing the method normally, if you're reusing th
 fbx._().remove_class(node, 'bar');
 ```
 
-> For more information on using FrontBx`s utility library - checkout the [JS Utils Page](../utils/index.html)
+> For more information on using Frontbx`s utility library - checkout the [JS Utils Page](../utils/index.html)

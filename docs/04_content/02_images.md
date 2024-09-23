@@ -1,6 +1,6 @@
 # Images
 
-FrontBx comes with a set of handy image utilities for setting image dimensions as well as LazyLoading and much more.
+Frontbx comes with a set of handy image utilities for setting image dimensions as well as LazyLoading and much more.
 
 ---
 
@@ -12,7 +12,7 @@ FrontBx comes with a set of handy image utilities for setting image dimensions a
 
 ### Aspect ratios
 
-FrontBx's utility classes allow you to set aspect ratios on both **image** and **Background image** elements. This enables you to set a fixed height or width for an image, while retaining a specific aspect ratio.
+Frontbx's utility classes allow you to set aspect ratios on both **image** and **Background image** elements. This enables you to set a fixed height or width for an image, while retaining a specific aspect ratio.
 
 For `<image>` elements, wrap the image in a `.ratio-img` div, then add the relevant `.ratio-[w]-[h]` class to the wrapper:
 
@@ -46,7 +46,7 @@ For **Background image** elements, add the relevant `.ratio-[w]-[h]` class to th
 <div class="bg-image ratio-16-9" style="background-image: url(...)"></div>
 ```
 
-FrontBx provides a set of classes for common aspect ratios which are detailed below:
+Frontbx provides a set of classes for common aspect ratios which are detailed below:
 
 **Landscape aspect ratios:**
 | CSS Class    | CSS Var                        |
@@ -119,7 +119,7 @@ Dimensions for both **image** and **Background image** elements can be set via C
 
 ### JavaScript Instantiation
 
-Images can be instantiated via JavaScript to generate dynamic content on the fly. To create an image dynamically, use FrontBx's `Component.Create` method either via the `frontbx.Dom` or the `Image` Component directly:
+Images can be instantiated via JavaScript to generate dynamic content on the fly. To create an image dynamically, use Frontbx's `Component.Create` method either via the `frontbx.Dom` or the `Image` Component directly:
 
 <div class="code-content-example">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-sm">

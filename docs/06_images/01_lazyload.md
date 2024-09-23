@@ -1,6 +1,6 @@
 # Lazyload
 
-FrontBx's handy Lazyload utility lets you gracefully load images asynchronously while the DOM renders, providing not only faster page load speeds but an elastically pleasing image loading experience for the user.
+Frontbx's handy Lazyload utility lets you gracefully load images asynchronously while the DOM renders, providing not only faster page load speeds but an elastically pleasing image loading experience for the user.
 
 ---
 
@@ -61,7 +61,7 @@ Add the optional `.graysale` class to have the image fade from grayscale to full
 
 Lazyloading works on CSS background image elements too. This can be handy when you need an image at a fixed height.
 
-> FrontBx's `.bg-image` image is a handy utility to help manage image sizing. For more information checkout the [Images Documentation](../../content/images/index.html).
+> Frontbx's `.bg-image` image is a handy utility to help manage image sizing. For more information checkout the [Images Documentation](../../content/images/index.html).
 
 <div class="code-content-example">
     <div class="flex-row-fluid align-cols-center">
@@ -109,7 +109,7 @@ The fallback image is set via the JavaScript LazyLoad module from the variable `
 
 ### Dynamic content
 
-When inserting elements into the DOM after the page has loaded, for example using dynamic content via `Ajax`, you can refresh the `LazyLoad` module via the FrontBx's `dom`.
+When inserting elements into the DOM after the page has loaded, for example using dynamic content via `Ajax`, you can refresh the `LazyLoad` module via the Frontbx's `dom`.
 
 <div class="code-content-example">
     <div class="flex-row-fluid align-cols-center col-gaps-xs js-refresh-lazyload-container">
@@ -131,7 +131,7 @@ Lazyloading uses a combination of both local CSS and Sass variables for enhanced
 
 The CSS variables are set via Sass variables so customization pre-compilation is still possible.
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in FrontBx's source.
+Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
 
 ```file-path
 `src/scss/_config.scss`

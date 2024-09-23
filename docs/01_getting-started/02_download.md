@@ -1,19 +1,19 @@
 # Download
 
-Download FrontBox to get the compiled CSS and JavaScript, source code, or include it with your favorite package managers like npm, RubyGems or Composer.
+Get started and download pre-compiled assets or start your own custom build with npm.
 
 ---
 
 *	[Compiled CSS and JS](#compiled-css-and-js)
 *	[Source files](#source-files)
-*	[npm](#cdn-via-jsdelivr)
-
+*	[npm](#npm)
+*	[Git](#git)
 
 ---
 
 ### Compiled CSS and JS
 
-Download ready-to-use compiled assets for FrontBx to easily drop into your project.
+Download ready-to-use compiled assets for Frontbx to easily drop into your project.
 
 <a target="blank" href="https://download-directory.github.io/?url=https%3A%2F%2Fgithub.com%2Ffrontbx%2Fui%2Ftree%2Fmain%2Fdist" class="btn btn-primary">Download</a>
 
@@ -21,20 +21,73 @@ Download ready-to-use compiled assets for FrontBx to easily drop into your proje
 
 ### Source files
 
-Compile FrontBx with your own asset pipeline by downloading our source Sass, JavaScript, and documentation files. This option requires some additional tooling.
-
+Compile Frontbx with your own asset pipeline by downloading the latest release.
 
 <a href="https://github.com/frontbx/ui/archive/refs/heads/main.zip" target="_blank" class="btn btn-primary">Download Source</a>
 
----
-
-### npm
-
-
-Pull in Frontbx’s source files into nearly any project with some of the most popular package managers. No matter the package manager, Frontbx will require a Sass compiler and Autoprefixer for a setup that matches our official compiled versions.
+After downloading, navigate  to your project directory and run the following command:
 
 ```bash
 npm install frontbx
 ```
 
-const frontbx = require('frontbx') or import frontbx from 'frontbx' will load all of Frontbx’s plugins onto a frontbx object. The frontbx module itself exports all of our plugins. You can manually load Frontbx’s plugins individually by loading the /js/dist/*.js files under the package’s top-level directory.
+Next step, head over to the [Installation Page](../installation/index.html) for details on how to get started running your own build.
+
+---
+
+### npm
+
+To get started with Frontbx via npm, ensure you have [node.js](https://nodejs.org/en) installed. Then navigate to your project directory and run the following command:
+
+```bash
+npm install frontbx
+```
+
+Frontbx JS can then be imported via CJS or ES6 with the following:
+
+```javascript
+// cjs
+const frontbx = require('frontbx');
+
+// ES6
+import frontbx from 'frontbx';
+```
+
+Next step, head over to the [Installation Page](../installation/index.html) for details on how to get started running your own build.
+
+---
+
+### Git
+
+Clone or fork the Frontbx framework with Git to create your own project. To clone the Frontbx repository `cd` to your project folder and run the following command:
+
+```bash
+git clone https://github.com/frontbx/ui.git ./
+```
+
+Alternatively, if you'd prefer to fork the Frontbx Github repository.
+
+1.	On Github, [create a fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) of the `frontbx/ui` repository.
+2.	Clone your fork to your local machine using Github Desktop or Git.
+3.	Using terminal, navigate to your fork's directory.
+4.	Add a second remote to the original Frontbx repository.
+
+```bash
+git remote add upstream https://github.com/frontbx/ui.git
+```
+
+Your fork can then be easily be updated when a new version is released using the following command:
+
+```bash
+git fetch upstream
+git checkout master
+git merge upstream/master
+```
+
+Next step, head over to the [Installation Page](../installation/index.html) for details on how to get started running your own build.
+
+After downloading, navigate  to your project directory and run the following command:
+
+```bash
+npm install frontbx
+```

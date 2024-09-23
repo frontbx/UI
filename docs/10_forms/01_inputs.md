@@ -2,7 +2,7 @@
 
 ---
 
-FrontBx comes with a number of basic form inputs  
+Frontbx comes with a number of basic form inputs  
 
 ---
 
@@ -21,7 +21,7 @@ FrontBx comes with a number of basic form inputs
 
 ### Markup
 
-FrontBx inputs allow you to style forms quickly with very little markup. Because HTML inputs are used frequently across third-party libraries and plugins, FrontBx inputs are styled with the `.form-field` wrapper class.
+Frontbx inputs allow you to style forms quickly with very little markup. Because HTML inputs are used frequently across third-party libraries and plugins, Frontbx inputs are styled with the `.form-field` wrapper class.
 
 The default variant for inputs is a *floating label* style input which comes in both an underline and the default style:
 

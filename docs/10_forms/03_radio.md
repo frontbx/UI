@@ -134,7 +134,7 @@ You can provide a label to the radio as you normally would. If you need the labe
 
 ### Contexts
 
-Checkboxes can be further contextualized using FrontBx's contextual classes `.radio-primary`,  `.radio-secondary`,  `.radio-info`,  `.radio-success`,  `.radio-warning` and `.radio-danger`:
+Checkboxes can be further contextualized using Frontbx's contextual classes `.radio-primary`,  `.radio-secondary`,  `.radio-info`,  `.radio-success`,  `.radio-warning` and `.radio-danger`:
 
 <div class="code-content-example">
     <form class="text-center">
@@ -234,7 +234,7 @@ Additional sizing is available through `.radio-sm`, `radio-md` and `radio-lg`:
 
 Checkboxes use local CSS variables on `.radio` for enhanced component customization and styling. The base values are used by the UI to create all the variants. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in FrontBx's source.
+Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
 
 ```file-path
 src/scss/styles/forms/_radio.scss

@@ -2,7 +2,7 @@
 
 ---
 
-FrontBx comes with a convenient and easy to use input masker that can either be instantiated through HTML or JavaScript. The input masker forces an input to only except a predefined set of input rules (e.g numbers only). 
+Frontbx comes with a convenient and easy to use input masker that can either be instantiated through HTML or JavaScript. The input masker forces an input to only except a predefined set of input rules (e.g numbers only). 
 
 ---
 

@@ -1,6 +1,6 @@
 # Introduction
 
-FrontBx is a fast, dependency-free UI framework built with Sass, CSS and JavaScript.
+Frontbx is a fast, dependency-free UI framework built with Sass, CSS and JavaScript.
 
 ---
 
@@ -18,23 +18,23 @@ FrontBx is a fast, dependency-free UI framework built with Sass, CSS and JavaScr
 
 ### Welcome
 
-FrontBx is a modular `CSS` and `JavaScript` front-end framework built with `Sass` and vanilla `JavaScript`. FrontBx is designed to be used as core UI framework for any sized project from a tiny landing page to a giant web app.
+Frontbx is a modular `CSS` and `JavaScript` front-end framework built with `Sass` and vanilla `JavaScript`. Frontbx is designed to be used as core UI framework for any sized project from a tiny landing page to a giant web app.
 
-One of the main purposes of FrontBx is to save you time while building beautiful web pages with ease. FrontBx is a medium to large front-end framework and has pretty much everything you will need to kick-start your next project.
+One of the main purposes of Frontbx is to save you time while building beautiful web pages with ease. Frontbx is a medium to large front-end framework and has pretty much everything you will need to kick-start your next project.
 
-If you are new to FrontBx, it's recommended you read this documentation from start to finish. It's also highly advisable to spend some time reading through the [Customization documentation](../../customize/sass/index.html) as well as the [JavaScript documentation](../../javascript/container/index.html) section to understand the framework architecture and how to use it on a broad level.
+If you are new to Frontbx, it's recommended you read this documentation from start to finish. It's also highly advisable to spend some time reading through the [Customization documentation](../../customize/sass/index.html) as well as the [JavaScript documentation](../../javascript/container/index.html) section to understand the framework architecture and how to use it on a broad level.
 
 ---
 
 ### Quickstart
 
-FrontBx comes ready to go straight out of the box. If you're not wanting to run your own build, you can get started with the production-ready CSS and JavaScript files.
+Frontbx comes ready to go straight out of the box. If you're not wanting to run your own build, you can get started with the production-ready CSS and JavaScript files.
 
 If you're using a package manager or wanting to start a custom build - [Head to the Downloads page](../download/index.html).
 
 #### CSS
 
-Copy-paste the stylesheet `<link>` into your `<head>` before all other stylesheets to load FrontBx's CSS.
+Copy-paste the stylesheet `<link>` into your `<head>` before all other stylesheets to load Frontbx's CSS.
 
 ```html
 <link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/css/frontbx-bundle.cdn.min.css" rel="stylesheet" crossorigin="anonymous">
@@ -42,7 +42,7 @@ Copy-paste the stylesheet `<link>` into your `<head>` before all other styleshee
 
 ##### Icons
 
-FrontBx uses [FontAwesome](https://fontawesome.com/) for icons which are included in `frontbx-bundle.cdn.min.css`. However However if you prefer to have them loaded separately or don't need them, you can use `frontbx.cdn.min.css` which excludes icons and `frontbx-icons.cdn.min.css` which is the standalone icon CSS hosted externally.
+Frontbx uses [FontAwesome](https://fontawesome.com/) for icons which are included in `frontbx-bundle.cdn.min.css`. However However if you prefer to have them loaded separately or don't need them, you can use `frontbx.cdn.min.css` which excludes icons and `frontbx-icons.cdn.min.css` which is the standalone icon CSS hosted externally.
 
 ```html
 <link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/css/frontbx.cdn.min.css" rel="stylesheet" crossorigin="anonymous">
@@ -51,12 +51,12 @@ FrontBx uses [FontAwesome](https://fontawesome.com/) for icons which are include
 
 #### JavaScript
 
-Most FrontBx components require the use of `JavaScript` to function. FrontBx's JS is Component based with an inversion control system to manage it's own dependencies. Place the following `<script>` near the end of your pages, right before the closing `</body>` tag.
+Most Frontbx components require the use of `JavaScript` to function. Frontbx's JS is Component based with an inversion control system to manage it's own dependencies. Place the following `<script>` near the end of your pages, right before the closing `</body>` tag.
 
 
 ##### Bundle
 
-Include all FrontBx JavaScript Components and dependencies with FrontBx's bundled JS.
+Include all Frontbx JavaScript Components and dependencies with Frontbx's bundled JS.
 
 ```html
 <script src="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/js/frontbx.bundle.min.js" crossorigin="anonymous"></script>
@@ -86,10 +86,10 @@ Below is a simple HTML5 Boilerplate to get up and running quickly with frontbx.
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- FrontBx CSS -->
+    <!-- Frontbx CSS -->
     <link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/css/frontbx-bundle.cdn.min.css" rel="stylesheet" crossorigin="anonymous">
 
-    <!-- FrontBx Lazyload JS -->
+    <!-- Frontbx Lazyload JS -->
     <script src="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/js/frontbx-lazyload.min.js" crossorigin="anonymous"></script>
 
     <title>Hello, world!</title>
@@ -97,7 +97,7 @@ Below is a simple HTML5 Boilerplate to get up and running quickly with frontbx.
   <body>
     <h1>Hello, world!</h1>
 
-    <!-- FrontBx JS Bundle -->
+    <!-- Frontbx JS Bundle -->
     <script src="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/js/frontbx.bundle.min.js" crossorigin="anonymous"></script>
   </body>
 </html>
@@ -107,6 +107,6 @@ Below is a simple HTML5 Boilerplate to get up and running quickly with frontbx.
 
 ### Next Steps
 
-If you're not wanting to create a custom build, or do not require access to FrontBx's source, you can jump straight to the [Content Section](../../content/typography/index.html) to get started with familiarizing yourself with frontbx.
+If you're not wanting to create a custom build or do not require access to Frontbx's source, you can jump straight to the [Download Section](../download/index.html) to get started with building on the pre-compiled Frontbx assets.
 
-Otherwise, head over the the [Installation Page](../installation/index.html) to get started on getting FrontBx installed.
+Otherwise, head over the the [Installation Page](../installation/index.html) to get started on getting Frontbx installed.

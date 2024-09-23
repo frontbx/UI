@@ -1,6 +1,6 @@
 # Dom
 
-FrontBx's Dom Component is used throughout the library to manage interactions with the live DOM.
+Frontbx's Dom Component is used throughout the library to manage interactions with the live DOM.
 
 ---
 
@@ -16,7 +16,7 @@ FrontBx's Dom Component is used throughout the library to manage interactions wi
 
 ### Access
 
-FrontBx's Dom Component can be accessed globally via the Inversion container through the `dom` key.
+Frontbx's Dom Component can be accessed globally via the Inversion container through the `dom` key.
 
 ```javascript
 const dom = frontbx.Dom();
@@ -26,14 +26,14 @@ const dom = frontbx.Dom();
 
 ### Components
 
-FrontBx uses a specific design pattern for DOM components. In FrontBx a DOM component is a JavaScript Class or Object Function that when "mounted" binds listeners or alters the Live DOM. FrontBx uses a base `Component` base that is extended to help build Components easily. 
+Frontbx uses a specific design pattern for DOM components. In Frontbx a DOM component is a JavaScript Class or Object Function that when "mounted" binds listeners or alters the Live DOM. Frontbx uses a base `Component` base that is extended to help build Components easily. 
 
 
 #### Lifecycle
 
-When FrontBx first loads, it caches all DOM Components in it's container until it's ready to boot. Once ready, it loops through all DOM Components, instantiates an instance of each once, which triggers them to `bind` any listeners or alter the live DOM.
+When Frontbx first loads, it caches all DOM Components in it's container until it's ready to boot. Once ready, it loops through all DOM Components, instantiates an instance of each once, which triggers them to `bind` any listeners or alter the live DOM.
 
-Once the FrontBx's DOM has loaded, if the Live DOM is altered, mutated or updated in any way FrontBx's Dom can be "refreshed", which removes any redundant listeners on nodes that were removed and checks for any new elements that need binding.
+Once the Frontbx's DOM has loaded, if the Live DOM is altered, mutated or updated in any way Frontbx's Dom can be "refreshed", which removes any redundant listeners on nodes that were removed and checks for any new elements that need binding.
 
 #### Usage
 
@@ -64,7 +64,7 @@ Buttons.prototype.bind = function(node)
 }
 ```
 
-If FrontBx's Dom gets refreshed or the module gets refreshed specifically, `unbind` will be called with each DOM element:
+If Frontbx's Dom gets refreshed or the module gets refreshed specifically, `unbind` will be called with each DOM element:
 
 ```javascript
 Buttons.prototype.unbind = function(node)
@@ -73,9 +73,9 @@ Buttons.prototype.unbind = function(node)
 }
 ```
 
-> Dom components must contain a `bind` and `unbind` method which gets called by the base Component whenever FrontBx's Dom is refreshed.
+> Dom components must contain a `bind` and `unbind` method which gets called by the base Component whenever Frontbx's Dom is refreshed.
 
-To register a Component in the FrontBx Dom use the `register` method:
+To register a Component in the Frontbx Dom use the `register` method:
 
 ```javascript
 dom.register('Buttons', Buttons);
@@ -146,9 +146,9 @@ frontbx.Dom().register('Buttons', extend(Component, Buttons));
 
 #### Instantiation
 
-By default, FrontBx DOM Components are instantiated by HTML. However most Components offer JavaScript Instantiation to generate content dynamically.
+By default, Frontbx DOM Components are instantiated by HTML. However most Components offer JavaScript Instantiation to generate content dynamically.
 
-JavaScript Components can be instantiated either directly via the Component, or via FrontBx's Dom with `Component.create` and will always return a DOMElement node.
+JavaScript Components can be instantiated either directly via the Component, or via Frontbx's Dom with `Component.create` and will always return a DOMElement node.
 
 ```JavaScript
 let dropdown = frontbx.Dom().component('Dropdown').create(options);
@@ -203,14 +203,14 @@ const button = frontbx.Dom().create('Buttons', {text: 'Click me!'});
 
 ### Events
 
-FrontBx will dispatch various events when DOM components are interacted with or the Live DOM is updated. All FrontBx events contain their data in `event.detail`.
+Frontbx will dispatch various events when DOM components are interacted with or the Live DOM is updated. All Frontbx events contain their data in `event.detail`.
 
 | Event                            | Target element | Properties                              | Description                                                                           |
 |----------------------------------|----------------|-----------------------------------------|---------------------------------------------------------------------------------------|
-| `FrontBx:dom:ready`               | `window`       | `e.detail.dom`                          | Fired immediately after FrontBx Dom has booted and all Components are loaded.          |
-| `FrontBx:dom:refresh`             | `window`       | `e.detail.context`                      | Fired immediately after FrontBx Dom has been refreshed and all Components are re-bound |
-| `FrontBx:dom:mutate`              | `DOMElement`   | `e.detail.DOMElement`                   | Fired immediately after content on live DOMElement node is mutated                    |
-| `FrontBx:dom:remove`              | `DOMElement`   | `e.detail.DOMElement`                   | Fired immediately after live DOMElement node is removed from the DOM                  |
-| `FrontBx:dom:bind:[component]`    | `window`       | `e.detail.component` `e.detail.context` | Fired immediately after a Dom Component is bound                                      |
-| `FrontBx:dom:unbind:[component]`  | `window`       | `e.detail.component` `e.detail.context` | Fired immediately after a Dom Component is unbound                                    |
-| `FrontBx:dom:refresh:[component]` | `window`       | `e.detail.component` `e.detail.context` | Fired immediately after a Dom Component is refreshed                                  |
+| `Frontbx:dom:ready`               | `window`       | `e.detail.dom`                          | Fired immediately after Frontbx Dom has booted and all Components are loaded.          |
+| `Frontbx:dom:refresh`             | `window`       | `e.detail.context`                      | Fired immediately after Frontbx Dom has been refreshed and all Components are re-bound |
+| `Frontbx:dom:mutate`              | `DOMElement`   | `e.detail.DOMElement`                   | Fired immediately after content on live DOMElement node is mutated                    |
+| `Frontbx:dom:remove`              | `DOMElement`   | `e.detail.DOMElement`                   | Fired immediately after live DOMElement node is removed from the DOM                  |
+| `Frontbx:dom:bind:[component]`    | `window`       | `e.detail.component` `e.detail.context` | Fired immediately after a Dom Component is bound                                      |
+| `Frontbx:dom:unbind:[component]`  | `window`       | `e.detail.component` `e.detail.context` | Fired immediately after a Dom Component is unbound                                    |
+| `Frontbx:dom:refresh:[component]` | `window`       | `e.detail.component` `e.detail.context` | Fired immediately after a Dom Component is refreshed                                  |

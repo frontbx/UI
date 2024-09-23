@@ -2,7 +2,7 @@
 
 ---
 
-FrontBx message provide contextual feedback messages for typical user actions user actions on page. They are also use as part of the built in JS Form Validation component.
+Frontbx message provide contextual feedback messages for typical user actions user actions on page. They are also use as part of the built in JS Form Validation component.
 
 ---
 
@@ -18,7 +18,7 @@ FrontBx message provide contextual feedback messages for typical user actions us
 
 ### Basic example
 
-A FrontBx message has specific markup that you must follow for it to be displayed correctly. Below is the most simple example:
+A Frontbx message has specific markup that you must follow for it to be displayed correctly. Below is the most simple example:
 
 <div class="code-content-example">    
     <div class="msg">
@@ -40,7 +40,7 @@ A FrontBx message has specific markup that you must follow for it to be displaye
 
 ### Icons
 
-FrontBx messages have built in styles for icons to help display a message's context to the user quickly:
+Frontbx messages have built in styles for icons to help display a message's context to the user quickly:
 
 <div class="code-content-example">    
     <div class="msg">
@@ -215,7 +215,7 @@ Add a class of `.js-close-msg` to the button (or any element inside a message) t
 
 ### JavaScript Behavior
 
-FrontBx fires two custom events to attach onto when a message is removed via a `.js-close-msg` click.
+Frontbx fires two custom events to attach onto when a message is removed via a `.js-close-msg` click.
 
 | Event            | Description                                                                      | 
 |------------------|----------------------------------------------------------------------------------|
@@ -239,7 +239,7 @@ myMsg.addEventListener('message:close', event =>
 
 Messages use local CSS variables on `.msg` for enhanced component customization and styling. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in FrontBx's source.
+Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
 
 
 ```file-path

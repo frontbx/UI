@@ -322,7 +322,7 @@
         <div class="container-fluid docs-container" id="top">
             <div class="main-container js-main-container">
                 <article class="docs-body pole-sm" id="article-body"><h1 id="pjax">Pjax</h1>
-<p>FrontBx's <code>Pjax</code> Component allows you to easily handle dynamic DOM content and web-app style functionality via asynchronous requests, . </p>
+<p>Frontbx's <code>Pjax</code> Component allows you to easily handle dynamic DOM content and web-app style functionality via asynchronous requests, . </p>
 <hr />
 <ul>
 <li><a href="#Introduction">Introduction</a></li>
@@ -495,11 +495,11 @@ echo '
 ';</code></pre>
 <hr />
 <h3 id="javascript-usage">JavaScript Usage</h3>
-<p>The Pjax Component can be accessed directly via FrontBx's container using the <code>Pjax</code> key.</p>
+<p>The Pjax Component can be accessed directly via Frontbx's container using the <code>Pjax</code> key.</p>
 <pre><code class="JavaScript language-JavaScript">let pjax = frontbx.Pjax();</code></pre>
 <p>To make a request, use the <code>request</code> method:</p>
 <pre><code class="JavaScript language-JavaScript">let pjax.request(url, options, success, error, complete, abort, headers);</code></pre>
-<p>Pjax extends FrontBx's Ajax Component so the callbacks folllow the same principles. For details on callbacks, see the <a href="/docs/javascript/pjax/index.html#arguments">Ajax Documentation</a></p>
+<p>Pjax extends Frontbx's Ajax Component so the callbacks folllow the same principles. For details on callbacks, see the <a href="/docs/javascript/pjax/index.html#arguments">Ajax Documentation</a></p>
 <p>The options arguement is an Object with the following values / defaults</p>
 <table>
 <thead>
@@ -544,24 +544,24 @@ echo '
 </thead>
 <tbody>
 <tr>
-<td><code>FrontBx:Pjax:start</code></td>
+<td><code>Frontbx:Pjax:start</code></td>
 <td>Sent immediately before a Pjax request is made.</td>
 </tr>
 <tr>
-<td><code>FrontBx:Pjax:success</code></td>
+<td><code>Frontbx:Pjax:success</code></td>
 <td>Sent after a successful Pjax request is made, DOM is updated and all assets have loaded.</td>
 </tr>
 <tr>
-<td><code>FrontBx:Pjax:error</code></td>
+<td><code>Frontbx:Pjax:error</code></td>
 <td>Sent when Pjax request receives an XHR error response.</td>
 </tr>
 <tr>
-<td><code>FrontBx:Pjax:abort</code></td>
+<td><code>Frontbx:Pjax:abort</code></td>
 <td>Sent when Pjax request is interrupted and aborted by either another Pjax request or manually aborted.</td>
 </tr>
 </tbody>
 </table>
-<pre><code class="JavaScript language-JavaScript">window.addEventListener('FrontBx:Pjax:success', (e) =&gt;
+<pre><code class="JavaScript language-JavaScript">window.addEventListener('Frontbx:Pjax:success', (e) =&gt;
 {
     let url = e.detail.options.url;
 

@@ -18,7 +18,7 @@ Modals are a handy `JavaScript` component for displaying an action the user must
 
 ### Example
 
-To display a Modal, call the `Modal` Component via FrontBx's Container:
+To display a Modal, call the `Modal` Component via Frontbx's Container:
 
 <div class="code-content-example">
     <div class="flex-row-fluid align-cols-center col-gaps-sm">
@@ -268,7 +268,7 @@ All other options can be set through `data-attributes` on the anchor element in 
 
 Modals use a combination of both local CSS variables on `.modal-wrap`, `.modal-overlay` and Sass variables for enhanced component customization and styling.
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in FrontBx's source.
+Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
 
 ```file-path
 `src/scss/_config.scss`

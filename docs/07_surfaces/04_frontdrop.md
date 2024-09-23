@@ -17,7 +17,7 @@ Frontdrop provides access to an elevated surface providing additional app functi
 
 ### Example
 
-A Frontdrop can be created via FrontBx's Container with the `Frontdrop` method:
+A Frontdrop can be created via Frontbx's Container with the `Frontdrop` method:
 
 <div class="code-content-example">
     <div class="flex-row-fluid align-cols-center">
@@ -220,7 +220,7 @@ All other options can be set through `data-attributes` on the anchor element in 
 
 Frontdrop use a combination of both local CSS variables and Sass variables on `.frontdrop-wrap`, `.frontdrop-overlay` for enhanced component customization and styling.
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in FrontBx's source.
+Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
 
 ```file-path
 `src/scss/_config.scss`

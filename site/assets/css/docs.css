@@ -95,7 +95,7 @@ pre[class*="language-"]
 {
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(to left bottom, var(--fbx-black) 0%, var(--fbx-theme-primary-900) 100%);
+    background: linear-gradient(to left bottom, var(--fbx-body-bg) 0%, var(--fbx-theme-primary-900) 100%);
 }
 
 /* Site header */

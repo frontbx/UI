@@ -1,6 +1,6 @@
 # Tables
 
-FrontBx comes with a few different basic table stylings ready to go. Because tables are used frequently across third-party libraries and plugins, FrontBx tables are styled with the `.table` base class.
+Frontbx comes with a few different basic table stylings ready to go. Because tables are used frequently across third-party libraries and plugins, Frontbx tables are styled with the `.table` base class.
 
 ---
 
@@ -454,7 +454,7 @@ Adding the `.table-hover` class highlights the rows on hover.
 
 Add the `.js-select-table` class to any table to enable clickable selection on table rows.
 
-FrontBx will fire a custom event on the `<table>` when an row is selected. The `event.detail.item` key will tell you which row has been selected
+Frontbx will fire a custom event on the `<table>` when an row is selected. The `event.detail.item` key will tell you which row has been selected
 
 | Event              | Description                                          | 
 |--------------------|------------------------------------------------------|
@@ -693,7 +693,7 @@ Adding the `.table-dense` for a table with less padding in its cells:
 
 ### Table Highlights
 
-You can highlight table rows, cells, heads and foots using FrontBx's contextual classes. Simply add `.primary` `.info`, `.success`, `.warning`, or `.danger` to a table element to highlight it
+You can highlight table rows, cells, heads and foots using Frontbx's contextual classes. Simply add `.primary` `.info`, `.success`, `.warning`, or `.danger` to a table element to highlight it
 
 <div class="code-content-example">
     <table class="table table-bordered">
@@ -817,7 +817,7 @@ Table uses local CSS variables on `.table` along with Sass variables for enhance
 }
 ```
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in FrontBx's source.
+Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
 
 ```file-path
 `src/scss/_config.scss`
@@ -865,7 +865,7 @@ src/scss/components/table.scss
 
 ### JavaScript Instantiation
 
-Table can be instantiated via JavaScript to generate dynamic content on the fly. To create a Table dynamically, use FrontBx's `Component.Create` method either via the `frontbx.Dom` or the Table Component directly:
+Table can be instantiated via JavaScript to generate dynamic content on the fly. To create a Table dynamically, use Frontbx's `Component.Create` method either via the `frontbx.Dom` or the Table Component directly:
 
 <div class="code-content-example">
     <div class="flex-row align-cols-center row-gaps-xs">

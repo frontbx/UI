@@ -322,7 +322,7 @@
         <div class="container-fluid docs-container" id="top">
             <div class="main-container js-main-container">
                 <article class="docs-body pole-sm" id="article-body"><h1 id="slider">Slider</h1>
-<p>FrontBx's Slider component can be used to cycle through content such as images, cards and text as a carousel.</p>
+<p>Frontbx's Slider component can be used to cycle through content such as images, cards and text as a carousel.</p>
 <hr />
 <ul>
 <li><a href="#how-it-works">How it works</a></li>
@@ -338,7 +338,7 @@
 <p>In browsers where the Page Visibility API is supported, the carousel will avoid sliding when the webpage is not visible to the user (such as when the browser tab is inactive, the browser window is minimized, etc.).</p>
 <hr />
 <h3 id="markup">Markup</h3>
-<p>Carousels don't automatically normalize slide dimensions, however in FrontBx's <code>config.scss</code> file there is a default width used for slides. You can set this up how you want or use CSS Variables to customize slide dimensions.</p>
+<p>Carousels don't automatically normalize slide dimensions, however in Frontbx's <code>config.scss</code> file there is a default width used for slides. You can set this up how you want or use CSS Variables to customize slide dimensions.</p>
 <p>Carousels can be instantiated through <code>HTML</code> markup using the <code>.js-slider</code> class with <code>.slider</code> for styling. Options can be set using as <code>JSON</code> in the <code>data-slider-options</code> attribute.</p>
 <p>Here's is a basic example:</p>
 <div class="code-content-example">
@@ -449,7 +449,7 @@
 </table>
 <hr />
 <h3 id="javascript-instantiation">JavaScript Instantiation</h3>
-<p>To manually Initialize a Slider to Markup in the DOM, use FrontBx's Container and the <code>_Slider</code> method:</p>
+<p>To manually Initialize a Slider to Markup in the DOM, use Frontbx's Container and the <code>_Slider</code> method:</p>
 <pre><code class="JavaScript language-JavaScript">let slider = frontbx.Slider(DOMElement, options);</code></pre>
 <p>The <code>next</code> method animates moving to the next slide:</p>
 <pre><code class="JavaScript language-JavaScript">slider.next();</code></pre>
@@ -475,7 +475,7 @@ slider.stop();</code></pre>
 <pre><code class="JavaScript language-JavaScript">slider.destroy();</code></pre>
 <hr />
 <h3 id="dynamic-javascript-instantiation">Dynamic JavaScript Instantiation</h3>
-<p>For dynamically generated content, Sliders can be instantiated via JavaScript to generate dynamic content on the fly with FrontBx's <code>Component.Create</code> method either via the <code>frontbx.Dom</code> or the <code>Slider</code> Component directly.</p>
+<p>For dynamically generated content, Sliders can be instantiated via JavaScript to generate dynamic content on the fly with Frontbx's <code>Component.Create</code> method either via the <code>frontbx.Dom</code> or the <code>Slider</code> Component directly.</p>
 <p>The <code>slides</code> value can be either an array or <code>HTML</code> strings or an Array/NodeList of <code>HTMLElements</code>.</p>
 <pre><code class="JavaScript language-JavaScript">let options =
 {
@@ -500,7 +500,7 @@ let slider = frontbx.Dom().component('Slider').create(options, container);</code
 <hr />
 <h3 id="css-customization">CSS Customization</h3>
 <p>Slider uses local CSS variables on <code>.slider</code> along with Sass variables for enhanced component customization and styling. The base values are used by the UI to create all the styling. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>
-<p>Customization via Sass can be made in the <code>src/scss/_config.scss</code> file in FrontBx's source.</p>
+<p>Customization via Sass can be made in the <code>src/scss/_config.scss</code> file in Frontbx's source.</p>
 <pre><code class="file-path language-file-path">`src/scss/_config.scss`</code></pre>
 <pre><code class="sass language-sass">$slider-bg:                     transparent !default;
 $slider-dots-color:             var(--fbx-white) !default;

@@ -32,7 +32,7 @@ To add a ripple to an element, add the `.js-ripple` class. The library will hand
 
 ### Elements
 
-Ripple get added automatically to the following FrontBx components:
+Ripple get added automatically to the following Frontbx components:
 
 *   `.btn`
 *   `.list > li`

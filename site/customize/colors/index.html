@@ -322,7 +322,7 @@
         <div class="container-fluid docs-container" id="top">
             <div class="main-container js-main-container">
                 <article class="docs-body pole-sm" id="article-body"><h1 id="colors">Colors</h1>
-<p>FrontBx provides an extensive CSS color system for enhanced styling, component customization and beyond.</p>
+<p>Frontbx provides an extensive CSS color system for enhanced styling, component customization and beyond.</p>
 <hr />
 <ul>
 <li><a href="#theme-colors">Theme colors</a><ul>
@@ -339,9 +339,9 @@
 <li><a href="#shades">Shades</a></li></ul></li>
 </ul>
 <hr />
-<p>FrontBx's color system is built using a combination of both CSS variables, Sass variables and Sass functions. </p>
+<p>Frontbx's color system is built using a combination of both CSS variables, Sass variables and Sass functions. </p>
 <h3 id="theme-colors">Theme colors</h3>
-<p>Theme colors are used for contextual styling on most FrontBx components and set the foundation for a theme's color styling.</p>
+<p>Theme colors are used for contextual styling on most Frontbx components and set the foundation for a theme's color styling.</p>
 <p>Theme colors are available in both CSS and Sass variables. When using the Sass variable, this will always point to the CSS variable - which is assigned to the actual color in <code>scss/src/base/_root.scss</code>. The table below outlines the core theme colors:</p>
 <table>
 <thead>
@@ -422,7 +422,7 @@
 </tbody>
 </table>
 <h4 id="usagea-idtheme-usagea">Usage<a id='theme-usage'></a></h4>
-<p>All theme colors are available via FrontBx's utility <a href="../../css/css-helpers/index.html">helper classes</a> as <code>.bg-[name]</code> and <code>color-[name]</code> without the word <code>theme</code> (e.g. <code>bg-primary</code> or <code>color-success</code>).</p>
+<p>All theme colors are available via Frontbx's utility <a href="../../css/css-helpers/index.html">helper classes</a> as <code>.bg-[name]</code> and <code>color-[name]</code> without the word <code>theme</code> (e.g. <code>bg-primary</code> or <code>color-success</code>).</p>
 <div class="code-content-example">
     <div class="flex-row align-cols-center">
         <div class="paper paper-rounded raised-1 col col-5 col-lg-3 bg-primary pad-40 text-center">
@@ -441,7 +441,7 @@
 }</code></pre>
 <hr />
 <h3 id="grays">Grays</h3>
-<p>Grays are available in shades ranging from <code>100</code> (lightest) through <code>900</code> (darkest) with the default <code>$gray</code> variable sits in between <code>400</code> and <code>500</code>. Grays are available CSS variables <code>--fbx-gray-[num]</code>. The table below outlines the core color palette used by FrontBx:</p>
+<p>Grays are available in shades ranging from <code>100</code> (lightest) through <code>900</code> (darkest) with the default <code>$gray</code> variable sits in between <code>400</code> and <code>500</code>. Grays are available CSS variables <code>--fbx-gray-[num]</code>. The table below outlines the core color palette used by Frontbx:</p>
 <table>
 <thead>
 <tr>
@@ -489,7 +489,7 @@
 </tbody>
 </table>
 <h4 id="usagea-idgray-usagea">Usage<a id='gray-usage'></a></h4>
-<p>All gray shades are available via FrontBx's utility <a href="../../css/css-helpers/index.html">helper classes</a> as <code>.bg-gray-[num]</code> and <code>color-gray-[num]</code></p>
+<p>All gray shades are available via Frontbx's utility <a href="../../css/css-helpers/index.html">helper classes</a> as <code>.bg-gray-[num]</code> and <code>color-gray-[num]</code></p>
 <div class="code-content-example">
     <div class="flex-row align-cols-center">
         <div class="paper paper-rounded raised-1 col col-5 col-lg-3 bg-gray-800 pad-40 text-center">
@@ -502,7 +502,7 @@
 &lt;/div&gt;</code></pre>
 <hr />
 <h3 id="color-palette">Color Palette</h3>
-<p>FrontBx comes with a palette of colors via both CSS ans Sass variables for changing theme colors, customizing components or building out custom UI.</p>
+<p>Frontbx comes with a palette of colors via both CSS ans Sass variables for changing theme colors, customizing components or building out custom UI.</p>
 <h4 id="playground">Playground</h4>
 <p>Use the playground below to adjust the documentation colors:</p>
 <div class="code-content-example js-docs-playground-swatches">
@@ -777,7 +777,7 @@
 <pre><code class="html language-html">&lt;div class="paper paper-rounded raised-1 color-white" style="background: var(--fbx-color-teal)"&gt;
     &lt;p class="text-bolder no-margin"&gt;Hello World!&lt;/p&gt;
 &lt;/div&gt;</code></pre>
-<p>Setting FrontBx's core theme color via Sass is super simple:</p>
+<p>Setting Frontbx's core theme color via Sass is super simple:</p>
 <pre><code class="sass language-sass">@import "../node_modules/frontbx/scss/frontbx/src/colors";
 
 $theme-primary: $emerland;
@@ -789,7 +789,7 @@ $theme-secondary: $nephritis;</code></pre>
     --fbx-theme-primary: var(--fbx-color-emerland);
     --fbx-theme-primary-rgb: var(--fbx-color-emerland-rgb);
 }</code></pre>
-<p>FrontBx uses a Sass function for gradients on theme colors to style the odd component, if changing the theme color via CSS you should also update these CSS variables:</p>
+<p>Frontbx uses a Sass function for gradients on theme colors to style the odd component, if changing the theme color via CSS you should also update these CSS variables:</p>
 <pre><code class="css language-css">:root
 {
     --fbx-theme-primary-100: #ffeaf7;
@@ -810,7 +810,7 @@ $theme-secondary: $nephritis;</code></pre>
     color: $emerland
 }</code></pre>
 <h4 id="theme-colorsa-idsass-theme-colorsa">Theme colors<a id="sass-theme-colors"></a></h4>
-<p>FrontBx defines the following variables for use in a theme. Note that theme colors will point to a CSS variable defined in <code>:root</code> rather than the hex.</p>
+<p>Frontbx defines the following variables for use in a theme. Note that theme colors will point to a CSS variable defined in <code>:root</code> rather than the hex.</p>
 <pre><code class="scss language-scss">// Contexts
 $theme-primary:                 var(--fbx-color-beetroot)    !default;
 $theme-secondary:               var(--fbx-color-salmon)      !default;
@@ -869,7 +869,7 @@ $gray:                          #9597a0 !default;</code></pre>
     background-color: $teal;
 }</code></pre>
 <h4 id="shades">Shades</h4>
-<p>FrontBx uses Sass functions to generate color shades (<code>100</code> -&gt; <code>900</code>) for all palette colors and assign them as CSS Variables on <code>:root</code>. However doing this for all theme colors would obviously create a large amount of unnecessary CSS variables. </p>
+<p>Frontbx uses Sass functions to generate color shades (<code>100</code> -&gt; <code>900</code>) for all palette colors and assign them as CSS Variables on <code>:root</code>. However doing this for all theme colors would obviously create a large amount of unnecessary CSS variables. </p>
 <p>You can also access <strong>Base Color</strong> shades (<code>100</code> -&gt; <code>900</code>) via Sass variables:</p>
 <pre><code class="scss language-scss">.my-element
 {

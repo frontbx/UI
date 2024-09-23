@@ -2,7 +2,7 @@
 
 ---
 
-FrontBx's `FormValidator` provides a powerful component to easily validate forms.
+Frontbx's `FormValidator` provides a powerful component to easily validate forms.
 
 ---
 
@@ -15,7 +15,7 @@ FrontBx's `FormValidator` provides a powerful component to easily validate forms
 
 ### Instantiation
 
-The `FormValidator` can be accessed through FrontBx's `Container`, providing your target `<form>` DOMElement as a parameter.
+The `FormValidator` can be accessed through Frontbx's `Container`, providing your target `<form>` DOMElement as a parameter.
 
 ```javascript
 const validator = frontbx.FormValidator(document.querySelector.$('#myform'));
@@ -79,7 +79,7 @@ Additionally, you can validate an input as `required` as well as validate the le
 
 ### Validating
 
-Instantiate a `FormValidator` instance via FrontBx's `Container`, passing the target `<form>` DOMElement as the parameter.
+Instantiate a `FormValidator` instance via Frontbx's `Container`, passing the target `<form>` DOMElement as the parameter.
 
 ```javascript
 const validator = frontbx.FormValidator(document.querySelector.$('#myform'));
@@ -131,7 +131,7 @@ validator.destroy();
 
 ### Example
 
-Below is an example form using the validator. In a real request, you would use FrontBx's `Ajax` component or submit the form manually, however for this example we just use a `timeout`. Check the console log for more details.
+Below is an example form using the validator. In a real request, you would use Frontbx's `Ajax` component or submit the form manually, however for this example we just use a `timeout`. Check the console log for more details.
 
 <div class="code-content-example">
     <form class="flex-row row-gaps-xs align-cols-center">

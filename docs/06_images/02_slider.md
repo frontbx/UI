@@ -1,6 +1,6 @@
 # Slider
 
-FrontBx's Slider component can be used to cycle through content such as images, cards and text as a carousel.
+Frontbx's Slider component can be used to cycle through content such as images, cards and text as a carousel.
 
 ---
 
@@ -23,7 +23,7 @@ In browsers where the Page Visibility API is supported, the carousel will avoid 
 
 ### Markup
 
-Carousels don't automatically normalize slide dimensions, however in FrontBx's `config.scss` file there is a default width used for slides. You can set this up how you want or use CSS Variables to customize slide dimensions.
+Carousels don't automatically normalize slide dimensions, however in Frontbx's `config.scss` file there is a default width used for slides. You can set this up how you want or use CSS Variables to customize slide dimensions.
 
 Carousels can be instantiated through `HTML` markup using the `.js-slider` class with `.slider` for styling. Options can be set using as `JSON` in the `data-slider-options` attribute.
 
@@ -78,7 +78,7 @@ The table below outlines the available options and their respective effects on t
 
 ### JavaScript Instantiation
 
-To manually Initialize a Slider to Markup in the DOM, use FrontBx's Container and the `_Slider` method:
+To manually Initialize a Slider to Markup in the DOM, use Frontbx's Container and the `_Slider` method:
 
 ```JavaScript
 let slider = frontbx.Slider(DOMElement, options);
@@ -134,7 +134,7 @@ slider.destroy();
 
 ### Dynamic JavaScript Instantiation
 
-For dynamically generated content, Sliders can be instantiated via JavaScript to generate dynamic content on the fly with FrontBx's `Component.Create` method either via the `frontbx.Dom` or the `Slider` Component directly.
+For dynamically generated content, Sliders can be instantiated via JavaScript to generate dynamic content on the fly with Frontbx's `Component.Create` method either via the `frontbx.Dom` or the `Slider` Component directly.
 
 The `slides` value can be either an array or `HTML` strings or an Array/NodeList of `HTMLElements`.
 
@@ -167,7 +167,7 @@ let slider = frontbx.Dom().component('Slider').create(options, container);
 
 Slider uses local CSS variables on `.slider` along with Sass variables for enhanced component customization and styling. The base values are used by the UI to create all the styling. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in FrontBx's source.
+Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
 
 ```file-path
 `src/scss/_config.scss`

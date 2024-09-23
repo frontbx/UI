@@ -134,7 +134,7 @@ You can provide a label to the checkbox as you normally would. If you need the l
 
 ### Contexts
 
-Checkboxes can be further contextualized using FrontBx's contextual classes `.checkbox-primary`,  `.checkbox-secondary`,  `.checkbox-info`,  `.checkbox-success`,  `.checkbox-warning` and `.checkbox-danger`:
+Checkboxes can be further contextualized using Frontbx's contextual classes `.checkbox-primary`,  `.checkbox-secondary`,  `.checkbox-info`,  `.checkbox-success`,  `.checkbox-warning` and `.checkbox-danger`:
 
 <div class="code-content-example">
     <form class="text-center">
@@ -234,7 +234,7 @@ Additional sizing is available through `.checkbox-sm`, `checkbox-md` and `checkb
 
 Checkboxes use local CSS variables on `.checkbox` for enhanced component customization and styling. The base values are used by the UI to create all the variants. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in FrontBx's source.
+Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
 
 ```file-path
 src/scss/styles/forms/_checkbox.scss

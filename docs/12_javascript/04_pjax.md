@@ -1,6 +1,6 @@
 # Pjax
 
-FrontBx's `Pjax` Component allows you to easily handle dynamic DOM content and web-app style functionality via asynchronous requests, . 
+Frontbx's `Pjax` Component allows you to easily handle dynamic DOM content and web-app style functionality via asynchronous requests, . 
 
 ---
 
@@ -198,7 +198,7 @@ echo '
 ### JavaScript Usage
 
 
-The Pjax Component can be accessed directly via FrontBx's container using the `Pjax` key.
+The Pjax Component can be accessed directly via Frontbx's container using the `Pjax` key.
 
 ```JavaScript
 let pjax = frontbx.Pjax();
@@ -210,7 +210,7 @@ To make a request, use the `request` method:
 let pjax.request(url, options, success, error, complete, abort, headers);
 ```
 
-Pjax extends FrontBx's Ajax Component so the callbacks folllow the same principles. For details on callbacks, see the [Ajax Documentation](/docs/javascript/pjax/index.html#arguments)
+Pjax extends Frontbx's Ajax Component so the callbacks folllow the same principles. For details on callbacks, see the [Ajax Documentation](/docs/javascript/pjax/index.html#arguments)
 
 The options arguement is an Object with the following values / defaults
 
@@ -229,13 +229,13 @@ Pjax will dispatch the following custom events on `window`. The provided options
 
 | Attribute   Description |                                                                                                       |
 |-------------------------|-------------------------------------------------------------------------------------------------------|
-| `FrontBx:Pjax:start`     | Sent immediately before a Pjax request is made.                                                       |
-| `FrontBx:Pjax:success`   | Sent after a successful Pjax request is made, DOM is updated and all assets have loaded.              |
-| `FrontBx:Pjax:error`     | Sent when Pjax request receives an XHR error response.                                                |
-| `FrontBx:Pjax:abort`     | Sent when Pjax request is interrupted and aborted by either another Pjax request or manually aborted. |
+| `Frontbx:Pjax:start`     | Sent immediately before a Pjax request is made.                                                       |
+| `Frontbx:Pjax:success`   | Sent after a successful Pjax request is made, DOM is updated and all assets have loaded.              |
+| `Frontbx:Pjax:error`     | Sent when Pjax request receives an XHR error response.                                                |
+| `Frontbx:Pjax:abort`     | Sent when Pjax request is interrupted and aborted by either another Pjax request or manually aborted. |
 
 ```JavaScript
-window.addEventListener('FrontBx:Pjax:success', (e) =>
+window.addEventListener('Frontbx:Pjax:success', (e) =>
 {
     let url = e.detail.options.url;
 

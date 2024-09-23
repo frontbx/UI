@@ -322,7 +322,7 @@
         <div class="container-fluid docs-container" id="top">
             <div class="main-container js-main-container">
                 <article class="docs-body pole-sm" id="article-body"><h1 id="dom">Dom</h1>
-<p>FrontBx's Dom Component is used throughout the library to manage interactions with the live DOM.</p>
+<p>Frontbx's Dom Component is used throughout the library to manage interactions with the live DOM.</p>
 <hr />
 <ul>
 <li><p><a href="#usage">Access</a></p></li>
@@ -335,14 +335,14 @@
 </ul>
 <hr />
 <h3 id="access">Access</h3>
-<p>FrontBx's Dom Component can be accessed globally via the Inversion container through the <code>dom</code> key.</p>
+<p>Frontbx's Dom Component can be accessed globally via the Inversion container through the <code>dom</code> key.</p>
 <pre><code class="javascript language-javascript">const dom = frontbx.Dom();</code></pre>
 <hr />
 <h3 id="components">Components</h3>
-<p>FrontBx uses a specific design pattern for DOM components. In FrontBx a DOM component is a JavaScript Class or Object Function that when "mounted" binds listeners or alters the Live DOM. FrontBx uses a base <code>Component</code> base that is extended to help build Components easily. </p>
+<p>Frontbx uses a specific design pattern for DOM components. In Frontbx a DOM component is a JavaScript Class or Object Function that when "mounted" binds listeners or alters the Live DOM. Frontbx uses a base <code>Component</code> base that is extended to help build Components easily. </p>
 <h4 id="lifecycle">Lifecycle</h4>
-<p>When FrontBx first loads, it caches all DOM Components in it's container until it's ready to boot. Once ready, it loops through all DOM Components, instantiates an instance of each once, which triggers them to <code>bind</code> any listeners or alter the live DOM.</p>
-<p>Once the FrontBx's DOM has loaded, if the Live DOM is altered, mutated or updated in any way FrontBx's Dom can be "refreshed", which removes any redundant listeners on nodes that were removed and checks for any new elements that need binding.</p>
+<p>When Frontbx first loads, it caches all DOM Components in it's container until it's ready to boot. Once ready, it loops through all DOM Components, instantiates an instance of each once, which triggers them to <code>bind</code> any listeners or alter the live DOM.</p>
+<p>Once the Frontbx's DOM has loaded, if the Live DOM is altered, mutated or updated in any way Frontbx's Dom can be "refreshed", which removes any redundant listeners on nodes that were removed and checks for any new elements that need binding.</p>
 <h4 id="usage">Usage</h4>
 <p>The base Component can be retrieved via the container:</p>
 <pre><code class="javascript language-javascript">const [Component] = frontbx.get('Component');</code></pre>
@@ -359,15 +359,15 @@
 {
     frontbx._().on(node, 'click', this._handler, this);
 }</code></pre>
-<p>If FrontBx's Dom gets refreshed or the module gets refreshed specifically, <code>unbind</code> will be called with each DOM element:</p>
+<p>If Frontbx's Dom gets refreshed or the module gets refreshed specifically, <code>unbind</code> will be called with each DOM element:</p>
 <pre><code class="javascript language-javascript">Buttons.prototype.unbind = function(node)
 {
     frontbx._().off(node, 'click', this._handler, this);
 }</code></pre>
 <blockquote>
-  <p>Dom components must contain a <code>bind</code> and <code>unbind</code> method which gets called by the base Component whenever FrontBx's Dom is refreshed.</p>
+  <p>Dom components must contain a <code>bind</code> and <code>unbind</code> method which gets called by the base Component whenever Frontbx's Dom is refreshed.</p>
 </blockquote>
-<p>To register a Component in the FrontBx Dom use the <code>register</code> method:</p>
+<p>To register a Component in the Frontbx Dom use the <code>register</code> method:</p>
 <pre><code class="javascript language-javascript">dom.register('Buttons', Buttons);</code></pre>
 <p>Refreshing a Component can be used whenever the Live DOM is altered and you want to to re-bind Components. For example, when inserting content that contains HTML Components into the Live DOM.</p>
 <p>To refresh a Component call the <code>refresh</code> method. Refreshing a component will call the <code>unbind</code> method on each <code>this._DOMElements</code> node of the Component. Once completed, the Component will re-select all nodes with the original selector to re-populate <code>this._DOMElements</code> and call <code>bind</code> on each element.</p>
@@ -411,8 +411,8 @@ Buttons.prototype._handler = function(e, node)
 
 frontbx.Dom().register('Buttons', extend(Component, Buttons));</code></pre>
 <h4 id="instantiation">Instantiation</h4>
-<p>By default, FrontBx DOM Components are instantiated by HTML. However most Components offer JavaScript Instantiation to generate content dynamically.</p>
-<p>JavaScript Components can be instantiated either directly via the Component, or via FrontBx's Dom with <code>Component.create</code> and will always return a DOMElement node.</p>
+<p>By default, Frontbx DOM Components are instantiated by HTML. However most Components offer JavaScript Instantiation to generate content dynamically.</p>
+<p>JavaScript Components can be instantiated either directly via the Component, or via Frontbx's Dom with <code>Component.create</code> and will always return a DOMElement node.</p>
 <pre><code class="JavaScript language-JavaScript">let dropdown = frontbx.Dom().component('Dropdown').create(options);
 
 document.querySelector('div').appendChild(dropdown);</code></pre>
@@ -447,7 +447,7 @@ frontbx.Dom().register('Buttons', extend(Component, Buttons));
 const button = frontbx.Dom().create('Buttons', {text: 'Click me!'});</code></pre>
 <hr />
 <h3 id="events">Events</h3>
-<p>FrontBx will dispatch various events when DOM components are interacted with or the Live DOM is updated. All FrontBx events contain their data in <code>event.detail</code>.</p>
+<p>Frontbx will dispatch various events when DOM components are interacted with or the Live DOM is updated. All Frontbx events contain their data in <code>event.detail</code>.</p>
 <table>
 <thead>
 <tr>
@@ -459,43 +459,43 @@ const button = frontbx.Dom().create('Buttons', {text: 'Click me!'});</code></pre
 </thead>
 <tbody>
 <tr>
-<td><code>FrontBx:dom:ready</code></td>
+<td><code>Frontbx:dom:ready</code></td>
 <td><code>window</code></td>
 <td><code>e.detail.dom</code></td>
-<td>Fired immediately after FrontBx Dom has booted and all Components are loaded.</td>
+<td>Fired immediately after Frontbx Dom has booted and all Components are loaded.</td>
 </tr>
 <tr>
-<td><code>FrontBx:dom:refresh</code></td>
+<td><code>Frontbx:dom:refresh</code></td>
 <td><code>window</code></td>
 <td><code>e.detail.context</code></td>
-<td>Fired immediately after FrontBx Dom has been refreshed and all Components are re-bound</td>
+<td>Fired immediately after Frontbx Dom has been refreshed and all Components are re-bound</td>
 </tr>
 <tr>
-<td><code>FrontBx:dom:mutate</code></td>
+<td><code>Frontbx:dom:mutate</code></td>
 <td><code>DOMElement</code></td>
 <td><code>e.detail.DOMElement</code></td>
 <td>Fired immediately after content on live DOMElement node is mutated</td>
 </tr>
 <tr>
-<td><code>FrontBx:dom:remove</code></td>
+<td><code>Frontbx:dom:remove</code></td>
 <td><code>DOMElement</code></td>
 <td><code>e.detail.DOMElement</code></td>
 <td>Fired immediately after live DOMElement node is removed from the DOM</td>
 </tr>
 <tr>
-<td><code>FrontBx:dom:bind:[component]</code></td>
+<td><code>Frontbx:dom:bind:[component]</code></td>
 <td><code>window</code></td>
 <td><code>e.detail.component</code> <code>e.detail.context</code></td>
 <td>Fired immediately after a Dom Component is bound</td>
 </tr>
 <tr>
-<td><code>FrontBx:dom:unbind:[component]</code></td>
+<td><code>Frontbx:dom:unbind:[component]</code></td>
 <td><code>window</code></td>
 <td><code>e.detail.component</code> <code>e.detail.context</code></td>
 <td>Fired immediately after a Dom Component is unbound</td>
 </tr>
 <tr>
-<td><code>FrontBx:dom:refresh:[component]</code></td>
+<td><code>Frontbx:dom:refresh:[component]</code></td>
 <td><code>window</code></td>
 <td><code>e.detail.component</code> <code>e.detail.context</code></td>
 <td>Fired immediately after a Dom Component is refreshed</td>

@@ -1,6 +1,6 @@
 # Container
 
-FrontBx's `.container` system is the most basic layout element in FrontBx and should be used when using the grid system. Choose from a responsive, fixed-width container (meaning its max-width changes at each breakpoint) or fluid-width (meaning it’s 100% wide all the time).
+Frontbx's `.container` system is the most basic layout element in Frontbx and should be used when using the grid system. Choose from a responsive, fixed-width container (meaning its max-width changes at each breakpoint) or fluid-width (meaning it’s 100% wide all the time).
 
 While containers can be nested, most layouts do not require a nested container.
 
@@ -89,7 +89,7 @@ Container gutters are left and right padding applied to the container element. T
 
 The container system uses a combination of both local root CSS variables for enhanced component customization and styling. The base values are used by the UI to create the gutters and sizings. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in FrontBx's source.
+Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
 
 ```file-path
 `src/scss/_config.scss`

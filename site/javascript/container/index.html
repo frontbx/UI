@@ -322,7 +322,7 @@
         <div class="container-fluid docs-container" id="top">
             <div class="main-container js-main-container">
                 <article class="docs-body pole-sm" id="article-body"><h1 id="container">Container</h1>
-<p>FrontBx's components are all held via a single application interface. The only global variable in the window namespace is the global <code>FrontBx</code> object!</p>
+<p>Frontbx's components are all held via a single application interface. The only global variable in the window namespace is the global <code>Frontbx</code> object!</p>
 <hr />
 <ul>
 <li><a href="#usage">Usage</a></li>
@@ -331,7 +331,7 @@
 </ul>
 <hr />
 <h3 id="usage">Usage</h3>
-<p>FrontBx uses an Inversion control Container to hold all components and related peripherals. The FrontBx application and Container can be globally accessed via the <code>FrontBx</code> variable. This is the only globally available variable</p>
+<p>Frontbx uses an Inversion control Container to hold all components and related peripherals. The Frontbx application and Container can be globally accessed via the <code>Frontbx</code> variable. This is the only globally available variable</p>
 <pre><code class="javascript language-javascript">let fbx = frontbx;</code></pre>
 <p>To set a value into the Container use the <code>set</code> method:</p>
 <pre><code class="javascript language-javascript">fbx.set('foo bar', 'Awesome!');</code></pre>
@@ -341,7 +341,7 @@
 <pre><code class="javascript language-javascript">if (fbx.has('foo bar'))</code></pre>
 <p>The <code>delete</code> method will delete a key value pair from the Container:</p>
 <pre><code class="javascript language-javascript">fbx.delete('app');</code></pre>
-<p>Any key-value pair set to the Container can also be retrieved using a direct method call. FrontBx converts the key <code>CamelCase</code> when adding to the Container:</p>
+<p>Any key-value pair set to the Container can also be retrieved using a direct method call. Frontbx converts the key <code>CamelCase</code> when adding to the Container:</p>
 <pre><code class="javascript language-javascript">let awesome = fbx.FooBar();</code></pre>
 <hr />
 <h4 id="functions">Functions</h4>
@@ -398,7 +398,7 @@ let callback = fbx.DoSomething(fbx.IMPORT_AS_REF);
 callback('foo', 'bar');</code></pre>
 <hr />
 <h3 id="dependency-injection">Dependency injection</h3>
-<p>FrontBx comes with a handy Dependency injection utility to import functions, constants or any other properties from an object or instantiated Object Function. This means you only need to import the variables you require on a given piece of code.</p>
+<p>Frontbx comes with a handy Dependency injection utility to import functions, constants or any other properties from an object or instantiated Object Function. This means you only need to import the variables you require on a given piece of code.</p>
 <p>Here's a very basic example of setting an Object Function instance, then importing one of it's dependencies </p>
 <pre><code class="javascript language-javascript">const app = function()
 {
@@ -414,13 +414,13 @@ fbx.set('App', new app);</code></pre>
 <pre><code class="javascript language-javascript">let [bar] = fbx.import(['bar']).from('App');
 
 console.log(bar());</code></pre>
-<p>This design pattern is used throughout FrontBx for dependency injection using the <code>Utils</code> library which is set via the underscore (<code>_</code>) key in FrontBx' container.</p>
+<p>This design pattern is used throughout Frontbx for dependency injection using the <code>Utils</code> library which is set via the underscore (<code>_</code>) key in Frontbx' container.</p>
 <p>For example to import the <code>add_class</code> and <code>remove_class</code> functions, you would use the code below:</p>
 <pre><code class="javascript language-javascript">let [add_class, remove_class] = fbx.import(['add_class', 'remove_class']).from('_');</code></pre>
 <p>Although this is longer than accessing the method normally, if you're reusing the method multiple times it will ultimately save code space and memory to cache it.</p>
 <pre><code class="javascript language-javascript">fbx._().remove_class(node, 'bar');</code></pre>
 <blockquote>
-  <p>For more information on using FrontBx`s utility library - checkout the <a href="../utils/index.html">JS Utils Page</a></p>
+  <p>For more information on using Frontbx`s utility library - checkout the <a href="../utils/index.html">JS Utils Page</a></p>
 </blockquote></article>
             </div>
         </div>

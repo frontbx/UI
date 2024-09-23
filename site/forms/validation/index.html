@@ -323,7 +323,7 @@
             <div class="main-container js-main-container">
                 <article class="docs-body pole-sm" id="article-body"><h1 id="form-validation">Form Validation</h1>
 <hr />
-<p>FrontBx's <code>FormValidator</code> provides a powerful component to easily validate forms.</p>
+<p>Frontbx's <code>FormValidator</code> provides a powerful component to easily validate forms.</p>
 <hr />
 <ul>
 <li><a href="#Instantiation">Instantiation</a></li>
@@ -333,7 +333,7 @@
 </ul>
 <hr />
 <h3 id="instantiation">Instantiation</h3>
-<p>The <code>FormValidator</code> can be accessed through FrontBx's <code>Container</code>, providing your target <code>&lt;form&gt;</code> DOMElement as a parameter.</p>
+<p>The <code>FormValidator</code> can be accessed through Frontbx's <code>Container</code>, providing your target <code>&lt;form&gt;</code> DOMElement as a parameter.</p>
 <pre><code class="javascript language-javascript">const validator = frontbx.FormValidator(document.querySelector.$('#myform'));</code></pre>
 <hr />
 <h3 id="markup">Markup</h3>
@@ -471,7 +471,7 @@
 &lt;input type="text" name="name" required="true" minlength="5" maxlength="30"&gt;</code></pre>
 <hr />
 <h3 id="validating">Validating</h3>
-<p>Instantiate a <code>FormValidator</code> instance via FrontBx's <code>Container</code>, passing the target <code>&lt;form&gt;</code> DOMElement as the parameter.</p>
+<p>Instantiate a <code>FormValidator</code> instance via Frontbx's <code>Container</code>, passing the target <code>&lt;form&gt;</code> DOMElement as the parameter.</p>
 <pre><code class="javascript language-javascript">const validator = frontbx.FormValidator(document.querySelector.$('#myform'));</code></pre>
 <p>The <code>validate</code> method will run validation on all inputs based on any validation attributes and return a <code>Boolean</code>. Any invalid <code>.form-field</code> elements will then be shown as invalid.</p>
 <pre><code class="javascript language-javascript">let valid = validator.validate();
@@ -497,7 +497,7 @@ if (valid)
 <pre><code class="javascript language-javascript">validator.destroy();</code></pre>
 <hr />
 <h3 id="example">Example</h3>
-<p>Below is an example form using the validator. In a real request, you would use FrontBx's <code>Ajax</code> component or submit the form manually, however for this example we just use a <code>timeout</code>. Check the console log for more details.</p>
+<p>Below is an example form using the validator. In a real request, you would use Frontbx's <code>Ajax</code> component or submit the form manually, however for this example we just use a <code>timeout</code>. Check the console log for more details.</p>
 <div class="code-content-example">
     <form class="flex-row row-gaps-xs align-cols-center">
         <div class="col-12 col-md-8">

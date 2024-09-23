@@ -1,6 +1,6 @@
 # CSS Helopers
 
-FrontBx provides a number of helper classes to use throughout your markup to quickly and easily apply common styling.
+Frontbx provides a number of helper classes to use throughout your markup to quickly and easily apply common styling.
 
 ---
 

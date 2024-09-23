@@ -322,26 +322,55 @@
         <div class="container-fluid docs-container" id="top">
             <div class="main-container js-main-container">
                 <article class="docs-body pole-sm" id="article-body"><h1 id="download">Download</h1>
-<p>Download FrontBox to get the compiled CSS and JavaScript, source code, or include it with your favorite package managers like npm, RubyGems or Composer.</p>
+<p>Get started and download pre-compiled assets or start your own custom build with npm.</p>
 <hr />
 <ul>
 <li><a href="#compiled-css-and-js">Compiled CSS and JS</a></li>
 <li><a href="#source-files">Source files</a></li>
-<li><a href="#cdn-via-jsdelivr">npm</a></li>
+<li><a href="#npm">npm</a></li>
+<li><a href="#git">Git</a></li>
 </ul>
 <hr />
 <h3 id="compiled-css-and-js">Compiled CSS and JS</h3>
-<p>Download ready-to-use compiled assets for FrontBx to easily drop into your project.</p>
+<p>Download ready-to-use compiled assets for Frontbx to easily drop into your project.</p>
 <p><a target="blank" href="https://download-directory.github.io/?url=https%3A%2F%2Fgithub.com%2Ffrontbx%2Fui%2Ftree%2Fmain%2Fdist" class="btn btn-primary">Download</a></p>
 <hr />
 <h3 id="source-files">Source files</h3>
-<p>Compile FrontBx with your own asset pipeline by downloading our source Sass, JavaScript, and documentation files. This option requires some additional tooling.</p>
+<p>Compile Frontbx with your own asset pipeline by downloading the latest release.</p>
 <p><a href="https://github.com/frontbx/ui/archive/refs/heads/main.zip" target="_blank" class="btn btn-primary">Download Source</a></p>
+<p>After downloading, navigate  to your project directory and run the following command:</p>
+<pre><code class="bash language-bash">npm install frontbx</code></pre>
+<p>Next step, head over to the <a href="../installation/index.html">Installation Page</a> for details on how to get started running your own build.</p>
 <hr />
 <h3 id="npm">npm</h3>
-<p>Pull in Frontbx’s source files into nearly any project with some of the most popular package managers. No matter the package manager, Frontbx will require a Sass compiler and Autoprefixer for a setup that matches our official compiled versions.</p>
+<p>To get started with Frontbx via npm, ensure you have <a href="https://nodejs.org/en">node.js</a> installed. Then navigate to your project directory and run the following command:</p>
 <pre><code class="bash language-bash">npm install frontbx</code></pre>
-<p>const frontbx = require('frontbx') or import frontbx from 'frontbx' will load all of Frontbx’s plugins onto a frontbx object. The frontbx module itself exports all of our plugins. You can manually load Frontbx’s plugins individually by loading the /js/dist/*.js files under the package’s top-level directory.</p></article>
+<p>Frontbx JS can then be imported via CJS or ES6 with the following:</p>
+<pre><code class="javascript language-javascript">// cjs
+const frontbx = require('frontbx');
+
+// ES6
+import frontbx from 'frontbx';</code></pre>
+<p>Next step, head over to the <a href="../installation/index.html">Installation Page</a> for details on how to get started running your own build.</p>
+<hr />
+<h3 id="git">Git</h3>
+<p>Clone or fork the Frontbx framework with Git to create your own project. To clone the Frontbx repository <code>cd</code> to your project folder and run the following command:</p>
+<pre><code class="bash language-bash">git clone https://github.com/frontbx/ui.git ./</code></pre>
+<p>Alternatively, if you'd prefer to fork the Frontbx Github repository.</p>
+<ol>
+<li>On Github, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo">create a fork</a> of the <code>frontbx/ui</code> repository.</li>
+<li>Clone your fork to your local machine using Github Desktop or Git.</li>
+<li>Using terminal, navigate to your fork's directory.</li>
+<li>Add a second remote to the original Frontbx repository.</li>
+</ol>
+<pre><code class="bash language-bash">git remote add upstream https://github.com/frontbx/ui.git</code></pre>
+<p>Your fork can then be easily be updated when a new version is released using the following command:</p>
+<pre><code class="bash language-bash">git fetch upstream
+git checkout master
+git merge upstream/master</code></pre>
+<p>Next step, head over to the <a href="../installation/index.html">Installation Page</a> for details on how to get started running your own build.</p>
+<p>After downloading, navigate  to your project directory and run the following command:</p>
+<pre><code class="bash language-bash">npm install frontbx</code></pre></article>
             </div>
         </div>
         <footer class="site-footer">

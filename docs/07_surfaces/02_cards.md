@@ -163,7 +163,7 @@ To render media inside a card, wrap an image in a `.card-media` block. Media can
 
 #### Background images
 
-You can also make use of FrontBx's `.bg-image` inside a `.card-media` block if you need a fixed height image at a specific aspect ratio:
+You can also make use of Frontbx's `.bg-image` inside a `.card-media` block if you need a fixed height image at a specific aspect ratio:
 
 <div class="code-content-example">
     <div class="flex-row align-cols-center">
@@ -878,7 +878,7 @@ Add the `.primary-action` to any element inside a card or the card itself to mak
 
 Cards use a combination of both local CSS variables on `.card` and Sass variables for enhanced component customization and styling. The base values are used by the UI to create all the sizing. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in FrontBx's source.
+Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
 
 ```file-path
 `src/scss/_config.scss`

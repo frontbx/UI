@@ -16,7 +16,7 @@ Menus display a list of choices on a temporary or permanent surfaces.
 
 ### Markup
 
-Menu's are used throughout FrontBx and can be optionally integrating into many components such as [Cards](../../surfaces/cards/index.html), [Dropdowns](../../forms/dropdown/index.html), [Drawer](../../surfaces/drawer/index.html), [Backdrop](../../surfaces/backdrop/index.html) and more.
+Menu's are used throughout Frontbx and can be optionally integrating into many components such as [Cards](../../surfaces/cards/index.html), [Dropdowns](../../forms/dropdown/index.html), [Drawer](../../surfaces/drawer/index.html), [Backdrop](../../surfaces/backdrop/index.html) and more.
 
 Creating a basic menu is as simple as creating a list under the `.menu` class:
 
@@ -285,7 +285,7 @@ Menu uses local CSS variables on `.menu` along with Sass variables for enhanced 
 }
 ```
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in FrontBx's source.
+Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
 
 ```file-path
 `src/scss/_config.scss`
@@ -342,7 +342,7 @@ $menu-divider-space:            5px;
 
 ### JavaScript Instantiation
 
-Menu can be instantiated via JavaScript to generate dynamic content on the fly. To create a Menu dynamically, use FrontBx's `Component.Create` method either via the `frontbx.Dom` or the Menu Component directly:
+Menu can be instantiated via JavaScript to generate dynamic content on the fly. To create a Menu dynamically, use Frontbx's `Component.Create` method either via the `frontbx.Dom` or the Menu Component directly:
 
 <div class="code-content-example">
     <div class="flex-row align-cols-center flex-cols-6 flex-cols-lg-4 js-insert-container"></div>

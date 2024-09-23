@@ -28,7 +28,6 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
   		env.code = env.element.textContent;
 	});
 
-
     const Highlighter = function()
     {        
         this.super('pre > code[class*=language-]');

@@ -1,6 +1,6 @@
 # Chips
 
-Chips allow users to enter information, make selections, filter content, or trigger actions and are one of FrontBx's most versatile components.
+Chips allow users to enter information, make selections, filter content, or trigger actions and are one of Frontbx's most versatile components.
 
 While buttons are expected to appear consistently and with familiar calls to action, chips should appear dynamically as a group of multiple interactive elements.
 
@@ -18,7 +18,7 @@ While buttons are expected to appear consistently and with familiar calls to act
 
 ### Markup
 
-Chips are a modifier class to FrontBx's `.btn`, however as you'll see have extended functionality and states. A basic chip is created using the `.btn-chip` on `.btn`.
+Chips are a modifier class to Frontbx's `.btn`, however as you'll see have extended functionality and states. A basic chip is created using the `.btn-chip` on `.btn`.
 
 <div class="code-content-example">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">

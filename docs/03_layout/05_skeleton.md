@@ -1,6 +1,6 @@
 # Skeleton 
 
-FrontBx's skeleton component lets you quickly display a placeholder preview of your content before the data gets loaded to reduce load-time and improve user experience on Pjax or Ajax requests.
+Frontbx's skeleton component lets you quickly display a placeholder preview of your content before the data gets loaded to reduce load-time and improve user experience on Pjax or Ajax requests.
 
 ---
 
@@ -94,8 +94,8 @@ The table below outlines their core styles
 | `.skeleton-wave`    | Sets skeleton animation to a wave effect. Good for images                                          |
 | `.skeleton-text`    | Sets skeleton to height of body copy with matching margins with addition of rounded corners        |
 | `.skeleton-rounded` | Sets rounded corners on a skeleton                                                                 |
-| `.skeleton-btn`     | Creates a rectangular fixed height and width skeleton to match FrontBx button sizing                |
-| `.skeleton-input`   | Creates a rectangular fixed height skeleton to match FrontBx input sizing                           |
+| `.skeleton-btn`     | Creates a rectangular fixed height and width skeleton to match Frontbx button sizing                |
+| `.skeleton-input`   | Creates a rectangular fixed height skeleton to match Frontbx input sizing                           |
 | `.skeleton-circle`  | Sets skeleton to a circle. Width and height can adjusted via modifier sizes or overridden manually |
 
 <div class="code-content-example">
@@ -142,7 +142,7 @@ The table below outlines their core styles
 
 ### Text
 
-To display text and the `.skeleton-text` modifier class. The sizing, height and line height will match FrontBx's typography configurations:
+To display text and the `.skeleton-text` modifier class. The sizing, height and line height will match Frontbx's typography configurations:
 
 <div class="code-content-example">
     <div class="row">
@@ -165,7 +165,7 @@ To display text and the `.skeleton-text` modifier class. The sizing, height and 
 <div class="skeleton skeleton-text"></div>
 ```
 
-To display text headings add the appropriate heading `.skeleton-h[num]` modifier class. The sizing, height and line height will match FrontBx's typography configurations:
+To display text headings add the appropriate heading `.skeleton-h[num]` modifier class. The sizing, height and line height will match Frontbx's typography configurations:
 
 <div class="code-content-example">
     <div class="row">
@@ -495,7 +495,7 @@ Try the example below create a few skeletons
 
 ### JavaScript Utility
 
-FrontBx comes with a handy JavaScript utility component for creating skeletons on the fly. You can create a skeleton by calling `Skeleton` via the container.
+Frontbx comes with a handy JavaScript utility component for creating skeletons on the fly. You can create a skeleton by calling `Skeleton` via the container.
 
 #### Usage
 
@@ -656,7 +656,7 @@ frontbx.Skeleton(cardWrapper).load(options);
 
 Skeleton uses local CSS variables on all `.skeleton` for enhanced component customization and styling. The base values are used by the UI to create all the sizing. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in FrontBx's source.
+Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
 
 
 ```file-path

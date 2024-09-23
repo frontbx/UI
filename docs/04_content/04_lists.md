@@ -1,6 +1,6 @@
 # Lists
 
-FrontBx lists allow you to to display a continuous group of text or images quickly with very little markup. Because HTML lists are used frequently across third-party libraries and plugins, FrontBx lists are styled with the `.list` base class.
+Frontbx lists allow you to to display a continuous group of text or images quickly with very little markup. Because HTML lists are used frequently across third-party libraries and plugins, Frontbx lists are styled with the `.list` base class.
 
 ---
 
@@ -526,7 +526,7 @@ Add the `.js-select-list` class to any list to enable clickable selection.
 </ul>
 ```
 
-FrontBx will fire a custom event on the list when an item is selected. The `event.detail.item` key will tell you which item has been selected
+Frontbx will fire a custom event on the list when an item is selected. The `event.detail.item` key will tell you which item has been selected
 
 | Event              | Description                                          | 
 |--------------------|------------------------------------------------------|
@@ -618,7 +618,7 @@ List uses local CSS variables on `.list` along with Sass variables for enhanced 
 }
 ```
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in FrontBx's source.
+Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
 
 ```file-path
 `src/scss/_config.scss`
@@ -666,7 +666,7 @@ src/scss/components/list.scss
 
 ### JavaScript Instantiation
 
-List can be instantiated via JavaScript to generate dynamic content on the fly. To create a List dynamically, use FrontBx's `Component.Create` method either via the `frontbx.Dom` or the List Component directly:
+List can be instantiated via JavaScript to generate dynamic content on the fly. To create a List dynamically, use Frontbx's `Component.Create` method either via the `frontbx.Dom` or the List Component directly:
 
 ```JavaScript
 let options =

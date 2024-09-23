@@ -1,6 +1,6 @@
 # Ajax
 
-FrontBx's `Ajax` Component allows you to easily handle Ajax calls in consistent and flexible manner. 
+Frontbx's `Ajax` Component allows you to easily handle Ajax calls in consistent and flexible manner. 
 
 ---
 
@@ -12,7 +12,7 @@ FrontBx's `Ajax` Component allows you to easily handle Ajax calls in consistent 
 
 ---
 
-Ajax can be accessed via FrontBx's container using the `Ajax` key.
+Ajax can be accessed via Frontbx's container using the `Ajax` key.
 
 ```JavaScript
 let Ajax = frontbx.Ajax();

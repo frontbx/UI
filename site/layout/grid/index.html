@@ -322,7 +322,7 @@
         <div class="container-fluid docs-container" id="top">
             <div class="main-container js-main-container">
                 <article class="docs-body pole-sm" id="article-body"><h1 id="grid-system">Grid system</h1>
-<p>FrontBx uses a powerful 12 column grid system for building layouts to fit any screen or size. It's recommended to use the Flex Grid where possible however there are still instances where you may want to use the regular grid.</p>
+<p>Frontbx uses a powerful 12 column grid system for building layouts to fit any screen or size. It's recommended to use the Flex Grid where possible however there are still instances where you may want to use the regular grid.</p>
 <hr />
 <ul>
 <li><a href="#introduction">Introduction</a></li>
@@ -341,7 +341,7 @@
 </ul>
 <hr />
 <h3 id="introduction">Introduction</h3>
-<p>Grid systems are used for creating page layouts through a series of rows and columns that house your content. Here's how the FrontBx grid system works:</p>
+<p>Grid systems are used for creating page layouts through a series of rows and columns that house your content. Here's how the Frontbx grid system works:</p>
 <ul>
 <li>Use rows (<code>.row</code>) to create horizontal groups of columns.</li>
 <li>Content should be placed within columns (<code>.col</code>).</li>
@@ -352,9 +352,9 @@
 </ul>
 <hr />
 <h3 id="responsive-breakpoints">Responsive breakpoints</h3>
-<p>Because FrontBx is mobile first, all screen-size specific grid classes will be applied to the breakpoint and above. For example a <code>.col-md-12</code> class will apply to medium screen sizes and above, but not below. The grid system includes all the necessary screen-size specific classes.</p>
+<p>Because Frontbx is mobile first, all screen-size specific grid classes will be applied to the breakpoint and above. For example a <code>.col-md-12</code> class will apply to medium screen sizes and above, but not below. The grid system includes all the necessary screen-size specific classes.</p>
 <p>The grid system uses both CSS Variables and Sass variables so Customization can be made both pre and post compilation.</p>
-<p>Customization of breakpoints via Sass can be made in the <code>src/scss/_config.scss</code> file in FrontBx's source.</p>
+<p>Customization of breakpoints via Sass can be made in the <code>src/scss/_config.scss</code> file in Frontbx's source.</p>
 <pre><code class="file-path language-file-path">src/scss/_config.scss</code></pre>
 <pre><code class="sass language-sass">$breakpoint-xs:                 0 !default;
 $breakpoint-sm:                 576px !default;
@@ -410,7 +410,7 @@ $breakpoints:
 </div>
 <pre><code class="html language-html">&lt;div class="row"&gt;&lt;/div&gt;</code></pre>
 <h3 id="responsive-rows">Responsive Rows</h3>
-<p>FrontBx's grid system comes with mobile-first fully responsive set of helpers to display rows according to screen size. The table below outlines the available options.</p>
+<p>Frontbx's grid system comes with mobile-first fully responsive set of helpers to display rows according to screen size. The table below outlines the available options.</p>
 <table>
 <thead>
 <tr>
@@ -450,7 +450,7 @@ $breakpoints:
 &lt;div class="row md lg xl"&gt;&lt;/div&gt;</code></pre>
 <hr />
 <h3 id="columns">Columns</h3>
-<p>The core base class of FrontBx layouts is the <code>.col</code>. The table below outlines the classes and formats made available when implementing layouts using columns.</p>
+<p>The core base class of Frontbx layouts is the <code>.col</code>. The table below outlines the classes and formats made available when implementing layouts using columns.</p>
 <table>
 <thead>
 <tr>
@@ -499,7 +499,7 @@ $breakpoints:
     &lt;div class="col col-6"&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
 <h4 id="responsive-columns">Responsive Columns</h4>
-<p>FrontBx's grid system comes with mobile-first fully responsive set of helpers to size column layouts according to screen size. The table below outlines the available options.</p>
+<p>Frontbx's grid system comes with mobile-first fully responsive set of helpers to size column layouts according to screen size. The table below outlines the available options.</p>
 <table>
 <thead>
 <tr>
@@ -593,7 +593,7 @@ $breakpoints:
     &lt;div class="col col-6 gutter-xs gutter-l"&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
 <h4 id="responsive-gutters">Responsive gutters</h4>
-<p>FrontBx's grid system comes with mobile-first fully responsive set of helpers to size gutters according to screen size. The table below outlines the available options.</p>
+<p>Frontbx's grid system comes with mobile-first fully responsive set of helpers to size gutters according to screen size. The table below outlines the available options.</p>
 <table>
 <thead>
 <tr>
@@ -720,7 +720,7 @@ $breakpoints:
     &lt;div class="col col-12"&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
 <h4 id="responsive-poles">Responsive poles</h4>
-<p>FrontBx's grid system comes with mobile-first fully responsive set of helpers to size gutters according to screen size. The table below outlines the available options.</p>
+<p>Frontbx's grid system comes with mobile-first fully responsive set of helpers to size gutters according to screen size. The table below outlines the available options.</p>
 <table>
 <thead>
 <tr>
@@ -818,7 +818,7 @@ $breakpoints:
     &lt;div class="col col-4 col-push-8"&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
 <h4 id="responsive-push--pull">Responsive Push &amp; Pull</h4>
-<p>FrontBx's grid system comes with mobile-first fully responsive set of helpers to order column layouts according to screen size. The table below outlines the available options.</p>
+<p>Frontbx's grid system comes with mobile-first fully responsive set of helpers to order column layouts according to screen size. The table below outlines the available options.</p>
 <table>
 <thead>
 <tr>
@@ -865,7 +865,7 @@ $breakpoints:
 <hr />
 <h3 id="css-customization">CSS Customization</h3>
 <p>The grid system uses a combination of both local CSS variables on all components for enhanced component customization and styling. The base values are used by the UI to create all the sizing. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>
-<p>Customization via Sass can be made in the <code>src/scss/_config.scss</code> file in FrontBx's source.</p>
+<p>Customization via Sass can be made in the <code>src/scss/_config.scss</code> file in Frontbx's source.</p>
 <pre><code class="file-path language-file-path">`src/scss/_config.scss`</code></pre>
 <pre><code class="sass language-sass">$grid-gutters:
 (

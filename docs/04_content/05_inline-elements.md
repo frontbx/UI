@@ -1,6 +1,6 @@
 # Inline Elements
 
-FrontBx comes with a number of common  inline utility elements pre-styled to help save you time coding.
+Frontbx comes with a number of common  inline utility elements pre-styled to help save you time coding.
 
 ---
 
@@ -17,7 +17,7 @@ FrontBx comes with a number of common  inline utility elements pre-styled to hel
 
 ### Icon
 
-FrontBx comes with a complete icon library thanks to [IcoMoon](https://icomoon.io/). The library is free and comes with 675 individual icons.
+Frontbx comes with a complete icon library thanks to [IcoMoon](https://icomoon.io/). The library is free and comes with 675 individual icons.
 
 To create an icon, use a `<span>` element with the class `.glyph-icon` in addition to `.fa-[name]` with the icon name as per IcoMoon documentation.
 
@@ -64,7 +64,7 @@ The `.fancy-link` class creates a simple hover effect on any link.
 
 `.badge` can be used to display a digit of new or unread items to the user. For example how many unread notifications the user has.
 
-Badges can be customized using FrontBx's contextual classes: 
+Badges can be customized using Frontbx's contextual classes: 
 
 `.badge-primary`, `.badge-secondary`, `.badge-info`, `.badge-success`, `.badge-warning`, `.badge-danger`, `.badge-white`, `.badge-black`
 
@@ -124,7 +124,7 @@ You can customize the size or color of any badge using local CSS variables on `.
 
 Use the `.status` class to indicate a status:
 
-`.status` can be customized using FrontBx's contextual classes: 
+`.status` can be customized using Frontbx's contextual classes: 
 
 `.status-primary`, `.status-secondary`, `.status-info`, `.status-success`, `.status-warning`, `.status-danger`, `.status-white`, `.status-black`
 
@@ -168,7 +168,7 @@ You can customize the size or color of any status using local CSS variables on `
 
 `.label` can be used to emphasize content with text. There are two variants available - the standard label and `.label-outline`.
 
-`.label` can be customized using FrontBx's contextual classes: 
+`.label` can be customized using Frontbx's contextual classes: 
 
 `.label-primary`, `.label-secondary`, `.label-info`, `.label-success`, `.label-warning`, `.label-danger`, `.label-white`, `.label-black`
 
@@ -200,7 +200,7 @@ You can customize the size or color of any status using local CSS variables on `
 
 ### Loading
 
-FrontBx comes with 5 basic loading animators. Use the base class `.loader` with `.loader-[num]`. Additionally loaders can be styled with FrontBx's context classes:
+Frontbx comes with 5 basic loading animators. Use the base class `.loader` with `.loader-[num]`. Additionally loaders can be styled with Frontbx's context classes:
 
 `.loader-primary`, `.loader-secondary`, `.loader-info`, `.loader-success`, `.loader-warning`, `.loader-danger`, `.loader-white`, `.loader-black`
 

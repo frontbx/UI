@@ -1,6 +1,6 @@
 # Breakpoints
 
-Since FrontBx is developed to be mobile first, there are a handful of media queries to create sensible breakpoints for customization and various screen sizes. These breakpoints are mostly based on minimum viewport widths and allow you to adjust layouts an content as the viewport changes.
+Since Frontbx is developed to be mobile first, there are a handful of media queries to create sensible breakpoints for customization and various screen sizes. These breakpoints are mostly based on minimum viewport widths and allow you to adjust layouts an content as the viewport changes.
 
 ---
 
@@ -12,7 +12,7 @@ Since FrontBx is developed to be mobile first, there are a handful of media quer
 
 ### Breakpoints
 
-FrontBx primarily uses the following media `min-width` breakpoints for layouts, grid system, and components. The breakpoint sizes can be changed via CSS or Sass variables.
+Frontbx primarily uses the following media `min-width` breakpoints for layouts, grid system, and components. The breakpoint sizes can be changed via CSS or Sass variables.
 
 ```css
 @media (min-width: 576px) { ... }
@@ -83,7 +83,7 @@ The breakpoint system uses a combination of both local root CSS variables for en
 
 Changes to breakpoints should be made pre-compilation via Sass as breakpoint sizes on media queries via CSS variables are not supported. The CSS variables can still be changed, however this will only effect container sizing not baked in media-queries.
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in FrontBx's source.
+Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
 
 ```file-path
 `src/scss/_config.scss`

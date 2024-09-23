@@ -38,7 +38,7 @@ All HTML headings, `<h1>` through `<h6>` are available natively or explicitly vi
 
 ### Body copy
 
-The default FrontBx font size is `1.45rem` (14.5px) with a line height of `1.8`. This is applied to the body as well as paragraph tags. Additionally paragraph tags have a bottom margin of `1rem`.
+The default Frontbx font size is `1.45rem` (14.5px) with a line height of `1.8`. This is applied to the body as well as paragraph tags. Additionally paragraph tags have a bottom margin of `1rem`.
 
 <div class="code-content-example">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -50,7 +50,7 @@ The default FrontBx font size is `1.45rem` (14.5px) with a line height of `1.8`.
 ```html
 <p>...</p>
 ```
-In addition to standard paragraph tags, FrontBx has added `.p1` through `.p6` classes for text emphasis.
+In addition to standard paragraph tags, Frontbx has added `.p1` through `.p6` classes for text emphasis.
 
 <div class="code-content-example">
     <p class="p1">Paragraph 1</p>

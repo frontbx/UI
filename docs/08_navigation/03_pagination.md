@@ -139,7 +139,7 @@ Link states are customizable for different circumstances. Use `.disabled` for un
 
 Pagination uses a combination of both root and local CSS variables on `.pagination` for enhanced component customization and styling across a range of components.
 
-Customization via Sass can be made in the `scss/_config.scss` file in FrontBx's source.
+Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
 
 ```file-path
 `src/scss/_config.scss`

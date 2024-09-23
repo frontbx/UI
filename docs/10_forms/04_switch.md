@@ -136,7 +136,7 @@ You can provide a label to the switch as you normally would. If you need the lab
 
 ### Contexts
 
-Switches can be further contextualized using FrontBx's contextual classes `.switch-primary`,  `.switch-secondary`,  `.switch-info`,  `.switch-success`,  `.switch-warning` and `.switch-danger`:
+Switches can be further contextualized using Frontbx's contextual classes `.switch-primary`,  `.switch-secondary`,  `.switch-info`,  `.switch-success`,  `.switch-warning` and `.switch-danger`:
 
 <div class="code-content-example">
     <form class="text-center">
@@ -248,7 +248,7 @@ src/scss/styles/forms/_switch.scss
 ```
 
 <br>
-Customization via Sass can be made in the `src/scss/_config.scss` file in FrontBx's source.
+Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
 
 ```file-path
 src/scss/_config.scss
