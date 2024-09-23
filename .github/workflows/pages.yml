@@ -26,16 +26,14 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: https://frontbx.github.io
+      baseurl: ''
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
-        with:
-          url: https://frontbx.github.io
-          baseurl: ''
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
