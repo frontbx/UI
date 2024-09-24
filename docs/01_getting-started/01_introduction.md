@@ -59,7 +59,6 @@ Frontbx uses [FontAwesome](https://fontawesome.com/) for icons which are include
 
 Most Frontbx components require the use of `JavaScript` to function. Frontbx's JS is Component based with an inversion control system to manage it's own dependencies. Place the following `<script>` near the end of your pages, right before the closing `</body>` tag.
 
-
 ##### Bundle
 
 Include all Frontbx JavaScript Components and dependencies with Frontbx's bundled JS.
