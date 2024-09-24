@@ -37,7 +37,7 @@ If you're using a package manager or wanting to start a custom build - [Head to 
 Copy-paste the stylesheet `<link>` into your `<head>` before all other stylesheets to load Frontbx's CSS.
 
 ```html
-<link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/css/frontbx-bundle.cdn.min.css" rel="stylesheet" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.0.1/dist/css/frontbx-bundle.cdn.min.css" rel="stylesheet" crossorigin="anonymous">
 ```
 
 ##### Icons
@@ -59,12 +59,12 @@ Most Frontbx components require the use of `JavaScript` to function. Frontbx's J
 Include all Frontbx JavaScript Components and dependencies with Frontbx's bundled JS.
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/js/frontbx.bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/js/frontbx-bundle.min.js" crossorigin="anonymous"></script>
 ```
 
 ##### Lazyload
 
-Image lazy loading is included in `frontbx.bundle.min.js`, however for best performance, you should include this as a separate script in your document's `<head>`. This allows any lazyloaded images to start loading and rendering immediately - without having to wait for any other page dependencies to load.
+Image lazy loading is included in `frontbx-bundle.min.js`, however for best performance, you should include this as a separate script in your document's `<head>`. This allows any lazyloaded images to start loading and rendering immediately - without having to wait for any other page dependencies to load.
 
 For details on lazy loading images - [see the LazyLoad page](../../images/lazyload/index.html).
 
@@ -98,7 +98,7 @@ Below is a simple HTML5 Boilerplate to get up and running quickly with frontbx.
     <h1>Hello, world!</h1>
 
     <!-- Frontbx JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/js/frontbx.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/js/frontbx-bundle.min.js" crossorigin="anonymous"></script>
   </body>
 </html>
 ```

@@ -41,11 +41,11 @@ The `package.json` file includes a number of tasks for developing a project. Run
 Frontbx uses [Sass](https://sass-lang.com/) for compiling Sass source files into CSS files (included in the build process). There are three access points you will want to use:
 
 *	`scss/frontbx.scss` - Standalone Frontbx Sass ready to build without the icons.
-*	`scss/frontbx.bundle.scss` - Frontbx Sass ready to build with the icons.
+*	`scss/frontbx-bundle.scss` - Frontbx Sass ready to build with the icons.
 *	`scss/_variables.scss` - Frontbx Sass variables and configuration - no output.
 
 ```scss
-@import '~frontbx/scss/frontbx.bundle';
+@import '~frontbx/scss/frontbx-bundle';
 ```
 
 ```scss
@@ -55,12 +55,12 @@ Frontbx uses [Sass](https://sass-lang.com/) for compiling Sass source files into
 Alternatively, you can use Frontbx's ready-to-use CSS by simply adding this line to your project's entry point:
 
 ```JavaScript
-import 'frontbx/dist/css/frontbx.bundle.min.css';
+import 'frontbx/dist/css/frontbx-bundle.min.css';
 ```
 
 ##### Icons
 
-Frontbx uses [FontAwesome](https://fontawesome.com/) for icons which are included in `frontbx.bundle.min.css`. However However if you prefer to have them loaded separately or don't need them, you can use `frontbx.min.css` which excludes icons and `frontbx-icons.min.css` which is the standalone icon CSS.
+Frontbx uses [FontAwesome](https://fontawesome.com/) for icons which are included in `frontbx-bundle.min.css`. However However if you prefer to have them loaded separately or don't need them, you can use `frontbx.min.css` which excludes icons and `frontbx-icons.min.css` which is the standalone icon CSS.
 
 ```html
 <link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/css/frontbx.min.css" rel="stylesheet" crossorigin="anonymous">
@@ -75,7 +75,7 @@ $icons-url:   '../fonts/' !default;
 ```
 
 ```scss
-@import "~frontbx/scss/frontbx.bundle";
+@import "~frontbx/scss/frontbx-bundle";
 
 $local-icons: 'true';
 $icons-url:   '/path-to-fonts/';

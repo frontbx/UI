@@ -11,7 +11,7 @@
 
         <!-- Assets -->
         <script src="../../assets/js/frontbx-lazyload.min.js"></script>
-        <link rel="stylesheet" href="../../assets/css/frontbx.bundle.css">
+        <link rel="stylesheet" href="../../assets/css/frontbx-bundle.min.css">
         <link rel="stylesheet" href="../../assets/css/frontbx-docs.css">
 
         <!-- Favicons -->
@@ -376,21 +376,21 @@
 <p>Frontbx uses <a href="https://sass-lang.com/">Sass</a> for compiling Sass source files into CSS files (included in the build process). There are three access points you will want to use:</p>
 <ul>
 <li><code>scss/frontbx.scss</code> - Standalone Frontbx Sass ready to build without the icons.</li>
-<li><code>scss/frontbx.bundle.scss</code> - Frontbx Sass ready to build with the icons.</li>
+<li><code>scss/frontbx-bundle.scss</code> - Frontbx Sass ready to build with the icons.</li>
 <li><code>scss/_variables.scss</code> - Frontbx Sass variables and configuration - no output.</li>
 </ul>
-<pre><code class="scss language-scss">@import '~frontbx/scss/frontbx.bundle';</code></pre>
+<pre><code class="scss language-scss">@import '~frontbx/scss/frontbx-bundle';</code></pre>
 <pre><code class="scss language-scss">@import '~frontbx/scss/variables';</code></pre>
 <p>Alternatively, you can use Frontbx's ready-to-use CSS by simply adding this line to your project's entry point:</p>
-<pre><code class="JavaScript language-JavaScript">import 'frontbx/dist/css/frontbx.bundle.min.css';</code></pre>
+<pre><code class="JavaScript language-JavaScript">import 'frontbx/dist/css/frontbx-bundle.min.css';</code></pre>
 <h5 id="icons">Icons</h5>
-<p>Frontbx uses <a href="https://fontawesome.com/">FontAwesome</a> for icons which are included in <code>frontbx.bundle.min.css</code>. However However if you prefer to have them loaded separately or don't need them, you can use <code>frontbx.min.css</code> which excludes icons and <code>frontbx-icons.min.css</code> which is the standalone icon CSS.</p>
+<p>Frontbx uses <a href="https://fontawesome.com/">FontAwesome</a> for icons which are included in <code>frontbx-bundle.min.css</code>. However However if you prefer to have them loaded separately or don't need them, you can use <code>frontbx.min.css</code> which excludes icons and <code>frontbx-icons.min.css</code> which is the standalone icon CSS.</p>
 <pre><code class="html language-html">&lt;link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/css/frontbx.min.css" rel="stylesheet" crossorigin="anonymous"&gt;
 &lt;link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/css/frontbx-icons.min.css" rel="stylesheet" crossorigin="anonymous"&gt;</code></pre>
 <p>Additionally, icons be configured to be loaded locally (hosted on your own server) <strong>OR</strong> externally via a jsdelivr. By default, icons are set to be hosted locally and are stored in the <code>dist/fonts</code> directory. If you want to load them externally you can change this configuration in <code>src/scss/_config.scss</code> and run <code>npm run dist</code> or when running your own webpack build.</p>
 <pre><code class="scss language-scss">$local-icons: 'true' !default;
 $icons-url:   '../fonts/' !default;</code></pre>
-<pre><code class="scss language-scss">@import "~frontbx/scss/frontbx.bundle";
+<pre><code class="scss language-scss">@import "~frontbx/scss/frontbx-bundle";
 
 $local-icons: 'true';
 $icons-url:   '/path-to-fonts/';</code></pre>
@@ -458,7 +458,7 @@ $icons-url:   '/path-to-fonts/';</code></pre>
                 </div>
             </div>
         </footer>
-        <script src="../../assets/js/frontbx.bundle.min.js"></script>
+        <script src="../../assets/js/frontbx-bundle.min.js"></script>
         <script src="../../assets/js/frontbx-docs.js"></script>
     </body>
 </html>
