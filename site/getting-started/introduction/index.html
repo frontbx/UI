@@ -155,6 +155,7 @@
             <li class="menu-item active"><a data-pjax-target="#article-body" href="../../getting-started/introduction/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Introduction</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/download/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Download</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/installation/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Installation</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/build/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Build</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse " data-collapse-target="menu-customize">
@@ -348,9 +349,14 @@
 <p>Copy-paste the stylesheet <code>&lt;link&gt;</code> into your <code>&lt;head&gt;</code> before all other stylesheets to load Frontbx's CSS.</p>
 <pre><code class="html language-html">&lt;link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.0.1/dist/css/frontbx-bundle.cdn.min.css" rel="stylesheet" crossorigin="anonymous"&gt;</code></pre>
 <h5 id="icons">Icons</h5>
-<p>Frontbx uses <a href="https://fontawesome.com/">FontAwesome</a> for icons which are included in <code>frontbx-bundle.cdn.min.css</code>. However However if you prefer to have them loaded separately or don't need them, you can use <code>frontbx.cdn.min.css</code> which excludes icons and <code>frontbx-icons.cdn.min.css</code> which is the standalone icon CSS hosted externally.</p>
-<pre><code class="html language-html">&lt;link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/css/frontbx.cdn.min.css" rel="stylesheet" crossorigin="anonymous"&gt;
-&lt;link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/css/frontbx-icons.cdn.min.css" rel="stylesheet" crossorigin="anonymous"&gt;</code></pre>
+<p>Frontbx uses <a href="https://fontawesome.com/">FontAwesome</a> for icons which are included in <code>frontbx-bundle.cdn.min.css</code>. if you prefer to have them loaded separately or don't need them, you can use <code>frontbx.min.css</code> which excludes icons and FontAwesome via JSDeliver which hosts the standalone icon CSS hosted externally.</p>
+<pre><code class="html language-html">&lt;!-- Frontbx CSS --&gt;
+&lt;link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/css/frontbx.cdn.min.css" rel="stylesheet" crossorigin="anonymous"&gt;
+
+&lt;!-- FontAwesome CSS --&gt;
+&lt;link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css" rel="stylesheet" crossorigin="anonymous"&gt;
+&lt;link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/solid.min.css" rel="stylesheet" crossorigin="anonymous"&gt;
+&lt;link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/brands.min.css" rel="stylesheet" crossorigin="anonymous"&gt;</code></pre>
 <h4 id="javascript">JavaScript</h4>
 <p>Most Frontbx components require the use of <code>JavaScript</code> to function. Frontbx's JS is Component based with an inversion control system to manage it's own dependencies. Place the following <code>&lt;script&gt;</code> near the end of your pages, right before the closing <code>&lt;/body&gt;</code> tag.</p>
 <h5 id="bundle">Bundle</h5>

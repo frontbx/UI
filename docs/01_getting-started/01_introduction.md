@@ -42,11 +42,17 @@ Copy-paste the stylesheet `<link>` into your `<head>` before all other styleshee
 
 ##### Icons
 
-Frontbx uses [FontAwesome](https://fontawesome.com/) for icons which are included in `frontbx-bundle.cdn.min.css`. However However if you prefer to have them loaded separately or don't need them, you can use `frontbx.cdn.min.css` which excludes icons and `frontbx-icons.cdn.min.css` which is the standalone icon CSS hosted externally.
+Frontbx uses [FontAwesome](https://fontawesome.com/) for icons which are included in `frontbx-bundle.cdn.min.css`. if you prefer to have them loaded separately or don't need them, you can use `frontbx.min.css` which excludes icons and FontAwesome via JSDeliver which hosts the standalone icon CSS hosted externally.
 
 ```html
+<!-- Frontbx CSS -->
 <link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/css/frontbx.cdn.min.css" rel="stylesheet" crossorigin="anonymous">
-<link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/css/frontbx-icons.cdn.min.css" rel="stylesheet" crossorigin="anonymous">
+
+<!-- FontAwesome CSS -->
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css" rel="stylesheet" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/solid.min.css" rel="stylesheet" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/brands.min.css" rel="stylesheet" crossorigin="anonymous">
+
 ```
 
 #### JavaScript

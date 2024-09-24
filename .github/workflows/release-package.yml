@@ -1,8 +1,9 @@
 name: Node.js Package
 
 on:
-  release:
-    types: [created]
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
 
 jobs:
   build:
