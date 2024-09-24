@@ -52,7 +52,6 @@ Frontbx uses [FontAwesome](https://fontawesome.com/) for icons which are include
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css" rel="stylesheet" crossorigin="anonymous">
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/solid.min.css" rel="stylesheet" crossorigin="anonymous">
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/brands.min.css" rel="stylesheet" crossorigin="anonymous">
-
 ```
 
 #### JavaScript
@@ -91,8 +90,15 @@ Below is a simple HTML5 Boilerplate to get up and running quickly with frontbx.
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Frontbx CSS -->
+    <!-- Frontbx bundled CSS -->
     <link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/css/frontbx-bundle.cdn.min.css" rel="stylesheet" crossorigin="anonymous">
+
+    <!-- OR without icons / icons separately
+    <link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/css/frontbx.cdn.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/solid.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/brands.min.css" rel="stylesheet" crossorigin="anonymous">
+     -->
 
     <!-- Frontbx Lazyload JS -->
     <script src="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/js/frontbx-lazyload.min.js" crossorigin="anonymous"></script>
