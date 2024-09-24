@@ -58,7 +58,7 @@
         "{scss,js}/*.{scss,js,map}"
     ],
     "publishConfig": {
-        "@frontbx/ui:registry": "https://npm.pkg.github.com"
+        "registry": "https://npm.pkg.github.com"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.20",
