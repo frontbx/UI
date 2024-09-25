@@ -20,7 +20,7 @@ This is super handy as you can have all your messages setup in the form result, 
 
 Custom styled switches require very little markup and can be created by simply wrapping the label and input in `.switch` classed element under a `.form-field` wrapper. 
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="text-center">
         <div class="form-field pad-5">
             <span class="switch">
@@ -82,7 +82,7 @@ Custom styled switches require very little markup and can be created by simply w
 
 You can provide a label to the switch as you normally would. If you need the label to change based on the switch state, simply add `.toggle-on` and `toggle-off` elements inside the label.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form>
         <div class="form-field row floor-xxs">
             <span class="switch">
@@ -138,7 +138,7 @@ You can provide a label to the switch as you normally would. If you need the lab
 
 Switches can be further contextualized using Frontbx's contextual classes `.switch-primary`,  `.switch-secondary`,  `.switch-info`,  `.switch-success`,  `.switch-warning` and `.switch-danger`:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="text-center">
         <div class="form-field pad-5">
             <span class="switch switch-primary">
@@ -192,7 +192,7 @@ Switches can be further contextualized using Frontbx's contextual classes `.swit
 
 Additional sizing is available through `.switch-sm`, `switch-md` and `switch-lg`:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="text-center">
         <div class="form-field pad-5">
             <span class="switch switch-sm">

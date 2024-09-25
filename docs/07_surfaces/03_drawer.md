@@ -21,7 +21,7 @@ Drawer provides access to an elevated surface providing additional app functiona
 
 A Drawer can be created via Frontbx's Container with the `Drawer` method:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <button class="js-dw-trigger-1 btn">Show Drawer</button>
     </div>
@@ -39,7 +39,7 @@ const drawer = frontbx.Drawer({
 
 Drawer direction can be manged by passing `left|right|top|bottom` to  `direction` in the options.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs">
         <button class="js-dw-trigger-2 btn">Left</button>
         <button class="js-dw-trigger-3 btn">Right</button>
@@ -63,7 +63,7 @@ By default, the Drawer element itself is Swipeable when expanded - meaning once 
 
 You can make the drawer swipeable on the window element itself instead by adding the `swipeable` option. This means a drawer can opened or closed by simply swiping up/down/left/right on the window itself at any time.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="iphone-case">
         <iframe src="../drawer_iframe1.html"></iframe>
     </div>
@@ -84,7 +84,7 @@ Persistent navigation drawers can toggle open or closed and sits on the same sur
 
 Drawer will automatically wrap and unwrap page content when the it is invoked or destroyed.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row" style="height: 450px">
         <iframe src="../drawer_iframe2.html"></iframe>
     </div>
@@ -107,7 +107,7 @@ Enabling `pushbody` on persistent drawers, pushes the body content rather than a
 
 Drawer will automatically wrap and unwrap page content when the it is invoked or destroyed.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row" style="height: 450px">
         <iframe src="../drawer_iframe3.html"></iframe>
     </div>
@@ -126,7 +126,7 @@ const drawer = frontbx.Drawer({
 
 On persistent left and right drawers, adding the `peekable` option, allows the drawer to collapse into a fixed width when closed. When expanded, it appears as the standard persistent navigation drawer.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row" style="height: 450px">
         <iframe src="../drawer_iframe4.html"></iframe>
     </div>
@@ -234,7 +234,7 @@ For basic use cases where access to the underlying JavaScript, Drawers can be en
 
 To initialize a drawer, create an anchor element using the `.js-drawer-trigger` class, you can then point to the id of the target drawer element in the DOM via the `data-content` attribute. No other special markup is required.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center pole-sm">
         <button type="button" class="btn js-drawer-trigger" data-content="#menu">Toggle</button>
         <ul id="menu" class="menu" style="display: none;"> 

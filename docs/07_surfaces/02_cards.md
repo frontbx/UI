@@ -30,7 +30,7 @@ Cards consist of the following blocks, which can be moved around interchangeably
 
 Below is an example of a basic card with some text content.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center">
         <div class="card col col-md-8 col-lg-5">
             <div class="card-block">
@@ -58,7 +58,7 @@ Below is an example of a basic card with some text content.
 
 To render media inside a card, wrap an image in a `.card-media` block. Media can be placed at the at the top, bottom or center of a card:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
    <div class="flex-row col-gaps-xs row-gaps-xs">
         <div class="card col col-lg-4">
             <div class="card-media">
@@ -165,7 +165,7 @@ To render media inside a card, wrap an image in a `.card-media` block. Media can
 
 You can also make use of Frontbx's `.bg-image` inside a `.card-media` block if you need a fixed height image at a specific aspect ratio:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center">
         <div class="card col col-md-8 col-lg-5">
             <div class="card-header">
@@ -212,7 +212,7 @@ Landscape cards have their media to left or right of their content. You'll need 
 
 If using `card-header` or `.card-footer`, you'll need to your card content in a `<div>`:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center row-gaps-sm">
         <div class="col col-lg-8 card card-landscape">
             <div>
@@ -290,7 +290,7 @@ If using `card-header` or `.card-footer`, you'll need to your card content in a 
 
 Add the `.responsive` modifier class to `.card.card-landscape` to make it stack like a regular card on screens below `md` breakpoint.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center row-gaps-xs">
         <div class="col col-lg-8 card card-landscape responsive">
             <div class="card-media">
@@ -323,7 +323,7 @@ Add the `.responsive` modifier class to `.card.card-landscape` to make it stack 
 
 Add an optional header within a card by using `.card-header`, remember to wrap any content in `.card-header-content`
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center">
         <div class="card col col-md-8 col-lg-5">
             <div class="card-header">
@@ -355,7 +355,7 @@ Add an optional header within a card by using `.card-header`, remember to wrap a
 
 `.card-header` has two additional child elements for aligning items inside it `.card-header-left` and `.card-header-right`:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center">
         <div class="card col col-md-8 col-lg-5">
             <div class="card-header">
@@ -431,7 +431,7 @@ Add an optional header within a card by using `.card-header`, remember to wrap a
 
 Add an optional footer within a card by using `.card-footer`, remember to wrap any content in `.card-footer-content`:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center">
         <div class="card col col-md-8 col-lg-5">
             <div class="card-media">
@@ -469,7 +469,7 @@ Add an optional footer within a card by using `.card-footer`, remember to wrap a
 
 `.card-footer` has two additional child elements for aligning items inside it `.card-footer-left` and `.card-footer-right`:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center">
         <div class="card col col-md-8 col-lg-5">
             <div class="card-header">
@@ -550,7 +550,7 @@ Add an optional footer within a card by using `.card-footer`, remember to wrap a
 
 Dividers can be used to separate regions in cards or to indicate areas of a card that can expand. Dividers wrapped in `.card-block` should be used to separate content.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center">
         <div class="card col col-md-8 col-lg-5">
             <div class="card-header">
@@ -586,7 +586,7 @@ Dividers can be used to separate regions in cards or to indicate areas of a card
 
 Dividers outside of `.card-block` should indicate areas of a card that can expand:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center">
         <div class="card col col-md-8 col-lg-5">
             <div class="card-header">
@@ -644,7 +644,7 @@ Dividers outside of `.card-block` should indicate areas of a card that can expan
 
 To add tables to simply add the table markup without a `.card-block` so it spans the full width of the card.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center">
         <div class="card col col-lg-8">
             <div class="card-header">
@@ -719,7 +719,7 @@ To add tables to simply add the table markup without a `.card-block` so it spans
 
 There are two different ways to scroll content on a card. Use `.card-scrollable` to make the entire card scrollable, or `.card-scrollable-content` to to make the card's content scrollable while the footer and header are in fixed piositons:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center col-gaps-sm">
         <div class="card card-scrollable col-6" style="height: 600px;">
             <div class="card-header">
@@ -804,7 +804,7 @@ There are two different ways to scroll content on a card. Use `.card-scrollable`
 
 Add the `.primary-action` to any element inside a card or the card itself to make it clickable with a ripple effect:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
    <div class="flex-row col-gaps-xs row-gaps-xs align-cols-center-x align-cols-y-stretch">
         <div class="card col col-lg-4 primary-action">
             <div class="card-media">

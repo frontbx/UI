@@ -13,7 +13,7 @@ Paper serves as a base style for creating your custom content or widgets. Paper 
 
 Paper is built with as little markup and styles as possible. It's extremely simple to create a paper container using `.paper`.
 
-<div class="code-content-example paper-example">
+<div class="fbx-snippet-demo paper-example">
    <div class="flex-row flex-cols-12 flex-cols-md-4 col-gaps-sm row-gaps-sm align-cols-center pole-sm">
         <div class="paper raised-1"></div>
         <div class="paper raised-2"></div>
@@ -30,7 +30,7 @@ Paper is built with as little markup and styles as possible. It's extremely simp
 
 Paper doesn't have a border radius by default, add the `.paper-rounded` modifier to create rounded corners:
 
-<div class="code-content-example paper-example">
+<div class="fbx-snippet-demo paper-example">
    <div class="flex-row flex-cols-12 flex-cols-md-4 col-gaps-sm row-gaps-sm align-cols-center pole-sm">
         <div class="paper raised-1"></div>
         <div class="paper paper-rounded raised-1"></div>
@@ -45,7 +45,7 @@ Paper doesn't have a border radius by default, add the `.paper-rounded` modifier
 
 Use Frontbx' built in `raised-1` `raised-2` `raised-3` or `flat` modifier classes to give a paper emphasis:
 
-<div class="code-content-example paper-example">
+<div class="fbx-snippet-demo paper-example">
    <div class="flex-row flex-cols-12 flex-cols-md-3 col-gaps-sm row-gaps-sm align-cols-center pole-sm">
         <div class="paper paper-rounded flat"></div>
         <div class="paper paper-rounded raised-1"></div>

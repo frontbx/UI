@@ -23,7 +23,7 @@ Frontbx comes with a few different basic table stylings ready to go. Because tab
 
 For the most basic of table styling, simply add the `.table` class to a table.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <table class="table">
         <thead>
             <tr>
@@ -95,7 +95,7 @@ For the most basic of table styling, simply add the `.table` class to a table.
 
 Minimal tables have minimal styling applied offering a more modern aesthetic. To make a minimal table add the `.table-minimal` class to a `.table`:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <table class="table table-minimal">
         <thead>
             <tr>
@@ -167,7 +167,7 @@ Minimal tables have minimal styling applied offering a more modern aesthetic. To
 
 To make a bordered table add the `.table-bordered` class to a `.table`:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -239,7 +239,7 @@ To make a bordered table add the `.table-bordered` class to a `.table`:
 
 Add the `.table-alternate` class to a `.table` to add alternate background colors on rows:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <table class="table table-alternate">
         <thead>
             <tr>
@@ -311,7 +311,7 @@ Add the `.table-alternate` class to a `.table` to add alternate background color
 
 Make a table raised by adding the `.raised-1`, `.raised-2` or `.raised-3` classes.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <table class="table table-bordered raised-1">
         <thead>
             <tr>
@@ -383,7 +383,7 @@ Make a table raised by adding the `.raised-1`, `.raised-2` or `.raised-3` classe
 
 Adding the `.table-hover` class highlights the rows on hover.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
@@ -473,7 +473,7 @@ list.addEventListener('table:selected', event =>
 })
 ```
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <table class="table js-select-table">
         <thead>
             <tr>
@@ -546,7 +546,7 @@ list.addEventListener('table:selected', event =>
 
 A responsive table will scroll horizontally at smaller screen sizes. This is handy for tables with lots of text. Simply wrap the table in a `div` with the `.table-responsive` class.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead>
@@ -623,7 +623,7 @@ A responsive table will scroll horizontally at smaller screen sizes. This is han
 
 Adding the `.table-dense` for a table with less padding in its cells:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <table class="table table-dense">
         <thead>
             <tr>
@@ -695,7 +695,7 @@ Adding the `.table-dense` for a table with less padding in its cells:
 
 You can highlight table rows, cells, heads and foots using Frontbx's contextual classes. Simply add `.primary` `.info`, `.success`, `.warning`, or `.danger` to a table element to highlight it
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <table class="table table-bordered">
         <thead class="primary">
             <tr>
@@ -747,7 +747,7 @@ You can highlight table rows, cells, heads and foots using Frontbx's contextual 
 
 Table uses local CSS variables on `.table` along with Sass variables for enhanced component customization and styling. The base values are used by the UI to create all the styling. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <style scoped>
             .custom-table
@@ -867,7 +867,7 @@ src/scss/components/table.scss
 
 Table can be instantiated via JavaScript to generate dynamic content on the fly. To create a Table dynamically, use Frontbx's `Component.Create` method either via the `frontbx.Dom` or the Table Component directly:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center row-gaps-xs">
         <div class="card flat js-insert-table-container"></div>
     </div>

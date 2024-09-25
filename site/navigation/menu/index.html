@@ -12,7 +12,7 @@
         <!-- Assets -->
         <script src="../../assets/js/frontbx-lazyload.min.js"></script>
         <link rel="stylesheet" href="../../assets/css/frontbx-bundle.min.css">
-        <link rel="stylesheet" href="../../assets/css/frontbx-docs.css">
+        <link rel="stylesheet" href="../../assets/css/frontbx-docs.min.css">
 
         <!-- Favicons -->
         <link rel="apple-touch-icon" href="../../assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -45,7 +45,7 @@
         </svg>
         <nav class="navbar navbar-fixed raised-1 bg-black">
             <div class="container-fluid">
-                <button class="hamburger xs sm js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
+                <button class="hamburger xs sm md js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
                     <span class="hamburger-bun  hamburger-bun--top"></span>
                     <span class="hamburger-patty"></span>
                     <span class="hamburger-bun  hamburger-bun--btm"></span>
@@ -56,23 +56,23 @@
                 </a>
 
                 <ul class="nav-menu flex-content-right">
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Github">
                             <span class="fa-brands fa-github"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../getting-started/download/index.html" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Download">
                             <span class="fa fa-download"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
                             <span class="fa fa-fill-drip"></span>
                         </a>
                     </li>
                     
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <span class="drop-container">
                             <button class="btn-unstyled btn-dropdown js-drop-trigger tooltipped tooltipped-s" role="button" type="button" title="toggle theme" data-tooltip="Theme mode">
                                 <span class="fa fa-cloud-sun"></span>
@@ -96,7 +96,7 @@
                             </div>
                         </span>
                     </li>
-                    <li class="xs sm">
+                    <li class="xs sm md">
                         <button class="btn-unstyled js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-direction="right" data-state="collapsed" data-content="#desktop-options-drawer">
                             <span class="fa fa-ellipsis-vertical"></span>
                         </button>
@@ -154,8 +154,8 @@
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/introduction/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Introduction</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/download/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Download</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/contents/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Contents</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/installation/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Installation</a></li>
-            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/build/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Build</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse " data-collapse-target="menu-customize">
@@ -338,7 +338,7 @@
 <h3 id="markup">Markup</h3>
 <p>Menu's are used throughout Frontbx and can be optionally integrating into many components such as <a href="../../surfaces/cards/index.html">Cards</a>, <a href="../../forms/dropdown/index.html">Dropdowns</a>, <a href="../../surfaces/drawer/index.html">Drawer</a>, <a href="../../surfaces/backdrop/index.html">Backdrop</a> and more.</p>
 <p>Creating a basic menu is as simple as creating a list under the <code>.menu</code> class:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center flex-cols-6 flex-cols-lg-4">
         <ul class="menu"> 
             <li>Item 1</li>
@@ -360,7 +360,7 @@
 <h3 id="menu-contents">Menu contents</h3>
 <p>Menu items come with handy alignment content helpers <code>.item-left</code>, <code>.item-right</code> and <code>.item-body</code> helper to help delineate content:</p>
 <p>Additionally, the <code>.menu-divider</code> and <code>.menu-header</code> can be used to layout content</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center flex-cols-6 flex-cols-lg-4">
         <ul class="menu">
             <li class="menu-header">Menu</li>
@@ -411,7 +411,7 @@
 <hr />
 <h3 id="dense-menu">Dense menu</h3>
 <p>For larger menus with multiple items, you can use the <code>.menu-dense</code> modifier on <code>.menu</code> to reduce the padding and text size:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center flex-cols-6 flex-cols-lg-4">
         <ul class="menu menu-dense">
             <li>Item 1</li>
@@ -434,7 +434,7 @@
 <hr />
 <h3 id="menu-overflow">Menu overflow</h3>
 <p>Adding the  <code>.menu-ellipsis</code> modifier on <code>.menu</code> enables text overflow ellipsis. Ensure your text is nested inside <code>.item-body</code> for this to work:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center flex-cols-6 flex-cols-lg-4">
         <ul class="menu menu-ellipsis">
             <li>
@@ -475,7 +475,7 @@
 <hr />
 <h3 id="states">States</h3>
 <p>Menu items come with a handful of convenient states to help with different use-cases. Add the classes <code>.active</code> <code>.selected</code> or <code>.disabled</code> to a menu item to help provide context:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center flex-cols-6 flex-cols-lg-4">
         <ul class="menu">
             <li>Default</li>
@@ -500,7 +500,7 @@
 <hr />
 <h3 id="css-customization">CSS Customization</h3>
 <p>Menu uses local CSS variables on <code>.menu</code> along with Sass variables for enhanced component customization and styling. The base values are used by the UI to create all the styling. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center flex-cols-6 flex-cols-lg-4">
         <style scoped>
             .custom-menu
@@ -609,7 +609,7 @@ $menu-divider-space:            5px;</code></pre>
 <hr />
 <h3 id="javascript-instantiation">JavaScript Instantiation</h3>
 <p>Menu can be instantiated via JavaScript to generate dynamic content on the fly. To create a Menu dynamically, use Frontbx's <code>Component.Create</code> method either via the <code>frontbx.Dom</code> or the Menu Component directly:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center flex-cols-6 flex-cols-lg-4 js-insert-container"></div>
     <div class="flex-row-fluid align-cols-center pole-sm pole-n">
         <button class="btn js-insert-trigger">Insert menu</button>
@@ -773,6 +773,6 @@ frontbx.Dom().component('Menu').create(options, container);</code></pre>
             </div>
         </footer>
         <script src="../../assets/js/frontbx-bundle.min.js"></script>
-        <script src="../../assets/js/frontbx-docs.js"></script>
+        <script src="../../assets/js/frontbx-docs.min.js"></script>
     </body>
 </html>

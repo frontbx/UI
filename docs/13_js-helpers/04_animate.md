@@ -121,7 +121,7 @@ animation.stop();
 **Sandbox**
 Below is interactive demo to showcase animating various values, click the button to run the animation:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row">
         <div class="center-horizontal bg-pastelteal fill js-animate-example" style="width: 300px;">animate me!</div>
     </div>

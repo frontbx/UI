@@ -12,7 +12,7 @@
         <!-- Assets -->
         <script src="../../assets/js/frontbx-lazyload.min.js"></script>
         <link rel="stylesheet" href="../../assets/css/frontbx-bundle.min.css">
-        <link rel="stylesheet" href="../../assets/css/frontbx-docs.css">
+        <link rel="stylesheet" href="../../assets/css/frontbx-docs.min.css">
 
         <!-- Favicons -->
         <link rel="apple-touch-icon" href="../../assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -45,7 +45,7 @@
         </svg>
         <nav class="navbar navbar-fixed raised-1 bg-black">
             <div class="container-fluid">
-                <button class="hamburger xs sm js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
+                <button class="hamburger xs sm md js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
                     <span class="hamburger-bun  hamburger-bun--top"></span>
                     <span class="hamburger-patty"></span>
                     <span class="hamburger-bun  hamburger-bun--btm"></span>
@@ -56,23 +56,23 @@
                 </a>
 
                 <ul class="nav-menu flex-content-right">
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Github">
                             <span class="fa-brands fa-github"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../getting-started/download/index.html" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Download">
                             <span class="fa fa-download"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
                             <span class="fa fa-fill-drip"></span>
                         </a>
                     </li>
                     
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <span class="drop-container">
                             <button class="btn-unstyled btn-dropdown js-drop-trigger tooltipped tooltipped-s" role="button" type="button" title="toggle theme" data-tooltip="Theme mode">
                                 <span class="fa fa-cloud-sun"></span>
@@ -96,7 +96,7 @@
                             </div>
                         </span>
                     </li>
-                    <li class="xs sm">
+                    <li class="xs sm md">
                         <button class="btn-unstyled js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-direction="right" data-state="collapsed" data-content="#desktop-options-drawer">
                             <span class="fa fa-ellipsis-vertical"></span>
                         </button>
@@ -154,8 +154,8 @@
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/introduction/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Introduction</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/download/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Download</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/contents/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Contents</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/installation/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Installation</a></li>
-            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/build/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Build</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse " data-collapse-target="menu-customize">
@@ -338,7 +338,7 @@
 <hr />
 <h3 id="markup">Markup</h3>
 <p>Chips are a modifier class to Frontbx's <code>.btn</code>, however as you'll see have extended functionality and states. A basic chip is created using the <code>.btn-chip</code> on <code>.btn</code>.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn btn-chip">Hello</button>
         <button class="btn btn-chip">World</button>
@@ -365,7 +365,7 @@
 <hr />
 <h3 id="states">States</h3>
 <p>Along with their native states native states, chips can have extra states depending on their use case:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn btn-chip">normal</button>
         <button class="btn btn-chip hover">:hover</button>
@@ -382,7 +382,7 @@
 <hr />
 <h3 id="variants">Variants</h3>
 <p>Since chips are a modifier on <code>.btn</code>, they have all the same contextual variants.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn btn-primary btn-chip">.btn-primary</button>
         <button class="btn btn-info btn-chip">.btn-info</button>
@@ -417,7 +417,7 @@
 <blockquote>
   <p>Note that input chips use <code>span</code> element rather than a <code>button</code> as there is a hidden <code>input</code> element inside each chip as well as <code>button</code> to remove it.</p>
 </blockquote>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="row pole-xs">
         <div class="chips-input js-chips-input" data-input-name="chips[]" data-chip-class="">
             <span class="btn btn-chip">
@@ -468,7 +468,7 @@
     &lt;/div&gt;
 &lt;/form&gt;</code></pre>
 <p>Chips can also be used inside an unstyled input. The base input has no styling making it versatile usage.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="row">
         <div class="chips-input-unstyled js-chips-input" data-input-name="chips[]" data-chip-class="">
             <label for="chip-field2">Tags</label>
@@ -514,7 +514,7 @@
 <h3 id="suggestions">Suggestions</h3>
 <p>Chips can be used as suggestions to any existing input. Simply wrap chips in a <code>.js-chip-suggestions</code> element.</p>
 <p>The <code>data-input-target</code> must contain the <code>id</code> of the target input.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row pole-xs">
         <div class="form-field row">
             <input name="response" id="response1" type="text" placeholder="Enter some text...">
@@ -539,7 +539,7 @@
     &lt;/div&gt;
 &lt;/form&gt;</code></pre>
 <p>Chip suggestions can be incorporated into a <strong>chip input</strong> too.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row pole-xs">
         <div class="chips-input js-chips-input" data-input-name="chips[]" data-chip-class="" id="suggestions-chip-input">
             <span class="btn btn-chip">
@@ -602,7 +602,7 @@
 <h3 id="choice-chips">Choice chips</h3>
 <p>Choice chips are another way of displaying a radio input to the end-user or in other words, a multiple-choice answer.</p>
 <p>Choice chips clearly delineate and display options in a compact area. They are a good alternative to toggle buttons, radio buttons, and single select menus.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs js-choice-chips">
         <button class="btn btn-chip" data-value="small">Small</button>
         <button class="btn btn-chip" data-value="medium">Medium</button>
@@ -628,7 +628,7 @@
 <hr />
 <h3 id="filter-chips">Filter chips</h3>
 <p>Filter chips use tags or descriptive words to filter content. Filter chips clearly delineate and display options in a compact area. They are a good alternative to toggle buttons or checkboxes.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row floor-xs">
         <div class="flex-row-fluid align-cols-center col-gaps-xs js-filter-chips">
             <button class="btn btn-chip">
@@ -726,6 +726,6 @@
             </div>
         </footer>
         <script src="../../assets/js/frontbx-bundle.min.js"></script>
-        <script src="../../assets/js/frontbx-docs.js"></script>
+        <script src="../../assets/js/frontbx-docs.min.js"></script>
     </body>
 </html>

@@ -12,7 +12,7 @@
         <!-- Assets -->
         <script src="../../assets/js/frontbx-lazyload.min.js"></script>
         <link rel="stylesheet" href="../../assets/css/frontbx-bundle.min.css">
-        <link rel="stylesheet" href="../../assets/css/frontbx-docs.css">
+        <link rel="stylesheet" href="../../assets/css/frontbx-docs.min.css">
 
         <!-- Favicons -->
         <link rel="apple-touch-icon" href="../../assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -45,7 +45,7 @@
         </svg>
         <nav class="navbar navbar-fixed raised-1 bg-black">
             <div class="container-fluid">
-                <button class="hamburger xs sm js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
+                <button class="hamburger xs sm md js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
                     <span class="hamburger-bun  hamburger-bun--top"></span>
                     <span class="hamburger-patty"></span>
                     <span class="hamburger-bun  hamburger-bun--btm"></span>
@@ -56,23 +56,23 @@
                 </a>
 
                 <ul class="nav-menu flex-content-right">
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Github">
                             <span class="fa-brands fa-github"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../getting-started/download/index.html" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Download">
                             <span class="fa fa-download"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
                             <span class="fa fa-fill-drip"></span>
                         </a>
                     </li>
                     
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <span class="drop-container">
                             <button class="btn-unstyled btn-dropdown js-drop-trigger tooltipped tooltipped-s" role="button" type="button" title="toggle theme" data-tooltip="Theme mode">
                                 <span class="fa fa-cloud-sun"></span>
@@ -96,7 +96,7 @@
                             </div>
                         </span>
                     </li>
-                    <li class="xs sm">
+                    <li class="xs sm md">
                         <button class="btn-unstyled js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-direction="right" data-state="collapsed" data-content="#desktop-options-drawer">
                             <span class="fa fa-ellipsis-vertical"></span>
                         </button>
@@ -154,8 +154,8 @@
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/introduction/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Introduction</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/download/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Download</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/contents/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Contents</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/installation/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Installation</a></li>
-            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/build/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Build</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse " data-collapse-target="menu-customize">
@@ -340,7 +340,7 @@
 <p>Frontbx comes with a complete icon library thanks to <a href="https://icomoon.io/">IcoMoon</a>. The library is free and comes with 675 individual icons.</p>
 <p>To create an icon, use a <code>&lt;span&gt;</code> element with the class <code>.glyph-icon</code> in addition to <code>.fa-[name]</code> with the icon name as per IcoMoon documentation.</p>
 <p>Icons can be sized using the <code>.icon-xs</code>, <code>.icon-md</code>, <code>.icon-lg</code>, <code>.icon-xl</code>, <code>.icon-xxl</code> modifier classes which are setup in <code>scss/_config.scss</code>.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center text-center col-gaps-xs">
         <span class="fa fa-headphones icon-xs"></span>
         <span class="fa fa-headphones icon-md"></span>
@@ -357,7 +357,7 @@
 <hr />
 <h3 id="link">Link</h3>
 <p>The <code>.fancy-link</code> class creates a simple hover effect on any link.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
    <div class="row text-center">
            <a href="#" title="fancy" class="fancy-link">Fancy Link</a>&nbsp;&nbsp;
            <a href="#" title="fancy" class="fancy-link">Fancy Link</a>  
@@ -370,7 +370,7 @@
 <p>Badges can be customized using Frontbx's contextual classes: </p>
 <p><code>.badge-primary</code>, <code>.badge-secondary</code>, <code>.badge-info</code>, <code>.badge-success</code>, <code>.badge-warning</code>, <code>.badge-danger</code>, <code>.badge-white</code>, <code>.badge-black</code></p>
 <p><code>.badge</code> can be displayed in <code>.btn</code> by adding the <code>.with-badge</code> to class button.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center text-center col-gaps-xs pole-sm pole-s">
         <div class="avatar">
             <img data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" />
@@ -415,7 +415,7 @@
 <p>Use the <code>.status</code> class to indicate a status:</p>
 <p><code>.status</code> can be customized using Frontbx's contextual classes: </p>
 <p><code>.status-primary</code>, <code>.status-secondary</code>, <code>.status-info</code>, <code>.status-success</code>, <code>.status-warning</code>, <code>.status-danger</code>, <code>.status-white</code>, <code>.status-black</code></p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center text-center col-gaps-xs">
         <div class="avatar">
             <img data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" />
@@ -446,7 +446,7 @@
 <p><code>.label</code> can be used to emphasize content with text. There are two variants available - the standard label and <code>.label-outline</code>.</p>
 <p><code>.label</code> can be customized using Frontbx's contextual classes: </p>
 <p><code>.label-primary</code>, <code>.label-secondary</code>, <code>.label-info</code>, <code>.label-success</code>, <code>.label-warning</code>, <code>.label-danger</code>, <code>.label-white</code>, <code>.label-black</code></p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center text-center col-gaps-xs pole-sm pole-s">
         <span class="label">NEW</span>
         <span class="label label-primary">NEW</span>
@@ -470,7 +470,7 @@
 <h3 id="loading">Loading</h3>
 <p>Frontbx comes with 5 basic loading animators. Use the base class <code>.loader</code> with <code>.loader-[num]</code>. Additionally loaders can be styled with Frontbx's context classes:</p>
 <p><code>.loader-primary</code>, <code>.loader-secondary</code>, <code>.loader-info</code>, <code>.loader-success</code>, <code>.loader-warning</code>, <code>.loader-danger</code>, <code>.loader-white</code>, <code>.loader-black</code></p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center text-center col-gaps-sm">
         <span class="loader loader-1"></span>
         <span class="loader loader-2"></span>
@@ -484,7 +484,7 @@
     &lt;span class="loader loader-3"&gt;&lt;/span&gt;
     &lt;span class="loader loader-4"&gt;&lt;/span&gt;
     &lt;span class="loader loader-5"&gt;&lt;/span&gt;</code></pre>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center text-center col-gaps-sm">
         <span class="loader loader-1 loader-primary"></span>
         <span class="loader loader-2 loader-info"></span>
@@ -501,7 +501,7 @@
 <hr />
 <h3 id="avatar">Avatar</h3>
 <p><code>.avatar</code> can be used to to create a simple circular image avatar, an icon or initials.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center text-center col-gaps-sm">
         <div class="avatar">
             <img data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" />
@@ -524,7 +524,7 @@
     &lt;span class="initials"&gt;DT&lt;/span&gt;
 &lt;/div&gt;</code></pre>
 <p>Adjust sizing and backgrounds using the available sizing modifiers <code>.avatar-xs</code> <code>.avatar-sm</code> <code>.avatar-md</code> <code>.avatar-lg</code> <code>.avatar-xl</code> and contextual classes <code>.avatar-primary</code>, <code>.avatar-secondary</code>, <code>.avatar-info</code>, <code>.avatar-success</code>, <code>.avatar-warning</code>, <code>.avatar-danger</code>, <code>.avatar-white</code>, <code>.avatar-black</code>.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center text-center col-gaps-sm">
         <div class="avatar avatar-xs">
             <img data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" />
@@ -565,7 +565,7 @@
 <hr />
 <h3 id="caret">Caret</h3>
 <p><code>.caret</code> can be used to show the user that a button or other content will either dropdown or dropup. You can use them wherever you like but here's an example in a button.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center text-center col-gaps-sm">
         <button class="btn"> Button
             <span class="caret-s"></span>
@@ -645,6 +645,6 @@
             </div>
         </footer>
         <script src="../../assets/js/frontbx-bundle.min.js"></script>
-        <script src="../../assets/js/frontbx-docs.js"></script>
+        <script src="../../assets/js/frontbx-docs.min.js"></script>
     </body>
 </html>

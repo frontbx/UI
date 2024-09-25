@@ -27,7 +27,7 @@ Tabs are super simple to setup and require very little custom markup. Below are 
 
 Here's a basic example
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <ul class="tab-nav js-tab-nav" data-panels="">
         <li>
             <a href="#" class="active" data-tab="panel-1">Tab 1</a>
@@ -90,7 +90,7 @@ Here's a basic example
 
 Tabs come in with a handy pre-styled second variant - `.tab-border`. Add this for more traditional styled tabs
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <ul class="tab-nav tab-border js-tab-nav">
         <li>
             <a href="#" class="active" data-tab="panel-1">Tab 1</a>
@@ -122,7 +122,7 @@ Tabs come in with a handy pre-styled second variant - `.tab-border`. Add this fo
 
 Add the `.tab-centered` class to center the navigation:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <ul class="tab-nav tab-centered js-tab-nav">
         <li>
             <a href="#" class="active" data-tab="panel-1">Tab 1</a>
@@ -156,7 +156,7 @@ Because styling and JavaScript functionality of tabs are split with `.js-` class
 
 Here is an example Frontbx's `.btn` for the navigation:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid col-gaps-xs align-cols-center js-tab-nav" data-active-class="btn-primary">
         <button type="button" class="btn btn-primary" data-tab="panel-1">Tab 1</button>
         <button type="button" class="btn" data-tab="panel-2">Tab 2</button>
@@ -176,7 +176,7 @@ Here is an example Frontbx's `.btn` for the navigation:
 
 Here's another example using Frontbx `.chip` components:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <ul class="list-unstyled js-tab-nav" data-active-class="selected">
         <li>
             <button type="button" class="btn btn-chip selected" data-tab="panel-1">

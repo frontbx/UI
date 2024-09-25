@@ -15,7 +15,7 @@ Similar to tooltip, popover allows you to display helper content and information
 
 Popovers can be instantiated automatically via HTML through a combination of classes and data-attributes. Below is an example of a basic hover popover.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs">
         <button class="btn js-popover" data-popover-theme="dark" data-popover-title="Popover Title" data-popover-content="Aliqua commodo fugiat pariatur fugiat est dolor ut cillum dolore esse aliquip voluptate dolore labore." data-popover-direction="top" data-popover-event="click">Dark!</button>
         <button class="btn js-popover"  data-popover-theme="light" data-popover-title="Popover Title" data-popover-content="Aliqua commodo fugiat pariatur fugiat est dolor ut cillum dolore esse aliquip voluptate dolore labore." data-popover-direction="top" data-popover-event="click">Light</button>
@@ -48,7 +48,7 @@ Data attributes placed on the target element define various behavior of the popo
 | `data-popover-target`    | `string (node id)`                                                                    | Optional node id to clone and copy into the popover                            |
 
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs">
         <button class="btn js-popover" data-popover-title="Popover Title" data-popover-content="Laborum qui aute nulla reprehenderit culpa dolore non eu proident do ut tempor aliqua magna." data-popover-direction="top" data-popover-type="popover-primary" data-popover-event="click" data-popover-animate="pop"> Click Me! </button>
         <button class="btn js-popover" data-popover-title="Popover Title" data-popover-content="Ullamco laborum velit dolore do minim cillum minim labore sint excepteur sint laboris cupidatat proident dolor." data-popover-direction="top" data-popover-type="popover-primary" data-popover-event="hover" data-popover-animate="fade"> Hover Me! </button>
@@ -82,7 +82,7 @@ The library will clone the target node and insert the copy into the popover's co
 
 > Use the <em>.hidden</em> class on the target element to hide it so that it's not visible on the page.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="container-fuid">
         <button class="btn js-popover" data-popover-target="target-node" data-popover-event="click" data-popover-animate="pop" data-popover-direction="top"> Click Me! </button>
         <div id="target-node" class="hidden pad-20">

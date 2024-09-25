@@ -27,7 +27,7 @@ A basic menu opens underneath the anchor element by default (positioning can be 
 3.   Create the dropdown menu as the next sibling of the anchor element as `.drop-menu`.
 4.   Nest your menu as `.menu` inside the dropdown.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs">
         <div class="drop-container">
             <button type="button" class="btn btn-dropdown js-drop-trigger">Dropdown trigger</button>
@@ -61,7 +61,7 @@ A basic menu opens underneath the anchor element by default (positioning can be 
 
 Menu items have a few different options to provide additional content. To align content inside an item, wrap the main content in `.item-body` with left or right content in `.item-left` or `.item-right`:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="drop-container">
             <button type="button" class="btn btn-dropdown js-drop-trigger">Dropdown trigger</button>
@@ -115,7 +115,7 @@ Menu items have a few different options to provide additional content. To align 
 
 Use `.menu-divider` on menu item to separate menu items or add `.menu-header` to the first item to give a menu a heading:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="drop-container">
             <button type="button" class="btn btn-dropdown js-drop-trigger">Dropdown trigger</button>
@@ -178,7 +178,7 @@ Use `.menu-divider` on menu item to separate menu items or add `.menu-header` to
 
 For larger menus with multiple items, you can use the `.menu-dense` modifier on `.menu` to reduce the padding and text size.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="drop-container">
             <button type="button" class="btn btn-dropdown js-drop-trigger">Dropdown trigger</button>
@@ -226,7 +226,7 @@ For larger menus with multiple items, you can use the `.menu-dense` modifier on 
 
 Menu items come with a handful of convenient states to help with different use-cases. Add the classes `.active` `.selected` or `.disabled` to a list item to help provide context:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <ul class="menu raised-2 border-radius" style="width: 200px;">
             <li>Back</li>
@@ -265,7 +265,7 @@ Dropdown offers three different options for selectable menus.
 
 Note that when using the `.js-menu-check` modifier, Frontbx will automatically include a checkmark on the checked item.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs">
         <div class="drop-container">
             <button type="button" class="btn btn-dropdown js-drop-trigger">.js-select-menu</button>
@@ -330,7 +330,7 @@ Additionally, adding the `js-drop-selectable` modifier to the anchor element wil
 
 You may also nest a hidden `input` inside the `.drop-container` to store the input value of the selected menu item. If items have a `data-value` attribute - the input value will be updated to this attribute rather than the text of the menu item.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs">
         <div class="drop-container">
             <input type="hidden" name="menu" value="">
@@ -400,7 +400,7 @@ You may also nest a hidden `input` inside the `.drop-container` to store the inp
 
 You can change the alignment of the dropdown to different directions by adding a directional class to the `.drop-menu` element. The directions are `.drop-s` `.drop-se` `.drop-sw` `.drop-n` `.drop-ne` `.drop-nw`
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <div class="drop-container">
             <button type="button" class="btn btn-dropdown js-drop-trigger">.drop-s</button>
@@ -499,7 +499,7 @@ You can change the alignment of the dropdown to different directions by adding a
 
 Dropdown height is sized via `max-height` on `.menu`. This value can be overidden via either Sass or CSS variables.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="drop-container">
             <button type="button" class="btn btn-dropdown js-drop-trigger">Dropdown trigger</button>
@@ -577,7 +577,7 @@ Dropdown width is sized via `min-width` on `.menu`. This value can be overidden 
 }
 ```
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs">
         <div>
             <ul class="menu raised-2 border-radius" style="width: 200px;"> 
@@ -608,7 +608,7 @@ Dropdown width is sized via `min-width` on `.menu`. This value can be overidden 
 
 Add a caret to the button by using either a `.caret-s` or `caret-n` element inside inside the button or a caret icon
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <div class="drop-container">
             <button type="button" class="btn btn-dropdown js-drop-trigger">
@@ -655,7 +655,7 @@ Add a caret to the button by using either a `.caret-s` or `caret-n` element insi
 
 Add an arrow on the border of the dropdown using the `.arrow` with an arrow position `arrow-[position]` class. Arrow positions are `.arrow-s` `.arrow-se` `.arrow-sw` `.arrow-n` `.arrow-ne` `.arrow-nw`
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <div class="drop-container">
             <button type="button" class="btn btn-dropdown js-drop-trigger">.arrow-n</button>
@@ -702,7 +702,7 @@ Add an arrow on the border of the dropdown using the `.arrow` with an arrow posi
 Dropdown uses local CSS variables on `.drop-container` and `.menu` along with Sass variables for enhanced component customization and styling. The base values are used by the UI to create all the styling. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.
 
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <style scoped>
             .custom-drop

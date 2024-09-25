@@ -1,0 +1,131 @@
+// Copy button and language
+pre:after
+{
+    color: var(--fbx-gray-400);
+    content: attr(data-lang);
+    font-size: 10px;
+    font-weight: 600;
+    height: 15px;
+    line-height: 15px;
+    position: absolute;
+    left: 16px;
+    text-align: right;
+    top: 8px;
+}
+.fbx-code-snippet
+{
+    position: relative;
+}
+.fbx-code-snippet .fbx-clipboard
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: var(--fbx-gray-900);
+    padding: 10px;
+}
+.fbx-code-snippet .fbx-clipboard .fa
+{
+    font-size: 1.4rem;
+}
+.fbx-clipboard:hover,
+.fbx-clipboard.copied
+{
+    color: var(--fbx-theme-primary);
+}
+.fbx-clipboard.copied:after,
+.fbx-clipboard.copied:before
+{
+    display: inline-block;
+    text-decoration: none;
+}
+.fbx-clipboard.copied:after
+{
+    content: 'Copied!' !important;
+}
+
+// Scrollbars  
+pre[class*="language-"]
+{
+    --scrollbar-color-thumb: var(--fbx-gray-300);
+    --scrollbar-color-track: transparent;
+    --scrollbar-width: thin;
+    --scrollbar-width-legacy: 8px;
+}
+
+// Modern browsers with `scrollbar-*` support 
+@supports (scrollbar-width: auto)
+{
+    pre[class*="language-"]
+    {
+        scrollbar-color: var(--scrollbar-color-thumb) var(--scrollbar-color-track);
+        scrollbar-width: var(--scrollbar-width);
+    }
+}
+
+// Legacy browsers with `::-webkit-scrollbar-*` support 
+@supports selector(::-webkit-scrollbar)
+{
+    pre[class*="language-"]::-webkit-scrollbar-thumb
+    {
+        background: var(--scrollbar-color-thumb);
+        border-radius: 20px;
+    }
+    pre[class*="language-"]::-webkit-scrollbar-track
+    {
+        background: var(--scrollbar-color-track);
+    }
+    pre[class*="language-"]::-webkit-scrollbar
+    {
+        max-width: var(--scrollbar-width-legacy);
+        max-height: var(--scrollbar-width-legacy);
+    }
+}
+
+/* Snippets with file path  */
+.fbx-code-snippet.file-path 
+{
+    margin-bottom: 0;
+}
+.fbx-code-snippet.file-path + .fbx-code-snippet
+{
+    margin-top: 0;
+}
+.fbx-code-snippet.file-path .fbx-clipboard
+{
+    display: none;
+}
+pre[class*="language-file-path"]
+{
+    padding: 8px 16px;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--fbx-gray-300);
+    font-size: 12.5px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+pre[class*="language-file-path"]:after
+{
+    content: '';
+    display: none;
+}
+pre[class*="language-file-path"] > code
+{
+    color: var(--fbx-gray-400);
+}
+
+.fbx-code-snippet.file-path + .fbx-code-snippet pre
+{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding-top: 10px;
+}
+.fbx-code-snippet.file-path + .fbx-code-snippet pre:after
+{
+    content: '';
+    display: none;
+}
+.fbx-code-snippet.file-path + .fbx-code-snippet .fbx-clipboard
+{
+    top: -36px;
+}

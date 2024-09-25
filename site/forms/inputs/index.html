@@ -12,7 +12,7 @@
         <!-- Assets -->
         <script src="../../assets/js/frontbx-lazyload.min.js"></script>
         <link rel="stylesheet" href="../../assets/css/frontbx-bundle.min.css">
-        <link rel="stylesheet" href="../../assets/css/frontbx-docs.css">
+        <link rel="stylesheet" href="../../assets/css/frontbx-docs.min.css">
 
         <!-- Favicons -->
         <link rel="apple-touch-icon" href="../../assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -45,7 +45,7 @@
         </svg>
         <nav class="navbar navbar-fixed raised-1 bg-black">
             <div class="container-fluid">
-                <button class="hamburger xs sm js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
+                <button class="hamburger xs sm md js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
                     <span class="hamburger-bun  hamburger-bun--top"></span>
                     <span class="hamburger-patty"></span>
                     <span class="hamburger-bun  hamburger-bun--btm"></span>
@@ -56,23 +56,23 @@
                 </a>
 
                 <ul class="nav-menu flex-content-right">
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Github">
                             <span class="fa-brands fa-github"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../getting-started/download/index.html" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Download">
                             <span class="fa fa-download"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
                             <span class="fa fa-fill-drip"></span>
                         </a>
                     </li>
                     
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <span class="drop-container">
                             <button class="btn-unstyled btn-dropdown js-drop-trigger tooltipped tooltipped-s" role="button" type="button" title="toggle theme" data-tooltip="Theme mode">
                                 <span class="fa fa-cloud-sun"></span>
@@ -96,7 +96,7 @@
                             </div>
                         </span>
                     </li>
-                    <li class="xs sm">
+                    <li class="xs sm md">
                         <button class="btn-unstyled js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-direction="right" data-state="collapsed" data-content="#desktop-options-drawer">
                             <span class="fa fa-ellipsis-vertical"></span>
                         </button>
@@ -154,8 +154,8 @@
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/introduction/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Introduction</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/download/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Download</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/contents/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Contents</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/installation/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Installation</a></li>
-            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/build/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Build</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse " data-collapse-target="menu-customize">
@@ -342,7 +342,7 @@
 <h3 id="markup">Markup</h3>
 <p>Frontbx inputs allow you to style forms quickly with very little markup. Because HTML inputs are used frequently across third-party libraries and plugins, Frontbx inputs are styled with the <code>.form-field</code> wrapper class.</p>
 <p>The default variant for inputs is a <em>floating label</em> style input which comes in both an underline and the default style:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="row">
         <div class="flex-row flex-cols-12 flex-cols-md-6 col-gaps-sm row-gaps-sm align-cols-center">
             <div class="form-field col-md-4">
@@ -369,7 +369,7 @@
 &lt;/div&gt;</code></pre>
 <h4 id="variants">Variants</h4>
 <p>In addition to the two base variants, inputs can be styled both without a label or with a label outside the input by simply omitting the <code>&lt;label&gt;</code> or placing it before the <code>&lt;input&gt;</code> inside the <code>.form-field</code>. Below is a simple example to showcase this:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="flex-row row-gaps-sm">
         <div class="flex-row flex-cols-12 flex-cols-md-6 col-gaps-sm row-gaps-sm align-cols-center">
             <div class="form-field col-md-4">
@@ -416,7 +416,7 @@
 <h3 id="states">States</h3>
 <p>Input states are styled on modifier classes added to the <code>.form-field</code> wrapper element via JavaScript. The library adds <code>.not-empty</code>, <code>.empty</code> &amp; <code>.focus</code> automatically depending on the input state.</p>
 <p>Additional context states of <code>.danger</code>, <code>.warning</code> &amp; <code>.disabled</code> are also made available.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="flex-row row-gaps-xs align-cols-center">
         <div class="col-12 col-md-8 col-lg-6">
             <div class="row pole-sm pole-s">
@@ -508,7 +508,7 @@
 <hr />
 <h3 id="helper-text">Helper text</h3>
 <p>Input errors and warning help-text can be used when running form validations. They're hidden by default and will display when the the wrapping <code>.form-field</code> has a class of <code>.danger</code> or <code>.warning</code>.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="flex-row row-gaps-xs align-cols-center">
         <div class="col-12 col-md-8 col-lg-6">
             <div class="row pole-xs pole-s">
@@ -548,7 +548,7 @@
 <h3 id="add-ons">Add-ons</h3>
 <h4 id="prompts">Prompts</h4>
 <p>Input prompts can be added inside a <code>.form-field</code> by adding the <code>.input-group</code> modifier to the wrapper and be placed either side of the input. In cases where the add-on is before (or either side) of the input - simply wrap the <code>&lt;label&gt;</code> and <code>&lt;input&gt;</code> in a <code>div</code></p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="flex-row row-gaps-xs align-cols-center">
         <div class="col-12 col-md-8 col-lg-6">
             <div class="row pole-sm pole-s">
@@ -605,7 +605,7 @@
 &lt;/div&gt;</code></pre>
 <h4 id="buttons">Buttons</h4>
 <p><a href="../buttons/index.html">Buttons</a> can be place either inside or outside the <code>.form-field</code> wrapper. Adding a button inside the form-field has the effect of integrating the button into the input.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="flex-row row-gaps-xs align-cols-center">
         <div class="col-12 col-md-8 col-lg-6">
             <div class="row pole-sm pole-s">
@@ -680,7 +680,7 @@
 &lt;/div&gt;</code></pre>
 <h4 id="icons">Icons</h4>
 <p>Icons can be integrated into input inside the <code>.form-field</code> wrapper as an add-on. No additional markup or classes are required however:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="flex-row row-gaps-xs align-cols-center">
         <div class="col-12 col-md-8 col-lg-6">
             <div class="row pole-sm pole-s">
@@ -730,7 +730,7 @@
 <hr />
 <h3 id="contexts">Contexts</h3>
 <p>In addition to the default styles, the <code>.field-on-bg</code> modifier provides pre-styled markup for inputs that are on a colored background such as <code>bg-black</code> <code>.bg-black</code> etc…</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="row bg-black pole-sm">
         <div class="flex-row-fluid col-gaps-sm align-cols-center">
             <div class="form-field field-on-bg">
@@ -796,7 +796,7 @@
 <hr />
 <h3 id="field-types">Field types</h3>
 <p>In addition to regular inputs, <code>.form-field</code> can be used with both <code>&lt;select&gt;</code> and <code>&lt;textarea&gt;</code> elements. Below is a sample of various input types and how they present:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="flex-row row-gaps-xs align-cols-center">
         <div class="col-12 col-md-8 col-lg-6">
             <div class="row pole-xs pole-s">
@@ -917,6 +917,6 @@
             </div>
         </footer>
         <script src="../../assets/js/frontbx-bundle.min.js"></script>
-        <script src="../../assets/js/frontbx-docs.js"></script>
+        <script src="../../assets/js/frontbx-docs.min.js"></script>
     </body>
 </html>

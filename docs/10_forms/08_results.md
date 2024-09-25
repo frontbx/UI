@@ -14,7 +14,7 @@ This is super handy as you can have all your messages setup in the form result, 
 
 ### Markup
  
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
 	<form class="info">
 	    <div class="form-result">
 	        <div class="msg msg-info" aria-hidden="true">

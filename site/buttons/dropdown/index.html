@@ -12,7 +12,7 @@
         <!-- Assets -->
         <script src="../../assets/js/frontbx-lazyload.min.js"></script>
         <link rel="stylesheet" href="../../assets/css/frontbx-bundle.min.css">
-        <link rel="stylesheet" href="../../assets/css/frontbx-docs.css">
+        <link rel="stylesheet" href="../../assets/css/frontbx-docs.min.css">
 
         <!-- Favicons -->
         <link rel="apple-touch-icon" href="../../assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -45,7 +45,7 @@
         </svg>
         <nav class="navbar navbar-fixed raised-1 bg-black">
             <div class="container-fluid">
-                <button class="hamburger xs sm js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
+                <button class="hamburger xs sm md js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
                     <span class="hamburger-bun  hamburger-bun--top"></span>
                     <span class="hamburger-patty"></span>
                     <span class="hamburger-bun  hamburger-bun--btm"></span>
@@ -56,23 +56,23 @@
                 </a>
 
                 <ul class="nav-menu flex-content-right">
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Github">
                             <span class="fa-brands fa-github"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../getting-started/download/index.html" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Download">
                             <span class="fa fa-download"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
                             <span class="fa fa-fill-drip"></span>
                         </a>
                     </li>
                     
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <span class="drop-container">
                             <button class="btn-unstyled btn-dropdown js-drop-trigger tooltipped tooltipped-s" role="button" type="button" title="toggle theme" data-tooltip="Theme mode">
                                 <span class="fa fa-cloud-sun"></span>
@@ -96,7 +96,7 @@
                             </div>
                         </span>
                     </li>
-                    <li class="xs sm">
+                    <li class="xs sm md">
                         <button class="btn-unstyled js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-direction="right" data-state="collapsed" data-content="#desktop-options-drawer">
                             <span class="fa fa-ellipsis-vertical"></span>
                         </button>
@@ -154,8 +154,8 @@
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/introduction/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Introduction</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/download/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Download</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/contents/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Contents</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/installation/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Installation</a></li>
-            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/build/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Build</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse " data-collapse-target="menu-customize">
@@ -347,7 +347,7 @@
 <li>Create the dropdown menu as the next sibling of the anchor element as <code>.drop-menu</code>.</li>
 <li>Nest your menu as <code>.menu</code> inside the dropdown.</li>
 </ol>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs">
         <div class="drop-container">
             <button type="button" class="btn btn-dropdown js-drop-trigger">Dropdown trigger</button>
@@ -374,7 +374,7 @@
 <hr />
 <h3 id="menu-items">Menu items</h3>
 <p>Menu items have a few different options to provide additional content. To align content inside an item, wrap the main content in <code>.item-body</code> with left or right content in <code>.item-left</code> or <code>.item-right</code>:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="drop-container">
             <button type="button" class="btn btn-dropdown js-drop-trigger">Dropdown trigger</button>
@@ -423,7 +423,7 @@
     &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
 <p>Use <code>.menu-divider</code> on menu item to separate menu items or add <code>.menu-header</code> to the first item to give a menu a heading:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="drop-container">
             <button type="button" class="btn btn-dropdown js-drop-trigger">Dropdown trigger</button>
@@ -479,7 +479,7 @@
 <hr />
 <h3 id="dense-menu">Dense menu</h3>
 <p>For larger menus with multiple items, you can use the <code>.menu-dense</code> modifier on <code>.menu</code> to reduce the padding and text size.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="drop-container">
             <button type="button" class="btn btn-dropdown js-drop-trigger">Dropdown trigger</button>
@@ -520,7 +520,7 @@
 <hr />
 <h3 id="states">States</h3>
 <p>Menu items come with a handful of convenient states to help with different use-cases. Add the classes <code>.active</code> <code>.selected</code> or <code>.disabled</code> to a list item to help provide context:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <ul class="menu raised-2 border-radius" style="width: 200px;">
             <li>Back</li>
@@ -552,7 +552,7 @@
 <li><code>.js-active-menu</code> - Add this modifier class to the <code>.menu</code> to toggle the <code>.active</code> class on items when clicked.</li>
 </ol>
 <p>Note that when using the <code>.js-menu-check</code> modifier, Frontbx will automatically include a checkmark on the checked item.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs">
         <div class="drop-container">
             <button type="button" class="btn btn-dropdown js-drop-trigger">.js-select-menu</button>
@@ -611,7 +611,7 @@
 &lt;/div&gt;</code></pre>
 <p>Additionally, adding the <code>js-drop-selectable</code> modifier to the anchor element will replace the anchor element <code>innerText</code> with the text of a selected menu item.</p>
 <p>You may also nest a hidden <code>input</code> inside the <code>.drop-container</code> to store the input value of the selected menu item. If items have a <code>data-value</code> attribute - the input value will be updated to this attribute rather than the text of the menu item.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs">
         <div class="drop-container">
             <input type="hidden" name="menu" value="">
@@ -674,7 +674,7 @@
 <hr />
 <h3 id="positioning">Positioning</h3>
 <p>You can change the alignment of the dropdown to different directions by adding a directional class to the <code>.drop-menu</code> element. The directions are <code>.drop-s</code> <code>.drop-se</code> <code>.drop-sw</code> <code>.drop-n</code> <code>.drop-ne</code> <code>.drop-nw</code></p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <div class="drop-container">
             <button type="button" class="btn btn-dropdown js-drop-trigger">.drop-s</button>
@@ -766,7 +766,7 @@
 <hr />
 <h3 id="sizing">Sizing</h3>
 <p>Dropdown height is sized via <code>max-height</code> on <code>.menu</code>. This value can be overidden via either Sass or CSS variables.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="drop-container">
             <button type="button" class="btn btn-dropdown js-drop-trigger">Dropdown trigger</button>
@@ -835,7 +835,7 @@
 <pre><code class="css language-css">.drop-container {
     --fbx-dropdown-width: 160px;
 }</code></pre>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs">
         <div>
             <ul class="menu raised-2 border-radius" style="width: 200px;"> 
@@ -859,7 +859,7 @@
 <hr />
 <h3 id="carets">Carets</h3>
 <p>Add a caret to the button by using either a <code>.caret-s</code> or <code>caret-n</code> element inside inside the button or a caret icon</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <div class="drop-container">
             <button type="button" class="btn btn-dropdown js-drop-trigger">
@@ -899,7 +899,7 @@
 <hr />
 <h3 id="arrows">Arrows</h3>
 <p>Add an arrow on the border of the dropdown using the <code>.arrow</code> with an arrow position <code>arrow-[position]</code> class. Arrow positions are <code>.arrow-s</code> <code>.arrow-se</code> <code>.arrow-sw</code> <code>.arrow-n</code> <code>.arrow-ne</code> <code>.arrow-nw</code></p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <div class="drop-container">
             <button type="button" class="btn btn-dropdown js-drop-trigger">.arrow-n</button>
@@ -938,7 +938,7 @@
 <hr />
 <h3 id="css-customization">CSS Customization</h3>
 <p>Dropdown uses local CSS variables on <code>.drop-container</code> and <code>.menu</code> along with Sass variables for enhanced component customization and styling. The base values are used by the UI to create all the styling. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <style scoped>
             .custom-drop
@@ -1254,6 +1254,6 @@ frontbx.Dom().component('Dropdown').create(options, container);</code></pre>
             </div>
         </footer>
         <script src="../../assets/js/frontbx-bundle.min.js"></script>
-        <script src="../../assets/js/frontbx-docs.js"></script>
+        <script src="../../assets/js/frontbx-docs.min.js"></script>
     </body>
 </html>

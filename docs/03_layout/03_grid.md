@@ -90,7 +90,7 @@ Rows are used to as a clearfixing wrapper element to contain columns. Empty rows
 |--------|---------|--  -------------------------------------------------------------|
 | `.row` | `.row`  | Wraps around floated children, clearfixes and spans full width. |
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.row</code></div>
     <div class="row">
         <div class="col col-12">
@@ -113,7 +113,7 @@ Frontbx's grid system comes with mobile-first fully responsive set of helpers to
 
 The example below shows two rows. The first that displays on mobile (`<=md` breakpoint) and a second that displays on desktop (`>=lg` breakpoint).
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.row</code><code>.xs</code><code>.sm</code></div>
     <div class="row xs sm pole-xs pole-s">
         <div class="col col-12">
@@ -144,7 +144,7 @@ The core base class of Frontbx layouts is the `.col`. The table below outlines t
 | Column base | `.col`       | n/a     | `.col`   | Floats the column left                         |
 | Column size | `.col-[num]` | `1-12`  | `.col-6` | Uses available space defined by column number. |
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.row</code></div>
     <div class="row">
         <div class="col col-12">
@@ -176,7 +176,7 @@ Frontbx's grid system comes with mobile-first fully responsive set of helpers to
 |-----------------|----------------------------|-----------------------------------|-------------|------------------------------------------------------|
 | Breakpoint size | `.col-[breakpoint]-[size]` | `xs` `sm` `md` `lg` `xl` & `1-12` | `.col-sm-3` | Sizes column to width at specified breakpoint and up |
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.row</code></div>
     <div class="row">
         <div class="col col-6 col-lg-4 gutter-xs gutter-r">
@@ -212,7 +212,7 @@ Gutters apply a padding size on the sides of columns. The table below outlines t
 | Gutter side | `.gutter-[side]` | `l`, `r`                        | `.gutter-r`  | Applies padding to left or right gutter only            |
 | No gutter   | `.no-gutter`     | None                            | `.no-gutter` | Sets horizontal padding to zero                         |
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.row</code></div>
     <div class="row">
         <div class="col col-6 gutter-xs gutter-r">
@@ -243,7 +243,7 @@ Frontbx's grid system comes with mobile-first fully responsive set of helpers to
 
 The example below is a little more complicated. It shows how to space columns evenly using a combination of left and right gutters and breakpoints.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.row</code></div>
     <div class="row">
         <div class="col col-6 col-lg-3 gutter-xxs gutter-r gutter-lg-xs gutter-lg-r">
@@ -287,7 +287,7 @@ Poles are essentially vertical gutters. `.pole-n` applies a `padding-top` value 
 | Pole side | `.pole-[side]` | `n`, `s`                        | `.pole-s`  | Applies padding to top or bottom pole only                  |
 | No pole   | `.no-pole`     | None                            | `.no-pole` | Sets vertical padding to zero                               |
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.row</code></div>
     <div class="row">
         <div class="col col-12">
@@ -328,7 +328,7 @@ Frontbx's grid system comes with mobile-first fully responsive set of helpers to
 
 In the example below, the first col the poles are sized differently and different breakpoints:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>row</code></div>
     <div class="row">
         <div class="col col-12 pole-xxs pole-lg-xs">
@@ -360,7 +360,7 @@ The `.push` and `.pull` system allows you to easily change the order of grid col
 
 In the example below the second column is pushed to the left and the first is pushed right - reordering the layout of the columns:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>row</code></div>
     <div class="row">
         <div class="col col-8 col-pull-4 gutter-xxs gutter-l">
@@ -390,7 +390,7 @@ Frontbx's grid system comes with mobile-first fully responsive set of helpers to
 
 In the example below both columns are full width on mobile. On breakpoint (>=md) they are re-ordered.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>row</code></div>
     <div class="row">
         <div class="col col-12 col-md-8 col-md-pull-4 gutter-md-xxs gutter-md-l pole-xxs pole-s no-pole-md">

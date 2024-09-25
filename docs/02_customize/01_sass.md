@@ -98,7 +98,7 @@ This design pattern allows a high level of customization directly from CSS witho
 
 Here is a very simple example of change the background color of a [Paper component](../../surfaces/paper/index.html) - one of Frontbx's most basic components.
 
-<div class="code-content-example paper-example">
+<div class="fbx-snippet-demo paper-example">
 	<style scoped>
 	.custom-paper, .fbx-darkmode .custom-paper
 	{

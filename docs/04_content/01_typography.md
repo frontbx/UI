@@ -18,7 +18,7 @@ Font sizing, padding, margins and line-heights are all set out using rem with a 
 
 All HTML headings, `<h1>` through `<h6>` are available natively or explicitly via `.h1` to `.h6` for when you want to match the font styling of a heading but still want your text to be displayed inline.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <h1>Heading 1</h1>
     <h2>Heading 2</h2>
     <h3>Heading 3</h3>
@@ -40,7 +40,7 @@ All HTML headings, `<h1>` through `<h6>` are available natively or explicitly vi
 
 The default Frontbx font size is `1.45rem` (14.5px) with a line height of `1.8`. This is applied to the body as well as paragraph tags. Additionally paragraph tags have a bottom margin of `1rem`.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
     <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
@@ -52,7 +52,7 @@ The default Frontbx font size is `1.45rem` (14.5px) with a line height of `1.8`.
 ```
 In addition to standard paragraph tags, Frontbx has added `.p1` through `.p6` classes for text emphasis.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <p class="p1">Paragraph 1</p>
     <p class="p2">Paragraph 2</p>
     <p class="p3">Paragraph 3</p>
@@ -76,7 +76,7 @@ In addition to standard paragraph tags, Frontbx has added `.p1` through `.p6` cl
 
 In-line text elements have some very minimal styling applied to ensure they display consistently.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <p>
         <mark>Lorem ipsum dolor sit amet consectetur adipiscing elit</mark>
         <br>
@@ -117,7 +117,7 @@ In-line text elements have some very minimal styling applied to ensure they disp
 
 Blockquotes have some very basic styling applied, but stylized versions are available via contextual classes `bq-*`.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <blockquote>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
     </blockquote>
@@ -145,7 +145,7 @@ Blockquotes have some very basic styling applied, but stylized versions are avai
 
 Add a `<footer>` for identifying the source. Wrap the name of the source work in `<cite>`.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <blockquote>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
         <footer>Someone famous in
@@ -173,7 +173,7 @@ Some rudimentary list styling allows you to display consistent, simple and attra
 
 A list of items in which the order does not explicitly matter.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <ul>
         <li>Lorem ipsum dolor sit amet</li>
         <li>Consectetur adipiscing elit</li>
@@ -203,7 +203,7 @@ A list of items in which the order does not explicitly matter.
 
 A list of items in which the order does explicitly matter.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <ol>
         <li>Lorem ipsum dolor sit amet</li>
         <li>Consectetur adipiscing elit</li>
@@ -233,7 +233,7 @@ A list of items in which the order does explicitly matter.
 
 Use `.list-inline` to place all list items on a single line and some light padding.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <ul class="list-inline">
         <li>Lorem ipsum dolor sit amet</li>
         <li>Consectetur adipiscing elit</li>
@@ -253,7 +253,7 @@ Use `.list-inline` to place all list items on a single line and some light paddi
 
 Strip list styles from a list, no padding or margins.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <ul class="list-unstyled">
         <li>Lorem ipsum dolor sit amet</li>
         <li>Consectetur adipiscing elit</li>
@@ -273,7 +273,7 @@ Strip list styles from a list, no padding or margins.
 
 A list of terms with their associated descriptions.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <dl>
         <dt>Lorem ipsum dolor sit amet</dt>
         <dd>Sed do eiusmod tempor incididunt consectetur adipiscing elit.</dd>
@@ -297,7 +297,7 @@ A list of terms with their associated descriptions.
 
 Make terms and descriptions line up side-by-side.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <dl class="dl-horizontal">
         <dt>Lorem ipsum dolor sit amet</dt>
         <dd>Sed do eiusmod tempor incididunt consectetur adipiscing elit.</dd>
@@ -321,7 +321,7 @@ Make terms and descriptions line up side-by-side.
 
 Wrap inline snippets of code with `<code>`
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <p>So you can wrap this <code>.class-name</code> in a <code>code</code> tag.</p>
 </div>
 
@@ -333,7 +333,7 @@ Wrap inline snippets of code with `<code>`
 
 Use a `<pre>` tag for snippets spanning multiple lines. You can also wrap a `<code>` tag inside a `<pre>` tag.
 
-<div class="code-content-example"><pre>.foo
+<div class="fbx-snippet-demo"><pre>.foo
 {
     color: red;
 }</pre>
@@ -356,7 +356,7 @@ Use a `<pre>` tag for snippets spanning multiple lines. You can also wrap a `<co
 
 Present contact information for the nearest ancestor or the entire body of work. Preserve formatting by ending all lines with `<br>`.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <address>
         <strong>Twitter, Inc.</strong><br>
         1355 Market Street, Suite 900<br>

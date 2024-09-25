@@ -12,7 +12,7 @@
         <!-- Assets -->
         <script src="../../assets/js/frontbx-lazyload.min.js"></script>
         <link rel="stylesheet" href="../../assets/css/frontbx-bundle.min.css">
-        <link rel="stylesheet" href="../../assets/css/frontbx-docs.css">
+        <link rel="stylesheet" href="../../assets/css/frontbx-docs.min.css">
 
         <!-- Favicons -->
         <link rel="apple-touch-icon" href="../../assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -45,7 +45,7 @@
         </svg>
         <nav class="navbar navbar-fixed raised-1 bg-black">
             <div class="container-fluid">
-                <button class="hamburger xs sm js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
+                <button class="hamburger xs sm md js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
                     <span class="hamburger-bun  hamburger-bun--top"></span>
                     <span class="hamburger-patty"></span>
                     <span class="hamburger-bun  hamburger-bun--btm"></span>
@@ -56,23 +56,23 @@
                 </a>
 
                 <ul class="nav-menu flex-content-right">
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Github">
                             <span class="fa-brands fa-github"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../getting-started/download/index.html" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Download">
                             <span class="fa fa-download"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
                             <span class="fa fa-fill-drip"></span>
                         </a>
                     </li>
                     
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <span class="drop-container">
                             <button class="btn-unstyled btn-dropdown js-drop-trigger tooltipped tooltipped-s" role="button" type="button" title="toggle theme" data-tooltip="Theme mode">
                                 <span class="fa fa-cloud-sun"></span>
@@ -96,7 +96,7 @@
                             </div>
                         </span>
                     </li>
-                    <li class="xs sm">
+                    <li class="xs sm md">
                         <button class="btn-unstyled js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-direction="right" data-state="collapsed" data-content="#desktop-options-drawer">
                             <span class="fa fa-ellipsis-vertical"></span>
                         </button>
@@ -154,8 +154,8 @@
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/introduction/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Introduction</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/download/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Download</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/contents/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Contents</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/installation/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Installation</a></li>
-            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/build/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Build</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse " data-collapse-target="menu-customize">
@@ -339,7 +339,7 @@
 <hr />
 <h3 id="example">Example</h3>
 <p>To display a Modal, call the <code>Modal</code> Component via Frontbx's Container:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-sm">
         <button class="js-modal-trigger-1 btn">Basic Modal</button>
     </div>
@@ -356,7 +356,7 @@
 <hr />
 <h3 id="content">Content</h3>
 <p>By default the Modal will structure provided <code>content</code> and <code>title</code> into a card element. In cases where more customized content is needed, set <code>custom:true</code> in the options to create your own markup.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-sm">
         <button class="js-modal-trigger-2 btn">Custom Modal</button>
     </div>
@@ -370,7 +370,7 @@
 <h3 id="scrollable">Scrollable</h3>
 <p>When a Modal becomes too long for the user's viewport or device the content will scroll. By default the entire modal itself will scroll. You can customize this by setting the <code>scroll</code> option to either <code>modal</code> (default) or <code>content</code>.</p>
 <p>The example below shows the difference:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-sm">
         <button class="js-modal-trigger-3 btn">Scroll "modal"</button>
         <button class="js-modal-trigger-4 btn">Scroll "content"</button>
@@ -385,7 +385,7 @@
 <h3 id="customization">Customization</h3>
 <p>Modal positioning, sizing and animations are set via local CSS Variables on <code>.modal-wrap</code>. You can create a custom modal by either overriding the variables, or passing a custom modifier class to the <code>classes</code> option and then modifying the variables from there.</p>
 <p>The example below shows a simple example of a modal that slides in from the bottom of the page without an overlay element:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-sm">
         <button class="js-modal-trigger-5 btn">Custom modal</button>
     </div>
@@ -420,7 +420,7 @@
 <h3 id="callbacks">Callbacks</h3>
 <p>There are a number of callbacks available depending on what access you require. In the example below, the <code>callbackOpen</code> option is used to focus an input within the modal when it pops up:</p>
 <p>See the <a href="#options">Options Section</a> for a full list of callbacks.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-sm">
         <button class="js-modal-trigger-6 btn">Show form</button>
     </div>
@@ -593,7 +593,7 @@
 <p>For basic HTML string content, simply use the <code>data-content</code> attribute with any required string content to populate the modal.</p>
 <p>For more complex requirements point to the id of a hidden target element element in the DOM with the <code>data-content</code> attribute. Remember to always include the <code>#</code> character before the ID as this differentiates it from it being interpenetrated as a string.</p>
 <p>All other options can be set through <code>data-attributes</code> on the anchor element in <code>hyphen-case</code>. For example to set the <code>closeAnywhere</code> option, you would set the <code>data-close-anywhere="true"</code> attribute.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center pole-sm">
         <button type="button" class="btn js-modal-trigger" data-confirm-btn="Confirm" data-content="#html-modal">Show Modal</button>
         <div id="html-modal" style="display: none;"> 
@@ -693,6 +693,6 @@ $modal-overlay-transition:      opacity .225s ease-out !default;</code></pre>
             </div>
         </footer>
         <script src="../../assets/js/frontbx-bundle.min.js"></script>
-        <script src="../../assets/js/frontbx-docs.js"></script>
+        <script src="../../assets/js/frontbx-docs.min.js"></script>
     </body>
 </html>

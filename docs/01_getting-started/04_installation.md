@@ -2,7 +2,6 @@
 
 Get started installing and running Frontbx source code on custom builds.
 
-
 ---
 
 *	[Overview](#overview)
@@ -12,14 +11,12 @@ Get started installing and running Frontbx source code on custom builds.
 
 ---
 
-
 ### Overview
 
 Once you have Frontbx's source code downloaded to your project and installed, you can then get started with running your own build. Frontbx uses `npm` scripts for its build system. The `package.json` file includes convenient methods for working with the framework, including compiling code, building documentation and more.
 
 Frontbx uses Sass and JavaScript as well as a number of other utility npm packages to compile into a build.
 
----
 
 ### npm scripts
 
@@ -60,27 +57,18 @@ import 'frontbx/dist/css/frontbx-bundle.min.css';
 
 ##### Icons
 
-Frontbx uses [FontAwesome](https://fontawesome.com/) for icons which are included in `frontbx-bundle.min.css`. However However if you prefer to have them loaded separately or don't need them, you can use `frontbx.min.css` which excludes icons and `frontbx-icons.min.css` which is the standalone icon CSS.
-
-```html
-<link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/css/frontbx.min.css" rel="stylesheet" crossorigin="anonymous">
-<link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/css/frontbx-icons.min.css" rel="stylesheet" crossorigin="anonymous">
-```
-
-Additionally, icons be configured to be loaded locally (hosted on your own server) **OR** externally via a jsdelivr. By default, icons are set to be hosted locally and are stored in the `dist/fonts` directory. If you want to load them externally you can change this configuration in `src/scss/_config.scss` and run `npm run dist` or when running your own webpack build.
+Icons be configured to be loaded locally (hosted on your own server) **OR** externally via a [JsDeliver](https://www.jsdelivr.com/). By default, icons are set to be hosted locally and are stored in the `dist/fonts` directory. If you want to load them externally you can change this configuration in `scss/_config.scss` and run `npm run dist` or when running your own webpack build.
 
 ```scss
-$local-icons: 'true' !default;
-$icons-url:   '../fonts/' !default;
-```
-
-```scss
+// Self hosted icons
+$local-icons: 'true';
+$icons-url:   '../fonts/';
 @import "~frontbx/scss/frontbx-bundle";
 
-$local-icons: 'true';
-$icons-url:   '/path-to-fonts/';
+// Imported using JS deliver
+$local-icons: 'false' !default;
+@import "~frontbx/scss/frontbx-bundle";
 ```
-
 
 ---
 

@@ -15,7 +15,7 @@ Provide pagination links for your site or app with the multi-page pagination com
 
 This simple pagination layout is great for apps and search results. The large block is hard to miss, easily scalable, and provides large click areas.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="container-fuid"> 
         <nav>
             <ul class="pagination">
@@ -53,7 +53,7 @@ This simple pagination layout is great for apps and search results. The large bl
 
 The pagination component can be easily styled a few different ways by simply adding an extra class. Use the `.pagination-btns` class to style them as individual buttons or the `.pagination-borderless` for a text-only style.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="container-fuid"> 
         <nav>
             <ul class="pagination pagination-btns">
@@ -101,7 +101,7 @@ The pagination component can be easily styled a few different ways by simply add
 
 Link states are customizable for different circumstances. Use `.disabled` for un-clickable links, `.active` to indicate the current page and `.elips` to indicate a number of pages have been skipped.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="container-fuid"> 
         <nav>
             <ul class="pagination">

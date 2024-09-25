@@ -20,7 +20,7 @@ Modals are a handy `JavaScript` component for displaying an action the user must
 
 To display a Modal, call the `Modal` Component via Frontbx's Container:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-sm">
         <button class="js-modal-trigger-1 btn">Basic Modal</button>
     </div>
@@ -43,7 +43,7 @@ let modal = frontbx.Modal({
 
 By default the Modal will structure provided `content` and `title` into a card element. In cases where more customized content is needed, set `custom:true` in the options to create your own markup.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-sm">
         <button class="js-modal-trigger-2 btn">Custom Modal</button>
     </div>
@@ -65,7 +65,7 @@ When a Modal becomes too long for the user's viewport or device the content will
 
 The example below shows the difference:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-sm">
         <button class="js-modal-trigger-3 btn">Scroll "modal"</button>
         <button class="js-modal-trigger-4 btn">Scroll "content"</button>
@@ -88,7 +88,7 @@ Modal positioning, sizing and animations are set via local CSS Variables on `.mo
 
 The example below shows a simple example of a modal that slides in from the bottom of the page without an overlay element:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-sm">
         <button class="js-modal-trigger-5 btn">Custom modal</button>
     </div>
@@ -135,7 +135,7 @@ There are a number of callbacks available depending on what access you require. 
 
 See the [Options Section](#options) for a full list of callbacks.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-sm">
         <button class="js-modal-trigger-6 btn">Show form</button>
     </div>
@@ -246,7 +246,7 @@ For more complex requirements point to the id of a hidden target element element
 
 All other options can be set through `data-attributes` on the anchor element in `hyphen-case`. For example to set the `closeAnywhere` option, you would set the `data-close-anywhere="true"` attribute.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center pole-sm">
         <button type="button" class="btn js-modal-trigger" data-confirm-btn="Confirm" data-content="#html-modal">Show Modal</button>
         <div id="html-modal" style="display: none;"> 

@@ -29,7 +29,7 @@ Once that is setup, add your images, you'll want to have a reduced size thumbnai
 
 Remember to add the `.js-lazyload` `.lazyload` classes.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="avatar avatar-xl">
             <img alt="Trump" data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload" src="../../assets/img/trump-avatar_thumb.jpg" />
@@ -43,7 +43,7 @@ Remember to add the `.js-lazyload` `.lazyload` classes.
 
 Add the optional `.graysale` class to have the image fade from grayscale to full color.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="avatar avatar-xl">
             <img alt="Trump" data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload" src="../../assets/img/trump-avatar_thumb.jpg" />
@@ -63,7 +63,7 @@ Lazyloading works on CSS background image elements too. This can be handy when y
 
 > Frontbx's `.bg-image` image is a handy utility to help manage image sizing. For more information checkout the [Images Documentation](../../content/images/index.html).
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="bg-image js-lazyload lazyload grayscale raised-1 col-12 col-md-6 col-lg-4" data-src="../../assets/img/trump-hero.jpg" style="background-image: url(../../assets/img/trump-hero_thumb.jpg)"></div>
     </div>
@@ -79,7 +79,7 @@ Lazyloading works on CSS background image elements too. This can be handy when y
 
 Falback images gracefully display a simple icon and background when an image fails to load for whatever reason.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs">
         <div class="col col-12 col-md-3">
             <img alt="Trump" data-src="foobar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="foobar.jpg" />
@@ -111,7 +111,7 @@ The fallback image is set via the JavaScript LazyLoad module from the variable `
 
 When inserting elements into the DOM after the page has loaded, for example using dynamic content via `Ajax`, you can refresh the `LazyLoad` module via the Frontbx's `dom`.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs js-refresh-lazyload-container">
     </div>
     <div class="flex-row-fluid align-cols-center pole-sm pole-n">

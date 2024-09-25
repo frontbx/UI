@@ -16,7 +16,7 @@ Frontbx's utility classes allow you to set aspect ratios on both **image** and *
 
 For `<image>` elements, wrap the image in a `.ratio-img` div, then add the relevant `.ratio-[w]-[h]` class to the wrapper:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
     	<div class="col-12 col-md-8 col-lg-5">
         	<div class="raised-1 ratio-img ratio-16-9">
@@ -34,7 +34,7 @@ For `<image>` elements, wrap the image in a `.ratio-img` div, then add the relev
 
 For **Background image** elements, add the relevant `.ratio-[w]-[h]` class to the `.bg-image` element directly:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
     	<div class="col-12 col-md-8 col-lg-5">
         	<div class="bg-image ratio-16-9 raised-1" style="background-image: url(../../assets/img/trump-hero.jpg)"></div>
@@ -91,7 +91,7 @@ Aspect ratios are set via CSS Variables, which can be also be customized for mor
 
 Dimensions for both **image** and **Background image** elements can be set via CSS Variables. For browsers that support the CSS [aspect-ratio](https://caniuse.com/mdn-css_properties_aspect-ratio) property, these values can be customized. The default values are `width: 100%` and `height: auto`:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center">
         <div class="col col-md-8 col-lg-4">
             <div class="ratio-img raised-1" style="--fbx-aspect-ratio:1/1;">
@@ -121,7 +121,7 @@ Dimensions for both **image** and **Background image** elements can be set via C
 
 Images can be instantiated via JavaScript to generate dynamic content on the fly. To create an image dynamically, use Frontbx's `Component.Create` method either via the `frontbx.Dom` or the `Image` Component directly:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-sm">
     	<div class="col-3 js-insert-img-container"></div>
     </div>

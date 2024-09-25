@@ -14,7 +14,7 @@ Custom styled progress bars can be used in upload forms or Ajax tasks with very 
 
 ### Markup
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <span class="progress-bar">
         <span class="progress" style="width: 20%"></span>
     </span>
@@ -32,7 +32,7 @@ Custom styled progress bars can be used in upload forms or Ajax tasks with very 
 
 Progress bars can be further contextualized using the `.progress-primary`, `.progress-secondary`,  `.progress-info`, `.progress-success`, `.progress-warning`, `.progress-danger`, `.progress-gradient` classes.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
 	<div class="row pole-sm pole-s">
 	    <span class="progress-bar progress-primary">
 	        <span class="progress" style="width: 20%"></span>

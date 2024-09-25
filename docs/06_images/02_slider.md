@@ -29,7 +29,7 @@ Carousels can be instantiated through `HTML` markup using the `.js-slider` class
 
 Here's is a basic example:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="slider js-slider" data-slider-options='{ "wrap": true }'>
         <div class="bg-pastelpink">1</div>
         <div class="bg-pastelteal">2</div>

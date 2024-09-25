@@ -19,7 +19,7 @@ Notifications are a handy `JavaScript` component for displaying messages to the.
 
 To display a notification, call the `Notifications` module with your options via the `Container`.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center ">
         <button class="js-notif-trigger-1 btn">Show Notification</button>
     </div>
@@ -40,7 +40,7 @@ Use the `position` option to set a notification in a desired position on the scr
 
 Available positions are:  `top-left` `top` `top-right` `left` `right` `bottom-left` `bottom` `top-right`
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="js-notif-triggers-pos btn">top-left</button>
         <button class="js-notif-triggers-pos btn">top</button>
@@ -68,7 +68,7 @@ let notif = frontbx.Notification(
 
 Notifications have a few options for different use-cases. Use the provided options to add text and actions to a Notification:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="notification-wrap js-nofification-wrap active" style="position: relative;">
             <div class="msg msg-dense animate-in-up"><div class="msg-body"><p>Hello! I'm a notification.</p></div><div class="msg-btn"><button class="btn btn-pure btn-primary btn-sm js-notif-btn">Dismiss</button></div></div>
@@ -79,7 +79,7 @@ Notifications have a few options for different use-cases. Use the provided optio
     </div>
 </div>
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="js-notif-trigger-2 btn">With button</button>
         <button class="js-notif-trigger-3 btn">With icon</button>
@@ -126,7 +126,7 @@ let notif4 = frontbx.Notification(
 
 Notifications auto-dismiss after 6 seconds by default. You can set a different timeout in milliseconds on the `timeout` option, or set it to `false` if you don't want it to auto-dismiss.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs">
         <button class="js-notif-trigger-6 btn">Persistent</button>
         <button class="js-notif-trigger-7 btn">Timeout</button>
@@ -211,7 +211,7 @@ For basic use-cases where access to the underlying JavaScript is not required, N
 
 All options can be set through `data-attributes` on the anchor element in `hyphen-case`. For example to set the `btnVariant` option, you would set the `data-btn-variant="btn-primary"` attribute.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center pole-sm">
         <button type="button" class="btn js-notification-trigger" data-text="Hello, I'm a notification!">Trigger notification</button>
     </div>

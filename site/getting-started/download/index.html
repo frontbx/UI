@@ -12,7 +12,7 @@
         <!-- Assets -->
         <script src="../../assets/js/frontbx-lazyload.min.js"></script>
         <link rel="stylesheet" href="../../assets/css/frontbx-bundle.min.css">
-        <link rel="stylesheet" href="../../assets/css/frontbx-docs.css">
+        <link rel="stylesheet" href="../../assets/css/frontbx-docs.min.css">
 
         <!-- Favicons -->
         <link rel="apple-touch-icon" href="../../assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -45,7 +45,7 @@
         </svg>
         <nav class="navbar navbar-fixed raised-1 bg-black">
             <div class="container-fluid">
-                <button class="hamburger xs sm js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
+                <button class="hamburger xs sm md js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
                     <span class="hamburger-bun  hamburger-bun--top"></span>
                     <span class="hamburger-patty"></span>
                     <span class="hamburger-bun  hamburger-bun--btm"></span>
@@ -56,23 +56,23 @@
                 </a>
 
                 <ul class="nav-menu flex-content-right">
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Github">
                             <span class="fa-brands fa-github"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../getting-started/download/index.html" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Download">
                             <span class="fa fa-download"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
                             <span class="fa fa-fill-drip"></span>
                         </a>
                     </li>
                     
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <span class="drop-container">
                             <button class="btn-unstyled btn-dropdown js-drop-trigger tooltipped tooltipped-s" role="button" type="button" title="toggle theme" data-tooltip="Theme mode">
                                 <span class="fa fa-cloud-sun"></span>
@@ -96,7 +96,7 @@
                             </div>
                         </span>
                     </li>
-                    <li class="xs sm">
+                    <li class="xs sm md">
                         <button class="btn-unstyled js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-direction="right" data-state="collapsed" data-content="#desktop-options-drawer">
                             <span class="fa fa-ellipsis-vertical"></span>
                         </button>
@@ -154,8 +154,8 @@
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/introduction/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Introduction</a></li>
             <li class="menu-item active"><a data-pjax-target="#article-body" href="../../getting-started/download/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Download</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/contents/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Contents</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/installation/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Installation</a></li>
-            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/build/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Build</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse " data-collapse-target="menu-customize">
@@ -339,9 +339,9 @@
 <h3 id="source-files">Source files</h3>
 <p>Compile Frontbx with your own asset pipeline by downloading the latest release.</p>
 <p><a href="https://github.com/frontbx/ui/archive/refs/heads/main.zip" target="_blank" class="btn btn-primary">Download Source</a></p>
-<p>After downloading, navigate  to your project directory and run the following command:</p>
+<p>After downloading, navigate to your project directory and run the following command:</p>
 <pre><code class="bash language-bash">npm install frontbx</code></pre>
-<p>Next step, head over to the <a href="../installation/index.html">Installation Page</a> for details on how to get started running your own build.</p>
+<p>Next head through to the <a href="../contents/index.html">Contents Page</a> to familiarize yourself with Frontbx's source files, then see the <a href="../installation/index.html">Installation Page</a> for details on how to get started running your own build.</p>
 <hr />
 <h3 id="npm">npm</h3>
 <p>To get started with Frontbx via npm, ensure you have <a href="https://nodejs.org/en">node.js</a> installed. Then navigate to your project directory and run the following command:</p>
@@ -352,7 +352,7 @@ const frontbx = require('frontbx');
 
 // ES6
 import frontbx from 'frontbx';</code></pre>
-<p>Next step, head over to the <a href="../installation/index.html">Installation Page</a> for details on how to get started running your own build.</p>
+<p>Next head through to the <a href="../contents/index.html">Contents Page</a> to familiarize yourself with Frontbx's source files, then see the <a href="../installation/index.html">Installation Page</a> for details on how to get started running your own build.</p>
 <hr />
 <h3 id="git">Git</h3>
 <p>Clone or fork the Frontbx framework with Git to create your own project. To clone the Frontbx repository <code>cd</code> to your project folder and run the following command:</p>
@@ -369,7 +369,7 @@ import frontbx from 'frontbx';</code></pre>
 <pre><code class="bash language-bash">git fetch upstream
 git checkout master
 git merge upstream/master</code></pre>
-<p>Next step, head over to the <a href="../installation/index.html">Installation Page</a> for details on how to get started running your own build.</p>
+<p>Next head through to the <a href="../contents/index.html">Contents Page</a> to familiarize yourself with Frontbx's source files, then see the <a href="../installation/index.html">Installation Page</a> for details on how to get started running your own build.</p>
 <p>After downloading, navigate  to your project directory and run the following command:</p>
 <pre><code class="bash language-bash">npm install frontbx</code></pre></article>
             </div>
@@ -430,6 +430,6 @@ git merge upstream/master</code></pre>
             </div>
         </footer>
         <script src="../../assets/js/frontbx-bundle.min.js"></script>
-        <script src="../../assets/js/frontbx-docs.js"></script>
+        <script src="../../assets/js/frontbx-docs.min.js"></script>
     </body>
 </html>

@@ -14,7 +14,7 @@ Ripple adds an interactive click animation to clickable elements, giving users d
 
 To add a ripple to an element, add the `.js-ripple` class. The library will handle the rest for you. Here's an example using a simple image
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
 	<div class="flex-row-fluid align-cols-center">
 		<div style="width: 300px;" class="js-ripple raised-1">
 			<img alt="Trump" data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" />
@@ -44,7 +44,7 @@ Ripple get added automatically to the following Frontbx components:
 
 To hide ripple on a given element, add the `.no-ripple` class:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
 	<div class="flex-row-fluid align-cols-center">
 		<button class="btn no-ripple">.no-ripple</button>
 	</div>
@@ -60,7 +60,7 @@ To hide ripple on a given element, add the `.no-ripple` class:
 
 Ripple's default color is the current color of the element being clicked (aka the CSS `currentColor` keyword). If there are instances where you want a specific colored ripple you can change the color via the CSS variable on `.ripple`.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
 	<style scoped>
 		.custom-ripple .ripple
 		{

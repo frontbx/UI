@@ -109,7 +109,7 @@ const DocsBuilder = function()
     });
 
     // Write index.html
-    FS.writeFileSync(`${DOCS_DEST_DIR}/index.html`, this._genDocsPage(`${DOCS_SRC_DIR}/templates/index.html`, `${DOCS_DEST_DIR}/index.html`), {encoding: 'utf8', flag: 'a+'});
+    FS.writeFileSync(`${DOCS_DEST_DIR}/index.html`, this._genDocsPage(`${DOCS_SRC_DIR}/assets/templates/index.html`, `${DOCS_DEST_DIR}/index.html`), {encoding: 'utf8', flag: 'a+'});
 }
 
 /**
@@ -237,7 +237,7 @@ DocsBuilder.prototype._genMenuTree = function(path)
 
     each(dirs, (i, subDir) =>
     {
-        if (!subDir.includes('templates'))
+        if (!subDir.includes('assets'))
         {
             menu[title].push(this._genMenuTree(subDir));
         }
@@ -264,7 +264,7 @@ DocsBuilder.prototype._prettyMenuName = function(path)
  */
 DocsBuilder.prototype._genSrcDestFiles = function()
 {
-    let srcs = this._listFilesRecursive(DOCS_SRC_DIR).filter(path => PATH.basename(PATH.dirname(path)) !== 'templates');
+    let srcs = this._listFilesRecursive(DOCS_SRC_DIR).filter(path => !path.includes('docs/assets'));
 
     let ret = {};
 
@@ -280,7 +280,7 @@ DocsBuilder.prototype._genSrcDestFiles = function()
  */
 DocsBuilder.prototype._getPageTemplate = function()
 {
-    return FS.readFileSync(`${DOCS_SRC_DIR}/templates/template.html`, 'utf8', (err, data) => data);
+    return FS.readFileSync(`${DOCS_SRC_DIR}/assets/templates/template.html`, 'utf8', (err, data) => data);
 }
 
 /**
@@ -327,7 +327,7 @@ DocsBuilder.prototype._genDocsPage = function(src, dest)
 DocsBuilder.prototype._MDtoHTMLFile = function(path)
 {
     const text = FS.readFileSync(path, 'utf8', (err, data) => data).replaceAll('$', 'DOLLAR_SIGN');
-        
+    
     return MARKDOWN.makeHtml(text);
 }
 

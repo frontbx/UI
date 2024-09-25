@@ -133,7 +133,7 @@ validator.destroy();
 
 Below is an example form using the validator. In a real request, you would use Frontbx's `Ajax` component or submit the form manually, however for this example we just use a `timeout`. Check the console log for more details.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="flex-row row-gaps-xs align-cols-center">
         <div class="col-12 col-md-8">
 			<div class="row pole-xs pole-s">

@@ -12,7 +12,7 @@
         <!-- Assets -->
         <script src="../../assets/js/frontbx-lazyload.min.js"></script>
         <link rel="stylesheet" href="../../assets/css/frontbx-bundle.min.css">
-        <link rel="stylesheet" href="../../assets/css/frontbx-docs.css">
+        <link rel="stylesheet" href="../../assets/css/frontbx-docs.min.css">
 
         <!-- Favicons -->
         <link rel="apple-touch-icon" href="../../assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -45,7 +45,7 @@
         </svg>
         <nav class="navbar navbar-fixed raised-1 bg-black">
             <div class="container-fluid">
-                <button class="hamburger xs sm js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
+                <button class="hamburger xs sm md js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
                     <span class="hamburger-bun  hamburger-bun--top"></span>
                     <span class="hamburger-patty"></span>
                     <span class="hamburger-bun  hamburger-bun--btm"></span>
@@ -56,23 +56,23 @@
                 </a>
 
                 <ul class="nav-menu flex-content-right">
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Github">
                             <span class="fa-brands fa-github"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../getting-started/download/index.html" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Download">
                             <span class="fa fa-download"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
                             <span class="fa fa-fill-drip"></span>
                         </a>
                     </li>
                     
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <span class="drop-container">
                             <button class="btn-unstyled btn-dropdown js-drop-trigger tooltipped tooltipped-s" role="button" type="button" title="toggle theme" data-tooltip="Theme mode">
                                 <span class="fa fa-cloud-sun"></span>
@@ -96,7 +96,7 @@
                             </div>
                         </span>
                     </li>
-                    <li class="xs sm">
+                    <li class="xs sm md">
                         <button class="btn-unstyled js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-direction="right" data-state="collapsed" data-content="#desktop-options-drawer">
                             <span class="fa fa-ellipsis-vertical"></span>
                         </button>
@@ -154,8 +154,8 @@
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/introduction/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Introduction</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/download/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Download</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/contents/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Contents</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/installation/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Installation</a></li>
-            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/build/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Build</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse " data-collapse-target="menu-customize">
@@ -338,7 +338,7 @@
 <hr />
 <h3 id="example">Example</h3>
 <p>To display a notification, call the <code>Notifications</code> module with your options via the <code>Container</code>.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center ">
         <button class="js-notif-trigger-1 btn">Show Notification</button>
     </div>
@@ -351,7 +351,7 @@
 <h3 id="position">Position</h3>
 <p>Use the <code>position</code> option to set a notification in a desired position on the screen:</p>
 <p>Available positions are:  <code>top-left</code> <code>top</code> <code>top-right</code> <code>left</code> <code>right</code> <code>bottom-left</code> <code>bottom</code> <code>top-right</code></p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="js-notif-triggers-pos btn">top-left</button>
         <button class="js-notif-triggers-pos btn">top</button>
@@ -372,7 +372,7 @@
 <hr />
 <h3 id="content">Content</h3>
 <p>Notifications have a few options for different use-cases. Use the provided options to add text and actions to a Notification:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="notification-wrap js-nofification-wrap active" style="position: relative;">
             <div class="msg msg-dense animate-in-up"><div class="msg-body"><p>Hello! I'm a notification.</p></div><div class="msg-btn"><button class="btn btn-pure btn-primary btn-sm js-notif-btn">Dismiss</button></div></div>
@@ -382,7 +382,7 @@
         </div>
     </div>
 </div>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="js-notif-trigger-2 btn">With button</button>
         <button class="js-notif-trigger-3 btn">With icon</button>
@@ -422,7 +422,7 @@ let notif4 = frontbx.Notification(
 <hr />
 <h3 id="timeout">Timeout</h3>
 <p>Notifications auto-dismiss after 6 seconds by default. You can set a different timeout in milliseconds on the <code>timeout</code> option, or set it to <code>false</code> if you don't want it to auto-dismiss.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs">
         <button class="js-notif-trigger-6 btn">Persistent</button>
         <button class="js-notif-trigger-7 btn">Timeout</button>
@@ -538,7 +538,7 @@ let notif2 =frontbx.Notification(
 <h3 id="html-initialization">HTML Initialization</h3>
 <p>For basic use-cases where access to the underlying JavaScript is not required, Notifications can be enabled through HTML markup via an anchor element with the <code>.js-notification-trigger</code> class.</p>
 <p>All options can be set through <code>data-attributes</code> on the anchor element in <code>hyphen-case</code>. For example to set the <code>btnVariant</code> option, you would set the <code>data-btn-variant="btn-primary"</code> attribute.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center pole-sm">
         <button type="button" class="btn js-notification-trigger" data-text="Hello, I'm a notification!">Trigger notification</button>
     </div>
@@ -626,6 +626,6 @@ $notif-shadow:                  3 !default;</code></pre>
             </div>
         </footer>
         <script src="../../assets/js/frontbx-bundle.min.js"></script>
-        <script src="../../assets/js/frontbx-docs.js"></script>
+        <script src="../../assets/js/frontbx-docs.min.js"></script>
     </body>
 </html>

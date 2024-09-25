@@ -10,7 +10,7 @@
   
     import './frontbx.js';
  	
-    const index_umd = frontbx;
+    const index_umd = window.frontbx;
 
- 	return index_umd;
+ 	  return index_umd;
 }));

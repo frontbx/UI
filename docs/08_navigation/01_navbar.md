@@ -14,7 +14,7 @@ Navbar provides a foundation for building out various navigation components.
 
 The base `.navbar` component sets the core foundation for building a navigation component. Navbar can then be combined with other Frontbx Components such as `.nav-menu`, [Tabs](../tabs/index.html), [Buttons](../../forms/buttons/index.html), [Dropdown](../../forms/dropdown/index.html) and more.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <nav class="navbar bg-black">
         <div class="container-fluid">
             <a class="nav-logo" href="/">
@@ -53,7 +53,7 @@ The base `.navbar` component sets the core foundation for building a navigation 
 </div>
 
 ```html
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <nav class="navbar bg-black">
         <div class="container-fluid">
             <a class="nav-logo" href="/">

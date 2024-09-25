@@ -1,0 +1,81 @@
+// Homepage
+.home-page
+{
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to left bottom, var(--fbx-body-bg) 0%, var(--fbx-theme-primary-900) 100%);
+}
+.home-code
+{
+    pre[class*=language-]
+    {
+        padding: 20px 60px 20px 20px;
+
+        &:after
+        {
+            display: none;
+        }
+    }
+    .fbx-code-snippet .fbx-clipboard
+    {
+        padding: 0px 17px;
+        height: 100%;
+
+        .fa
+        {
+            font-size: 2rem;
+        }
+    }
+}
+
+// Header
+.navbar .nav-logo svg
+{
+    fill: var(--fbx-white);
+}
+@include media-breakpoint-down(lg)
+{
+    .nav-logo
+    {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+// Footer
+.site-footer
+{
+    background-color: var(--fbx-black-900);
+    color: var(--fbx-gray-200);
+    padding: 60px 0;
+}
+.site-footer .logo
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.3rem;
+}
+.site-footer .logo svg
+{
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    margin-right: 10px;
+    fill: var(--fbx-theme-primary);
+}
+.site-footer
+{
+    text-align: center;
+}
+@media (min-width: 992px)
+{
+    .site-footer
+    {
+        text-align: unset;
+    }
+}

@@ -25,7 +25,7 @@ Note that Skeletons by default with fill all available vertical and horizontal s
 
 The example below shows the markup for a skeleton using a simple card:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center-x">
         <div class="card col col-lg-4">
             <div class="card-header">
@@ -98,7 +98,7 @@ The table below outlines their core styles
 | `.skeleton-input`   | Creates a rectangular fixed height skeleton to match Frontbx input sizing                           |
 | `.skeleton-circle`  | Sets skeleton to a circle. Width and height can adjusted via modifier sizes or overridden manually |
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row pole-xs pole-s">
         <div class="col col-12 col-md-4 center-horizontal">
             <div class="skeleton skeleton-text"></div>
@@ -122,7 +122,7 @@ The table below outlines their core styles
 
 `.skeleton-circle` comes in three modifier sizes `.circle-sm`, `.circle-md` and `.circle-lg` 
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row pole-xs pole-s">
         <div class="col col-12 col-md-4 center-horizontal">
             <div class="skeleton skeleton-circle circle-sm"></div>
@@ -144,7 +144,7 @@ The table below outlines their core styles
 
 To display text and the `.skeleton-text` modifier class. The sizing, height and line height will match Frontbx's typography configurations:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row">
         <div class="col col-6 gutter-xxs gutter-r">
             <div class="skeleton skeleton-text"></div>
@@ -167,7 +167,7 @@ To display text and the `.skeleton-text` modifier class. The sizing, height and 
 
 To display text headings add the appropriate heading `.skeleton-h[num]` modifier class. The sizing, height and line height will match Frontbx's typography configurations:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row">
         <div class="col col-6 gutter-xxs gutter-r">
             <div class="skeleton skeleton-h1"></div>
@@ -203,7 +203,7 @@ To display text headings add the appropriate heading `.skeleton-h[num]` modifier
 
 For multi-line text blocks, wrap skeletons in a `.skeleton-text-block` element.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row">
         <div class="col col-6 gutter-xxs gutter-r">
             <div class="skeleton-text-block">
@@ -233,7 +233,7 @@ For multi-line text blocks, wrap skeletons in a `.skeleton-text-block` element.
 
 For multi-line heading use the same `.skeleton-text-block` wrapper with the appropriate heading modifier `.skeleton-text-block-h[num]`:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row">
         <div class="col col-6 gutter-xxs gutter-r">
             <div class="skeleton-text-block skeleton-text-block-h1">
@@ -254,7 +254,7 @@ For multi-line heading use the same `.skeleton-text-block` wrapper with the appr
 </div>
 ```
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row">
         <div class="col col-6 gutter-xxs gutter-r">
             <div class="skeleton-text-block skeleton-text-block-h2">
@@ -275,7 +275,7 @@ For multi-line heading use the same `.skeleton-text-block` wrapper with the appr
 </div>
 ```
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row">
         <div class="col col-6 gutter-xxs gutter-r">
             <div class="skeleton-text-block skeleton-text-block-h3">
@@ -296,7 +296,7 @@ For multi-line heading use the same `.skeleton-text-block` wrapper with the appr
 </div>
 ```
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row">
         <div class="col col-6 gutter-xxs gutter-r">
             <div class="skeleton-text-block skeleton-text-block-h4">
@@ -317,7 +317,7 @@ For multi-line heading use the same `.skeleton-text-block` wrapper with the appr
 </div>
 ```
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row">
         <div class="col col-6 gutter-xxs gutter-r">
             <div class="skeleton-text-block skeleton-text-block-h5">
@@ -338,7 +338,7 @@ For multi-line heading use the same `.skeleton-text-block` wrapper with the appr
 </div>
 ```
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row">
         <div class="col col-6 gutter-xxs gutter-r">
             <div class="skeleton-text-block skeleton-text-block-h6">
@@ -361,7 +361,7 @@ For multi-line heading use the same `.skeleton-text-block` wrapper with the appr
 
 To align skeleton text to the right, add the `text-right` modifier to the wrapping element
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row">
         <div class="col col-6 gutter-xxs gutter-r">
             <div class="skeleton-text-block skeleton-text-block-h3 text-right">
@@ -409,7 +409,7 @@ To align skeleton text to the right, add the `text-right` modifier to the wrappi
 
 Try the example below create a few skeletons
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="col col-12 col-md-6 center-horizontal">
         <div class="row pole-sm pole-s">
             <div class="card raised-1 card-skeleton-example" style="min-height: 100px;">
@@ -612,7 +612,7 @@ skeleton.load(content);
 
 The example below shows swapping out the contents of card component. Click the `Load content` button to try it out.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center-x">
         <div class="card col col-lg-4 js-skeleton-loader-card">
             <div class="card-header">
@@ -689,7 +689,7 @@ src/scss/components/_skeleton.scss
 
 The example below shows customization using CSS Variables:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <style scoped>
         .skeleton-custom
         {

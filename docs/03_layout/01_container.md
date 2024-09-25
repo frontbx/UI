@@ -17,7 +17,7 @@ While containers can be nested, most layouts do not require a nested container.
 
 The fixed width `.container` will wrap layouts providing a `100%` width on screen sizes below the `sm` breakpoint and a fixed `max-width` at each breakpoint above.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.container</code></div>
     <div class="container">
         <div class="col col-9 gutter-xxs gutter-r">
@@ -41,7 +41,7 @@ The fixed width `.container` will wrap layouts providing a `100%` width on scree
 
 The fluid width `.container-fluid` will wrap layouts providing a `100%` at all breakpoints with a fixed `max-width` of the `xl`. breakpoint.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.container-fluid</code></div>
     <div class="container-fluid">
         <div class="col col-9 gutter-xxs gutter-r">
@@ -65,7 +65,7 @@ The fluid width `.container-fluid` will wrap layouts providing a `100%` at all b
 
 Container gutters are left and right padding applied to the container element. The gutter sizes are configured via both Sass and CSS variables.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.container-fluid</code></div>
     <div class="container-fluid highlight-gutters">
         <div class="col col-9 gutter-xxs gutter-r">

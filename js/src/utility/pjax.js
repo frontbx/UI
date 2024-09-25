@@ -91,6 +91,8 @@
 
         this.success((response) =>
         {            
+            trigger_event(window, 'frontbx:pjax:success', { options });
+
             this._handleSuccess(response.trim(), options);
 
             if (_success) this._makeCallback(_success, this._xhr, [response]);
@@ -109,6 +111,8 @@
         })
         .complete((response, successfull) =>
         {
+            trigger_event(window, 'frontbx:pjax:complete', { options });
+
             if (_complete) this._makeCallback(_complete, this._xhr, [response, successfull]);
 
             this._reset();
@@ -192,8 +196,6 @@
         this._appendScripts(currScripts, responseScripts, () =>
         {
             frontbx.dom().refresh(targetEl === document.body ? document : targetEl);
-
-            trigger_event(window, 'frontbx:pjax:success', {options});
         });
 
         if (!options.keepScroll || targetEl === document.body) window.scrollTo(0, 0);

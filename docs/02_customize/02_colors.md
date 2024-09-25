@@ -46,7 +46,7 @@ Theme colors are available in both CSS and Sass variables. When using the Sass v
 
 All theme colors are available via Frontbx's utility [helper classes](../../css/css-helpers/index.html) as `.bg-[name]` and `color-[name]` without the word `theme` (e.g. `bg-primary` or `color-success`).
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
 	<div class="flex-row align-cols-center">
 	    <div class="paper paper-rounded raised-1 col col-5 col-lg-3 bg-primary pad-40 text-center">
 	    	<p class="color-white text-bolder no-margin">Hello World!</p>
@@ -93,7 +93,7 @@ Grays are available in shades ranging from `100` (lightest) through `900` (darke
 
 All gray shades are available via Frontbx's utility [helper classes](../../css/css-helpers/index.html) as `.bg-gray-[num]` and `color-gray-[num]`
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
 	<div class="flex-row align-cols-center">
 	    <div class="paper paper-rounded raised-1 col col-5 col-lg-3 bg-gray-800 pad-40 text-center">
 	    	<p class="color-white text-bolder no-margin">Hello World!</p>
@@ -118,7 +118,7 @@ Frontbx comes with a palette of colors via both CSS ans Sass variables for chang
 
 Use the playground below to adjust the documentation colors:
 
-<div class="code-content-example js-docs-playground-swatches">
+<div class="fbx-snippet-demo js-docs-playground-swatches">
 	<div class="docs-playground-swatches">
 		<div class="flex-row-fluid">
 			<div class="col-12 pole-xs pole-s">Flat colors:</div>
@@ -224,7 +224,7 @@ Palette colors are available through both Sass and CSS Variables. They are not a
 
 However, they can still be used as CSS variables:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
 	<div class="flex-row align-cols-center">
 	    <div class="paper paper-rounded raised-1 col col-5 col-lg-3 pad-40 text-center" style="background: var(--fbx-color-teal)">
 	    	<p class="color-white text-bolder no-margin">Hello World!</p>

@@ -12,7 +12,7 @@
         <!-- Assets -->
         <script src="../../assets/js/frontbx-lazyload.min.js"></script>
         <link rel="stylesheet" href="../../assets/css/frontbx-bundle.min.css">
-        <link rel="stylesheet" href="../../assets/css/frontbx-docs.css">
+        <link rel="stylesheet" href="../../assets/css/frontbx-docs.min.css">
 
         <!-- Favicons -->
         <link rel="apple-touch-icon" href="../../assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -45,7 +45,7 @@
         </svg>
         <nav class="navbar navbar-fixed raised-1 bg-black">
             <div class="container-fluid">
-                <button class="hamburger xs sm js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
+                <button class="hamburger xs sm md js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
                     <span class="hamburger-bun  hamburger-bun--top"></span>
                     <span class="hamburger-patty"></span>
                     <span class="hamburger-bun  hamburger-bun--btm"></span>
@@ -56,23 +56,23 @@
                 </a>
 
                 <ul class="nav-menu flex-content-right">
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Github">
                             <span class="fa-brands fa-github"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../getting-started/download/index.html" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Download">
                             <span class="fa fa-download"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
                             <span class="fa fa-fill-drip"></span>
                         </a>
                     </li>
                     
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <span class="drop-container">
                             <button class="btn-unstyled btn-dropdown js-drop-trigger tooltipped tooltipped-s" role="button" type="button" title="toggle theme" data-tooltip="Theme mode">
                                 <span class="fa fa-cloud-sun"></span>
@@ -96,7 +96,7 @@
                             </div>
                         </span>
                     </li>
-                    <li class="xs sm">
+                    <li class="xs sm md">
                         <button class="btn-unstyled js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-direction="right" data-state="collapsed" data-content="#desktop-options-drawer">
                             <span class="fa fa-ellipsis-vertical"></span>
                         </button>
@@ -154,8 +154,8 @@
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/introduction/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Introduction</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/download/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Download</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/contents/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Contents</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/installation/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Installation</a></li>
-            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/build/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Build</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse " data-collapse-target="menu-customize">
@@ -342,7 +342,7 @@
 <p>Skeletons are simple to create, simply create an element with the <code>.skeleton</code> class inside a component.</p>
 <p>Note that Skeletons by default with fill all available vertical and horizontal space inside their container. If you're placing a skeleton inside an empty column or a container without a height you'll need to either specify a height on the container or on the skeleton itself.</p>
 <p>The example below shows the markup for a skeleton using a simple card:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center-x">
         <div class="card col col-lg-4">
             <div class="card-header">
@@ -432,7 +432,7 @@
 </tr>
 </tbody>
 </table>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row pole-xs pole-s">
         <div class="col col-12 col-md-4 center-horizontal">
             <div class="skeleton skeleton-text"></div>
@@ -451,7 +451,7 @@
 &lt;div class="skeleton skeleton-input"&gt;&lt;/div&gt;
 &lt;div class="skeleton skeleton-btn"&gt;&lt;/div&gt;</code></pre>
 <p><code>.skeleton-circle</code> comes in three modifier sizes <code>.circle-sm</code>, <code>.circle-md</code> and <code>.circle-lg</code> </p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row pole-xs pole-s">
         <div class="col col-12 col-md-4 center-horizontal">
             <div class="skeleton skeleton-circle circle-sm"></div>
@@ -466,7 +466,7 @@
 <hr />
 <h3 id="text">Text</h3>
 <p>To display text and the <code>.skeleton-text</code> modifier class. The sizing, height and line height will match Frontbx's typography configurations:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row">
         <div class="col col-6 gutter-xxs gutter-r">
             <div class="skeleton skeleton-text"></div>
@@ -484,7 +484,7 @@
 &lt;div class="skeleton skeleton-text"&gt;&lt;/div&gt;
 &lt;div class="skeleton skeleton-text"&gt;&lt;/div&gt;</code></pre>
 <p>To display text headings add the appropriate heading <code>.skeleton-h[num]</code> modifier class. The sizing, height and line height will match Frontbx's typography configurations:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row">
         <div class="col col-6 gutter-xxs gutter-r">
             <div class="skeleton skeleton-h1"></div>
@@ -513,7 +513,7 @@
 <hr />
 <h3 id="text-blocks">Text Blocks</h3>
 <p>For multi-line text blocks, wrap skeletons in a <code>.skeleton-text-block</code> element.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row">
         <div class="col col-6 gutter-xxs gutter-r">
             <div class="skeleton-text-block">
@@ -538,7 +538,7 @@
     ...
 &lt;/div&gt;</code></pre>
 <p>For multi-line heading use the same <code>.skeleton-text-block</code> wrapper with the appropriate heading modifier <code>.skeleton-text-block-h[num]</code>:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row">
         <div class="col col-6 gutter-xxs gutter-r">
             <div class="skeleton-text-block skeleton-text-block-h1">
@@ -555,7 +555,7 @@
     &lt;div class="skeleton"&gt;&lt;/div&gt;
     &lt;div class="skeleton"&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row">
         <div class="col col-6 gutter-xxs gutter-r">
             <div class="skeleton-text-block skeleton-text-block-h2">
@@ -572,7 +572,7 @@
     &lt;div class="skeleton"&gt;&lt;/div&gt;
     &lt;div class="skeleton"&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row">
         <div class="col col-6 gutter-xxs gutter-r">
             <div class="skeleton-text-block skeleton-text-block-h3">
@@ -589,7 +589,7 @@
     &lt;div class="skeleton"&gt;&lt;/div&gt;
     &lt;div class="skeleton"&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row">
         <div class="col col-6 gutter-xxs gutter-r">
             <div class="skeleton-text-block skeleton-text-block-h4">
@@ -606,7 +606,7 @@
     &lt;div class="skeleton"&gt;&lt;/div&gt;
     &lt;div class="skeleton"&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row">
         <div class="col col-6 gutter-xxs gutter-r">
             <div class="skeleton-text-block skeleton-text-block-h5">
@@ -623,7 +623,7 @@
     &lt;div class="skeleton"&gt;&lt;/div&gt;
     &lt;div class="skeleton"&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row">
         <div class="col col-6 gutter-xxs gutter-r">
             <div class="skeleton-text-block skeleton-text-block-h6">
@@ -641,7 +641,7 @@
     &lt;div class="skeleton"&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
 <p>To align skeleton text to the right, add the <code>text-right</code> modifier to the wrapping element</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row">
         <div class="col col-6 gutter-xxs gutter-r">
             <div class="skeleton-text-block skeleton-text-block-h3 text-right">
@@ -683,7 +683,7 @@
 <hr />
 <h3 id="variant-examples">Variant Examples</h3>
 <p>Try the example below create a few skeletons</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="col col-12 col-md-6 center-horizontal">
         <div class="row pole-sm pole-s">
             <div class="card raised-1 card-skeleton-example" style="min-height: 100px;">
@@ -874,7 +874,7 @@ skeleton.load(content, callback);</code></pre>
 
 skeleton.load(content);</code></pre>
 <p>The example below shows swapping out the contents of card component. Click the <code>Load content</code> button to try it out.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center-x">
         <div class="card col col-lg-4 js-skeleton-loader-card">
             <div class="card-header">
@@ -930,7 +930,7 @@ $skeleton-text-radius:          var(--fbx-border-radius) !default;</code></pre>
     --fbx-skeleton-display: block;
 }</code></pre>
 <p>The example below shows customization using CSS Variables:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <style scoped>
         .skeleton-custom
         {
@@ -1009,6 +1009,6 @@ $skeleton-text-radius:          var(--fbx-border-radius) !default;</code></pre>
             </div>
         </footer>
         <script src="../../assets/js/frontbx-bundle.min.js"></script>
-        <script src="../../assets/js/frontbx-docs.js"></script>
+        <script src="../../assets/js/frontbx-docs.min.js"></script>
     </body>
 </html>

@@ -19,7 +19,7 @@ Backdrop provides access to an elevated surface providing additional app functio
 
 A Backdrop can be created via Frontbx's Container with the `Backdrop` method:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <button class="js-bd-trigger-1 btn">Show Backdrop</button>
     </div>
@@ -37,7 +37,7 @@ const backdrop = frontbx.Backdrop( {
 
 By default, the Backdrop element will adapt the dimensions of the body. You can change this to push the body content instead by passing `pushbody: true` in the options:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <button class="js-bd-trigger-2 btn">Show Backdrop</button>
     </div>
@@ -55,7 +55,7 @@ const backdrop = frontbx.Backdrop( {
 
 Drawer direction can be manged by passing `left|right|top|bottom` to  `direction` in the options.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row" style="height: 300px">
         <iframe src="../backdrop_iframe1.html"></iframe>
     </div>
@@ -74,7 +74,7 @@ const drawer = frontbx.Drawer({
 
 By default, the Backdrop element itself is Swipeable when expanded. You can make the a backdrop swipeable with on the window when open or closed by adding the `swipeable` option. This means you can open and close the backdrop by simply swiping up or down on the window itself at any time.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="iphone-case">
         <iframe src="../backdrop_iframe2.html"></iframe>
     </div>
@@ -184,7 +184,7 @@ For more complex requirements point to the id of a hidden target element element
 All other options can be set through `data-attributes` on the anchor element in `hyphen-case`. For example to set the `closeAnywhere` option, you would set the `data-close-anywhere="true"` attribute.
 
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center pole-sm">
         <button type="button" class="btn js-backdrop-trigger" data-content="#fd-content">Toggle</button>
         <div id="fd-content"  class="pad-20" style="display: none;">

@@ -1,0 +1,18 @@
+/* Color vars for theme switching */
+:root
+{
+    @each $name, $color in $palette
+    {
+    	/* #{$name} */
+        --fbx-docs-#{$name}-100: #{_lighter($color, 90%)};
+        --fbx-docs-#{$name}-200: #{_lighter($color, 80%)};
+        --fbx-docs-#{$name}-300: #{_lighter($color, 50%)};
+        --fbx-docs-#{$name}-400: #{_lighter($color, 35%)};
+        // Default is between 400 and 500 (i.e 450)
+        --fbx-docs-#{$name}-500: #{_darker($color, 5%)};
+        --fbx-docs-#{$name}-600: #{_darker($color, 20%)};
+        --fbx-docs-#{$name}-700: #{_darker($color, 25%)};
+        --fbx-docs-#{$name}-800: #{_darker($color, 30%)};
+        --fbx-docs-#{$name}-900: #{_darker($color, 40%)};
+    }
+}

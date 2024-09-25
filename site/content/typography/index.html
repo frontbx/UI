@@ -12,7 +12,7 @@
         <!-- Assets -->
         <script src="../../assets/js/frontbx-lazyload.min.js"></script>
         <link rel="stylesheet" href="../../assets/css/frontbx-bundle.min.css">
-        <link rel="stylesheet" href="../../assets/css/frontbx-docs.css">
+        <link rel="stylesheet" href="../../assets/css/frontbx-docs.min.css">
 
         <!-- Favicons -->
         <link rel="apple-touch-icon" href="../../assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -45,7 +45,7 @@
         </svg>
         <nav class="navbar navbar-fixed raised-1 bg-black">
             <div class="container-fluid">
-                <button class="hamburger xs sm js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
+                <button class="hamburger xs sm md js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
                     <span class="hamburger-bun  hamburger-bun--top"></span>
                     <span class="hamburger-patty"></span>
                     <span class="hamburger-bun  hamburger-bun--btm"></span>
@@ -56,23 +56,23 @@
                 </a>
 
                 <ul class="nav-menu flex-content-right">
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Github">
                             <span class="fa-brands fa-github"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../getting-started/download/index.html" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Download">
                             <span class="fa fa-download"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
                             <span class="fa fa-fill-drip"></span>
                         </a>
                     </li>
                     
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <span class="drop-container">
                             <button class="btn-unstyled btn-dropdown js-drop-trigger tooltipped tooltipped-s" role="button" type="button" title="toggle theme" data-tooltip="Theme mode">
                                 <span class="fa fa-cloud-sun"></span>
@@ -96,7 +96,7 @@
                             </div>
                         </span>
                     </li>
-                    <li class="xs sm">
+                    <li class="xs sm md">
                         <button class="btn-unstyled js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-direction="right" data-state="collapsed" data-content="#desktop-options-drawer">
                             <span class="fa fa-ellipsis-vertical"></span>
                         </button>
@@ -154,8 +154,8 @@
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/introduction/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Introduction</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/download/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Download</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/contents/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Contents</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/installation/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Installation</a></li>
-            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/build/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Build</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse " data-collapse-target="menu-customize">
@@ -337,7 +337,7 @@
 <hr />
 <h3 id="headings">Headings</h3>
 <p>All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code> are available natively or explicitly via <code>.h1</code> to <code>.h6</code> for when you want to match the font styling of a heading but still want your text to be displayed inline.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <h1>Heading 1</h1>
     <h2>Heading 2</h2>
     <h3>Heading 3</h3>
@@ -353,7 +353,7 @@
 &lt;h6&gt;Heading 6&lt;/h6&gt;</code></pre>
 <h3 id="body-copy">Body copy</h3>
 <p>The default Frontbx font size is <code>1.45rem</code> (14.5px) with a line height of <code>1.8</code>. This is applied to the body as well as paragraph tags. Additionally paragraph tags have a bottom margin of <code>1rem</code>.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
     <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
@@ -361,7 +361,7 @@
 </div>
 <pre><code class="html language-html">&lt;p&gt;...&lt;/p&gt;</code></pre>
 <p>In addition to standard paragraph tags, Frontbx has added <code>.p1</code> through <code>.p6</code> classes for text emphasis.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <p class="p1">Paragraph 1</p>
     <p class="p2">Paragraph 2</p>
     <p class="p3">Paragraph 3</p>
@@ -378,7 +378,7 @@
 <hr />
 <h3 id="inline-elements">Inline elements</h3>
 <p>In-line text elements have some very minimal styling applied to ensure they display consistently.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <p>
         <mark>Lorem ipsum dolor sit amet consectetur adipiscing elit</mark>
         <br>
@@ -412,7 +412,7 @@
 <hr />
 <h3 id="blockquotes">Blockquotes</h3>
 <p>Blockquotes have some very basic styling applied, but stylized versions are available via contextual classes <code>bq-*</code>.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <blockquote>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
     </blockquote>
@@ -435,7 +435,7 @@
 &lt;blockquote class="bq-warning"&gt;&lt;p&gt;...&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote class="bq-danger"&gt;&lt;p&gt;...&lt;/p&gt;&lt;/blockquote&gt;</code></pre>
 <p>Add a <code>&lt;footer&gt;</code> for identifying the source. Wrap the name of the source work in <code>&lt;cite&gt;</code>.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <blockquote>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
         <footer>Someone famous in
@@ -453,7 +453,7 @@
 <p><br></p>
 <h4 id="unordered">Unordered</h4>
 <p>A list of items in which the order does not explicitly matter.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <ul>
         <li>Lorem ipsum dolor sit amet</li>
         <li>Consectetur adipiscing elit</li>
@@ -476,7 +476,7 @@
 <p><br></p>
 <h4 id="ordered">Ordered</h4>
 <p>A list of items in which the order does explicitly matter.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <ol>
         <li>Lorem ipsum dolor sit amet</li>
         <li>Consectetur adipiscing elit</li>
@@ -499,7 +499,7 @@
 <p><br></p>
 <h4 id="inline">Inline</h4>
 <p>Use <code>.list-inline</code> to place all list items on a single line and some light padding.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <ul class="list-inline">
         <li>Lorem ipsum dolor sit amet</li>
         <li>Consectetur adipiscing elit</li>
@@ -512,7 +512,7 @@
 <p><br></p>
 <h4 id="unstyled">Unstyled</h4>
 <p>Strip list styles from a list, no padding or margins.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <ul class="list-unstyled">
         <li>Lorem ipsum dolor sit amet</li>
         <li>Consectetur adipiscing elit</li>
@@ -525,7 +525,7 @@
 <p><br></p>
 <h4 id="description">Description</h4>
 <p>A list of terms with their associated descriptions.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <dl>
         <dt>Lorem ipsum dolor sit amet</dt>
         <dd>Sed do eiusmod tempor incididunt consectetur adipiscing elit.</dd>
@@ -542,7 +542,7 @@
 <p><br></p>
 <h4 id="horizontal-description">Horizontal description</h4>
 <p>Make terms and descriptions line up side-by-side.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <dl class="dl-horizontal">
         <dt>Lorem ipsum dolor sit amet</dt>
         <dd>Sed do eiusmod tempor incididunt consectetur adipiscing elit.</dd>
@@ -559,13 +559,13 @@
 <hr />
 <h3 id="code">Code</h3>
 <p>Wrap inline snippets of code with <code>&lt;code&gt;</code></p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <p>So you can wrap this <code>.class-name</code> in a <code>code</code> tag.</p>
 </div>
 <pre><code class="html language-html">&lt;p&gt;...&lt;code&gt;...&lt;/code&gt;...&lt;/p&gt;</code></pre>
 <h4 id="code-blocks">Code blocks</h4>
 <p>Use a <code>&lt;pre&gt;</code> tag for snippets spanning multiple lines. You can also wrap a <code>&lt;code&gt;</code> tag inside a <code>&lt;pre&gt;</code> tag.</p>
-<div class="code-content-example"><pre>.foo
+<div class="fbx-snippet-demo"><pre>.foo
 {
     color: red;
 }</pre>
@@ -581,7 +581,7 @@
 <hr />
 <h3 id="address">Address</h3>
 <p>Present contact information for the nearest ancestor or the entire body of work. Preserve formatting by ending all lines with <code>&lt;br&gt;</code>.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <address>
         <strong>Twitter, Inc.</strong><br>
         1355 Market Street, Suite 900<br>
@@ -661,6 +661,6 @@
             </div>
         </footer>
         <script src="../../assets/js/frontbx-bundle.min.js"></script>
-        <script src="../../assets/js/frontbx-docs.js"></script>
+        <script src="../../assets/js/frontbx-docs.min.js"></script>
     </body>
 </html>

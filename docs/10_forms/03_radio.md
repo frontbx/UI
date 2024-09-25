@@ -18,7 +18,7 @@ Checkboxes can be used to turn an option on or off or in forms to indicate confi
 
 Custom styled radioes require very little markup and can be created by simply wrapping the label and input in `.radio` classed element under a `.form-field` wrapper. 
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="text-center">
         <div class="form-field pad-5">
             <span class="radio">
@@ -80,7 +80,7 @@ Custom styled radioes require very little markup and can be created by simply wr
 
 You can provide a label to the radio as you normally would. If you need the label to change based on the radio state, simply add `.toggle-on` and `toggle-off` elements inside the label.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form>
         <div class="form-field row floor-xxs">
             <span class="radio">
@@ -136,7 +136,7 @@ You can provide a label to the radio as you normally would. If you need the labe
 
 Checkboxes can be further contextualized using Frontbx's contextual classes `.radio-primary`,  `.radio-secondary`,  `.radio-info`,  `.radio-success`,  `.radio-warning` and `.radio-danger`:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="text-center">
         <div class="form-field pad-5">
             <span class="radio radio-primary">
@@ -190,7 +190,7 @@ Checkboxes can be further contextualized using Frontbx's contextual classes `.ra
 
 Additional sizing is available through `.radio-sm`, `radio-md` and `radio-lg`:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="text-center">
         <div class="form-field pad-5">
             <span class="radio radio-sm">

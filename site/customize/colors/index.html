@@ -12,7 +12,7 @@
         <!-- Assets -->
         <script src="../../assets/js/frontbx-lazyload.min.js"></script>
         <link rel="stylesheet" href="../../assets/css/frontbx-bundle.min.css">
-        <link rel="stylesheet" href="../../assets/css/frontbx-docs.css">
+        <link rel="stylesheet" href="../../assets/css/frontbx-docs.min.css">
 
         <!-- Favicons -->
         <link rel="apple-touch-icon" href="../../assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -45,7 +45,7 @@
         </svg>
         <nav class="navbar navbar-fixed raised-1 bg-black">
             <div class="container-fluid">
-                <button class="hamburger xs sm js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
+                <button class="hamburger xs sm md js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
                     <span class="hamburger-bun  hamburger-bun--top"></span>
                     <span class="hamburger-patty"></span>
                     <span class="hamburger-bun  hamburger-bun--btm"></span>
@@ -56,23 +56,23 @@
                 </a>
 
                 <ul class="nav-menu flex-content-right">
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Github">
                             <span class="fa-brands fa-github"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../getting-started/download/index.html" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Download">
                             <span class="fa fa-download"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
                             <span class="fa fa-fill-drip"></span>
                         </a>
                     </li>
                     
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <span class="drop-container">
                             <button class="btn-unstyled btn-dropdown js-drop-trigger tooltipped tooltipped-s" role="button" type="button" title="toggle theme" data-tooltip="Theme mode">
                                 <span class="fa fa-cloud-sun"></span>
@@ -96,7 +96,7 @@
                             </div>
                         </span>
                     </li>
-                    <li class="xs sm">
+                    <li class="xs sm md">
                         <button class="btn-unstyled js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-direction="right" data-state="collapsed" data-content="#desktop-options-drawer">
                             <span class="fa fa-ellipsis-vertical"></span>
                         </button>
@@ -154,8 +154,8 @@
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/introduction/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Introduction</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/download/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Download</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/contents/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Contents</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/installation/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Installation</a></li>
-            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/build/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Build</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse active" data-collapse-target="menu-customize">
@@ -424,7 +424,7 @@
 </table>
 <h4 id="usagea-idtheme-usagea">Usage<a id='theme-usage'></a></h4>
 <p>All theme colors are available via Frontbx's utility <a href="../../css/css-helpers/index.html">helper classes</a> as <code>.bg-[name]</code> and <code>color-[name]</code> without the word <code>theme</code> (e.g. <code>bg-primary</code> or <code>color-success</code>).</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center">
         <div class="paper paper-rounded raised-1 col col-5 col-lg-3 bg-primary pad-40 text-center">
             <p class="color-white text-bolder no-margin">Hello World!</p>
@@ -491,7 +491,7 @@
 </table>
 <h4 id="usagea-idgray-usagea">Usage<a id='gray-usage'></a></h4>
 <p>All gray shades are available via Frontbx's utility <a href="../../css/css-helpers/index.html">helper classes</a> as <code>.bg-gray-[num]</code> and <code>color-gray-[num]</code></p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center">
         <div class="paper paper-rounded raised-1 col col-5 col-lg-3 bg-gray-800 pad-40 text-center">
             <p class="color-white text-bolder no-margin">Hello World!</p>
@@ -506,7 +506,7 @@
 <p>Frontbx comes with a palette of colors via both CSS ans Sass variables for changing theme colors, customizing components or building out custom UI.</p>
 <h4 id="playground">Playground</h4>
 <p>Use the playground below to adjust the documentation colors:</p>
-<div class="code-content-example js-docs-playground-swatches">
+<div class="fbx-snippet-demo js-docs-playground-swatches">
     <div class="docs-playground-swatches">
         <div class="flex-row-fluid">
             <div class="col-12 pole-xs pole-s">Flat colors:</div>
@@ -768,7 +768,7 @@
 <h4 id="usagea-idpalette-usagea">Usage<a id='palette-usage'></a></h4>
 <p>Palette colors are available through both Sass and CSS Variables. They are not available as a utility classes or palette shades as CSS variables unless defined as a "theme" color pre-complication.</p>
 <p>However, they can still be used as CSS variables:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center">
         <div class="paper paper-rounded raised-1 col col-5 col-lg-3 pad-40 text-center" style="background: var(--fbx-color-teal)">
             <p class="color-white text-bolder no-margin">Hello World!</p>
@@ -934,6 +934,6 @@ $gray:                          #9597a0 !default;</code></pre>
             </div>
         </footer>
         <script src="../../assets/js/frontbx-bundle.min.js"></script>
-        <script src="../../assets/js/frontbx-docs.js"></script>
+        <script src="../../assets/js/frontbx-docs.min.js"></script>
     </body>
 </html>

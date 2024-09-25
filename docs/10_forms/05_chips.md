@@ -20,7 +20,7 @@ While buttons are expected to appear consistently and with familiar calls to act
 
 Chips are a modifier class to Frontbx's `.btn`, however as you'll see have extended functionality and states. A basic chip is created using the `.btn-chip` on `.btn`.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn btn-chip">Hello</button>
         <button class="btn btn-chip">World</button>
@@ -54,7 +54,7 @@ Chips are a modifier class to Frontbx's `.btn`, however as you'll see have exten
 
 Along with their native states native states, chips can have extra states depending on their use case:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn btn-chip">normal</button>
         <button class="btn btn-chip hover">:hover</button>
@@ -78,7 +78,7 @@ Along with their native states native states, chips can have extra states depend
 
 Since chips are a modifier on `.btn`, they have all the same contextual variants.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn btn-primary btn-chip">.btn-primary</button>
         <button class="btn btn-info btn-chip">.btn-info</button>
@@ -122,7 +122,7 @@ The `data-class` attribute is used for styling the chips that get inserted into 
 
 > Note that input chips use `span` element rather than a `button` as there is a hidden `input` element inside each chip as well as `button` to remove it.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="row pole-xs">
         <div class="chips-input js-chips-input" data-input-name="chips[]" data-chip-class="">
             <span class="btn btn-chip">
@@ -178,7 +178,7 @@ The `data-class` attribute is used for styling the chips that get inserted into 
 
 Chips can also be used inside an unstyled input. The base input has no styling making it versatile usage.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="row">
         <div class="chips-input-unstyled js-chips-input" data-input-name="chips[]" data-chip-class="">
             <label for="chip-field2">Tags</label>
@@ -232,7 +232,7 @@ Chips can be used as suggestions to any existing input. Simply wrap chips in a `
 
 The `data-input-target` must contain the `id` of the target input.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row pole-xs">
         <div class="form-field row">
             <input name="response" id="response1" type="text" placeholder="Enter some text...">
@@ -262,7 +262,7 @@ The `data-input-target` must contain the `id` of the target input.
 
 Chip suggestions can be incorporated into a **chip input** too.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row pole-xs">
         <div class="chips-input js-chips-input" data-input-name="chips[]" data-chip-class="" id="suggestions-chip-input">
             <span class="btn btn-chip">
@@ -333,7 +333,7 @@ Choice chips are another way of displaying a radio input to the end-user or in o
 
 Choice chips clearly delineate and display options in a compact area. They are a good alternative to toggle buttons, radio buttons, and single select menus.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs js-choice-chips">
         <button class="btn btn-chip" data-value="small">Small</button>
         <button class="btn btn-chip" data-value="medium">Medium</button>
@@ -366,7 +366,7 @@ Choice chips clearly delineate and display options in a compact area. They are a
 
 Filter chips use tags or descriptive words to filter content. Filter chips clearly delineate and display options in a compact area. They are a good alternative to toggle buttons or checkboxes.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="row floor-xs">
         <div class="flex-row-fluid align-cols-center col-gaps-xs js-filter-chips">
             <button class="btn btn-chip">

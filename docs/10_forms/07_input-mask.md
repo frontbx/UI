@@ -22,7 +22,7 @@ Pre-built masks are `creditcard`, `money`, `alpha-numeric`, `alpha-space`, `alph
 
 To mask a credit card, use the `.js-mask` class.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center flex-cols-12 flex-cols-md-6">
         <div>
             <div class="flex-row row-gaps-xs">
@@ -120,7 +120,7 @@ To mask a credit card, use the `.js-mask` class.
 
 You can also pass your own custom RegExp to the `data-mask` attribute in format `regex(pattern)`. The regex should math allowed characters in the input.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center flex-cols-12 flex-cols-md-6">
         <div>
             <div class="form-field row">
@@ -144,7 +144,7 @@ You can also pass your own custom RegExp to the `data-mask` attribute in format 
 
 You can custom format any masked input using the `data-format` attribute. Formats should be structured using an `x` for input values and anything else you want to add
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center flex-cols-12 flex-cols-md-6">
         <div>
             <div class="form-field row">

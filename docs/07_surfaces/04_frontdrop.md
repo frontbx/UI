@@ -19,7 +19,7 @@ Frontdrop provides access to an elevated surface providing additional app functi
 
 A Frontdrop can be created via Frontbx's Container with the `Frontdrop` method:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <button class="js-fd-trigger-1 btn">Show Frontdrop</button>
     </div>
@@ -37,7 +37,7 @@ const frontdrop = frontbx.Frontdrop( {
 
 Pass a text value to `confirmBtn` to add a persistent confirmation button a Frontdrop. Additionally, if the Frontdrop requires validation to be closed you can pass a callback to `callbackValidate` to run your own validation and validate if the Frontdrop should close.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <button class="js-fd-trigger-2 btn">Show Frontdrop</button>
     </div>
@@ -60,7 +60,7 @@ const frontdrop = frontbx.Frontdrop( {
 
 By default, the Frontdrop element itself is Swipeable when expanded. You can make the a frontdrop swipeable with on the window when open or closed by adding the `swipeable` option. This means you can open and close the frontdrop by simply swiping up or down on the window itself at any time.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="iphone-case">
         <iframe src="../frontdrop_iframe1.html"></iframe>
     </div>
@@ -79,7 +79,7 @@ const frontdrop = frontbx.Frontdrop({
 
 By default, the Frontdrop element will hide completely when collapsed. You can make the a frontdrop collapse to an edge by passing `peekable: true` in the options. This allows a remain persistent through user-actions. 
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="iphone-case">
         <iframe src="../frontdrop_iframe2.html"></iframe>
     </div>
@@ -189,7 +189,7 @@ For more complex requirements point to the id of a hidden target element element
 
 All other options can be set through `data-attributes` on the anchor element in `hyphen-case`. For example to set the `closeAnywhere` option, you would set the `data-close-anywhere="true"` attribute.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center pole-sm">
         <button type="button" class="btn js-frontdrop-trigger" data-content="#fd-content">Toggle</button>
         <div id="fd-content"  style="display: none;">

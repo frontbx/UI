@@ -12,7 +12,7 @@
         <!-- Assets -->
         <script src="../../assets/js/frontbx-lazyload.min.js"></script>
         <link rel="stylesheet" href="../../assets/css/frontbx-bundle.min.css">
-        <link rel="stylesheet" href="../../assets/css/frontbx-docs.css">
+        <link rel="stylesheet" href="../../assets/css/frontbx-docs.min.css">
 
         <!-- Favicons -->
         <link rel="apple-touch-icon" href="../../assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -45,7 +45,7 @@
         </svg>
         <nav class="navbar navbar-fixed raised-1 bg-black">
             <div class="container-fluid">
-                <button class="hamburger xs sm js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
+                <button class="hamburger xs sm md js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
                     <span class="hamburger-bun  hamburger-bun--top"></span>
                     <span class="hamburger-patty"></span>
                     <span class="hamburger-bun  hamburger-bun--btm"></span>
@@ -56,23 +56,23 @@
                 </a>
 
                 <ul class="nav-menu flex-content-right">
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Github">
                             <span class="fa-brands fa-github"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../getting-started/download/index.html" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Download">
                             <span class="fa fa-download"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
                             <span class="fa fa-fill-drip"></span>
                         </a>
                     </li>
                     
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <span class="drop-container">
                             <button class="btn-unstyled btn-dropdown js-drop-trigger tooltipped tooltipped-s" role="button" type="button" title="toggle theme" data-tooltip="Theme mode">
                                 <span class="fa fa-cloud-sun"></span>
@@ -96,7 +96,7 @@
                             </div>
                         </span>
                     </li>
-                    <li class="xs sm">
+                    <li class="xs sm md">
                         <button class="btn-unstyled js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-direction="right" data-state="collapsed" data-content="#desktop-options-drawer">
                             <span class="fa fa-ellipsis-vertical"></span>
                         </button>
@@ -154,8 +154,8 @@
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/introduction/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Introduction</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/download/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Download</a></li>
+            <li class="menu-item active"><a data-pjax-target="#article-body" href="../../getting-started/contents/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Contents</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/installation/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Installation</a></li>
-            <li class="menu-item active"><a data-pjax-target="#article-body" href="../../getting-started/build/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Build</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse " data-collapse-target="menu-customize">
@@ -181,11 +181,11 @@
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../layout/skeleton/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Skeleton</a></li>
         </ul>
     </li>
-    <li class="menu-item-title js-collapse " data-collapse-target="menu-content">
+    <li class="menu-item-title js-collapse active" data-collapse-target="menu-content">
         <span class="item-left"><span class="fa fa-chevron-right"></span></span>
         <span class="item-body">Content</span>
     </li>
-    <li  id="menu-content" class="menu-item-submenu">
+    <li style="height:auto" id="menu-content" class="menu-item-submenu">
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../content/typography/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Typography</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../content/images/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Images</a></li>
@@ -322,7 +322,101 @@
 </ul></div>
         <div class="container-fluid docs-container" id="top">
             <div class="main-container js-main-container">
-                <article class="docs-body pole-sm" id="article-body"></article>
+                <article class="docs-body pole-sm" id="article-body"><h1 id="contents">Contents</h1>
+<p>Learn what's included in Frontbx including production-ready compiled assets as well as source files</p>
+<hr />
+<ul>
+<li><a href="#overview">Compiled Frontbx</a><ul>
+<li><a href="#css">CSS</a></li>
+<li><a href="#javascript">JavaScript</a></li></ul></li>
+<li>[Source files]</li>
+</ul>
+<hr />
+<h3 id="compiled-frontbx">Compiled Frontbx</h3>
+<p>Now that you have a Frontbx project ready to go, you'll see something like this:</p>
+<pre><code>frontbx
+│ 
+└── dist
+    │ 
+    ├── css
+    │
+    │── js
+    │    
+    └──fonts</code></pre>
+<p>The dist folder contains compiled the compiled production-ready assets for quick drop-in usage in nearly any web project. You'll find a number of different files in these folders which are outlined below:</p>
+<h5 id="css">CSS</h5>
+<table>
+<thead>
+<tr>
+<th id="files">Files</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>frontbx.css</code><br><code>frontbx.min.css</code></td>
+<td>Standalone compiled Frontbx without the icons.</td>
+</tr>
+<tr>
+<td><code>frontbx-bundle.css</code><br><code>frontbx-bundle.min.css</code></td>
+<td>Compiled Frontbx bundled with FontAwesome icons.</td>
+</tr>
+<tr>
+<td><code>frontbx-bundle.cdn.css</code><br><code>frontbx-bundle.cdn.min.css</code></td>
+<td>Compiled Frontbx bundled with FontAwesome icons hosted externally.</td>
+</tr>
+<tr>
+<td><code>frontbx-icons.css</code><br><code>frontbx-icons.min.css</code></td>
+<td>Standalone compiled FontAwesome icons.</td>
+</tr>
+<tr>
+<td><code>frontbx-grid.css</code><br><code>frontbx-grid.min.css</code></td>
+<td>Standalone compiled Frontbx grid only.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="javascript">JavaScript</h5>
+<table>
+<thead>
+<tr>
+<th id="files">Files</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>frontbx.js</code><br><code>frontbx.min.js</code></td>
+<td>Compiled standalone JS.</td>
+</tr>
+<tr>
+<td><code>frontbx-bundle.js</code><br><code>frontbx-bundle.min.js</code></td>
+<td>Compiled Frontbx UMD ready JS.</td>
+</tr>
+<tr>
+<td><code>frontbx-lazyload.js</code><br><code>frontbx-lazyload.min.js</code></td>
+<td>Standalone Frontbx lazyload JS.</td>
+</tr>
+<tr>
+<td><code>frontbx.esm.js</code><br><code>frontbx.esm.min.js</code></td>
+<td>Compiled Frontbx ESM ready JS.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="source-files">Source files</h3>
+<pre><code>frontbx
+│ 
+├── build  (Dev scripts for compiling)
+│ 
+├── dist   (Compiled distribution assets)
+│ 
+├── docs   (Markdown source files for documentation)
+│ 
+├── js     (Source JavaScript files)
+│ 
+├── scss   (Source Scss files)
+│      
+└── site   (Built documentation site)</code></pre></article>
             </div>
         </div>
         <footer class="site-footer">
@@ -381,6 +475,6 @@
             </div>
         </footer>
         <script src="../../assets/js/frontbx-bundle.min.js"></script>
-        <script src="../../assets/js/frontbx-docs.js"></script>
+        <script src="../../assets/js/frontbx-docs.min.js"></script>
     </body>
 </html>

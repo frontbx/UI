@@ -18,7 +18,7 @@ The component uses a small amount of CSS, but mostly JavaScript to provide smoot
 
 Add the `.js-collapse` class to clickable element, with the `data-collapse-target` attribute set as the `id` of the element you want to toggle.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <button class="btn js-collapse" data-collapse-target="toggle-content">View Information</button>
     <div class="hide-overflow collapsed" id="toggle-content">
         <div class="row roof-sm floor-sm">

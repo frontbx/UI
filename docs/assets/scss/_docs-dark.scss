@@ -1,0 +1,36 @@
+/* Darkmode  */
+@media (min-width: 992px)
+{
+    .fbx-darkmode .main-container .docs-body
+    {
+        border-left: 1px solid var(--fbx-black-200);
+    }
+}
+.fbx-darkmode .docs-body > ul li a:not(.btn)
+{
+    color: var(--fbx-gray-400);
+}
+.fbx-darkmode .fbx-snippet-demo
+{
+    border-color: var(--fbx-black-100);
+}
+.fbx-darkmode .docs-body + .drawer-wrap
+{
+    border-right: 1px solid var(--fbx-black-200);
+}
+.fbx-darkmode .docs-body + .drawer-wrap .menu
+{
+    --fbx-menu-bg: var(--fbx-body-bg);
+}
+.fbx-darkmode #nprogress
+{
+    --fbx-nprogress-color: var(--fbx-black);
+}
+.fbx-darkmode .menu
+{
+    --fbx-menu-bg: var(--fbx-black-900);
+}
+.fbx-darkmode .fbx-clipboard:not(:hover)
+{
+    color: var(--fbx-gray-300);
+}

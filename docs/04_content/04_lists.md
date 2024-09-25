@@ -20,7 +20,7 @@ Frontbx lists allow you to to display a continuous group of text or images quick
 
 To create a list, add the `.list` class to a `<ul>`. Below is an example of a list in it's most basic form:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list">
@@ -48,7 +48,7 @@ To create a list, add the `.list` class to a `<ul>`. Below is an example of a li
 
 List items come with handy `.item-title` and `.item-subtitle` helper to help delineate content:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list">
@@ -89,7 +89,7 @@ List items come with handy `.item-title` and `.item-subtitle` helper to help del
 
 List items can hold three helper elements `.item-left`, `.item-body` and `.item-right` to align content. They align as you would expect: 
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list"> 
@@ -139,7 +139,7 @@ List items can hold three helper elements `.item-left`, `.item-body` and `.item-
 </ul>
 ```
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list"> 
@@ -204,7 +204,7 @@ List items can hold three helper elements `.item-left`, `.item-body` and `.item-
 
 For larger lists with multiple items, you can use the `.list-dense` modifier on `.list` to reduce the padding and text size:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list list-dense">
@@ -236,7 +236,7 @@ For larger lists with multiple items, you can use the `.list-dense` modifier on 
 
 Adding the  `.list-ellipsis` modifier on `.list` enables text overflow ellipsis. Ensure your text is nested inside `.item-body` for this to work:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list list-ellipsis">
@@ -280,7 +280,7 @@ Adding the  `.list-ellipsis` modifier on `.list` enables text overflow ellipsis.
 
 A checkbox can either be a primary action or a secondary action. When a checkbox is nested `item-left` it serves as the primary primary action and the state indicator for the list item.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list"> 
@@ -349,7 +349,7 @@ A checkbox can either be a primary action or a secondary action. When a checkbox
 
 When nested inside `.item-right`, a checkbox becomes a secondary action:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list"> 
@@ -442,7 +442,7 @@ When nested inside `.item-right`, a checkbox becomes a secondary action:
 
 List items come with a handful of convenient states to help with different use-cases. Add the classes `.active` `.selected` or `.disabled` to a list item to help provide context:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list">
@@ -476,7 +476,7 @@ List items come with a handful of convenient states to help with different use-c
 
 Add the `.js-select-list` class to any list to enable clickable selection.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list js-select-list">
@@ -552,7 +552,7 @@ list.addEventListener('list:selected', event =>
 
 List uses local CSS variables on `.list` along with Sass variables for enhanced component customization and styling. The base values are used by the UI to create all the styling. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <style scoped>
             .custom-list

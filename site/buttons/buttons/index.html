@@ -12,7 +12,7 @@
         <!-- Assets -->
         <script src="../../assets/js/frontbx-lazyload.min.js"></script>
         <link rel="stylesheet" href="../../assets/css/frontbx-bundle.min.css">
-        <link rel="stylesheet" href="../../assets/css/frontbx-docs.css">
+        <link rel="stylesheet" href="../../assets/css/frontbx-docs.min.css">
 
         <!-- Favicons -->
         <link rel="apple-touch-icon" href="../../assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -45,7 +45,7 @@
         </svg>
         <nav class="navbar navbar-fixed raised-1 bg-black">
             <div class="container-fluid">
-                <button class="hamburger xs sm js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
+                <button class="hamburger xs sm md js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
                     <span class="hamburger-bun  hamburger-bun--top"></span>
                     <span class="hamburger-patty"></span>
                     <span class="hamburger-bun  hamburger-bun--btm"></span>
@@ -56,23 +56,23 @@
                 </a>
 
                 <ul class="nav-menu flex-content-right">
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Github">
                             <span class="fa-brands fa-github"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../getting-started/download/index.html" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Download">
                             <span class="fa fa-download"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
                             <span class="fa fa-fill-drip"></span>
                         </a>
                     </li>
                     
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <span class="drop-container">
                             <button class="btn-unstyled btn-dropdown js-drop-trigger tooltipped tooltipped-s" role="button" type="button" title="toggle theme" data-tooltip="Theme mode">
                                 <span class="fa fa-cloud-sun"></span>
@@ -96,7 +96,7 @@
                             </div>
                         </span>
                     </li>
-                    <li class="xs sm">
+                    <li class="xs sm md">
                         <button class="btn-unstyled js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-direction="right" data-state="collapsed" data-content="#desktop-options-drawer">
                             <span class="fa fa-ellipsis-vertical"></span>
                         </button>
@@ -154,8 +154,8 @@
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/introduction/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Introduction</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/download/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Download</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/contents/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Contents</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/installation/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Installation</a></li>
-            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/build/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Build</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse " data-collapse-target="menu-customize">
@@ -343,7 +343,7 @@
 <hr />
 <h3 id="basic-example">Basic example</h3>
 <p>Buttons can be created by simply adding the <code>.btn</code> class to a <code>&amp;lt;a&amp;gt;</code> or <code>&amp;lt;button&amp;gt;</code> element.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs">
         <button class="btn" type="button">Button</button>
         <a class="btn" href="#">Button</a>
@@ -354,7 +354,7 @@
 <hr />
 <h3 id="contextual-buttons">Contextual buttons</h3>
 <p>Add the contextual classes <code>.btn-primary</code>, <code>.btn-info</code>, <code>.btn-success</code>, <code>.btn-warning</code> and <code>.btn-danger</code> to contextualise button styling.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn" type="button">.btn</button>
         <button class="btn btn-primary" type="button">.btn-primary</button>
@@ -373,7 +373,7 @@
 <hr />
 <h3 id="outline-buttons">Outline buttons</h3>
 <p>Add the <code>.btn-outline</code> to any button to change the style to an outline.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn btn-outline" type="button">.btn</button>
         <button class="btn btn-primary btn-outline" type="button">.btn-primary</button>
@@ -389,7 +389,7 @@
 <hr />
 <h3 id="pure-buttons">Pure buttons</h3>
 <p>Add the <code>.pure</code> class to any button to remove all borders and drop shadows.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn btn-pure" type="button">.btn</button>
         <button class="btn btn-primary btn-pure" type="button">.btn-primary</button>
@@ -405,7 +405,7 @@
 <hr />
 <h3 id="raised-buttons">raised buttons</h3>
 <p>Add the <code>.raised-1</code>, <code>.raised-2</code>, or <code>.raised-3</code> classes to any button elevate its UI heirarchy:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn raised-1" type="button">.raised-1</button>
         &nbsp;&nbsp;
@@ -420,7 +420,7 @@
 <hr />
 <h3 id="on-backgrounds">On backgrounds</h3>
 <p>Add the contextual <code>.btn-white</code> class for buttons that are on a primary background.</p></p>
-<div class="code-content-example bg-primary">
+<div class="fbx-snippet-demo bg-primary">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn btn-white" type="button">.btn-white</button>
         <button class="btn btn-white btn-outline" type="button">.btn-outline</button>
@@ -435,7 +435,7 @@
 <hr />
 <h3 id="circle-buttons">Circle buttons</h3>
 <p>Add the <code>.btn-circle</code> class to any button to change the style to a circled type.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn btn-primary btn-circle btn-xs" type="button">
             <span class="fa fa-headphones"></span>
@@ -460,7 +460,7 @@
 <hr />
 <h3 id="icon-buttons">Icon buttons</h3>
 <p>You can add icons to buttons using the font awesome icon library. No special markup is needed. You can however use an html <code>&amp;nbsp;</code> spacing character if you want extra spacing.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn" type="button">
             <span class="fa fa-headphones"></span>&nbsp;&nbsp;.btn
@@ -494,7 +494,7 @@
 <hr />
 <h3 id="button-sizes">Button sizes</h3>
 <p>Buttons can be sized using 4 different sizing classes <code>.btn-xs</code>, <code>.btn-sm</code>, <code>.btn-lg</code> &amp; <code>.btn-xl</code>. The defauly <code>.btn</code> size sits in between the <code>.btn-sm</code>, <code>.btn-lg</code> sizes.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn btn-xs" type="button"><span class="fa fa-heart"></span>.btn-xs</button>
         <button class="btn btn-sm" type="button"><span class="fa fa-heart"></span>.btn-sm</button>
@@ -512,7 +512,7 @@
 <h3 id="loading-buttons">Loading buttons</h3>
 <p>Add one of Frontbx' loaders inside any button and give the button a <code>.with-loading</code> class. When the button has the <code>.active</code> class the loading animation will show</p>
 <pre><code class="html language-html">&lt;span class="loader loader-3"&gt;&lt;/span&gt;</code></pre>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn with-loading active" type="button">
             <span class="loader loader-1"></span> Loading...
@@ -546,7 +546,7 @@
 <hr />
 <h3 id="button-groups">Button groups</h3>
 <p>Create groups by wrapping a set of buttons in a <code>.btn-group</code> classed element.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <div class="btn-group floor-xs">
             <button class="btn btn-icon" type="button">
@@ -600,7 +600,7 @@
 <hr />
 <h3 id="button-states">Button states</h3>
 <p>Button states are native, but work also with a class to use <code>.active</code>, <code>.hover</code>, <code>.disabled</code></p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn" type="button">Normal</button>
         <button class="btn hover" type="button">Hover</button>
@@ -628,7 +628,7 @@
 &lt;button class="btn active" type="button"&gt;Active&lt;/button&gt;
 &lt;button class="btn disabled" type="button"&gt;Disabled&lt;/button&gt;</code></pre>
 <p>States for <code>btn-white</code> will also work</p>
-<div class="code-content-example bg-primary">
+<div class="fbx-snippet-demo bg-primary">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn btn-white" type="button">Normal</button>
         <button class="btn btn-white hover" type="button">Hover</button>
@@ -793,6 +793,6 @@ $btn-group-radius:              var(--fbx-border-radius) !default;</code></pre><
             </div>
         </footer>
         <script src="../../assets/js/frontbx-bundle.min.js"></script>
-        <script src="../../assets/js/frontbx-docs.js"></script>
+        <script src="../../assets/js/frontbx-docs.min.js"></script>
     </body>
 </html>

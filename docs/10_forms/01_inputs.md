@@ -25,7 +25,7 @@ Frontbx inputs allow you to style forms quickly with very little markup. Because
 
 The default variant for inputs is a *floating label* style input which comes in both an underline and the default style:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="row">
         <div class="flex-row flex-cols-12 flex-cols-md-6 col-gaps-sm row-gaps-sm align-cols-center">
             <div class="form-field col-md-4">
@@ -58,7 +58,7 @@ The default variant for inputs is a *floating label* style input which comes in 
 
 In addition to the two base variants, inputs can be styled both without a label or with a label outside the input by simply omitting the `<label>` or placing it before the `<input>` inside the `.form-field`. Below is a simple example to showcase this:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="flex-row row-gaps-sm">
         <div class="flex-row flex-cols-12 flex-cols-md-6 col-gaps-sm row-gaps-sm align-cols-center">
             <div class="form-field col-md-4">
@@ -114,7 +114,7 @@ Input states are styled on modifier classes added to the `.form-field` wrapper e
 
 Additional context states of `.danger`, `.warning` & `.disabled` are also made available.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="flex-row row-gaps-xs align-cols-center">
         <div class="col-12 col-md-8 col-lg-6">
             <div class="row pole-sm pole-s">
@@ -213,7 +213,7 @@ Additional context states of `.danger`, `.warning` & `.disabled` are also made a
 
 Input errors and warning help-text can be used when running form validations. They're hidden by default and will display when the the wrapping `.form-field` has a class of `.danger` or `.warning`.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="flex-row row-gaps-xs align-cols-center">
         <div class="col-12 col-md-8 col-lg-6">
             <div class="row pole-xs pole-s">
@@ -262,7 +262,7 @@ Input errors and warning help-text can be used when running form validations. Th
 
 Input prompts can be added inside a `.form-field` by adding the `.input-group` modifier to the wrapper and be placed either side of the input. In cases where the add-on is before (or either side) of the input - simply wrap the `<label>` and `<input>` in a `div`
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="flex-row row-gaps-xs align-cols-center">
         <div class="col-12 col-md-8 col-lg-6">
             <div class="row pole-sm pole-s">
@@ -325,7 +325,7 @@ Input prompts can be added inside a `.form-field` by adding the `.input-group` m
 
 [Buttons](../buttons/index.html) can be place either inside or outside the `.form-field` wrapper. Adding a button inside the form-field has the effect of integrating the button into the input.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="flex-row row-gaps-xs align-cols-center">
         <div class="col-12 col-md-8 col-lg-6">
             <div class="row pole-sm pole-s">
@@ -406,7 +406,7 @@ Input prompts can be added inside a `.form-field` by adding the `.input-group` m
 
 Icons can be integrated into input inside the `.form-field` wrapper as an add-on. No additional markup or classes are required however:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="flex-row row-gaps-xs align-cols-center">
         <div class="col-12 col-md-8 col-lg-6">
             <div class="row pole-sm pole-s">
@@ -463,7 +463,7 @@ Icons can be integrated into input inside the `.form-field` wrapper as an add-on
 
 In addition to the default styles, the `.field-on-bg` modifier provides pre-styled markup for inputs that are on a colored background such as `bg-black` `.bg-black` etc...
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="row bg-black pole-sm">
         <div class="flex-row-fluid col-gaps-sm align-cols-center">
             <div class="form-field field-on-bg">
@@ -536,7 +536,7 @@ In addition to the default styles, the `.field-on-bg` modifier provides pre-styl
 
 In addition to regular inputs, `.form-field` can be used with both `<select>` and `<textarea>` elements. Below is a sample of various input types and how they present:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="flex-row row-gaps-xs align-cols-center">
         <div class="col-12 col-md-8 col-lg-6">
             <div class="row pole-xs pole-s">

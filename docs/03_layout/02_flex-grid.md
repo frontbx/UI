@@ -107,7 +107,7 @@ Rows are used to as the main wrapper element to contain columns. They will span 
 |-------------|-------------|-----------------------------------------------------------------|
 | `.flex-row` | `.flex-row` | Wraps around flex children. Sets any child `.col` to full width |
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row">
         <div class="col">
@@ -132,7 +132,7 @@ The table below outlines the available options.
 
 The example below shows two rows. The first that displays on mobile (`<md` breakpoint) and a second that displays on desktop (`>md` breakpoint).
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.xs-flex</code><code>.sm-flex</code></div>
     <div class="flex-row xs-flex sm-flex">
         <div class="col">
@@ -162,7 +162,7 @@ The example below shows two rows. The first that displays on mobile (`<md` break
 
 With `.flex-row-fluid` you can set an individual `.col` width too - other columns automatically will adjust as necessary.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row-fluid</code></div>
     <div class="flex-row-fluid col-gaps-xs">
         <div class="col">
@@ -211,7 +211,7 @@ Setting column width via the `.flex-row` is easy to setup via modifier classes. 
 
 This example shows setting even column widths via the parent `.flex-row`:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row">
         <div class="col">
@@ -259,7 +259,7 @@ The core base class of Frontbx layouts is the `.col`. The table below outlines t
 
 Here we set the width via the child `.col` elements:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row">
         <div class="col col-12">
@@ -300,7 +300,7 @@ Here we set the width via the child `.col` elements:
 
 This design pattern uses a combination of both the parent `.flex-row` and it's children. The base column-width is defined on the parent `.flex-row`, with any individual adjustments made on individual columns. Remaining columns will remain their size defined by the parent:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code><code>flex-cols-3</code></div>
     <div class="flex-row flex-cols-3 col-gaps-xs row-gaps-xs">
         <div class="col col-6">
@@ -335,7 +335,7 @@ This design pattern uses a combination of both the parent `.flex-row` and it's c
 </div>
 ```
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code><code>flex-cols-6</code></div>
     <div class="flex-row flex-cols-6 col-gaps-xs row-gaps-xs">
         <div class="col">
@@ -386,7 +386,7 @@ The table below outlines the available options.
 
 This example shows setting even column widths at `.col-6` on mobile and `.col-3'` at breakpoint `lg` and above via parent `.flex-row`:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code> <code>.flex-cols-3</code> <code>.flex-cols-lg-6</code></div>
     <div class="flex-row flex-cols-3 flex-cols-lg-6 col-gaps-xs row-gaps-xs">
         <div class="col">
@@ -423,7 +423,7 @@ Setting responsive column width via the child `.col` elements is easy to setup v
 
 This example shows setting even column widths at `.col-6` on mobile and `.col-4'` at breakpoint `md` and above via child `.col` elements:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row col-gaps-xs row-gaps-xs">
         <div class="col col-6 col-md-4">
@@ -454,7 +454,7 @@ This example shows setting even column widths at `.col-6` on mobile and `.col-4'
 
 This example shows setting even column widths at `.col-6` on mobile and `.col-4'` at breakpoint `lg` and above via parent `.flex-row` with one column set to `.col-12` at breakpoint `lg` and above:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-6</code><code>.flex-cols-lg-4</code></div>
     <div class="flex-row flex-cols-6 flex-cols-lg-4 col-gaps-xs row-gaps-xs">
         <div class="col col-lg-12">
@@ -491,7 +491,7 @@ Column gaps define the spacing between columns in a row and can be set via the p
 |-------------|--------------------|---------------------------------|----------------|---------------------------------------------------------|
 | Gap size    | `.col-gaps-[size]` | `xxs`, `xs` `sm` `md` `lg` `xl` | `.col-gaps-xs` | Spaces horizontal gaps between columns to size          |
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-6</code><code>.col-gaps-lg</code></div>
     <div class="flex-row flex-cols-6 col-gaps-lg row-gaps-xs">
         <div class="col">
@@ -529,7 +529,7 @@ Frontbx's grid system comes with mobile-first fully responsive set of helpers to
 
 The example below shows column gaps set to `xs` on mobile and `lg` on breakpoint `>=md`:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-6</code><code>.col-gaps-xs</code><code>.col-gaps-md-lg</code></div>
     <div class="flex-row flex-cols-6 col-gaps-xs col-gaps-md-lg row-gaps-xs">
         <div class="col">
@@ -566,7 +566,7 @@ Row gaps define the spacing between rows. With Frontbx' flex grid, you set this 
 |-------------|--------------------|---------------------------------|----------------|--------------------------------------------------|
 | Gap size    | `.row-gaps-[size]` | `xxs`, `xs` `sm` `md` `lg` `xl` | `.col-gaps-xs` | Spaces vertical gaps between column rows to size |
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
      <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-6</code><code>.row-gaps-md</code></div>
     <div class="flex-row flex-cols-6 row-gaps-md col-gaps-xs">
         <div class="col">
@@ -603,7 +603,7 @@ Frontbx's grid system comes with mobile-first fully responsive set of helpers to
 
 The example below shows row gaps set to `xs` on mobile and `lg` on breakpoint `>=md`:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-6</code><code>.row-gaps-xs</code><code>.row-gaps-md-lg</code></div>
     <div class="flex-row flex-cols-6 row-gaps-xs row-gaps-md-lg col-gaps-xs">
         <div class="col">
@@ -643,7 +643,7 @@ Gutters can be used to push columns away from each other.
 | No gutter   | `.no-gutter`     | None                            | `.no-gutter`   | Sets horizontal margins to zero                        |
 | Auto gutter | `.auto-gutter`   | None                            | `.auto-gutter` | Sets horizontal margins to auto                        |
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row">
         <div class="col col-6 gutter-xs gutter-r">
@@ -662,7 +662,7 @@ Gutters can be used to push columns away from each other.
 </div>
 ```
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.align-cols-center-x</code></div>
     <div class="flex-row align-cols-center-x">
         <div class="col col-md-4 gutter-xs gutter-r">
@@ -722,7 +722,7 @@ Frontbx's grid system comes with mobile-first fully responsive set of helpers to
 | No gutter       | `.no-gutter-[breakpoint]`     | `xxs`,`xs` `sm` `md` `lg` `xl` | `.no-gutter-md` | Sets no horizontal margin at specified breakpoint and up                                      |
 | Auto gutter     | `.auto-gutter-[breakpoint]`   | None                           | `.auto-gutter`  | Sets horizontal margins to auto                                                               |
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row">
         <div class="col col-6 gutter-xs gutter-r gutter-md-lg gutter-lg-r">
@@ -762,7 +762,7 @@ The table below outlines the classes and formats made available for poles.
 | No pole   | `.no-pole` | None                            | `.no-pole` | Sets vertical padding to zero                               |
 
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row col-gaps-xs">
         <div class="col col-6 pole-xs">
@@ -797,7 +797,7 @@ Frontbx's grid system comes with mobile-first fully responsive set of helpers to
 
 In the example below, the first col the poles are sized differently and different breakpoints:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row">
         <div class="col col-12 pole-xxs pole-lg-xs">
@@ -849,7 +849,7 @@ The table below outlines the available alignment options:
 | `.align-cols-x-around`    | Distributes any space around items horizontally                          |
 | `.align-cols-x-evenly`    | Distributes any space evenly between items and around items horizontally |
 
-<div class="code-content-example flex-show-h-space">
+<div class="fbx-snippet-demo flex-show-h-space">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.align-cols-center-x</code></div>
     <div class="flex-row flex-cols-3 col-gaps-xs align-cols-center-x">
         <div class="col">
@@ -869,7 +869,7 @@ The table below outlines the available alignment options:
 </div>
 ```
 
-<div class="code-content-example flex-show-v-space">
+<div class="fbx-snippet-demo flex-show-v-space">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.align-cols-center-y</code></div>
     <div class="flex-row flex-cols-3 col-gaps-xs align-cols-center-y">
         <div class="col">
@@ -916,7 +916,7 @@ All alignment classes are available through breakpoint specific targeting with `
 | `.align-cols-[breakpoint]-x-evenly`   | Distributes any space evenly between items and around items horizontally at specified breakpoint and up |
 
 
-<div class="code-content-example flex-show-h-space">
+<div class="fbx-snippet-demo flex-show-h-space">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.align-cols-md-center-x</code></div>
     <div class="flex-row flex-cols-2 col-gaps-xs align-cols-md-center-x">
         <div class="col">
@@ -935,7 +935,7 @@ All alignment classes are available through breakpoint specific targeting with `
 </div>
 ```
 
-<div class="code-content-example flex-show-v-space">
+<div class="fbx-snippet-demo flex-show-v-space">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.align-cols-md-center-y</code></div>
     <div class="flex-row flex-cols-6 col-gaps-xs align-cols-md-center-y">
         <div class="col">
@@ -962,7 +962,7 @@ Use `.order-[num]` classes to re-arrange content within a grid.
 |-------------|----------------|---------|------------|---------------------------|
 | Order value | `.order-[num]` | `1-5`   | `.order-2` | Sets column order in grid |
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-4</code></div>
     <div class="flex-row flex-cols-4 col-gaps-xs row-gaps-xs">
         <div class="col">
@@ -993,7 +993,7 @@ Responsive order can be used through `.order-[breakpoint]-[num]` classes to re-a
 |-------------|-----------------------------|--------------------------------------|---------------|------------------------------------------------|
 | Order value | `.order-[breakpoint]-[num]` | `xs`, `sm`, `md`, `lg`, `xl` & `1-5` | `.order-md-2` | Sets column order in grid at breakpoint and up |
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-4</code></div>
     <div class="flex-row flex-cols-4 col-gaps-xs row-gaps-xs">
         <div class="col">

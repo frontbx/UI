@@ -1,0 +1,117 @@
+/* Desktop Sidebar */
+.main-container
+{
+    padding-top: 80px;
+    position: relative;
+    display: flex;
+    height: 100%;
+    align-items: stretch;
+}
+.main-container .docs-body
+{
+    flex: 0 0 100%;
+    width: 100%;
+}
+.main-container .drawer-wrap,
+.main-container .drawer-wrap.disabled,
+.main-container .drawer-wrap.closed
+{
+    display: flex !important;
+    transform: none !important;
+    position: unset !important;
+    width: 280px !important;
+    border-right: none !important;
+    z-index: unset;
+    flex: 0 0 auto;
+    order: 1;
+}
+.main-container .drawer-wrap .drawer-header
+{
+    display: none;
+}
+.main-container .drawer-wrap .drawer-dialog
+{
+    overflow-y: auto;
+    min-height: calc(100%);
+    width: 100%;
+}
+@media (min-width: 992px)
+{
+    body > .docs-drawer
+    {
+        display: none;
+    }
+    .main-container .docs-body
+    {
+        flex: 0 0 auto;
+        order: 2;
+    }
+    .main-container .docs-body
+    {
+        padding-left: 30px;
+        width: calc(100% - 280px);
+        border-left: 1px solid var(--fbx-gray-200);
+    }
+}
+
+/* Docs Menu */
+.docs-drawer
+{
+    --fbx-drawer-bg: var(--fbx-body-bg);
+    --fbx-drawer-width: 260px;
+}
+.doc-menu 
+{
+    --fbx-menu-color: var(--fbx-body-color)
+}
+.doc-menu,
+.doc-menu .menu
+{
+    --fbx-menu-bg: var(--fbx-body-bg);
+}
+.doc-menu .menu
+{
+    --fbx-menu-item-pad-x: 20px;
+    display: block;
+    width: 100%;
+}
+.doc-menu .menu-item
+{
+    padding: 0;
+}
+.doc-menu .menu-item a
+{
+    padding: var(--fbx-menu-item-pad-y) var(--fbx-menu-item-pad-x);    
+}
+.doc-menu .menu-item-submenu
+{
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+.doc-menu .menu-item-title.active:not(:hover)
+{
+    background-color: var(--fbx-body-bg);
+}
+.doc-menu li:hover
+{
+    color:var(--fbx-menu-item-color-active);
+}
+.doc-menu .fa
+{
+    --fbx-icon-size: 10px;
+}
+.doc-menu .menu-item-title .item-body
+{
+    font-weight: 500;
+}
+.doc-menu .menu-item-title .fa
+{
+    transform: rotate(0deg);
+    transition: transform var(--fbx-ease-time-xs) var(--fbx-base-easing);
+}
+.doc-menu .menu-item-title.active .fa
+{
+    transform: rotate(90deg);
+}

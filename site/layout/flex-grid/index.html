@@ -12,7 +12,7 @@
         <!-- Assets -->
         <script src="../../assets/js/frontbx-lazyload.min.js"></script>
         <link rel="stylesheet" href="../../assets/css/frontbx-bundle.min.css">
-        <link rel="stylesheet" href="../../assets/css/frontbx-docs.css">
+        <link rel="stylesheet" href="../../assets/css/frontbx-docs.min.css">
 
         <!-- Favicons -->
         <link rel="apple-touch-icon" href="../../assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -45,7 +45,7 @@
         </svg>
         <nav class="navbar navbar-fixed raised-1 bg-black">
             <div class="container-fluid">
-                <button class="hamburger xs sm js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
+                <button class="hamburger xs sm md js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
                     <span class="hamburger-bun  hamburger-bun--top"></span>
                     <span class="hamburger-patty"></span>
                     <span class="hamburger-bun  hamburger-bun--btm"></span>
@@ -56,23 +56,23 @@
                 </a>
 
                 <ul class="nav-menu flex-content-right">
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Github">
                             <span class="fa-brands fa-github"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../getting-started/download/index.html" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Download">
                             <span class="fa fa-download"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
                             <span class="fa fa-fill-drip"></span>
                         </a>
                     </li>
                     
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <span class="drop-container">
                             <button class="btn-unstyled btn-dropdown js-drop-trigger tooltipped tooltipped-s" role="button" type="button" title="toggle theme" data-tooltip="Theme mode">
                                 <span class="fa fa-cloud-sun"></span>
@@ -96,7 +96,7 @@
                             </div>
                         </span>
                     </li>
-                    <li class="xs sm">
+                    <li class="xs sm md">
                         <button class="btn-unstyled js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-direction="right" data-state="collapsed" data-content="#desktop-options-drawer">
                             <span class="fa fa-ellipsis-vertical"></span>
                         </button>
@@ -154,8 +154,8 @@
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/introduction/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Introduction</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/download/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Download</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/contents/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Contents</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/installation/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Installation</a></li>
-            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/build/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Build</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse " data-collapse-target="menu-customize">
@@ -415,7 +415,7 @@ $breakpoints:
 </tr>
 </tbody>
 </table>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row">
         <div class="col">
@@ -448,7 +448,7 @@ $breakpoints:
 </tbody>
 </table>
 <p>The example below shows two rows. The first that displays on mobile (<code>&lt;md</code> breakpoint) and a second that displays on desktop (<code>&gt;md</code> breakpoint).</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.xs-flex</code><code>.sm-flex</code></div>
     <div class="flex-row xs-flex sm-flex">
         <div class="col">
@@ -471,7 +471,7 @@ $breakpoints:
 <h4 id="fluid-rows">Fluid rows</h4>
 <p><code>.flex-row-fluid</code> acts how you would expect native flex to behave. It distributes content evenly allowing each <code>.col</code> to shrink or grow as necessary to fill available space.</p>
 <p>With <code>.flex-row-fluid</code> you can set an individual <code>.col</code> width too - other columns automatically will adjust as necessary.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row-fluid</code></div>
     <div class="flex-row-fluid col-gaps-xs">
         <div class="col">
@@ -526,7 +526,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 </tbody>
 </table>
 <p>This example shows setting even column widths via the parent <code>.flex-row</code>:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row">
         <div class="col">
@@ -589,7 +589,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 </tbody>
 </table>
 <p>Here we set the width via the child <code>.col</code> elements:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row">
         <div class="col col-12">
@@ -624,7 +624,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 &lt;/div&gt;</code></pre>
 <h4 id="3-using-both">3. Using both</h4>
 <p>This design pattern uses a combination of both the parent <code>.flex-row</code> and it's children. The base column-width is defined on the parent <code>.flex-row</code>, with any individual adjustments made on individual columns. Remaining columns will remain their size defined by the parent:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code><code>flex-cols-3</code></div>
     <div class="flex-row flex-cols-3 col-gaps-xs row-gaps-xs">
         <div class="col col-6">
@@ -655,7 +655,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
     &lt;div class="col"&gt;&lt;/div&gt;
     &lt;div class="col"&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code><code>flex-cols-6</code></div>
     <div class="flex-row flex-cols-6 col-gaps-xs row-gaps-xs">
         <div class="col">
@@ -710,7 +710,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 </tbody>
 </table>
 <p>This example shows setting even column widths at <code>.col-6</code> on mobile and <code>.col-3'</code> at breakpoint <code>lg</code> and above via parent <code>.flex-row</code>:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code> <code>.flex-cols-3</code> <code>.flex-cols-lg-6</code></div>
     <div class="flex-row flex-cols-3 flex-cols-lg-6 col-gaps-xs row-gaps-xs">
         <div class="col">
@@ -756,7 +756,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 </tbody>
 </table>
 <p>This example shows setting even column widths at <code>.col-6</code> on mobile and <code>.col-4'</code> at breakpoint <code>md</code> and above via child <code>.col</code> elements:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row col-gaps-xs row-gaps-xs">
         <div class="col col-6 col-md-4">
@@ -781,7 +781,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 &lt;/div&gt;</code></pre>
 <h4 id="responsive-parent-child">Responsive parent child</h4>
 <p>This example shows setting even column widths at <code>.col-6</code> on mobile and <code>.col-4'</code> at breakpoint <code>lg</code> and above via parent <code>.flex-row</code> with one column set to <code>.col-12</code> at breakpoint <code>lg</code> and above:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-6</code><code>.flex-cols-lg-4</code></div>
     <div class="flex-row flex-cols-6 flex-cols-lg-4 col-gaps-xs row-gaps-xs">
         <div class="col col-lg-12">
@@ -827,7 +827,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 </tr>
 </tbody>
 </table>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-6</code><code>.col-gaps-lg</code></div>
     <div class="flex-row flex-cols-6 col-gaps-lg row-gaps-xs">
         <div class="col">
@@ -873,7 +873,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 </tbody>
 </table>
 <p>The example below shows column gaps set to <code>xs</code> on mobile and <code>lg</code> on breakpoint <code>&gt;=md</code>:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-6</code><code>.col-gaps-xs</code><code>.col-gaps-md-lg</code></div>
     <div class="flex-row flex-cols-6 col-gaps-xs col-gaps-md-lg row-gaps-xs">
         <div class="col">
@@ -919,7 +919,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 </tr>
 </tbody>
 </table>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
      <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-6</code><code>.row-gaps-md</code></div>
     <div class="flex-row flex-cols-6 row-gaps-md col-gaps-xs">
         <div class="col">
@@ -965,7 +965,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 </tbody>
 </table>
 <p>The example below shows row gaps set to <code>xs</code> on mobile and <code>lg</code> on breakpoint <code>&gt;=md</code>:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-6</code><code>.row-gaps-xs</code><code>.row-gaps-md-lg</code></div>
     <div class="flex-row flex-cols-6 row-gaps-xs row-gaps-md-lg col-gaps-xs">
         <div class="col">
@@ -1032,7 +1032,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 </tr>
 </tbody>
 </table>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row">
         <div class="col col-6 gutter-xs gutter-r">
@@ -1047,7 +1047,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
     &lt;div class="col col-6 gutter-xs gutter-r"&gt;&lt;/div&gt;
     &lt;div class="col col-6 gutter-xs gutter-l"&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.align-cols-center-x</code></div>
     <div class="flex-row align-cols-center-x">
         <div class="col col-md-4 gutter-xs gutter-r">
@@ -1133,7 +1133,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 </tr>
 </tbody>
 </table>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row">
         <div class="col col-6 gutter-xs gutter-r gutter-md-lg gutter-lg-r">
@@ -1191,7 +1191,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 </tr>
 </tbody>
 </table>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row col-gaps-xs">
         <div class="col col-6 pole-xs">
@@ -1247,7 +1247,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 </tbody>
 </table>
 <p>In the example below, the first col the poles are sized differently and different breakpoints:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row">
         <div class="col col-12 pole-xxs pole-lg-xs">
@@ -1341,7 +1341,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 </tr>
 </tbody>
 </table>
-<div class="code-content-example flex-show-h-space">
+<div class="fbx-snippet-demo flex-show-h-space">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.align-cols-center-x</code></div>
     <div class="flex-row flex-cols-3 col-gaps-xs align-cols-center-x">
         <div class="col">
@@ -1357,7 +1357,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
     &lt;div class="col"&gt;&lt;/div&gt;
     &lt;div class="col"&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
-<div class="code-content-example flex-show-v-space">
+<div class="fbx-snippet-demo flex-show-v-space">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.align-cols-center-y</code></div>
     <div class="flex-row flex-cols-3 col-gaps-xs align-cols-center-y">
         <div class="col">
@@ -1445,7 +1445,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 </tr>
 </tbody>
 </table>
-<div class="code-content-example flex-show-h-space">
+<div class="fbx-snippet-demo flex-show-h-space">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.align-cols-md-center-x</code></div>
     <div class="flex-row flex-cols-2 col-gaps-xs align-cols-md-center-x">
         <div class="col">
@@ -1460,7 +1460,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
     &lt;div class="col"&gt;&lt;/div&gt;
     &lt;div class="col"&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
-<div class="code-content-example flex-show-v-space">
+<div class="fbx-snippet-demo flex-show-v-space">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.align-cols-md-center-y</code></div>
     <div class="flex-row flex-cols-6 col-gaps-xs align-cols-md-center-y">
         <div class="col">
@@ -1497,7 +1497,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 </tr>
 </tbody>
 </table>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-4</code></div>
     <div class="flex-row flex-cols-4 col-gaps-xs row-gaps-xs">
         <div class="col">
@@ -1538,7 +1538,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 </tr>
 </tbody>
 </table>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-4</code></div>
     <div class="flex-row flex-cols-4 col-gaps-xs row-gaps-xs">
         <div class="col">
@@ -1671,6 +1671,6 @@ $grid-poles:
             </div>
         </footer>
         <script src="../../assets/js/frontbx-bundle.min.js"></script>
-        <script src="../../assets/js/frontbx-docs.js"></script>
+        <script src="../../assets/js/frontbx-docs.min.js"></script>
     </body>
 </html>

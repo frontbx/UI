@@ -12,7 +12,7 @@
         <!-- Assets -->
         <script src="../../assets/js/frontbx-lazyload.min.js"></script>
         <link rel="stylesheet" href="../../assets/css/frontbx-bundle.min.css">
-        <link rel="stylesheet" href="../../assets/css/frontbx-docs.css">
+        <link rel="stylesheet" href="../../assets/css/frontbx-docs.min.css">
 
         <!-- Favicons -->
         <link rel="apple-touch-icon" href="../../assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -45,7 +45,7 @@
         </svg>
         <nav class="navbar navbar-fixed raised-1 bg-black">
             <div class="container-fluid">
-                <button class="hamburger xs sm js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
+                <button class="hamburger xs sm md js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
                     <span class="hamburger-bun  hamburger-bun--top"></span>
                     <span class="hamburger-patty"></span>
                     <span class="hamburger-bun  hamburger-bun--btm"></span>
@@ -56,23 +56,23 @@
                 </a>
 
                 <ul class="nav-menu flex-content-right">
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Github">
                             <span class="fa-brands fa-github"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../getting-started/download/index.html" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Download">
                             <span class="fa fa-download"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
                             <span class="fa fa-fill-drip"></span>
                         </a>
                     </li>
                     
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <span class="drop-container">
                             <button class="btn-unstyled btn-dropdown js-drop-trigger tooltipped tooltipped-s" role="button" type="button" title="toggle theme" data-tooltip="Theme mode">
                                 <span class="fa fa-cloud-sun"></span>
@@ -96,7 +96,7 @@
                             </div>
                         </span>
                     </li>
-                    <li class="xs sm">
+                    <li class="xs sm md">
                         <button class="btn-unstyled js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-direction="right" data-state="collapsed" data-content="#desktop-options-drawer">
                             <span class="fa fa-ellipsis-vertical"></span>
                         </button>
@@ -154,8 +154,8 @@
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/introduction/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Introduction</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/download/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Download</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/contents/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Contents</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/installation/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Installation</a></li>
-            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/build/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Build</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse " data-collapse-target="menu-customize">
@@ -334,7 +334,7 @@
 <h3 id="aspect-ratios">Aspect ratios</h3>
 <p>Frontbx's utility classes allow you to set aspect ratios on both <strong>image</strong> and <strong>Background image</strong> elements. This enables you to set a fixed height or width for an image, while retaining a specific aspect ratio.</p>
 <p>For <code>&lt;image&gt;</code> elements, wrap the image in a <code>.ratio-img</code> div, then add the relevant <code>.ratio-[w]-[h]</code> class to the wrapper:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="col-12 col-md-8 col-lg-5">
             <div class="raised-1 ratio-img ratio-16-9">
@@ -347,7 +347,7 @@
     &lt;img src="trump-hero.jpg" alt="trump" /&gt;
 &lt;/div&gt;</code></pre>
 <p>For <strong>Background image</strong> elements, add the relevant <code>.ratio-[w]-[h]</code> class to the <code>.bg-image</code> element directly:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="col-12 col-md-8 col-lg-5">
             <div class="bg-image ratio-16-9 raised-1" style="background-image: url(../../assets/img/trump-hero.jpg)"></div>
@@ -433,7 +433,7 @@
 <hr />
 <h3 id="dimensions">Dimensions</h3>
 <p>Dimensions for both <strong>image</strong> and <strong>Background image</strong> elements can be set via CSS Variables. For browsers that support the CSS <a href="https://caniuse.com/mdn-css_properties_aspect-ratio">aspect-ratio</a> property, these values can be customized. The default values are <code>width: 100%</code> and <code>height: auto</code>:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center">
         <div class="col col-md-8 col-lg-4">
             <div class="ratio-img raised-1" style="--fbx-aspect-ratio:1/1;">
@@ -454,7 +454,7 @@
 <hr />
 <h3 id="javascript-instantiation">JavaScript Instantiation</h3>
 <p>Images can be instantiated via JavaScript to generate dynamic content on the fly. To create an image dynamically, use Frontbx's <code>Component.Create</code> method either via the <code>frontbx.Dom</code> or the <code>Image</code> Component directly:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-sm">
         <div class="col-3 js-insert-img-container"></div>
     </div>
@@ -597,6 +597,6 @@ frontbx.Dom().component('Image').create(options, container);</code></pre>
             </div>
         </footer>
         <script src="../../assets/js/frontbx-bundle.min.js"></script>
-        <script src="../../assets/js/frontbx-docs.js"></script>
+        <script src="../../assets/js/frontbx-docs.min.js"></script>
     </body>
 </html>

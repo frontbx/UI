@@ -65,7 +65,6 @@
     --fbx-white-800: #{_darker($white, 30%)};
     --fbx-white-900: #{_darker($white, 40%)};
 
-
     /* Contextual color assignments */
     @each $name, $colorVar in $contextsCSSVar
     {

@@ -18,7 +18,7 @@ Checkboxes can be used to turn an option on or off or in forms to indicate confi
 
 Custom styled checkboxes require very little markup and can be created by simply wrapping the label and input in `.checkbox` classed element under a `.form-field` wrapper. 
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="text-center">
         <div class="form-field pad-5">
             <span class="checkbox">
@@ -80,7 +80,7 @@ Custom styled checkboxes require very little markup and can be created by simply
 
 You can provide a label to the checkbox as you normally would. If you need the label to change based on the checkbox state, simply add `.toggle-on` and `toggle-off` elements inside the label.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form>
         <div class="form-field row floor-xxs">
             <span class="checkbox">
@@ -136,7 +136,7 @@ You can provide a label to the checkbox as you normally would. If you need the l
 
 Checkboxes can be further contextualized using Frontbx's contextual classes `.checkbox-primary`,  `.checkbox-secondary`,  `.checkbox-info`,  `.checkbox-success`,  `.checkbox-warning` and `.checkbox-danger`:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="text-center">
         <div class="form-field pad-5">
             <span class="checkbox checkbox-primary">
@@ -190,7 +190,7 @@ Checkboxes can be further contextualized using Frontbx's contextual classes `.ch
 
 Additional sizing is available through `.checkbox-sm`, `checkbox-md` and `checkbox-lg`:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="text-center">
         <div class="form-field pad-5">
             <span class="checkbox checkbox-sm">

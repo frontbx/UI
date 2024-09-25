@@ -20,7 +20,7 @@ Menu's are used throughout Frontbx and can be optionally integrating into many c
 
 Creating a basic menu is as simple as creating a list under the `.menu` class:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center flex-cols-6 flex-cols-lg-4">
         <ul class="menu"> 
             <li>Item 1</li>
@@ -50,7 +50,7 @@ Menu items come with handy alignment content helpers `.item-left`, `.item-right`
 
 Additionally, the `.menu-divider` and `.menu-header` can be used to layout content
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center flex-cols-6 flex-cols-lg-4">
         <ul class="menu">
             <li class="menu-header">Menu</li>
@@ -109,7 +109,7 @@ Additionally, the `.menu-divider` and `.menu-header` can be used to layout conte
 
 For larger menus with multiple items, you can use the `.menu-dense` modifier on `.menu` to reduce the padding and text size:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center flex-cols-6 flex-cols-lg-4">
         <ul class="menu menu-dense">
             <li>Item 1</li>
@@ -139,7 +139,7 @@ For larger menus with multiple items, you can use the `.menu-dense` modifier on 
 
 Adding the  `.menu-ellipsis` modifier on `.menu` enables text overflow ellipsis. Ensure your text is nested inside `.item-body` for this to work:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center flex-cols-6 flex-cols-lg-4">
         <ul class="menu menu-ellipsis">
             <li>
@@ -187,7 +187,7 @@ Adding the  `.menu-ellipsis` modifier on `.menu` enables text overflow ellipsis.
 
 Menu items come with a handful of convenient states to help with different use-cases. Add the classes `.active` `.selected` or `.disabled` to a menu item to help provide context:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center flex-cols-6 flex-cols-lg-4">
         <ul class="menu">
             <li>Default</li>
@@ -219,7 +219,7 @@ Menu items come with a handful of convenient states to help with different use-c
 
 Menu uses local CSS variables on `.menu` along with Sass variables for enhanced component customization and styling. The base values are used by the UI to create all the styling. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center flex-cols-6 flex-cols-lg-4">
         <style scoped>
             .custom-menu
@@ -344,7 +344,7 @@ $menu-divider-space:            5px;
 
 Menu can be instantiated via JavaScript to generate dynamic content on the fly. To create a Menu dynamically, use Frontbx's `Component.Create` method either via the `frontbx.Dom` or the Menu Component directly:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center flex-cols-6 flex-cols-lg-4 js-insert-container"></div>
     <div class="flex-row-fluid align-cols-center pole-sm pole-n">
         <button class="btn js-insert-trigger">Insert menu</button>

@@ -12,7 +12,7 @@
         <!-- Assets -->
         <script src="../../assets/js/frontbx-lazyload.min.js"></script>
         <link rel="stylesheet" href="../../assets/css/frontbx-bundle.min.css">
-        <link rel="stylesheet" href="../../assets/css/frontbx-docs.css">
+        <link rel="stylesheet" href="../../assets/css/frontbx-docs.min.css">
 
         <!-- Favicons -->
         <link rel="apple-touch-icon" href="../../assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -45,7 +45,7 @@
         </svg>
         <nav class="navbar navbar-fixed raised-1 bg-black">
             <div class="container-fluid">
-                <button class="hamburger xs sm js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
+                <button class="hamburger xs sm md js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
                     <span class="hamburger-bun  hamburger-bun--top"></span>
                     <span class="hamburger-patty"></span>
                     <span class="hamburger-bun  hamburger-bun--btm"></span>
@@ -56,23 +56,23 @@
                 </a>
 
                 <ul class="nav-menu flex-content-right">
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Github">
                             <span class="fa-brands fa-github"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../getting-started/download/index.html" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Download">
                             <span class="fa fa-download"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
                             <span class="fa fa-fill-drip"></span>
                         </a>
                     </li>
                     
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <span class="drop-container">
                             <button class="btn-unstyled btn-dropdown js-drop-trigger tooltipped tooltipped-s" role="button" type="button" title="toggle theme" data-tooltip="Theme mode">
                                 <span class="fa fa-cloud-sun"></span>
@@ -96,7 +96,7 @@
                             </div>
                         </span>
                     </li>
-                    <li class="xs sm">
+                    <li class="xs sm md">
                         <button class="btn-unstyled js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-direction="right" data-state="collapsed" data-content="#desktop-options-drawer">
                             <span class="fa fa-ellipsis-vertical"></span>
                         </button>
@@ -154,8 +154,8 @@
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/introduction/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Introduction</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/download/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Download</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/contents/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Contents</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/installation/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Installation</a></li>
-            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/build/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Build</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse " data-collapse-target="menu-customize">
@@ -348,7 +348,7 @@
 <li><code>.card-footer</code></li>
 </ol>
 <p>Below is an example of a basic card with some text content.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center">
         <div class="card col col-md-8 col-lg-5">
             <div class="card-block">
@@ -369,7 +369,7 @@
 <hr />
 <h3 id="media">Media</h3>
 <p>To render media inside a card, wrap an image in a <code>.card-media</code> block. Media can be placed at the at the top, bottom or center of a card:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
    <div class="flex-row col-gaps-xs row-gaps-xs">
         <div class="card col col-lg-4">
             <div class="card-media">
@@ -470,7 +470,7 @@
 &lt;/div&gt;</code></pre>
 <h4 id="background-images">Background images</h4>
 <p>You can also make use of Frontbx's <code>.bg-image</code> inside a <code>.card-media</code> block if you need a fixed height image at a specific aspect ratio:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center">
         <div class="card col col-md-8 col-lg-5">
             <div class="card-header">
@@ -509,7 +509,7 @@
 <h3 id="landscape">Landscape</h3>
 <p>Landscape cards have their media to left or right of their content. You'll need to add <code>.card-landscape</code> modifier to the card.</p>
 <p>If using <code>card-header</code> or <code>.card-footer</code>, you'll need to your card content in a <code>&lt;div&gt;</code>:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center row-gaps-sm">
         <div class="col col-lg-8 card card-landscape">
             <div>
@@ -582,7 +582,7 @@
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
 <p>Add the <code>.responsive</code> modifier class to <code>.card.card-landscape</code> to make it stack like a regular card on screens below <code>md</code> breakpoint.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center row-gaps-xs">
         <div class="col col-lg-8 card card-landscape responsive">
             <div class="card-media">
@@ -611,7 +611,7 @@
 <hr />
 <h3 id="header">Header</h3>
 <p>Add an optional header within a card by using <code>.card-header</code>, remember to wrap any content in <code>.card-header-content</code></p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center">
         <div class="card col col-md-8 col-lg-5">
             <div class="card-header">
@@ -638,7 +638,7 @@
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
 <p><code>.card-header</code> has two additional child elements for aligning items inside it <code>.card-header-left</code> and <code>.card-header-right</code>:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center">
         <div class="card col col-md-8 col-lg-5">
             <div class="card-header">
@@ -707,7 +707,7 @@
 <hr />
 <h3 id="footer">Footer</h3>
 <p>Add an optional footer within a card by using <code>.card-footer</code>, remember to wrap any content in <code>.card-footer-content</code>:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center">
         <div class="card col col-md-8 col-lg-5">
             <div class="card-media">
@@ -740,7 +740,7 @@
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
 <p><code>.card-footer</code> has two additional child elements for aligning items inside it <code>.card-footer-left</code> and <code>.card-footer-right</code>:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center">
         <div class="card col col-md-8 col-lg-5">
             <div class="card-header">
@@ -814,7 +814,7 @@
 <hr />
 <h3 id="divider">Divider</h3>
 <p>Dividers can be used to separate regions in cards or to indicate areas of a card that can expand. Dividers wrapped in <code>.card-block</code> should be used to separate content.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center">
         <div class="card col col-md-8 col-lg-5">
             <div class="card-header">
@@ -845,7 +845,7 @@
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
 <p>Dividers outside of <code>.card-block</code> should indicate areas of a card that can expand:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center">
         <div class="card col col-md-8 col-lg-5">
             <div class="card-header">
@@ -896,7 +896,7 @@
 <hr />
 <h3 id="tables">Tables</h3>
 <p>To add tables to simply add the table markup without a <code>.card-block</code> so it spans the full width of the card.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center">
         <div class="card col col-lg-8">
             <div class="card-header">
@@ -964,7 +964,7 @@
 <hr />
 <h3 id="scrollable">Scrollable</h3>
 <p>There are two different ways to scroll content on a card. Use <code>.card-scrollable</code> to make the entire card scrollable, or <code>.card-scrollable-content</code> to to make the card's content scrollable while the footer and header are in fixed piositons:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center col-gaps-sm">
         <div class="card card-scrollable col-6" style="height: 600px;">
             <div class="card-header">
@@ -1041,7 +1041,7 @@
 &lt;/div&gt;</code></pre>
 <h3 id="primary-action">Primary Action</h3>
 <p>Add the <code>.primary-action</code> to any element inside a card or the card itself to make it clickable with a ripple effect:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
    <div class="flex-row col-gaps-xs row-gaps-xs align-cols-center-x align-cols-y-stretch">
         <div class="card col col-lg-4 primary-action">
             <div class="card-media">
@@ -1216,6 +1216,6 @@ $card-landscape-img-lg:         300px !default;</code></pre>
             </div>
         </footer>
         <script src="../../assets/js/frontbx-bundle.min.js"></script>
-        <script src="../../assets/js/frontbx-docs.js"></script>
+        <script src="../../assets/js/frontbx-docs.min.js"></script>
     </body>
 </html>

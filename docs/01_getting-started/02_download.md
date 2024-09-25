@@ -25,13 +25,13 @@ Compile Frontbx with your own asset pipeline by downloading the latest release.
 
 <a href="https://github.com/frontbx/ui/archive/refs/heads/main.zip" target="_blank" class="btn btn-primary">Download Source</a>
 
-After downloading, navigate  to your project directory and run the following command:
+After downloading, navigate to your project directory and run the following command:
 
 ```bash
 npm install frontbx
 ```
 
-Next step, head over to the [Installation Page](../installation/index.html) for details on how to get started running your own build.
+Next head through to the [Contents Page](../contents/index.html) to familiarize yourself with Frontbx's source files, then see the [Installation Page](../installation/index.html) for details on how to get started running your own build.
 
 ---
 
@@ -53,7 +53,7 @@ const frontbx = require('frontbx');
 import frontbx from 'frontbx';
 ```
 
-Next step, head over to the [Installation Page](../installation/index.html) for details on how to get started running your own build.
+Next head through to the [Contents Page](../contents/index.html) to familiarize yourself with Frontbx's source files, then see the [Installation Page](../installation/index.html) for details on how to get started running your own build.
 
 ---
 
@@ -84,7 +84,7 @@ git checkout master
 git merge upstream/master
 ```
 
-Next step, head over to the [Installation Page](../installation/index.html) for details on how to get started running your own build.
+Next head through to the [Contents Page](../contents/index.html) to familiarize yourself with Frontbx's source files, then see the [Installation Page](../installation/index.html) for details on how to get started running your own build.
 
 After downloading, navigate  to your project directory and run the following command:
 

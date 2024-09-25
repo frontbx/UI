@@ -12,7 +12,7 @@
         <!-- Assets -->
         <script src="../../assets/js/frontbx-lazyload.min.js"></script>
         <link rel="stylesheet" href="../../assets/css/frontbx-bundle.min.css">
-        <link rel="stylesheet" href="../../assets/css/frontbx-docs.css">
+        <link rel="stylesheet" href="../../assets/css/frontbx-docs.min.css">
 
         <!-- Favicons -->
         <link rel="apple-touch-icon" href="../../assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -45,7 +45,7 @@
         </svg>
         <nav class="navbar navbar-fixed raised-1 bg-black">
             <div class="container-fluid">
-                <button class="hamburger xs sm js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
+                <button class="hamburger xs sm md js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
                     <span class="hamburger-bun  hamburger-bun--top"></span>
                     <span class="hamburger-patty"></span>
                     <span class="hamburger-bun  hamburger-bun--btm"></span>
@@ -56,23 +56,23 @@
                 </a>
 
                 <ul class="nav-menu flex-content-right">
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Github">
                             <span class="fa-brands fa-github"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../getting-started/download/index.html" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Download">
                             <span class="fa fa-download"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
                             <span class="fa fa-fill-drip"></span>
                         </a>
                     </li>
                     
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <span class="drop-container">
                             <button class="btn-unstyled btn-dropdown js-drop-trigger tooltipped tooltipped-s" role="button" type="button" title="toggle theme" data-tooltip="Theme mode">
                                 <span class="fa fa-cloud-sun"></span>
@@ -96,7 +96,7 @@
                             </div>
                         </span>
                     </li>
-                    <li class="xs sm">
+                    <li class="xs sm md">
                         <button class="btn-unstyled js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-direction="right" data-state="collapsed" data-content="#desktop-options-drawer">
                             <span class="fa fa-ellipsis-vertical"></span>
                         </button>
@@ -154,8 +154,8 @@
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/introduction/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Introduction</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/download/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Download</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/contents/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Contents</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/installation/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Installation</a></li>
-            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/build/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Build</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse " data-collapse-target="menu-customize">
@@ -338,7 +338,7 @@
 <hr />
 <h3 id="example">Example</h3>
 <p>A Frontdrop can be created via Frontbx's Container with the <code>Frontdrop</code> method:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <button class="js-fd-trigger-1 btn">Show Frontdrop</button>
     </div>
@@ -349,7 +349,7 @@
 <hr />
 <h3 id="confirm-button">Confirm Button</h3>
 <p>Pass a text value to <code>confirmBtn</code> to add a persistent confirmation button a Frontdrop. Additionally, if the Frontdrop requires validation to be closed you can pass a callback to <code>callbackValidate</code> to run your own validation and validate if the Frontdrop should close.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <button class="js-fd-trigger-2 btn">Show Frontdrop</button>
     </div>
@@ -365,7 +365,7 @@
 <hr />
 <h3 id="swipeable">Swipeable</h3>
 <p>By default, the Frontdrop element itself is Swipeable when expanded. You can make the a frontdrop swipeable with on the window when open or closed by adding the <code>swipeable</code> option. This means you can open and close the frontdrop by simply swiping up or down on the window itself at any time.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="iphone-case">
         <iframe src="../frontdrop_iframe1.html"></iframe>
     </div>
@@ -377,7 +377,7 @@
 <hr />
 <h3 id="peekable">Peekable</h3>
 <p>By default, the Frontdrop element will hide completely when collapsed. You can make the a frontdrop collapse to an edge by passing <code>peekable: true</code> in the options. This allows a remain persistent through user-actions. </p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="iphone-case">
         <iframe src="../frontdrop_iframe2.html"></iframe>
     </div>
@@ -529,7 +529,7 @@
 <p>For basic HTML string content, simply use the <code>data-content</code> attribute with any required string content to populate the Frontdrop.</p>
 <p>For more complex requirements point to the id of a hidden target element element in the DOM with the <code>data-content</code> attribute. Remember to always include the <code>#</code> character before the ID as this differentiates it from it being interpenetrated as a string.</p>
 <p>All other options can be set through <code>data-attributes</code> on the anchor element in <code>hyphen-case</code>. For example to set the <code>closeAnywhere</code> option, you would set the <code>data-close-anywhere="true"</code> attribute.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center pole-sm">
         <button type="button" class="btn js-frontdrop-trigger" data-content="#fd-content">Toggle</button>
         <div id="fd-content"  style="display: none;">
@@ -635,6 +635,6 @@ $frontdrop-overlay-bg-dark:      rgba(0, 0, 0, 0.5) !default;</code></pre>
             </div>
         </footer>
         <script src="../../assets/js/frontbx-bundle.min.js"></script>
-        <script src="../../assets/js/frontbx-docs.js"></script>
+        <script src="../../assets/js/frontbx-docs.min.js"></script>
     </body>
 </html>

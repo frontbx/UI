@@ -24,7 +24,7 @@ Frontbx comes with a vast varietu of button options and styles, making it super 
 
 Buttons can be created by simply adding the `.btn` class to a `&lt;a&gt;` or `&lt;button&gt;` element.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs">
         <button class="btn" type="button">Button</button>
         <a class="btn" href="#">Button</a>
@@ -42,7 +42,7 @@ Buttons can be created by simply adding the `.btn` class to a `&lt;a&gt;` or `&l
 
 Add the contextual classes `.btn-primary`, `.btn-info`, `.btn-success`, `.btn-warning` and `.btn-danger` to contextualise button styling.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn" type="button">.btn</button>
         <button class="btn btn-primary" type="button">.btn-primary</button>
@@ -68,7 +68,7 @@ Add the contextual classes `.btn-primary`, `.btn-info`, `.btn-success`, `.btn-wa
 
 Add the `.btn-outline` to any button to change the style to an outline.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn btn-outline" type="button">.btn</button>
         <button class="btn btn-primary btn-outline" type="button">.btn-primary</button>
@@ -91,7 +91,7 @@ Add the `.btn-outline` to any button to change the style to an outline.
 
 Add the `.pure` class to any button to remove all borders and drop shadows.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn btn-pure" type="button">.btn</button>
         <button class="btn btn-primary btn-pure" type="button">.btn-primary</button>
@@ -114,7 +114,7 @@ Add the `.pure` class to any button to remove all borders and drop shadows.
 
 Add the `.raised-1`, `.raised-2`, or `.raised-3` classes to any button elevate its UI heirarchy:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn raised-1" type="button">.raised-1</button>
         &nbsp;&nbsp;
@@ -136,7 +136,7 @@ Add the `.raised-1`, `.raised-2`, or `.raised-3` classes to any button elevate i
 
 Add the contextual `.btn-white` class for buttons that are on a primary background.</p>
 
-<div class="code-content-example bg-primary">
+<div class="fbx-snippet-demo bg-primary">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn btn-white" type="button">.btn-white</button>
         <button class="btn btn-white btn-outline" type="button">.btn-outline</button>
@@ -158,7 +158,7 @@ Add the contextual `.btn-white` class for buttons that are on a primary backgrou
 
 Add the `.btn-circle` class to any button to change the style to a circled type.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn btn-primary btn-circle btn-xs" type="button">
             <span class="fa fa-headphones"></span>
@@ -190,7 +190,7 @@ Add the `.btn-circle` class to any button to change the style to a circled type.
 
 You can add icons to buttons using the font awesome icon library. No special markup is needed. You can however use an html `&nbsp;` spacing character if you want extra spacing.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn" type="button">
             <span class="fa fa-headphones"></span>&nbsp;&nbsp;.btn
@@ -231,7 +231,7 @@ You can add icons to buttons using the font awesome icon library. No special mar
 
 Buttons can be sized using 4 different sizing classes `.btn-xs`, `.btn-sm`, `.btn-lg` &amp; `.btn-xl`. The defauly `.btn` size sits in between the `.btn-sm`, `.btn-lg` sizes.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn btn-xs" type="button"><span class="fa fa-heart"></span>.btn-xs</button>
         <button class="btn btn-sm" type="button"><span class="fa fa-heart"></span>.btn-sm</button>
@@ -258,7 +258,7 @@ Add one of Frontbx' loaders inside any button and give the button a `.with-loadi
 ```html
 <span class="loader loader-3"></span>
 ```
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn with-loading active" type="button">
             <span class="loader loader-1"></span> Loading...
@@ -299,7 +299,7 @@ Add one of Frontbx' loaders inside any button and give the button a `.with-loadi
 
 Create groups by wrapping a set of buttons in a `.btn-group` classed element.
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <div class="btn-group floor-xs">
             <button class="btn btn-icon" type="button">
@@ -362,7 +362,7 @@ Create groups by wrapping a set of buttons in a `.btn-group` classed element.
 
 Button states are native, but work also with a class to use `.active`, `.hover`, `.disabled`
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn" type="button">Normal</button>
         <button class="btn hover" type="button">Hover</button>
@@ -395,7 +395,7 @@ Button states are native, but work also with a class to use `.active`, `.hover`,
 
 States for `btn-white` will also work
 
-<div class="code-content-example bg-primary">
+<div class="fbx-snippet-demo bg-primary">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn btn-white" type="button">Normal</button>
         <button class="btn btn-white hover" type="button">Hover</button>

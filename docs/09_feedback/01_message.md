@@ -20,7 +20,7 @@ Frontbx message provide contextual feedback messages for typical user actions us
 
 A Frontbx message has specific markup that you must follow for it to be displayed correctly. Below is the most simple example:
 
-<div class="code-content-example">    
+<div class="fbx-snippet-demo">    
     <div class="msg">
         <div class="msg-body">
             <p>This is an alert! Please read this carefully.</p>
@@ -42,7 +42,7 @@ A Frontbx message has specific markup that you must follow for it to be displaye
 
 Frontbx messages have built in styles for icons to help display a message's context to the user quickly:
 
-<div class="code-content-example">    
+<div class="fbx-snippet-demo">    
     <div class="msg">
         <div class="msg-icon">
             <span class="fa fa-bell"></span>
@@ -70,7 +70,7 @@ Frontbx messages have built in styles for icons to help display a message's cont
 
 Add a class of `.msg-primary`, `.msg-info`, `.msg-success`, `.msg-warning` or `.msg-danger` to contextualize messages:
 
-<div class="code-content-example">    
+<div class="fbx-snippet-demo">    
     <div class="flex-row row-gaps-xs">
         <div class="msg">
             <div class="msg-icon">
@@ -132,7 +132,7 @@ Add a class of `.msg-primary`, `.msg-info`, `.msg-success`, `.msg-warning` or `.
 
 Adding a button to a message is easy, simply wrap it in a `.msg-btn` element after the `.msg-body`:
 
-<div class="code-content-example">    
+<div class="fbx-snippet-demo">    
     <div class="flex-row row-gaps-xs">
         <div class="msg">
             <div class="msg-icon">
@@ -181,7 +181,7 @@ Add a class of `.js-close-msg` to the button (or any element inside a message) t
 
 > Add a class of `.js-rmv-parent` to the trigger element to remove the message and its containing wrapper element. This is usufell when your message is wrapped in a spacing element that you want to remove at the same time.
 
-<div class="code-content-example">    
+<div class="fbx-snippet-demo">    
     <div class="row">
         <div class="msg">
             <div class="msg-icon">

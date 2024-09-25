@@ -79,7 +79,7 @@ You may want the request to only happen once when it is first called, in this ca
 
 Below is a simple example using a tab navigation to load content:
 
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <ul class="tab-nav js-tab-nav">
         <li>
             <a href="../pjax_tabs_iframe1.html" class="active js-pjax-link" data-tab="panel-1" data-pjax-target="tab-1">Tab 1</a>

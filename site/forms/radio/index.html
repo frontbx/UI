@@ -12,7 +12,7 @@
         <!-- Assets -->
         <script src="../../assets/js/frontbx-lazyload.min.js"></script>
         <link rel="stylesheet" href="../../assets/css/frontbx-bundle.min.css">
-        <link rel="stylesheet" href="../../assets/css/frontbx-docs.css">
+        <link rel="stylesheet" href="../../assets/css/frontbx-docs.min.css">
 
         <!-- Favicons -->
         <link rel="apple-touch-icon" href="../../assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -45,7 +45,7 @@
         </svg>
         <nav class="navbar navbar-fixed raised-1 bg-black">
             <div class="container-fluid">
-                <button class="hamburger xs sm js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
+                <button class="hamburger xs sm md js-docs-drawer-trigger" type="button" role="button" title="Toggle navigation">
                     <span class="hamburger-bun  hamburger-bun--top"></span>
                     <span class="hamburger-patty"></span>
                     <span class="hamburger-bun  hamburger-bun--btm"></span>
@@ -56,23 +56,23 @@
                 </a>
 
                 <ul class="nav-menu flex-content-right">
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Github">
                             <span class="fa-brands fa-github"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../getting-started/download/index.html" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Download">
                             <span class="fa fa-download"></span>
                         </a>
                     </li>
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
                             <span class="fa fa-fill-drip"></span>
                         </a>
                     </li>
                     
-                    <li class="md lg xl">
+                    <li class="lg xl">
                         <span class="drop-container">
                             <button class="btn-unstyled btn-dropdown js-drop-trigger tooltipped tooltipped-s" role="button" type="button" title="toggle theme" data-tooltip="Theme mode">
                                 <span class="fa fa-cloud-sun"></span>
@@ -96,7 +96,7 @@
                             </div>
                         </span>
                     </li>
-                    <li class="xs sm">
+                    <li class="xs sm md">
                         <button class="btn-unstyled js-drawer-trigger" type="button" role="button" title="Toggle navigation" data-direction="right" data-state="collapsed" data-content="#desktop-options-drawer">
                             <span class="fa fa-ellipsis-vertical"></span>
                         </button>
@@ -154,8 +154,8 @@
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/introduction/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Introduction</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/download/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Download</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/contents/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Contents</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/installation/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Installation</a></li>
-            <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/build/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Build</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse " data-collapse-target="menu-customize">
@@ -336,7 +336,7 @@
 <hr />
 <h3 id="basic-example">Basic example</h3>
 <p>Custom styled radioes require very little markup and can be created by simply wrapping the label and input in <code>.radio</code> classed element under a <code>.form-field</code> wrapper. </p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="text-center">
         <div class="form-field pad-5">
             <span class="radio">
@@ -391,7 +391,7 @@
 <hr />
 <h3 id="label">Label</h3>
 <p>You can provide a label to the radio as you normally would. If you need the label to change based on the radio state, simply add <code>.toggle-on</code> and <code>toggle-off</code> elements inside the label.</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form>
         <div class="form-field row floor-xxs">
             <span class="radio">
@@ -440,7 +440,7 @@
 <hr />
 <h3 id="contexts">Contexts</h3>
 <p>Checkboxes can be further contextualized using Frontbx's contextual classes <code>.radio-primary</code>,  <code>.radio-secondary</code>,  <code>.radio-info</code>,  <code>.radio-success</code>,  <code>.radio-warning</code> and <code>.radio-danger</code>:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="text-center">
         <div class="form-field pad-5">
             <span class="radio radio-primary">
@@ -487,7 +487,7 @@
 <hr />
 <h3 id="sizing">Sizing</h3>
 <p>Additional sizing is available through <code>.radio-sm</code>, <code>radio-md</code> and <code>radio-lg</code>:</p>
-<div class="code-content-example">
+<div class="fbx-snippet-demo">
     <form class="text-center">
         <div class="form-field pad-5">
             <span class="radio radio-sm">
@@ -592,6 +592,6 @@ $radio-label-color:             var(--fbx-gray) !default;</code></pre></article>
             </div>
         </footer>
         <script src="../../assets/js/frontbx-bundle.min.js"></script>
-        <script src="../../assets/js/frontbx-docs.js"></script>
+        <script src="../../assets/js/frontbx-docs.min.js"></script>
     </body>
 </html>
