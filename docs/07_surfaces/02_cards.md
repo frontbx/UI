@@ -878,11 +878,12 @@ Add the `.primary-action` to any element inside a card or the card itself to mak
 
 Cards use a combination of both local CSS variables on `.card` and Sass variables for enhanced component customization and styling. The base values are used by the UI to create all the sizing. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
+Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
 
 ```file-path
-`src/scss/_config.scss`
+scss/_config.scss
 ```
+
 ```sass
 $card-bg:                       var(--fbx-white) !default;
 $card-bg-focus:                 var(--fbx-white) !default;
@@ -909,8 +910,9 @@ $card-landscape-img-lg:         300px !default;
 ```
 
 ```file-path
-src/scss/components/_card.scss
+scss/components/_card.scss
 ```
+
 ```sass
 .card
 {

@@ -268,11 +268,12 @@ All other options can be set through `data-attributes` on the anchor element in 
 
 Modals use a combination of both local CSS variables on `.modal-wrap`, `.modal-overlay` and Sass variables for enhanced component customization and styling.
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
+Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
 
 ```file-path
-`src/scss/_config.scss`
+scss/_config.scss
 ```
+
 ```scss
 $modal-max-width:               680px !default;
 $modal-max-height:              80vh !default;
@@ -287,8 +288,9 @@ $modal-overlay-transition:      opacity .225s ease-out !default;
 ```
 
 ```file-path
-`src/scss/components/_modal.scss`
+scss/components/_modal.scss
 ```
+
 ```scss
 .modal-wrap
 {

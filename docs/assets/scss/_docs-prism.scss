@@ -1,5 +1,6 @@
 /* PrismJS 1.29.0 */
-pre[class*=language-]
+pre[class*=language-],
+.docs-body > pre
 {
 	position: relative;
 	padding: 30px 16px 16px 16px;
@@ -8,7 +9,9 @@ pre[class*=language-]
 }
 
 code[class*=language-],
-pre[class*=language-]
+pre[class*=language-],
+.docs-body > pre,
+.docs-body > pre > code
 {
 	color: #718b98;
 	background: var(--fbx-gray-200);
@@ -127,7 +130,9 @@ pre[class*=language-]::selection
 }
 
 .fbx-darkmode code[class*="language-"],
-.fbx-darkmode pre[class*="language-"]
+.fbx-darkmode pre[class*="language-"],
+.fbx-darkmode .docs-body > pre,
+.fbx-darkmode .docs-body > pre > code
 {
 	background: var(--fbx-black-900);
 	color: var(--fbx-gray-100);
@@ -250,14 +255,12 @@ pre[class*=language-]::selection
 {
 	color: #74dfc4;
 }
-
 .fbx-darkmode pre[class*="language-sass"] .token.variable,
 .fbx-darkmode pre[class*="language-scss"] .token.variable
 {
 	color: #eb64b9;
 }
-
-.fbx-darkmode pre[class*="language-file"]>code
+.fbx-darkmode pre[class*="language-file"] > code
 {
 	color: var(--fbx-color-babyblue);
 }

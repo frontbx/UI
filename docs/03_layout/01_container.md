@@ -89,11 +89,12 @@ Container gutters are left and right padding applied to the container element. T
 
 The container system uses a combination of both local root CSS variables for enhanced component customization and styling. The base values are used by the UI to create the gutters and sizings. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
+Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
 
 ```file-path
-`src/scss/_config.scss`
+scss/_config.scss
 ```
+
 ```sass
 // Grid breakpoints
 $breakpoint-xs:                 0 !default;
@@ -116,8 +117,9 @@ $container-gutters:
 <br>
 
 ```file-path
-src/scss/grid/_base.scss
+scss/grid/_base.scss
 ```
+
 ```sass
 .container,
 .container-fluid

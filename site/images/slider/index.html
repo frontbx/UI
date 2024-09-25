@@ -67,7 +67,7 @@
                         </a>
                     </li>
                     <li class="lg xl">
-                        <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
+                        <a href="../../customize/playground/index.html" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
                             <span class="fa fa-fill-drip"></span>
                         </a>
                     </li>
@@ -123,7 +123,7 @@
             <ul class="menu">
                 <li class="menu-header">Colors</li>
                 <li>
-                    <a href="../../customize/colors/index.html#playground">
+                    <a href="../../customize/playground/index.html">
                         <span class="item-left"><span class="fa fa-fill-drip"></span></span>
                         <span class="item-body">Edit Documentation colors</span>
                     </a>
@@ -166,6 +166,7 @@
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../customize/sass/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Sass</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../customize/colors/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Colors</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../customize/playground/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Playground</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse " data-collapse-target="menu-layout">
@@ -464,7 +465,7 @@
 <pre><code class="JavaScript language-JavaScript">slider.toSlide(3, false);</code></pre>
 <p>The <code>resize</code> method re-calculates any internal variables for the slider and makes adjustments. This is called automatically when the <code>resize</code> option is enabled and window is resized :</p>
 <pre><code class="JavaScript language-JavaScript">slider.resize();</code></pre>
-<p>Autoplay functionality has the following methods <code>play</code> <code>pause</code> <code>unpause</code> <code>stop</code></p>
+<p>Autoplay functionality has the following methods <code>play</code> <code>pause</code> <code>unpause</code> `stop</p>
 <pre><code class="JavaScript language-JavaScript">slider.play();
 
 slider.pause();
@@ -501,8 +502,8 @@ let slider = frontbx.Dom().component('Slider').create(options, container);</code
 <hr />
 <h3 id="css-customization">CSS Customization</h3>
 <p>Slider uses local CSS variables on <code>.slider</code> along with Sass variables for enhanced component customization and styling. The base values are used by the UI to create all the styling. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>
-<p>Customization via Sass can be made in the <code>src/scss/_config.scss</code> file in Frontbx's source.</p>
-<pre><code class="file-path language-file-path">`src/scss/_config.scss`</code></pre>
+<p>Customization via Sass can be made in the <code>scss/_config.scss</code> file in Frontbx's source.</p>
+<pre><code class="file-path language-file-path">scss/_config.scss</code></pre>
 <pre><code class="sass language-sass">$slider-bg:                     transparent !default;
 $slider-dots-color:             var(--fbx-white) !default;
 $slider-dots-color-active:      var(--fbx-theme-primary) !default;
@@ -512,7 +513,7 @@ $slider-nav-btn-color:          var(--fbx-white) !default;
 $slider-nav-btn-color-hover:    var(--fbx-theme-primary) !default;
 $slider-slides-gap:             20px;
 $slider-slide-width:            66%;</code></pre>
-<pre><code class="file-path language-file-path">src/scss/components/slider.scss</code></pre>
+<pre><code class="file-path language-file-path">scss/components/slider.scss</code></pre>
 <pre><code class="css language-css">.slider {
     --fbx-slider-bg: transparent;
     --fbx-slider-dots-color: var(--fbx-white);
@@ -566,7 +567,7 @@ $slider-slide-width:            66%;</code></pre>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="../../customize/colors/index.html#playground" class="btn btn-success">
+                                    <a href="../../customize/playground/index.html" class="btn btn-success">
                                         <span class="fa fa-fill-drip icon-sm"></span>
                                     </a>
                                 </li>

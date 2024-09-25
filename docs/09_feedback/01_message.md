@@ -239,12 +239,13 @@ myMsg.addEventListener('message:close', event =>
 
 Messages use local CSS variables on `.msg` for enhanced component customization and styling. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
+Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
 
 
 ```file-path
-src/scss/components/_message.scss
+scss/components/_message.scss
 ```
+
 ```sass
 --fbx-msg-bg: #{$msg-bg};
 --fbx-msg-color: #{$msg-color};
@@ -258,8 +259,9 @@ src/scss/components/_message.scss
 <br>
 
 ```file-path
-src/scss/_config.scss
+scss/_config.scss
 ```
+
 ```sass
 $msg-bg:                        var(--fbx-black) !default;
 $msg-color:                     var(--fbx-white) !default;

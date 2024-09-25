@@ -67,7 +67,7 @@
                         </a>
                     </li>
                     <li class="lg xl">
-                        <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
+                        <a href="../../customize/playground/index.html" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
                             <span class="fa fa-fill-drip"></span>
                         </a>
                     </li>
@@ -123,7 +123,7 @@
             <ul class="menu">
                 <li class="menu-header">Colors</li>
                 <li>
-                    <a href="../../customize/colors/index.html#playground">
+                    <a href="../../customize/playground/index.html">
                         <span class="item-left"><span class="fa fa-fill-drip"></span></span>
                         <span class="item-body">Edit Documentation colors</span>
                     </a>
@@ -166,6 +166,7 @@
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../customize/sass/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Sass</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../customize/colors/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Colors</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../customize/playground/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Playground</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse " data-collapse-target="menu-layout">
@@ -524,13 +525,13 @@
 <hr />
 <h3 id="customization">Customization</h3>
 <p>Checkboxes use local CSS variables on <code>.radio</code> for enhanced component customization and styling. The base values are used by the UI to create all the variants. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>
-<p>Customization via Sass can be made in the <code>src/scss/_config.scss</code> file in Frontbx's source.</p>
-<pre><code class="file-path language-file-path">src/scss/styles/forms/_radio.scss</code></pre>
+<p>Customization via Sass can be made in the <code>scss/_config.scss</code> file in Frontbx's source.</p>
+<pre><code class="file-path language-file-path">scss/styles/forms/_radio.scss</code></pre>
 <pre><code class="sass language-sass">--fbx-radio-size: #{$radio-size};
 --fbx-radio-color: #{$radio-color};
 --fbx-radio-label-color: #{$radio-label-color};</code></pre>
 <p><br></p>
-<pre><code class="file-path language-file-path">src/scss/_config.scss</code></pre>
+<pre><code class="file-path language-file-path">scss/_config.scss</code></pre>
 <pre><code class="sass language-sass">$radio-size:                    2rem !default;
 $radio-color:                   var(--fbx-gray) !default;
 $radio-label-color:             var(--fbx-gray) !default;</code></pre></article>
@@ -576,7 +577,7 @@ $radio-label-color:             var(--fbx-gray) !default;</code></pre></article>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="../../customize/colors/index.html#playground" class="btn btn-success">
+                                    <a href="../../customize/playground/index.html" class="btn btn-success">
                                         <span class="fa fa-fill-drip icon-sm"></span>
                                     </a>
                                 </li>

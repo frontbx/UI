@@ -229,11 +229,12 @@ Notifications use a combination of both local CSS and Sass variable on `.notific
 
 For details on customizing message components, see the [Message Documentation](../message/index.html#css-customization)
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
+Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
 
 ```file-path
-`src/scss/_config.scss`
+scss/_config.scss
 ```
+
 ```scss
 $notif-bg:                      var(--fbx-black) !default;
 $notif-color:                   var(--fbx-white) !default;

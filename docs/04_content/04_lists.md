@@ -618,11 +618,12 @@ List uses local CSS variables on `.list` along with Sass variables for enhanced 
 }
 ```
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
+Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
 
 ```file-path
-`src/scss/_config.scss`
+scss/_config.scss
 ```
+
 ```sass
 $list-bg:                       var(--fbx-white) !default;
 $list-color:                    var(--fbx-gray-700) !default;
@@ -641,8 +642,9 @@ $list-divider-space:            5px;
 ```
 
 ```file-path
-src/scss/components/list.scss
+scss/components/list.scss
 ```
+
 ```css
 .list {
     --fbx-list-bg: var(--fbx-white);

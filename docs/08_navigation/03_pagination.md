@@ -142,8 +142,9 @@ Pagination uses a combination of both root and local CSS variables on `.paginati
 Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
 
 ```file-path
-`src/scss/_config.scss`
+scss/_config.scss
 ```
+
 ```sass
 $pagination-radius:             var(--fbx-border-radius) !default;
 $pagination-color:              var(--fbx-gray) !default;

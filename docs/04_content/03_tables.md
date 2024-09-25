@@ -817,10 +817,10 @@ Table uses local CSS variables on `.table` along with Sass variables for enhance
 }
 ```
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
+Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
 
 ```file-path
-`src/scss/_config.scss`
+scss/_config.scss
 ```
 ```sass
 $table-font-size:               1.3rem !default;
@@ -840,7 +840,7 @@ $table-selected-bg:             var(--fbx-theme-info) !default;
 ```
 
 ```file-path
-src/scss/components/table.scss
+scss/components/table.scss
 ```
 ```css
 .table {

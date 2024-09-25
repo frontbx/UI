@@ -67,7 +67,7 @@
                         </a>
                     </li>
                     <li class="lg xl">
-                        <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
+                        <a href="../../customize/playground/index.html" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
                             <span class="fa fa-fill-drip"></span>
                         </a>
                     </li>
@@ -123,7 +123,7 @@
             <ul class="menu">
                 <li class="menu-header">Colors</li>
                 <li>
-                    <a href="../../customize/colors/index.html#playground">
+                    <a href="../../customize/playground/index.html">
                         <span class="item-left"><span class="fa fa-fill-drip"></span></span>
                         <span class="item-body">Edit Documentation colors</span>
                     </a>
@@ -166,6 +166,7 @@
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../customize/sass/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Sass</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../customize/colors/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Colors</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../customize/playground/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Playground</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse " data-collapse-target="menu-layout">
@@ -1011,8 +1012,8 @@
     --fbx-menu-item-bg-selected: var(--fbx-gray-900);
     --fbx-menu-divider-color: var(--fbx-gray-600);
 }</code></pre>
-<p>Customization via Sass can be made in the <code>src/scss/_config.scss</code> file in Frontbx's source.</p>
-<pre><code class="file-path language-file-path">`src/scss/_config.scss`</code></pre>
+<p>Customization via Sass can be made in the <code>scss/_config.scss</code> file in Frontbx's source.</p>
+<pre><code class="file-path language-file-path">scss/_config.scss</code></pre>
 <pre><code class="sass language-sass">// Dropdown
 $dropdown-border-radius:        var(--fbx-border-radius) !default;
 $dropdown-width:                160px !default;
@@ -1035,14 +1036,14 @@ $menu-item-pad-y:               10px !default;
 $menu-item-pad-x:               12px !default;
 $menu-divider-color:            var(--fbx-gray-200) !default;
 $menu-divider-space:            5px;</code></pre>
-<pre><code class="file-path language-file-path">src/scss/components/dropdown.scss</code></pre>
+<pre><code class="file-path language-file-path">scss/components/dropdown.scss</code></pre>
 <pre><code class="css language-css">.drop-container {
   --fbx-dropdown-border-radius: var(--fbx-border-radius);
   --fbx-dropdown-width: 160px;
   --fbx-dropdown-height: 300px;
   --fbx-dropdown-bg: var(--fbx-white);
 }</code></pre>
-<pre><code class="file-path language-file-path">src/scss/components/menu.scss</code></pre>
+<pre><code class="file-path language-file-path">scss/components/menu.scss</code></pre>
 <pre><code class="css language-css">.menu {
     --fbx-menu-bg: var(--fbx-white);
     --fbx-menu-color: var(--fbx-gray-700);
@@ -1238,7 +1239,7 @@ frontbx.Dom().component('Dropdown').create(options, container);</code></pre>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="../../customize/colors/index.html#playground" class="btn btn-success">
+                                    <a href="../../customize/playground/index.html" class="btn btn-success">
                                         <span class="fa fa-fill-drip icon-sm"></span>
                                     </a>
                                 </li>

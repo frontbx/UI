@@ -779,11 +779,12 @@ Dropdown uses local CSS variables on `.drop-container` and `.menu` along with Sa
 }
 ```
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
+Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
 
 ```file-path
-`src/scss/_config.scss`
+scss/_config.scss
 ```
+
 ```sass
 // Dropdown
 $dropdown-border-radius:        var(--fbx-border-radius) !default;
@@ -810,8 +811,9 @@ $menu-divider-space:            5px;
 ```
 
 ```file-path
-src/scss/components/dropdown.scss
+scss/components/dropdown.scss
 ```
+
 ```css
 .drop-container {
   --fbx-dropdown-border-radius: var(--fbx-border-radius);
@@ -822,8 +824,9 @@ src/scss/components/dropdown.scss
 ```
 
 ```file-path
-src/scss/components/menu.scss
+scss/components/menu.scss
 ```
+
 ```css
 .menu {
     --fbx-menu-bg: var(--fbx-white);

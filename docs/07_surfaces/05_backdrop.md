@@ -215,11 +215,12 @@ All other options can be set through `data-attributes` on the anchor element in 
 
 Backdrop use a combination of both local CSS variables and Sass variables on `.backdrop-wrap`, `.backdrop-overlay` for enhanced component customization and styling.
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
+Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
 
 ```file-path
-`src/scss/_config.scss`
+scss/_config.scss
 ```
+
 ```sass
 $backdrop-height:               75vh !default;
 $backdrop-peekable-height:      50px !default;
@@ -230,8 +231,9 @@ $backdrop-overlay-bg-dark:      rgba(0, 0, 0, 0.5) !default;
 
 
 ```file-path
-`src/scss/components/_backdrop.scss`
+scss/components/_backdrop.scss
 ```
+
 ```scss
 .drawer-container.backdrop.drawer-bottom
 {

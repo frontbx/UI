@@ -7,13 +7,14 @@ Learn what's included in Frontbx including production-ready compiled assets as w
 *	[Compiled Frontbx](#overview)
 	*	[CSS](#css)
 	*	[JavaScript](#javascript)
-*	[Source files]
+*	[Source files](#source-files)
+*	[Next steps](#next-steps)
 
 ---
 
 ### Compiled Frontbx
 
-Now that you have a Frontbx project ready to go, you'll see something like this:
+Now that you have a Frontbx project ready to go, you'll see something similar to the tree below. The dist folder contains the compiled production-ready assets for quick drop-in usage. You'll find a number of different files in these folders which are outlined below.
 
 ```
 frontbx
@@ -27,9 +28,9 @@ frontbx
 	└──fonts
 ```
 
-The dist folder contains compiled the compiled production-ready assets for quick drop-in usage in nearly any web project. You'll find a number of different files in these folders which are outlined below:
-
 ##### CSS
+
+Compiled versions of FrontBx's CSS are found in the `dist/css` folder. The table below outlines each file and it's usage.
 
 | Files                                                    | Description                                                        |
 |----------------------------------------------------------|--------------------------------------------------------------------|
@@ -42,6 +43,8 @@ The dist folder contains compiled the compiled production-ready assets for quick
 
 ##### JavaScript
 
+Compiled versions of FrontBx's JS are found in the `dist/js` folder. The table below outlines each file and it's usage.
+
 | Files                                              | Description                     |
 |----------------------------------------------------|---------------------------------|
 | `frontbx.js`<br>`frontbx.min.js`                   | Compiled standalone JS.         |
@@ -52,6 +55,8 @@ The dist folder contains compiled the compiled production-ready assets for quick
 ---
 
 ### Source files
+
+Frontbx's source files are located in a number of different folders as outlined in the tree structure below. The table below this outlines what each directory is used for.
 
 ```
 frontbx
@@ -68,3 +73,19 @@ frontbx
 │ 	 
 └── site   (Built documentation site)
 ```
+
+| Directory | Description                             |
+|-----------|-----------------------------------------|
+| `build`   | Dev scripts for compiling               |
+| `dist`    | Compiled distribution assets            |
+| `docs`    | Markdown source files for documentation |
+| `js`      | Source JavaScript files                 |
+| `scss`    | Source Scss files                       |
+| `site`    | Built documentation site                |
+
+---
+
+### Next steps
+
+Now that you're familiar with Frontbx's file structure, head over to [Installation Page](../installation/index.html) and start your install.
+

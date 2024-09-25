@@ -83,11 +83,12 @@ The breakpoint system uses a combination of both local root CSS variables for en
 
 Changes to breakpoints should be made pre-compilation via Sass as breakpoint sizes on media queries via CSS variables are not supported. The CSS variables can still be changed, however this will only effect container sizing not baked in media-queries.
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
+Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
 
 ```file-path
-`src/scss/_config.scss`
+scss/_config.scss
 ```
+
 ```sass
 $breakpoint-xs:                 0 !default;
 $breakpoint-sm:                 576px !default;

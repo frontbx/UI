@@ -67,7 +67,7 @@
                         </a>
                     </li>
                     <li class="lg xl">
-                        <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
+                        <a href="../../customize/playground/index.html" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
                             <span class="fa fa-fill-drip"></span>
                         </a>
                     </li>
@@ -123,7 +123,7 @@
             <ul class="menu">
                 <li class="menu-header">Colors</li>
                 <li>
-                    <a href="../../customize/colors/index.html#playground">
+                    <a href="../../customize/playground/index.html">
                         <span class="item-left"><span class="fa fa-fill-drip"></span></span>
                         <span class="item-body">Edit Documentation colors</span>
                     </a>
@@ -166,6 +166,7 @@
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../customize/sass/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Sass</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../customize/colors/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Colors</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../customize/playground/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Playground</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse " data-collapse-target="menu-layout">
@@ -1108,8 +1109,8 @@
 <hr />
 <h3 id="css-customization">CSS Customization</h3>
 <p>Cards use a combination of both local CSS variables on <code>.card</code> and Sass variables for enhanced component customization and styling. The base values are used by the UI to create all the sizing. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>
-<p>Customization via Sass can be made in the <code>src/scss/_config.scss</code> file in Frontbx's source.</p>
-<pre><code class="file-path language-file-path">`src/scss/_config.scss`</code></pre>
+<p>Customization via Sass can be made in the <code>scss/_config.scss</code> file in Frontbx's source.</p>
+<pre><code class="file-path language-file-path">scss/_config.scss</code></pre>
 <pre><code class="sass language-sass">$card-bg:                       var(--fbx-white) !default;
 $card-bg-focus:                 var(--fbx-white) !default;
 $card-color:                    var(--fbx-gray-900) !default;
@@ -1132,7 +1133,7 @@ $card-media-bg:                 var(--fbx-gray-100) !default;
 $card-landscape-img-sm:         80px !default;
 $card-landscape-img-md:         150px !default;
 $card-landscape-img-lg:         300px !default;</code></pre>
-<pre><code class="file-path language-file-path">src/scss/components/_card.scss</code></pre>
+<pre><code class="file-path language-file-path">scss/components/_card.scss</code></pre>
 <pre><code class="sass language-sass">.card
 {
     --fbx-card-bg:               #{$card-bg};
@@ -1200,7 +1201,7 @@ $card-landscape-img-lg:         300px !default;</code></pre>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="../../customize/colors/index.html#playground" class="btn btn-success">
+                                    <a href="../../customize/playground/index.html" class="btn btn-success">
                                         <span class="fa fa-fill-drip icon-sm"></span>
                                     </a>
                                 </li>

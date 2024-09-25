@@ -131,11 +131,12 @@ Lazyloading uses a combination of both local CSS and Sass variables for enhanced
 
 The CSS variables are set via Sass variables so customization pre-compilation is still possible.
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
+Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
 
 ```file-path
-`src/scss/_config.scss`
+scss/_config.scss
 ```
+
 ```scss
 $lazyload-start-opacity:        0.6 !default;
 $lazyload-end-opacity:          1 !default;

@@ -24,7 +24,7 @@ For individual components, the Sass variables are assigned to CSS variables whic
 Here is a very basic example of how that works:
 
 ```file-path
-src/scss/_config.scss
+scss/_config.scss
 ```
 ```sass
 $body-bg: #1d1d1d !default;
@@ -123,7 +123,3 @@ Here is a very simple example of change the background color of a [Paper compone
     --fbx-paper-radius: 10px;
 }
 ```
-
-
-
-

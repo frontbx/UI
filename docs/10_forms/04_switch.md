@@ -237,8 +237,9 @@ Additional sizing is available through `.switch-sm`, `switch-md` and `switch-lg`
 Switches use local CSS variables on `.switch` for enhanced component customization and styling. The base values are used by the UI to create all the variants. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.
 
 ```file-path
-src/scss/styles/forms/_switch.scss
+scss/styles/forms/_switch.scss
 ```
+
 ```sass
 --fbx-switch-size :#{$switch-size};
 --fbx-switch-track-color-off :#{$switch-track-color-off};
@@ -248,11 +249,12 @@ src/scss/styles/forms/_switch.scss
 ```
 
 <br>
-Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
+Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
 
 ```file-path
-src/scss/_config.scss
+scss/_config.scss
 ```
+
 ```sass
 $switch-size:                   2rem !default;
 $switch-track-color-off:        var(--fbx-gray-300) !default;

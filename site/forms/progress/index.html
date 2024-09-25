@@ -67,7 +67,7 @@
                         </a>
                     </li>
                     <li class="lg xl">
-                        <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
+                        <a href="../../customize/playground/index.html" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
                             <span class="fa fa-fill-drip"></span>
                         </a>
                     </li>
@@ -123,7 +123,7 @@
             <ul class="menu">
                 <li class="menu-header">Colors</li>
                 <li>
-                    <a href="../../customize/colors/index.html#playground">
+                    <a href="../../customize/playground/index.html">
                         <span class="item-left"><span class="fa fa-fill-drip"></span></span>
                         <span class="item-body">Edit Documentation colors</span>
                     </a>
@@ -166,6 +166,7 @@
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../customize/sass/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Sass</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../customize/colors/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Colors</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../customize/playground/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Playground</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse " data-collapse-target="menu-layout">
@@ -384,13 +385,13 @@
 <hr />
 <h3 id="customization">Customization</h3>
 <p>Progress bars use local CSS variables on <code>.progress-bar</code> for enhanced component customization and styling. The base values are used by the UI to create all the variants. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>
-<pre><code class="file-path language-file-path">src/scss/styles/forms/_progress.scss</code></pre>
+<pre><code class="file-path language-file-path">scss/styles/forms/_progress.scss</code></pre>
 <pre><code class="sass language-sass">--fbx-progress-size: #{$progress-size};
 --fbx-progress-radius: #{$progress-radius};
 --fbx-progress-bg: #{$progress-bg};
 --fbx-progress-color: #{$progress-color};</code></pre>
-<p>Customization via Sass can be made in the <code>src/scss/_config.scss</code> file in Frontbx's source.</p>
-<pre><code class="file-path language-file-path">src/scss/_config.scss</code></pre>
+<p>Customization via Sass can be made in the <code>scss/_config.scss</code> file in Frontbx's source.</p>
+<pre><code class="file-path language-file-path">scss/_config.scss</code></pre>
 <pre><code class="sass language-sass">$progress-size:                 1rem !default;
 $progress-radius:               var(--fbx-border-radius) !default;
 $progress-bg:                   var(--fbx-gray-200) !default;
@@ -438,7 +439,7 @@ $progress-gradient:             linear-gradient(to right,  #b0e2fe 0%,#b0b2fb 10
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="../../customize/colors/index.html#playground" class="btn btn-success">
+                                    <a href="../../customize/playground/index.html" class="btn btn-success">
                                         <span class="fa fa-fill-drip icon-sm"></span>
                                     </a>
                                 </li>

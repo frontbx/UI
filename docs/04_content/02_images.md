@@ -78,6 +78,7 @@ Aspect ratios are set via CSS Variables, which can be also be customized for mor
 </div>
 
 ```
+
 ```css
 .ratio-img, .bg-image
 {
@@ -106,6 +107,7 @@ Dimensions for both **image** and **Background image** elements can be set via C
 	<img class="js-lazyload lazyload grayscale" src="../../assets/img/trump-hero_thumb.jpg" data-src="../../assets/img/trump-hero.jpg" alt="trump" />
 </div>
 ```
+
 ```css
 .ratio-img
 {

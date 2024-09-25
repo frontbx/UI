@@ -285,11 +285,12 @@ Menu uses local CSS variables on `.menu` along with Sass variables for enhanced 
 }
 ```
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
+Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
 
 ```file-path
-`src/scss/_config.scss`
+scss/_config.scss
 ```
+
 ```sass
 $menu-bg:                       var(--fbx-white) !default;
 $menu-color:                    var(--fbx-gray-700) !default;

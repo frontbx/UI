@@ -22,7 +22,7 @@ Frontbx comes with a vast varietu of button options and styles, making it super 
 
 ### Basic example
 
-Buttons can be created by simply adding the `.btn` class to a `&lt;a&gt;` or `&lt;button&gt;` element.
+Buttons can be created by simply adding the `.btn` class to a `<a>` or `<button>` element.
 
 <div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs">
@@ -432,11 +432,12 @@ States for `btn-white` will also work
 
 Buttons use local CSS variables on `.btn` for enhanced component customization and styling. The base values are used by the UI to create all the variants. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
+Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
 
 ```file-path
-src/scss/styles/buttons/_base.scss
+scss/styles/buttons/_base.scss
 ```
+
 ```sass
 --fbx-btn-block: inline-block;
 --fbx-btn-margin: 0;
@@ -478,8 +479,9 @@ src/scss/styles/buttons/_base.scss
 <br>
 
 ```file-path
-src/scss/_config.scss
+scss/_config.scss
 ```
+
 ```sass
 $btn-height:                    38px !default;
 $btn-text-transform:            uppercase !default;

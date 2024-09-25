@@ -656,12 +656,13 @@ frontbx.Skeleton(cardWrapper).load(options);
 
 Skeleton uses local CSS variables on all `.skeleton` for enhanced component customization and styling. The base values are used by the UI to create all the sizing. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
+Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
 
 
 ```file-path
-src/scss/_config.scss
+scss/_config.scss
 ```
+
 ```sass
 $skeleton-bg-1:                 rgba(0, 0, 0, 0.2) !default;
 $skeleton-bg-2:                 rgba(0, 0, 0, 0.4) !default;
@@ -671,8 +672,9 @@ $skeleton-text-radius:          var(--fbx-border-radius) !default;
 <br>
 
 ```file-path
-src/scss/components/_skeleton.scss
+scss/components/_skeleton.scss
 ```
+
 ```css
 .skeleton
 {

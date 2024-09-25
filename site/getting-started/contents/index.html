@@ -67,7 +67,7 @@
                         </a>
                     </li>
                     <li class="lg xl">
-                        <a href="../../customize/colors/index.html#playground" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
+                        <a href="../../customize/playground/index.html" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Edit colors">
                             <span class="fa fa-fill-drip"></span>
                         </a>
                     </li>
@@ -123,7 +123,7 @@
             <ul class="menu">
                 <li class="menu-header">Colors</li>
                 <li>
-                    <a href="../../customize/colors/index.html#playground">
+                    <a href="../../customize/playground/index.html">
                         <span class="item-left"><span class="fa fa-fill-drip"></span></span>
                         <span class="item-body">Edit Documentation colors</span>
                     </a>
@@ -166,6 +166,7 @@
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../customize/sass/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Sass</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../customize/colors/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Colors</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../customize/playground/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Playground</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse " data-collapse-target="menu-layout">
@@ -329,11 +330,12 @@
 <li><a href="#overview">Compiled Frontbx</a><ul>
 <li><a href="#css">CSS</a></li>
 <li><a href="#javascript">JavaScript</a></li></ul></li>
-<li>[Source files]</li>
+<li><a href="#source-files">Source files</a></li>
+<li><a href="#next-steps">Next steps</a></li>
 </ul>
 <hr />
 <h3 id="compiled-frontbx">Compiled Frontbx</h3>
-<p>Now that you have a Frontbx project ready to go, you'll see something like this:</p>
+<p>Now that you have a Frontbx project ready to go, you'll see something similar to the tree below. The dist folder contains the compiled production-ready assets for quick drop-in usage. You'll find a number of different files in these folders which are outlined below.</p>
 <pre><code>frontbx
 │ 
 └── dist
@@ -343,8 +345,8 @@
     │── js
     │    
     └──fonts</code></pre>
-<p>The dist folder contains compiled the compiled production-ready assets for quick drop-in usage in nearly any web project. You'll find a number of different files in these folders which are outlined below:</p>
 <h5 id="css">CSS</h5>
+<p>Compiled versions of FrontBx's CSS are found in the <code>dist/css</code> folder. The table below outlines each file and it's usage.</p>
 <table>
 <thead>
 <tr>
@@ -376,6 +378,7 @@
 </tbody>
 </table>
 <h5 id="javascript">JavaScript</h5>
+<p>Compiled versions of FrontBx's JS are found in the <code>dist/js</code> folder. The table below outlines each file and it's usage.</p>
 <table>
 <thead>
 <tr>
@@ -404,6 +407,7 @@
 </table>
 <hr />
 <h3 id="source-files">Source files</h3>
+<p>Frontbx's source files are located in a number of different folders as outlined in the tree structure below. The table below this outlines what each directory is used for.</p>
 <pre><code>frontbx
 │ 
 ├── build  (Dev scripts for compiling)
@@ -416,7 +420,44 @@
 │ 
 ├── scss   (Source Scss files)
 │      
-└── site   (Built documentation site)</code></pre></article>
+└── site   (Built documentation site)</code></pre>
+<table>
+<thead>
+<tr>
+<th id="directory">Directory</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>build</code></td>
+<td>Dev scripts for compiling</td>
+</tr>
+<tr>
+<td><code>dist</code></td>
+<td>Compiled distribution assets</td>
+</tr>
+<tr>
+<td><code>docs</code></td>
+<td>Markdown source files for documentation</td>
+</tr>
+<tr>
+<td><code>js</code></td>
+<td>Source JavaScript files</td>
+</tr>
+<tr>
+<td><code>scss</code></td>
+<td>Source Scss files</td>
+</tr>
+<tr>
+<td><code>site</code></td>
+<td>Built documentation site</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="next-steps">Next steps</h3>
+<p>Now that you're familiar with Frontbx's file structure, head over to <a href="../installation/index.html">Installation Page</a> and start your install.</p></article>
             </div>
         </div>
         <footer class="site-footer">
@@ -459,7 +500,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="../../customize/colors/index.html#playground" class="btn btn-success">
+                                    <a href="../../customize/playground/index.html" class="btn btn-success">
                                         <span class="fa fa-fill-drip icon-sm"></span>
                                     </a>
                                 </li>

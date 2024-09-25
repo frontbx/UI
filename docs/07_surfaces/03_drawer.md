@@ -285,11 +285,12 @@ To initialize a drawer, create an anchor element using the `.js-drawer-trigger` 
 
 Drawer use a combination of both local CSS variables and Sass variables on `.drawer-wrap`, `.drawer-overlay` for enhanced component customization and styling.
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
+Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
 
 ```file-path
-`src/scss/_config.scss`
+scss/_config.scss
 ```
+
 ```sass
 $drawer-bg:                     var(--fbx-white) !default;
 $drawer-width:                  230px !default;
@@ -299,8 +300,9 @@ $drawer-overlay-bg-dark:        rgba(0, 0, 0, 0.5) !default;
 ```
 
 ```file-path
-`src/scss/components/_drawer.scss`
+scss/components/_drawer.scss
 ```
+
 ```sass
 .drawer-container
 {

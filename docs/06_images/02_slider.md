@@ -114,7 +114,7 @@ The `resize` method re-calculates any internal variables for the slider and make
 slider.resize();
 ```
 
-Autoplay functionality has the following methods `play` `pause` `unpause` `stop`
+Autoplay functionality has the following methods `play` `pause` `unpause` `stop
 ```JavaScript
 slider.play();
 
@@ -167,11 +167,12 @@ let slider = frontbx.Dom().component('Slider').create(options, container);
 
 Slider uses local CSS variables on `.slider` along with Sass variables for enhanced component customization and styling. The base values are used by the UI to create all the styling. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.
 
-Customization via Sass can be made in the `src/scss/_config.scss` file in Frontbx's source.
+Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
 
 ```file-path
-`src/scss/_config.scss`
+scss/_config.scss
 ```
+
 ```sass
 $slider-bg:                     transparent !default;
 $slider-dots-color:             var(--fbx-white) !default;
@@ -185,8 +186,9 @@ $slider-slide-width:            66%;
 ```
 
 ```file-path
-src/scss/components/slider.scss
+scss/components/slider.scss
 ```
+
 ```css
 .slider {
     --fbx-slider-bg: transparent;

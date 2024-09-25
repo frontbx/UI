@@ -158,15 +158,15 @@
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../getting-started/installation/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Installation</a></li>
         </ul>
     </li>
-    <li class="menu-item-title js-collapse " data-collapse-target="menu-customize">
+    <li class="menu-item-title js-collapse active" data-collapse-target="menu-customize">
         <span class="item-left"><span class="fa fa-chevron-right"></span></span>
         <span class="item-body">Customize</span>
     </li>
-    <li  id="menu-customize" class="menu-item-submenu">
+    <li style="height:auto" id="menu-customize" class="menu-item-submenu">
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../customize/sass/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Sass</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../customize/colors/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Colors</a></li>
-            <li class="menu-item "><a data-pjax-target="#article-body" href="../../customize/playground/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Playground</a></li>
+            <li class="menu-item active"><a data-pjax-target="#article-body" href="../../customize/playground/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Playground</a></li>
         </ul>
     </li>
     <li class="menu-item-title js-collapse " data-collapse-target="menu-layout">
@@ -195,13 +195,13 @@
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../content/inline-elements/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Inline Elements</a></li>
         </ul>
     </li>
-    <li class="menu-item-title js-collapse active" data-collapse-target="menu-buttons">
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-buttons">
         <span class="item-left"><span class="fa fa-chevron-right"></span></span>
         <span class="item-body">Buttons</span>
     </li>
-    <li style="height:auto" id="menu-buttons" class="menu-item-submenu">
+    <li  id="menu-buttons" class="menu-item-submenu">
         <ul class="menu menu-dense">
-            <li class="menu-item active"><a data-pjax-target="#article-body" href="../../buttons/buttons/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Buttons</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../buttons/buttons/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Buttons</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../buttons/dropdown/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Dropdown</a></li>
         </ul>
     </li>
@@ -323,419 +323,59 @@
 </ul></div>
         <div class="container-fluid docs-container" id="top">
             <div class="main-container js-main-container">
-                <article class="docs-body pole-sm" id="article-body"><h1 id="buttons">Buttons</h1>
-<p>Frontbx comes with a vast varietu of button options and styles, making it super simple to create buttons on just about any surface.</p>
-<hr />
-<ul>
-<li><a href="#basic-example">Basic example</a></li>
-<li><a href="#contextual-buttons">Contextual button</a></li>
-<li><a href="#outline-buttons">Outline button</a></li>
-<li><a href="#pure-buttons">Pure button</a></li>
-<li><a href="#raised-buttons">Raised buttons</a></li>
-<li><a href="#on-backgrounds">On backgrounds</a></li>
-<li><a href="#circle-buttons">Circle buttons</a></li>
-<li><a href="#icon-buttons">Icon buttons</a></li>
-<li><a href="#button-sizes">Button sizes</a></li>
-<li><a href="#loading-buttons">Loading buttons</a></li>
-<li><a href="#button-groups">Button groups</a></li>
-<li><a href="#button-states">Button states</a></li>
-<li><a href="#css-customization">CSS customization</a></li>
-</ul>
-<hr />
-<h3 id="basic-example">Basic example</h3>
-<p>Buttons can be created by simply adding the <code>.btn</code> class to a <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> element.</p>
-<div class="fbx-snippet-demo">
-    <div class="flex-row-fluid align-cols-center col-gaps-xs">
-        <button class="btn" type="button">Button</button>
-        <a class="btn" href="#">Button</a>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;button class="btn" type="button"&gt;Button&lt;/button&gt;
-&lt;a class="btn" href="#" &gt;Button&lt;/a&gt;</code></pre>
-<hr />
-<h3 id="contextual-buttons">Contextual buttons</h3>
-<p>Add the contextual classes <code>.btn-primary</code>, <code>.btn-info</code>, <code>.btn-success</code>, <code>.btn-warning</code> and <code>.btn-danger</code> to contextualise button styling.</p>
-<div class="fbx-snippet-demo">
-    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
-        <button class="btn" type="button">.btn</button>
-        <button class="btn btn-primary" type="button">.btn-primary</button>
-        <button class="btn btn-info" type="button">.btn-info</button>
-        <button class="btn btn-success" type="button">.btn-success</button>
-        <button class="btn btn-warning" type="button">.btn-warning</button>
-        <button class="btn btn-danger" type="button">.btn-danger</button>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;button class="btn" type="button"&gt;.btn&lt;/button&gt;
-&lt;button class="btn btn-primary" type="button"&gt;.btn-primary&lt;/button&gt;
-&lt;button class="btn btn-info" type="button"&gt;.btn-info&lt;/button&gt;
-&lt;button class="btn btn-success" type="button"&gt;.btn-success&lt;/button&gt;
-&lt;button class="btn btn-warning" type="button"&gt;.btn-warning&lt;/button&gt;
-&lt;button class="btn btn-danger" type="button"&gt;.btn-danger&lt;/button&gt;</code></pre>
-<hr />
-<h3 id="outline-buttons">Outline buttons</h3>
-<p>Add the <code>.btn-outline</code> to any button to change the style to an outline.</p>
-<div class="fbx-snippet-demo">
-    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
-        <button class="btn btn-outline" type="button">.btn</button>
-        <button class="btn btn-primary btn-outline" type="button">.btn-primary</button>
-        <button class="btn btn-info btn-outline" type="button">.btn-info</button>
-        <button class="btn btn-success btn-outline" type="button">.btn-success</button>
-        <button class="btn btn-warning btn-outline" type="button">.btn-warning</button>
-        <button class="btn btn-danger btn-outline" type="button">.btn-danger</button>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;button class="btn btn-outline" type="button"&gt;.btn&lt;/button&gt;
-&lt;button class="btn btn-primary btn-outline" type="button"&gt;.btn-primary&lt;/button&gt;
-...</code></pre>
-<hr />
-<h3 id="pure-buttons">Pure buttons</h3>
-<p>Add the <code>.pure</code> class to any button to remove all borders and drop shadows.</p>
-<div class="fbx-snippet-demo">
-    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
-        <button class="btn btn-pure" type="button">.btn</button>
-        <button class="btn btn-primary btn-pure" type="button">.btn-primary</button>
-        <button class="btn btn-info btn-pure" type="button">.btn-info</button>
-        <button class="btn btn-success btn-pure" type="button">.btn-success</button>
-        <button class="btn btn-warning btn-pure" type="button">.btn-warning</button>
-        <button class="btn btn-danger btn-pure" type="button">.btn-danger</button>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;button class="btn btn-pure" type="button"&gt;.btn&lt;/button&gt;
-&lt;button class="btn btn-primary btn-pure" type="button"&gt;.btn-primary&lt;/button&gt;
-...</code></pre>
-<hr />
-<h3 id="raised-buttons">raised buttons</h3>
-<p>Add the <code>.raised-1</code>, <code>.raised-2</code>, or <code>.raised-3</code> classes to any button elevate its UI heirarchy:</p>
-<div class="fbx-snippet-demo">
-    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
-        <button class="btn raised-1" type="button">.raised-1</button>
-        &nbsp;&nbsp;
-        <button class="btn raised-2" type="button">.raised-2</button>
-        &nbsp;&nbsp;
-        <button class="btn raised-3" type="button">.raised-3</button>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;button class="btn raised-1" type="button"&gt;.btn&lt;/button&gt;
-&lt;button class="btn raised-2" type="button"&gt;.btn&lt;/button&gt;
-&lt;button class="btn raised-3" type="button"&gt;.btn&lt;/button&gt;</code></pre>
-<hr />
-<h3 id="on-backgrounds">On backgrounds</h3>
-<p>Add the contextual <code>.btn-white</code> class for buttons that are on a primary background.</p></p>
-<div class="fbx-snippet-demo bg-primary">
-    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
-        <button class="btn btn-white" type="button">.btn-white</button>
-        <button class="btn btn-white btn-outline" type="button">.btn-outline</button>
-        <button class="btn btn-white btn-pure" type="button">.btn-pure</button>
-        <button class="btn btn-white with-loading active" type="button"><span class="loader loader-3"></span> Spin! </button>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;button class="btn btn-white" type="button"&gt;.btn-white&lt;/button&gt;
-&lt;button class="btn btn-white btn-outline" type="button"&gt;.btn-outline&lt;/button&gt;
-&lt;button class="btn btn-white btn-pure" type="button"&gt;.btn-pure&lt;/button&gt;
-&lt;button class="btn btn-white with-loading active" type="button"&gt;&lt;svg&gt;...&lt;/svg&gt;&lt;/button&gt;</code></pre>
-<hr />
-<h3 id="circle-buttons">Circle buttons</h3>
-<p>Add the <code>.btn-circle</code> class to any button to change the style to a circled type.</p>
-<div class="fbx-snippet-demo">
-    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
-        <button class="btn btn-primary btn-circle btn-xs" type="button">
-            <span class="fa fa-headphones"></span>
-        </button>
-        <button class="btn btn-info btn-circle btn-sm" type="button">
-            <span class="fa fa-headphones"></span>
-        </button>
-        <button class="btn btn-success btn-circle" type="button">
-            <span class="fa fa-headphones"></span>
-        </button>
-        <button class="btn btn-warning btn-circle btn-lg" type="button">
-            <span class="fa fa-headphones"></span>
-        </button>
-        <button class="btn btn-danger btn-circle btn-xl" type="button">
-            <span class="fa fa-headphones"></span>
-        </button>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;button class="btn btn-primary btn-circle" type="button"&gt;
-    &lt;span class="fa fa-headphones"&gt;&lt;/span&gt;
-&lt;/button&gt;</code></pre>
-<hr />
-<h3 id="icon-buttons">Icon buttons</h3>
-<p>You can add icons to buttons using the font awesome icon library. No special markup is needed. You can however use an html <code>&amp;nbsp;</code> spacing character if you want extra spacing.</p>
-<div class="fbx-snippet-demo">
-    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
-        <button class="btn" type="button">
-            <span class="fa fa-headphones"></span>&nbsp;&nbsp;.btn
-        </button>
-        <button class="btn btn-outline" type="button">
-            <span class="fa fa-headphones"></span>&nbsp;&nbsp;.btn-outline
-        </button>
-        <button class="btn btn-pure" type="button">
-            <span class="fa fa-headphones"></span>&nbsp;&nbsp;.btn-pure
-        </button>
-        <button class="btn" type="button">
-            <span class="fa fa-headphones"></span>
-        </button>
-        <button class="btn btn-outline" type="button">
-            <span class="fa fa-headphones"></span>
-        </button>
-        <button class="btn btn-pure" type="button">
-            <span class="fa fa-headphones"></span>
-        </button>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;button class="btn" type="button"&gt;
-    &lt;span class="fa fa-headphones"&gt;&lt;/span&gt;&amp;nbsp;&amp;nbsp;.btn
-&lt;/button&gt;
-&lt;button class="btn btn-outline" type="button"&gt;
-    &lt;span class="fa fa-headphones"&gt;&lt;/span&gt;&amp;nbsp;&amp;nbsp;.btn-outline
-&lt;/button&gt;
-&lt;button class="btn btn-pure" type="button"&gt;
-    &lt;span class="fa fa-headphones"&gt;&lt;/span&gt;&amp;nbsp;&amp;nbsp;.btn-pure
-&lt;/button&gt;</code></pre>
-<hr />
-<h3 id="button-sizes">Button sizes</h3>
-<p>Buttons can be sized using 4 different sizing classes <code>.btn-xs</code>, <code>.btn-sm</code>, <code>.btn-lg</code> &amp; <code>.btn-xl</code>. The defauly <code>.btn</code> size sits in between the <code>.btn-sm</code>, <code>.btn-lg</code> sizes.</p>
-<div class="fbx-snippet-demo">
-    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
-        <button class="btn btn-xs" type="button"><span class="fa fa-heart"></span>.btn-xs</button>
-        <button class="btn btn-sm" type="button"><span class="fa fa-heart"></span>.btn-sm</button>
-        <button class="btn" type="button"><span class="fa fa-heart"></span>.btn</button>
-        <button class="btn btn-lg" type="button"><span class="fa fa-heart"></span>.btn-lg</button>
-        <button class="btn btn-xl" type="button"><span class="fa fa-heart"></span>.btn-xl</button>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;button class="btn btn-xs" type="button"&gt;.btn-xs&lt;/button&gt;
-&lt;button class="btn btn-sm" type="button"&gt;.btn-sm&lt;/button&gt;
-&lt;button class="btn" type="button"&gt;.btn&lt;/button&gt;
-&lt;button class="btn btn-lg" type="button"&gt;.btn-lg&lt;/button&gt;
-&lt;button class="btn btn-xl" type="button"&gt;.btn-xl&lt;/button&gt;</code></pre>
-<hr />
-<h3 id="loading-buttons">Loading buttons</h3>
-<p>Add one of Frontbx' loaders inside any button and give the button a <code>.with-loading</code> class. When the button has the <code>.active</code> class the loading animation will show</p>
-<pre><code class="html language-html">&lt;span class="loader loader-3"&gt;&lt;/span&gt;</code></pre>
-<div class="fbx-snippet-demo">
-    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
-        <button class="btn with-loading active" type="button">
-            <span class="loader loader-1"></span> Loading...
-        </button>
-        <button class="btn with-loading btn-primary active" type="button">
-            <span class="loader loader-2"></span> Loading...
-        </button>
-        <button class="btn with-loading btn-info active" type="button">
-            <span class="loader loader-3"></span> Loading...
-        </button>
-        <button class="btn with-loading btn-info active" type="button">
-            <span class="loader loader-4"></span> Loading...
-        </button>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;button class="btn with-loading active" type="button"&gt;
-    &lt;span class="loader loader-1"&gt;&lt;/span&gt; Loading...
-&lt;/button&gt;
-
-&lt;button class="btn with-loading active" type="button"&gt;
-    &lt;span class="loader loader-2"&gt;&lt;/span&gt; Loading...
-&lt;/button&gt;
-
-&lt;button class="btn with-loading active" type="button"&gt;
-    &lt;span class="loader loader-3"&gt;&lt;/span&gt; Loading...
-&lt;/button&gt;
-
-&lt;button class="btn with-loading active" type="button"&gt;
-    &lt;span class="loader loader-4"&gt;&lt;/span&gt; Loading...
-&lt;/button&gt;</code></pre>
-<hr />
-<h3 id="button-groups">Button groups</h3>
-<p>Create groups by wrapping a set of buttons in a <code>.btn-group</code> classed element.</p>
-<div class="fbx-snippet-demo">
-    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
-        <div class="btn-group floor-xs">
-            <button class="btn btn-icon" type="button">
-                <span class="fa fa-headphones icon-md"></span>
-            </button>
-            <button class="btn btn-icon" type="button">
-                <span class="fa fa-headphones icon-md"></span>
-            </button>
-            <button class="btn btn-icon" type="button">
-                <span class="fa fa-headphones icon-md"></span>
-            </button>
-            <button class="btn btn-icon" type="button">
-                <span class="fa fa-headphones icon-md"></span>
-            </button>
-        </div>
-        <div class="col-12"></div>
-        <div class="btn-group btn-pill floor-xs">
-            <button class="btn btn-outline" type="button">
-                <span class="fa fa-headphones icon-md"></span>
-            </button>
-            <button class="btn btn-outline" type="button">
-                <span class="fa fa-headphones icon-md"></span>
-            </button>
-            <button class="btn btn-outline" type="button">
-                <span class="fa fa-headphones icon-md"></span>
-            </button>
-            <button class="btn btn-outline" type="button">
-                <span class="fa fa-headphones icon-md"></span>
-            </button>
-        </div>
-        <div class="col-12"></div>
-        <div class="btn-group">
-            <button class="btn btn-pure" type="button">
-                <span class="fa fa-headphones icon-md"></span>
-            </button>
-            <button class="btn btn-pure" type="button">
-                <span class="fa fa-headphones icon-md"></span>
-            </button>
-            <button class="btn btn-pure" type="button">
-                <span class="fa fa-headphones icon-md"></span>
-            </button>
-            <button class="btn btn-pure" type="button">
-                <span class="fa fa-headphones icon-md"></span>
-            </button>
+                <article class="docs-body pole-sm" id="article-body"><h3 id="playground">Playground</h3>
+<p>Use the playground below to adjust the documentation colors.</p>
+<div class="js-docs-playground-swatches flex-row pole-sm pole-s">
+    <div class="docs-playground-swatches">
+        <div class="flex-row-fluid align-cols-center">
+            <div class="col-12 pole-sm text-center text-bold uppercase">Flat:</div>
+            <div class="docs-swatch" style="background: var(--fbx-color-teal)" data-swatch="var(--fbx-color-teal)"><span>teal</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-turquoise)" data-swatch="var(--fbx-color-turquoise)"><span>turquoise</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-greensea)" data-swatch="var(--fbx-color-greensea)"><span>greensea</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-emerland)" data-swatch="var(--fbx-color-emerland)"><span>emerland</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-nephritis)" data-swatch="var(--fbx-color-nephritis)"><span>nephritis</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-babyblue)" data-swatch="var(--fbx-color-babyblue)"><span>babyblue</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-peterrive)" data-swatch="var(--fbx-color-peterrive)"><span>peterrive</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-belizehol)" data-swatch="var(--fbx-color-belizehol)"><span>belizehol</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-amethyst)" data-swatch="var(--fbx-color-amethyst)"><span>amethyst</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-wisteria)" data-swatch="var(--fbx-color-wisteria)"><span>wisteria</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-wetasphalt)" data-swatch="var(--fbx-color-wetasphalt)"><span>wetasphalt</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-midnightblue)" data-swatch="var(--fbx-color-midnightblue)"><span>midnightblue</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-sunflower)" data-swatch="var(--fbx-color-sunflower)"><span>sunflower</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-orange)" data-swatch="var(--fbx-color-orange)"><span>orange</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-carrot)" data-swatch="var(--fbx-color-carrot)"><span>carrot</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-salmon)" data-swatch="var(--fbx-color-salmon)"><span>salmon</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-pumpkin)" data-swatch="var(--fbx-color-pumpkin)"><span>pumpkin</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-alizarin)" data-swatch="var(--fbx-color-alizarin)"><span>alizarin</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-pomegranate)" data-swatch="var(--fbx-color-pomegranate)"><span>pomegranate</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-clouds)" data-swatch="var(--fbx-color-clouds)"><span>clouds</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-silver)" data-swatch="var(--fbx-color-silver)"><span>silver</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-concrete)" data-swatch="var(--fbx-color-concrete)"><span>concrete</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-asbestos)" data-swatch="var(--fbx-color-asbestos)"><span>asbestos</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-ash)" data-swatch="var(--fbx-color-ash)"><span>ash</span></div>
+            <div class="col-12 pole-sm text-center text-bold uppercase">Neons:</div>
+            <div class="docs-swatch" style="background: var(--fbx-color-neongreen)" data-swatch="var(--fbx-color-neongreen)"><span>neongreen</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-skyblue)" data-swatch="var(--fbx-color-skyblue)"><span>skyblue</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-beetroot)" data-swatch="var(--fbx-color-beetroot)"><span>beetroot</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-hotpink)" data-swatch="var(--fbx-color-hotpink)"><span>hotpink</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-pineapple)" data-swatch="var(--fbx-color-pineapple)"><span>pineapple</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-coralred)" data-swatch="var(--fbx-color-coralred)"><span>coralred</span></div>
+            <div class="col-12 pole-sm text-center text-bold uppercase">Pastels:</div>
+            <div class="docs-swatch" style="background: var(--fbx-color-pastelteal)" data-swatch="var(--fbx-color-pastelteal)"><span>pastelteal</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-pastelgreen)" data-swatch="var(--fbx-color-pastelgreen)"><span>pastelgreen</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-pastelblue)" data-swatch="var(--fbx-color-pastelblue)"><span>pastelblue</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-pastelpurple)" data-swatch="var(--fbx-color-pastelpurple)"><span>pastelpurple</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-pastelpink)" data-swatch="var(--fbx-color-pastelpink)"><span>pastelpink</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-pastelred)" data-swatch="var(--fbx-color-pastelred)"><span>pastelred</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-pastelcoral)" data-swatch="var(--fbx-color-pastelcoral)"><span>pastelcoral</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-pastelorange)" data-swatch="var(--fbx-color-pastelorange)"><span>pastelorange</span></div>
+            <div class="docs-swatch" style="background: var(--fbx-color-pastelyellow)" data-swatch="var(--fbx-color-pastelyellow)"><span>pastelyellow</span></div>
         </div>
     </div>
 </div>
-<pre><code class="html language-html">&lt;div class="btn-group floor-xs"&gt;
-    ...
-&lt;/div&gt;</code></pre>
-<hr />
-<h3 id="button-states">Button states</h3>
-<p>Button states are native, but work also with a class to use <code>.active</code>, <code>.hover</code>, <code>.disabled</code></p>
-<div class="fbx-snippet-demo">
-    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
-        <button class="btn" type="button">Normal</button>
-        <button class="btn hover" type="button">Hover</button>
-        <button class="btn active" type="button">Active</button>
-        <button class="btn disabled" type="button">Disabled</button>
-        <div class="col-12"></div>
-        <button class="btn btn-primary" type="button">Normal</button>
-        <button class="btn btn-primary hover" type="button">Hover</button>
-        <button class="btn btn-primary active" type="button">Active</button>
-        <button class="btn btn-primary disabled" type="button">Disabled</button>
-        <div class="col-12"></div>
-        <button class="btn btn-primary btn-outline" type="button">Normal</button>
-        <button class="btn btn-primary btn-outline hover" type="button">Hover</button>
-        <button class="btn btn-primary btn-outline active" type="button">Active</button>
-        <button class="btn btn-primary btn-outline disabled" type="button">Disabled</button>
-        <div class="col-12"></div>
-        <button class="btn btn-primary btn-pure" type="button">Normal</button>
-        <button class="btn btn-primary btn-pure hover" type="button">Hover</button>
-        <button class="btn btn-primary btn-pure active" type="button">Active</button>
-        <button class="btn btn-primary btn-pure disabled" type="button">Disabled</button>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;button class="btn" type="button"&gt;Normal&lt;/button&gt;
-&lt;button class="btn hover" type="button"&gt;Hover&lt;/button&gt;
-&lt;button class="btn active" type="button"&gt;Active&lt;/button&gt;
-&lt;button class="btn disabled" type="button"&gt;Disabled&lt;/button&gt;</code></pre>
-<p>States for <code>btn-white</code> will also work</p>
-<div class="fbx-snippet-demo bg-primary">
-    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
-        <button class="btn btn-white" type="button">Normal</button>
-        <button class="btn btn-white hover" type="button">Hover</button>
-        <button class="btn btn-white active" type="button">Active</button>
-        <button class="btn btn-white disabled" type="button">Disabled</button>
-        <div class="col-12"></div>
-        <button class="btn btn-white" type="button">Normal</button>
-        <button class="btn btn-white hover" type="button">Hover</button>
-        <button class="btn btn-white active" type="button">Active</button>
-        <button class="btn btn-white disabled" type="button">Disabled</button>
-        <div class="col-12"></div>
-        <button class="btn btn-white btn-outline" type="button">Normal</button>
-        <button class="btn btn-white btn-outline hover" type="button">Hover</button>
-        <button class="btn btn-white btn-outline active" type="button">Active</button>
-        <button class="btn btn-white btn-outline disabled" type="button">Disabled</button>
-        <div class="col-12"></div>
-        <button class="btn btn-white btn-pure" type="button">Normal</button>
-        <button class="btn btn-white btn-pure hover" type="button">Hover</button>
-        <button class="btn btn-white btn-pure active" type="button">Active</button>
-        <button class="btn btn-white btn-pure disabled" type="button">Disabled</button>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;button class="btn" type="button"&gt;Normal&lt;/button&gt;
-&lt;button class="btn hover" type="button"&gt;Hover&lt;/button&gt;
-&lt;button class="btn active" type="button"&gt;Active&lt;/button&gt;
-&lt;button class="btn disabled" type="button"&gt;Disabled&lt;/button&gt;</code></pre>
-<hr />
-<h3 id="css-customization">CSS Customization</h3>
-<p>Buttons use local CSS variables on <code>.btn</code> for enhanced component customization and styling. The base values are used by the UI to create all the variants. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>
-<p>Customization via Sass can be made in the <code>scss/_config.scss</code> file in Frontbx's source.</p>
-<pre><code class="file-path language-file-path">scss/styles/buttons/_base.scss</code></pre>
-<pre><code class="sass language-sass">--fbx-btn-block: inline-block;
---fbx-btn-margin: 0;
---fbx-btn-font-weight: normal;
---fbx-btn-text-align: center;
---fbx-btn-position: relative;
---fbx-btn-overflow: hidden;
---fbx-btn-border: none;
---fbx-btn-width: auto;
---fbx-btn-border-radius: #{$border-radius};
---fbx-btn-font-size: #{$btn-font-size};
---fbx-btn-line-height: #{$btn-font-size};
---fbx-btn-bg-color: #{$btn-base-bg};
---fbx-btn-color: #{$btn-base-color};
---fbx-btn-font-weight: #{$btn-font-weight};
---fbx-btn-text-transform: #{$btn-text-transform};
---fbx-btn-white-space: nowrap;
---fbx-btn-vertical-align: middle;
---fbx-btn-cursor: pointer;
---fbx-btn-text-decoration: none;
---fbx-btn-transition: none;
---fbx-btn-padding-y: #{$btn-pad-y};
---fbx-btn-padding-x: #{$btn-pad-x};
---fbx-btn-letter-spacing: 0.5px;
---fbx-btn-loader-color: var(--fbx-btn-color);
---fbx-btn-icon-color: inherit;
---fbx-btn-box-shadow: none;
---fbx-btn-transition: none;
-
-// Hover
---fbx-btn-color-hover: #{$btn-base-color-hover};
---fbx-btn-bg-color-hover: #{$btn-base-bg-hover};
-
-// Active
---fbx-btn-color-active: #{$btn-base-color-active};
---fbx-btn-bg-color-active: #{$btn-base-bg-active};</code></pre>
-<p><br></p>
-<pre><code class="file-path language-file-path">scss/_config.scss</code></pre>
-<pre><code class="sass language-sass">$btn-height:                    38px !default;
-$btn-text-transform:            uppercase !default;
-$btn-pad-x:                     1.6rem !default;
-$btn-pad-y:                     1.2rem !default;
-$btn-font-size:                 1.4rem !default;
-$btn-font-weight:               $text-bold !default;
-
-// Base
-$btn-base-bg:                   var(--fbx-gray-200);
-$btn-base-color:                var(--fbx-gray-700);
-
-// Hover
-$btn-base-bg-hover:             var(--fbx-gray-300);
-$btn-base-color-hover:          var(--fbx-gray-700);
-
-// Active
-$btn-base-bg-active:            var(--fbx-gray-400);
-$btn-base-color-active:         var(--fbx-gray-700);
-
-$btn-xs-pad-x:                  _minusPercent($btn-pad-x, 30) !default;
-$btn-xs-pad-y:                  _minusPercent($btn-pad-y, 30) !default;
-
-$btn-sm-pad-x:                  _minusPercent($btn-pad-x, 20) !default;
-$btn-sm-pad-y:                  _minusPercent($btn-pad-y, 20) !default;
-
-$btn-lg-pad-x:                  _addPercent($btn-pad-x, 30) !default;
-$btn-lg-pad-y:                  _addPercent($btn-pad-y, 30) !default;
-
-$btn-xl-pad-x:                  _addPercent($btn-pad-x, 50) !default;
-$btn-xl-pad-y:                  _addPercent($btn-pad-y, 50) !default;
-
-$circle-btn-font-size:          2.0rem !default;
-
-$btn-icon-font-size:            1.6rem !default;
-$btn-icon-line-height:          1.4rem !default;
-$btn-icon-vertical-align:       text-top !default;
-
-$btn-group-radius:              var(--fbx-border-radius) !default;</code></pre></article>
+<div class="js-docs-playground-code">
+    <pre><code class="css language-css"></code></pre>
+</div></article>
             </div>
         </div>
         <footer class="site-footer">
