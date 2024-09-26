@@ -31,10 +31,10 @@ Here's is a basic example:
 
 <div class="fbx-snippet-demo">
     <div class="slider js-slider" data-slider-options='{ "wrap": true }'>
-        <div class="bg-pastelpink">1</div>
+        <div class="bg-pastelred">1</div>
         <div class="bg-pastelteal">2</div>
         <div class="bg-pastelblue">3</div>
-        <div class="bg-pastelpink">4</div>
+        <div class="bg-pastelred">4</div>
         <div class="bg-pastelteal">5</div>
         <div class="bg-pastelblue">6</div>
     </div>
@@ -42,10 +42,10 @@ Here's is a basic example:
 
 ```html
 <div class="slider js-slider" data-slider-options='{ "wrap": true }'>
-    <div class="bg-pastelpink">1</div>
+    <div class="bg-pastelred">1</div>
     <div class="bg-pastelteal">2</div>
     <div class="bg-pastelblue">3</div>
-    <div class="bg-pastelpink">4</div>
+    <div class="bg-pastelred">4</div>
     <div class="bg-pastelteal">5</div>
     <div class="bg-pastelblue">6</div>
 </div>

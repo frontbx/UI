@@ -85,22 +85,22 @@ You can provide a label to the radio as you normally would. If you need the labe
         <div class="form-field row floor-xxs">
             <span class="radio">
                 <input type="radio" name="radio_2" id="radio_5"  checked/>
-                <label for="radio_5">Normal Label</label>
+                <label for="radio_5">&nbsp;Normal Label</label>
             </span>
         </div>
         <div class="form-field row floor-xxs">
             <span class="radio">
                 <input type="radio" name="radio_2" id="radio_6"  />
                 <label for="radio_6">
-                    <span class="toggle-on">Checked text</span>
-                    <span class="toggle-off">Unchecked text</span>
+                    <span class="toggle-on">&nbsp;Checked text</span>
+                    <span class="toggle-off">&nbsp;Unchecked text</span>
                 </label>
             </span>
         </div>
         <div class="form-field floor-xxs">
             <span class="radio">
                 <input type="radio" name="radio_2" id="radio_7" disabled />
-                <label for="radio_7">Disabled</label>
+                <label for="radio_7">&nbsp;Disabled</label>
             </span>
         </div>
     </form>
@@ -194,20 +194,20 @@ Additional sizing is available through `.radio-sm`, `radio-md` and `radio-lg`:
     <form class="text-center">
         <div class="form-field pad-5">
             <span class="radio radio-sm">
-                <input type="radio" name="radio_14" id="radio_14" checked />
-                <label for="radio_14">Small</label>
+                <input type="radio" name="radio_15" id="radio_14" />
+                <label for="radio_14">&nbsp;Small</label>
             </span>
         </div>
         <div class="form-field pad-5">
             <span class="radio radio-md">
-                <input type="radio" name="radio_15" id="radio_15" checked />
-                <label for="radio_15">Medium</label>
+                <input type="radio" name="radio_15" id="radio_15" />
+                <label for="radio_15">&nbsp;Medium</label>
             </span>
         </div>
         <div class="form-field pad-5">
             <span class="radio radio-lg">
-                <input type="radio" name="radio_16" id="radio_16" checked />
-                <label for="radio_16">Large</label>
+                <input type="radio" name="radio_15" id="radio_16" checked />
+                <label for="radio_16">&nbsp;Large</label>
             </span>
         </div>
     </form>
@@ -219,11 +219,11 @@ Additional sizing is available through `.radio-sm`, `radio-md` and `radio-lg`:
     <label for="radio_14">Small</label>
 </span>
 <span class="radio radio-md">
-    <input type="radio" name="radio_15" id="radio_15" checked />
+    <input type="radio" name="radio_14" id="radio_15" checked />
     <label for="radio_15">Medium</label>
 </span>
 <span class="radio radio-lg">
-    <input type="radio" name="radio_16" id="radio_16" checked />
+    <input type="radio" name="radio_14" id="radio_16" checked />
     <label for="radio_16">Large</label>
 </span>
 ```
@@ -237,24 +237,20 @@ Checkboxes use local CSS variables on `.radio` for enhanced component customizat
 Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
 
 ```file-path
-scss/styles/forms/_radio.scss
-```
-
-```sass
---fbx-radio-size: #{$radio-size};
---fbx-radio-color: #{$radio-color};
---fbx-radio-label-color: #{$radio-label-color};
-```
-
-<br>
-
-```file-path
 scss/_config.scss
 ```
-
 ```sass
-$radio-size:                    2rem !default;
-$radio-color:                   var(--fbx-gray) !default;
-$radio-label-color:             var(--fbx-gray) !default;
+$radio-size:        20px !default;
+$radio-color:       var(--fbx-gray) !default;
+$radio-label-color: var(--fbx-gray) !default;
 ```
 
+```sass
+.radio
+{
+    --fbx-radio-size: 20px;
+    --fbx-radio-color: var(--fbx-gray);
+    --fbx-radio-label-color: var(--fbx-gray);
+}
+
+```

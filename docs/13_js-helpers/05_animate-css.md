@@ -148,7 +148,7 @@ Below is interactive demo to showcase animating various values, click the button
 
 <div class="fbx-snippet-demo">
     <div class="row">
-        <div class="center-horizontal bg-pastelteal fill js-animate-css-example" style="width: 300px;">animate me!</div>
+        <div class="center-horizontal bg-pastelteal column-demo js-animate-css-example" style="width: 300px;">animate me!</div>
     </div>
     <div class="flex-row-fluid align-cols-center pole-sm pole-n">
         <button type="button" class="btn js-animate-css-trigger">Animate</button>

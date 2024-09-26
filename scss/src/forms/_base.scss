@@ -42,7 +42,6 @@ input.unstyled
     --fbx-input-addon-bg: #{$input-addon-bg};
     --fbx-input-addon-color: #{$input-addon-color};
     --fbx-input-placeholder-font-size: #{$input-font-size * 0.9};
-    --fbx-input-help-text-font-size: #{$input-font-size * 0.75};
 
     // Used internally for states
     --fbx-input-box-shadow: none;
@@ -396,6 +395,7 @@ input.unstyled
 .help-danger,
 .help-warning
 {
+    --fbx-input-help-text-font-size: #{$input-font-size * 0.75};
     overflow: hidden;
     margin: 0;
     font-weight: $text-bold;

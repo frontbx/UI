@@ -336,6 +336,7 @@ pre
 code
 {
     padding: .2rem .4rem;
+    font-size: 0.85em;
 }
 pre > code
 {
@@ -348,8 +349,4 @@ td > code,
 th > code
 {
     white-space: pre-wrap;
-}
-p > code
-{
-    font-size: 0.9em;
 }

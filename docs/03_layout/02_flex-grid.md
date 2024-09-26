@@ -64,29 +64,25 @@ Customization of breakpoints via Sass can be made in the `scss/_config.scss` fil
 ```file-path
 scss/_config.scss
 ```
-
 ```sass
-$breakpoint-xs:                 0 !default;
-$breakpoint-sm:                 576px !default;
-$breakpoint-md:                 768px !default;
-$breakpoint-lg:                 992px !default;
-$breakpoint-xl:                 1200px !default;
+$breakpoint-xs: 0 !default;
+$breakpoint-sm: 576px !default;
+$breakpoint-md: 768px !default;
+$breakpoint-lg: 992px !default;
+$breakpoint-xl: 1200px !default;
 
 $breakpoints:
 (
-    'xs':                       $breakpoint-xs,
-    'sm':                       $breakpoint-sm,
-    'md':                       $breakpoint-md,
-    'lg':                       $breakpoint-lg,
-    'xl':                       $breakpoint-xl,
+    'xs': $breakpoint-xs,
+    'sm': $breakpoint-sm,
+    'md': $breakpoint-md,
+    'lg': $breakpoint-lg,
+    'xl': $breakpoint-xl,
+    
 ) !default;
 ```
 
 Or via CSS variables on the `:root`
-
-```file-path
-scss/_config.scss
-```
 
 ```css
 :root
@@ -110,10 +106,9 @@ Rows are used to as the main wrapper element to contain columns. They will span 
 | `.flex-row` | `.flex-row` | Wraps around flex children. Sets any child `.col` to full width |
 
 <div class="fbx-snippet-demo">
-    <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row">
         <div class="col">
-            <div class="bg-pastelpink fill"><code>.col</code></div>
+            <div class="bg-pastelred column-demo"><code>.row</code></div>
         </div>
     </div>
 </div>
@@ -138,13 +133,15 @@ The example below shows two rows. The first that displays on mobile (`<md` break
     <div class="parent-row-diagram"><code>.flex-row</code><code>.xs-flex</code><code>.sm-flex</code></div>
     <div class="flex-row xs-flex sm-flex">
         <div class="col">
-            <div class="bg-pastelpink fill"><code>.col</code></div>
+            <div class="bg-pastelred column-demo"><code>.row</code></div>
         </div>
     </div>
-    <div class="parent-row-diagram"><code>.flex-row</code><code>.md-flex</code><code>.lg-flex</code><code>.xl-flex</code></div>
+    <div class="row pole-sm">
+        <div class="parent-row-diagram"><code>.flex-row</code><code>.md-flex</code><code>.lg-flex</code><code>.xl-flex</code></div>
+    </div>
     <div class="flex-row md-flex lg-flex xl-flex">
         <div class="col">
-            <div class="bg-pastelpink fill"><code>.col</code></div>
+            <div class="bg-pastelred column-demo"><code>.row</code></div>
         </div>
     </div>
 </div>
@@ -160,7 +157,7 @@ The example below shows two rows. The first that displays on mobile (`<md` break
 
 #### Fluid rows
 
-`.flex-row-fluid` acts how you would expect native flex to behave. It distributes content evenly allowing each `.col` to shrink or grow as necessary to fill available space.
+`.flex-row-fluid` acts how you would expect native flex to behave. It distributes content evenly allowing each `.col` to shrink or grow as necessary to column-demo available space.
 
 With `.flex-row-fluid` you can set an individual `.col` width too - other columns automatically will adjust as necessary.
 
@@ -168,13 +165,13 @@ With `.flex-row-fluid` you can set an individual `.col` width too - other column
     <div class="parent-row-diagram"><code>.flex-row-fluid</code></div>
     <div class="flex-row-fluid col-gaps-xs">
         <div class="col">
-            <div class="bg-pastelteal fill"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo"><code>.col</code></div>
         </div>
         <div class="col col-6">
-            <div class="bg-pastelpink fill"><code>.col-6</code></div>
+            <div class="bg-pastelred column-demo"><code>.col-6</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelblue fill"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo"><code>.col</code></div>
         </div>
     </div>
 </div>
@@ -214,26 +211,19 @@ Setting column width via the `.flex-row` is easy to setup via modifier classes. 
 This example shows setting even column widths via the parent `.flex-row`:
 
 <div class="fbx-snippet-demo">
-    <div class="parent-row-diagram"><code>.flex-row</code></div>
-    <div class="flex-row">
-        <div class="col">
-            <div class="bg-pastelpink fill"><code>.col</code></div>
-        </div>
-    </div>
-    <div class="flex-row pole-xs"></div>
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-3</code></div>
     <div class="flex-row flex-cols-3 col-gaps-xs row-gaps-xs">
         <div class="col">
-            <div class="bg-pastelblue fill"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelblue fill"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo"><code>.col</code></div>
         </div>
     </div>
 </div> 
@@ -263,25 +253,18 @@ Here we set the width via the child `.col` elements:
 
 <div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code></div>
-    <div class="flex-row">
-        <div class="col col-12">
-            <div class="bg-pastelpink fill"><code>.col-12</code></div>
-        </div>
-    </div>
-    <div class="flex-row pole-xs"></div>
-    <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row col-gaps-xs row-gaps-xs">
         <div class="col col-3">
-            <div class="bg-pastelblue fill small"><code>.col-3</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col-3</code></div>
         </div>
         <div class="col col-3">
-            <div class="bg-pastelteal fill small"><code>.col-3</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col-3</code></div>
         </div>
         <div class="col col-3">
-            <div class="bg-pastelblue fill small"><code>.col-3</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col-3</code></div>
         </div>
         <div class="col col-3">
-            <div class="bg-pastelteal fill small"><code>.col-3</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col-3</code></div>
         </div>
     </div>
 </div> 
@@ -306,22 +289,22 @@ This design pattern uses a combination of both the parent `.flex-row` and it's c
     <div class="parent-row-diagram"><code>.flex-row</code><code>flex-cols-3</code></div>
     <div class="flex-row flex-cols-3 col-gaps-xs row-gaps-xs">
         <div class="col col-6">
-            <div class="bg-pastelpink fill"><code>.col-6</code></div>
+            <div class="bg-pastelred column-demo"><code>.col-6</code></div>
         </div>
         <div class="col col-6">
-            <div class="bg-pastelpink fill"><code>.col-6</code></div>
+            <div class="bg-pastelred column-demo"><code>.col-6</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelblue fill"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelblue fill"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo"><code>.col</code></div>
         </div>
     </div>
 </div>
@@ -341,19 +324,19 @@ This design pattern uses a combination of both the parent `.flex-row` and it's c
     <div class="parent-row-diagram"><code>.flex-row</code><code>flex-cols-6</code></div>
     <div class="flex-row flex-cols-6 col-gaps-xs row-gaps-xs">
         <div class="col">
-            <div class="bg-pastelpink fill"><code>.col</code></div>
+            <div class="bg-pastelred column-demo"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelpink fill"><code>.col</code></div>
+            <div class="bg-pastelred column-demo"><code>.col</code></div>
         </div>
         <div class="col col-4">
-            <div class="bg-pastelblue fill"><code>.col-4</code></div>
+            <div class="bg-pastelblue column-demo"><code>.col-4</code></div>
         </div>
         <div class="col col-4">
-            <div class="bg-pastelteal fill"><code>.col-4</code></div>
+            <div class="bg-pastelteal column-demo"><code>.col-4</code></div>
         </div>
         <div class="col col-4">
-            <div class="bg-pastelblue fill"><code>.col-4</code></div>
+            <div class="bg-pastelblue column-demo"><code>.col-4</code></div>
         </div>
     </div>
 </div> 
@@ -382,9 +365,9 @@ Setting responsive column width via the `.flex-row` is easy to setup via modifie
 
 The table below outlines the available options.
 
-| Usage           | Class                            | Options                                  | Example          | Behavior                                                  |
-|-----------------|----------------------------------|------------------------------------------|------------------|-----------------------------------------------------------|
-| Breakpoint size | `.flex-cols-[breakpoint]-[size]` | `xxs`, `xs` `sm` `md` `lg` `xl` & `1-12` | `.flex-col-sm-3` | Sizes child `.col` elements to width on breakpoint and up |
+| Usage           | Class                            | Options                           | Example          | Behavior                                                  |
+|-----------------|----------------------------------|-----------------------------------|------------------|-----------------------------------------------------------|
+| Breakpoint size | `.flex-cols-[breakpoint]-[size]` | `xs` `sm` `md` `lg` `xl` & `1-12` | `.flex-col-sm-3` | Sizes child `.col` elements to width on breakpoint and up |
 
 This example shows setting even column widths at `.col-6` on mobile and `.col-3'` at breakpoint `lg` and above via parent `.flex-row`:
 
@@ -392,16 +375,16 @@ This example shows setting even column widths at `.col-6` on mobile and `.col-3'
     <div class="parent-row-diagram"><code>.flex-row</code> <code>.flex-cols-3</code> <code>.flex-cols-lg-6</code></div>
     <div class="flex-row flex-cols-3 flex-cols-lg-6 col-gaps-xs row-gaps-xs">
         <div class="col">
-            <div class="bg-pastelblue fill"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelblue fill"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo"><code>.col</code></div>
         </div>
     </div>
 </div> 
@@ -421,7 +404,7 @@ Setting responsive column width via the child `.col` elements is easy to setup v
 
 | Usage           | Class                      | Options                                  | Example          | Behavior                                           |
 |-----------------|----------------------------|------------------------------------------|------------------|----------------------------------------------------|
-| Breakpoint size | `.col-[breakpoint]-[size]` | `xxs`, `xs` `sm` `md` `lg` `xl` & `1-12` | `.flex-col-sm-3` | Sizes `.col` element to width on breakpoint and up |
+| Breakpoint size | `.col-[breakpoint]-[size]` | `xs` `sm` `md` `lg` `xl` & `1-12` | `.flex-col-sm-3` | Sizes `.col` element to width on breakpoint and up |
 
 This example shows setting even column widths at `.col-6` on mobile and `.col-4'` at breakpoint `md` and above via child `.col` elements:
 
@@ -429,16 +412,16 @@ This example shows setting even column widths at `.col-6` on mobile and `.col-4'
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row col-gaps-xs row-gaps-xs">
         <div class="col col-6 col-md-4">
-            <div class="bg-pastelblue fill small"><code>.col-6</code><code>.col-md-4</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col-6</code><code>.col-md-4</code></div>
         </div>
         <div class="col col-6 col-md-4">
-            <div class="bg-pastelteal fill small"><code>.col-6</code><code>.col-md-4</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col-6</code><code>.col-md-4</code></div>
         </div>
         <div class="col col-6 col-md-4">
-            <div class="bg-pastelblue fill small"><code>.col-6</code><code>.col-md-4</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col-6</code><code>.col-md-4</code></div>
         </div>
         <div class="col col-6 col-md-12">
-            <div class="bg-pastelpink fill small"><code>.col-6</code><code>.col-md-12</code></div>
+            <div class="bg-pastelred column-demo dense"><code>.col-6</code><code>.col-md-12</code></div>
         </div>
     </div>
 </div> 
@@ -460,16 +443,16 @@ This example shows setting even column widths at `.col-6` on mobile and `.col-4'
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-6</code><code>.flex-cols-lg-4</code></div>
     <div class="flex-row flex-cols-6 flex-cols-lg-4 col-gaps-xs row-gaps-xs">
         <div class="col col-lg-12">
-            <div class="bg-pastelpink fill small"><code>.col</code><code>.col-lg-12</code></div>
+            <div class="bg-pastelred column-demo dense"><code>.col</code><code>.col-lg-12</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelblue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col</code></div>
         </div>
     </div>
 </div> 
@@ -491,22 +474,22 @@ Column gaps define the spacing between columns in a row and can be set via the p
 
 | Usage       | Class              | Options                         | Example        | Behavior                                                |
 |-------------|--------------------|---------------------------------|----------------|---------------------------------------------------------|
-| Gap size    | `.col-gaps-[size]` | `xxs`, `xs` `sm` `md` `lg` `xl` | `.col-gaps-xs` | Spaces horizontal gaps between columns to size          |
+| Gap size    | `.col-gaps-[size]` | `xs` `sm` `md` `lg` `xl` | `.col-gaps-xs` | Spaces horizontal gaps between columns to size          |
 
 <div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-6</code><code>.col-gaps-lg</code></div>
     <div class="flex-row flex-cols-6 col-gaps-lg row-gaps-xs">
         <div class="col">
-            <div class="bg-pastelblue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelblue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col</code></div>
         </div>
     </div>
 </div> 
@@ -524,10 +507,9 @@ Column gaps define the spacing between columns in a row and can be set via the p
 
 Frontbx's grid system comes with mobile-first fully responsive set of helpers to size gutters according to screen size. The table below outlines the available options.
 
-| Usage               | Class                           | Options                                                                | Example           | Behavior                                                            |
-|---------------------|---------------------------------|------------------------------------------------------------------------|-------------------|---------------------------------------------------------------------|
-| Breakpoint gap size | `.col-gaps-[breakpoint]-[size]` | `xs`, `xs` `sm` `md` `lg` `xl` & `xxs`, `xs`, `xs` `sm` `md` `lg` `xl` | `.col-gaps-md-lg` | Spaces horizontal gaps between columns to size at breakpoint and up |
-
+| Usage               | Class                           | Options                       | Example           | Behavior                                                            |
+|---------------------|---------------------------------|-------------------------------|-------------------|---------------------------------------------------------------------|
+| Breakpoint gap size | `.col-gaps-[breakpoint]-[size]` | `xs` `xs` `sm` `md` `lg` `xl` | `.col-gaps-md-lg` | Spaces horizontal gaps between columns to size at breakpoint and up |
 
 The example below shows column gaps set to `xs` on mobile and `lg` on breakpoint `>=md`:
 
@@ -535,16 +517,16 @@ The example below shows column gaps set to `xs` on mobile and `lg` on breakpoint
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-6</code><code>.col-gaps-xs</code><code>.col-gaps-md-lg</code></div>
     <div class="flex-row flex-cols-6 col-gaps-xs col-gaps-md-lg row-gaps-xs">
         <div class="col">
-            <div class="bg-pastelblue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelblue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col</code></div>
         </div>
     </div>
 </div> 
@@ -566,22 +548,22 @@ Row gaps define the spacing between rows. With Frontbx' flex grid, you set this 
 
 | Usage       | Class              | Options                         | Example        | Behavior                                         |
 |-------------|--------------------|---------------------------------|----------------|--------------------------------------------------|
-| Gap size    | `.row-gaps-[size]` | `xxs`, `xs` `sm` `md` `lg` `xl` | `.col-gaps-xs` | Spaces vertical gaps between column rows to size |
+| Gap size    | `.row-gaps-[size]` | `xs` `sm` `md` `lg` `xl` | `.col-gaps-xs` | Spaces vertical gaps between column rows to size |
 
 <div class="fbx-snippet-demo">
      <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-6</code><code>.row-gaps-md</code></div>
     <div class="flex-row flex-cols-6 row-gaps-md col-gaps-xs">
         <div class="col">
-            <div class="bg-pastelblue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelblue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col</code></div>
         </div>
     </div>
 </div> 
@@ -601,7 +583,7 @@ Frontbx's grid system comes with mobile-first fully responsive set of helpers to
 
 | Usage               | Class                           | Options                                                                | Example           | Behavior                                                              |
 |---------------------|---------------------------------|------------------------------------------------------------------------|-------------------|-----------------------------------------------------------------------|
-| Breakpoint gap size | `.row-gaps-[breakpoint]-[size]` | `xs`, `xs` `sm` `md` `lg` `xl` & `xxs`, `xs`, `xs` `sm` `md` `lg` `xl` | `.col-gaps-md-lg` | Spaces vertical gaps between column rows to size at breakpoint and up |
+| Breakpoint gap size | `.row-gaps-[breakpoint]-[size]` | `xs` `xs` `sm` `md` `lg` `xl` & `xs` `xs` `sm` `md` `lg` `xl` | `.col-gaps-md-lg` | Spaces vertical gaps between column rows to size at breakpoint and up |
 
 The example below shows row gaps set to `xs` on mobile and `lg` on breakpoint `>=md`:
 
@@ -609,16 +591,16 @@ The example below shows row gaps set to `xs` on mobile and `lg` on breakpoint `>
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-6</code><code>.row-gaps-xs</code><code>.row-gaps-md-lg</code></div>
     <div class="flex-row flex-cols-6 row-gaps-xs row-gaps-md-lg col-gaps-xs">
         <div class="col">
-            <div class="bg-pastelblue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelblue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col</code></div>
         </div>
     </div>
 </div> 
@@ -640,8 +622,8 @@ Gutters can be used to push columns away from each other.
 
 | Usage       | Class            | Options                         | Example        | Behavior                                               |
 |-------------|------------------|---------------------------------|----------------|--------------------------------------------------------|
-| Gutter size | `.gutter-[size]` | `xxs`, `xs` `sm` `md` `lg` `xl` | `.gutter-lg`   | Applies margin size gutter to both sides of the column |
-| Gutter side | `.gutter-[side]` | `l`, `r`                        | `.gutter-r`    | Applies margin to left or right gutter only            |
+| Gutter size | `.gutter-[size]` | `xs` `sm` `md` `lg` `xl` | `.gutter-lg`   | Applies margin size gutter to both sides of the column |
+| Gutter side | `.gutter-[side]` | `l` `r`                        | `.gutter-r`    | Applies margin to left or right gutter only            |
 | No gutter   | `.no-gutter`     | None                            | `.no-gutter`   | Sets horizontal margins to zero                        |
 | Auto gutter | `.auto-gutter`   | None                            | `.auto-gutter` | Sets horizontal margins to auto                        |
 
@@ -649,10 +631,10 @@ Gutters can be used to push columns away from each other.
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row">
         <div class="col col-6 gutter-xs gutter-r">
-            <div class="bg-pastelblue fill small"><code>.gutter-xs</code><code>.gutter-r</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.gutter-xs</code><code>.gutter-r</code></div>
         </div>
         <div class="col col-6 gutter-xs gutter-l">
-            <div class="bg-pastelteal fill small"><code>.gutter-xs</code><code>.gutter-l</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.gutter-xs</code><code>.gutter-l</code></div>
         </div>
     </div>
 </div> 
@@ -668,30 +650,30 @@ Gutters can be used to push columns away from each other.
     <div class="parent-row-diagram"><code>.flex-row</code><code>.align-cols-center-x</code></div>
     <div class="flex-row align-cols-center-x">
         <div class="col col-md-4 gutter-xs gutter-r">
-            <div class="bg-pastelblue fill smaller"><code>.col-md-4</code><code>.gutter-xs</code><br><code>.gutter-r</code></div>
+            <div class="bg-pastelblue column-demo denser"><code>.col-md-4</code><code>.gutter-xs</code><br><code>.gutter-r</code></div>
         </div>
         <div class="col col-md-4 gutter-xs gutter-l">
-            <div class="bg-pastelteal fill smaller"><code>.col-md-4</code><code>.gutter-xs</code><br><code>.gutter-l</code></div>
+            <div class="bg-pastelteal column-demo denser"><code>.col-md-4</code><code>.gutter-xs</code><br><code>.gutter-l</code></div>
         </div>
     </div>
     <div class="row pole-xs"></div>
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row row-gaps-xs">
         <div class="col col-md-4 auto-gutter gutter-r">
-            <div class="bg-pastelblue fill smaller"><code>.col-md-4</code><code>.auto-gutter</code><br><code>.gutter-r</code></div>
+            <div class="bg-pastelblue column-demo denser"><code>.col-md-4</code><code>.auto-gutter</code><br><code>.gutter-r</code></div>
         </div>
         <div class="col col-md-4">
-            <div class="bg-pastelteal fill smaller"><code>.col-md-4</code></div>
+            <div class="bg-pastelteal column-demo denser"><code>.col-md-4</code></div>
         </div>
     </div>
     <div class="row pole-xs"></div>
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row row-gaps-xs">
         <div class="col col-md-4 auto-gutter">
-            <div class="bg-pastelteal fill smaller"><code>.col-md-4</code><code>.auto-gutter</code></div>
+            <div class="bg-pastelteal column-demo denser"><code>.col-md-4</code><code>.auto-gutter</code></div>
         </div>
         <div class="col col-md-4 auto-gutter">
-            <div class="bg-pastelblue fill smaller"><code>.col-md-4</code><code>.auto-gutter</code></div>
+            <div class="bg-pastelblue column-demo denser"><code>.col-md-4</code><code>.auto-gutter</code></div>
         </div>
     </div>
 </div>
@@ -719,19 +701,19 @@ Frontbx's grid system comes with mobile-first fully responsive set of helpers to
 
 | Usage           | Class                         | Options                        | Example         | Behavior                                                                                      |
 |-----------------|-------------------------------|--------------------------------|-----------------|-----------------------------------------------------------------------------------------------|
-| Breakpoint size | `.gutter-[breakpoint]-[size]` | `xxs`,`xs` `sm` `md` `lg` `xl` | `.gutter-md-lg` | Applies horizontal margin size gutter to both sides of element at specified breakpoint and up |
-| Breakpoint side | `.gutter-[breakpoint]-[side]` | `l`, `r`                       | `.gutter-md-r`  | Applies horizontal margin to left or right gutter only - at specified breakpoint and up       |
-| No gutter       | `.no-gutter-[breakpoint]`     | `xxs`,`xs` `sm` `md` `lg` `xl` | `.no-gutter-md` | Sets no horizontal margin at specified breakpoint and up                                      |
+| Breakpoint size | `.gutter-[breakpoint]-[size]` | `xxs` `xs` `sm` `md` `lg` `xl` | `.gutter-md-lg` | Applies horizontal margin size gutter to both sides of element at specified breakpoint and up |
+| Breakpoint side | `.gutter-[breakpoint]-[side]` | `l` `r`                       | `.gutter-md-r`  | Applies horizontal margin to left or right gutter only - at specified breakpoint and up       |
+| No gutter       | `.no-gutter-[breakpoint]`     | `xxs` `xs` `sm` `md` `lg` `xl` | `.no-gutter-md` | Sets no horizontal margin at specified breakpoint and up                                      |
 | Auto gutter     | `.auto-gutter-[breakpoint]`   | None                           | `.auto-gutter`  | Sets horizontal margins to auto                                                               |
 
 <div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row">
         <div class="col col-6 gutter-xs gutter-r gutter-md-lg gutter-lg-r">
-            <div class="bg-pastelblue fill small"><code>.gutter-xs</code><code>.gutter-r</code><br><code>.gutter-md-lg</code><code>.gutter-lg-r</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.gutter-xs</code><code>.gutter-r</code><br><code>.gutter-md-lg</code><code>.gutter-lg-r</code></div>
         </div>
         <div class="col col-6 gutter-xs gutter-l gutter-md-lg gutter-lg-l">
-            <div class="bg-pastelteal fill small"><code>.gutter-xs</code><code>.gutter-l</code><br><code>.gutter-md-lg</code><code>.gutter-lg-l</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.gutter-xs</code><code>.gutter-l</code><br><code>.gutter-md-lg</code><code>.gutter-lg-l</code></div>
         </div>
     </div>
 </div>
@@ -757,24 +739,23 @@ Poles can be used to space consecutive `.flex-row` element or `.col` elements th
 
 The table below outlines the classes and formats made available for poles.
 
-| Usage     | Class      | Options                         | Example    | Behavior                                                    |
-|-----------|------------|---------------------------------|------------|-------------------------------------------------------------|
-| Pole size | `.pole-*`  | `xxs`, `xs`,`sm`,`md`,`lg`,`xl` | `.pole-lg` | Applies padding size pole to both top and bottom of element |
-| Pole side | `.pole-*`  | `n`, `s`                        | `.pole-s`  | Applies padding to top or bottom pole only                  |
-| No pole   | `.no-pole` | None                            | `.no-pole` | Sets vertical padding to zero                               |
-
+| Usage     | Class      | Options                  | Example    | Behavior                                                    |
+|-----------|------------|--------------------------|------------|-------------------------------------------------------------|
+| Pole size | `.pole-*`  | `xs` `sm` `md` `lg` `xl` | `.pole-lg` | Applies padding size pole to both top and bottom of element |
+| Pole side | `.pole-*`  | `n` `s`                  | `.pole-s`  | Applies padding to top or bottom pole only                  |
+| No pole   | `.no-pole` | None                     | `.no-pole` | Sets vertical padding to zero                               |
 
 <div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row col-gaps-xs">
         <div class="col col-6 pole-xs">
-            <div class="bg-pastelblue fill small"><code>.col</code><code>.pole-xs</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col</code><code>.pole-xs</code></div>
         </div>
         <div class="col col-6 pole-xs">
-            <div class="bg-pastelteal fill small"><code>.col</code><code>.pole-xs</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col</code><code>.pole-xs</code></div>
         </div>
         <div class="col col-12">
-            <div class="bg-pastelpink fill thin"><code>.col-12</code></div>
+            <div class="bg-pastelred column-demo thin"><code>.col-12</code></div>
         </div>
     </div>
 </div> 
@@ -793,9 +774,9 @@ Frontbx's grid system comes with mobile-first fully responsive set of helpers to
 
 | Usage           | Class        | Options                        | Example       | Behavior                                                                                         |
 |-----------------|--------------|--------------------------------|---------------|--------------------------------------------------------------------------------------------------|
-| Breakpoint size | `.pole-*-*`  | `xxs`,`xs`,`sm`,`md`,`lg`,`xl` | `.pole-md-lg` | Applies vertical padding size pole to both top and bottom element at specified breakpoint and up |
-| Breakpoint pole | `.pole-*`    | `n`, `s`                       | `.pole-md-s`  | Applies vertical padding to top or bottom pole only - at specified breakpoint and up             |
-| No pole         | `.no-pole-*` | `xxs`,`xs`,`sm`,`md`,`lg`,`xl` | `.no-pole-md` | Sets no vertical padding at specified breakpoint and up                                          |
+| Breakpoint size | `.pole-*-*`  | `xxs` `xs` `sm` `md` `lg` `xl` | `.pole-md-lg` | Applies vertical padding size pole to both top and bottom element at specified breakpoint and up |
+| Breakpoint pole | `.pole-*`    | `n` `s`                        | `.pole-md-s`  | Applies vertical padding to top or bottom pole only - at specified breakpoint and up             |
+| No pole         | `.no-pole-*` | `xxs` `xs` `sm` `md` `lg` `xl` | `.no-pole-md` | Sets no vertical padding at specified breakpoint and up                                          |
 
 In the example below, the first col the poles are sized differently and different breakpoints:
 
@@ -803,10 +784,10 @@ In the example below, the first col the poles are sized differently and differen
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row">
         <div class="col col-12 pole-xxs pole-lg-xs">
-            <div class="bg-pastelpink fill small"><code>.col</code><code>.pole-xxs</code><code>.pole-lg-xs</code></div>
+            <div class="bg-pastelred column-demo dense"><code>.col</code><code>.pole-xxs</code><code>.pole-lg-xs</code></div>
         </div>
         <div class="col col-12 pole-xxs pole-lg-xs">
-            <div class="bg-pastelpink fill small"><code>.col</code><code>.pole-xxs</code><code>.pole-lg-xs</code></div>
+            <div class="bg-pastelred column-demo dense"><code>.col</code><code>.pole-xxs</code><code>.pole-lg-xs</code></div>
         </div>
     </div>
 </div>
@@ -832,33 +813,34 @@ With Frontbx's flex grid, we define alignment by option two as this just makes m
 The table below outlines the available alignment options:
 
 **Axis alignments**
-| Class                      | Behavior                                                                |
-|----------------------------|-------------------------------------------------------------------------|
-| `.align-cols-left`        | Aligns items to left of container                                        |
-| `.align-cols-right`       | Aligns items to right of container                                       |
-| `.align-cols-top`         | Aligns items to top of container                                         |
-| `.align-cols-bottom`      | Aligns items to bottom of container                                      |
-| `.align-cols-center-x`    | Aligns items to horizontal center of container                           |
-| `.align-cols-center-y`    | Aligns items to vertical center of container                             |
-| `.align-cols-center`      | Aligns items to vertical and horizontal center of container              |
+| Class                  | Behavior                                                    |
+|------------------------|-------------------------------------------------------------|
+| `.align-cols-left`     | Aligns items to left of container                           |
+| `.align-cols-right`    | Aligns items to right of container                          |
+| `.align-cols-top`      | Aligns items to top of container                            |
+| `.align-cols-bottom`   | Aligns items to bottom of container                         |
+| `.align-cols-center-x` | Aligns items to horizontal center of container              |
+| `.align-cols-center-y` | Aligns items to vertical center of container                |
+| `.align-cols-center`   | Aligns items to vertical and horizontal center of container |
 
 **Spacing alignments**
-| Class                      | Behavior                                                                |
-|----------------------------|-------------------------------------------------------------------------|
-| `.align-cols-y-stretch`   | Makes all items full width vertically                                    |
-| `.align-cols-y-baseline`  | Aligns items to vertical baseline of items                               |
-| `.align-cols-x-between`   | Distributes any space between items horizontally                         |
-| `.align-cols-x-around`    | Distributes any space around items horizontally                          |
-| `.align-cols-x-evenly`    | Distributes any space evenly between items and around items horizontally |
+| Class                    | Behavior                                                                 |
+|--------------------------|--------------------------------------------------------------------------|
+| `.align-cols-y-stretch`  | Makes all items full width vertically                                    |
+| `.align-cols-y-baseline` | Aligns items to vertical baseline of items                               |
+| `.align-cols-x-between`  | Distributes any space between items horizontally                         |
+| `.align-cols-x-around`   | Distributes any space around items horizontally                          |
+| `.align-cols-x-evenly`   | Distributes any space evenly between items and around items horizontally |
+
 
 <div class="fbx-snippet-demo flex-show-h-space">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.align-cols-center-x</code></div>
     <div class="flex-row flex-cols-3 col-gaps-xs align-cols-center-x">
         <div class="col">
-            <div class="bg-pastelblue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col</code></div>
         </div>
         <div class="col col-12 pole-xs pole-s"></div>
     </div>
@@ -875,10 +857,10 @@ The table below outlines the available alignment options:
     <div class="parent-row-diagram"><code>.flex-row</code><code>.align-cols-center-y</code></div>
     <div class="flex-row flex-cols-3 col-gaps-xs align-cols-center-y">
         <div class="col">
-            <div class="bg-pastelblue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col</code></div>
         </div>
     </div>
 </div> 
@@ -894,7 +876,7 @@ The table below outlines the available alignment options:
 
 All alignment classes are available through breakpoint specific targeting with `.align-cols-[breakpoint]-[position]` modifier classes. The table below outlines the available alignment options:
 
-\* *For the sake of brevity, breakponts are `xs`, `sm`, `md`, `lg` amd `xl`*
+\* *For the sake of brevity, breakponts are `xs` `sm` `md` `lg` amd `xl`*
 
 **Axis alignments**
 | Class                               | Behavior                                                                           |
@@ -922,10 +904,10 @@ All alignment classes are available through breakpoint specific targeting with `
     <div class="parent-row-diagram"><code>.flex-row</code><code>.align-cols-md-center-x</code></div>
     <div class="flex-row flex-cols-2 col-gaps-xs align-cols-md-center-x">
         <div class="col">
-            <div class="bg-pastelblue fill">.col</div>
+            <div class="bg-pastelblue column-demo">.col</div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill">.col</div>
+            <div class="bg-pastelteal column-demo">.col</div>
         </div>
     </div>
 </div> 
@@ -941,10 +923,10 @@ All alignment classes are available through breakpoint specific targeting with `
     <div class="parent-row-diagram"><code>.flex-row</code><code>.align-cols-md-center-y</code></div>
     <div class="flex-row flex-cols-6 col-gaps-xs align-cols-md-center-y">
         <div class="col">
-            <div class="bg-pastelblue fill">.col</div>
+            <div class="bg-pastelblue column-demo">.col</div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill">.col</div>
+            <div class="bg-pastelteal column-demo">.col</div>
         </div>
     </div>
 </div> 
@@ -968,13 +950,13 @@ Use `.order-[num]` classes to re-arrange content within a grid.
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-4</code></div>
     <div class="flex-row flex-cols-4 col-gaps-xs row-gaps-xs">
         <div class="col">
-            <div class="bg-pastelpink fill small">1. <code>.col</code></div>
+            <div class="bg-pastelred column-demo dense">1. <code>.col</code></div>
         </div>
         <div class="col order-5">
-            <div class="bg-pastelblue fill small">2. <code>.col</code><code>.order-5</code></div>
+            <div class="bg-pastelblue column-demo dense">2. <code>.col</code><code>.order-5</code></div>
         </div>
         <div class="col order-1">
-            <div class="bg-pastelteal fill small">3. <code>.col</code> <code>.order-1</code></div>
+            <div class="bg-pastelteal column-demo dense">3. <code>.col</code> <code>.order-1</code></div>
         </div>
     </div>
 </div> 
@@ -991,21 +973,21 @@ Use `.order-[num]` classes to re-arrange content within a grid.
 
 Responsive order can be used through `.order-[breakpoint]-[num]` classes to re-arrange content at breakpoints and up.
 
-| Usage       | Class                       | Options                              | Example       | Behavior                                       |
-|-------------|-----------------------------|--------------------------------------|---------------|------------------------------------------------|
-| Order value | `.order-[breakpoint]-[num]` | `xs`, `sm`, `md`, `lg`, `xl` & `1-5` | `.order-md-2` | Sets column order in grid at breakpoint and up |
+| Usage       | Class                       | Options                          | Example       | Behavior                                       |
+|-------------|-----------------------------|----------------------------------|---------------|------------------------------------------------|
+| Order value | `.order-[breakpoint]-[num]` | `xs` `sm` `md` `lg` `xl` & `1-5` | `.order-md-2` | Sets column order in grid at breakpoint and up |
 
 <div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-4</code></div>
     <div class="flex-row flex-cols-4 col-gaps-xs row-gaps-xs">
         <div class="col">
-            <div class="bg-pastelpink fill small">1. <code>.col</code></div>
+            <div class="bg-pastelred column-demo dense">1. <code>.col</code></div>
         </div>
         <div class="col order-md-5">
-            <div class="bg-pastelblue fill small">2. <code>.col</code><code>.order-md-5</code></div>
+            <div class="bg-pastelblue column-demo dense">2. <code>.col</code><code>.order-md-5</code></div>
         </div>
         <div class="col order-md-1">
-            <div class="bg-pastelteal fill small">3. <code>.col</code><code>.order-md-1</code></div>
+            <div class="bg-pastelteal column-demo dense">3. <code>.col</code><code>.order-md-1</code></div>
         </div>
     </div>
 </div> 

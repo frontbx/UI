@@ -18,3 +18,6 @@ import '_theme.js';
 
 // Color picker
 import '_color-picker.js';
+
+// Demos
+import '_demos.js';

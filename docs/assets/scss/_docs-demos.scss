@@ -1,89 +1,7 @@
-// Code examples
-.fbx-snippet-demo
+// helper backgrounds
+.bg-pastelred
 {
-    display: block;
-    border-radius: var(--fbx-border-radius);
-    padding: 40px 20px;
-    border: 1px solid var(--fbx-gray-300);
-    margin: var(--fbx-p-text-spacer) 0;
-
-    .fbx-snippet-demo .col .fill,
-    .fbx-snippet-demo .flex-col .fill,
-    .fbx-snippet-demo .row .fill
-    {
-        color: #fff;
-        border-radius: 4px;
-        font-weight: bold;
-        font-size: 1.5rem;
-        text-align: center;
-        min-height: 100px;
-        padding: 40px 0;
-        width: 100%;
-        height: 100%;
-        white-space: nowrap;
-        overflow: hidden;
-        line-height: 25px;
-    }
-
-    > *:last-child
-    {
-        margin-bottom: 0;
-    }
-}
-
-// Iframes
-iframe
-{
-    border: none;
-    outline: none;
-    width: 100%;
-    height: 100%;
-}
-
-// Grid examples
-.container-fluid.highlight-gutters,
-.container.highlight-gutters
-{
-    border-radius: 4px;
-    box-shadow: inset calc(var(--fbx-container-pad-l) + 2px) 2px 0px -2px lightGreen, inset calc( (var(--fbx-container-pad-r) + 2px) *-1) 2px 0px -2px lightGreen;
-}
-.flex-show-h-space .flex-row
-{
-    background-color: rgb(178 93 237 / 16%);
-}
-.flex-show-v-space .flex-row
-{
-    min-height: 250px;
-    background-color: rgb(178 93 237 / 16%);
-}
-.flex-show-v-space .col
-{
-    max-height: 150px;
-}
-.fill code
-{
-    background: rgba(0,0,0,0.4);
-    border: none;
-    color: #ffffff;
-    font-size: inherit;
-}
-.fill.small
-{
-    font-size: 1.1rem;
-}
-.fill.smaller
-{
-    font-size: 0.9rem;
-}
-.fill.thin
-{
-    padding: 30px 0;
-    min-height: 60px;
-}
-
-.bg-pastelpink
-{
-    background-color: var(--fbx-color-pastelpink);
+    background-color: var(--fbx-color-pastelred);
 }
 .bg-pastelblue
 {
@@ -93,6 +11,62 @@ iframe
 {
     background-color: var(--fbx-color-pastelteal);
 }
+
+// Main demo 
+.fbx-snippet-demo
+{
+    display: block;
+    border-radius: var(--fbx-border-radius);
+    padding: 40px 20px;
+    border: 1px solid var(--fbx-gray-300);
+    margin: var(--fbx-p-text-spacer) 0;
+
+    > *:last-child
+    {
+        margin-bottom: 0;
+    }
+}
+
+// Column demo
+.column-demo
+{
+    color: #fff;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 1.4rem;
+    text-align: center;
+    min-height: 100px;
+    padding: 40px 0;
+    width: 100%;
+    height: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    line-height: 25px;
+
+    code
+    {
+        background: rgba(0,0,0,0.4);
+        border: none;
+        color: #ffffff;
+        font-size: inherit;
+        margin: 0 5px;
+    }
+    &.dense
+    {
+        font-size: 1.1rem;
+    }
+    &.denseer
+    {
+        font-size: 0.9rem;
+    }
+    &.thin
+    {
+        padding: 30px 0;
+        min-height: 60px;
+    }
+}
+
+// Row diagram
 .parent-row-diagram
 {
     position: relative;
@@ -121,8 +95,38 @@ iframe
     }
 }
 
+// Grid gutter examples
+.container-fluid.highlight-gutters,
+.container.highlight-gutters
+{
+    border-radius: 4px;
+    box-shadow: inset calc(var(--fbx-container-pad-l) + 2px) 2px 0px -2px lightGreen, inset calc( (var(--fbx-container-pad-r) + 2px) *-1) 2px 0px -2px lightGreen;
+}
+.flex-show-h-space .flex-row
+{
+    background-color: rgb(178 93 237 / 16%);
+}
+.flex-show-v-space .flex-row
+{
+    min-height: 250px;
+    background-color: rgb(178 93 237 / 16%);
+}
+.flex-show-v-space .col
+{
+    max-height: 150px;
+}
 
 
+// Iframes
+iframe
+{
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+}
+
+// Paper examples
 .fbx-snippet-demo.paper-example .paper
 {
     height: 120px;

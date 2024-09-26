@@ -373,22 +373,22 @@
 <p>The grid system uses both CSS Variables and Sass variables so customization can be made both pre and post compilation.</p>
 <p>Customization of breakpoints via Sass can be made in the <code>scss/_config.scss</code> file in Frontbx's source.</p>
 <pre><code class="file-path language-file-path">scss/_config.scss</code></pre>
-<pre><code class="sass language-sass">$breakpoint-xs:                 0 !default;
-$breakpoint-sm:                 576px !default;
-$breakpoint-md:                 768px !default;
-$breakpoint-lg:                 992px !default;
-$breakpoint-xl:                 1200px !default;
+<pre><code class="sass language-sass">$breakpoint-xs: 0 !default;
+$breakpoint-sm: 576px !default;
+$breakpoint-md: 768px !default;
+$breakpoint-lg: 992px !default;
+$breakpoint-xl: 1200px !default;
 
 $breakpoints:
 (
-    'xs':                       $breakpoint-xs,
-    'sm':                       $breakpoint-sm,
-    'md':                       $breakpoint-md,
-    'lg':                       $breakpoint-lg,
-    'xl':                       $breakpoint-xl,
+    'xs': $breakpoint-xs,
+    'sm': $breakpoint-sm,
+    'md': $breakpoint-md,
+    'lg': $breakpoint-lg,
+    'xl': $breakpoint-xl,
+
 ) !default;</code></pre>
 <p>Or via CSS variables on the <code>:root</code></p>
-<pre><code class="file-path language-file-path">scss/_config.scss</code></pre>
 <pre><code class="css language-css">:root
 {
     --fbx-breakpoint-xs: 0;
@@ -417,10 +417,9 @@ $breakpoints:
 </tbody>
 </table>
 <div class="fbx-snippet-demo">
-    <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row">
         <div class="col">
-            <div class="bg-pastelpink fill"><code>.col</code></div>
+            <div class="bg-pastelred column-demo"><code>.row</code></div>
         </div>
     </div>
 </div>
@@ -453,13 +452,15 @@ $breakpoints:
     <div class="parent-row-diagram"><code>.flex-row</code><code>.xs-flex</code><code>.sm-flex</code></div>
     <div class="flex-row xs-flex sm-flex">
         <div class="col">
-            <div class="bg-pastelpink fill"><code>.col</code></div>
+            <div class="bg-pastelred column-demo"><code>.row</code></div>
         </div>
     </div>
-    <div class="parent-row-diagram"><code>.flex-row</code><code>.md-flex</code><code>.lg-flex</code><code>.xl-flex</code></div>
+    <div class="row pole-sm">
+        <div class="parent-row-diagram"><code>.flex-row</code><code>.md-flex</code><code>.lg-flex</code><code>.xl-flex</code></div>
+    </div>
     <div class="flex-row md-flex lg-flex xl-flex">
         <div class="col">
-            <div class="bg-pastelpink fill"><code>.col</code></div>
+            <div class="bg-pastelred column-demo"><code>.row</code></div>
         </div>
     </div>
 </div>
@@ -470,19 +471,19 @@ $breakpoints:
 ...
 &lt;/div&gt;</code></pre>
 <h4 id="fluid-rows">Fluid rows</h4>
-<p><code>.flex-row-fluid</code> acts how you would expect native flex to behave. It distributes content evenly allowing each <code>.col</code> to shrink or grow as necessary to fill available space.</p>
+<p><code>.flex-row-fluid</code> acts how you would expect native flex to behave. It distributes content evenly allowing each <code>.col</code> to shrink or grow as necessary to column-demo available space.</p>
 <p>With <code>.flex-row-fluid</code> you can set an individual <code>.col</code> width too - other columns automatically will adjust as necessary.</p>
 <div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row-fluid</code></div>
     <div class="flex-row-fluid col-gaps-xs">
         <div class="col">
-            <div class="bg-pastelteal fill"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo"><code>.col</code></div>
         </div>
         <div class="col col-6">
-            <div class="bg-pastelpink fill"><code>.col-6</code></div>
+            <div class="bg-pastelred column-demo"><code>.col-6</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelblue fill"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo"><code>.col</code></div>
         </div>
     </div>
 </div>
@@ -528,26 +529,19 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 </table>
 <p>This example shows setting even column widths via the parent <code>.flex-row</code>:</p>
 <div class="fbx-snippet-demo">
-    <div class="parent-row-diagram"><code>.flex-row</code></div>
-    <div class="flex-row">
-        <div class="col">
-            <div class="bg-pastelpink fill"><code>.col</code></div>
-        </div>
-    </div>
-    <div class="flex-row pole-xs"></div>
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-3</code></div>
     <div class="flex-row flex-cols-3 col-gaps-xs row-gaps-xs">
         <div class="col">
-            <div class="bg-pastelblue fill"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelblue fill"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo"><code>.col</code></div>
         </div>
     </div>
 </div>
@@ -592,25 +586,18 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 <p>Here we set the width via the child <code>.col</code> elements:</p>
 <div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.flex-row</code></div>
-    <div class="flex-row">
-        <div class="col col-12">
-            <div class="bg-pastelpink fill"><code>.col-12</code></div>
-        </div>
-    </div>
-    <div class="flex-row pole-xs"></div>
-    <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row col-gaps-xs row-gaps-xs">
         <div class="col col-3">
-            <div class="bg-pastelblue fill small"><code>.col-3</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col-3</code></div>
         </div>
         <div class="col col-3">
-            <div class="bg-pastelteal fill small"><code>.col-3</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col-3</code></div>
         </div>
         <div class="col col-3">
-            <div class="bg-pastelblue fill small"><code>.col-3</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col-3</code></div>
         </div>
         <div class="col col-3">
-            <div class="bg-pastelteal fill small"><code>.col-3</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col-3</code></div>
         </div>
     </div>
 </div>
@@ -629,22 +616,22 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
     <div class="parent-row-diagram"><code>.flex-row</code><code>flex-cols-3</code></div>
     <div class="flex-row flex-cols-3 col-gaps-xs row-gaps-xs">
         <div class="col col-6">
-            <div class="bg-pastelpink fill"><code>.col-6</code></div>
+            <div class="bg-pastelred column-demo"><code>.col-6</code></div>
         </div>
         <div class="col col-6">
-            <div class="bg-pastelpink fill"><code>.col-6</code></div>
+            <div class="bg-pastelred column-demo"><code>.col-6</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelblue fill"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelblue fill"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo"><code>.col</code></div>
         </div>
     </div>
 </div>
@@ -660,19 +647,19 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
     <div class="parent-row-diagram"><code>.flex-row</code><code>flex-cols-6</code></div>
     <div class="flex-row flex-cols-6 col-gaps-xs row-gaps-xs">
         <div class="col">
-            <div class="bg-pastelpink fill"><code>.col</code></div>
+            <div class="bg-pastelred column-demo"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelpink fill"><code>.col</code></div>
+            <div class="bg-pastelred column-demo"><code>.col</code></div>
         </div>
         <div class="col col-4">
-            <div class="bg-pastelblue fill"><code>.col-4</code></div>
+            <div class="bg-pastelblue column-demo"><code>.col-4</code></div>
         </div>
         <div class="col col-4">
-            <div class="bg-pastelteal fill"><code>.col-4</code></div>
+            <div class="bg-pastelteal column-demo"><code>.col-4</code></div>
         </div>
         <div class="col col-4">
-            <div class="bg-pastelblue fill"><code>.col-4</code></div>
+            <div class="bg-pastelblue column-demo"><code>.col-4</code></div>
         </div>
     </div>
 </div>
@@ -704,7 +691,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 <tr>
 <td>Breakpoint size</td>
 <td><code>.flex-cols-[breakpoint]-[size]</code></td>
-<td><code>xxs</code>, <code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code> &amp; <code>1-12</code></td>
+<td><code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code> &amp; <code>1-12</code></td>
 <td><code>.flex-col-sm-3</code></td>
 <td>Sizes child <code>.col</code> elements to width on breakpoint and up</td>
 </tr>
@@ -715,16 +702,16 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
     <div class="parent-row-diagram"><code>.flex-row</code> <code>.flex-cols-3</code> <code>.flex-cols-lg-6</code></div>
     <div class="flex-row flex-cols-3 flex-cols-lg-6 col-gaps-xs row-gaps-xs">
         <div class="col">
-            <div class="bg-pastelblue fill"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelblue fill"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo"><code>.col</code></div>
         </div>
     </div>
 </div>
@@ -750,7 +737,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 <tr>
 <td>Breakpoint size</td>
 <td><code>.col-[breakpoint]-[size]</code></td>
-<td><code>xxs</code>, <code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code> &amp; <code>1-12</code></td>
+<td><code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code> &amp; <code>1-12</code></td>
 <td><code>.flex-col-sm-3</code></td>
 <td>Sizes <code>.col</code> element to width on breakpoint and up</td>
 </tr>
@@ -761,16 +748,16 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row col-gaps-xs row-gaps-xs">
         <div class="col col-6 col-md-4">
-            <div class="bg-pastelblue fill small"><code>.col-6</code><code>.col-md-4</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col-6</code><code>.col-md-4</code></div>
         </div>
         <div class="col col-6 col-md-4">
-            <div class="bg-pastelteal fill small"><code>.col-6</code><code>.col-md-4</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col-6</code><code>.col-md-4</code></div>
         </div>
         <div class="col col-6 col-md-4">
-            <div class="bg-pastelblue fill small"><code>.col-6</code><code>.col-md-4</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col-6</code><code>.col-md-4</code></div>
         </div>
         <div class="col col-6 col-md-12">
-            <div class="bg-pastelpink fill small"><code>.col-6</code><code>.col-md-12</code></div>
+            <div class="bg-pastelred column-demo dense"><code>.col-6</code><code>.col-md-12</code></div>
         </div>
     </div>
 </div>
@@ -786,16 +773,16 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-6</code><code>.flex-cols-lg-4</code></div>
     <div class="flex-row flex-cols-6 flex-cols-lg-4 col-gaps-xs row-gaps-xs">
         <div class="col col-lg-12">
-            <div class="bg-pastelpink fill small"><code>.col</code><code>.col-lg-12</code></div>
+            <div class="bg-pastelred column-demo dense"><code>.col</code><code>.col-lg-12</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelblue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col</code></div>
         </div>
     </div>
 </div>
@@ -822,7 +809,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 <tr>
 <td>Gap size</td>
 <td><code>.col-gaps-[size]</code></td>
-<td><code>xxs</code>, <code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code></td>
+<td><code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code></td>
 <td><code>.col-gaps-xs</code></td>
 <td>Spaces horizontal gaps between columns to size</td>
 </tr>
@@ -832,16 +819,16 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-6</code><code>.col-gaps-lg</code></div>
     <div class="flex-row flex-cols-6 col-gaps-lg row-gaps-xs">
         <div class="col">
-            <div class="bg-pastelblue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelblue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col</code></div>
         </div>
     </div>
 </div>
@@ -867,7 +854,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 <tr>
 <td>Breakpoint gap size</td>
 <td><code>.col-gaps-[breakpoint]-[size]</code></td>
-<td><code>xs</code>, <code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code> &amp; <code>xxs</code>, <code>xs</code>, <code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code></td>
+<td><code>xs</code> <code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code></td>
 <td><code>.col-gaps-md-lg</code></td>
 <td>Spaces horizontal gaps between columns to size at breakpoint and up</td>
 </tr>
@@ -878,16 +865,16 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-6</code><code>.col-gaps-xs</code><code>.col-gaps-md-lg</code></div>
     <div class="flex-row flex-cols-6 col-gaps-xs col-gaps-md-lg row-gaps-xs">
         <div class="col">
-            <div class="bg-pastelblue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelblue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col</code></div>
         </div>
     </div>
 </div>
@@ -914,7 +901,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 <tr>
 <td>Gap size</td>
 <td><code>.row-gaps-[size]</code></td>
-<td><code>xxs</code>, <code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code></td>
+<td><code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code></td>
 <td><code>.col-gaps-xs</code></td>
 <td>Spaces vertical gaps between column rows to size</td>
 </tr>
@@ -924,16 +911,16 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
      <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-6</code><code>.row-gaps-md</code></div>
     <div class="flex-row flex-cols-6 row-gaps-md col-gaps-xs">
         <div class="col">
-            <div class="bg-pastelblue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelblue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col</code></div>
         </div>
     </div>
 </div>
@@ -959,7 +946,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 <tr>
 <td>Breakpoint gap size</td>
 <td><code>.row-gaps-[breakpoint]-[size]</code></td>
-<td><code>xs</code>, <code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code> &amp; <code>xxs</code>, <code>xs</code>, <code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code></td>
+<td><code>xs</code> <code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code> &amp; <code>xs</code> <code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code></td>
 <td><code>.col-gaps-md-lg</code></td>
 <td>Spaces vertical gaps between column rows to size at breakpoint and up</td>
 </tr>
@@ -970,16 +957,16 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-6</code><code>.row-gaps-xs</code><code>.row-gaps-md-lg</code></div>
     <div class="flex-row flex-cols-6 row-gaps-xs row-gaps-md-lg col-gaps-xs">
         <div class="col">
-            <div class="bg-pastelblue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelblue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col</code></div>
         </div>
     </div>
 </div>
@@ -1006,14 +993,14 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 <tr>
 <td>Gutter size</td>
 <td><code>.gutter-[size]</code></td>
-<td><code>xxs</code>, <code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code></td>
+<td><code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code></td>
 <td><code>.gutter-lg</code></td>
 <td>Applies margin size gutter to both sides of the column</td>
 </tr>
 <tr>
 <td>Gutter side</td>
 <td><code>.gutter-[side]</code></td>
-<td><code>l</code>, <code>r</code></td>
+<td><code>l</code> <code>r</code></td>
 <td><code>.gutter-r</code></td>
 <td>Applies margin to left or right gutter only</td>
 </tr>
@@ -1037,10 +1024,10 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row">
         <div class="col col-6 gutter-xs gutter-r">
-            <div class="bg-pastelblue fill small"><code>.gutter-xs</code><code>.gutter-r</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.gutter-xs</code><code>.gutter-r</code></div>
         </div>
         <div class="col col-6 gutter-xs gutter-l">
-            <div class="bg-pastelteal fill small"><code>.gutter-xs</code><code>.gutter-l</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.gutter-xs</code><code>.gutter-l</code></div>
         </div>
     </div>
 </div>
@@ -1052,30 +1039,30 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
     <div class="parent-row-diagram"><code>.flex-row</code><code>.align-cols-center-x</code></div>
     <div class="flex-row align-cols-center-x">
         <div class="col col-md-4 gutter-xs gutter-r">
-            <div class="bg-pastelblue fill smaller"><code>.col-md-4</code><code>.gutter-xs</code><br><code>.gutter-r</code></div>
+            <div class="bg-pastelblue column-demo denser"><code>.col-md-4</code><code>.gutter-xs</code><br><code>.gutter-r</code></div>
         </div>
         <div class="col col-md-4 gutter-xs gutter-l">
-            <div class="bg-pastelteal fill smaller"><code>.col-md-4</code><code>.gutter-xs</code><br><code>.gutter-l</code></div>
+            <div class="bg-pastelteal column-demo denser"><code>.col-md-4</code><code>.gutter-xs</code><br><code>.gutter-l</code></div>
         </div>
     </div>
     <div class="row pole-xs"></div>
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row row-gaps-xs">
         <div class="col col-md-4 auto-gutter gutter-r">
-            <div class="bg-pastelblue fill smaller"><code>.col-md-4</code><code>.auto-gutter</code><br><code>.gutter-r</code></div>
+            <div class="bg-pastelblue column-demo denser"><code>.col-md-4</code><code>.auto-gutter</code><br><code>.gutter-r</code></div>
         </div>
         <div class="col col-md-4">
-            <div class="bg-pastelteal fill smaller"><code>.col-md-4</code></div>
+            <div class="bg-pastelteal column-demo denser"><code>.col-md-4</code></div>
         </div>
     </div>
     <div class="row pole-xs"></div>
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row row-gaps-xs">
         <div class="col col-md-4 auto-gutter">
-            <div class="bg-pastelteal fill smaller"><code>.col-md-4</code><code>.auto-gutter</code></div>
+            <div class="bg-pastelteal column-demo denser"><code>.col-md-4</code><code>.auto-gutter</code></div>
         </div>
         <div class="col col-md-4 auto-gutter">
-            <div class="bg-pastelblue fill smaller"><code>.col-md-4</code><code>.auto-gutter</code></div>
+            <div class="bg-pastelblue column-demo denser"><code>.col-md-4</code><code>.auto-gutter</code></div>
         </div>
     </div>
 </div>
@@ -1107,21 +1094,21 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 <tr>
 <td>Breakpoint size</td>
 <td><code>.gutter-[breakpoint]-[size]</code></td>
-<td><code>xxs</code>,<code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code></td>
+<td><code>xxs</code> <code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code></td>
 <td><code>.gutter-md-lg</code></td>
 <td>Applies horizontal margin size gutter to both sides of element at specified breakpoint and up</td>
 </tr>
 <tr>
 <td>Breakpoint side</td>
 <td><code>.gutter-[breakpoint]-[side]</code></td>
-<td><code>l</code>, <code>r</code></td>
+<td><code>l</code> <code>r</code></td>
 <td><code>.gutter-md-r</code></td>
 <td>Applies horizontal margin to left or right gutter only - at specified breakpoint and up</td>
 </tr>
 <tr>
 <td>No gutter</td>
 <td><code>.no-gutter-[breakpoint]</code></td>
-<td><code>xxs</code>,<code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code></td>
+<td><code>xxs</code> <code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code></td>
 <td><code>.no-gutter-md</code></td>
 <td>Sets no horizontal margin at specified breakpoint and up</td>
 </tr>
@@ -1138,10 +1125,10 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row">
         <div class="col col-6 gutter-xs gutter-r gutter-md-lg gutter-lg-r">
-            <div class="bg-pastelblue fill small"><code>.gutter-xs</code><code>.gutter-r</code><br><code>.gutter-md-lg</code><code>.gutter-lg-r</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.gutter-xs</code><code>.gutter-r</code><br><code>.gutter-md-lg</code><code>.gutter-lg-r</code></div>
         </div>
         <div class="col col-6 gutter-xs gutter-l gutter-md-lg gutter-lg-l">
-            <div class="bg-pastelteal fill small"><code>.gutter-xs</code><code>.gutter-l</code><br><code>.gutter-md-lg</code><code>.gutter-lg-l</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.gutter-xs</code><code>.gutter-l</code><br><code>.gutter-md-lg</code><code>.gutter-lg-l</code></div>
         </div>
     </div>
 </div>
@@ -1172,14 +1159,14 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 <tr>
 <td>Pole size</td>
 <td><code>.pole-*</code></td>
-<td><code>xxs</code>, <code>xs</code>,<code>sm</code>,<code>md</code>,<code>lg</code>,<code>xl</code></td>
+<td><code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code></td>
 <td><code>.pole-lg</code></td>
 <td>Applies padding size pole to both top and bottom of element</td>
 </tr>
 <tr>
 <td>Pole side</td>
 <td><code>.pole-*</code></td>
-<td><code>n</code>, <code>s</code></td>
+<td><code>n</code> <code>s</code></td>
 <td><code>.pole-s</code></td>
 <td>Applies padding to top or bottom pole only</td>
 </tr>
@@ -1196,13 +1183,13 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row col-gaps-xs">
         <div class="col col-6 pole-xs">
-            <div class="bg-pastelblue fill small"><code>.col</code><code>.pole-xs</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col</code><code>.pole-xs</code></div>
         </div>
         <div class="col col-6 pole-xs">
-            <div class="bg-pastelteal fill small"><code>.col</code><code>.pole-xs</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col</code><code>.pole-xs</code></div>
         </div>
         <div class="col col-12">
-            <div class="bg-pastelpink fill thin"><code>.col-12</code></div>
+            <div class="bg-pastelred column-demo thin"><code>.col-12</code></div>
         </div>
     </div>
 </div>
@@ -1227,21 +1214,21 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 <tr>
 <td>Breakpoint size</td>
 <td><code>.pole-*-*</code></td>
-<td><code>xxs</code>,<code>xs</code>,<code>sm</code>,<code>md</code>,<code>lg</code>,<code>xl</code></td>
+<td><code>xxs</code> <code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code></td>
 <td><code>.pole-md-lg</code></td>
 <td>Applies vertical padding size pole to both top and bottom element at specified breakpoint and up</td>
 </tr>
 <tr>
 <td>Breakpoint pole</td>
 <td><code>.pole-*</code></td>
-<td><code>n</code>, <code>s</code></td>
+<td><code>n</code> <code>s</code></td>
 <td><code>.pole-md-s</code></td>
 <td>Applies vertical padding to top or bottom pole only - at specified breakpoint and up</td>
 </tr>
 <tr>
 <td>No pole</td>
 <td><code>.no-pole-*</code></td>
-<td><code>xxs</code>,<code>xs</code>,<code>sm</code>,<code>md</code>,<code>lg</code>,<code>xl</code></td>
+<td><code>xxs</code> <code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code></td>
 <td><code>.no-pole-md</code></td>
 <td>Sets no vertical padding at specified breakpoint and up</td>
 </tr>
@@ -1252,10 +1239,10 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
     <div class="parent-row-diagram"><code>.flex-row</code></div>
     <div class="flex-row">
         <div class="col col-12 pole-xxs pole-lg-xs">
-            <div class="bg-pastelpink fill small"><code>.col</code><code>.pole-xxs</code><code>.pole-lg-xs</code></div>
+            <div class="bg-pastelred column-demo dense"><code>.col</code><code>.pole-xxs</code><code>.pole-lg-xs</code></div>
         </div>
         <div class="col col-12 pole-xxs pole-lg-xs">
-            <div class="bg-pastelpink fill small"><code>.col</code><code>.pole-xxs</code><code>.pole-lg-xs</code></div>
+            <div class="bg-pastelred column-demo dense"><code>.col</code><code>.pole-xxs</code><code>.pole-lg-xs</code></div>
         </div>
     </div>
 </div>
@@ -1346,10 +1333,10 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
     <div class="parent-row-diagram"><code>.flex-row</code><code>.align-cols-center-x</code></div>
     <div class="flex-row flex-cols-3 col-gaps-xs align-cols-center-x">
         <div class="col">
-            <div class="bg-pastelblue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col</code></div>
         </div>
         <div class="col col-12 pole-xs pole-s"></div>
     </div>
@@ -1362,10 +1349,10 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
     <div class="parent-row-diagram"><code>.flex-row</code><code>.align-cols-center-y</code></div>
     <div class="flex-row flex-cols-3 col-gaps-xs align-cols-center-y">
         <div class="col">
-            <div class="bg-pastelblue fill small"><code>.col</code></div>
+            <div class="bg-pastelblue column-demo dense"><code>.col</code></div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill small"><code>.col</code></div>
+            <div class="bg-pastelteal column-demo dense"><code>.col</code></div>
         </div>
     </div>
 </div>
@@ -1375,7 +1362,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 &lt;/div&gt;</code></pre>
 <h4 id="responsive-alignment">Responsive Alignment</h4>
 <p>All alignment classes are available through breakpoint specific targeting with <code>.align-cols-[breakpoint]-[position]</code> modifier classes. The table below outlines the available alignment options:</p>
-<p>* <em>For the sake of brevity, breakponts are <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code> amd <code>xl</code></em></p>
+<p>* <em>For the sake of brevity, breakponts are <code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> amd <code>xl</code></em></p>
 <p><strong>Axis alignments</strong></p>
 <table>
 <thead>
@@ -1450,10 +1437,10 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
     <div class="parent-row-diagram"><code>.flex-row</code><code>.align-cols-md-center-x</code></div>
     <div class="flex-row flex-cols-2 col-gaps-xs align-cols-md-center-x">
         <div class="col">
-            <div class="bg-pastelblue fill">.col</div>
+            <div class="bg-pastelblue column-demo">.col</div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill">.col</div>
+            <div class="bg-pastelteal column-demo">.col</div>
         </div>
     </div>
 </div>
@@ -1465,10 +1452,10 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
     <div class="parent-row-diagram"><code>.flex-row</code><code>.align-cols-md-center-y</code></div>
     <div class="flex-row flex-cols-6 col-gaps-xs align-cols-md-center-y">
         <div class="col">
-            <div class="bg-pastelblue fill">.col</div>
+            <div class="bg-pastelblue column-demo">.col</div>
         </div>
         <div class="col">
-            <div class="bg-pastelteal fill">.col</div>
+            <div class="bg-pastelteal column-demo">.col</div>
         </div>
     </div>
 </div>
@@ -1502,13 +1489,13 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-4</code></div>
     <div class="flex-row flex-cols-4 col-gaps-xs row-gaps-xs">
         <div class="col">
-            <div class="bg-pastelpink fill small">1. <code>.col</code></div>
+            <div class="bg-pastelred column-demo dense">1. <code>.col</code></div>
         </div>
         <div class="col order-5">
-            <div class="bg-pastelblue fill small">2. <code>.col</code><code>.order-5</code></div>
+            <div class="bg-pastelblue column-demo dense">2. <code>.col</code><code>.order-5</code></div>
         </div>
         <div class="col order-1">
-            <div class="bg-pastelteal fill small">3. <code>.col</code> <code>.order-1</code></div>
+            <div class="bg-pastelteal column-demo dense">3. <code>.col</code> <code>.order-1</code></div>
         </div>
     </div>
 </div>
@@ -1533,7 +1520,7 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
 <tr>
 <td>Order value</td>
 <td><code>.order-[breakpoint]-[num]</code></td>
-<td><code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code> &amp; <code>1-5</code></td>
+<td><code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code> &amp; <code>1-5</code></td>
 <td><code>.order-md-2</code></td>
 <td>Sets column order in grid at breakpoint and up</td>
 </tr>
@@ -1543,13 +1530,13 @@ Defaults to evenly distributing sizes and spacing. Can be used with any combinat
     <div class="parent-row-diagram"><code>.flex-row</code><code>.flex-cols-4</code></div>
     <div class="flex-row flex-cols-4 col-gaps-xs row-gaps-xs">
         <div class="col">
-            <div class="bg-pastelpink fill small">1. <code>.col</code></div>
+            <div class="bg-pastelred column-demo dense">1. <code>.col</code></div>
         </div>
         <div class="col order-md-5">
-            <div class="bg-pastelblue fill small">2. <code>.col</code><code>.order-md-5</code></div>
+            <div class="bg-pastelblue column-demo dense">2. <code>.col</code><code>.order-md-5</code></div>
         </div>
         <div class="col order-md-1">
-            <div class="bg-pastelteal fill small">3. <code>.col</code><code>.order-md-1</code></div>
+            <div class="bg-pastelteal column-demo dense">3. <code>.col</code><code>.order-md-1</code></div>
         </div>
     </div>
 </div>

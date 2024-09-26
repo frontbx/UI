@@ -43,6 +43,8 @@
     	if (active) remove_class(active, 'active');
 
     	add_class(a.parentNode, 'active');
+
+    	frontbx.get('docs-drawer').close();
     }
 
     DocsMenu.prototype._initActiveLink = function(e)
@@ -115,7 +117,6 @@
     	on(window, 'frontbx:pjax:success', () => 
 
     		animate(window, { property : 'scrollTo', to: '0, 0', duration: 300})
-
     	);
 
     	trigger_event(window, 'resize');
