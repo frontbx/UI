@@ -1,22 +1,19 @@
 /* PrismJS 1.29.0 */
-pre[class*=language-],
-.docs-body > pre
-{
-	position: relative;
-	padding: 30px 16px 16px 16px;
-	margin: 0;
-	overflow: auto;
-}
-
-code[class*=language-],
-pre[class*=language-],
-.docs-body > pre,
-.docs-body > pre > code
+pre
 {
 	color: #718b98;
+}
+pre > code
+{
+	color: inherit;
+}
+
+pre,
+pre > code
+{
 	background: var(--fbx-gray-200);
 	font-family: Roboto Mono, Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-	font-size: 1.35rem;
+	font-size: 1.3rem;
 	text-align: left;
 	white-space: pre;
 	word-spacing: normal;
@@ -31,29 +28,37 @@ pre[class*=language-],
 	border: none;
 }
 
-:not(pre)>code[class*=language-]
-{
-	padding: .2rem .4rem;
-	background-color: var(--fbx-gray-200);
-	white-space: normal;
-}
-
-code[class*=language-] ::-moz-selection,
-code[class*=language-]::-moz-selection,
-pre[class*=language-] ::-moz-selection,
-pre[class*=language-]::-moz-selection
+code ::-moz-selection,
+code::-moz-selection,
+pre ::-moz-selection,
+pre::-moz-selection
 {
 	background: var(--fbx-theme-info);
 	color: var(--fbx-white);
 }
 
-code[class*=language-] ::selection,
-code[class*=language-]::selection,
-pre[class*=language-] ::selection,
-pre[class*=language-]::selection
+code ::selection,
+code::selection,
+pre ::selection,
+pre::selection
 {
 	background: var(--fbx-theme-info);
 	color: var(--fbx-white);
+}
+
+.token.bold
+{
+	font-weight: 700;
+}
+
+.token.italic
+{
+	font-style: italic;
+}
+
+.token.entity
+{
+	cursor: help;
 }
 
 .language-css>code,
@@ -129,40 +134,11 @@ pre[class*=language-]::selection
 	font-weight: 700;
 }
 
-.fbx-darkmode code[class*="language-"],
-.fbx-darkmode pre[class*="language-"],
-.fbx-darkmode .docs-body > pre,
-.fbx-darkmode .docs-body > pre > code
+.fbx-darkmode pre,
+.fbx-darkmode pre>code
 {
 	background: var(--fbx-black-900);
-	color: var(--fbx-gray-100);
-}
-
-.fbx-darkmode code[class*="language-"]::-moz-selection,
-.fbx-darkmode pre[class*="language-"]::-moz-selection,
-.fbx-darkmode code[class*="language-"] ::-moz-selection,
-.fbx-darkmode pre[class*="language-"] ::-moz-selection
-{
-	background: var(--fbx-black-900);
-	color: var(--fbx-black-100);
-}
-
-.fbx-darkmode code[class*="language-"]::-moz-selection,
-.fbx-darkmode pre[class*="language-"]::-moz-selection,
-.fbx-darkmode code[class*="language-"] ::-moz-selection,
-.fbx-darkmode pre[class*="language-"] ::-moz-selection
-{
-	background: var(--fbx-black-900);
-	color: var(--fbx-black-100);
-}
-
-.fbx-darkmode code[class*="language-"]::selection,
-.fbx-darkmode pre[class*="language-"]::selection,
-.fbx-darkmode code[class*="language-"] ::selection,
-.fbx-darkmode pre[class*="language-"] ::selection
-{
-	background: var(--fbx-black-900);
-	color: var(--fbx-black-100);
+	color: var(--fbx-gray-200);
 }
 
 .fbx-darkmode .token.comment,
@@ -230,26 +206,6 @@ pre[class*=language-]::selection
 	color: #fff;
 }
 
-.fbx-darkmode .token.bold
-{
-	font-weight: 700;
-}
-
-.fbx-darkmode .token.italic
-{
-	font-style: italic;
-}
-
-.fbx-darkmode .token.entity
-{
-	cursor: help;
-}
-
-.fbx-darkmode .token.namespace
-{
-	opacity: .7;
-}
-
 .fbx-darkmode pre[class*="language-sass"] .token.variable-line,
 .fbx-darkmode pre[class*="language-scss"] .token.variable-line
 {
@@ -262,5 +218,5 @@ pre[class*=language-]::selection
 }
 .fbx-darkmode pre[class*="language-file"] > code
 {
-	color: var(--fbx-color-babyblue);
+	color: var(--fbx-gray-400);
 }

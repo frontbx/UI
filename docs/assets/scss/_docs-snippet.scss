@@ -14,34 +14,45 @@ pre:after
 }
 .fbx-code-snippet
 {
+    position: relative;    
+    .fbx-clipboard
+    {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: var(--fbx-gray-900);
+        padding: 10px;
+
+        .fa
+        {
+            font-size: 1.4rem;
+        }
+
+        &:hover .fa,
+        &.copied .fa
+        {
+            color: var(--fbx-theme-primary);
+        }
+        &.copied:after,
+        &.copied:before
+        {
+            display: inline-block;
+            text-decoration: none;
+        }
+        &.copied:after
+        {
+            content: 'Copied!' !important;
+        }
+    }
+
+}
+
+pre[class*=language-]
+{
     position: relative;
-}
-.fbx-code-snippet .fbx-clipboard
-{
-    position: absolute;
-    top: 0;
-    right: 0;
-    color: var(--fbx-gray-900);
-    padding: 10px;
-}
-.fbx-code-snippet .fbx-clipboard .fa
-{
-    font-size: 1.4rem;
-}
-.fbx-clipboard:hover,
-.fbx-clipboard.copied
-{
-    color: var(--fbx-theme-primary);
-}
-.fbx-clipboard.copied:after,
-.fbx-clipboard.copied:before
-{
-    display: inline-block;
-    text-decoration: none;
-}
-.fbx-clipboard.copied:after
-{
-    content: 'Copied!' !important;
+    padding: 30px 16px 16px 16px;
+    margin: 0;
+    overflow: auto;
 }
 
 // Scrollbars  
@@ -109,11 +120,6 @@ pre[class*="language-file-path"]:after
     content: '';
     display: none;
 }
-pre[class*="language-file-path"] > code
-{
-    color: var(--fbx-gray-400);
-}
-
 .fbx-code-snippet.file-path + .fbx-code-snippet pre
 {
     border-top-left-radius: 0;

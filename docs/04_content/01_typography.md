@@ -36,6 +36,8 @@ All HTML headings, `<h1>` through `<h6>` are available natively or explicitly vi
 <h6>Heading 6</h6>
 ```
 
+---
+
 ### Body copy
 
 The default Frontbx font size is `1.45rem` (14.5px) with a line height of `1.8`. This is applied to the body as well as paragraph tags. Additionally paragraph tags have a bottom margin of `1rem`.

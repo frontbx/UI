@@ -59,7 +59,7 @@ Because Frontbx is mobile first, all screen-size specific grid classes will be a
 
 The grid system uses both CSS Variables and Sass variables so customization can be made both pre and post compilation.
 
-Customization of breakpoints via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
+Customization of breakpoints via Sass can be made by overriding the config found in the `scss/_config.scss` file:
 
 ```file-path
 scss/_config.scss

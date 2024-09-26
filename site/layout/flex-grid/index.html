@@ -371,7 +371,7 @@
 <h3 id="responsive-breakpoints">Responsive breakpoints</h3>
 <p>Because Frontbx is mobile first, all screen-size specific grid classes will be applied to the breakpoint and above. For example <code>.col-md-6</code> will apply to medium screen sizes and above, but not below. The grid system includes all the necessary screen-size specific classes.</p>
 <p>The grid system uses both CSS Variables and Sass variables so customization can be made both pre and post compilation.</p>
-<p>Customization of breakpoints via Sass can be made in the <code>scss/_config.scss</code> file in Frontbx's source.</p>
+<p>Customization of breakpoints via Sass can be made by overriding the config found in the <code>scss/_config.scss</code> file:</p>
 <pre><code class="file-path language-file-path">scss/_config.scss</code></pre>
 <pre><code class="sass language-sass">$breakpoint-xs: 0 !default;
 $breakpoint-sm: 576px !default;

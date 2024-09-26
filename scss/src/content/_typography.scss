@@ -176,12 +176,16 @@ samp
 {
     font-size: 85%;
 }
+blockquote
+{
+    margin: 0 0 1em;   
+}   
 
 blockquote:not([class])
 {
     padding: 1em;
-    color: var(--fbx-gray);
-    border-left: 0.5em solid var(--fbx-gray-300);
+    color: var(--fbx-gray-600);
+    background-color: var(--fbx-gray-200);
     border-radius: var(--fbx-border-radius);
     border: none;
     box-shadow: none;
