@@ -884,7 +884,7 @@ Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's 
 scss/_config.scss
 ```
 
-```sass
+```scss
 $card-bg:                       var(--fbx-white) !default;
 $card-bg-focus:                 var(--fbx-white) !default;
 $card-color:                    var(--fbx-gray-900) !default;
@@ -913,7 +913,7 @@ $card-landscape-img-lg:         300px !default;
 scss/components/_card.scss
 ```
 
-```sass
+```scss
 .card
 {
     --fbx-card-bg:               #{$card-bg};

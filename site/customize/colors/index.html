@@ -726,7 +726,7 @@
     &lt;p class="text-bolder no-margin"&gt;Hello World!&lt;/p&gt;
 &lt;/div&gt;</code></pre>
 <p>Setting Frontbx's core theme color via Sass is super simple:</p>
-<pre><code class="sass language-sass">@import "../node_modules/frontbx/scss/frontbx/src/colors";
+<pre><code class="scss language-scss">@import "../node_modules/frontbx/scss/frontbx/src/colors";
 
 $theme-primary: $emerland;
 
@@ -753,7 +753,7 @@ $theme-secondary: $nephritis;</code></pre>
 <hr />
 <h3 id="sass">Sass</h3>
 <p>All Sass color variable definitions (with the exception of the core "Theme Colors") will point to the the real hex value of a given color (rather than a CSS Variable).</p>
-<pre><code class="sass language-sass">div {
+<pre><code class="scss language-scss">div {
     // color: ##2ecc71;
     color: $emerland
 }</code></pre>

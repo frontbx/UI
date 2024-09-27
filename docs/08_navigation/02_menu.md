@@ -291,7 +291,7 @@ Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's 
 scss/_config.scss
 ```
 
-```sass
+```scss
 $menu-bg:                       var(--fbx-white) !default;
 $menu-color:                    var(--fbx-gray-700) !default;
 $menu-font-size:                1.3rem !default;

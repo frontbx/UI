@@ -352,7 +352,7 @@
 <hr />
 <h3 id="sass-mixins">Sass Mixins</h3>
 <p>Both <code>max-width</code> and <code>min-width</code> media queries are available as Sass mixins making it super easy to target screen-sizes:</p>
-<pre><code class="sass language-sass">@include media-breakpoint-up(xs) { ... }
+<pre><code class="scss language-scss">@include media-breakpoint-up(xs) { ... }
 @include media-breakpoint-up(sm) { ... }
 @include media-breakpoint-up(md) { ... }
 @include media-breakpoint-up(lg) { ... }
@@ -366,7 +366,7 @@
         display: block;
     }
 }</code></pre>
-<pre><code class="sass language-sass">@include media-breakpoint-down(xs) { ... }
+<pre><code class="scss language-scss">@include media-breakpoint-down(xs) { ... }
 @include media-breakpoint-down(sm) { ... }
 @include media-breakpoint-down(md) { ... }
 @include media-breakpoint-down(lg) { ... }
@@ -385,7 +385,7 @@
 <p>Changes to breakpoints should be made pre-compilation via Sass as breakpoint sizes on media queries via CSS variables are not supported. The CSS variables can still be changed, however this will only effect container sizing not baked in media-queries.</p>
 <p>Customization via Sass can be made in the <code>scss/_config.scss</code> file in Frontbx's source.</p>
 <pre><code class="file-path language-file-path">scss/_config.scss</code></pre>
-<pre><code class="sass language-sass">$breakpoint-xs:                 0 !default;
+<pre><code class="scss language-scss">$breakpoint-xs:                 0 !default;
 $breakpoint-sm:                 576px !default;
 $breakpoint-md:                 768px !default;
 $breakpoint-lg:                 992px !default;

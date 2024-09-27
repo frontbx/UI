@@ -19,21 +19,21 @@ The `scss/_config.scss` file houses all the primary Sass variables for everythin
 
 When Frontbx's CSS is compiled, `_config.scss` is one of the first files imported. From there all CSS `:root` variables are generated in `scss/src/base/_root.scss`.
 
-For individual components, the Sass variables are assigned to CSS variables which sets the default or contextual styling for a given component.
+For individual components, Sass variables are assigned to CSS variables which sets the default or contextual styling for a given component.
 
 Here is a very basic example of how that works:
 
 ```file-path
 scss/_config.scss
 ```
-```sass
+```scss
 $body-bg: #1d1d1d !default;
 ```
 
 ```file-path
 scss/src/base/_root.scss
 ```
-```sass
+```scss
 :root
 {
 	--fbx-body-bg: #{$body-bg};
@@ -43,40 +43,43 @@ scss/src/base/_root.scss
 ```file-path
 scss/src/base/_base.scss
 ```
-```sass
+```scss
 html, body
 {
     background-color: var(--fbx-body-bg);
 }
 ```
 
-#### Sass Variables
+---
 
-Every Sass variable in Frontbx includes the `!default` flag allowing you to override the variable's default value in your own Sass without modifying Frontbx's source code. To setup this up simply, create your own Sass stylesheet with your variables, then import Frontbx and compile:
+### Sass Variables
 
-```sass
-$body-bg: #1d1d1d;
+Every Sass variable in Frontbx includes the `!default` flag allowing you to override the variable's default value in your own Sass without modifying Frontbx's source code. Where possible it's advised not to alter Frontbx's source code and import it's Sass into your own pipeline. A typical workflow would be to create your own Sass stylesheet with any variable overrides, then import Frontbx and compile into CSS - something similar to below:
+
+```scss
+$body-bg: #ffffff;
 
 @import "../node_modules/frontbx/scss/frontbx";
 ```
 
-In cases where you need access to Sass variables without before Frontbx compiles, you can import Frontbx variables through the `scss/src/_variables.scss` file:
+In cases where you require access to Frontbx's Sass variables or mixins before without compiling it, you can import Frontbx variables through the `scss/src/_variables.scss` file which won't output any CSS:
 
 
-```sass
-@import "../node_modules/frontbx/scss/src/variables";
-
+```scss
 $my-color: $body-bg;
+
+@import "../node_modules/frontbx/scss/src/variables";
 ```
 
 ---
-
 
 #### CSS Variables
 
 When Sass is compiled into CSS, Frontbx assigns global CSS variables to `:root`. For individual components, CSS variables are assigned locally to their selector.
 
-Sometime local CSS variables will reference a global variable. This allows a single global variable on `:root` to adjust styling across multiple components.
+Sometimes local CSS variables will reference a global variable. This allows a single global variable on `:root` to adjust styling across multiple components.
+
+Frontbx prefixes all CSS variables with `fbx-` to make them easily identifiable and avoid compatibility issues with other libraries.
 
 ```css
 /* Applied globally to root  */

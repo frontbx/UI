@@ -221,7 +221,7 @@ Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's 
 scss/_config.scss
 ```
 
-```sass
+```scss
 $backdrop-height:               75vh !default;
 $backdrop-peekable-height:      50px !default;
 $backdrop-radius:               10px !default;

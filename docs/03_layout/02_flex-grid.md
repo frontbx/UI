@@ -64,7 +64,7 @@ Customization of breakpoints via Sass can be made by overriding the config found
 ```file-path
 scss/_config.scss
 ```
-```sass
+```scss
 $breakpoint-xs: 0 !default;
 $breakpoint-sm: 576px !default;
 $breakpoint-md: 768px !default;
@@ -1010,7 +1010,7 @@ Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's 
 scss/_config.scss
 ```
 
-```sass
+```scss
 $breakpoints:
 (
     'xs':                       $breakpoint-xs,
@@ -1049,7 +1049,7 @@ $grid-poles:
 scss/grid/_base.scss
 ```
 
-```sass
+```scss
 /* Row */
 .flex-row,
 .flex-row-fluid

@@ -527,13 +527,13 @@
 <p>Checkboxes use local CSS variables on <code>.checkbox</code> for enhanced component customization and styling. The base values are used by the UI to create all the variants. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>
 <p>Customization via Sass can be made in the <code>scss/_config.scss</code> file in Frontbx's source.</p>
 <pre><code class="file-path language-file-path">scss/styles/forms/_checkbox.scss</code></pre>
-<pre><code class="sass language-sass">--fbx-checkbox-size: #{$checkbox-size};
+<pre><code class="scss language-scss">--fbx-checkbox-size: #{$checkbox-size};
 --fbx-checkbox-color: #{$checkbox-color};
 --fbx-checkbox-label-color: #{$checkbox-label-color};
 --fbx-checkbox-radius: #{$checkbox-radius};</code></pre>
 <p><br></p>
 <pre><code class="file-path language-file-path">scss/_config.scss</code></pre>
-<pre><code class="sass language-sass">$checkbox-size:                 2rem !default;
+<pre><code class="scss language-scss">$checkbox-size:                 2rem !default;
 $checkbox-color:                var(--fbx-gray) !default;
 $checkbox-label-color:          var(--fbx-gray) !default;
 $checkbox-radius:               2px !default;</code></pre></article>

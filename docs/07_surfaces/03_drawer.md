@@ -291,7 +291,7 @@ Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's 
 scss/_config.scss
 ```
 
-```sass
+```scss
 $drawer-bg:                     var(--fbx-white) !default;
 $drawer-width:                  230px !default;
 $drawer-size-peekable:          80px !default;
@@ -303,7 +303,7 @@ $drawer-overlay-bg-dark:        rgba(0, 0, 0, 0.5) !default;
 scss/components/_drawer.scss
 ```
 
-```sass
+```scss
 .drawer-container
 {
     // Variables

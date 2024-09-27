@@ -27,19 +27,19 @@ Theme colors are used for contextual styling on most Frontbx components and set 
 
 Theme colors are available in both CSS and Sass variables. When using the Sass variable, this will always point to the CSS variable - which is assigned to the actual color in `scss/src/base/_root.scss`. The table below outlines the core theme colors:
 
-| Swatch                                        | CSS Variable             | Sass Variable       | Description                                                |
-|:---------------------------------------------:|--------------------------|---------------------|------------------------------------------------------------|
-| <div class="docs-swatch bg-body-bg"></div>    | `--fbx-body-bg`          | `$body-bg`          | Body background color.                                     |
-| <div class="docs-swatch" style="background-color: var(--fbx-body-color)"></div> | `--fbx-body-color`       | `$body-color`       | Body `color`                                               |
-| <div class="docs-swatch bg-white"></div>      | `--fbx-white`            | `$white`            | Global `white` definition.                                 |
-| <div class="docs-swatch bg-black"></div>      | `--fbx-black`            | `$black`            | Global `black` definition.                                 |
-| <div class="docs-swatch bg-gray"></div>       | `--fbx-gray`             | `$gray`             | Global `gray` definition.                                  |
-| <div class="docs-swatch bg-primary"></div>    | `--fbx-theme-primary`    | `$theme-primary`    | Global `theme-primary` definition.                         |
-| <div class="docs-swatch bg-secondary"></div>  | `--fbx-theme-secondary`  | `$theme-secondary`  | Global `theme-secondary` definition.                       |
-| <div class="docs-swatch bg-success"></div>    | `--fbx-theme-success`    | `$theme-success`    | Global `theme-success` definition.                         |
-| <div class="docs-swatch bg-info"></div>       | `--fbx-theme-info`       | `$theme-info`       | Global `theme-info` definition.                            |
-| <div class="docs-swatch bg-warning"></div>    | `--fbx-theme-warning`    | `$theme-warning`    | Global `theme-warning` definition.                         |
-| <div class="docs-swatch bg-danger"></div>     | `--fbx-theme-danger`     | `$theme-danger`     | Global `theme-danger` definition.                          |
+| Swatch                                                                          | CSS Variable            | Sass Variable      | Description                          |
+|:-------------------------------------------------------------------------------:|-------------------------|--------------------|--------------------------------------|
+| <div class="docs-swatch bg-body-bg"></div>                                      | `--fbx-body-bg`         | `$body-bg`         | Body background color.               |
+| <div class="docs-swatch" style="background-color: var(--fbx-body-color)"></div> | `--fbx-body-color`      | `$body-color`      | Body `color`                         |
+| <div class="docs-swatch bg-white"></div>                                        | `--fbx-white`           | `$white`           | Global `white` definition.           |
+| <div class="docs-swatch bg-black"></div>                                        | `--fbx-black`           | `$black`           | Global `black` definition.           |
+| <div class="docs-swatch bg-gray"></div>                                         | `--fbx-gray`            | `$gray`            | Global `gray` definition.            |
+| <div class="docs-swatch bg-primary"></div>                                      | `--fbx-theme-primary`   | `$theme-primary`   | Global `theme-primary` definition.   |
+| <div class="docs-swatch bg-secondary"></div>                                    | `--fbx-theme-secondary` | `$theme-secondary` | Global `theme-secondary` definition. |
+| <div class="docs-swatch bg-success"></div>                                      | `--fbx-theme-success`   | `$theme-success`   | Global `theme-success` definition.   |
+| <div class="docs-swatch bg-info"></div>                                         | `--fbx-theme-info`      | `$theme-info`      | Global `theme-info` definition.      |
+| <div class="docs-swatch bg-warning"></div>                                      | `--fbx-theme-warning`   | `$theme-warning`   | Global `theme-warning` definition.   |
+| <div class="docs-swatch bg-danger"></div>                                       | `--fbx-theme-danger`    | `$theme-danger`    | Global `theme-danger` definition.    |
 
 #### Usage<a id='theme-usage'></a>
 
@@ -182,7 +182,7 @@ However, they can still be used as CSS variables:
 
 Setting Frontbx's core theme color via Sass is super simple:
 
-```sass
+```scss
 @import "../node_modules/frontbx/scss/frontbx/src/colors";
 
 $theme-primary: $emerland;
@@ -223,7 +223,7 @@ Frontbx uses a Sass function for gradients on theme colors to style the odd comp
 
 All Sass color variable definitions (with the exception of the core "Theme Colors") will point to the the real hex value of a given color (rather than a CSS Variable).
 
-```sass
+```scss
 div {
 	// color: ##2ecc71;
 	color: $emerland

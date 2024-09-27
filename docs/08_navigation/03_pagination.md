@@ -145,7 +145,7 @@ Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's 
 scss/_config.scss
 ```
 
-```sass
+```scss
 $pagination-radius:             var(--fbx-border-radius) !default;
 $pagination-color:              var(--fbx-gray) !default;
 $pagination-link-pad-x:         16px !default;

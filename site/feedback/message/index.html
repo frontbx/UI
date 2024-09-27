@@ -531,7 +531,7 @@ myMsg.addEventListener('message:close', event =&gt;
 <p>Messages use local CSS variables on <code>.msg</code> for enhanced component customization and styling. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>
 <p>Customization via Sass can be made in the <code>scss/_config.scss</code> file in Frontbx's source.</p>
 <pre><code class="file-path language-file-path">scss/components/_message.scss</code></pre>
-<pre><code class="sass language-sass">--fbx-msg-bg: #{$msg-bg};
+<pre><code class="scss language-scss">--fbx-msg-bg: #{$msg-bg};
 --fbx-msg-color: #{$msg-color};
 --fbx-msg-icon-color: #{$msg-icon-color};
 --fbx-msg-spacer-y: #{$msg-spacer-y};
@@ -540,7 +540,7 @@ myMsg.addEventListener('message:close', event =&gt;
 --fbx-msg-font-size: #{$msg-font-size};</code></pre>
 <p><br></p>
 <pre><code class="file-path language-file-path">scss/_config.scss</code></pre>
-<pre><code class="sass language-sass">$msg-bg:                        var(--fbx-black) !default;
+<pre><code class="scss language-scss">$msg-bg:                        var(--fbx-black) !default;
 $msg-color:                     var(--fbx-white) !default;
 $msg-icon-color:                var(--fbx-theme-primary) !default;
 $msg-spacer-y:                  3rem !default;

@@ -663,7 +663,7 @@ Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's 
 scss/_config.scss
 ```
 
-```sass
+```scss
 $skeleton-bg-1:                 rgba(0, 0, 0, 0.2) !default;
 $skeleton-bg-2:                 rgba(0, 0, 0, 0.4) !default;
 $skeleton-text-radius:          var(--fbx-border-radius) !default;

@@ -617,13 +617,13 @@
 <p>Drawer use a combination of both local CSS variables and Sass variables on <code>.drawer-wrap</code>, <code>.drawer-overlay</code> for enhanced component customization and styling.</p>
 <p>Customization via Sass can be made in the <code>scss/_config.scss</code> file in Frontbx's source.</p>
 <pre><code class="file-path language-file-path">scss/_config.scss</code></pre>
-<pre><code class="sass language-sass">$drawer-bg:                     var(--fbx-white) !default;
+<pre><code class="scss language-scss">$drawer-bg:                     var(--fbx-white) !default;
 $drawer-width:                  230px !default;
 $drawer-size-peekable:          80px !default;
 $drawer-overlay-bg:             rgba(255, 255, 255, 0.8) !default;
 $drawer-overlay-bg-dark:        rgba(0, 0, 0, 0.5) !default;</code></pre>
 <pre><code class="file-path language-file-path">scss/components/_drawer.scss</code></pre>
-<pre><code class="sass language-sass">.drawer-container
+<pre><code class="scss language-scss">.drawer-container
 {
     // Variables
     --fbx-drawer-bg: #{$drawer-bg};

@@ -240,7 +240,7 @@ Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's 
 scss/styles/forms/_checkbox.scss
 ```
 
-```sass
+```scss
 --fbx-checkbox-size: #{$checkbox-size};
 --fbx-checkbox-color: #{$checkbox-color};
 --fbx-checkbox-label-color: #{$checkbox-label-color};
@@ -254,7 +254,7 @@ scss/styles/forms/_checkbox.scss
 scss/_config.scss
 ```
 
-```sass
+```scss
 $checkbox-size:                 2rem !default;
 $checkbox-color:                var(--fbx-gray) !default;
 $checkbox-label-color:          var(--fbx-gray) !default;

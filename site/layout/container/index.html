@@ -389,7 +389,7 @@
 <p>The container system uses a combination of both local root CSS variables for enhanced component customization and styling. The base values are used by the UI to create the gutters and sizings. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>
 <p>Customization via Sass can be made in the <code>scss/_config.scss</code> file in Frontbx's source.</p>
 <pre><code class="file-path language-file-path">scss/_config.scss</code></pre>
-<pre><code class="sass language-sass">// Grid breakpoints
+<pre><code class="scss language-scss">// Grid breakpoints
 $breakpoint-xs:                 0 !default;
 $breakpoint-sm:                 576px !default;
 $breakpoint-md:                 768px !default;
@@ -407,7 +407,7 @@ $container-gutters:
 ) !default;</code></pre>
 <p><br></p>
 <pre><code class="file-path language-file-path">scss/grid/_base.scss</code></pre>
-<pre><code class="sass language-sass">.container,
+<pre><code class="scss language-scss">.container,
 .container-fluid
 {
     --fbx-container-width: 100%;

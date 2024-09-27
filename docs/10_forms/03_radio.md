@@ -239,13 +239,13 @@ Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's 
 ```file-path
 scss/_config.scss
 ```
-```sass
+```scss
 $radio-size:        20px !default;
 $radio-color:       var(--fbx-gray) !default;
 $radio-label-color: var(--fbx-gray) !default;
 ```
 
-```sass
+```scss
 .radio
 {
     --fbx-radio-size: 20px;

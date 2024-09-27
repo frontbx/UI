@@ -822,7 +822,7 @@ Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's 
 ```file-path
 scss/_config.scss
 ```
-```sass
+```scss
 $table-font-size:               1.3rem !default;
 $table-bg:                      transparent !default;
 $table-bg-hover:                rgba(0, 0, 0, 0.08) !default;

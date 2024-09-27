@@ -71,7 +71,7 @@ Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's 
 scss/_config.scss
 ```
 
-```sass
+```scss
 $paper-bg:          var(--fbx-white) !default;
 $paper-radius:      var(--fbx-border-radius) !default;
 $paper-flat-border: var(--fbx-gray-300) !default;

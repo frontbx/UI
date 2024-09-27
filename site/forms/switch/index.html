@@ -527,7 +527,7 @@
 <h3 id="customization">Customization</h3>
 <p>Switches use local CSS variables on <code>.switch</code> for enhanced component customization and styling. The base values are used by the UI to create all the variants. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>
 <pre><code class="file-path language-file-path">scss/styles/forms/_switch.scss</code></pre>
-<pre><code class="sass language-sass">--fbx-switch-size :#{$switch-size};
+<pre><code class="scss language-scss">--fbx-switch-size :#{$switch-size};
 --fbx-switch-track-color-off :#{$switch-track-color-off};
 --fbx-switch-track-color-on :#{$switch-track-color-on};
 --fbx-switch-knob-color-off :#{$switch-knob-color-off};
@@ -535,7 +535,7 @@
 <p><br><br />
 Customization via Sass can be made in the <code>scss/_config.scss</code> file in Frontbx's source.</p>
 <pre><code class="file-path language-file-path">scss/_config.scss</code></pre>
-<pre><code class="sass language-sass">$switch-size:                   2rem !default;
+<pre><code class="scss language-scss">$switch-size:                   2rem !default;
 $switch-track-color-off:        var(--fbx-gray-300) !default;
 $switch-track-color-on:         var(--fbx-gray-300) !default;
 $switch-knob-color-off:         var(--fbx-white) !default;

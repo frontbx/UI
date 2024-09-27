@@ -246,7 +246,7 @@ Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's 
 scss/components/_message.scss
 ```
 
-```sass
+```scss
 --fbx-msg-bg: #{$msg-bg};
 --fbx-msg-color: #{$msg-color};
 --fbx-msg-icon-color: #{$msg-icon-color};
@@ -262,7 +262,7 @@ scss/components/_message.scss
 scss/_config.scss
 ```
 
-```sass
+```scss
 $msg-bg:                        var(--fbx-black) !default;
 $msg-color:                     var(--fbx-white) !default;
 $msg-icon-color:                var(--fbx-theme-primary) !default;

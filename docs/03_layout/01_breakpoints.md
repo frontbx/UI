@@ -42,7 +42,7 @@ There are also a handul of `max-width` breakpoints for screen-size and below sty
 
 Both `max-width` and `min-width` media queries are available as Sass mixins making it super easy to target screen-sizes:
 
-```sass
+```scss
 @include media-breakpoint-up(xs) { ... }
 @include media-breakpoint-up(sm) { ... }
 @include media-breakpoint-up(md) { ... }
@@ -59,7 +59,7 @@ Both `max-width` and `min-width` media queries are available as Sass mixins maki
 }
 ```
 
-```sass
+```scss
 @include media-breakpoint-down(xs) { ... }
 @include media-breakpoint-down(sm) { ... }
 @include media-breakpoint-down(md) { ... }
@@ -89,7 +89,7 @@ Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's 
 scss/_config.scss
 ```
 
-```sass
+```scss
 $breakpoint-xs:                 0 !default;
 $breakpoint-sm:                 576px !default;
 $breakpoint-md:                 768px !default;

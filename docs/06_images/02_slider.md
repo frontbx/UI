@@ -173,7 +173,7 @@ Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's 
 scss/_config.scss
 ```
 
-```sass
+```scss
 $slider-bg:                     transparent !default;
 $slider-dots-color:             var(--fbx-white) !default;
 $slider-dots-color-active:      var(--fbx-theme-primary) !default;

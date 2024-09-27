@@ -109,7 +109,7 @@ Badges can be customized using Frontbx's contextual classes:
 
 You can customize the size or color of any badge using local CSS variables on `.badge`:
 
-```sass
+```scss
 .my-badge
 {
 	--fbx-badge-size: 12px;
@@ -154,7 +154,7 @@ Use the `.status` class to indicate a status:
 
 You can customize the size or color of any status using local CSS variables on `.status`:
 
-```sass
+```scss
 .my-status
 {
 	--fbx-status-size: 12px;

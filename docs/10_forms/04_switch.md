@@ -240,7 +240,7 @@ Switches use local CSS variables on `.switch` for enhanced component customizati
 scss/styles/forms/_switch.scss
 ```
 
-```sass
+```scss
 --fbx-switch-size :#{$switch-size};
 --fbx-switch-track-color-off :#{$switch-track-color-off};
 --fbx-switch-track-color-on :#{$switch-track-color-on};
@@ -255,7 +255,7 @@ Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's 
 scss/_config.scss
 ```
 
-```sass
+```scss
 $switch-size:                   2rem !default;
 $switch-track-color-off:        var(--fbx-gray-300) !default;
 $switch-track-color-on:         var(--fbx-gray-300) !default;

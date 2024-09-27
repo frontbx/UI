@@ -108,7 +108,7 @@ Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's 
 scss/_config.scss
 ```
 
-```sass
+```scss
 $tooltip-bg:                    var(--fbx-gray-900) !default;
 $tooltip-color:                 var(--fbx-white) !default;
 $tooltip-font-size:             11px !default;

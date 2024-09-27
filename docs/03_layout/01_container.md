@@ -95,7 +95,7 @@ Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's 
 scss/_config.scss
 ```
 
-```sass
+```scss
 // Grid breakpoints
 $breakpoint-xs:                 0 !default;
 $breakpoint-sm:                 576px !default;
@@ -120,7 +120,7 @@ $container-gutters:
 scss/grid/_base.scss
 ```
 
-```sass
+```scss
 .container,
 .container-fluid
 {

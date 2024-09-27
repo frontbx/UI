@@ -358,7 +358,7 @@
 <p>The grid system uses both CSS Variables and Sass variables so Customization can be made both pre and post compilation.</p>
 <p>Customization of breakpoints via Sass can be made in the <code>scss/_config.scss</code> file in Frontbx's source.</p>
 <pre><code class="file-path language-file-path">scss/_config.scss</code></pre>
-<pre><code class="sass language-sass">$breakpoint-xs:                 0 !default;
+<pre><code class="scss language-scss">$breakpoint-xs:                 0 !default;
 $breakpoint-sm:                 576px !default;
 $breakpoint-md:                 768px !default;
 $breakpoint-lg:                 992px !default;
@@ -869,7 +869,7 @@ $breakpoints:
 <p>The grid system uses a combination of both local CSS variables on all components for enhanced component customization and styling. The base values are used by the UI to create all the sizing. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>
 <p>Customization via Sass can be made in the <code>scss/_config.scss</code> file in Frontbx's source.</p>
 <pre><code class="file-path language-file-path">scss/_config.scss</code></pre>
-<pre><code class="sass language-sass">$grid-gutters:
+<pre><code class="scss language-scss">$grid-gutters:
 (
     'xxs':                      0.5rem,
     'xs':                       1rem,
@@ -891,7 +891,7 @@ $grid-poles:
 ) !default;</code></pre>
 <p><br></p>
 <pre><code class="file-path language-file-path">scss/grid/_base.scss</code></pre>
-<pre><code class="sass language-sass">/* Row */
+<pre><code class="scss language-scss">/* Row */
 .row
 {
     --fbx-row-width: 100%;

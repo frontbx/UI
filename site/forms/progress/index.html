@@ -386,13 +386,13 @@
 <h3 id="customization">Customization</h3>
 <p>Progress bars use local CSS variables on <code>.progress-bar</code> for enhanced component customization and styling. The base values are used by the UI to create all the variants. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>
 <pre><code class="file-path language-file-path">scss/styles/forms/_progress.scss</code></pre>
-<pre><code class="sass language-sass">--fbx-progress-size: #{$progress-size};
+<pre><code class="scss language-scss">--fbx-progress-size: #{$progress-size};
 --fbx-progress-radius: #{$progress-radius};
 --fbx-progress-bg: #{$progress-bg};
 --fbx-progress-color: #{$progress-color};</code></pre>
 <p>Customization via Sass can be made in the <code>scss/_config.scss</code> file in Frontbx's source.</p>
 <pre><code class="file-path language-file-path">scss/_config.scss</code></pre>
-<pre><code class="sass language-sass">$progress-size:                 1rem !default;
+<pre><code class="scss language-scss">$progress-size:                 1rem !default;
 $progress-radius:               var(--fbx-border-radius) !default;
 $progress-bg:                   var(--fbx-gray-200) !default;
 $progress-color:                var(--fbx-gray) !default;

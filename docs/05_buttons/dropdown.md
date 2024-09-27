@@ -785,7 +785,7 @@ Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's 
 scss/_config.scss
 ```
 
-```sass
+```scss
 // Dropdown
 $dropdown-border-radius:        var(--fbx-border-radius) !default;
 $dropdown-width:                160px !default;

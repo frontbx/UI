@@ -438,7 +438,7 @@ Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's 
 scss/styles/buttons/_base.scss
 ```
 
-```sass
+```scss
 --fbx-btn-block: inline-block;
 --fbx-btn-margin: 0;
 --fbx-btn-font-weight: normal;
@@ -482,7 +482,7 @@ scss/styles/buttons/_base.scss
 scss/_config.scss
 ```
 
-```sass
+```scss
 $btn-height:                    38px !default;
 $btn-text-transform:            uppercase !default;
 $btn-pad-x:                     1.6rem !default;

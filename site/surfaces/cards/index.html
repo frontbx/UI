@@ -1111,7 +1111,7 @@
 <p>Cards use a combination of both local CSS variables on <code>.card</code> and Sass variables for enhanced component customization and styling. The base values are used by the UI to create all the sizing. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>
 <p>Customization via Sass can be made in the <code>scss/_config.scss</code> file in Frontbx's source.</p>
 <pre><code class="file-path language-file-path">scss/_config.scss</code></pre>
-<pre><code class="sass language-sass">$card-bg:                       var(--fbx-white) !default;
+<pre><code class="scss language-scss">$card-bg:                       var(--fbx-white) !default;
 $card-bg-focus:                 var(--fbx-white) !default;
 $card-color:                    var(--fbx-gray-900) !default;
 $card-title-color:              var(--fbx-body-color) !default;
@@ -1134,7 +1134,7 @@ $card-landscape-img-sm:         80px !default;
 $card-landscape-img-md:         150px !default;
 $card-landscape-img-lg:         300px !default;</code></pre>
 <pre><code class="file-path language-file-path">scss/components/_card.scss</code></pre>
-<pre><code class="sass language-sass">.card
+<pre><code class="scss language-scss">.card
 {
     --fbx-card-bg:               #{$card-bg};
     --fbx-card-bg-focus:         #{$card-bg-focus};

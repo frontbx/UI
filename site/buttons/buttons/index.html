@@ -661,7 +661,7 @@
 <p>Buttons use local CSS variables on <code>.btn</code> for enhanced component customization and styling. The base values are used by the UI to create all the variants. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>
 <p>Customization via Sass can be made in the <code>scss/_config.scss</code> file in Frontbx's source.</p>
 <pre><code class="file-path language-file-path">scss/styles/buttons/_base.scss</code></pre>
-<pre><code class="sass language-sass">--fbx-btn-block: inline-block;
+<pre><code class="scss language-scss">--fbx-btn-block: inline-block;
 --fbx-btn-margin: 0;
 --fbx-btn-font-weight: normal;
 --fbx-btn-text-align: center;
@@ -698,7 +698,7 @@
 --fbx-btn-bg-color-active: #{$btn-base-bg-active};</code></pre>
 <p><br></p>
 <pre><code class="file-path language-file-path">scss/_config.scss</code></pre>
-<pre><code class="sass language-sass">$btn-height:                    38px !default;
+<pre><code class="scss language-scss">$btn-height:                    38px !default;
 $btn-text-transform:            uppercase !default;
 $btn-pad-x:                     1.6rem !default;
 $btn-pad-y:                     1.2rem !default;

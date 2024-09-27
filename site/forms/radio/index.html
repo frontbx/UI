@@ -527,10 +527,10 @@
 <p>Checkboxes use local CSS variables on <code>.radio</code> for enhanced component customization and styling. The base values are used by the UI to create all the variants. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>
 <p>Customization via Sass can be made in the <code>scss/_config.scss</code> file in Frontbx's source.</p>
 <pre><code class="file-path language-file-path">scss/_config.scss</code></pre>
-<pre><code class="sass language-sass">$radio-size:        20px !default;
+<pre><code class="scss language-scss">$radio-size:        20px !default;
 $radio-color:       var(--fbx-gray) !default;
 $radio-label-color: var(--fbx-gray) !default;</code></pre>
-<pre><code class="sass language-sass">.radio
+<pre><code class="scss language-scss">.radio
 {
     --fbx-radio-size: 20px;
     --fbx-radio-color: var(--fbx-gray);
