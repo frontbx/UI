@@ -417,7 +417,7 @@ In the example below both columns are full width on mobile. On breakpoint (>=md)
 
 The grid system uses a combination of both local CSS variables on all components for enhanced component customization and styling. The base values are used by the UI to create all the sizing. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.
 
-Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
+Default values are set in the `scss/_config.scss` file in Frontbx's source.
 
 ```file-path
 scss/_config.scss

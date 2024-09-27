@@ -19,12 +19,14 @@ The fixed width `.container` will wrap layouts providing a `100%` width on scree
 
 <div class="fbx-snippet-demo">
     <div class="parent-row-diagram"><code>.container</code></div>
-    <div class="container">
-        <div class="col col-9 gutter-xxs gutter-r">
-            <div class="bg-pastelred column-demo"></div>
-        </div>
-        <div class="col col-3 gutter-xxs gutter-l">
-            <div class="bg-pastelblue column-demo"></div>
+    <div class="container-fluid">
+        <div class="flex-row">
+            <div class="col col-9 gutter-xxs gutter-r">
+                <div class="bg-pastelred column-demo"></div>
+            </div>
+            <div class="col col-3 gutter-xxs gutter-l">
+                <div class="bg-pastelblue column-demo"></div>
+            </div>
         </div>
     </div>
 </div>
@@ -89,49 +91,39 @@ Container gutters are left and right padding applied to the container element. T
 
 The container system uses a combination of both local root CSS variables for enhanced component customization and styling. The base values are used by the UI to create the gutters and sizings. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.
 
-Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
+Default values are set in the `scss/_config.scss` file in Frontbx's source.
 
 ```file-path
 scss/_config.scss
 ```
-
 ```scss
-// Grid breakpoints
-$breakpoint-xs:                 0 !default;
-$breakpoint-sm:                 576px !default;
-$breakpoint-md:                 768px !default;
-$breakpoint-lg:                 992px !default;
-$breakpoint-xl:                 1200px !default;
+// Breakpoints
+$breakpoint-xs: 0 !default;
+$breakpoint-sm: 576px !default;
+$breakpoint-md: 768px !default;
+$breakpoint-lg: 992px !default;
+$breakpoint-xl: 1200px !default;
 
+$breakpoints:
+(
+    'xs': $breakpoint-xs,
+    'sm': $breakpoint-sm,
+    'md': $breakpoint-md,
+    'lg': $breakpoint-lg,
+    'xl': $breakpoint-xl,
+) !default;
+
+// Container gutters
 $container-gutters:
 (
-    'xxs':                      0.5rem,
-    'xs':                       1rem,
-    'sm':                       3.0rem,
-    'md':                       3.0rem,
-    'lg':                       3.0rem,
-    'xl':                       3.0rem,
+    'xxs': 0.5rem,
+    'xs':  1rem,
+    'sm':  3.0rem,
+    'md':  3.0rem,
+    'lg':  3.0rem,
+    'xl':  3.0rem,
 ) !default;
 ```
-
-<br>
-
-```file-path
-scss/grid/_base.scss
-```
-
-```scss
-.container,
-.container-fluid
-{
-    --fbx-container-width: 100%;
-    --fbx-container-max-width: 100%;
-    --fbx-container-pad-l: 0;
-    --fbx-container-pad-r: 0;
-}
-```
-
-<br>
 
 ```css
 :root

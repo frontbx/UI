@@ -220,7 +220,7 @@ All other options can be set through `data-attributes` on the anchor element in 
 
 Frontdrop use a combination of both local CSS variables and Sass variables on `.frontdrop-wrap`, `.frontdrop-overlay` for enhanced component customization and styling.
 
-Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
+Default values are set in the `scss/_config.scss` file in Frontbx's source.
 
 ```file-path
 scss/_config.scss

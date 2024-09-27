@@ -779,7 +779,7 @@ Dropdown uses local CSS variables on `.drop-container` and `.menu` along with Sa
 }
 ```
 
-Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
+Default values are set in the `scss/_config.scss` file in Frontbx's source.
 
 ```file-path
 scss/_config.scss

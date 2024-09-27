@@ -618,7 +618,7 @@ List uses local CSS variables on `.list` along with Sass variables for enhanced 
 }
 ```
 
-Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
+Default values are set in the `scss/_config.scss` file in Frontbx's source.
 
 ```file-path
 scss/_config.scss

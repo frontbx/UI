@@ -78,7 +78,13 @@ pre::selection
 .token.keyword,
 .token.symbol
 {
-	color: #7c4dff;
+	color: #bb41ff;
+}
+
+.token.string,
+.token.attr-value
+{
+	color: #2ecc71;
 }
 
 .token.attr-name,
@@ -94,12 +100,10 @@ pre::selection
 	color: #39adb5;
 }
 
-.token.attr-value,
 .token.attribute,
 .token.parameter,
 .token.pseudo-class,
-.token.pseudo-element,
-.token.string
+.token.pseudo-element
 {
 	color: #f6a434;
 }
@@ -130,7 +134,7 @@ pre::selection
 .token.id,
 .token.important
 {
-	color: #7c4dff;
+	color: #bb41ff;
 	font-weight: 700;
 }
 

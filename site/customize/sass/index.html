@@ -362,9 +362,11 @@
 @import "../node_modules/frontbx/scss/src/variables";</code></pre>
 <hr />
 <h4 id="css-variables">CSS Variables</h4>
+<blockquote>
+  <p>Frontbx prefixes all CSS variables with <code>fbx-</code> to make them easily identifiable and avoid compatibility issues with other libraries.</p>
+</blockquote>
 <p>When Sass is compiled into CSS, Frontbx assigns global CSS variables to <code>:root</code>. For individual components, CSS variables are assigned locally to their selector.</p>
 <p>Sometimes local CSS variables will reference a global variable. This allows a single global variable on <code>:root</code> to adjust styling across multiple components.</p>
-<p>Frontbx prefixes all CSS variables with <code>fbx-</code> to make them easily identifiable and avoid compatibility issues with other libraries.</p>
 <pre><code class="css language-css">/* Applied globally to root  */
 :root
 {
@@ -383,7 +385,7 @@
     <style scoped>
     .custom-paper, .fbx-darkmode .custom-paper
     {
-        --fbx-paper-bg: #7de3b5;
+        --fbx-paper-bg: var(--fbx-color-teal);
         --fbx-paper-radius: 10px;
     }
     </style>
@@ -394,7 +396,7 @@
 <pre><code class="html language-html">&lt;div class="paper custom-paper"&gt;&lt;/div&gt;</code></pre>
 <pre><code class="css language-css">.custom-paper, .fbx-darkmode .custom-paper
 {
-    --fbx-paper-bg: green;
+    --fbx-paper-bg: var(--fbx-color-teal);
     --fbx-paper-radius: 10px;
 }</code></pre></article>
             </div>

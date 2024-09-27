@@ -75,11 +75,12 @@ $my-color: $body-bg;
 
 #### CSS Variables
 
+> Frontbx prefixes all CSS variables with `fbx-` to make them easily identifiable and avoid compatibility issues with other libraries.
+
 When Sass is compiled into CSS, Frontbx assigns global CSS variables to `:root`. For individual components, CSS variables are assigned locally to their selector.
 
 Sometimes local CSS variables will reference a global variable. This allows a single global variable on `:root` to adjust styling across multiple components.
 
-Frontbx prefixes all CSS variables with `fbx-` to make them easily identifiable and avoid compatibility issues with other libraries.
 
 ```css
 /* Applied globally to root  */
@@ -105,7 +106,7 @@ Here is a very simple example of change the background color of a [Paper compone
 	<style scoped>
 	.custom-paper, .fbx-darkmode .custom-paper
 	{
-	    --fbx-paper-bg: #7de3b5;
+	    --fbx-paper-bg: var(--fbx-color-teal);
 	    --fbx-paper-radius: 10px;
 	}
 	</style>
@@ -122,7 +123,7 @@ Here is a very simple example of change the background color of a [Paper compone
 ```css
 .custom-paper, .fbx-darkmode .custom-paper
 {
-    --fbx-paper-bg: green;
+    --fbx-paper-bg: var(--fbx-color-teal);
     --fbx-paper-radius: 10px;
 }
 ```

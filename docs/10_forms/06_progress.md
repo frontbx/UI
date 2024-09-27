@@ -87,7 +87,7 @@ scss/styles/forms/_progress.scss
 --fbx-progress-color: #{$progress-color};
 ```
 
-Customization via Sass can be made in the `scss/_config.scss` file in Frontbx's source.
+Default values are set in the `scss/_config.scss` file in Frontbx's source.
 
 
 ```file-path
