@@ -24,17 +24,6 @@
 		justify-content: space-between;
   	}
 
-  	/* > .container-fluid > *:last-child, > .container > *:last-child
-  	> *:not(.container-fluid):not(.container):last-child
-	{
-		margin-left: auto;
-	}
-	> .container-fluid > *:first-child,
-	> .container > *:first-child
-	{
-		margin-right: auto;
-	} */
-
   	&.navbar-fixed
 	{
 	    position: fixed;
@@ -50,6 +39,7 @@
 	    align-items: center;
 	    justify-content: center;
 	    text-decoration: none;
+	    color: var(--fbx-white);
 
 		img, svg
 		{
