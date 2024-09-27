@@ -25,7 +25,7 @@
     "style": "dist/css/frontbx-bundle.css",
     "scripts": {
         "help": "node build/help.mjs",
-        "start": "npm-run-all watch docs-serve",
+        "start": "npm-run-all --parallel watch docs-serve",
         "dist": "npm-run-all --sequential css js docs-build",
         "css": "npm-run-all --sequential css-compile css-prefix css-minify",
         "css-compile": "sass --style expanded --source-map --embed-sources --no-error-css --verbose scss/:dist/css/",
