@@ -318,16 +318,16 @@ dl dd:last-child
 code, pre
 {
     font-family: var(--fbx-font-monospace);
-    font-size: inherit;
     line-height: var(--fbx-base-line-height);
+    background-color: var(--fbx-gray-200);
+    border-radius: var(--fbx-border-radius);
+    border: none;
+    font-size: inherit;
     color: crimson;
     -webkit-font-smoothing: auto;
     -moz-osx-font-smoothing: auto;
     -webkit-font-smoothing: initial;
     -moz-osx-font-smoothing: initial;
-    background-color: var(--fbx-gray-200);
-    border-radius: var(--fbx-border-radius);
-    border: 1px solid var(--fbx-gray-200);
     white-space: pre;
 }
 pre
@@ -337,17 +337,16 @@ pre
     display: block;
     width: 100%;
 }
-code
-{
-    padding: .2rem .4rem;
-    font-size: 0.85em;
-}
 pre > code
 {
     white-space: pre;
     padding: 0;
     overflow: hidden;
-    border: none;
+}
+:not(pre) > code
+{
+    padding: .2rem .4rem;
+    font-size: 0.85em;
 }
 td > code,
 th > code
