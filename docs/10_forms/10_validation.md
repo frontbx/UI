@@ -18,7 +18,7 @@ Frontbx's `FormValidator` provides a powerful component to easily validate forms
 The `FormValidator` can be accessed through Frontbx's `Container`, providing your target `<form>` DOMElement as a parameter.
 
 ```javascript
-const validator = frontbx.FormValidator(document.querySelector.$('#myform'));
+const validator = frontbx.FormValidator(document.querySelector('#myform'));
 ```
 
 ---
@@ -82,7 +82,7 @@ Additionally, you can validate an input as `required` as well as validate the le
 Instantiate a `FormValidator` instance via Frontbx's `Container`, passing the target `<form>` DOMElement as the parameter.
 
 ```javascript
-const validator = frontbx.FormValidator(document.querySelector.$('#myform'));
+const validator = frontbx.FormValidator(document.querySelector('#myform'));
 ```
 
 The `validate` method will run validation on all inputs based on any validation attributes and return a `Boolean`. Any invalid `.form-field` elements will then be shown as invalid.

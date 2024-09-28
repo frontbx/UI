@@ -194,38 +194,56 @@ Additional sizing is available through `.radio-sm`, `radio-md` and `radio-lg`:
     <form class="text-center">
         <div class="form-field pad-5">
             <span class="radio radio-sm">
-                <input type="radio" name="radio_15" id="radio_14" />
+                <input type="radio" name="radio_4" id="radio_14" />
                 <label for="radio_14">&nbsp;Small</label>
+            </span>
+        </div>
+         <div class="form-field pad-5">
+            <span class="radio">
+                <input type="radio" name="radio_4" id="radio_15" />
+                <label for="radio_15">&nbsp;Normal</label>
             </span>
         </div>
         <div class="form-field pad-5">
             <span class="radio radio-md">
-                <input type="radio" name="radio_15" id="radio_15" />
-                <label for="radio_15">&nbsp;Medium</label>
+                <input type="radio" name="radio_4" id="radio_16" />
+                <label for="radio_16">&nbsp;Medium</label>
             </span>
         </div>
         <div class="form-field pad-5">
             <span class="radio radio-lg">
-                <input type="radio" name="radio_15" id="radio_16" checked />
-                <label for="radio_16">&nbsp;Large</label>
+                <input type="radio" name="radio_4" id="radio_17" checked />
+                <label for="radio_17">&nbsp;Large</label>
             </span>
         </div>
     </form>
 </div>
 
 ```html
-<span class="radio radio-sm">
-    <input type="radio" name="radio_14" id="radio_14"  />
-    <label for="radio_14">Small</label>
-</span>
-<span class="radio radio-md">
-    <input type="radio" name="radio_14" id="radio_15" checked />
-    <label for="radio_15">Medium</label>
-</span>
-<span class="radio radio-lg">
-    <input type="radio" name="radio_14" id="radio_16" checked />
-    <label for="radio_16">Large</label>
-</span>
+<div class="form-field pad-5">
+    <span class="radio radio-sm">
+        <input type="radio" name="radio_4" id="radio_14" />
+        <label for="radio_14">&nbsp;Small</label>
+    </span>
+</div>
+ <div class="form-field pad-5">
+    <span class="radio">
+        <input type="radio" name="radio_4" id="radio_15" />
+        <label for="radio_15">&nbsp;Normal</label>
+    </span>
+</div>
+<div class="form-field pad-5">
+    <span class="radio radio-md">
+        <input type="radio" name="radio_4" id="radio_16" />
+        <label for="radio_16">&nbsp;Medium</label>
+    </span>
+</div>
+<div class="form-field pad-5">
+    <span class="radio radio-lg">
+        <input type="radio" name="radio_4" id="radio_17" checked />
+        <label for="radio_17">&nbsp;Large</label>
+    </span>
+</div>
 ```
 
 ---

@@ -252,17 +252,17 @@
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../feedback/modal/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Modal</a></li>
         </ul>
     </li>
-    <li class="menu-item-title js-collapse " data-collapse-target="menu-forms">
+    <li class="menu-item-title js-collapse active" data-collapse-target="menu-forms">
         <span class="item-left"><span class="fa fa-chevron-right"></span></span>
         <span class="item-body">Forms</span>
     </li>
-    <li  id="menu-forms" class="menu-item-submenu">
+    <li style="height:auto" id="menu-forms" class="menu-item-submenu">
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../forms/inputs/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Inputs</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../forms/checkbox/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Checkbox</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../forms/radio/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Radio</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../forms/switch/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Switch</a></li>
-            <li class="menu-item "><a data-pjax-target="#article-body" href="../../forms/range/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Range</a></li>
+            <li class="menu-item active"><a data-pjax-target="#article-body" href="../../forms/range/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Range</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../forms/chips/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Chips</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../forms/progress/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Progress</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../forms/input-mask/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Input Mask</a></li>
@@ -312,845 +312,250 @@
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../js-helpers/misc/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Misc</a></li>
         </ul>
     </li>
-    <li class="menu-item-title js-collapse active" data-collapse-target="menu-css">
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-css">
         <span class="item-left"><span class="fa fa-chevron-right"></span></span>
         <span class="item-body">Css</span>
     </li>
-    <li style="height:auto" id="menu-css" class="menu-item-submenu">
+    <li  id="menu-css" class="menu-item-submenu">
         <ul class="menu menu-dense">
-            <li class="menu-item active"><a data-pjax-target="#article-body" href="../../css/css-helpers/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Css Helpers</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../css/css-helpers/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Css Helpers</a></li>
         </ul>
     </li>
 </ul></div>
         <div class="container-fluid docs-container" id="top">
             <div class="main-container js-main-container">
-                <article class="docs-body pole-sm" id="article-body"><h1 id="css-helopers">CSS Helopers</h1>
-<p>Frontbx provides a number of helper classes to use throughout your markup to quickly and easily apply common styling.</p>
+                <article class="docs-body pole-sm" id="article-body"><h1 id="range">Range</h1>
+<p>Range inputs allow users to set value based on a range.</p>
 <hr />
 <ul>
-<li><a href="#raised">Raised</a></li>
-<li><a href="#backgrounds">Backgrounds</a></li>
-<li><a href="#borders">Borders</a></li>
-<li><a href="#centering">Centering</a></li>
-<li><a href="#colors">Colors</a></li>
-<li><a href="#displays">Displays</a></li>
-<li><a href="#floats">Floats</a></li>
-<li><a href="#flex">Flex</a></li>
-<li><a href="#margins">Margins</a></li>
-<li><a href="#paddings">Paddings</a></li>
-<li><a href="#positions">Positions</a></li>
-<li><a href="#transitions">Transitions</a></li>
-<li><a href="#typography">Typography</a></li>
+<li><a href="#markup">Markup</a></li>
+<li><a href="#icons">Icons</a></li>
+<li><a href="#indicators">Indicators</a></li>
+<li><a href="#css-customization">CSS customization</a></li>
+<li><a href="#javascript-instantiation">JavaScript Instantiation</a></li>
 </ul>
 <hr />
-<h3 id="raised">Raised</h3>
-<table>
-<thead>
-<tr>
-<th id="helper_class">Helper Class</th>
-<th id="css_value">CSS Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>.raised-1</code></td>
-<td><code>var(--fbx-raised-level-one);</code></td>
-</tr>
-<tr>
-<td><code>.raised-2</code></td>
-<td><code>var(--fbx-raised-level-two);</code></td>
-</tr>
-<tr>
-<td><code>.raised-3</code></td>
-<td><code>var(--fbx-raised-level-three);</code></td>
-</tr>
-<tr>
-<td><code>.flat</code></td>
-<td><code>box-shadow: none !important;</code></td>
-</tr>
-</tbody>
-</table>
+<h3 id="markup">Markup</h3>
+<p>Creating a range field is super simple thanks to JavaScript. Create an element with the <code>range-slider js-range-slider</code> classes with an <code>input[type=range]</code> as the child:</p>
+<div class="fbx-snippet-demo">
+    <div class="flex-row align-cols-center flex-cols-12 flex-cols-md-5 row-gaps-xs">
+        <div class="form-field">
+            <div class="range-slider js-range-slider">
+                <input type="range" min="0" max="10" value="5" step="1">
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="range-slider js-range-slider"&gt;
+    &lt;input type="range" min="0" max="10" value="5" step="1"&gt;
+&lt;/div&gt;</code></pre>
 <hr />
-<h3 id="backgrounds">Backgrounds</h3>
-<table>
-<thead>
-<tr>
-<th id="helper_class">Helper Class</th>
-<th id="css_value">CSS Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>.bg-transparent</code></td>
-<td><code>background-color: transparent;</code></td>
-</tr>
-<tr>
-<td><code>.bg-gray</code></td>
-<td><code>background-color: var(--fbx-gray);</code></td>
-</tr>
-<tr>
-<td><code>.bg-gray-100</code></td>
-<td><code>background-color: var(--fbx-gray-100);</code></td>
-</tr>
-<tr>
-<td><code>.bg-gray-200</code></td>
-<td><code>background-color: var(--fbx-gray-200);</code></td>
-</tr>
-<tr>
-<td><code>.bg-gray-300</code></td>
-<td><code>background-color: var(--fbx-gray-300);</code></td>
-</tr>
-<tr>
-<td><code>.bg-gray-400</code></td>
-<td><code>background-color: var(--fbx-gray-400);</code></td>
-</tr>
-<tr>
-<td><code>.bg-gray-500</code></td>
-<td><code>background-color: var(--fbx-gray-500);</code></td>
-</tr>
-<tr>
-<td><code>.bg-gray-600</code></td>
-<td><code>background-color: var(--fbx-gray-600);</code></td>
-</tr>
-<tr>
-<td><code>.bg-gray-700</code></td>
-<td><code>background-color: var(--fbx-gray-700);</code></td>
-</tr>
-<tr>
-<td><code>.bg-gray-800</code></td>
-<td><code>background-color: var(--fbx-gray-800);</code></td>
-</tr>
-<tr>
-<td><code>.bg-gray-900</code></td>
-<td><code>background-color: var(--fbx-gray-900);</code></td>
-</tr>
-<tr>
-<td><code>.bg-primary</code></td>
-<td><code>background-color: var(--fbx-theme-primary);</code></td>
-</tr>
-<tr>
-<td><code>.bg-secondary</code></td>
-<td><code>background-color: var(--fbx-theme-secondary);</code></td>
-</tr>
-<tr>
-<td><code>.bg-info</code></td>
-<td><code>background-color: var(--fbx-theme-info);</code></td>
-</tr>
-<tr>
-<td><code>.bg-success</code></td>
-<td><code>background-color: var(--fbx-theme-success);</code></td>
-</tr>
-<tr>
-<td><code>.bg-warning</code></td>
-<td><code>background-color: var(--fbx-theme-warning);</code></td>
-</tr>
-<tr>
-<td><code>.bg-danger</code></td>
-<td><code>background-color: var(--fbx-theme-danger);</code></td>
-</tr>
-<tr>
-<td><code>.bg-white</code></td>
-<td><code>background-color: var(--fbx-color-white);</code></td>
-</tr>
-<tr>
-<td><code>.bg-black</code></td>
-<td><code>background-color: var(--fbx-color-black);</code></td>
-</tr>
-</tbody>
-</table>
+<h3 id="icons">Icons</h3>
+<p>Icons can be added either side of the range input by simply adding them as you usually would. No other special markup is required here. The icons also get styled when the range reaches it's <code>min</code> and <code>max</code> values:</p>
+<div class="fbx-snippet-demo">
+    <div class="flex-row align-cols-center flex-cols-12 flex-cols-md-5 row-gaps-xs">
+        <div class="form-field">
+            <div class="range-slider js-range-slider">
+                <span class="fa fa-volume-off"></span>
+                <input type="range" min="0" max="200" value="50" step="1">
+                <span class="fa fa-volume-high"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="range-slider js-range-slider"&gt;
+    &lt;span class="fa fa-volume-off"&gt;&lt;/span&gt;
+    &lt;input type="range" min="0" max="200" value="50" step="1"&gt;
+    &lt;span class="fa fa-volume-high"&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
 <hr />
-<h3 id="borders">Borders</h3>
-<table>
-<thead>
-<tr>
-<th id="helper_class">Helper Class</th>
-<th id="css_value">CSS Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>.no-border</code></td>
-<td><code>border: 0;</code></td>
-</tr>
-<tr>
-<td><code>.border-s</code></td>
-<td><code>border-bottom: 1px solid;</code></td>
-</tr>
-<tr>
-<td><code>.border-n</code></td>
-<td><code>border-top: 1px solid;</code></td>
-</tr>
-<tr>
-<td><code>.border-e</code></td>
-<td><code>border-left: 1px solid;</code></td>
-</tr>
-<tr>
-<td><code>.border-w</code></td>
-<td><code>border-right: 1px solid;</code></td>
-</tr>
-<tr>
-<td><code>.border-gray</code></td>
-<td><code>border-color: var(--fbx-gray);</code></td>
-</tr>
-<tr>
-<td><code>.border-gray-100</code></td>
-<td><code>border-color: var(--fbx-gray-100);</code></td>
-</tr>
-<tr>
-<td><code>.border-gray-200</code></td>
-<td><code>border-color: var(--fbx-gray-200);</code></td>
-</tr>
-<tr>
-<td><code>.border-gray-300</code></td>
-<td><code>border-color: var(--fbx-gray-300);</code></td>
-</tr>
-<tr>
-<td><code>.border-gray-400</code></td>
-<td><code>border-color: var(--fbx-gray-400);</code></td>
-</tr>
-<tr>
-<td><code>.border-gray-500</code></td>
-<td><code>border-color: var(--fbx-gray-500);</code></td>
-</tr>
-<tr>
-<td><code>.border-gray-600</code></td>
-<td><code>border-color: var(--fbx-gray-600);</code></td>
-</tr>
-<tr>
-<td><code>.border-gray-700</code></td>
-<td><code>border-color: var(--fbx-gray-700);</code></td>
-</tr>
-<tr>
-<td><code>.border-gray-800</code></td>
-<td><code>border-color: var(--fbx-gray-800);</code></td>
-</tr>
-<tr>
-<td><code>.border-gray-900</code></td>
-<td><code>border-color: var(--fbx-gray-900);</code></td>
-</tr>
-<tr>
-<td><code>.border-primary</code></td>
-<td><code>border-color: var(--fbx-theme-primary);</code></td>
-</tr>
-<tr>
-<td><code>.border-secondary</code></td>
-<td><code>border-color: var(--fbx-theme-secondary);</code></td>
-</tr>
-<tr>
-<td><code>.border-info</code></td>
-<td><code>border-color: var(--fbx-theme-info);</code></td>
-</tr>
-<tr>
-<td><code>.border-success</code></td>
-<td><code>border-color: var(--fbx-theme-success);</code></td>
-</tr>
-<tr>
-<td><code>.border-warning</code></td>
-<td><code>border-color: var(--fbx-theme-warning);</code></td>
-</tr>
-<tr>
-<td><code>.border-danger</code></td>
-<td><code>border-color: var(--fbx-theme-danger);</code></td>
-</tr>
-<tr>
-<td><code>.border-white</code></td>
-<td><code>border-color: var(--fbx-color-white);</code></td>
-</tr>
-<tr>
-<td><code>.border-black</code></td>
-<td><code>border-color: var(--fbx-color-black);</code></td>
-</tr>
-<tr>
-<td><code>.border-radius</code></td>
-<td><code>border-radius: var(--fbx-border-radius);</code></td>
-</tr>
-</tbody>
-</table>
+<h3 id="indicators">Indicators</h3>
+<p>Add indicators for both the <code>min</code> and <code>max</code> by adding the <code>range-indicators</code> modifier class to the wrapper element.</p>
+<p>When indicators are added either side, the <code>active</code> indicator gets styled to show it is the current value.</p>
+<div class="fbx-snippet-demo">
+    <div class="flex-row align-cols-center flex-cols-12 flex-cols-md-5 row-gaps-xs">
+        <div class="form-field">
+            <div class="range-slider range-indicators js-range-slider">
+                <input type="range" min="0" max="100" value="50" step="1">
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="range-slider range-indicators js-range-slider"&gt;
+    &lt;input type="range" min="0" max="100" value="50" step="1"&gt;
+&lt;/div&gt;</code></pre>
+<p>Adding the <code>range-labeled</code> modifier class to wrapper element styles the indicators as labels:</p>
+<div class="fbx-snippet-demo">
+    <div class="flex-row align-cols-center flex-cols-12 flex-cols-md-5 row-gaps-xs">
+        <div class="form-field">
+            <div class="range-slider range-labeled js-range-slider">
+                <input type="range" min="0" max="100" value="50" step="1">
+            </div>
+        </div>
+        <div class="col-12"></div>
+        <div class="form-field">
+            <div class="range-slider range-labeled range-indicators js-range-slider">
+                <input type="range" min="0" max="100" value="50" step="1">
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;!-- Label style --&gt;
+&lt;div class="range-slider range-labeled js-range-slider"&gt;
+    &lt;input type="range" min="0" max="100" value="50" step="1"&gt;
+&lt;/div&gt;
+
+&lt;!-- Label style both indicators --&gt;
+&lt;div class="range-slider range-labeled range-indicators js-range-slider"&gt;
+    &lt;input type="range" min="0" max="100" value="50" step="1"&gt;
+&lt;/div&gt;</code></pre>
+<h5 id="prefix--suffix">Prefix &amp; Suffix</h5>
+<p>You can also add an optional prefix and/or suffix string to the indicators. This is controlled via data attributes on the input:</p>
+<div class="fbx-snippet-demo">
+    <div class="flex-row align-cols-center flex-cols-12 flex-cols-md-5 row-gaps-xs">
+        <div class="form-field">
+            <div class="range-slider js-range-slider">
+                <input type="range" min="0" max="500" value="50" step="1" data-prefix="$" data-suffix=".00">
+            </div>
+        </div>
+        <div class="col-12"></div>
+        <div class="form-field">
+            <div class="range-slider range-labeled js-range-slider">
+                <input type="range" min="0" max="500" value="50" step="1" data-prefix="$" data-suffix=".00">
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="range-slider js-range-slider"&gt;
+    &lt;input type="range" min="0" max="500" value="50" step="1" data-prefix="$" data-suffix=".00"&gt;
+&lt;/div&gt;
+
+&lt;div class="range-slider range-labeled js-range-slider"&gt;
+    &lt;input type="range" min="0" max="500" value="50" step="1" data-prefix="$" data-suffix=".00"&gt;
+&lt;/div&gt;</code></pre>
 <hr />
-<h3 id="centering">Centering</h3>
-<table>
-<thead>
-<tr>
-<th id="helper_class">Helper Class</th>
-<th id="css_value">CSS Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>.center-horizontal</code></td>
-<td><code>float: none;margin-left: auto;margin-right: auto;</code></td>
-</tr>
-<tr>
-<td><code>.center-vertical</code></td>
-<td><code>display: inline-block;vertical-align: middle;</code></td>
-</tr>
-</tbody>
-</table>
+<h3 id="css-customization">CSS Customization</h3>
+<div class="fbx-snippet-demo">
+    <style scoped>
+        .range-slider.custom-range
+        {
+            --fbx-track-highlight: var(--fbx-theme-danger);
+            --fbx-thumb-bg: var(--fbx-theme-danger);
+            --fbx-thumb-focus-ring-color: rgba(var(--fbx-theme-danger-rgb),0.3);
+            --fbx-icon-color-on: var(--fbx-theme-danger);
+            --fbx-track-size: 8px;
+            --fbx-thumb-size: 16px;
+        }
+    </style>
+    <div class="flex-row align-cols-center flex-cols-12 flex-cols-md-5 row-gaps-xs">
+        <div class="form-field">
+            <div class="range-slider custom-range js-range-slider">
+                <input type="range" min="0" max="500" value="50" step="1" data-prefix="$" data-suffix=".00">
+            </div>
+        </div>
+    </div>
+</div>
+<p>Range inputs use local CSS variables on <code>.range-slider</code> for enhanced component customization and styling. The base values are used by the UI to create all the variants. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>
+<p>Default values are set in the <code>scss/_config.scss</code> file in Frontbx's source.</p>
+<pre><code class="file-path language-file-path">scss/_config.scss</code></pre>
+<pre><code class="scss language-scss">$range-track-bg:                var(--fbx-gray-300);
+$range-track-highlight:         var(--fbx-theme-info);
+$range-thumb-bg:                var(--fbx-theme-info);
+$range-track-size:              4px;
+$range-thumb-size:              16px;
+$range-thumb-focus-ring-color:  rgba(var(--fbx-theme-info-rgb), 0.3);
+$range-indicator-color:         var(--fbx-gray-300);
+$range-indicator-font-size:     1.35rem;
+$range-icon-color:              var(--fbx-gray-400);
+$range-icon-color-on:           var(--fbx-theme-info);
+$range-icon-color-off:          var(--fbx-gray-200);</code></pre>
+<pre><code class="css language-css">.range-slider
+{
+    --fbx-track-bg: var(--fbx-gray-300);
+    --fbx-track-highlight: var(--fbx-theme-info);
+    --fbx-thumb-bg: var(--fbx-theme-info);
+    --fbx-track-size: 4px;
+    --fbx-thumb-size: 16px;
+    --fbx-thumb-focus-ring-color: rgba(var(--fbx-theme-info-rgb),0.3);
+    --fbx-indicator-color: var(--fbx-gray-300);
+    --fbx-indicator-font-size: 1.35rem;
+    --fbx-icon-color: var(--fbx-gray-400);
+    --fbx-icon-color-on: var(--fbx-theme-info);
+    --fbx-icon-color-off: var(--fbx-gray-200);
+}</code></pre>
 <hr />
-<h3 id="colors">Colors</h3>
+<h3 id="javascript-instantiation">JavaScript Instantiation</h3>
+<p>Range sliders can be instantiated via JavaScript to generate dynamic content on the fly. To create a slider dynamically, use Frontbx's <code>Component.Create</code> method either via the <code>frontbx.Dom</code> or the <code>RangeSlider</code> Component directly:</p>
+<div class="fbx-snippet-demo">
+    <div class="flex-row align-cols-center flex-cols-12 flex-cols-md-5 row-gaps-xs">
+        <div class="form-field js-insert-range-container"></div>
+        <div class="col-12"></div>
+        <div class="col text-center">
+            <button class="btn js-insert-range-btn">Insert range</button>
+        </div>
+    </div>
+</div>
+<pre><code class="JavaScript language-JavaScript">let options =
+{
+    min: 0,
+    max: 100,
+    value: 50,
+    step: 1,
+    labeled: false,
+    indicators: false,
+};
+
+// Via Frontbx dom
+frontbx.Dom().create('RangeSlider', options, container);
+
+// Or via Component directly
+frontbx.Dom().component('RangeSlider').create(options, container);</code></pre>
+<p>Below are the available options:</p>
 <table>
 <thead>
 <tr>
-<th id="helper_class">Helper Class</th>
-<th id="css_value">CSS Value</th>
+<th id="option">Option</th>
+<th id="type">Type</th>
+<th id="required">Required</th>
+<th id="behavior">Behavior</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>.color-transparent</code></td>
-<td><code>color: transparent;</code></td>
+<td><code>min</code></td>
+<td><code>Integer</code></td>
+<td>Yes</td>
+<td>Input <code>min</code>.</td>
 </tr>
 <tr>
-<td><code>.color-gray</code></td>
-<td><code>color: var(--fbx-gray);</code></td>
+<td><code>max</code></td>
+<td><code>Integer</code></td>
+<td>Yes</td>
+<td>Input <code>max</code>.</td>
 </tr>
 <tr>
-<td><code>.color-gray-100</code></td>
-<td><code>color: var(--fbx-gray-100);</code></td>
+<td><code>value</code></td>
+<td><code>Integer</code></td>
+<td>Yes</td>
+<td>Input <code>value</code>.</td>
 </tr>
 <tr>
-<td><code>.color-gray-200</code></td>
-<td><code>color: var(--fbx-gray-200);</code></td>
+<td><code>step</code></td>
+<td><code>Integer</code></td>
+<td>Yes</td>
+<td>Input <code>step</code>.</td>
 </tr>
 <tr>
-<td><code>.color-gray-300</code></td>
-<td><code>color: var(--fbx-gray-300);</code></td>
+<td><code>labeled</code></td>
+<td><code>Boolean</code></td>
+<td>No (default <code>false</code>)</td>
+<td>Enable label style indicator(s)</td>
 </tr>
 <tr>
-<td><code>.color-gray-400</code></td>
-<td><code>color: var(--fbx-gray-400);</code></td>
-</tr>
-<tr>
-<td><code>.color-gray-500</code></td>
-<td><code>color: var(--fbx-gray-500);</code></td>
-</tr>
-<tr>
-<td><code>.color-gray-600</code></td>
-<td><code>color: var(--fbx-gray-600);</code></td>
-</tr>
-<tr>
-<td><code>.color-gray-700</code></td>
-<td><code>color: var(--fbx-gray-700);</code></td>
-</tr>
-<tr>
-<td><code>.color-gray-800</code></td>
-<td><code>color: var(--fbx-gray-800);</code></td>
-</tr>
-<tr>
-<td><code>.color-gray-900</code></td>
-<td><code>color: var(--fbx-gray-900);</code></td>
-</tr>
-<tr>
-<td><code>.color-primary</code></td>
-<td><code>color: var(--fbx-theme-primary);</code></td>
-</tr>
-<tr>
-<td><code>.color-secondary</code></td>
-<td><code>color: var(--fbx-theme-secondary);</code></td>
-</tr>
-<tr>
-<td><code>.color-info</code></td>
-<td><code>color: var(--fbx-theme-info);</code></td>
-</tr>
-<tr>
-<td><code>.color-success</code></td>
-<td><code>color: var(--fbx-theme-success);</code></td>
-</tr>
-<tr>
-<td><code>.color-warning</code></td>
-<td><code>color: var(--fbx-theme-warning);</code></td>
-</tr>
-<tr>
-<td><code>.color-danger</code></td>
-<td><code>color: var(--fbx-theme-danger);</code></td>
-</tr>
-<tr>
-<td><code>.color-white</code></td>
-<td><code>color: var(--fbx-color-white);</code></td>
-</tr>
-<tr>
-<td><code>.color-black</code></td>
-<td><code>color: var(--fbx-color-black);</code></td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="displays">Displays</h3>
-<table>
-<thead>
-<tr>
-<th id="helper_class">Helper Class</th>
-<th id="css_value">CSS Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>.hide-overflow</code></td>
-<td><code>overflow: hidden;</code></td>
-</tr>
-<tr>
-<td><code>.show-overflow</code></td>
-<td><code>overflow: visible;</code></td>
-</tr>
-<tr>
-<td><code>.scroll-overflow</code></td>
-<td><code>overflow: scroll;</code></td>
-</tr>
-<tr>
-<td><code>.block</code></td>
-<td><code>display: block;</code></td>
-</tr>
-<tr>
-<td><code>.inline</code></td>
-<td><code>display: inline;</code></td>
-</tr>
-<tr>
-<td><code>.inline-block</code></td>
-<td><code>display: inline-block;</code></td>
-</tr>
-<tr>
-<td><code>.table</code></td>
-<td><code>display: table;</code></td>
-</tr>
-<tr>
-<td><code>.table-cell</code></td>
-<td><code>display: table-cell;</code></td>
-</tr>
-<tr>
-<td><code>.visibility-show</code></td>
-<td><code>visibility: visible;</code></td>
-</tr>
-<tr>
-<td><code>.visibility-hide</code></td>
-<td><code>visibility: hidden;</code></td>
-</tr>
-<tr>
-<td><code>.opacity-hide</code></td>
-<td><code>opacity: 0;</code></td>
-</tr>
-<tr>
-<td><code>.opacity-show</code></td>
-<td><code>opacity: 1;</code></td>
-</tr>
-<tr>
-<td><code>.hidden</code></td>
-<td><code>display: none;</code></td>
-</tr>
-<tr>
-<td><code>.no-select</code></td>
-<td><code>user-select: none;</code></td>
-</tr>
-<tr>
-<td><code>.sr-only</code></td>
-<td>Hides element off screen</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="floats">Floats</h3>
-<table>
-<thead>
-<tr>
-<th id="helper_class">Helper Class</th>
-<th id="css_value">CSS Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>.float-left</code></td>
-<td><code>float: left;</code></td>
-</tr>
-<tr>
-<td><code>.float-right</code></td>
-<td><code>float: right;</code></td>
-</tr>
-<tr>
-<td><code>.float-none</code></td>
-<td><code>float: none;</code></td>
-</tr>
-<tr>
-<td><code>.float-clear</code></td>
-<td><code>clear: both;</code></td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="flex">Flex</h3>
-<table>
-<thead>
-<tr>
-<th id="helper_class">Helper Class</th>
-<th id="css_value">CSS Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>.align-self-start</code></td>
-<td><code>align-self: flex-start;</code></td>
-</tr>
-<tr>
-<td><code>.align-self-end</code></td>
-<td><code>align-self: flex-end;</code></td>
-</tr>
-<tr>
-<td><code>.align-self-center</code></td>
-<td><code>align-self: center;</code></td>
-</tr>
-<tr>
-<td><code>.align-self-baseline</code></td>
-<td><code>align-self: baseline;</code></td>
-</tr>
-<tr>
-<td><code>.align-self-stretch</code></td>
-<td><code>align-self: stretch;</code></td>
-</tr>
-<tr>
-<td><code>.flex-content-left</code></td>
-<td><code>justify-content: flex-start;</code></td>
-</tr>
-<tr>
-<td><code>.flex-content-right</code></td>
-<td><code>justify-content: flex-end;</code></td>
-</tr>
-<tr>
-<td><code>.flex-content-top</code></td>
-<td><code>align-items: flex-start;</code></td>
-</tr>
-<tr>
-<td><code>.flex-content-bottom</code></td>
-<td><code>align-items: flex-end;</code></td>
-</tr>
-<tr>
-<td><code>.flex-content-center-x</code></td>
-<td><code>justify-content: center;</code></td>
-</tr>
-<tr>
-<td><code>.flex-content-center-y</code></td>
-<td><code>align-items: center;</code></td>
-</tr>
-<tr>
-<td><code>.flex-content-center</code></td>
-<td><code>justify-content: center;align-items: center; align-content: center;</code></td>
-</tr>
-<tr>
-<td><code>.flex-content-y-stretch</code></td>
-<td><code>align-items: stretch;</code></td>
-</tr>
-<tr>
-<td><code>.flex-content-y-baseline</code></td>
-<td><code>align-items: baseline;</code></td>
-</tr>
-<tr>
-<td><code>.flex-content-x-between</code></td>
-<td><code>justify-content: space-between;</code></td>
-</tr>
-<tr>
-<td><code>.flex-content-x-around</code></td>
-<td><code>justify-content: space-around;</code></td>
-</tr>
-<tr>
-<td><code>.flex-content-x-evenly</code></td>
-<td><code>justify-content: space-evenly;</code></td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="margins">Margins</h3>
-<table>
-<thead>
-<tr>
-<th id="helper_class">Helper Class</th>
-<th id="css_value">CSS Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>.no-margin</code></td>
-<td><code>margin: 0;</code></td>
-</tr>
-<tr>
-<td><code>.margin-5</code></td>
-<td><code>margin: 0.5rem;</code></td>
-</tr>
-<tr>
-<td><code>.margin-10</code></td>
-<td><code>margin: 1rem;</code></td>
-</tr>
-<tr>
-<td><code>.margin-15</code></td>
-<td><code>margin: 1.5rem;</code></td>
-</tr>
-<tr>
-<td><code>.margin-20</code></td>
-<td><code>margin: 2rem;</code></td>
-</tr>
-<tr>
-<td><code>.margin-25</code></td>
-<td><code>margin: 2.5rem;</code></td>
-</tr>
-<tr>
-<td><code>.margin-30</code></td>
-<td><code>margin: 3rem;</code></td>
-</tr>
-<tr>
-<td><code>.margin-35</code></td>
-<td><code>margin: 3.5rem;</code></td>
-</tr>
-<tr>
-<td><code>.margin-40</code></td>
-<td><code>margin: 4rem;</code></td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="paddings">Paddings</h3>
-<table>
-<thead>
-<tr>
-<th id="helper_class">Helper Class</th>
-<th id="css_value">CSS Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>.no-padding</code></td>
-<td><code>padding: 0;</code></td>
-</tr>
-<tr>
-<td><code>.pad-5</code></td>
-<td><code>padding: 0.5rem;</code></td>
-</tr>
-<tr>
-<td><code>.pad-10</code></td>
-<td><code>padding: 1rem;</code></td>
-</tr>
-<tr>
-<td><code>.pad-15</code></td>
-<td><code>padding: 1.5rem;</code></td>
-</tr>
-<tr>
-<td><code>.pad-20</code></td>
-<td><code>padding: 2rem;</code></td>
-</tr>
-<tr>
-<td><code>.pad-25</code></td>
-<td><code>padding: 2.5rem;</code></td>
-</tr>
-<tr>
-<td><code>.pad-30</code></td>
-<td><code>padding: 3rem;</code></td>
-</tr>
-<tr>
-<td><code>.pad-35</code></td>
-<td><code>padding: 3.5rem;</code></td>
-</tr>
-<tr>
-<td><code>.pad-40</code></td>
-<td><code>padding: 4rem;</code></td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="positions">Positions</h3>
-<table>
-<thead>
-<tr>
-<th id="helper_class">Helper Class</th>
-<th id="css_value">CSS Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>.relative</code></td>
-<td><code>position: relative;</code></td>
-</tr>
-<tr>
-<td><code>.absolute</code></td>
-<td><code>position: absolute;</code></td>
-</tr>
-<tr>
-<td><code>.static</code></td>
-<td><code>position: static;</code></td>
-</tr>
-<tr>
-<td><code>.fixed</code></td>
-<td><code>position: fixed;</code></td>
-</tr>
-<tr>
-<td><code>.top-0</code></td>
-<td><code>top: 0;</code></td>
-</tr>
-<tr>
-<td><code>.bottom-0</code></td>
-<td><code>bottom: 0;</code></td>
-</tr>
-<tr>
-<td><code>.right-0</code></td>
-<td><code>right: 0;</code></td>
-</tr>
-<tr>
-<td><code>.left-0</code></td>
-<td><code>left: 0;</code></td>
-</tr>
-<tr>
-<td><code>.top-50</code></td>
-<td><code>top: 50%;</code></td>
-</tr>
-<tr>
-<td><code>.bottom-50</code></td>
-<td><code>bottom: 50%;</code></td>
-</tr>
-<tr>
-<td><code>.right-50</code></td>
-<td><code>right: 50%;</code></td>
-</tr>
-<tr>
-<td><code>.left-50</code></td>
-<td><code>left: 50%;</code></td>
-</tr>
-<tr>
-<td><code>.full-width</code></td>
-<td><code>width: 100%;</code></td>
-</tr>
-<tr>
-<td><code>.full-height</code></td>
-<td><code>height: 100%;</code></td>
-</tr>
-<tr>
-<td><code>.width-50</code></td>
-<td><code>width: 50%;</code></td>
-</tr>
-<tr>
-<td><code>.width-0</code></td>
-<td><code>width: 0;</code></td>
-</tr>
-<tr>
-<td><code>.width-auto</code></td>
-<td><code>width: auto;</code></td>
-</tr>
-<tr>
-<td><code>.height-auto</code></td>
-<td><code>height: auto;</code></td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="transitions">Transitions</h3>
-<table>
-<thead>
-<tr>
-<th id="helper_class">Helper Class</th>
-<th id="css_value">CSS Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>.webkit-gl</code></td>
-<td><code>-webkit-transform: translate3d(0, 0, 0);</code></td>
-</tr>
-<tr>
-<td><code>.no-transition</code></td>
-<td><code>transition: 0s linear;</code></td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="typography">Typography</h3>
-<table>
-<thead>
-<tr>
-<th id="helper_class">Helper Class</th>
-<th id="css_value">CSS Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>.sans-serif</code></td>
-<td><code>font-family: var(--fbx-font-sans-serif);</code></td>
-</tr>
-<tr>
-<td><code>.monospace</code></td>
-<td><code>font-family: var(--fbx-font-monospace);</code></td>
-</tr>
-<tr>
-<td><code>.serif</code></td>
-<td><code>font-family: var(--fbx-font-serif);</code></td>
-</tr>
-<tr>
-<td><code>.heading-font</code></td>
-<td><code>font-family: var(--fbx-font-headings);</code></td>
-</tr>
-<tr>
-<td><code>.text-lightest</code></td>
-<td><code>font-weight: 100;</code></td>
-</tr>
-<tr>
-<td><code>.text-light</code></td>
-<td><code>font-weight: 300;</code></td>
-</tr>
-<tr>
-<td><code>.text-normal</code></td>
-<td><code>font-weight: 400;</code></td>
-</tr>
-<tr>
-<td><code>.text-bold</code></td>
-<td><code>font-weight: 500;</code></td>
-</tr>
-<tr>
-<td><code>.text-bolder</code></td>
-<td><code>font-weight: 600;</code></td>
-</tr>
-<tr>
-<td><code>.text-boldest</code></td>
-<td><code>font-weight: 900;</code></td>
-</tr>
-<tr>
-<td><code>.font-italic</code></td>
-<td><code>font-style: italic;</code></td>
-</tr>
-<tr>
-<td><code>.font-ellipses</code></td>
-<td><code>overflow: hidden;text-overflow: ellipsis;white-space: nowrap;</code></td>
-</tr>
-<tr>
-<td><code>.font-strike</code></td>
-<td><code>text-decoration: line-through;</code></td>
-</tr>
-<tr>
-<td><code>.uppercase</code></td>
-<td><code>text-transform: uppercase;</code></td>
-</tr>
-<tr>
-<td><code>.lowercase</code></td>
-<td><code>text-transform: lowercase;</code></td>
-</tr>
-<tr>
-<td><code>.capitalize</code></td>
-<td><code>text-transform: capitalize;</code></td>
-</tr>
-<tr>
-<td><code>.underline</code></td>
-<td><code>text-decoration: underline;</code></td>
-</tr>
-<tr>
-<td><code>.no-text-decoration</code></td>
-<td><code>text-decoration: none;</code></td>
-</tr>
-<tr>
-<td><code>.text-left</code></td>
-<td><code>text-align: left;</code></td>
-</tr>
-<tr>
-<td><code>.text-right</code></td>
-<td><code>text-align: right;</code></td>
-</tr>
-<tr>
-<td><code>.text-center</code></td>
-<td><code>text-align: center;</code></td>
-</tr>
-<tr>
-<td><code>.nowrap</code></td>
-<td><code>white-space: nowrap;</code></td>
+<td><code>indicators</code></td>
+<td><code>Boolean</code></td>
+<td>No (default <code>false</code>)</td>
+<td>Enable min and max indicators.</td>
 </tr>
 </tbody>
 </table></article>

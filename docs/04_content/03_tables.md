@@ -894,7 +894,7 @@ let options =
 
 let container = document.querySelector('.js-table-container');
 
-// Via Hibble dom
+// Via Frontbx dom
 frontbx.Dom().create('Table', options, container);
 
 // Or via Component directly

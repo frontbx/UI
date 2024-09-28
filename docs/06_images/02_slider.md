@@ -154,7 +154,7 @@ let options =
 
 let container = document.querySelector('.my-container');
 
-// Via Hibble dom
+// Via Frontbx dom
 let slider = frontbx.Dom().create('Slider', options, container);
 
 // Or via Component directly

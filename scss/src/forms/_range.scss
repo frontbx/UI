@@ -1,0 +1,192 @@
+@mixin track
+{
+    &::-webkit-slider-runnable-track { @content; }
+    &::-moz-range-track { @content; }
+    &::-moz-focus-outer {
+        border: none;
+        background: transparent;
+        appearance: none;
+    }
+}
+@mixin thumb
+{
+    &::-webkit-slider-thumb { @content; }
+    &::-moz-range-thumb { @content; }
+}
+@mixin thumbhover
+{
+    &::-webkit-slider-thumb:hover { @content; }
+    &::-moz-range-thumb:hover { @content; }
+}
+@mixin thumbactive
+{
+    &:active::-webkit-slider-thumb { @content; }
+    &:active::-moz-range-thumb { @content; }
+}
+
+.range-slider
+{
+    --fbx-track-bg: #{$range-track-bg};
+    --fbx-track-highlight: #{$range-track-highlight};
+    --fbx-thumb-bg: #{$range-thumb-bg};
+    --fbx-track-size: #{$range-track-size};
+    --fbx-thumb-size: #{$range-thumb-size};
+    --fbx-thumb-focus-ring-color: #{$range-thumb-focus-ring-color};
+    --fbx-indicator-color: #{$range-indicator-color};
+    --fbx-indicator-font-size: #{$range-indicator-font-size};
+    --fbx-icon-color: #{$range-icon-color};
+    --fbx-icon-color-on: #{$range-icon-color-on};
+    --fbx-icon-color-off: #{$range-icon-color-off};
+
+    font-size: var(--fbx-indicator-font-size);
+    font-weight: $text-bold;
+    color: var(--fbx-indicator-color);
+    padding: 20px;
+    min-width: 250px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+
+    input[type=range]
+    {
+        height: var(--fbx-track-size);
+        background-color: var(--fbx-track-bg);
+        background-image: linear-gradient(var(--fbx-track-highlight), var(--fbx-track-highlight));
+        flex: 1 1 auto;
+        background-size: 0 100%;
+        background-repeat: no-repeat;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        appearance: none;
+        margin: 0;
+        padding: 0;
+        border-radius: 30px;
+
+        &:focus
+        {
+            outline: none;
+        }
+
+        @include track;
+        
+        @include thumb
+        {
+            transition: box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+            width: var(--fbx-thumb-size);
+            height: var(--fbx-thumb-size);
+            background: var(--fbx-thumb-bg);
+            border: 0;
+            border-radius: 50% 50%;
+            appearance: none;
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+        }
+        @include thumbhover
+        {
+            box-shadow: var(--fbx-thumb-focus-ring-color) 0px 0px 0px 6px;
+        }
+        @include thumbactive
+        {   
+            box-shadow: var(--fbx-thumb-focus-ring-color) 0px 0px 0px 8px;
+        }
+    }
+    .slider-value
+    {
+        position: relative;
+        height: 1.5em;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        &.label
+        {
+            height: auto;
+            font-size: 1.2rem;
+        }
+    }
+
+    &.range-indicators
+    {
+        > .slider-value:not(.label):last-child
+        {
+            color: var(--fbx-track-highlight);
+        }
+        > .slider-value.label:last-child
+        {
+            --fbx-label-bg: var(--fbx-track-highlight);
+        }
+    }
+
+    .slider-value-number
+    {
+        height: 1em;
+        overflow: hidden;
+        display: inline-block;
+        user-select: none; 
+        width: auto;
+        max-width: 2em;
+        transition: max-width .75s ease;
+
+        &.digit-hidden
+        {
+            max-width: 0;
+        }
+
+        ul
+        {
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: column;
+            list-style-type: none;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            margin-top: -0.26em;
+            transition: transform .75s ease, opacity .5s ease;
+
+            li
+            {
+                text-align: center;
+                margin: 0;
+                padding: 4px 0px;
+                height: 1.5em;
+                line-height: 1em;
+                display: block;
+                color: inherit;
+            }
+        }
+    }
+
+    // Icons
+    > .fa
+    {
+        color: var(--fbx-icon-color);
+    }
+    > .fa:first-child,
+    > .label:first-child,
+    > .slider-value:first-child
+    {
+        //margin-right: 10px;
+    }
+    &.range-min > .fa:first-child
+    {
+        color: var(--fbx-icon-color-off);
+    }
+    &.range-max > input[type=range] + .fa
+    {
+        color: var(--fbx-icon-color-on);
+    }
+
+    input[type=range] + .fa,
+    input[type=range] + .label,
+    input[type=range] + .slider-value,
+    .fa + .slider-value
+    {
+        //margin-left: 10px;
+    }
+    
+}
+

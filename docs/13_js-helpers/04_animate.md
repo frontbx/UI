@@ -131,7 +131,7 @@ Below is interactive demo to showcase animating various values, click the button
 </div>
 
 ```JavaScript
-animate($('.js-animate-example'), {
+animate(find('.js-animate-example'), {
     width: 
     {
         to : '500px',

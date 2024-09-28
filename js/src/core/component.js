@@ -51,7 +51,6 @@
 
         if (!is_empty(nodes))
         {
-
             this._DOMElements = [...this._DOMElements, ...nodes];
 
             each(nodes, (i, node) => this.bind(node), this);

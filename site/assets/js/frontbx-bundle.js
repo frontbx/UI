@@ -3992,7 +3992,7 @@
      */
     _.prototype.first_children = function(el)
     {
-        return this.$All('> *', el);
+        return this.find_all('> *', el);
     }
     /**
      * Get all input elements from a form
@@ -4003,7 +4003,7 @@
      */
     _.prototype.form_inputs = function(form)
     {
-        return this.$All('input, textarea, select', form);
+        return this.find_all('input, textarea, select', form);
     }
     /**
      * Get an array of name/value objects for all inputs in a form
@@ -4117,8 +4117,8 @@
         return (
             rect.top >= 0 &&
             rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or find(window).height() */
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or find(window).width() */
         );
     }
     /**
@@ -4486,7 +4486,7 @@
         {
             el.parentNode.removeChild(el);
     
-            var children = this.$All('*', el).reverse();
+            var children = this.find_all('*', el).reverse();
     
             for (var i = 0, len = children.length; i < len; i++)
             {
@@ -4535,11 +4535,13 @@
      * @param  {DOMElement}   context (optional) (default document)
      * @return {DOMElement}
      */
-    _.prototype.$ = function(selector, context)
+    _.prototype.find = function(selector, context, includeContextEl)
     {
         selector = selector.trim();
     
         context = (typeof context === 'undefined' ? document : context);
+    
+        includeContextEl = (typeof includeContextEl === 'undefined' ? false : includeContextEl && context !== document);
     
         let fchild = selector.substring(0, 1) === '>';
         let multi  = selector.includes(',');
@@ -4554,14 +4556,6 @@
         return context.querySelector(selector);
     }
     
-    /**
-     * "$" Alias
-     *
-     */
-    _.prototype.find = function(selector, context)
-    {
-        return this.$(selector, context);
-    }
     
     /**
      * Select and return all nodes by selector
@@ -4571,7 +4565,7 @@
      * @param  {DOMElement}   context (optional) (default document)
      * @return {DOMElement}
      */
-    _.prototype.$All = function(selector, context, includeContextEl)
+    _.prototype.find_all = function(selector, context, includeContextEl)
     {
         selector = selector.trim();
     
@@ -4579,8 +4573,9 @@
     
         includeContextEl = (typeof includeContextEl === 'undefined' ? false : includeContextEl && context !== document);
     
-        let fchild = selector.substring(0, 1) === '>';
-        let multi  = selector.includes(',');
+        let fchild       = selector.substring(0, 1) === '>';
+        let multi        = selector.includes(',');
+        let hasParent    = context.parentNode; 
         let deleteParent = false;
     
         if (includeContextEl)
@@ -4603,15 +4598,6 @@
         if (deleteParent) context.parentNode.removeChild(context);
     
         return ret;
-    }
-    
-    /**
-     * "$All" Alias
-     *
-     */
-    _.prototype.find_all = function(selector, context)
-    {
-        return this.$All(selector, context);
     }
     /**
      * Aria show an element
@@ -7312,7 +7298,6 @@
     
             if (!is_empty(nodes))
             {
-    
                 this._DOMElements = [...this._DOMElements, ...nodes];
     
                 each(nodes, (i, node) => this.bind(node), this);
@@ -11447,7 +11432,7 @@
          */
         const VALIDATORS = 
         {
-            specialchars: ['!', '"', '`', '#', '$', '%', '&', '\'', '(', ')', '*', '+', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '{', '|', '}', '~'],
+            specialchars: ['!', '"', '`', '#', 'find', '%', '&', '\'', '(', ')', '*', '+', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '{', '|', '}', '~'],
     
             email: function(value)
             {
@@ -13123,6 +13108,475 @@
     (function()
     {
         /**
+         * Component base
+         * 
+         * @var {class}
+         */
+        const [Component] = frontbx.get('Component');
+    
+        /**
+         * Helper functions
+         * 
+         * @var {function}
+         */
+        const [find, add_class, add_event_listener, closest, in_dom, input_value, remove_class, remove_event_listener, extend] = frontbx.import(['find','add_class','add_event_listener','closest','in_dom','input_value','remove_class','remove_event_listener','extend']).from('_');
+    
+        /**
+         * Adds classes to inputs
+         *
+         * @author    {Joe J. Howard}
+         * @copyright {Joe J. Howard}
+         * @license   {https://raw.githubusercontent.comfrontbx/uimaster/LICENSE}
+         */
+        const Inputs = function()
+        {
+            this.super('.form-field input:not([type="radio"]):not([type="checkbox"]):not([type="range"]), .form-field select, .form-field textarea, .form-field label');
+    
+            return this;
+        }
+    
+        /**
+         * Event binder
+         *
+         * @access {private}
+         */
+        Inputs.prototype.bind = function(node)
+        {
+            if (node.tagName.toLowerCase() === 'label')
+            {
+                add_event_listener(node, 'click', this._onLabelClick);
+            }
+            else
+            {
+                add_event_listener(node, 'click, focus, blur, change, input', this._eventHandler);
+    
+                this._setClasses(node);
+            }
+        }
+    
+        /**
+         * Event ubinder
+         *
+         * @access {private}
+         */
+        Inputs.prototype.unbind = function(node)
+        {
+            if (node.tagName.toLowerCase() === 'label')
+            {
+                remove_event_listener(node, 'click', this._onLabelClick);
+            }
+            else
+            {
+                remove_event_listener(node, 'click, focus, blur, change, input', this._eventHandler);
+            }
+        }
+    
+        /**
+         * Event handler
+         *
+         * @access {private}
+         * @params {event|null} e Browser click event
+         */
+        Inputs.prototype._onLabelClick = function(e)
+        {
+            e = e || window.event;
+    
+            var input = find('input', this.parentNode);
+    
+            if (in_dom(input))
+            {
+                input.focus();
+    
+                return;
+            }
+    
+            var input = find('select', this.parentNode);
+    
+            if (in_dom(input))
+            {
+                input.focus();
+    
+                return;
+            }
+    
+            var input = find('textarea', this.parentNode);
+    
+            if (in_dom(input))
+            {
+                input.focus();
+    
+                return;
+            }
+        }
+    
+        /**
+         * Event handler
+         *
+         * @access {private}
+         * @params {event|null} e Browser click event
+         */
+        Inputs.prototype._eventHandler = function(e)
+        {
+            e = e || window.event;
+    
+            var wrapper = closest(this, '.form-field');
+    
+            if (!wrapper) return;
+    
+            if (e.type === 'click')
+            {
+                this.focus();
+            }
+            else if (e.type === 'focus')
+            {
+                add_class(wrapper, 'focus');
+            }
+            else if (e.type === 'blur')
+            {
+                remove_class(wrapper, 'focus');
+            }
+    
+            if (e.type === 'change' || e.type === 'input' || e.type === 'blur')
+            {
+                var _value = input_value(this);
+    
+                if (_value === '')
+                {
+                    remove_class(wrapper, 'not-empty');
+                    add_class(wrapper, 'empty');
+                }
+                else
+                {
+                    remove_class(wrapper, 'empty');
+                    add_class(wrapper, 'not-empty');
+                }
+            }
+        }
+    
+        /**
+         * Sets initial classes on load.
+         *
+         * @access {private}
+         * @params {DOMElement} input 
+         */
+        Inputs.prototype._setClasses = function(input)
+        {
+            var wrapper = closest(input, '.form-field');
+    
+            if (!wrapper) return;
+    
+            var _value = input_value(input);
+    
+            if (_value === '')
+            {
+                remove_class(wrapper, 'not-empty');
+                add_class(wrapper, 'empty');
+            }
+            else
+            {
+                remove_class(wrapper, 'empty');
+                add_class(wrapper, 'not-empty');
+            }
+        }
+    
+        // Load into frontbx DOM core
+        frontbx.dom().register('Inputs', extend(Component, Inputs));
+    })();
+    (function()
+    {
+        /**
+         * Component base
+         * 
+         * @var {class}
+         */
+        const [Component] = frontbx.get('Component');
+    
+        /**
+         * Helper functions
+         * 
+         * @var {function}
+         */
+        const [find, first_children, on, off, add_class, remove_class, has_class, each, map, _for, css, attr, is_empty, input_value, dom_element, extend] = frontbx.import(['find', 'first_children', 'on', 'off', 'add_class', 'remove_class', 'has_class', 'each', 'map', 'for', 'css', 'attr','is_empty', 'input_value','dom_element', 'extend']).from('_');
+    
+        /**
+         * Default values
+         * 
+         * @var {Object}
+         */
+        const DEFAULT_OPTIONS =
+        {
+            min: 0,
+            max: 100,
+            value: 50,
+            step: 1,
+            labeled: false,
+            indicators: false,
+        };
+    
+        /**
+         * Range input utility
+         * 
+         * @var {Function}
+         */
+        const Range = function(wrapper)
+        {
+            this.wrapperEl = wrapper;
+    
+            this.inputEl = find('input[type=range]', wrapper);
+    
+            let min     = attr(this.inputEl, 'min');
+            let max     = attr(this.inputEl, 'max');
+            let step    = attr(this.inputEl, 'step');
+            let value   = input_value(this.inputEl);
+            let suffix  = attr(this.inputEl, 'data-suffix');
+            let prefix  = attr(this.inputEl, 'data-prefix');
+            let labeled = has_class(this.wrapperEl, 'range-labeled');
+            let indicators = has_class(this.wrapperEl, 'range-indicators');
+    
+            min   = is_empty(min)   ? DEFAULT_OPTIONS.min : (min.includes('.') ? parseFloat(min) : parseInt(min));
+            max   = is_empty(max)   ? DEFAULT_OPTIONS.max : (max.includes('.') ? parseFloat(max) : parseInt(max));
+            step  = is_empty(step)  ? DEFAULT_OPTIONS.step : (step.includes('.') ? parseFloat(step) : parseInt(step));
+            value = is_empty(value) ? DEFAULT_OPTIONS.value : value;
+    
+            this.props = {min, max, step, value, suffix, prefix, labeled, indicators};
+    
+            this._build();
+    
+            this._bind();
+        }
+    
+        /**
+         * Destroy slider.
+         * 
+         * @access {public}
+         */
+        Range.prototype.destroy = function()
+        {
+            this._unbind();
+    
+            _for(first_children(this.wrapperEl), (i, elem) => elem !== this.inputEl ? this.wrapperEl.removeChild(elem) : null);
+        }
+    
+        /**
+         * Update the slider.
+         * 
+         * @access {public}
+         */
+        Range.prototype.update = function(e)
+        {
+            let value = input_value(this.inputEl); value = is_empty(value) ? 0 : value;
+    
+            if (value === this.props.min)
+            {
+                remove_class(this.wrapperEl, 'range-max');
+                add_class(this.wrapperEl, 'range-min');
+            }
+            else if (value === this.props.max)
+            {
+                remove_class(this.wrapperEl, 'range-min');
+                add_class(this.wrapperEl, 'range-max');
+            }
+            else 
+            {
+                remove_class(this.wrapperEl, 'range-min, range-max');
+            }
+    
+            this.props.value = value;
+    
+            this.updateBackground();
+    
+            _for(this.props.max.toString().length, (i) => this.updateIndicators(i));
+        }
+    
+        /**
+         * Bind listener.
+         * 
+         * @access {private}
+         */
+        Range.prototype._bind = function()
+        {
+            on(this.inputEl, 'input', this.update, this);
+        }
+    
+        /**
+         * Unbind listener.
+         * 
+         * @access {private}
+         */
+        Range.prototype._unbind = function()
+        {
+            off(this.inputEl, 'input', this.update, this);
+        }
+    
+        /**
+         * Build slider.
+         * 
+         * @access {private}
+         */
+        Range.prototype._build = function()
+        {
+            let length     = this.props.max.toString().length;
+            let digitWraps = [];
+            this.digitEls  = [];
+    
+            _for(length, () => 
+            {
+                let ul = dom_element({tag: 'ul'}, null, map(Array(10).fill(0), (i) => dom_element({tag: 'li', innerHTML: `${i}`})));
+    
+                this.digitEls.push(ul);
+    
+                digitWraps.push(dom_element({tag: 'div', class: 'slider-value-number'}, null, ul));
+            });
+    
+            if (this.props.prefix)
+            {
+                digitWraps.unshift(dom_element({tag: 'div', class: 'slider-value-number'}, null, dom_element({tag: 'ul'}, null, dom_element({tag: 'li', innerHTML: this.props.prefix}))));
+            }
+    
+            if (this.props.suffix)
+            {
+                digitWraps.push(dom_element({tag: 'div', class: 'slider-value-number'}, null, dom_element({tag: 'ul'}, null, dom_element({tag: 'li', innerHTML: this.props.suffix}))));
+            }
+    
+            // Label style
+            if (this.props.indicators)
+            {
+                let prefix = this.props.prefix || '';
+                let suffix = this.props.suffix || '';
+    
+                let label = dom_element({tag: 'div', class: this.props.labeled ? 'slider-value label' : 'slider-value'}, null, `${prefix}${this.props.min}${suffix}`);
+    
+                let fChild = this.wrapperEl.firstChild;
+    
+                if (fChild === this.inputEl)
+                {
+                    this.wrapperEl.insertBefore(label, fChild);
+                }
+                else
+                {
+                    this.wrapperEl.insertBefore(label, fChild.nextSibling);
+                }
+            }
+    
+            this.digitWrapper = dom_element({tag: 'div', class: `slider-value ${this.props.labeled ? 'label' : ''}`}, this.wrapperEl, digitWraps);
+    
+            this.update();
+        }
+    
+        /**
+         * Update the digit indicators.
+         * 
+         * @access {private}
+         * @param  {Integer} index
+         */
+        Range.prototype.updateIndicators = function(index)
+        {
+            let elem     = this.digitEls[index];
+            let value    = this.props.value.toString();
+            let { max }  = this.props;
+            let length   = max.toString().length;
+            let visible  = index + 1 > length - value.length;
+            let position = visible ? "-" + (value[index - (length - value.length)] * 10) + '%' : '10%';
+    
+            !visible ? add_class(elem.parentNode, 'digit-hidden') : remove_class(elem.parentNode, 'digit-hidden');
+    
+            //!visible ? css(elem.parentNode, 'display', 'none') : css(elem.parentNode, 'display', false);
+    
+            css(elem,
+            {
+                transform: `translateY(${position})`,
+                opacity: visible ? '1' : '0'
+            });
+        }
+    
+        /**
+         * Update the background of input.
+         * 
+         * @access {private}
+         */
+        Range.prototype.updateBackground = function()
+        {
+            css(this.inputEl, 'background-size', `${this.percent()}% 100%`);
+        }
+    
+        /**
+         * Returns background percentage width.
+         * 
+         * @access {private}
+         * @return {Float}
+         */
+        Range.prototype.percent = function()
+        {
+            let { min, max } = this.props;
+            
+            return (this.props.value - min) * 100 / (max - min)
+        }
+    
+        /**
+         * Ranges.
+         * 
+         * @var {Map}
+         */
+        const RANGES = new Map;
+    
+        /**
+         * RangeSlider Dom Component.
+         *
+         */
+        const RangeSlider = function()
+        {
+            this.super('.js-range-slider');
+        }
+    
+        /**
+         * @inheritdoc
+         * 
+         */
+        RangeSlider.prototype.bind = function(wrapper)
+        {        
+            RANGES.set(new Range(wrapper));
+        }
+    
+        /**
+         * @inheritdoc
+         * 
+         */
+        RangeSlider.prototype.unbind = function(wrapper)
+        {
+            let range = RANGES.get(wrapper);
+    
+            if (range)
+            {
+                range.destroy();
+    
+                RANGES.delete(wrapper);
+            }
+        }
+    
+        /**
+         * @inheritdoc
+         * 
+         */
+        RangeSlider.prototype.template = function(props)
+        {
+            console.log('create');
+    
+            let inputProps = { min: props.min, max: props.max, value: props.value, step: props.step };
+    
+            if (props.prefix) inputProps.dataPrefix = props.prefix;
+            if (props.suffix) inputProps.dataSuffix = props.suffix;
+    
+            return dom_element({tag: 'div', class: `range-slider ${props.labeled ? 'range-labeled' : ''} ${props.indicators ? 'range-indicators' : ''} js-range-slider`}, null,
+                dom_element({ ...{ tag: 'input', type: 'range'}, ...inputProps})
+            );
+        }
+    
+        // Load into frontbx DOM core
+        frontbx.dom().register('RangeSlider', extend(Component, RangeSlider));
+    })();
+    (function()
+    {
+        /**
          * Helper functions
          * 
          * @var {Function}
@@ -13648,7 +14102,7 @@
          * 
          * @var {Function}
          */
-        const [$, $All, add_event_listener, closest, first_children, in_array, input_value, is_empty, remove_event_listener, remove_from_dom, extend] = frontbx.import(['$','$All','add_event_listener','closest','first_children','in_array','input_value','is_empty','remove_event_listener','remove_from_dom','extend']).from('_');
+        const [find, find_all, add_event_listener, closest, first_children, in_array, input_value, is_empty, remove_event_listener, remove_from_dom, extend] = frontbx.import(['find','find_all','add_event_listener','closest','first_children','in_array','input_value','is_empty','remove_event_listener','remove_from_dom','extend']).from('_');
     
         /**
          * Chip inputs
@@ -13670,9 +14124,9 @@
          */
         ChipInputs.prototype.bind = function(_wrapper)
         {
-            let _input = $('.js-chip-input', _wrapper);
+            let _input = find('.js-chip-input', _wrapper);
     
-            add_event_listener($All('.js-remove-btn', _wrapper), 'click', this._removeChip);
+            add_event_listener(find_all('.js-remove-btn', _wrapper), 'click', this._removeChip);
     
             add_event_listener(_input, 'keyup', this._onKeyUp, this);
     
@@ -13690,8 +14144,8 @@
          */
         ChipInputs.prototype.unbind = function(_wrapper)
         {
-            var _removeBtns = $All('.btn-chip .js-remove-btn', _wrapper);
-            var _input = $('.js-chip-input', _wrapper);
+            var _removeBtns = find_all('.btn-chip .js-remove-btn', _wrapper);
+            var _input = find('.js-chip-input', _wrapper);
     
             remove_event_listener(_removeBtns, 'click', this._removeChip);
     
@@ -13769,7 +14223,7 @@
          */
         ChipInputs.prototype._removeLastChip = function(_wrapper)
         {
-            var _chips = $All('.btn-chip', _wrapper);
+            var _chips = find_all('.btn-chip', _wrapper);
     
             if (!is_empty(_chips))
             {
@@ -13796,7 +14250,7 @@
     
             _wrapper.insertBefore(chip, first_children(_wrapper).pop());
     
-            add_event_listener($('.js-remove-btn', chip), 'click', this._removeChip);
+            add_event_listener(find('.js-remove-btn', chip), 'click', this._removeChip);
     
             frontbx.dom().refresh('Ripple', _wrapper);
         }
@@ -13827,7 +14281,7 @@
         {
             var _result = [];
     
-            var _chips = $All('.btn-chip input', _wrapper);
+            var _chips = find_all('.btn-chip input', _wrapper);
     
             for (var i = 0; i < _chips.length; i++)
             {
@@ -13978,7 +14432,7 @@
          * 
          * @var {Function}
          */
-        const [$, add_event_listener, attr, closest, has_class, in_dom, remove_event_listener, remove_from_dom, trigger_event, extend] = frontbx.import(['$','add_event_listener','attr','closest','has_class','in_dom','remove_event_listener','remove_from_dom','trigger_event','extend']).from('_');
+        const [find, add_event_listener, attr, closest, has_class, in_dom, remove_event_listener, remove_from_dom, trigger_event, extend] = frontbx.import(['find','add_event_listener','attr','closest','has_class','in_dom','remove_event_listener','remove_from_dom','trigger_event','extend']).from('_');
     
         /**
          * Chip suggestions.
@@ -14025,7 +14479,7 @@
             e.preventDefault();
     
             var _wrapper = closest(this, '.js-chip-suggestions');
-            var _input   = $('#' + _wrapper.dataset.inputTarget);
+            var _input   = find('#' + _wrapper.dataset.inputTarget);
             var _text    = this.innerText.trim();
     
             if (!_input || !in_dom(_input))
@@ -14072,7 +14526,7 @@
          * 
          * @var {Function}
          */
-        const [$, add_class, add_event_listener, closest, has_class, remove_class, remove_event_listener, trigger_event, extend] = frontbx.import(['$','add_class','add_event_listener','closest','has_class','remove_class','remove_event_listener','trigger_event','extend']).from('_');
+        const [find, add_class, add_event_listener, closest, has_class, remove_class, remove_event_listener, trigger_event, extend] = frontbx.import(['find','add_class','add_event_listener','closest','has_class','remove_class','remove_event_listener','trigger_event','extend']).from('_');
     
         /**
          * Choice chips
@@ -14118,11 +14572,11 @@
     
             var _wrapper = closest(this, '.js-choice-chips');
     
-            var _input = $('.js-choice-input', _wrapper);
+            var _input = find('.js-choice-input', _wrapper);
     
             if (!has_class(this, 'selected'))
             {                
-                remove_class($('.btn-chip.selected', _wrapper), 'selected');
+                remove_class(find('.btn-chip.selected', _wrapper), 'selected');
     
                 add_class(this, 'selected');
     
@@ -14879,7 +15333,7 @@
          * 
          * @var {Function}
          */
-        const [$, add_event_listener, animate, bool, has_class, is_node_type, remove_event_listener, toggle_class, trigger_event, extend] = frontbx.import(['$','add_event_listener','animate','bool','has_class','is_node_type','remove_event_listener','toggle_class','trigger_event','extend']).from('_');
+        const [find, add_event_listener, animate, bool, has_class, is_node_type, remove_event_listener, toggle_class, trigger_event, extend] = frontbx.import(['find','add_event_listener','animate','bool','has_class','is_node_type','remove_event_listener','toggle_class','trigger_event','extend']).from('_');
     
         /**
          * Toggle height on click
@@ -14931,7 +15385,7 @@
             }
     
             var clicked  = this;
-            var targetEl = $('#' + clicked.dataset.collapseTarget);
+            var targetEl = find('#' + clicked.dataset.collapseTarget);
             var duration = parseInt(clicked.dataset.collapseSpeed) || 225;
             var easing   = clicked.dataset.collapseEasing || 'easeOutExpo';
             var opacity  = bool(clicked.dataset.withOpacity);
@@ -15362,7 +15816,7 @@
          */
         const InputMasks = function()
         {
-            this._nodes = Helper.$All('.js-mask');
+            this._nodes = Helper.find_all('.js-mask');
             
             this._masks = [];
     
@@ -15613,183 +16067,7 @@
         frontbx.dom().register('WayPoints', extend(Component, WayPoints));
     
     })();
-    (function()
-    {
-        /**
-         * Component base
-         * 
-         * @var {class}
-         */
-        const [Component] = frontbx.get('Component');
     
-        /**
-         * Helper functions
-         * 
-         * @var {function}
-         */
-        const [$, add_class, add_event_listener, closest, in_dom, input_value, remove_class, remove_event_listener, extend] = frontbx.import(['$','add_class','add_event_listener','closest','in_dom','input_value','remove_class','remove_event_listener','extend']).from('_');
-    
-        /**
-         * Adds classes to inputs
-         *
-         * @author    {Joe J. Howard}
-         * @copyright {Joe J. Howard}
-         * @license   {https://raw.githubusercontent.comfrontbx/uimaster/LICENSE}
-         */
-        const Inputs = function()
-        {
-            this.super('.form-field input:not([type="radio"]):not([type="checkbox"]):not([type="range"]), .form-field select, .form-field textarea, .form-field label');
-    
-            return this;
-        }
-    
-        /**
-         * Event binder
-         *
-         * @access {private}
-         */
-        Inputs.prototype.bind = function(node)
-        {
-            if (node.tagName.toLowerCase() === 'label')
-            {
-                add_event_listener(node, 'click', this._onLabelClick);
-            }
-            else
-            {
-                add_event_listener(node, 'click, focus, blur, change, input', this._eventHandler);
-    
-                this._setClasses(node);
-            }
-        }
-    
-        /**
-         * Event ubinder
-         *
-         * @access {private}
-         */
-        Inputs.prototype.unbind = function(node)
-        {
-            if (node.tagName.toLowerCase() === 'label')
-            {
-                remove_event_listener(node, 'click', this._onLabelClick);
-            }
-            else
-            {
-                remove_event_listener(node, 'click, focus, blur, change, input', this._eventHandler);
-            }
-        }
-    
-        /**
-         * Event handler
-         *
-         * @access {private}
-         * @params {event|null} e Browser click event
-         */
-        Inputs.prototype._onLabelClick = function(e)
-        {
-            e = e || window.event;
-    
-            var input = $('input', this.parentNode);
-    
-            if (in_dom(input))
-            {
-                input.focus();
-    
-                return;
-            }
-    
-            var input = $('select', this.parentNode);
-    
-            if (in_dom(input))
-            {
-                input.focus();
-    
-                return;
-            }
-    
-            var input = $('textarea', this.parentNode);
-    
-            if (in_dom(input))
-            {
-                input.focus();
-    
-                return;
-            }
-        }
-    
-        /**
-         * Event handler
-         *
-         * @access {private}
-         * @params {event|null} e Browser click event
-         */
-        Inputs.prototype._eventHandler = function(e)
-        {
-            e = e || window.event;
-    
-            var wrapper = closest(this, '.form-field');
-    
-            if (!wrapper) return;
-    
-            if (e.type === 'click')
-            {
-                this.focus();
-            }
-            else if (e.type === 'focus')
-            {
-                add_class(wrapper, 'focus');
-            }
-            else if (e.type === 'blur')
-            {
-                remove_class(wrapper, 'focus');
-            }
-    
-            if (e.type === 'change' || e.type === 'input' || e.type === 'blur')
-            {
-                var _value = input_value(this);
-    
-                if (_value === '')
-                {
-                    remove_class(wrapper, 'not-empty');
-                    add_class(wrapper, 'empty');
-                }
-                else
-                {
-                    remove_class(wrapper, 'empty');
-                    add_class(wrapper, 'not-empty');
-                }
-            }
-        }
-    
-        /**
-         * Sets initial classes on load.
-         *
-         * @access {private}
-         * @params {DOMElement} input 
-         */
-        Inputs.prototype._setClasses = function(input)
-        {
-            var wrapper = closest(input, '.form-field');
-    
-            if (!wrapper) return;
-    
-            var _value = input_value(input);
-    
-            if (_value === '')
-            {
-                remove_class(wrapper, 'not-empty');
-                add_class(wrapper, 'empty');
-            }
-            else
-            {
-                remove_class(wrapper, 'empty');
-                add_class(wrapper, 'not-empty');
-            }
-        }
-    
-        // Load into frontbx DOM core
-        frontbx.dom().register('Inputs', extend(Component, Inputs));
-    })();
     (function()
     {
         /**

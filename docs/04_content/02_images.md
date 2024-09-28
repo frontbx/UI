@@ -144,7 +144,7 @@ let options =
 
 let container = document.querySelector('.js-img-container');
 
-// Via Hibble dom
+// Via Frontbx dom
 frontbx.Dom().create('Image', options, container);
 
 // Or via Component directly

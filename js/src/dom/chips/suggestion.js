@@ -12,7 +12,7 @@
      * 
      * @var {Function}
      */
-    const [$, add_event_listener, attr, closest, has_class, in_dom, remove_event_listener, remove_from_dom, trigger_event, extend] = frontbx.import(['$','add_event_listener','attr','closest','has_class','in_dom','remove_event_listener','remove_from_dom','trigger_event','extend']).from('_');
+    const [find, add_event_listener, attr, closest, has_class, in_dom, remove_event_listener, remove_from_dom, trigger_event, extend] = frontbx.import(['find','add_event_listener','attr','closest','has_class','in_dom','remove_event_listener','remove_from_dom','trigger_event','extend']).from('_');
 
     /**
      * Chip suggestions.
@@ -59,7 +59,7 @@
         e.preventDefault();
 
         var _wrapper = closest(this, '.js-chip-suggestions');
-        var _input   = $('#' + _wrapper.dataset.inputTarget);
+        var _input   = find('#' + _wrapper.dataset.inputTarget);
         var _text    = this.innerText.trim();
 
         if (!_input || !in_dom(_input))

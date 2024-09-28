@@ -12,7 +12,7 @@
      * 
      * @var {Function}
      */
-    const [$, add_event_listener, animate, bool, has_class, is_node_type, remove_event_listener, toggle_class, trigger_event, extend] = frontbx.import(['$','add_event_listener','animate','bool','has_class','is_node_type','remove_event_listener','toggle_class','trigger_event','extend']).from('_');
+    const [find, add_event_listener, animate, bool, has_class, is_node_type, remove_event_listener, toggle_class, trigger_event, extend] = frontbx.import(['find','add_event_listener','animate','bool','has_class','is_node_type','remove_event_listener','toggle_class','trigger_event','extend']).from('_');
 
     /**
      * Toggle height on click
@@ -64,7 +64,7 @@
         }
 
         var clicked  = this;
-        var targetEl = $('#' + clicked.dataset.collapseTarget);
+        var targetEl = find('#' + clicked.dataset.collapseTarget);
         var duration = parseInt(clicked.dataset.collapseSpeed) || 225;
         var easing   = clicked.dataset.collapseEasing || 'easeOutExpo';
         var opacity  = bool(clicked.dataset.withOpacity);

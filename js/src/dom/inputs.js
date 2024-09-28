@@ -12,7 +12,7 @@
      * 
      * @var {function}
      */
-    const [$, add_class, add_event_listener, closest, in_dom, input_value, remove_class, remove_event_listener, extend] = frontbx.import(['$','add_class','add_event_listener','closest','in_dom','input_value','remove_class','remove_event_listener','extend']).from('_');
+    const [find, add_class, add_event_listener, closest, in_dom, input_value, remove_class, remove_event_listener, extend] = frontbx.import(['find','add_class','add_event_listener','closest','in_dom','input_value','remove_class','remove_event_listener','extend']).from('_');
 
     /**
      * Adds classes to inputs
@@ -74,7 +74,7 @@
     {
         e = e || window.event;
 
-        var input = $('input', this.parentNode);
+        var input = find('input', this.parentNode);
 
         if (in_dom(input))
         {
@@ -83,7 +83,7 @@
             return;
         }
 
-        var input = $('select', this.parentNode);
+        var input = find('select', this.parentNode);
 
         if (in_dom(input))
         {
@@ -92,7 +92,7 @@
             return;
         }
 
-        var input = $('textarea', this.parentNode);
+        var input = find('textarea', this.parentNode);
 
         if (in_dom(input))
         {

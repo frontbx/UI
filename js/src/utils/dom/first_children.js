@@ -7,5 +7,5 @@
  */
 _.prototype.first_children = function(el)
 {
-    return this.$All('> *', el);
+    return this.find_all('> *', el);
 }

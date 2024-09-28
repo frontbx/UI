@@ -376,7 +376,7 @@ let options =
 
 let container = document.querySelector('.my-container');
 
-// Via Hibble dom
+// Via Frontbx dom
 frontbx.Dom().create('Menu', options, container);
 
 // Or via Component directly

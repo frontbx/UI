@@ -262,6 +262,7 @@
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../forms/checkbox/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Checkbox</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../forms/radio/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Radio</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../forms/switch/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Switch</a></li>
+            <li class="menu-item "><a data-pjax-target="#article-body" href="../../forms/range/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Range</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../forms/chips/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Chips</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../forms/progress/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Progress</a></li>
             <li class="menu-item "><a data-pjax-target="#article-body" href="../../forms/input-mask/index.html" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">Input Mask</a></li>
@@ -336,7 +337,7 @@
 <hr />
 <h3 id="instantiation">Instantiation</h3>
 <p>The <code>FormValidator</code> can be accessed through Frontbx's <code>Container</code>, providing your target <code>&lt;form&gt;</code> DOMElement as a parameter.</p>
-<pre><code class="javascript language-javascript">const validator = frontbx.FormValidator(document.querySelector.$('#myform'));</code></pre>
+<pre><code class="javascript language-javascript">const validator = frontbx.FormValidator(document.querySelector('#myform'));</code></pre>
 <hr />
 <h3 id="markup">Markup</h3>
 <p>To setup a form for validation, use one of the pre-built validation rules as the <code>data-js-validation</code> attribute on any input:</p>
@@ -474,7 +475,7 @@
 <hr />
 <h3 id="validating">Validating</h3>
 <p>Instantiate a <code>FormValidator</code> instance via Frontbx's <code>Container</code>, passing the target <code>&lt;form&gt;</code> DOMElement as the parameter.</p>
-<pre><code class="javascript language-javascript">const validator = frontbx.FormValidator(document.querySelector.$('#myform'));</code></pre>
+<pre><code class="javascript language-javascript">const validator = frontbx.FormValidator(document.querySelector('#myform'));</code></pre>
 <p>The <code>validate</code> method will run validation on all inputs based on any validation attributes and return a <code>Boolean</code>. Any invalid <code>.form-field</code> elements will then be shown as invalid.</p>
 <pre><code class="javascript language-javascript">let valid = validator.validate();
 

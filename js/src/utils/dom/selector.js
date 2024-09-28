@@ -6,11 +6,13 @@
  * @param  {DOMElement}   context (optional) (default document)
  * @return {DOMElement}
  */
-_.prototype.$ = function(selector, context)
+_.prototype.find = function(selector, context, includeContextEl)
 {
     selector = selector.trim();
 
     context = (typeof context === 'undefined' ? document : context);
+
+    includeContextEl = (typeof includeContextEl === 'undefined' ? false : includeContextEl && context !== document);
 
     let fchild = selector.substring(0, 1) === '>';
     let multi  = selector.includes(',');
@@ -25,14 +27,6 @@ _.prototype.$ = function(selector, context)
     return context.querySelector(selector);
 }
 
-/**
- * "$" Alias
- *
- */
-_.prototype.find = function(selector, context)
-{
-    return this.$(selector, context);
-}
 
 /**
  * Select and return all nodes by selector
@@ -42,7 +36,7 @@ _.prototype.find = function(selector, context)
  * @param  {DOMElement}   context (optional) (default document)
  * @return {DOMElement}
  */
-_.prototype.$All = function(selector, context, includeContextEl)
+_.prototype.find_all = function(selector, context, includeContextEl)
 {
     selector = selector.trim();
 
@@ -50,8 +44,9 @@ _.prototype.$All = function(selector, context, includeContextEl)
 
     includeContextEl = (typeof includeContextEl === 'undefined' ? false : includeContextEl && context !== document);
 
-    let fchild = selector.substring(0, 1) === '>';
-    let multi  = selector.includes(',');
+    let fchild       = selector.substring(0, 1) === '>';
+    let multi        = selector.includes(',');
+    let hasParent    = context.parentNode; 
     let deleteParent = false;
 
     if (includeContextEl)
@@ -74,13 +69,4 @@ _.prototype.$All = function(selector, context, includeContextEl)
     if (deleteParent) context.parentNode.removeChild(context);
 
     return ret;
-}
-
-/**
- * "$All" Alias
- *
- */
-_.prototype.find_all = function(selector, context)
-{
-    return this.$All(selector, context);
 }

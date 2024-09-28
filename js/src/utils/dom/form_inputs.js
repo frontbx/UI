@@ -7,5 +7,5 @@
  */
 _.prototype.form_inputs = function(form)
 {
-    return this.$All('input, textarea, select', form);
+    return this.find_all('input, textarea, select', form);
 }

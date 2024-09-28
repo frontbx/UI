@@ -2,13 +2,12 @@
 // styles
 .radio
 {
-    display: inline-block;
-    position: relative;
-
     --fbx-radio-size: #{$radio-size};
     --fbx-radio-color: #{$radio-color};
     --fbx-radio-label-color: #{$radio-label-color};
 
+    display: inline-block;
+    position: relative;
     height: var(--fbx-radio-size);
     min-width: var(--fbx-radio-size);
     line-height: var(--fbx-radio-size);
@@ -20,11 +19,11 @@
         display: block;
         position: absolute;
         border-radius: 50%;
-        width: calc(var(--fbx-radio-size) * 2);
-        height: calc(var(--fbx-radio-size) * 2);
+        width: calc(var(--fbx-radio-size) * 1.6);
+        height: calc(var(--fbx-radio-size) * 1.6);
         background-color:var(--fbx-radio-color);
         top: 50%;
-        left: calc( (var(--fbx-radio-size) / 2) * -1);
+        left: calc(( (var(--fbx-radio-size)) / 3.56) * -1);
         transform: translateY(-50%);
         opacity: 0;
         transition: opacity .15s $base-easing;
@@ -145,15 +144,15 @@
     // Sizing
     &.radio-sm
     {
-        --fbx-radio-size: #{$radio-size * 0.75};
+        --fbx-radio-size: #{$radio-size * 0.9};
     }
     &.radio-md
     {
-        --fbx-radio-size: #{$radio-size * 0.95};
+        --fbx-radio-size: #{$radio-size * 1.2};
     }
     &.radio-lg
     {
-        --fbx-radio-size: #{$radio-size * 1.2};
+        --fbx-radio-size: #{$radio-size * 1.4};
     }
 }
 

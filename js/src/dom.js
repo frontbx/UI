@@ -1,5 +1,7 @@
 import './dom/slider/slider.js';
 import './dom/slider/sliders.js';
+import './dom/inputs.js';
+import './dom/range.js';
 import './dom/popover/handler.js';
 import './dom/popover/popovers.js';
 import './dom/chips/chip.js';
@@ -21,7 +23,7 @@ import './dom/tabs.js';
 import './dom/input-mask.js';
 import './dom/messages.js';
 import './dom/waypoint.js';
-import './dom/inputs.js';
+
 import './dom/ripple.js';
 import './dom/table.js';
 import './dom/image.js';

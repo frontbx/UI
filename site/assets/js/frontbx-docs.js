@@ -1360,3 +1360,33 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     frontbx.DocsDemo('.js-fd-trigger-2', () => frontdrop2.closed() ? frontdrop2.open() : frontdrop2.close());
 
 }());
+
+/**
+ * Range insert demo
+ *
+ */
+(function()
+{
+    let inserted = false;
+
+    let options =
+    {
+        min: 0,
+        max: 100,
+        value: 50,
+        step: 1,
+        labeled: false,
+        indicators: false,
+    };
+
+    frontbx.DocsDemo('.js-insert-range-btn', (e, btn) =>
+    {
+        if (!inserted)
+        {
+            frontbx.Dom().create('RangeSlider', options, document.querySelector('.js-insert-range-container'))
+            
+            inserted = true;    
+        }
+    }, () => inserted = false);
+
+}());

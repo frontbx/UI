@@ -12,7 +12,7 @@
      * 
      * @var {Function}
      */
-    const [$, add_class, add_event_listener, closest, has_class, remove_class, remove_event_listener, trigger_event, extend] = frontbx.import(['$','add_class','add_event_listener','closest','has_class','remove_class','remove_event_listener','trigger_event','extend']).from('_');
+    const [find, add_class, add_event_listener, closest, has_class, remove_class, remove_event_listener, trigger_event, extend] = frontbx.import(['find','add_class','add_event_listener','closest','has_class','remove_class','remove_event_listener','trigger_event','extend']).from('_');
 
     /**
      * Choice chips
@@ -58,11 +58,11 @@
 
         var _wrapper = closest(this, '.js-choice-chips');
 
-        var _input = $('.js-choice-input', _wrapper);
+        var _input = find('.js-choice-input', _wrapper);
 
         if (!has_class(this, 'selected'))
         {                
-            remove_class($('.btn-chip.selected', _wrapper), 'selected');
+            remove_class(find('.btn-chip.selected', _wrapper), 'selected');
 
             add_class(this, 'selected');
 

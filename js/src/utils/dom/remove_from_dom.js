@@ -17,7 +17,7 @@ _.prototype.remove_from_dom = function(el)
     {
         el.parentNode.removeChild(el);
 
-        var children = this.$All('*', el).reverse();
+        var children = this.find_all('*', el).reverse();
 
         for (var i = 0, len = children.length; i < len; i++)
         {

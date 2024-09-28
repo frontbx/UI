@@ -16,7 +16,7 @@
      */
     const InputMasks = function()
     {
-        this._nodes = Helper.$All('.js-mask');
+        this._nodes = Helper.find_all('.js-mask');
         
         this._masks = [];
 

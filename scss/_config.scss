@@ -385,6 +385,19 @@ $switch-track-color-on:         var(--fbx-gray-300) !default;
 $switch-knob-color-off:         var(--fbx-white) !default;
 $switch-knob-color-on:          var(--fbx-gray) !default;
 
+// Range
+$range-track-bg: 				var(--fbx-gray-300);
+$range-track-highlight: 		var(--fbx-theme-info);
+$range-thumb-bg: 				var(--fbx-theme-info);
+$range-track-size: 				4px;
+$range-thumb-size: 				16px;
+$range-thumb-focus-ring-color:  rgba(var(--fbx-theme-info-rgb), 0.3);
+$range-indicator-color: 		var(--fbx-gray-300);
+$range-indicator-font-size: 	1.45rem;
+$range-icon-color: 				var(--fbx-gray-400);
+$range-icon-color-on: 			var(--fbx-theme-info);
+$range-icon-color-off: 			var(--fbx-gray-200);
+
 // Progress
 $progress-size:                 10px !default;
 $progress-radius:               var(--fbx-border-radius) !default;
