@@ -147,6 +147,8 @@ $lazyload-start-grayscale:      1 !default;
 $lazyload-end-grayscale:        0 !default;
 $lazyload-transition:           opacity 1s cubic-bezier(0.4, 0.0, 0.2, 1), filter 1s cubic-bezier(0.4, 0.0, 0.2, 1);
 $lazyload-falback-bg:           #d0d4d9;
+$lazyload-falback-size:         30%;
+$lazyload-falback-padding:      30%;
 
 // Ripple
 $ripple-color:                  rgba(0, 0, 0, 0.15) !default;

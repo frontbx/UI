@@ -141,11 +141,39 @@
 }());
 
 /**
+ * Lazyload image demos
+ *
+ */
+(function()
+{
+    const [each, find_all, closest, add_class, has_class] = frontbx.import(['each', 'find_all', 'closest', 'add_class', 'has_class']).from('_');
+
+    frontbx.DocsDemo('.js-lazy-demo .js-lazy-demo-trigger', (i, btn) =>
+    {
+        let wrapper = closest(btn, '.js-lazy-demo');
+
+        let imgs = find_all('.js-lazy-demo-img', wrapper);
+
+        each(imgs, (i, img) =>
+        {
+            if (!has_class(img, 'js-lazyload'))
+            {
+                add_class(img, 'js-lazyload');
+
+                frontbx.dom().refresh('LazyLoad', wrapper);
+            }
+        });  
+    });
+
+}());
+
+/**
  * Insert image demo
  *
  */
 (function()
 {
+    let inserted = false;
 	let options =
 	{
 		src: '../../assets/img/trump-hero.jpg',
@@ -493,37 +521,33 @@
 	const DRAWER_MENU = '<ul class="menu"><li><span class="item-left"><span class="fa fa-inbox color-gray-500"></span></span><span class="item-body">Inbox</span><span class="item-right"><span class="label">4</span></span>  </li>  <li><span class="item-left"><span class="fa fa-flag color-gray-500"></span></span><span class="item-body">Flagged</span><span class="item-right"><span class="label">23</span></span>  </li>  <li><span class="item-left"><span class="fa fa-note-sticky color-gray-500"></span></span><span class="item-body">Drafts</span><span class="item-right"><span class="label">3</span></span>  </li>  <li><span class="item-left"><span class="fa fa-paper-plane color-gray-500"></span></span><span class="item-body">Sent</span><span class="item-right"><span class="status status-xs"></span></span>  </li>  <li><span class="item-left"><span class="fa fa-circle-minus color-gray-500"></span></span><span class="item-body">Junk</span><span class="item-right"><span class="status status-xs status-warning"></span></span>  </li>  <li><span class="item-left"><span class="fa fa-trash color-gray-500"></span></span><span class="item-body">Trash</span><span class="item-right"><span class="status status-xs status-danger"></span></span>  </li> </ul>';
     
     let drawer1;
+    let drawer2;
+
     frontbx.DocsDemo('.js-dw-trigger-1', () =>
     {        
+        if (drawer2) drawer2 = drawer2.destroy();
+
         if (drawer1) return drawer1.open();
 
         drawer1 = frontbx.Drawer({ content : DRAWER_MENU });
-    },
-    () =>
-    { 
-        if (drawer1)
-        {
-            drawer1.destroy();
 
-            drawer1 = null;
-        }
-    });
+    }, () => drawer1 ? drawer1 = drawer1.destroy() : null);
 
-    let drawer2;
+    
     frontbx.DocsDemo('.js-dw-trigger-2, .js-dw-trigger-3, .js-dw-trigger-4, .js-dw-trigger-5', (e, btn) =>
     {
-        if (drawer2) drawer2.destroy();
+        if (drawer1) drawer1 = drawer1.destroy();
 
         drawer2 = frontbx.Drawer({ direction : btn.innerText.toLowerCase().trim(), content : DRAWER_MENU });
-    },
-    () =>
-    { 
-        if (drawer2)
-        {
-            drawer2.destroy();
 
-            drawer2 = null;
-        }
+    }, () => drawer2 ? drawer2 = drawer2.destroy() : null);
+
+    const [on] = frontbx.import(['on']).from('_');
+
+    on(window, 'frontbx:pjax:start', () => 
+    {
+        if (drawer1) drawer1 = drawer1.destroy();
+        if (drawer2) drawer2 = drawer2.destroy();
     });
 
 }());
@@ -543,8 +567,12 @@
 	];
 
     let backdrop1;
+    let backdrop2;
+
     frontbx.DocsDemo('.js-bd-trigger-1', () =>
     {        
+        if (backdrop2) backdrop2 = backdrop2.destroy();
+
         if (backdrop1) return backdrop1.closed() ? backdrop1.open() : backdrop1.close();
 
         backdrop1 = frontbx.Backdrop(
@@ -554,21 +582,16 @@
 	            frontbx.Skeleton(pad, SKELETONS)
 	        },
 	        state: 'collapsed',
-	    }); 
-    },
-    () =>
-    { 
-        if (backdrop1)
-        {
-            backdrop1.destroy();
+	    });
 
-            backdrop1 = null;
-        }
-    });
+        backdrop1.open();
 
-    let backdrop2;
-    frontbx.DocsDemo('.js-bd-trigger-1', () =>
-    {        
+    }, () => backdrop1 ? backdrop1 = backdrop1.destroy() : null);
+   
+    frontbx.DocsDemo('.js-bd-trigger-2', () =>
+    {       
+        if (backdrop1) backdrop1 = backdrop1.destroy();
+
         if (backdrop2) return backdrop2.closed() ? backdrop2.open() : backdrop2.close();
         
         backdrop2 = frontbx.Backdrop(
@@ -580,15 +603,16 @@
 	        state: 'collapsed',
 	        pushbody: true,
 	    });
-    },
-    () =>
-    { 
-        if (backdrop2)
-        {
-            backdrop2.destroy();
+        backdrop2.open();
 
-            backdrop2 = null;
-        }
+    }, () => backdrop2 ? backdrop2 = backdrop2.destroy() : null);
+
+    const [on] = frontbx.import(['on']).from('_');
+
+    on(window, 'frontbx:pjax:start', () => 
+    {
+        if (backdrop1) backdrop1 = backdrop1.destroy();
+        if (backdrop2) backdrop2 = backdrop2.destroy();
     });
     
 }());
@@ -607,20 +631,50 @@
 	    { lines: 8, variant: 'text-block' },
 	];
 
-    let frontdrop1 = frontbx.Frontdrop(
-    {
-        callbackBuilt: (container, drawer, overlay) => frontbx.Skeleton(frontbx._().find('.card-block .container-fluid', container), SKELETONS),
-        state: 'collapsed'
-    });
-    frontbx.DocsDemo('.js-fd-trigger-1', () => frontdrop1.closed() ? frontdrop1.open() : frontdrop1.close());
+    let frontdrop1;
+    let frontdrop2;
 
-    let frontdrop2 = frontbx.Frontdrop(
+    frontbx.DocsDemo('.js-fd-trigger-1', () =>
     {
-        callbackBuilt: (container, drawer, overlay) => frontbx.Skeleton(frontbx._().find('.card-block .container-fluid', container), SKELETONS),
-        state: 'collapsed',
-        confirmBtn: 'Confirm Choice',
+        if (frontdrop2) frontdrop2 = frontdrop2.destroy();
+
+        if (frontdrop1) return frontdrop1.closed() ? frontdrop1.open() : frontdrop1.close();
+        
+        frontdrop1 = frontbx.Frontdrop(
+        {
+            callbackBuilt: (container, drawer, overlay) => frontbx.Skeleton(frontbx._().find('.card-block .container-fluid', container), SKELETONS),
+            state: 'collapsed'
+        });
+
+        frontdrop1.open();
+
+    }, () => frontdrop1 ? frontdrop1 = frontdrop1.destroy() : null );
+
+    
+    frontbx.DocsDemo('.js-fd-trigger-2', () =>
+    {
+        if (frontdrop1) frontdrop1 = frontdrop1.destroy();
+
+        if (frontdrop2) return frontdrop2.closed() ? frontdrop2.open() : frontdrop2.close();
+        
+        frontdrop2 = frontbx.Frontdrop(
+        {
+            callbackBuilt: (container, drawer, overlay) => frontbx.Skeleton(frontbx._().find('.card-block .container-fluid', container), SKELETONS),
+            state: 'collapsed',
+            confirmBtn: 'Confirm Choice',
+        });
+
+        frontdrop2.open();
+
+    }, () => frontdrop2 ? frontdrop2 = frontdrop2.destroy() : null);
+
+    const [on] = frontbx.import(['on']).from('_');
+
+    on(window, 'frontbx:pjax:start', () => 
+    {
+        if (frontdrop1) frontdrop1 = frontdrop1.destroy();
+        if (frontdrop2) frontdrop2 = frontdrop2.destroy();
     });
-    frontbx.DocsDemo('.js-fd-trigger-2', () => frontdrop2.closed() ? frontdrop2.open() : frontdrop2.close());
 
 }());
 

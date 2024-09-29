@@ -7391,13 +7391,11 @@
     // lazyload
     (function()
     {
-        /**
-         * Lazyload fallback
-         * 
-         * @var {string}
-         */
-        var LAZY_FALLBACK_IMAGE = typeof LAZY_FALLBACK_IMAGE === 'undefined' ? "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSJ3aGl0ZSI+CiAgPHBhdGggZD0iTTAgNCBMMCAyOCBMMzIgMjggTDMyIDQgeiBNNCAyNCBMMTAgMTAgTDE1IDE4IEwxOCAxNCBMMjQgMjR6IE0yNSA3IEE0IDQgMCAwIDEgMjUgMTUgQTQgNCAwIDAgMSAyNSA3Ij48L3BhdGg+Cjwvc3ZnPg==" : LAZY_FALLBACK_IMAGE;
-        
+        if (!window.LAZY_FALLBACK_IMAGE)
+        {
+            window.LAZY_FALLBACK_IMAGE = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSJ3aGl0ZSI+CiAgPHBhdGggZD0iTTAgNCBMMCAyOCBMMzIgMjggTDMyIDQgeiBNNCAyNCBMMTAgMTAgTDE1IDE4IEwxOCAxNCBMMjQgMjR6IE0yNSA3IEE0IDQgMCAwIDEgMjUgMTUgQTQgNCAwIDAgMSAyNSA3Ij48L3BhdGg+Cjwvc3ZnPg==';
+        }
+    
         /**
          * JS Async Queue
          *
@@ -7559,6 +7557,8 @@
         {
             const _this = this;
     
+            let _fallback = window.LAZY_FALLBACK_IMAGE;
+    
             return function loadImage(queue)
             {
                 var _image = new Image();
@@ -7586,11 +7586,11 @@
                 {
                     if (isImage)
                     {
-                        node.src = LAZY_FALLBACK_IMAGE;
+                        node.src = _fallback;
                     }
                     else
                     {
-                        node.style.backgroundImage = 'url('+ LAZY_FALLBACK_IMAGE +')';
+                        node.style.backgroundImage = `url("${_fallback}")`;
                     }
     
                     _this._markFailed(node);
@@ -16412,13 +16412,6 @@
     (function()
     {
         /**
-         * Lazyload fallback
-         * 
-         * @var {string}
-         */
-        var LAZY_FALLBACK_IMAGE = typeof LAZY_FALLBACK_IMAGE === 'undefined' ? '"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSJ3aGl0ZSI+CiAgPHBhdGggZD0iTTAgNCBMMCAyOCBMMzIgMjggTDMyIDQgeiBNNCAyNCBMMTAgMTAgTDE1IDE4IEwxOCAxNCBMMjQgMjR6IE0yNSA3IEE0IDQgMCAwIDEgMjUgMTUgQTQgNCAwIDAgMSAyNSA3Ij48L3BhdGg+Cjwvc3ZnPg=="' : LAZY_FALLBACK_IMAGE;
-    
-        /**
          * Component base
          * 
          * @var {class}
@@ -16437,7 +16430,7 @@
          * 
          * @var {Function}
          */
-        const AVAILABLE_OPTIONS =[ 'background', 'lazy', 'ratio', 'placeholder', 'src', 'grayscale'];
+        const AVAILABLE_OPTIONS = ['background', 'lazy', 'ratio', 'placeholder', 'src', 'grayscale'];
     
         /**
          * Toggle active on lists
@@ -16461,7 +16454,7 @@
             let isBackground = props.background;
             let isRatio      = !is_undefined(props.ratio);
             let isLazy       = is_undefined(props.lazy) ? false : props.lazy;
-            let src          = isLazy ? (props.placeholder || LAZY_FALLBACK_IMAGE) : props.src;
+            let src          = isLazy ? (props.placeholder || window.LAZY_FALLBACK_IMAGE) : props.src;
             let dataSrc      = isLazy ? props.src : false;
             
             if (!attrs.style) attrs.style = '';

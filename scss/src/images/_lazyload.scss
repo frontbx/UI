@@ -8,9 +8,11 @@
     --fbx-lazyload-end-grayscale: #{$lazyload-end-grayscale};
     --fbx-lazyload-transition: #{$lazyload-transition};
     --fbx-lazyload-falback-bg: #{$lazyload-falback-bg};
+    --fbx-lazyload-falback-size: #{$lazyload-falback-size};
+    --fbx-lazyload-falback-padding: #{$lazyload-falback-padding};
 
     opacity: var(--fbx-lazyload-start-opacity);
-    filter: var(--fbx-lazyload-start-blur);
+    filter: blur(var(--fbx-lazyload-start-blur));
     transition: var(--fbx-lazyload-transition);
     transform: translate3d(0,0,0);
 
@@ -32,7 +34,7 @@
     &.failed
     {
         background-color: var(--fbx-lazyload-falback-bg);
-        padding: 30%;
-        background-size: 40%;
+        background-size: var(--fbx-lazyload-falback-size);
+        padding: var(--fbx-lazyload-falback-padding);
     }
 }

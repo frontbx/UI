@@ -183,7 +183,6 @@ For more complex requirements point to the id of a hidden target element element
 
 All other options can be set through `data-attributes` on the anchor element in `hyphen-case`. For example to set the `closeAnywhere` option, you would set the `data-close-anywhere="true"` attribute.
 
-
 <div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center pole-sm">
         <button type="button" class="btn js-backdrop-trigger" data-content="#fd-content">Toggle</button>

@@ -325,7 +325,7 @@
         <div class="container-fluid docs-container" id="top">
             <div class="main-container js-main-container">
                 <article class="docs-body pole-sm" id="article-body"><h1 id="lazyload">Lazyload</h1>
-<p>Frontbx's handy Lazyload utility lets you gracefully load images asynchronously while the DOM renders, providing not only faster page load speeds but an elastically pleasing image loading experience for the user.</p>
+<p>Frontbx's handy Lazyload utility lets you gracefully load images asynchronously while the DOM renders, providing not only faster page load speeds but an aesthetically pleasing image loading experience for the user.</p>
 <hr />
 <ul>
 <li><a href="#setup">Setup</a></li>
@@ -337,63 +337,101 @@
 </ul>
 <hr />
 <h3 id="setup">Setup</h3>
-<p>Lazyloading requires a small amount of <code>JavaScript</code> and CSS loaded in the document head, preferably as high up possible.</p>
-<pre><code class="html language-html">&lt;script src="dist/js/lazyload.js"&gt;&lt;/script&gt;
-
-&lt;link rel="stylesheet" href="dist/css/lazyload.css"&gt;</code></pre>
+<p>Lazyloading is built into <code>frontbx.min.js</code> and <code>frontbx.bundle.min.js</code>, however for best performance, <code>frontbx-lazyload.min.js</code> should be added into the document <code>&lt;head&gt;</code> - preferably as high up as possible.</p>
+<pre><code class="html language-html">&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;script src="frontbx-lazyload.min.js"&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        ...
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<hr />
 <h3 id="markup">Markup</h3>
-<p>Once that is setup, add your images, you'll want to have a reduced size thumbnail version of your image set as the <code>src</code> and the full size as the image <code>data-src</code>.</p>
-<p>Remember to add the <code>.js-lazyload</code> <code>.lazyload</code> classes.</p>
-<div class="fbx-snippet-demo">
+<p>Once your JS is setup, add your images, you'll want to have a reduced size thumbnail version of your image set as the <code>src</code> and the full size as the image <code>data-src</code>. Remember to add the <code>.js-lazyload</code> <code>.lazyload</code> classes.</p>
+<div class="fbx-snippet-demo js-lazy-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="avatar avatar-xl">
-            <img alt="Trump" data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload" src="../../assets/img/trump-avatar_thumb.jpg" />
+            <img alt="Trump" data-src="../../assets/img/trump-avatar.jpg" class="img-responsive lazyload js-lazy-demo-img" src="../../assets/img/trump-avatar_thumb.jpg" />
         </div>
     </div>
+    <div class="flex-row-fluid align-cols-center pole-sm pole-n">
+        <button class="btn js-lazy-demo-trigger">Load image</button>
+    </div>
 </div>
-<pre><code class="html language-html">&lt;img alt="Trump" data-src="trump-hero.jpg" class="js-lazyload lazyload" src="trump-hero_thumb.jpg" /&gt;</code></pre>
-<p>Add the optional <code>.graysale</code> class to have the image fade from grayscale to full color.</p>
-<div class="fbx-snippet-demo">
+<pre><code class="html language-html">&lt;div class="avatar avatar-xl"&gt;
+    &lt;img alt="Trump" data-src="trump-hero.jpg" class="js-lazyload lazyload" src="trump-hero_thumb.jpg" /&gt;
+&lt;/div&gt;</code></pre>
+<p>Add the optional <code>.grayscale</code> class to have the image fade from grayscale to full color.</p>
+<div class="fbx-snippet-demo js-lazy-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="avatar avatar-xl">
-            <img alt="Trump" data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload" src="../../assets/img/trump-avatar_thumb.jpg" />
+            <img alt="Trump" data-src="../../assets/img/trump-avatar.jpg" class="img-responsive lazyload grayscale js-lazy-demo-img" src="../../assets/img/trump-avatar_thumb.jpg" />
         </div>
     </div>
+    <div class="flex-row-fluid align-cols-center pole-sm pole-n">
+        <button class="btn js-lazy-demo-trigger">Load image</button>
+    </div>
 </div>
-<pre><code class="html language-html">&lt;img alt="Trump" data-src="trump-hero.jpg" class="js-lazyload lazyload grayscale" src="trump-hero_thumb.jpg" /&gt;</code></pre>
+<pre><code class="html language-html">&lt;div class="avatar avatar-xl"&gt;
+    &lt;img alt="Trump" data-src="trump-hero.jpg" class="js-lazyload lazyload grayscale" src="trump-hero_thumb.jpg" /&gt;
+&lt;/div&gt;</code></pre>
 <hr />
 <h3 id="background-image">Background image</h3>
-<p>Lazyloading works on CSS background image elements too. This can be handy when you need an image at a fixed height.</p>
+<p>Lazyloading works on CSS background image elements too. This can be handy when you need an image at a fixed height or covering a background element.</p>
 <blockquote>
-  <p>Frontbx's <code>.bg-image</code> image is a handy utility to help manage image sizing. For more information checkout the <a href="../../content/images/index.html">Images Documentation</a>.</p>
+  <p>Frontbx includes a the CSS utility class <code>.bg-image</code> to help manage image sizing. For more information checkout the <a href="../../content/images/index.html">Images Documentation</a>.</p>
 </blockquote>
-<div class="fbx-snippet-demo">
+<div class="fbx-snippet-demo js-lazy-demo">
     <div class="flex-row-fluid align-cols-center">
-        <div class="bg-image js-lazyload lazyload grayscale raised-1 col-12 col-md-6 col-lg-4" data-src="../../assets/img/trump-hero.jpg" style="background-image: url(../../assets/img/trump-hero_thumb.jpg)"></div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="bg-image lazyload js-lazy-demo-img raised-1" data-src="../../assets/img/trump-hero.jpg" style="background-image: url(../../assets/img/trump-hero_thumb.jpg)"></div>
+        </div>
+    </div>
+    <div class="flex-row-fluid align-cols-center pole-sm pole-n">
+        <button class="btn js-lazy-demo-trigger">Load image</button>
     </div>
 </div>
-<pre><code class="html language-html">&lt;div data-src="trump-hero.jpg" class="bg-image js-lazyload lazyload grayscale" style="background-image: url(trump-hero_thumb.jpg)"&gt;&lt;/div&gt;</code></pre>
+<pre><code class="html language-html">&lt;div data-src="trump-hero.jpg" class="bg-image js-lazyload lazyload" style="background-image: url(trump-hero_thumb.jpg)"&gt;&lt;/div&gt;</code></pre>
 <hr />
 <h3 id="fallback">Fallback</h3>
-<p>Falback images gracefully display a simple icon and background when an image fails to load for whatever reason.</p>
-<div class="fbx-snippet-demo">
-    <div class="flex-row-fluid align-cols-center col-gaps-xs">
-        <div class="col col-12 col-md-3">
-            <img alt="Trump" data-src="foobar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="foobar.jpg" />
+<p>Falback images gracefully display a simple icon and background when an image fails to load for whatever reason. The demo below simulates a failed image load:</p>
+<div class="fbx-snippet-demo js-lazy-demo">
+    <div class="flex-row align-cols-center col-gaps-sm flex-cols-6 flex-cols-md-3">
+        <div class="col">
+            <div class="ratio-img ratio-1-1">
+                <img alt="Trump" data-src="foobar.jpg" class="lazyload js-lazy-demo-img" src="../../assets/img/trump-avatar_thumb.jpg" />
+            </div>
         </div>
-        <div class="col col-12 col-md-3">
-            <div data-src="foobar.jpg" class="bg-image image-responsive ratio-1-1 js-lazyload lazyload grayscale" style="background-image: url(foobar.jpg)"></div>
+        <div class="col">
+            <div data-src="foobar.jpg" class="bg-image ratio-1-1 lazyload js-lazy-demo-img" style="background-image: url(../../assets/img/trump-avatar_thumb.jpg)"></div>
         </div>
     </div>
+    <div class="flex-row-fluid align-cols-center pole-sm pole-n">
+        <button class="btn js-lazy-demo-trigger">Load images</button>
+    </div>
 </div>
-<pre><code class="html language-html">&lt;img alt="Trump" data-src="foobar.jpg" class="img-responsive js-lazyload lazyload" src="foobar.jpg" /&gt;
-&lt;div data-src="foobar.jpg" class="bg-image image-responsive ratio-1-1 js-lazyload lazyload grayscale" style="background-image: url(foobar.jpg)"&gt;&lt;/div&gt;</code></pre>
-<p>The fallback image is set via the JavaScript LazyLoad module from the variable <code>LAZY_FALLBACK_IMAGE</code>. You can change this by setting the variable to your own image before the LazyLoad script is called:</p>
-<pre><code class="html language-html">&lt;script type="text/javascript"&gt;var LAZY_FALLBACK_IMAGE = '...';&lt;/script&gt;
+<pre><code class="html language-html">&lt;img alt="Trump" data-src="foobar.jpg" class="img-responsive js-lazyload lazyload" src="trump-avatar_thumb.jpg" /&gt;
 
-&lt;script src="dist/js/lazyload.js"&gt;&lt;/script&gt;
-
-&lt;link rel="stylesheet" href="dist/css/lazyload.css"&gt;</code></pre>
+&lt;div data-src="foobar.jpg" class="bg-image image-responsive ratio-1-1 js-lazyload lazyload grayscale" style="background-image: url(trump-avatar_thumb.jpg)"&gt;&lt;/div&gt;</code></pre>
+<p>The fallback placeholder can by adjusted globally by setting <code>window.LAZY_FALLBACK_IMAGE</code> to <code>base64</code> image string of your choosing prior to lazy-loading. The background color and sizing can also be adjusted with CSS Variables:</p>
+<pre><code class="html language-html">&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;script&gt;window.LAZY_FALLBACK_IMAGE = 'data:image/svg+xml;base64...';&lt;/script&gt;
+        &lt;script src="frontbx-lazyload.min.js"&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        ...
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<pre><code class="css language-css">.lazyload.failed
+{
+    --fbx-lazyload-falback-bg: #000000;
+    --fbx-lazyload-falback-size: 30%;
+    --fbx-lazyload-falback-padding: 30%;
+}</code></pre>
 <hr />
 <h3 id="dynamic-content">Dynamic content</h3>
 <p>When inserting elements into the DOM after the page has loaded, for example using dynamic content via <code>Ajax</code>, you can refresh the <code>LazyLoad</code> module via the Frontbx's <code>dom</code>.</p>

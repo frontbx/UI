@@ -37,10 +37,30 @@
         </style>
     </head>
     <body>
-        <div class="pad-20">
-            <div class="flex-row-fluid align-cols-center-y pole-sm">
-                <button class="js-dw-trigger btn">Open</button>
+        <nav class="navbar bg-primary">
+            <div class="container-fluid">
+                <a class="nav-logo" href="/">
+                    <span class="logo-text">BRAND</span>
+                </a>      
+                <ul class="nav-menu flex-content-left">
+                    <li>
+                        <button class="hamburger xs sm md js-dw-trigger" type="button" role="button" title="Toggle navigation">
+                            <span class="hamburger-bun  hamburger-bun--top"></span>
+                            <span class="hamburger-patty"></span>
+                            <span class="hamburger-bun  hamburger-bun--btm"></span>
+                        </button>
+                    </li>
+                </ul>
+                <ul class="nav-menu flex-content-right">
+                    <li>
+                        <a href="#">
+                            <span class="fa fa-ellipsis-vertical"></span>
+                        </a>
+                    </li>
+                </ul>
             </div>
+        </nav>
+        <div class="pad-20">
             <div class="skeleton-text-block skeleton-lines">
                 <div class="skeleton" style="width: 81%;"></div>
                 <div class="skeleton" style="width: 84%;"></div>
@@ -58,13 +78,16 @@
         <script src="{{ASSET_PATH}}assets/js/frontbx-bundle.min.js"></script>
         <script src="{{ASSET_PATH}}assets/js/frontbx-docs.min.js"></script>
         <script type="text/javascript">
+
+            const [find, remove_class, toggle_class] = frontbx.import(['find', 'remove_class', 'toggle_class']).from('_');
+
             let drawer = frontbx.Drawer(
             {
                 persistent    : true,
                 pushbody      : true,
                 direction     : 'left',
                 state         : 'collapsed',
-                callbackClose : () => open = false,
+                callbackClose : () => remove_class(find('.js-dw-trigger'), 'active'),
                 content          : `
                 <ul class="menu"> 
                     <li>
@@ -101,7 +124,12 @@
         
             });
 
-            frontbx.DocsDemo('.js-dw-trigger', () => drawer.state() === 'expanded' ? drawer.close() : drawer.open());
+            frontbx.DocsDemo('.js-dw-trigger', (e, btn) =>
+            {
+                toggle_class(btn, 'active');
+
+                drawer.opened() ? drawer.close() : drawer.open()
+            });
         </script>
 
     </body>
