@@ -10,9 +10,15 @@ _.prototype.traverse_up = function(DOMElement, callback)
     // Stop on document
     if (DOMElement === document || this.is_undefined(DOMElement) || DOMElement === null) return;
 
-    if (callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className.trim()))
+    let response = callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className.trim());
+
+    if (response)
     {
         return DOMElement;
+    }
+    else if (response === false)
+    {
+        return;
     }
 
     return this.traverse_up(DOMElement.parentNode, callback);
@@ -35,9 +41,11 @@ _.prototype.traverse_down = function(DOMElement, callback)
 
     this.each(children, (i, child) => 
     {
-        if (callback(child))
+        let response = callback(child, child.tagName.toLowerCase(), child.className.trim());
+
+        if (response || response === false)
         {
-            ret = child;
+            ret = response !== false ? DOMElement : response;
 
             return false;
         }
@@ -58,7 +66,16 @@ _.prototype.traverse_next = function(DOMElement, callback)
     // Stop on document
     if (DOMElement === document || this.is_undefined(DOMElement) || DOMElement === null) return;
 
-    if (callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className.trim())) return true;
+    let response = callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className.trim());
+
+    if (response)
+    {
+        return DOMElement;
+    }
+    else if (response === false)
+    {
+        return;
+    }
 
     return this.traverse_next(DOMElement.nextSibling, callback);
 }
@@ -75,7 +92,16 @@ _.prototype.traverse_prev = function(DOMElement, callback)
     // Stop on document
     if (DOMElement === document || this.is_undefined(DOMElement) || DOMElement === null) return;
 
-    if (callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className.trim()))  return true;
+    let response = callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className.trim());
+
+    if (response)
+    {
+        return DOMElement;
+    }
+    else if (response === false)
+    {
+        return;
+    }
 
     return this.traverse_prev(DOMElement.previousSibling, callback);
 }

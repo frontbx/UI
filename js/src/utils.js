@@ -35,6 +35,7 @@ import './utils/css/css_transition_props.js';
 import './utils/css/css_transform_props.js';
 import './utils/css/css_to_3d_transform.js';
 import './utils/dom/add_class.js';
+import './utils/dom/class_names.js';
 import './utils/dom/closest.js';
 import './utils/dom/closest_class.js';
 import './utils/dom/coordinates.js';

@@ -34,27 +34,17 @@ _.prototype.closest_class = function(el, clas)
         return el.parentNode;
     }
 
-    var parent = el.parentNode;
+    let ret = null;
 
-    if (parent === window.document)
-    {
-        return null;
-    }
-
-    while (parent !== document.body)
+    this.traverse_up(el, (parent) =>
     {
         if (this.has_class(parent, clas))
         {
-            return parent;
+            ret = parent;
+
+            return true;
         }
-
-        if (parent === null || typeof parent === 'undefined')
-        {
-            return null;
-        }
-
-        parent = parent.parentNode;
-    }
-
-    return null;
+    });
+    
+    return ret;
 }

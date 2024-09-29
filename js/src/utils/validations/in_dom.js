@@ -16,18 +16,30 @@ _.prototype.in_dom = function(element)
         return false;
     }
 
+    let selector = element.tagName.toLowerCase();
+
+    if (element.id && element.id.trim() !== '')
+    {
+        selector = `#${element.id}`;
+    }
+    else if (element.className && element.className.trim() !== '')
+    {
+        let classNames = this.class_names(element);
+
+        selector = classNames.length === 1 ? `.${classNames[0]}` : `.${classNames.join('.')}`;
+    }
+
+    let matches = this.find_all(selector);
     let ret = false;
 
-    this.traverse_up(element, function(node)
+    this.each(matches, (i, match) =>
     {
-        if (node === document.body || node === document.documentElement)
+        if (match === element)
         {
             ret = true;
 
-            return true;
+            return false;
         }
-
-        return false;
     });
 
     return ret;

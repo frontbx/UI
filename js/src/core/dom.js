@@ -156,7 +156,8 @@
      * Refresh the DOM modiules or a string module
      *
      * @access {public}
-     * @param {string} name Name of the module (optional) (default false)
+     * @param  {string}               name    Name of the module (optional) (default false)
+     * @param  {DOMElement|undefined} context Context to refresh (default document)
      */
     Dom.prototype.refresh = function(component, context)
     {
@@ -197,11 +198,11 @@
             {
                 this._unbindComponent(name, context);
 
-                collect_garbage();
-
                 this._bindComponent(name, context, true);
             }
         }, this);
+
+        collect_garbage();
 
         trigger_event(window, `frontbx:dom:refresh`, { context: context});
 

@@ -208,15 +208,10 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     }
 
     DemoComponent.prototype.unbind = function(node)
-    {
+    {        
         off(node, 'click', this._handler, this);
         
-        if (this.bound)
-        {
-        	if (this.unbinder) this.unbinder();
-
-        	this.bound = false;
-        }
+        if (this.unbinder) this.unbinder();
     }
 
     DemoComponent.prototype._handler = function(e, node)
@@ -886,7 +881,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     const [each, find_all, closest, add_class, has_class] = frontbx.import(['each', 'find_all', 'closest', 'add_class', 'has_class']).from('_');
 
     frontbx.DocsDemo('.js-lazy-demo .js-lazy-demo-trigger', (i, btn) =>
-    {
+    {        
         let wrapper = closest(btn, '.js-lazy-demo');
 
         let imgs = find_all('.js-lazy-demo-img', wrapper);

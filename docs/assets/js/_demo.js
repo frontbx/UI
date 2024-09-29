@@ -25,15 +25,10 @@
     }
 
     DemoComponent.prototype.unbind = function(node)
-    {
+    {        
         off(node, 'click', this._handler, this);
         
-        if (this.bound)
-        {
-        	if (this.unbinder) this.unbinder();
-
-        	this.bound = false;
-        }
+        if (this.unbinder) this.unbinder();
     }
 
     DemoComponent.prototype._handler = function(e, node)

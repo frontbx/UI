@@ -3777,6 +3777,21 @@
         return this;
     }
     /**
+     * Returns element classNames
+     *
+     * @param   {HTMLElement}  element  Element to check
+     * @return  {Array}
+     */
+    _.prototype.class_names = function(element)
+    {
+        if (this.is_htmlElement(element) && element.className && element.className.trim() !== '')
+        {
+            return element.className.replace( /\s\s+/g, ' ').trim().split(' ');
+        }
+    
+        return [];
+    }
+    /**
      * Closest parent node by type/class or array of either
      *
      * @access {public}
@@ -3896,29 +3911,19 @@
             return el.parentNode;
         }
     
-        var parent = el.parentNode;
+        let ret = null;
     
-        if (parent === window.document)
-        {
-            return null;
-        }
-    
-        while (parent !== document.body)
+        this.traverse_up(el, (parent) =>
         {
             if (this.has_class(parent, clas))
             {
-                return parent;
+                ret = parent;
+    
+                return true;
             }
-    
-            if (parent === null || typeof parent === 'undefined')
-            {
-                return null;
-            }
-    
-            parent = parent.parentNode;
-        }
-    
-        return null;
+        });
+        
+        return ret;
     }
     /**
      * Get an element's absolute coordinates
@@ -4705,9 +4710,15 @@
         // Stop on document
         if (DOMElement === document || this.is_undefined(DOMElement) || DOMElement === null) return;
     
-        if (callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className.trim()))
+        let response = callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className.trim());
+    
+        if (response)
         {
             return DOMElement;
+        }
+        else if (response === false)
+        {
+            return;
         }
     
         return this.traverse_up(DOMElement.parentNode, callback);
@@ -4730,9 +4741,11 @@
     
         this.each(children, (i, child) => 
         {
-            if (callback(child))
+            let response = callback(child, child.tagName.toLowerCase(), child.className.trim());
+    
+            if (response || response === false)
             {
-                ret = child;
+                ret = response !== false ? DOMElement : response;
     
                 return false;
             }
@@ -4753,7 +4766,16 @@
         // Stop on document
         if (DOMElement === document || this.is_undefined(DOMElement) || DOMElement === null) return;
     
-        if (callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className.trim())) return true;
+        let response = callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className.trim());
+    
+        if (response)
+        {
+            return DOMElement;
+        }
+        else if (response === false)
+        {
+            return;
+        }
     
         return this.traverse_next(DOMElement.nextSibling, callback);
     }
@@ -4770,7 +4792,16 @@
         // Stop on document
         if (DOMElement === document || this.is_undefined(DOMElement) || DOMElement === null) return;
     
-        if (callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className.trim()))  return true;
+        let response = callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className.trim());
+    
+        if (response)
+        {
+            return DOMElement;
+        }
+        else if (response === false)
+        {
+            return;
+        }
     
         return this.traverse_prev(DOMElement.previousSibling, callback);
     }
@@ -5197,21 +5228,20 @@
      */
     _.prototype.collect_garbage = function()
     {
-        let _this = this;
     
-        _this.each(this._events, (guid, types) =>
+        this.each(this._events, (guid, types) =>
         {
-            var cleared = false;
+            let cleared = false;
     
-            _this.each(types, (type, callbacks) =>
+            this.each(types, (type, callbacks) =>
             {
                 let DOMElement = callbacks[0].element;
-    
+                
                 if (!this.in_dom(DOMElement))
                 {
                     cleared = true;
     
-                    _this.__remove_listener(DOMElement, type);
+                    this.__remove_listener(DOMElement, type);
                 }
             });
     
@@ -6320,18 +6350,30 @@
             return false;
         }
     
+        let selector = element.tagName.toLowerCase();
+    
+        if (element.id && element.id.trim() !== '')
+        {
+            selector = `#${element.id}`;
+        }
+        else if (element.className && element.className.trim() !== '')
+        {
+            let classNames = this.class_names(element);
+    
+            selector = classNames.length === 1 ? `.${classNames[0]}` : `.${classNames.join('.')}`;
+        }
+    
+        let matches = this.find_all(selector);
         let ret = false;
     
-        this.traverse_up(element, function(node)
+        this.each(matches, (i, match) =>
         {
-            if (node === document.body || node === document.documentElement)
+            if (match === element)
             {
                 ret = true;
     
-                return true;
+                return false;
             }
-    
-            return false;
         });
     
         return ret;
@@ -7162,7 +7204,8 @@
          * Refresh the DOM modiules or a string module
          *
          * @access {public}
-         * @param {string} name Name of the module (optional) (default false)
+         * @param  {string}               name    Name of the module (optional) (default false)
+         * @param  {DOMElement|undefined} context Context to refresh (default document)
          */
         Dom.prototype.refresh = function(component, context)
         {
@@ -7203,11 +7246,11 @@
                 {
                     this._unbindComponent(name, context);
     
-                    collect_garbage();
-    
                     this._bindComponent(name, context, true);
                 }
             }, this);
+    
+            collect_garbage();
     
             trigger_event(window, `frontbx:dom:refresh`, { context: context});
     
@@ -7245,7 +7288,7 @@
     })();
     (function()
     {
-        const [find_all, each, map, closest, is_empty, array_unique] = frontbx.import(['find_all','each','map','closest','is_empty','array_unique']).from('_');
+        const [find_all, each, map, traverse_up, is_empty, array_unique] = frontbx.import(['find_all','each','map','traverse_up','is_empty','array_unique']).from('_');
     
         /**
          * Component base class
@@ -7318,15 +7361,27 @@
                 return;
             }
     
-            const _this = this;
-    
-            each(this._DOMElements, function(i, DOMElement)
+            each(this._DOMElements, (i, DOMElement) =>
             {
-                if (closest(DOMElement, context))
+                if (DOMElement === context)
                 {
-                    _this.unbind(DOMElement);
+                    this.unbind(DOMElement);
     
-                    _this._DOMElements.splice(i, 1);
+                    this._DOMElements.splice(i, 1);
+                }
+                else
+                {
+                    traverse_up(DOMElement, (parent) =>
+                    {                
+                        if (parent === context)
+                        {
+                            this.unbind(DOMElement);
+    
+                            this._DOMElements.splice(i, 1);
+    
+                            return false;
+                        }
+                    });
                 }
             });
         }

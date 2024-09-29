@@ -6,21 +6,20 @@
  */
 _.prototype.collect_garbage = function()
 {
-    let _this = this;
 
-    _this.each(this._events, (guid, types) =>
+    this.each(this._events, (guid, types) =>
     {
-        var cleared = false;
+        let cleared = false;
 
-        _this.each(types, (type, callbacks) =>
+        this.each(types, (type, callbacks) =>
         {
             let DOMElement = callbacks[0].element;
-
+            
             if (!this.in_dom(DOMElement))
             {
                 cleared = true;
 
-                _this.__remove_listener(DOMElement, type);
+                this.__remove_listener(DOMElement, type);
             }
         });
 

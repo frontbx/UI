@@ -1,6 +1,6 @@
 (function()
 {
-    const [find_all, each, map, closest, is_empty, array_unique] = frontbx.import(['find_all','each','map','closest','is_empty','array_unique']).from('_');
+    const [find_all, each, map, traverse_up, is_empty, array_unique] = frontbx.import(['find_all','each','map','traverse_up','is_empty','array_unique']).from('_');
 
     /**
      * Component base class
@@ -73,15 +73,27 @@
             return;
         }
 
-        const _this = this;
-
-        each(this._DOMElements, function(i, DOMElement)
+        each(this._DOMElements, (i, DOMElement) =>
         {
-            if (closest(DOMElement, context))
+            if (DOMElement === context)
             {
-                _this.unbind(DOMElement);
+                this.unbind(DOMElement);
 
-                _this._DOMElements.splice(i, 1);
+                this._DOMElements.splice(i, 1);
+            }
+            else
+            {
+                traverse_up(DOMElement, (parent) =>
+                {                
+                    if (parent === context)
+                    {
+                        this.unbind(DOMElement);
+
+                        this._DOMElements.splice(i, 1);
+
+                        return false;
+                    }
+                });
             }
         });
     }
