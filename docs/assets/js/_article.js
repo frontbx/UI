@@ -122,7 +122,7 @@
 
     BQs.prototype.bind = function(blockquote)
     {
-       	add_class(blockquote, 'bq');
+       	add_class(blockquote, 'bq-info');
     }
 
     BQs.prototype.unbind = function(blockquote)

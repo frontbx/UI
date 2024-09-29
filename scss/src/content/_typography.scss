@@ -179,6 +179,24 @@ samp
 blockquote
 {
     margin: 0 0 1em;   
+
+    footer
+    {
+        font-style: oblique;
+        font-style: italic;
+        font-size: 0.9em;
+        color: rgba(0,0,0, 0.4);
+
+        &:before
+        {
+            content: '\2014 \00A0';
+        }
+
+        cite
+        {
+            color: rgba(0,0,0, 0.3);
+        }
+    }
 }   
 
 blockquote:not([class])
@@ -345,7 +363,7 @@ pre > code
 }
 :not(pre) > code
 {
-    padding: .2rem .4rem;
+    padding: 0.15em 0.5em;
     font-size: 0.85em;
 }
 td > code,

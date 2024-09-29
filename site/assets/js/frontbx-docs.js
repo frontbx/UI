@@ -448,7 +448,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
     BQs.prototype.bind = function(blockquote)
     {
-       	add_class(blockquote, 'bq');
+       	add_class(blockquote, 'bq-info');
     }
 
     BQs.prototype.unbind = function(blockquote)
