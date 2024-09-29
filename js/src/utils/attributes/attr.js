@@ -101,12 +101,12 @@ _.prototype.attr = function(DOMElement, name, value)
                 var evt = name.slice(2).toLowerCase();
 
                 // Remove old listeners
-                this.remove_event_listener(DOMElement, evt);
+                this.off(DOMElement, evt);
 
                 // Add new listener if one provided
                 if (value)
                 {
-                    this.add_event_listener(DOMElement, evt, value);
+                    this.on(DOMElement, evt, value);
                 }
             }
             // All other node attributes

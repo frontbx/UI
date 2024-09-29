@@ -12,7 +12,7 @@
      * 
      * @var {Function}
      */
-    const [find, add_class, add_event_listener, closest, has_class, remove_class, remove_event_listener, trigger_event, extend] = frontbx.import(['find','add_class','add_event_listener','closest','has_class','remove_class','remove_event_listener','trigger_event','extend']).from('_');
+    const [find, add_class, on, closest, has_class, remove_class, off, trigger_event, extend] = frontbx.import(['find','add_class','on','closest','has_class','remove_class','off','trigger_event','extend']).from('_');
 
     /**
      * Choice chips
@@ -33,7 +33,7 @@
      */
     ChoiceChips.prototype.bind = function(node)
     {
-        add_event_listener(node, 'click', this._clickHandler);
+        on(node, 'click', this._clickHandler);
     }
 
     /**
@@ -43,7 +43,7 @@
      */
     ChoiceChips.prototype.unbind = function(node)
     {
-        remove_event_listener(node, 'click', this._clickHandler);
+        off(node, 'click', this._clickHandler);
     }
 
     /**

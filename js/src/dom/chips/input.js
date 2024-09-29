@@ -12,7 +12,7 @@
      * 
      * @var {Function}
      */
-    const [find, find_all, add_event_listener, closest, first_children, in_array, input_value, is_empty, remove_event_listener, remove_from_dom, extend] = frontbx.import(['find','find_all','add_event_listener','closest','first_children','in_array','input_value','is_empty','remove_event_listener','remove_from_dom','extend']).from('_');
+    const [find, find_all, on, closest, first_children, in_array, input_value, is_empty, off, remove_from_dom, extend] = frontbx.import(['find','find_all','on','closest','first_children','in_array','input_value','is_empty','off','remove_from_dom','extend']).from('_');
 
     /**
      * Chip inputs
@@ -36,13 +36,13 @@
     {
         let _input = find('.js-chip-input', _wrapper);
 
-        add_event_listener(find_all('.js-remove-btn', _wrapper), 'click', this._removeChip);
+        on(find_all('.js-remove-btn', _wrapper), 'click', this._removeChip);
 
-        add_event_listener(_input, 'keyup', this._onKeyUp, this);
+        on(_input, 'keyup', this._onKeyUp, this);
 
         if (closest(_input, 'form'))
         {
-            add_event_listener(_input, 'keydown', this._preventSubmit, this);
+            on(_input, 'keydown', this._preventSubmit, this);
         }
     }
 
@@ -57,13 +57,13 @@
         var _removeBtns = find_all('.btn-chip .js-remove-btn', _wrapper);
         var _input = find('.js-chip-input', _wrapper);
 
-        remove_event_listener(_removeBtns, 'click', this._removeChip);
+        off(_removeBtns, 'click', this._removeChip);
 
-        remove_event_listener(_input, 'keyup', this._onKeyUp, this);
+        off(_input, 'keyup', this._onKeyUp, this);
 
         if (closest(_input, 'form'))
         {
-            remove_event_listener(_input, 'keydown', this._preventSubmit, this);
+            off(_input, 'keydown', this._preventSubmit, this);
         }
     }
 
@@ -160,7 +160,7 @@
 
         _wrapper.insertBefore(chip, first_children(_wrapper).pop());
 
-        add_event_listener(find('.js-remove-btn', chip), 'click', this._removeChip);
+        on(find('.js-remove-btn', chip), 'click', this._removeChip);
 
         frontbx.dom().refresh('Ripple', _wrapper);
     }

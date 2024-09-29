@@ -12,7 +12,7 @@
      * 
      * @var {function}
      */
-    const [add_event_listener, animate_css, closest, has_class, remove_from_dom, remove_event_listener, trigger_event, extend] = frontbx.import(['add_event_listener','animate_css','closest','has_class','remove_from_dom','remove_event_listener','trigger_event','extend']).from('_');
+    const [on, animate_css, closest, has_class, remove_from_dom, off, trigger_event, extend] = frontbx.import(['on','animate_css','closest','has_class','remove_from_dom','off','trigger_event','extend']).from('_');
 
     /**
      * Message closers
@@ -32,7 +32,7 @@
      */
     MessageClosers.prototype.bind = function(node)
     {
-        add_event_listener(node, 'click', this._eventHandler);
+        on(node, 'click', this._eventHandler);
     }
 
     /**
@@ -41,7 +41,7 @@
      */
     MessageClosers.prototype.unbind = function(node)
     {
-        remove_event_listener(node, 'click', this._eventHandler);
+        off(node, 'click', this._eventHandler);
     }
 
     /**

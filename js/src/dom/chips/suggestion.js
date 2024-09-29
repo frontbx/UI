@@ -12,7 +12,7 @@
      * 
      * @var {Function}
      */
-    const [find, add_event_listener, attr, closest, has_class, in_dom, remove_event_listener, remove_from_dom, trigger_event, extend] = frontbx.import(['find','add_event_listener','attr','closest','has_class','in_dom','remove_event_listener','remove_from_dom','trigger_event','extend']).from('_');
+    const [find, on, attr, closest, has_class, in_dom, off, remove_from_dom, trigger_event, extend] = frontbx.import(['find','on','attr','closest','has_class','in_dom','off','remove_from_dom','trigger_event','extend']).from('_');
 
     /**
      * Chip suggestions.
@@ -33,7 +33,7 @@
      */
     ChipSuggestions.prototype.bind = function(node)
     {
-        add_event_listener(node, 'click', this._clickHandler);
+        on(node, 'click', this._clickHandler);
     }
 
     /**
@@ -43,7 +43,7 @@
      */
     ChipSuggestions.prototype.unbind = function()
     {
-        remove_event_listener(node, 'click', this._clickHandler);
+        off(node, 'click', this._clickHandler);
     }
 
     /**

@@ -8,7 +8,7 @@
  */
 _.prototype.closest = function(el, type)
 {
-    // Type is class
+    // Type is (OR multiple classes)
     if (this.is_array(type))
     {
         for (var i = 0; i < type.length; i++)
@@ -24,7 +24,7 @@ _.prototype.closest = function(el, type)
         return null;
     }
 
-    // Type is class
+    // Type is HTML element
     if (this.is_htmlElement(type))
     {
         if (el === type) return true;

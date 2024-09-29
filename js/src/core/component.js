@@ -76,7 +76,7 @@
         const _this = this;
 
         each(this._DOMElements, function(i, DOMElement)
-        {                
+        {
             if (closest(DOMElement, context))
             {
                 _this.unbind(DOMElement);

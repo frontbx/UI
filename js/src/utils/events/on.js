@@ -8,22 +8,7 @@
  * @param  {array}         args       Args to pass to handler (first array element gets set to "this")
  * @param  {boolean}       pushfirst  If boolean (true) is provided, pushes callback to first in stack (default false)
  */
-_.prototype.on = function()
-{
-    return this.add_event_listener(...arguments);
-}
-
-/**
- * Add an event listener
- *
- * @access {public}
- * @param  {DOMElement}    element    The target DOM node
- * @param  {string}        eventName  Event type
- * @param  {closure}       handler    Callback event
- * @param  {array}         args       Args to pass to handler (first array element gets set to "this")
- * @param  {boolean}       pushfirst  If boolean (true) is provided, pushes callback to first in stack (default false)
- */
-_.prototype.add_event_listener = function(DOMElement, eventName, handler)
+_.prototype.on = function(DOMElement, eventName, handler)
 {    
     var args = TO_ARR.call(arguments);
 
@@ -34,7 +19,7 @@ _.prototype.add_event_listener = function(DOMElement, eventName, handler)
 
         this.each(DOMElement, function(i, el)
         {            
-            this.add_event_listener.apply(this, [el, ...baseArgs]);
+            this.on.apply(this, [el, ...baseArgs]);
 
         }, this);
     }
@@ -49,7 +34,7 @@ _.prototype.add_event_listener = function(DOMElement, eventName, handler)
             {
                 args[1] = event;
 
-                this.add_event_listener.apply(this, args);
+                this.on.apply(this, args);
                 
             }, this);
 
@@ -59,7 +44,7 @@ _.prototype.add_event_listener = function(DOMElement, eventName, handler)
         // If array of arguments is provided, "this" will always be the first
         // argument provided
         // However the first and second argument passed to the callback will always the event object and the element
-        // e.g. add_event_listener(el, 'click', callback, ['baz', 'foo', 'bar']) -> callback(e, el, foo, bar) this = 'baz'
+        // e.g. on(el, 'click', callback, ['baz', 'foo', 'bar']) -> callback(e, el, foo, bar) this = 'baz'
 
         // Remove element, eventName, handler from args
         let argsNormal = this.__normaliseListenerArgs(DOMElement, args);
@@ -72,7 +57,7 @@ _.prototype.add_event_listener = function(DOMElement, eventName, handler)
  * Nomralize event listener args
  * 
  * @param  {DOMElement}    DOMElement   The target DOM node
- * @param  {array}         args         Args passed to add_event_listener or remove_event_listener
+ * @param  {array}         args         Args passed to 'on' or 'off'
  */
 _.prototype.__normaliseListenerArgs = function(DOMElement, args)
 {

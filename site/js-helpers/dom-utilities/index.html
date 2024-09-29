@@ -460,8 +460,8 @@
 <td>Returns nth direct child element of parent element if it exists.</td>
 </tr>
 <tr>
-<td style="text-align:center;"><a href="#nth_siblings" class="js-waypoint-trigger">#</a></td>
-<td><code>nth_siblings</code></td>
+<td style="text-align:center;"><a href="#sibling_index" class="js-waypoint-trigger">#</a></td>
+<td><code>sibling_index</code></td>
 <td>Returns index of element relative to it's siblings. For example if the element is the second</td>
 </tr>
 <tr>
@@ -724,14 +724,14 @@ let sibling = next_untill_class(element, ['.foo', '.bar']);</code></pre>
 <pre><code class="javascript language-javascript">let first = nth_child(element, 0);
 let second = nth_child(element, 1);</code></pre>
 <p><br></p>
-<h4 id="nth_siblings">nth_siblings</h4>
-<pre><code class="javascript language-javascript">nth_siblings(HTMLElement: element): Integer</code></pre>
+<h4 id="sibling_index">sibling_index</h4>
+<pre><code class="javascript language-javascript">sibling_index(HTMLElement: element): Integer</code></pre>
 <pre><code class="javascript language-javascript">// &amp;lt;div&amp;gt;1&amp;lt;/div&amp;gt;
 // &amp;lt;div &amp;gt;2&amp;lt;/div&amp;gt;
 // &amp;lt;div class=&amp;quot;three&amp;quot;&amp;gt;3&amp;lt;/div&amp;gt;
 
 // returns 2
-let position = nth_siblings(find('.three'));</code></pre>
+let position = sibling_index(find('.three'));</code></pre>
 <p><br></p>
 <h4 id="preapend">preapend</h4>
 <pre><code class="javascript language-javascript">preapend(HTMLElement: element, HTMLElement: parent): Void</code></pre>

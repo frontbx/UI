@@ -12,7 +12,7 @@
      * 
      * @var {Function}
      */
-    const [find, add_event_listener, remove_event_listener, has_class, add_class, remove_class, closest, trigger_event, dom_element, map, extend] = frontbx.import(['find','add_event_listener','remove_event_listener','has_class','add_class','remove_class','closest','trigger_event','dom_element', 'map','extend']).from('_');
+    const [find, on, off, has_class, add_class, remove_class, closest, trigger_event, dom_element, map, extend] = frontbx.import(['find','on','off','has_class','add_class','remove_class','closest','trigger_event','dom_element', 'map','extend']).from('_');
 
     /**
      * Toggle active on lists
@@ -32,7 +32,7 @@
      */
     List.prototype.bind = function(node)
     {            
-        add_event_listener(node, 'click', this._eventHandler);
+        on(node, 'click', this._eventHandler);
     }
 
     /**
@@ -41,7 +41,7 @@
      */
     List.prototype.unbind = function(node)
     {
-        remove_event_listener(node, 'click', this._eventHandler);
+        off(node, 'click', this._eventHandler);
     }
 
     /**

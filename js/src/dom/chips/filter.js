@@ -12,7 +12,7 @@
      * 
      * @var {Function}
      */
-    const [add_event_listener, remove_event_listener, toggle_class, extend] = frontbx.import(['add_event_listener','remove_event_listener','toggle_class', 'extend']).from('_');
+    const [on, off, toggle_class, extend] = frontbx.import(['on','off','toggle_class', 'extend']).from('_');
 
     /**
      * Filter chips
@@ -33,7 +33,7 @@
      */
     FilterChips.prototype.bind = function(node)
     {
-        add_event_listener(node, 'click', this._clickHandler);
+        on(node, 'click', this._clickHandler);
     }
 
     /**
@@ -43,7 +43,7 @@
      */
     FilterChips.prototype.unbind = function(node)
     {
-        remove_event_listener(node, 'click', this._clickHandler);
+        off(node, 'click', this._clickHandler);
     }
 
     /**

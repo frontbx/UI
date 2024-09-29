@@ -12,7 +12,7 @@
      * 
      * @var {Function}
      */
-    const [find, add_event_listener, animate, bool, has_class, is_node_type, remove_event_listener, toggle_class, trigger_event, extend] = frontbx.import(['find','add_event_listener','animate','bool','has_class','is_node_type','remove_event_listener','toggle_class','trigger_event','extend']).from('_');
+    const [find, on, animate, bool, has_class, is_node_type, off, toggle_class, trigger_event, extend] = frontbx.import(['find','on','animate','bool','has_class','is_node_type','off','toggle_class','trigger_event','extend']).from('_');
 
     /**
      * Toggle height on click
@@ -35,7 +35,7 @@
      */
     Collapse.prototype.bind = function(node)
     {
-        add_event_listener(node, 'click', this._eventHandler);
+        on(node, 'click', this._eventHandler);
     }
 
     /**
@@ -45,7 +45,7 @@
      */
     Collapse.prototype.unbind = function(node)
     {
-        remove_event_listener(node, 'click', this._eventHandler);
+        off(node, 'click', this._eventHandler);
     }
 
     /**

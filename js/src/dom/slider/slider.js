@@ -5,7 +5,7 @@
      * 
      * @var {Function}
      */
-    const [add_class, animate, attr, css, dom_element, each, find, find_all, _for, is_object, map, nth_siblings, off, on, preapend, remove_class, rendered_style, width, remove_from_dom, inline_style] = frontbx.import(['add_class','animate','attr','css','dom_element','each','find','find_all','for','is_object','map','nth_siblings','off','on','preapend','remove_class','rendered_style','width','remove_from_dom','inline_style']).from('_');
+    const [add_class, animate, attr, css, dom_element, each, find, find_all, _for, is_object, map, sibling_index, off, on, preapend, remove_class, rendered_style, width, remove_from_dom, inline_style] = frontbx.import(['add_class','animate','attr','css','dom_element','each','find','find_all','for','is_object','map','sibling_index','off','on','preapend','remove_class','rendered_style','width','remove_from_dom','inline_style']).from('_');
 
     /**
      * Default options
@@ -964,7 +964,7 @@
 
         _for(this._slidesCount, (i) =>
         {
-            if (nth_siblings(slide) === this._middleIndex) return false;
+            if (sibling_index(slide) === this._middleIndex) return false;
 
             preapend(find('> *:last-child', this._DOMElementViewport), this._DOMElementViewport);
         

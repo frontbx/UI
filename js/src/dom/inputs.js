@@ -12,7 +12,7 @@
      * 
      * @var {function}
      */
-    const [find, add_class, add_event_listener, closest, in_dom, input_value, remove_class, remove_event_listener, extend] = frontbx.import(['find','add_class','add_event_listener','closest','in_dom','input_value','remove_class','remove_event_listener','extend']).from('_');
+    const [find, add_class, on, closest, in_dom, input_value, remove_class, off, extend] = frontbx.import(['find','add_class','on','closest','in_dom','input_value','remove_class','off','extend']).from('_');
 
     /**
      * Adds classes to inputs
@@ -37,11 +37,11 @@
     {
         if (node.tagName.toLowerCase() === 'label')
         {
-            add_event_listener(node, 'click', this._onLabelClick);
+            on(node, 'click', this._onLabelClick);
         }
         else
         {
-            add_event_listener(node, 'click, focus, blur, change, input', this._eventHandler);
+            on(node, 'click, focus, blur, change, input', this._eventHandler);
 
             this._setClasses(node);
         }
@@ -56,11 +56,11 @@
     {
         if (node.tagName.toLowerCase() === 'label')
         {
-            remove_event_listener(node, 'click', this._onLabelClick);
+            off(node, 'click', this._onLabelClick);
         }
         else
         {
-            remove_event_listener(node, 'click, focus, blur, change, input', this._eventHandler);
+            off(node, 'click, focus, blur, change, input', this._eventHandler);
         }
     }
 

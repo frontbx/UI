@@ -1694,7 +1694,7 @@ AnimateCss.prototype.start = function()
 
     this.applyTransitions();
 
-    _THIS.add_event_listener(this.DOMElement, 'transitionend', this.transitionEnd, this);
+    _THIS.on(this.DOMElement, 'transitionend', this.transitionEnd, this);
 
     let _this = this;
 
@@ -1754,7 +1754,7 @@ AnimateCss.prototype.resotoreElement = function()
 {
     _THIS.css(this.DOMElement, 'transition', this.preAnimatedTransitions);
 
-    _THIS.remove_event_listener(this.DOMElement, 'transitionend', this.transitionEnd, this);
+    _THIS.off(this.DOMElement, 'transitionend', this.transitionEnd, this);
 }
 
 /**
@@ -2826,12 +2826,12 @@ _.prototype.attr = function(DOMElement, name, value)
                 var evt = name.slice(2).toLowerCase();
 
                 // Remove old listeners
-                this.remove_event_listener(DOMElement, evt);
+                this.off(DOMElement, evt);
 
                 // Add new listener if one provided
                 if (value)
                 {
-                    this.add_event_listener(DOMElement, evt, value);
+                    this.on(DOMElement, evt, value);
                 }
             }
             // All other node attributes
@@ -3776,7 +3776,7 @@ _.prototype.add_class = function(DOMElement, className)
  */
 _.prototype.closest = function(el, type)
 {
-    // Type is class
+    // Type is (OR multiple classes)
     if (this.is_array(type))
     {
         for (var i = 0; i < type.length; i++)
@@ -3792,7 +3792,7 @@ _.prototype.closest = function(el, type)
         return null;
     }
 
-    // Type is class
+    // Type is HTML element
     if (this.is_htmlElement(type))
     {
         if (el === type) return true;
@@ -4480,12 +4480,12 @@ _.prototype.remove_from_dom = function(el)
 
         for (var i = 0, len = children.length; i < len; i++)
         {
-            this.remove_event_listener(children[i]);
+            this.off(children[i]);
 
             this.trigger_event(children[i], `frontbx:dom:remove`);
         }
 
-        this.remove_event_listener(el);
+        this.off(el);
 
         this.trigger_event(el, `frontbx:dom:remove`);
 
@@ -4683,6 +4683,13 @@ _.prototype.trigger_event = function(DOMElement, eventName, data)
         }
     }
 }
+/**
+ * Traverse up dom tree.
+ *
+ * @access {public}
+ * @param  {DOMElement}   DOMElement Target element
+ * @param  {Function}     callback   callback
+ */
 _.prototype.traverse_up = function(DOMElement, callback)
 {    
     // Stop on document
@@ -4696,6 +4703,13 @@ _.prototype.traverse_up = function(DOMElement, callback)
     return this.traverse_up(DOMElement.parentNode, callback);
 }
 
+/**
+ * Traverse down dom tree.
+ *
+ * @access {public}
+ * @param  {DOMElement}   DOMElement Target element
+ * @param  {Function}     callback   callback
+ */
 _.prototype.traverse_down = function(DOMElement, callback)
 {
     if (this.is_undefined(DOMElement) || DOMElement === null) return;
@@ -4717,6 +4731,13 @@ _.prototype.traverse_down = function(DOMElement, callback)
     return ret;
 }
 
+/**
+ * Traverse next siblings.
+ *
+ * @access {public}
+ * @param  {DOMElement}   DOMElement Target element
+ * @param  {Function}     callback   callback
+ */
 _.prototype.traverse_next = function(DOMElement, callback)
 {
     // Stop on document
@@ -4727,6 +4748,13 @@ _.prototype.traverse_next = function(DOMElement, callback)
     return this.traverse_next(DOMElement.nextSibling, callback);
 }
 
+/**
+ * Traverse previous siblings.
+ *
+ * @access {public}
+ * @param  {DOMElement}   DOMElement Target element
+ * @param  {Function}     callback   callback
+ */
 _.prototype.traverse_prev = function(DOMElement, callback)
 {
     // Stop on document
@@ -4783,7 +4811,7 @@ _.prototype.nth_child = function(el, n)
  * @param  {DOMElement}   el   Target element
  * @return {node\null}
  */
-_.prototype.nth_siblings = function(DOMElement)
+_.prototype.sibling_index = function(DOMElement)
 {
     let children = this.first_children(DOMElement.parentNode);
 
@@ -4804,22 +4832,7 @@ _.prototype.nth_siblings = function(DOMElement)
  * @param  {array}         args       Args to pass to handler (first array element gets set to "this")
  * @param  {boolean}       pushfirst  If boolean (true) is provided, pushes callback to first in stack (default false)
  */
-_.prototype.on = function()
-{
-    return this.add_event_listener(...arguments);
-}
-
-/**
- * Add an event listener
- *
- * @access {public}
- * @param  {DOMElement}    element    The target DOM node
- * @param  {string}        eventName  Event type
- * @param  {closure}       handler    Callback event
- * @param  {array}         args       Args to pass to handler (first array element gets set to "this")
- * @param  {boolean}       pushfirst  If boolean (true) is provided, pushes callback to first in stack (default false)
- */
-_.prototype.add_event_listener = function(DOMElement, eventName, handler)
+_.prototype.on = function(DOMElement, eventName, handler)
 {    
     var args = TO_ARR.call(arguments);
 
@@ -4830,7 +4843,7 @@ _.prototype.add_event_listener = function(DOMElement, eventName, handler)
 
         this.each(DOMElement, function(i, el)
         {            
-            this.add_event_listener.apply(this, [el, ...baseArgs]);
+            this.on.apply(this, [el, ...baseArgs]);
 
         }, this);
     }
@@ -4845,7 +4858,7 @@ _.prototype.add_event_listener = function(DOMElement, eventName, handler)
             {
                 args[1] = event;
 
-                this.add_event_listener.apply(this, args);
+                this.on.apply(this, args);
                 
             }, this);
 
@@ -4855,7 +4868,7 @@ _.prototype.add_event_listener = function(DOMElement, eventName, handler)
         // If array of arguments is provided, "this" will always be the first
         // argument provided
         // However the first and second argument passed to the callback will always the event object and the element
-        // e.g. add_event_listener(el, 'click', callback, ['baz', 'foo', 'bar']) -> callback(e, el, foo, bar) this = 'baz'
+        // e.g. on(el, 'click', callback, ['baz', 'foo', 'bar']) -> callback(e, el, foo, bar) this = 'baz'
 
         // Remove element, eventName, handler from args
         let argsNormal = this.__normaliseListenerArgs(DOMElement, args);
@@ -4868,7 +4881,7 @@ _.prototype.add_event_listener = function(DOMElement, eventName, handler)
  * Nomralize event listener args
  * 
  * @param  {DOMElement}    DOMElement   The target DOM node
- * @param  {array}         args         Args passed to add_event_listener or remove_event_listener
+ * @param  {array}         args         Args passed to 'on' or 'off'
  */
 _.prototype.__normaliseListenerArgs = function(DOMElement, args)
 {
@@ -4967,6 +4980,162 @@ _.prototype.__event_dispatcher = function(e)
             }
         }
     });
+}
+
+/**
+ * Remove an event listener
+ *
+ * @access {public}
+ * @param  {DOMElement}    element    The target DOM node
+ * @param  {string}        eventName  Event type
+ * @param  {closure}       handler    Callback event
+ * @param  {array}         args       Args to pass to handler (first array element gets set to "this")
+ * @param  {boolean}       pushfirst  If boolean (true) is provided, pushes callback to first in stack (default false)
+ */
+_.prototype.off = function(DOMElement, eventName, handler)
+{
+    var args = TO_ARR.call(arguments);
+
+    if (this.is_array(DOMElement))
+    {
+        var baseArgs = args.slice(1);
+
+        this.each(DOMElement, function(i, el)
+        {            
+            this.off.apply(this, [el, ...baseArgs]);
+        
+        }, this);
+    }
+    else
+    {
+        // If the eventName name was not provided - remove all event handlers on element
+        if (!eventName)
+        {
+            return this.__remove_element_listeners(DOMElement);
+        }
+
+        // If event has a comma or is an array we're doing multiple events
+        if (this.is_array(eventName) || eventName.includes(','))
+        {
+            let eventsArr = this.is_array(eventName) ? eventName : eventName.split(',').map((x) => x.trim()).filter((x) => x !== '');
+
+            this.each(eventsArr, function(i, event)
+            {
+                args[1] = event;
+
+                this.off.apply(this, args);
+                
+            }, this);
+
+            return;
+        }
+
+        // If the callback was not provided - remove all events of the type on the element
+        if (!handler)
+        {
+            return this.__remove_element_type_listeners(DOMElement, eventName);
+        }
+        
+        let guid = DOMElement.guid;
+
+        // Nothing to remove
+        if (!guid) return;
+
+        let handlers = this.array_get(`${guid}.${eventName}`, this._events);
+
+        // Nothing to remove
+        if (!handlers) return;
+
+        // Loop stored events and match node, event name, handler, use capture
+        this.each(handlers, function(i, _handler)
+        {            
+            if (_handler.callback.guid === handler.guid || this.is_equal(_handler.callback, handler))
+            {
+                this._events[guid][eventName].splice(i, 1);
+
+                if (this.is_empty(this._events[guid][eventName]))
+                {
+                    delete this._events[guid][eventName];
+
+                    this.__remove_listener(DOMElement, eventName);
+                }
+
+                if (this.is_empty(this._events[guid]))
+                {
+                    delete this._events[guid];
+                }
+                
+                // Break only remove first
+                return false;
+            } 
+        
+        }, this);
+    }
+}
+
+/**
+ * Removes all registered event listeners on an element
+ *
+ * @access {private}
+ * @param  {DOMElement} DOMElement Target node element
+ */
+_.prototype.__remove_element_listeners = function(DOMElement)
+{
+    let guid = DOMElement.guid;
+
+    if (!guid) return;
+
+    if (this._events[guid])
+    {
+        this.each(this._events[guid], function(type, callbacks)
+        {
+            this.__remove_listener(DOMElement, type);
+            
+        }, this);
+    }
+
+    delete this._events[guid];
+}
+
+/**
+ * Removes all registered event listeners of a specific type on an element
+ *
+ * @access {private}
+ * @param  {DOMElement} DOMElement Target node element
+ * @param  {string}     type       Event listener type
+ */
+_.prototype.__remove_element_type_listeners = function(DOMElement, type)
+{
+    let guid = DOMElement.guid;
+
+    if (!guid) return;
+
+    // Make sure an array for event type exists
+    if (this._events[guid] && this._events[guid][type])
+    {
+        delete this._events[guid][type];
+
+        this.__remove_listener(DOMElement, type);
+
+        if (this.is_empty(this._events[guid]))
+        {
+            delete this._events[guid];
+        }
+    }
+}
+
+/**
+ * Removes a listener from the element
+ *
+ * @access {private}
+ * @param  {DOMElement} DOMElement The target DOM node
+ * @param  {string}     eventType  Event type
+ * @param  {closure}    handler    Callback event
+ * @param  {bool}       useCapture Use capture (optional) (defaul false)
+ */
+_.prototype.__remove_listener = function(DOMElement, eventType)
+{    
+    DOMElement.removeEventListener(eventType, this.__event_dispatcher);
 }
 
 /**
@@ -5126,177 +5295,6 @@ _.prototype.event_listeners = function(DOMElement, eventName)
 
     return ret;
 }
-/**
- * Add an event listener
- *
- * @access {public}
- * @param  {DOMElement}    element    The target DOM node
- * @param  {string}        eventName  Event type
- * @param  {closure}       handler    Callback event
- * @param  {array}         args       Args to pass to handler (first array element gets set to "this")
- * @param  {boolean}       pushfirst  If boolean (true) is provided, pushes callback to first in stack (default false)
- */
-_.prototype.off = function()
-{
-    return this.remove_event_listener(...arguments);
-}
-
-/**
- * Remove an event listener
- *
- * @access {public}
- * @param  {DOMElement}    element    The target DOM node
- * @param  {string}        eventName  Event type
- * @param  {closure}       handler    Callback event
- * @param  {array}         args       Args to pass to handler (first array element gets set to "this")
- * @param  {boolean}       pushfirst  If boolean (true) is provided, pushes callback to first in stack (default false)
- */
-_.prototype.remove_event_listener = function(DOMElement, eventName, handler)
-{
-    var args = TO_ARR.call(arguments);
-
-    if (this.is_array(DOMElement))
-    {
-        var baseArgs = args.slice(1);
-
-        this.each(DOMElement, function(i, el)
-        {            
-            this.remove_event_listener.apply(this, [el, ...baseArgs]);
-        
-        }, this);
-    }
-    else
-    {
-        // If the eventName name was not provided - remove all event handlers on element
-        if (!eventName)
-        {
-            return this.__remove_element_listeners(DOMElement);
-        }
-
-        // If event has a comma or is an array we're doing multiple events
-        if (this.is_array(eventName) || eventName.includes(','))
-        {
-            let eventsArr = this.is_array(eventName) ? eventName : eventName.split(',').map((x) => x.trim()).filter((x) => x !== '');
-
-            this.each(eventsArr, function(i, event)
-            {
-                args[1] = event;
-
-                this.remove_event_listener.apply(this, args);
-                
-            }, this);
-
-            return;
-        }
-
-        // If the callback was not provided - remove all events of the type on the element
-        if (!handler)
-        {
-            return this.__remove_element_type_listeners(DOMElement, eventName);
-        }
-        
-        let guid = DOMElement.guid;
-
-        // Nothing to remove
-        if (!guid) return;
-
-        let handlers = this.array_get(`${guid}.${eventName}`, this._events);
-
-        // Nothing to remove
-        if (!handlers) return;
-
-        // Loop stored events and match node, event name, handler, use capture
-        this.each(handlers, function(i, _handler)
-        {            
-            if (_handler.callback.guid === handler.guid || this.is_equal(_handler.callback, handler))
-            {
-                this._events[guid][eventName].splice(i, 1);
-
-                if (this.is_empty(this._events[guid][eventName]))
-                {
-                    delete this._events[guid][eventName];
-
-                    this.__remove_listener(DOMElement, eventName);
-                }
-
-                if (this.is_empty(this._events[guid]))
-                {
-                    delete this._events[guid];
-                }
-                
-                // Break only remove first
-                return false;
-            } 
-        
-        }, this);
-    }
-}
-
-/**
- * Removes all registered event listeners on an element
- *
- * @access {private}
- * @param  {DOMElement} DOMElement Target node element
- */
-_.prototype.__remove_element_listeners = function(DOMElement)
-{
-    let guid = DOMElement.guid;
-
-    if (!guid) return;
-
-    if (this._events[guid])
-    {
-        this.each(this._events[guid], function(type, callbacks)
-        {
-            this.__remove_listener(DOMElement, type);
-            
-        }, this);
-    }
-
-    delete this._events[guid];
-}
-
-/**
- * Removes all registered event listeners of a specific type on an element
- *
- * @access {private}
- * @param  {DOMElement} DOMElement Target node element
- * @param  {string}     type       Event listener type
- */
-_.prototype.__remove_element_type_listeners = function(DOMElement, type)
-{
-    let guid = DOMElement.guid;
-
-    if (!guid) return;
-
-    // Make sure an array for event type exists
-    if (this._events[guid] && this._events[guid][type])
-    {
-        delete this._events[guid][type];
-
-        this.__remove_listener(DOMElement, type);
-
-        if (this.is_empty(this._events[guid]))
-        {
-            delete this._events[guid];
-        }
-    }
-}
-
-/**
- * Removes a listener from the element
- *
- * @access {private}
- * @param  {DOMElement} DOMElement The target DOM node
- * @param  {string}     eventType  Event type
- * @param  {closure}    handler    Callback event
- * @param  {bool}       useCapture Use capture (optional) (defaul false)
- */
-_.prototype.__remove_listener = function(DOMElement, eventType)
-{    
-    DOMElement.removeEventListener(eventType, this.__event_dispatcher);
-}
-
 /**
  * Is this a mobile user agent?
  *
@@ -7313,7 +7311,7 @@ Container.singleton('_', _);
         const _this = this;
 
         each(this._DOMElements, function(i, DOMElement)
-        {                
+        {
             if (closest(DOMElement, context))
             {
                 _this.unbind(DOMElement);
@@ -11871,7 +11869,7 @@ Container.singleton('_', _);
      * 
      * @var {Function}
      */
-    const [add_class, animate, attr, css, dom_element, each, find, find_all, _for, is_object, map, nth_siblings, off, on, preapend, remove_class, rendered_style, width, remove_from_dom, inline_style] = frontbx.import(['add_class','animate','attr','css','dom_element','each','find','find_all','for','is_object','map','nth_siblings','off','on','preapend','remove_class','rendered_style','width','remove_from_dom','inline_style']).from('_');
+    const [add_class, animate, attr, css, dom_element, each, find, find_all, _for, is_object, map, sibling_index, off, on, preapend, remove_class, rendered_style, width, remove_from_dom, inline_style] = frontbx.import(['add_class','animate','attr','css','dom_element','each','find','find_all','for','is_object','map','sibling_index','off','on','preapend','remove_class','rendered_style','width','remove_from_dom','inline_style']).from('_');
 
     /**
      * Default options
@@ -12830,7 +12828,7 @@ Container.singleton('_', _);
 
         _for(this._slidesCount, (i) =>
         {
-            if (nth_siblings(slide) === this._middleIndex) return false;
+            if (sibling_index(slide) === this._middleIndex) return false;
 
             preapend(find('> *:last-child', this._DOMElementViewport), this._DOMElementViewport);
         
@@ -13109,7 +13107,7 @@ Container.singleton('_', _);
      * 
      * @var {function}
      */
-    const [find, add_class, add_event_listener, closest, in_dom, input_value, remove_class, remove_event_listener, extend] = frontbx.import(['find','add_class','add_event_listener','closest','in_dom','input_value','remove_class','remove_event_listener','extend']).from('_');
+    const [find, add_class, on, closest, in_dom, input_value, remove_class, off, extend] = frontbx.import(['find','add_class','on','closest','in_dom','input_value','remove_class','off','extend']).from('_');
 
     /**
      * Adds classes to inputs
@@ -13134,11 +13132,11 @@ Container.singleton('_', _);
     {
         if (node.tagName.toLowerCase() === 'label')
         {
-            add_event_listener(node, 'click', this._onLabelClick);
+            on(node, 'click', this._onLabelClick);
         }
         else
         {
-            add_event_listener(node, 'click, focus, blur, change, input', this._eventHandler);
+            on(node, 'click, focus, blur, change, input', this._eventHandler);
 
             this._setClasses(node);
         }
@@ -13153,11 +13151,11 @@ Container.singleton('_', _);
     {
         if (node.tagName.toLowerCase() === 'label')
         {
-            remove_event_listener(node, 'click', this._onLabelClick);
+            off(node, 'click', this._onLabelClick);
         }
         else
         {
-            remove_event_listener(node, 'click, focus, blur, change, input', this._eventHandler);
+            off(node, 'click, focus, blur, change, input', this._eventHandler);
         }
     }
 
@@ -14092,7 +14090,7 @@ Container.singleton('_', _);
      * 
      * @var {Function}
      */
-    const [find, find_all, add_event_listener, closest, first_children, in_array, input_value, is_empty, remove_event_listener, remove_from_dom, extend] = frontbx.import(['find','find_all','add_event_listener','closest','first_children','in_array','input_value','is_empty','remove_event_listener','remove_from_dom','extend']).from('_');
+    const [find, find_all, on, closest, first_children, in_array, input_value, is_empty, off, remove_from_dom, extend] = frontbx.import(['find','find_all','on','closest','first_children','in_array','input_value','is_empty','off','remove_from_dom','extend']).from('_');
 
     /**
      * Chip inputs
@@ -14116,13 +14114,13 @@ Container.singleton('_', _);
     {
         let _input = find('.js-chip-input', _wrapper);
 
-        add_event_listener(find_all('.js-remove-btn', _wrapper), 'click', this._removeChip);
+        on(find_all('.js-remove-btn', _wrapper), 'click', this._removeChip);
 
-        add_event_listener(_input, 'keyup', this._onKeyUp, this);
+        on(_input, 'keyup', this._onKeyUp, this);
 
         if (closest(_input, 'form'))
         {
-            add_event_listener(_input, 'keydown', this._preventSubmit, this);
+            on(_input, 'keydown', this._preventSubmit, this);
         }
     }
 
@@ -14137,13 +14135,13 @@ Container.singleton('_', _);
         var _removeBtns = find_all('.btn-chip .js-remove-btn', _wrapper);
         var _input = find('.js-chip-input', _wrapper);
 
-        remove_event_listener(_removeBtns, 'click', this._removeChip);
+        off(_removeBtns, 'click', this._removeChip);
 
-        remove_event_listener(_input, 'keyup', this._onKeyUp, this);
+        off(_input, 'keyup', this._onKeyUp, this);
 
         if (closest(_input, 'form'))
         {
-            remove_event_listener(_input, 'keydown', this._preventSubmit, this);
+            off(_input, 'keydown', this._preventSubmit, this);
         }
     }
 
@@ -14240,7 +14238,7 @@ Container.singleton('_', _);
 
         _wrapper.insertBefore(chip, first_children(_wrapper).pop());
 
-        add_event_listener(find('.js-remove-btn', chip), 'click', this._removeChip);
+        on(find('.js-remove-btn', chip), 'click', this._removeChip);
 
         frontbx.dom().refresh('Ripple', _wrapper);
     }
@@ -14422,7 +14420,7 @@ Container.singleton('_', _);
      * 
      * @var {Function}
      */
-    const [find, add_event_listener, attr, closest, has_class, in_dom, remove_event_listener, remove_from_dom, trigger_event, extend] = frontbx.import(['find','add_event_listener','attr','closest','has_class','in_dom','remove_event_listener','remove_from_dom','trigger_event','extend']).from('_');
+    const [find, on, attr, closest, has_class, in_dom, off, remove_from_dom, trigger_event, extend] = frontbx.import(['find','on','attr','closest','has_class','in_dom','off','remove_from_dom','trigger_event','extend']).from('_');
 
     /**
      * Chip suggestions.
@@ -14443,7 +14441,7 @@ Container.singleton('_', _);
      */
     ChipSuggestions.prototype.bind = function(node)
     {
-        add_event_listener(node, 'click', this._clickHandler);
+        on(node, 'click', this._clickHandler);
     }
 
     /**
@@ -14453,7 +14451,7 @@ Container.singleton('_', _);
      */
     ChipSuggestions.prototype.unbind = function()
     {
-        remove_event_listener(node, 'click', this._clickHandler);
+        off(node, 'click', this._clickHandler);
     }
 
     /**
@@ -14516,7 +14514,7 @@ Container.singleton('_', _);
      * 
      * @var {Function}
      */
-    const [find, add_class, add_event_listener, closest, has_class, remove_class, remove_event_listener, trigger_event, extend] = frontbx.import(['find','add_class','add_event_listener','closest','has_class','remove_class','remove_event_listener','trigger_event','extend']).from('_');
+    const [find, add_class, on, closest, has_class, remove_class, off, trigger_event, extend] = frontbx.import(['find','add_class','on','closest','has_class','remove_class','off','trigger_event','extend']).from('_');
 
     /**
      * Choice chips
@@ -14537,7 +14535,7 @@ Container.singleton('_', _);
      */
     ChoiceChips.prototype.bind = function(node)
     {
-        add_event_listener(node, 'click', this._clickHandler);
+        on(node, 'click', this._clickHandler);
     }
 
     /**
@@ -14547,7 +14545,7 @@ Container.singleton('_', _);
      */
     ChoiceChips.prototype.unbind = function(node)
     {
-        remove_event_listener(node, 'click', this._clickHandler);
+        off(node, 'click', this._clickHandler);
     }
 
     /**
@@ -14598,7 +14596,7 @@ Container.singleton('_', _);
      * 
      * @var {Function}
      */
-    const [add_event_listener, remove_event_listener, toggle_class, extend] = frontbx.import(['add_event_listener','remove_event_listener','toggle_class', 'extend']).from('_');
+    const [on, off, toggle_class, extend] = frontbx.import(['on','off','toggle_class', 'extend']).from('_');
 
     /**
      * Filter chips
@@ -14619,7 +14617,7 @@ Container.singleton('_', _);
      */
     FilterChips.prototype.bind = function(node)
     {
-        add_event_listener(node, 'click', this._clickHandler);
+        on(node, 'click', this._clickHandler);
     }
 
     /**
@@ -14629,7 +14627,7 @@ Container.singleton('_', _);
      */
     FilterChips.prototype.unbind = function(node)
     {
-        remove_event_listener(node, 'click', this._clickHandler);
+        off(node, 'click', this._clickHandler);
     }
 
     /**
@@ -15323,7 +15321,7 @@ Container.singleton('_', _);
      * 
      * @var {Function}
      */
-    const [find, add_event_listener, animate, bool, has_class, is_node_type, remove_event_listener, toggle_class, trigger_event, extend] = frontbx.import(['find','add_event_listener','animate','bool','has_class','is_node_type','remove_event_listener','toggle_class','trigger_event','extend']).from('_');
+    const [find, on, animate, bool, has_class, is_node_type, off, toggle_class, trigger_event, extend] = frontbx.import(['find','on','animate','bool','has_class','is_node_type','off','toggle_class','trigger_event','extend']).from('_');
 
     /**
      * Toggle height on click
@@ -15346,7 +15344,7 @@ Container.singleton('_', _);
      */
     Collapse.prototype.bind = function(node)
     {
-        add_event_listener(node, 'click', this._eventHandler);
+        on(node, 'click', this._eventHandler);
     }
 
     /**
@@ -15356,7 +15354,7 @@ Container.singleton('_', _);
      */
     Collapse.prototype.unbind = function(node)
     {
-        remove_event_listener(node, 'click', this._eventHandler);
+        off(node, 'click', this._eventHandler);
     }
 
     /**
@@ -15414,7 +15412,7 @@ Container.singleton('_', _);
      * 
      * @var {Function}
      */
-    const [find, add_event_listener, remove_event_listener, has_class, add_class, remove_class, closest, trigger_event, dom_element, map, extend] = frontbx.import(['find','add_event_listener','remove_event_listener','has_class','add_class','remove_class','closest','trigger_event','dom_element', 'map','extend']).from('_');
+    const [find, on, off, has_class, add_class, remove_class, closest, trigger_event, dom_element, map, extend] = frontbx.import(['find','on','off','has_class','add_class','remove_class','closest','trigger_event','dom_element', 'map','extend']).from('_');
 
     /**
      * Toggle active on lists
@@ -15434,7 +15432,7 @@ Container.singleton('_', _);
      */
     List.prototype.bind = function(node)
     {            
-        add_event_listener(node, 'click', this._eventHandler);
+        on(node, 'click', this._eventHandler);
     }
 
     /**
@@ -15443,7 +15441,7 @@ Container.singleton('_', _);
      */
     List.prototype.unbind = function(node)
     {
-        remove_event_listener(node, 'click', this._eventHandler);
+        off(node, 'click', this._eventHandler);
     }
 
     /**
@@ -15877,7 +15875,7 @@ Container.singleton('_', _);
      * 
      * @var {function}
      */
-    const [add_event_listener, animate_css, closest, has_class, remove_from_dom, remove_event_listener, trigger_event, extend] = frontbx.import(['add_event_listener','animate_css','closest','has_class','remove_from_dom','remove_event_listener','trigger_event','extend']).from('_');
+    const [on, animate_css, closest, has_class, remove_from_dom, off, trigger_event, extend] = frontbx.import(['on','animate_css','closest','has_class','remove_from_dom','off','trigger_event','extend']).from('_');
 
     /**
      * Message closers
@@ -15897,7 +15895,7 @@ Container.singleton('_', _);
      */
     MessageClosers.prototype.bind = function(node)
     {
-        add_event_listener(node, 'click', this._eventHandler);
+        on(node, 'click', this._eventHandler);
     }
 
     /**
@@ -15906,7 +15904,7 @@ Container.singleton('_', _);
      */
     MessageClosers.prototype.unbind = function(node)
     {
-        remove_event_listener(node, 'click', this._eventHandler);
+        off(node, 'click', this._eventHandler);
     }
 
     /**
@@ -15957,7 +15955,7 @@ Container.singleton('_', _);
      * 
      * @var {Function}
      */
-    const [find, add_event_listener, remove_event_listener, has_class, in_dom, parse_url, extend]  = frontbx.import(['find','add_event_listener','remove_event_listener','has_class','in_dom','parse_url','extend']).from('_');
+    const [find, on, off, has_class, in_dom, parse_url, extend]  = frontbx.import(['find','on','off','has_class','in_dom','parse_url','extend']).from('_');
 
     /**
      * Has the page loaded?
@@ -15992,7 +15990,7 @@ Container.singleton('_', _);
      */
     WayPoints.prototype.bind = function(node)
     {
-        add_event_listener(node, 'click', this._eventHandler);
+        on(node, 'click', this._eventHandler);
     }
 
     /**
@@ -16001,7 +15999,7 @@ Container.singleton('_', _);
      */
     WayPoints.prototype.unbind = function(node)
     {
-        remove_event_listener(node, 'click', this._eventHandler);
+        off(node, 'click', this._eventHandler);
     }
 
     /**
@@ -16045,12 +16043,12 @@ Container.singleton('_', _);
         {
             frontbx.SmoothScroll(url.hash, { easing: easing, speed: speed, updateUrl: false });
 
-            remove_event_listener(window, 'frontbx:ready', scroll);
+            off(window, 'frontbx:ready', scroll);
         }
 
         window.scrollTo(0, 0);
 
-        add_event_listener(window, 'frontbx:ready', scroll);
+        on(window, 'frontbx:ready', scroll);
     }
 
     // Load into frontbx DOM core

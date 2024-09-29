@@ -27,7 +27,7 @@
 | <a href="#next" class="js-waypoint-trigger">#</a>                  | `next`                  | Traverses forwards through siblings to first element by class name OR tag type and returns element if matched.                                                                                                                                                                                                                         |
 | <a href="#next_untill_class" class="js-waypoint-trigger">#</a>     | `next_untill_class`     | Traverses forwards through siblings to first element by class name and returns element if matched.                                                                                                                                                                                                                                     |
 | <a href="#nth_child" class="js-waypoint-trigger">#</a>             | `nth_child`             | Returns nth direct child element of parent element if it exists.                                                                                                                                                                                                                                                                       |
-| <a href="#nth_siblings" class="js-waypoint-trigger">#</a>          | `nth_siblings`          | Returns index of element relative to it's siblings. For example if the element is the second                                                                                                                                                                                                                                           |
+| <a href="#sibling_index" class="js-waypoint-trigger">#</a>          | `sibling_index`          | Returns index of element relative to it's siblings. For example if the element is the second                                                                                                                                                                                                                                           |
 | <a href="#preapend" class="js-waypoint-trigger">#</a>              | `preapend`              | Appends HTMLElement as first child to an element.                                                                                                                                                                                                                                                                                      |
 | <a href="#previous" class="js-waypoint-trigger">#</a>              | `previous`              | Traverses backwards through siblings to first element by class name OR tag type and returns element if matched.                                                                                                                                                                                                                        |
 | <a href="#previous_untill_class" class="js-waypoint-trigger">#</a> | `previous_untill_class` | Traverses backwards through siblings to first element by class name and returns element if matched.                                                                                                                                                                                                                                    |
@@ -435,10 +435,10 @@ let second = nth_child(element, 1);
 
 <br>
 
-#### nth_siblings
+#### sibling_index
 
 ```javascript
-nth_siblings(HTMLElement: element): Integer
+sibling_index(HTMLElement: element): Integer
 ```
 
 ```javascript
@@ -447,7 +447,7 @@ nth_siblings(HTMLElement: element): Integer
 // &lt;div class=&quot;three&quot;&gt;3&lt;/div&gt;
 
 // returns 2
-let position = nth_siblings(find('.three'));
+let position = sibling_index(find('.three'));
 ```
 
 <br>

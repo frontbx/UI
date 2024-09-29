@@ -44,7 +44,7 @@ AnimateCss.prototype.start = function()
 
     this.applyTransitions();
 
-    _THIS.add_event_listener(this.DOMElement, 'transitionend', this.transitionEnd, this);
+    _THIS.on(this.DOMElement, 'transitionend', this.transitionEnd, this);
 
     let _this = this;
 
@@ -104,7 +104,7 @@ AnimateCss.prototype.resotoreElement = function()
 {
     _THIS.css(this.DOMElement, 'transition', this.preAnimatedTransitions);
 
-    _THIS.remove_event_listener(this.DOMElement, 'transitionend', this.transitionEnd, this);
+    _THIS.off(this.DOMElement, 'transitionend', this.transitionEnd, this);
 }
 
 /**

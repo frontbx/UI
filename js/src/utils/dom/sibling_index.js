@@ -5,7 +5,7 @@
  * @param  {DOMElement}   el   Target element
  * @return {node\null}
  */
-_.prototype.nth_siblings = function(DOMElement)
+_.prototype.sibling_index = function(DOMElement)
 {
     let children = this.first_children(DOMElement.parentNode);
 

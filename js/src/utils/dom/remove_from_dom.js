@@ -21,12 +21,12 @@ _.prototype.remove_from_dom = function(el)
 
         for (var i = 0, len = children.length; i < len; i++)
         {
-            this.remove_event_listener(children[i]);
+            this.off(children[i]);
 
             this.trigger_event(children[i], `frontbx:dom:remove`);
         }
 
-        this.remove_event_listener(el);
+        this.off(el);
 
         this.trigger_event(el, `frontbx:dom:remove`);
 
