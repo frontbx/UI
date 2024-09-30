@@ -7,77 +7,51 @@
  * @return {node\null}
  */
 _.prototype.closest = function(el, type)
-{
-    // Type is (OR multiple classes)
+{    
+    // Match OR split by comma
+    if (this.is_string(type) && type.includes(',')) type = type.split(',').filter((x) => x.trim() !== '').map((x) => x.trim());
+
+    // Match OR as an array
     if (this.is_array(type))
-    {
-        for (var i = 0; i < type.length; i++)
-        {
-            var response = this.closest(el, type[i]);
-
-            if (response)
-            {
-                return response;
-            }
-        }
-
-        return null;
-    }
-
-    // Type is HTML element
-    if (this.is_htmlElement(type))
-    {
-        if (el === type) return true;
-        
+    {        
         let ret = false;
 
-        this.traverse_up(el, (parent) =>
+        this.each(type, (i , itype) =>
         {
-            if (parent === type)
-            {
-                ret = true;
+            ret = this.closest(el, itype);
 
-                return true;
-            }
+            if (ret) return false;
         });
 
         return ret;
     }
+    
+    let isElement = this.is_htmlElement(type);
+    let isClass   = !isElement && type.includes('.');
+    let isType    = !isElement && !isClass;
+    let ret       = false;
 
-    if (type[0] === '.')
+    this.traverse_up(el, (parent, pType) =>
     {
-        return this.closest_class(el, type);
-    }
-
-    type = type.toLowerCase();
-
-    if (typeof el === 'undefined')
-    {
-        return null;
-    }
-
-    if (el.nodeName.toLowerCase() === type)
-    {
-        return el;
-    }
-
-    if (el.parentNode && el.parentNode.nodeName.toLowerCase() === type)
-    {
-        return el.parentNode;
-    }
-
-    var parent = el.parentNode;
-
-    while (parent !== document.body && typeof parent !== "undefined" && parent !== null)
-    {
-        parent = parent.parentNode;
-
-        if (parent && parent.nodeName.toLowerCase() === type)
+        if (isElement && parent === type)
         {
-            return parent;
+            ret = parent;
+
+            return false;
         }
-    }
+        else if (isClass && this.has_class(parent, type))
+        {
+            ret = parent;
 
+            return false;
+        }
+        else if (isType && type === pType)
+        {
+            ret = parent;
 
-    return null;
+            return false;
+        }
+    });
+
+    return ret;
 }

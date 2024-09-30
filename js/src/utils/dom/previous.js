@@ -8,37 +8,50 @@
  */
 _.prototype.previous = function(el, type)
 {
-    // Type is class
+    // Match OR split by comma
+    if (this.is_string(type) && type.includes(',')) type = type.split(',').filter((x) => x.trim() !== '').map((x) => x.trim());
+
+    // Match OR as an array
     if (this.is_array(type))
-    {
-        for (var i = 0; i < type.length; i++)
+    {        
+        let ret = false;
+
+        this.each(type, (i , itype) =>
         {
-            var response = this.previous(el, type[i]);
+            ret = this.previous(el, itype);
 
-            if (response)
-            {
-                return response;
-            }
-        }
+            if (ret) return false;
+        });
 
-        return null;
+        return ret;
     }
+    
+    let isElement = this.is_htmlElement(type);
+    let isClass   = !isElement && type.includes('.');
+    let isType    = !isElement && !isClass;
+    let ret       = false;
 
-    if (type[0] === '.')
+    this.traverse_prev(el, (sibling, pType) =>
     {
-        return this.previous_untill_class(el, type);
-    }
-
-    type = type.toLowerCase();
-    if (el.previousSibling && el.previousSibling.nodeName.toLowerCase() === type) return el.previousSibling;
-    var prev = el.previousSibling;
-    while (prev !== document.body && typeof prev !== "undefined" && prev !== null)
-    {
-        prev = prev.previousSibling;
-        if (prev && prev.nodeName.toLowerCase() === type)
+        if (isElement && sibling === type)
         {
-            return prev;
+            ret = sibling;
+
+            return false;
         }
-    }
-    return null;
+        else if (isClass && this.has_class(sibling, type))
+        {
+            ret = sibling;
+
+            return false;
+        }
+        else if (isType && type === pType)
+        {
+            ret = sibling;
+
+            return false;
+        }
+    });
+
+    return ret;
 }

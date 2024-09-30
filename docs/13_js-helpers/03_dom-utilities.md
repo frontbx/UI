@@ -25,12 +25,12 @@
 | <a href="#inner_HTML" class="js-waypoint-trigger">#</a>            | `inner_HTML`            | Sets innerHTML of an element and clears any old event listeners.                                                                                                                                                                                                                                                                       |
 | <a href="#input_value" class="js-waypoint-trigger">#</a>           | `input_value`           | Returns input value of an input, textarea or select element.<br>Values are sanitized and are converted to `String` `Integer` `Float` where appropriate.<br>Radio elements will return the input value when checked. Checkbox elements will return a boolean.<br>File inputs will return a file object or array when `multiple` is set. |
 | <a href="#next" class="js-waypoint-trigger">#</a>                  | `next`                  | Traverses forwards through siblings to first element by class name OR tag type and returns element if matched.                                                                                                                                                                                                                         |
-| <a href="#next_untill_class" class="js-waypoint-trigger">#</a>     | `next_untill_class`     | Traverses forwards through siblings to first element by class name and returns element if matched.                                                                                                                                                                                                                                     |
+| <a href="#next_class" class="js-waypoint-trigger">#</a>     | `next_class`     | Traverses forwards through siblings to first element by class name and returns element if matched.                                                                                                                                                                                                                                     |
 | <a href="#nth_child" class="js-waypoint-trigger">#</a>             | `nth_child`             | Returns nth direct child element of parent element if it exists.                                                                                                                                                                                                                                                                       |
 | <a href="#sibling_index" class="js-waypoint-trigger">#</a>          | `sibling_index`          | Returns index of element relative to it's siblings. For example if the element is the second                                                                                                                                                                                                                                           |
 | <a href="#preapend" class="js-waypoint-trigger">#</a>              | `preapend`              | Appends HTMLElement as first child to an element.                                                                                                                                                                                                                                                                                      |
 | <a href="#previous" class="js-waypoint-trigger">#</a>              | `previous`              | Traverses backwards through siblings to first element by class name OR tag type and returns element if matched.                                                                                                                                                                                                                        |
-| <a href="#previous_untill_class" class="js-waypoint-trigger">#</a> | `previous_untill_class` | Traverses backwards through siblings to first element by class name and returns element if matched.                                                                                                                                                                                                                                    |
+| <a href="#previous_class" class="js-waypoint-trigger">#</a> | `previous_class` | Traverses backwards through siblings to first element by class name and returns element if matched.                                                                                                                                                                                                                                    |
 | <a href="#remove_from_dom" class="js-waypoint-trigger">#</a>       | `remove_from_dom`       | Removes element from DOM and clears any event listeners attached to it.                                                                                                                                                                                                                                                                |
 | <a href="#scroll_pos" class="js-waypoint-trigger">#</a>            | `scroll_pos`            | Returns scroll position of any element or viewport.                                                                                                                                                                                                                                                                                    |
 | <a href="#show_aria" class="js-waypoint-trigger">#</a>             | `show_aria`             | Sets aria-hidden to true                                                                                                                                                                                                                                                                                                               |
@@ -409,15 +409,15 @@ let sibling = next(element, ['div', '.my-class']);
 
 <br>
 
-#### next_untill_class
+#### next_class
 
 ```javascript
-next_untill_class(HTMLElement: element, String|Array: className): HTMLElement|null
+next_class(HTMLElement: element, String|Array: className): HTMLElement|null
 ```
 
 ```javascript
-let sibling = next_untill_class(element, '.foo');
-let sibling = next_untill_class(element, ['.foo', '.bar']);
+let sibling = next_class(element, '.foo');
+let sibling = next_class(element, ['.foo', '.bar']);
 ```
 
 <br>
@@ -480,22 +480,22 @@ let sibling = previous(element, '.foo');
 
 <br>
 
-#### previous_untill_class
+#### previous_class
 
 ```javascript
-previous_untill_class(HTMLElement: element, String|Array: className): HTMLElement|null
+previous_class(HTMLElement: element, String|Array: className): HTMLElement|null
 ```
 
 ```javascript
 // Finds previous element with class 'foo'
-let sibling = previous_untill_class(element, 'foo');
+let sibling = previous_class(element, 'foo');
 
 // Finds previous element with class 'foo' or 'bar'
-let sibling = previous_untill_class(element, 'foo, bar');
-let sibling = previous_untill_class(element, ['foo', 'bar']);
+let sibling = previous_class(element, 'foo, bar');
+let sibling = previous_class(element, ['foo', 'bar']);
 
 // Finds previous element with class 'foo' and 'bar'
-let sibling = previous_untill_class(element, 'foo.bar');
+let sibling = previous_class(element, 'foo.bar');
 ```
 
 <br>

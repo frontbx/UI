@@ -3800,79 +3800,53 @@
      * @return {node\null}
      */
     _.prototype.closest = function(el, type)
-    {
-        // Type is (OR multiple classes)
+    {    
+        // Match OR split by comma
+        if (this.is_string(type) && type.includes(',')) type = type.split(',').filter((x) => x.trim() !== '').map((x) => x.trim());
+    
+        // Match OR as an array
         if (this.is_array(type))
-        {
-            for (var i = 0; i < type.length; i++)
-            {
-                var response = this.closest(el, type[i]);
-    
-                if (response)
-                {
-                    return response;
-                }
-            }
-    
-            return null;
-        }
-    
-        // Type is HTML element
-        if (this.is_htmlElement(type))
-        {
-            if (el === type) return true;
-            
+        {        
             let ret = false;
     
-            this.traverse_up(el, (parent) =>
+            this.each(type, (i , itype) =>
             {
-                if (parent === type)
-                {
-                    ret = true;
+                ret = this.closest(el, itype);
     
-                    return true;
-                }
+                if (ret) return false;
             });
     
             return ret;
         }
+        
+        let isElement = this.is_htmlElement(type);
+        let isClass   = !isElement && type.includes('.');
+        let isType    = !isElement && !isClass;
+        let ret       = false;
     
-        if (type[0] === '.')
+        this.traverse_up(el, (parent, pType) =>
         {
-            return this.closest_class(el, type);
-        }
-    
-        type = type.toLowerCase();
-    
-        if (typeof el === 'undefined')
-        {
-            return null;
-        }
-    
-        if (el.nodeName.toLowerCase() === type)
-        {
-            return el;
-        }
-    
-        if (el.parentNode && el.parentNode.nodeName.toLowerCase() === type)
-        {
-            return el.parentNode;
-        }
-    
-        var parent = el.parentNode;
-    
-        while (parent !== document.body && typeof parent !== "undefined" && parent !== null)
-        {
-            parent = parent.parentNode;
-    
-            if (parent && parent.nodeName.toLowerCase() === type)
+            if (isElement && parent === type)
             {
-                return parent;
+                ret = parent;
+    
+                return false;
             }
-        }
+            else if (isClass && this.has_class(parent, type))
+            {
+                ret = parent;
     
+                return false;
+            }
+            else if (isType && type === pType)
+            {
+                ret = parent;
     
-        return null;
+                return false;
+            }
+        });
+    
+        return ret;
     }
     
     /**
@@ -3883,46 +3857,17 @@
      * @param  {string} clas Node class to find
      * @return {node\null}
      */
-    _.prototype.closest_class = function(el, clas)
+    _.prototype.closest_class = function(el, classNames)
     {    
-        // Type is class
-        if (this.is_array(clas))
-        {
-            for (var i = 0; i < clas.length; i++)
-            {
-                var response = this.closest_class(el, clas[i]);
-    
-                if (response)
-                {
-                    return response;
-                }
-            }
-    
-            return null;
-        }
-    
-        if (this.has_class(el, clas))
-        {
-            return el;
-        }
-    
-        if (this.has_class(el.parentNode, clas))
-        {
-            return el.parentNode;
-        }
-    
-        let ret = null;
+        let ret = false;
     
         this.traverse_up(el, (parent) =>
         {
-            if (this.has_class(parent, clas))
-            {
-                ret = parent;
-    
-                return true;
-            }
+            ret = this.has_class(parent, classNames) ? parent : ret;
+            
+            if (ret) return false;
         });
-        
+    
         return ret;
     }
     /**
@@ -4258,82 +4203,73 @@
      */
     _.prototype.next = function(el, type)
     {
-        // Type is class
+        // Match OR split by comma
+        if (this.is_string(type) && type.includes(',')) type = type.split(',').filter((x) => x.trim() !== '').map((x) => x.trim());
+    
+        // Match OR as an array
         if (this.is_array(type))
-        {
-            for (var i = 0; i < type.length; i++)
+        {        
+            let ret = false;
+    
+            this.each(type, (i , itype) =>
             {
-                var response = this.next(el, type[i]);
+                ret = this.next(el, itype);
     
-                if (response)
-                {
-                    return response;
-                }
-            }
+                if (ret) return false;
+            });
     
-            return null;
-        }
-    
-        if (type[0] === '.')
-        {
-            return this.next_untill_class(el, type);
-        }
-    
-        type = type.toLowerCase();
-    
-        if (el.nextSibling && el.nextSibling.nodeName.toLowerCase() === type)
-        {
-            return el.nextSibling;
+            return ret;
         }
         
-        var next = el.nextSibling;
+        let isElement = this.is_htmlElement(type);
+        let isClass   = !isElement && type.includes('.');
+        let isType    = !isElement && !isClass;
+        let ret       = false;
     
-        while (next !== document.body && typeof next !== "undefined" && next !== null)
+        this.traverse_next(el, (sibling, sType) =>
         {
-            next = next.nextSibling;
-    
-            if (next && next.nodeName.toLowerCase() === type)
+            if (isElement && sibling === type)
             {
-                return next;
-            }
-        }
+                ret = sibling;
     
-        return null;
+                return false;
+            }
+            else if (isClass && this.has_class(sibling, type))
+            {
+                ret = sibling;
+    
+                return false;
+            }
+            else if (isType && type === sType)
+            {
+                ret = sibling;
+    
+                return false;
+            }
+        });
+    
+        return ret;
     }
     /**
      * Traverse nextSibling untill class type or class or array of either
      *
      * @access {public}
-     * @param  {DOMElement}   el        Target element
-     * @param  {string} className Target node classname
+     * @param  {DOMElement}   el         Target element
+     * @param  {string}       classNames Target node classname
      * @return {node\null}
      */
-    _.prototype.next_untill_class = function(el, className)
+    _.prototype.next_class = function(el, classNames)
     {
-        if (className[0] === '.')
+        let ret = false;
+    
+        this.traverse_next(el, (sibling) =>
         {
-            className = className.substring(1);
-        }
+            ret = this.has_class(sibling, classNames) ? sibling : ret;
+            
+            if (ret) return false;
+        });
     
-        if (el.nextSibling && this.has_class(el.nextSibling, className))
-        {
-            return el.nextSibling;
-        }
-    
-        var next = el.nextSibling;
-    
-        while (next !== document.body && typeof next !== "undefined" && next !== null)
-        {
-            if (next && this.has_class(next, className))
-            {
-                return next;
-            }
-    
-            next = next.nextSibling;
-    
-        }
-    
-        return null;
+        return ret;
     }
     /**
      * Inserts node as first child
@@ -4359,39 +4295,52 @@
      */
     _.prototype.previous = function(el, type)
     {
-        // Type is class
+        // Match OR split by comma
+        if (this.is_string(type) && type.includes(',')) type = type.split(',').filter((x) => x.trim() !== '').map((x) => x.trim());
+    
+        // Match OR as an array
         if (this.is_array(type))
-        {
-            for (var i = 0; i < type.length; i++)
+        {        
+            let ret = false;
+    
+            this.each(type, (i , itype) =>
             {
-                var response = this.previous(el, type[i]);
+                ret = this.previous(el, itype);
     
-                if (response)
-                {
-                    return response;
-                }
-            }
+                if (ret) return false;
+            });
     
-            return null;
+            return ret;
         }
+        
+        let isElement = this.is_htmlElement(type);
+        let isClass   = !isElement && type.includes('.');
+        let isType    = !isElement && !isClass;
+        let ret       = false;
     
-        if (type[0] === '.')
+        this.traverse_prev(el, (sibling, pType) =>
         {
-            return this.previous_untill_class(el, type);
-        }
-    
-        type = type.toLowerCase();
-        if (el.previousSibling && el.previousSibling.nodeName.toLowerCase() === type) return el.previousSibling;
-        var prev = el.previousSibling;
-        while (prev !== document.body && typeof prev !== "undefined" && prev !== null)
-        {
-            prev = prev.previousSibling;
-            if (prev && prev.nodeName.toLowerCase() === type)
+            if (isElement && sibling === type)
             {
-                return prev;
+                ret = sibling;
+    
+                return false;
             }
-        }
-        return null;
+            else if (isClass && this.has_class(sibling, type))
+            {
+                ret = sibling;
+    
+                return false;
+            }
+            else if (isType && type === pType)
+            {
+                ret = sibling;
+    
+                return false;
+            }
+        });
+    
+        return ret;
     }
     /**
      * Traverse previousSibling untill class
@@ -4401,31 +4350,18 @@
      * @param  {string} className Target node classname
      * @return {node\null}
      */
-    _.prototype.previous_untill_class = function(el, className)
+    _.prototype.previous_class = function(el, classNames)
     {
-        if (className[0] === '.')
+        let ret = false;
+    
+        this.traverse_prev(el, (sibling) =>
         {
-            className = className.substring(1);
-        }
+            ret = this.has_class(sibling, classNames) ? sibling : ret;
+            
+            if (ret) return false;
+        });
     
-        if (el.previousSibling && this.has_class(el.previousSibling, className))
-        {
-            return el.previousSibling;
-        }
-    
-        var prev = el.previousSibling;
-    
-        while (prev !== document.body && typeof prev !== "undefined" && prev !== null)
-        {
-            prev = prev.previousSibling;
-    
-            if (prev && this.has_class(prev, className))
-            {
-                return prev;
-            }
-        }
-    
-        return null;
+        return ret;
     }
     /**
      * Remove a css class or list of classes

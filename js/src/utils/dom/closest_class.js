@@ -6,45 +6,16 @@
  * @param  {string} clas Node class to find
  * @return {node\null}
  */
-_.prototype.closest_class = function(el, clas)
+_.prototype.closest_class = function(el, classNames)
 {    
-    // Type is class
-    if (this.is_array(clas))
-    {
-        for (var i = 0; i < clas.length; i++)
-        {
-            var response = this.closest_class(el, clas[i]);
-
-            if (response)
-            {
-                return response;
-            }
-        }
-
-        return null;
-    }
-
-    if (this.has_class(el, clas))
-    {
-        return el;
-    }
-
-    if (this.has_class(el.parentNode, clas))
-    {
-        return el.parentNode;
-    }
-
-    let ret = null;
+    let ret = false;
 
     this.traverse_up(el, (parent) =>
     {
-        if (this.has_class(parent, clas))
-        {
-            ret = parent;
-
-            return true;
-        }
+        ret = this.has_class(parent, classNames) ? parent : ret;
+        
+        if (ret) return false;
     });
-    
+
     return ret;
 }

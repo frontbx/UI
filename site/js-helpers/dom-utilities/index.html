@@ -450,8 +450,8 @@
 <td>Traverses forwards through siblings to first element by class name OR tag type and returns element if matched.</td>
 </tr>
 <tr>
-<td style="text-align:center;"><a href="#next_untill_class" class="js-waypoint-trigger">#</a></td>
-<td><code>next_untill_class</code></td>
+<td style="text-align:center;"><a href="#next_class" class="js-waypoint-trigger">#</a></td>
+<td><code>next_class</code></td>
 <td>Traverses forwards through siblings to first element by class name and returns element if matched.</td>
 </tr>
 <tr>
@@ -475,8 +475,8 @@
 <td>Traverses backwards through siblings to first element by class name OR tag type and returns element if matched.</td>
 </tr>
 <tr>
-<td style="text-align:center;"><a href="#previous_untill_class" class="js-waypoint-trigger">#</a></td>
-<td><code>previous_untill_class</code></td>
+<td style="text-align:center;"><a href="#previous_class" class="js-waypoint-trigger">#</a></td>
+<td><code>previous_class</code></td>
 <td>Traverses backwards through siblings to first element by class name and returns element if matched.</td>
 </tr>
 <tr>
@@ -714,10 +714,10 @@ inner_HTML(element, '&amp;lt;br&amp;gt;More text', true)</code></pre>
 let sibling = next(element, '.my-class');
 let sibling = next(element, ['div', '.my-class']);</code></pre>
 <p><br></p>
-<h4 id="next_untill_class">next_untill_class</h4>
-<pre><code class="javascript language-javascript">next_untill_class(HTMLElement: element, String|Array: className): HTMLElement|null</code></pre>
-<pre><code class="javascript language-javascript">let sibling = next_untill_class(element, '.foo');
-let sibling = next_untill_class(element, ['.foo', '.bar']);</code></pre>
+<h4 id="next_class">next_class</h4>
+<pre><code class="javascript language-javascript">next_class(HTMLElement: element, String|Array: className): HTMLElement|null</code></pre>
+<pre><code class="javascript language-javascript">let sibling = next_class(element, '.foo');
+let sibling = next_class(element, ['.foo', '.bar']);</code></pre>
 <p><br></p>
 <h4 id="nth_child">nth_child</h4>
 <pre><code class="javascript language-javascript">nth_child(HTMLElement: element, Integer: n): HTMLElement|undefined</code></pre>
@@ -748,17 +748,17 @@ let sibling = previous(element, ['div', 'span']);
 // Finds previous element with class 'foo'
 let sibling = previous(element, '.foo');</code></pre>
 <p><br></p>
-<h4 id="previous_untill_class">previous_untill_class</h4>
-<pre><code class="javascript language-javascript">previous_untill_class(HTMLElement: element, String|Array: className): HTMLElement|null</code></pre>
+<h4 id="previous_class">previous_class</h4>
+<pre><code class="javascript language-javascript">previous_class(HTMLElement: element, String|Array: className): HTMLElement|null</code></pre>
 <pre><code class="javascript language-javascript">// Finds previous element with class 'foo'
-let sibling = previous_untill_class(element, 'foo');
+let sibling = previous_class(element, 'foo');
 
 // Finds previous element with class 'foo' or 'bar'
-let sibling = previous_untill_class(element, 'foo, bar');
-let sibling = previous_untill_class(element, ['foo', 'bar']);
+let sibling = previous_class(element, 'foo, bar');
+let sibling = previous_class(element, ['foo', 'bar']);
 
 // Finds previous element with class 'foo' and 'bar'
-let sibling = previous_untill_class(element, 'foo.bar');</code></pre>
+let sibling = previous_class(element, 'foo.bar');</code></pre>
 <p><br></p>
 <h4 id="remove_from_dom">remove_from_dom</h4>
 <pre><code class="javascript language-javascript">remove_from_dom(HTMLElement: element): Void</code></pre>
