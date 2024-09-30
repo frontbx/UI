@@ -138,6 +138,11 @@
         padding-left: var(--fbx-container-gutter-xs);
         padding-right: var(--fbx-container-gutter-xs);
     }
+    > blockquote
+    {
+        margin-left: var(--fbx-container-gutter-xs);
+        margin-right: var(--fbx-container-gutter-xs);
+    }
 }
 
 @include media-breakpoint-up(sm)
@@ -148,6 +153,11 @@
         {
             padding-left: var(--fbx-container-gutter-sm);
             padding-right: var(--fbx-container-gutter-sm);
+        }
+        > blockquote
+        {
+            margin-left: var(--fbx-container-gutter-sm);
+            margin-right: var(--fbx-container-gutter-sm);
         }
     }
 }
@@ -161,6 +171,11 @@
             padding-left: var(--fbx-container-gutter-md);
             padding-right: var(--fbx-container-gutter-md);
         }
+        > blockquote
+        {
+            margin-left: var(--fbx-container-gutter-md);
+            margin-right: var(--fbx-container-gutter-md);
+        }
     }
 }
 
@@ -172,6 +187,11 @@
         {
             padding-left: 0;
             padding-right: 0;
+        }
+        > blockquote
+        {
+            margin-left: 0;
+            margin-right: 0;
         }
     }
 }
