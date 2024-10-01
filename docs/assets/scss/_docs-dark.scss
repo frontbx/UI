@@ -6,6 +6,14 @@
         border-left: 1px solid var(--fbx-black-200);
     }
 }
+.fbx-darkmode .docs-body + .drawer-wrap
+{
+    border-right: 1px solid var(--fbx-black-200);
+}
+.fbx-darkmode .desktop-menu .menu
+{
+    --fbx-menu-bg: var(--fbx-body-bg);
+}
 .fbx-darkmode .docs-body > ul li a:not(.btn)
 {
     color: var(--fbx-gray-400);
@@ -14,21 +22,14 @@
 {
     border-color: var(--fbx-black-100);
 }
-.fbx-darkmode .docs-body + .drawer-wrap
-{
-    border-right: 1px solid var(--fbx-black-200);
-}
-.fbx-darkmode .docs-body + .drawer-wrap .menu
-{
-    --fbx-menu-bg: var(--fbx-body-bg);
-}
-.fbx-darkmode #nprogress
-{
-    --fbx-nprogress-color: var(--fbx-black);
-}
 .fbx-darkmode .menu
 {
     --fbx-menu-bg: var(--fbx-black-900);
+}
+
+.fbx-darkmode #nprogress
+{
+    --fbx-nprogress-color: var(--fbx-black);
 }
 .fbx-darkmode .fbx-clipboard:not(:hover)
 {

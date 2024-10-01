@@ -49,6 +49,10 @@
         color: var(--fbx-white);
     }
 
+    .label
+    {
+        --fbx-label-color: var(--fbx-body-bg);
+    }
     .table
     {    
         --fbx-table-color: var(--fbx-gray-100);
