@@ -4042,18 +4042,6 @@
         return DOMElement.classList.contains(className);
     }
     /**
-     * Aria hide an element
-     *
-     * @access {public}
-     * @param  {DOMElement}   HTMLElement Target DOM node
-     */
-    _.prototype.hide_aria = function(HTMLElement)
-    {
-        if (this.is_array(HTMLElement)) return this.each(HTMLElement, (i, el) => this.hide_aria(el));
-        
-        this.attr(HTMLElement, 'aria-hidden', 'true');
-    }
-    /**
      * Check if an element is in current viewport
      *
      * @access {public}
@@ -4540,19 +4528,6 @@
     
         return ret;
     }
-    /**
-     * Aria show an element
-     *
-     * @access {public}
-     * @param  {DOMElement}   el Target DOM node
-     */
-    _.prototype.show_aria = function(HTMLElement)
-    {
-        if (this.is_array(HTMLElement)) return this.each(HTMLElement, (i, el) => this.show_aria(el));
-    
-        this.attr(HTMLElement, 'aria-hidden', 'false');
-    }
-    
     /**
      * Toogle a classname
      *
@@ -10379,10 +10354,8 @@
         Drawer.prototype._bindListeners = function()
         {
             if (!this._options.fromHTML) 
-            {
-                let context = this._options.persistent ? this._drawer : this._containerWrap;
-                
-                frontbx.dom().refresh(context);
+            {            
+                frontbx.dom().refresh(this._drawer);
             }
     
             if (this._options.responsive && this._options.persistent) 
@@ -10576,7 +10549,7 @@
          * 
          * @var {Function}
          */
-        const [find, dom_element, add_class, on, off, remove_class, remove_from_dom, hide_aria, show_aria] = frontbx.import(['find','dom_element','add_class','on','off','remove_class','remove_from_dom','hide_aria','show_aria']).from('_');
+        const [find, dom_element, add_class, on, off, remove_class, remove_from_dom, attr] = frontbx.import(['find','dom_element','add_class','on','off','remove_class','remove_from_dom','attr']).from('_');
     
         /**
          * Default options
@@ -10725,7 +10698,9 @@
     
             if (this._options.overlay !== false) add_class(document.body, 'no-scroll');
     
-            show_aria([this._modal, this._overlay]);
+            attr(this._modal, 'aria-hidden', 'false');
+    
+            attr(this._overlay, 'aria-hidden', 'false');
         }
     
         /**
@@ -10747,7 +10722,9 @@
     
             remove_class(document.body, 'no-scroll');
     
-            hide_aria([this._modal, this._overlay]);
+            attr(this._modal, 'aria-hidden', 'true');
+    
+            attr(this._overlay, 'aria-hidden', 'true');
     
             this._dialog.blur();
         }
@@ -15519,7 +15496,7 @@
          * 
          * @var {Function}
          */
-        const [find, find_all, map, add_class, on, closest, has_class, is_string, hide_aria, remove_class, off, show_aria, attr, css, dom_element, extend] = frontbx.import(['find','find_all','map','add_class','on','closest','has_class','is_string','hide_aria','remove_class','off','show_aria','attr','css','dom_element','extend']).from('_');
+        const [find, find_all, map, add_class, on, closest, has_class, is_string, remove_class, off, attr, css, dom_element, extend] = frontbx.import(['find','find_all','map','add_class','on','closest','has_class','is_string','remove_class','off','attr','css','dom_element','extend']).from('_');
     
         /**
          * Dropdown Buttons
@@ -15625,9 +15602,9 @@
             
             remove_class(button, ['active', 'drop-active']);
             
-            button.setAttribute('aria-pressed', 'false');
+            attr(button, 'aria-pressed', 'false');
             
-            hide_aria(drop);
+            attr(drop, 'aria-hidden', 'true');
             
             drop.blur();
         }
@@ -15644,9 +15621,9 @@
             
             add_class(button, ['active', 'drop-active']);
             
-            button.setAttribute('aria-pressed', 'true');
+            attr(button, 'aria-pressed', 'true');
             
-            show_aria(drop);
+            attr(drop, 'aria-hidden', 'false');
             
             drop.focus();
         }

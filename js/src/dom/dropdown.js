@@ -12,7 +12,7 @@
      * 
      * @var {Function}
      */
-    const [find, find_all, map, add_class, on, closest, has_class, is_string, hide_aria, remove_class, off, show_aria, attr, css, dom_element, extend] = frontbx.import(['find','find_all','map','add_class','on','closest','has_class','is_string','hide_aria','remove_class','off','show_aria','attr','css','dom_element','extend']).from('_');
+    const [find, find_all, map, add_class, on, closest, has_class, is_string, remove_class, off, attr, css, dom_element, extend] = frontbx.import(['find','find_all','map','add_class','on','closest','has_class','is_string','remove_class','off','attr','css','dom_element','extend']).from('_');
 
     /**
      * Dropdown Buttons
@@ -118,9 +118,9 @@
         
         remove_class(button, ['active', 'drop-active']);
         
-        button.setAttribute('aria-pressed', 'false');
+        attr(button, 'aria-pressed', 'false');
         
-        hide_aria(drop);
+        attr(drop, 'aria-hidden', 'true');
         
         drop.blur();
     }
@@ -137,9 +137,9 @@
         
         add_class(button, ['active', 'drop-active']);
         
-        button.setAttribute('aria-pressed', 'true');
+        attr(button, 'aria-pressed', 'true');
         
-        show_aria(drop);
+        attr(drop, 'aria-hidden', 'false');
         
         drop.focus();
     }

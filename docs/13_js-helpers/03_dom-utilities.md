@@ -13,27 +13,25 @@
 | <a href="#rendered_style" class="js-waypoint-trigger">#</a>        | `rendered_style`        | Returns currently rendered style attribute of an element.                                                                                                                                                                                                                                                                              |
 | <a href="#height" class="js-waypoint-trigger">#</a>                | `height`                | Returns height in pixels of an element.                                                                                                                                                                                                                                                                                                |
 | <a href="#width" class="js-waypoint-trigger">#</a>                 | `width`                 | Returns element width in pixels.                                                                                                                                                                                                                                                                                                       |
-| <a href="#closest" class="js-waypoint-trigger">#</a>               | `closest`               | Traverses up DOM tree to first parent by class name OR tag type and returns element if matched.                                                                                                                                                                                                                                        |
-| <a href="#closest_class" class="js-waypoint-trigger">#</a>         | `closest_class`         | Traverses up DOM tree to first parent by class name and returns element if matched.                                                                                                                                                                                                                                                    |
 | <a href="#coordinates" class="js-waypoint-trigger">#</a>           | `coordinates`           | Returns an object of absolute coordinates of element relative to page.                                                                                                                                                                                                                                                                 |
 | <a href="#dom_element" class="js-waypoint-trigger">#</a>           | `dom_element`           | Creates and returns an HTMLElement via an object of attributes. Attributes can be any HTML attribute to apply to the elem. Passing `on[Event]` will add an event listener to the element.                                                                                                                                              |
 | <a href="#first_children" class="js-waypoint-trigger">#</a>        | `first_children`        | Returns immediate first children of element.                                                                                                                                                                                                                                                                                           |
 | <a href="#form_inputs" class="js-waypoint-trigger">#</a>           | `form_inputs`           | Returns all inputs, textarea and select elements of a form element.                                                                                                                                                                                                                                                                    |
 | <a href="#form_values" class="js-waypoint-trigger">#</a>           | `form_values`           | Returns an key/value object of all form input, textarea and select element values.<br>Values are sanitized and are converted to `String` `Integer` `Float` where appropriate. Form inputs with a name `name[]` will be concatenated into an `Array`. Accepts radio and checkbox elements also.                                         |
-| <a href="#hide_aria" class="js-waypoint-trigger">#</a>             | `hide_aria`             | Sets aria-hidden to true.                                                                                                                                                                                                                                                                                                              |
 | <a href="#in_viewport" class="js-waypoint-trigger">#</a>           | `in_viewport`           | Returns true if element is in viewport.                                                                                                                                                                                                                                                                                                |
 | <a href="#inner_HTML" class="js-waypoint-trigger">#</a>            | `inner_HTML`            | Sets innerHTML of an element and clears any old event listeners.                                                                                                                                                                                                                                                                       |
 | <a href="#input_value" class="js-waypoint-trigger">#</a>           | `input_value`           | Returns input value of an input, textarea or select element.<br>Values are sanitized and are converted to `String` `Integer` `Float` where appropriate.<br>Radio elements will return the input value when checked. Checkbox elements will return a boolean.<br>File inputs will return a file object or array when `multiple` is set. |
-| <a href="#next" class="js-waypoint-trigger">#</a>                  | `next`                  | Traverses forwards through siblings to first element by class name OR tag type and returns element if matched.                                                                                                                                                                                                                         |
-| <a href="#next_class" class="js-waypoint-trigger">#</a>     | `next_class`     | Traverses forwards through siblings to first element by class name and returns element if matched.                                                                                                                                                                                                                                     |
 | <a href="#nth_child" class="js-waypoint-trigger">#</a>             | `nth_child`             | Returns nth direct child element of parent element if it exists.                                                                                                                                                                                                                                                                       |
-| <a href="#sibling_index" class="js-waypoint-trigger">#</a>          | `sibling_index`          | Returns index of element relative to it's siblings. For example if the element is the second                                                                                                                                                                                                                                           |
+| <a href="#sibling_index" class="js-waypoint-trigger">#</a>         | `sibling_index`         | Returns index of element relative to it's siblings.                                                                                                                                                                                                                                           											|
 | <a href="#preapend" class="js-waypoint-trigger">#</a>              | `preapend`              | Appends HTMLElement as first child to an element.                                                                                                                                                                                                                                                                                      |
-| <a href="#previous" class="js-waypoint-trigger">#</a>              | `previous`              | Traverses backwards through siblings to first element by class name OR tag type and returns element if matched.                                                                                                                                                                                                                        |
-| <a href="#previous_class" class="js-waypoint-trigger">#</a> | `previous_class` | Traverses backwards through siblings to first element by class name and returns element if matched.                                                                                                                                                                                                                                    |
 | <a href="#remove_from_dom" class="js-waypoint-trigger">#</a>       | `remove_from_dom`       | Removes element from DOM and clears any event listeners attached to it.                                                                                                                                                                                                                                                                |
 | <a href="#scroll_pos" class="js-waypoint-trigger">#</a>            | `scroll_pos`            | Returns scroll position of any element or viewport.                                                                                                                                                                                                                                                                                    |
-| <a href="#show_aria" class="js-waypoint-trigger">#</a>             | `show_aria`             | Sets aria-hidden to true                                                                                                                                                                                                                                                                                                               |
+| <a href="#closest" class="js-waypoint-trigger">#</a>               | `closest`               | Traverses up DOM tree to first parent by class name OR tag type and returns element if matched.                                                                                                                                                                                                                                        |
+| <a href="#closest_class" class="js-waypoint-trigger">#</a>         | `closest_class`         | Traverses up DOM tree to first parent by class name and returns element if matched.                                                                                                                                                                                                                                                    |
+| <a href="#next" class="js-waypoint-trigger">#</a>                  | `next`                  | Traverses forwards through siblings to first element by class name OR tag type and returns element if matched.                                                                                                                                                                                                                         |
+| <a href="#next_class" class="js-waypoint-trigger">#</a>     		 | `next_class`     	   | Traverses forwards through siblings to first element by class name and returns element if matched.                                                                                                                                                                                                                                     |
+| <a href="#previous" class="js-waypoint-trigger">#</a>              | `previous`              | Traverses backwards through siblings to first element by class name OR tag type and returns element if matched.                                                                                                                                                                                                                        |
+| <a href="#previous_class" class="js-waypoint-trigger">#</a> 		 | `previous_class`        | Traverses backwards through siblings to first element by class name and returns element if matched.                                                                                                                                                                                                                                    |
 | <a href="#traverse_up" class="js-waypoint-trigger">#</a>           | `traverse_up`           | Traverses up DOM tree and calls callback on each element until callback returns true.                                                                                                                                                                                                                                                  |
 | <a href="#traverse_down" class="js-waypoint-trigger">#</a>         | `traverse_down`         | Traverses down DOM tree and calls callback on each element until callback returns true.                                                                                                                                                                                                                                                |
 | <a href="#traverse_next" class="js-waypoint-trigger">#</a>         | `traverse_next`         | Traverses next siblings and calls callback on each element until callback returns true.                                                                                                                                                                                                                                                |
@@ -43,6 +41,8 @@
 ```javascript
 find(HTMLElement: element, ?HTMLElement: context = window): HTMLElement|Undefined
 ```
+
+Finds first single element by CSS selector and returns it.
 
 ```javascript
 let div = find('div');
@@ -58,10 +58,11 @@ let child = find('.foo', div);
 
 #### find_all
 
+Finds all elements by CSS selector and returns array. 
+
 ```javascript
 find_all(HTMLElement: element, ?HTMLElement: context = window): Array
 ```
-
 
 ```javascript
 let divs = find_all('div');
@@ -74,6 +75,8 @@ let children = find_all('.foo', divs[0]);
 <br>
 
 #### add_class
+
+Adds class(es) to HTMLElement(s).
 
 ```javascript
 add_class(HTMLElement|Array: element, String|Array: className): Void
@@ -94,6 +97,8 @@ add_class([element1, element2], ['foo', 'bar']);
 
 #### remove_class
 
+Removes class(es) to HTMLElement(s).
+
 ```javascript
 remove_class(HTMLElement|Array: element, String|Array: className): Void
 ```
@@ -112,42 +117,55 @@ remove_class([element1, element2], ['foo', 'bar']);
 
 #### has_class
 
+Checks if an HTMLElement(s) have a class or classes. 
+
 ```javascript
 has_class(HTMLElement: element, String|Array: className): Boolean
 ```
 
 ```javascript
-// Has class 'foo' or 'bar'
-if (has_class(element, 'foo, bar')) { }
+// Has class 'foo'
+if (has_class(element, 'foo'))
 
 // Has class 'foo' or 'bar'
-if (has_class(element, ['foo', 'bar'])) { }
+if (has_class(element, 'foo, bar'))
+
+// Has class 'foo' or 'bar'
+if (has_class(element, ['foo', 'bar']))
 
 // Has class foo and bar
-if (has_class(element, '.foo.bar')) { }
+if (has_class(element, '.foo.bar'))
 ```
 
 <br>
 
 #### toggle_class
 
+Adds OR removes class(es) to HTMLElement(s). 
+
 ```javascript
 toggle_class(HTMLElement|Array: element, String|Array: className): Void
 ```
 
 ```javascript
+// Toggles 'foo'
 toggle_class(element, 'foo');
 
+// Toggles 'foo' or 'bar'
 toggle_class(element, 'foo, bar');
 
+// Toggles 'foo' and 'bar'
 toggle_class(element, '.foo.bar');
 
+// Toggles 'foo' and 'bar' or both elements
 toggle_class([element1, element2], ['foo', 'bar']);
 ```
 
 <br>
 
 #### attr
+
+Sets, gets or removes any attribute on an HTMLElement.
 
 ```javascript
 attr(HTMLElement: element, ?String|Object: nameOrObect, ?Mixed: value): Mixed
@@ -183,6 +201,8 @@ attr(element, 'onClick', null);
 
 #### css
 
+Set, get or remove CSS value(s) on element. Note that this will only return inline styles, use `rendered_style` for currently displayed styles.
+
 ```javascript
 css(HTMLElement: element, ?String|Object: property, ?Mixed: value): Mixed
 ```
@@ -207,6 +227,8 @@ css(element, '--foo-bar', false);
 
 #### rendered_style
 
+Returns currently rendered style attribute of an element.
+
 ```javascript
 rendered_style(HTMLElement: element, ?String|Object: property, ?Mixed: value): Mixed
 ```
@@ -227,6 +249,8 @@ let fontSize = rendered_style(element, 'font-size');
 
 #### height
 
+Returns height in pixels of an element.
+
 ```javascript
 height(HTMLElement: element): Integer
 ```
@@ -239,6 +263,8 @@ let y = height(element);
 
 #### width
 
+Returns element width in pixels. 
+
 ```javascript
 width(HTMLElement: element): Integer
 ```
@@ -249,34 +275,9 @@ let x = width(element);
 
 <br>
 
-#### closest
-
-```javascript
-closest(HTMLElement: element, String|Array: classNameOrTag): HTMLElement|null
-```
-
-```javascript
-let parent = closest(element, 'div');
-let parent = closest(element, '.my-class');
-let parent = closest(element, ['div', '.my-class']);
-```	
-
-<br>
-
-#### closest_class
-
-```javascript
-closest_class(HTMLElement: element, String|Array: className): HTMLElement
-```
-
-```javascript
-let parent = closest_class(element, '.foo');
-let parent = closest_class(element, ['.foo', '.bar']);
-```
-
-<br>
-
 #### coordinates
+
+Returns an object of absolute coordinates of element relative to page. 
 
 ```javascript
 coordinates(HTMLElement: element): Object
@@ -299,6 +300,8 @@ let position = coordinates(element, '.foo');
 <br>
 
 #### dom_element
+
+Creates and returns an HTMLElement via an object of attributes. Attributes can be any HTML attribute to apply to the elem. Passing `on[Event]` will add an event listener to the element.
 
 ```javascript
 dom_element(Object: attributes, ?HTMLElement: appendTo, ?String|Array|HTMLElement: innerHTMLOrChildren): HTMLElement
@@ -323,6 +326,8 @@ let button3 = dom_element({tag: 'button', class: 'btn', type: 'button', innerHTM
 
 #### first_children
 
+Returns immediate first children of element.
+
 ```javascript
 first_children(HTMLElement: element): Array
 ```
@@ -334,6 +339,8 @@ let children = first_children(element);
 <br>
 
 #### form_inputs
+
+Returns all inputs, textarea and select elements of a form element.
 
 ```javascript
 form_inputs(HTMLElement: element): Array
@@ -347,6 +354,8 @@ let inputs = form_inputs(element);
 
 #### form_values
 
+Returns an key/value object of all form input, textarea and select element values.<br>Values are sanitized and are converted to `String` `Integer` `Float` where appropriate. Form inputs with a name `name[]` will be concatenated into an `Array`. Accepts radio and checkbox elements also.
+
 ```javascript
 form_values(HTMLElement: element): Object
 ```
@@ -357,15 +366,9 @@ let form = form_values(formElement);
 
 <br>
 
-#### hide_aria
-
-```javascript
-hide_aria(HTMLElement: element): Void
-```
-
-<br>
-
 #### in_viewport
+
+Returns true if element is in viewport.
 
 ```javascript
 in_viewport(HTMLElement: element): Boolean
@@ -374,6 +377,8 @@ in_viewport(HTMLElement: element): Boolean
 <br>
 
 #### inner_HTML
+
+Sets innerHTML of an element and clears any old event listeners.
 
 ```javascript
 inner_HTML(HTMLElement: element, String|Array: content, ?Boolean: append = false): Void
@@ -389,40 +394,17 @@ inner_HTML(element, '&lt;br&gt;More text', true)
 
 #### input_value
 
+Returns input value of an input, textarea or select element.<br>Values are sanitized and are converted to `String` `Integer` `Float` where appropriate.<br>Radio elements will return the input value when checked. Checkbox elements will return a boolean.<br>File inputs will return a file object or array when `multiple` is set.
+
 ```javascript
 input_value(HTMLElement: element): String|Integer|Float|Boolean
 ```
 
 <br>
 
-#### next
-
-```javascript
-next(HTMLElement: element, String|Array: classNameOrTag): HTMLElement|null
-```
-
-```javascript
-let sibling = next(element, 'div');
-let sibling = next(element, '.my-class');
-let sibling = next(element, ['div', '.my-class']);
-```
-
-<br>
-
-#### next_class
-
-```javascript
-next_class(HTMLElement: element, String|Array: className): HTMLElement|null
-```
-
-```javascript
-let sibling = next_class(element, '.foo');
-let sibling = next_class(element, ['.foo', '.bar']);
-```
-
-<br>
-
 #### nth_child
+
+Returns nth direct child element of parent element if it exists.
 
 ```javascript
 nth_child(HTMLElement: element, Integer: n): HTMLElement|undefined
@@ -436,6 +418,8 @@ let second = nth_child(element, 1);
 <br>
 
 #### sibling_index
+
+Returns index of element relative to it's siblings. 
 
 ```javascript
 sibling_index(HTMLElement: element): Integer
@@ -454,13 +438,125 @@ let position = sibling_index(find('.three'));
 
 #### preapend
 
+Appends HTMLElement as first child to an element.
+
 ```javascript
 preapend(HTMLElement: element, HTMLElement: parent): Void
 ```
 
 <br>
 
+#### remove_from_dom
+
+Removes element from DOM and clears any event listeners attached to it.
+
+```javascript
+remove_from_dom(HTMLElement: element): Void
+```
+
+<br>
+
+#### scroll_pos
+
+Returns scroll position of any element or viewport.
+
+```javascript
+scroll_pos(?HTMLElement: element = window): Object
+```
+
+```javascript
+// e.g { top: 20, left: 30 }
+
+// Window
+let scroll = scroll_pos();
+
+// element
+let scroll = scroll_pos(element);
+```
+
+<br>
+
+#### closest
+
+Traverses up DOM tree to first parent by class name OR tag type and returns element if matched.
+
+```javascript
+closest(HTMLElement: element, String|Array: classNameOrTag): HTMLElement|null
+```
+
+```javascript
+// Div element
+let parent = closest(element, 'div');
+
+// 'foo' class
+let parent = closest(element, '.foo');
+
+// 'foo' or 'bar' class
+let parent = closest(element, '.foo, .bar');
+let parent = closest(element, ['.foo', '.bar']);
+
+// 'foo' and 'bar' class
+let parent = closest(element, '.foo.bar');
+```	
+
+<br>
+
+#### closest_class
+
+Traverses up DOM tree to first parent by class name and returns element if matched.
+
+```javascript
+closest_class(HTMLElement: element, String|Array: className): HTMLElement
+```
+
+```javascript
+// 'foo' class
+let parent = closest_class(element, '.foo');
+
+// 'foo' or 'bar' class
+let parent = closest_class(element, '.foo, .bar');
+let parent = closest(element, ['.foo', '.bar']);
+
+// 'foo' and 'bar' class
+let parent = closest(element, '.foo.bar');
+```
+
+<br>
+
+#### next
+
+Traverses forwards through siblings to first element by class name OR tag type and returns element if matched.
+
+```javascript
+next(HTMLElement: element, String|Array: classNameOrTag): HTMLElement|null
+```
+
+```javascript
+let sibling = next(element, 'div');
+let sibling = next(element, '.my-class');
+let sibling = next(element, ['div', '.my-class']);
+```
+
+<br>
+
+#### next_class
+
+Traverses forwards through siblings to first element by class name and returns element if matched.
+
+```javascript
+next_class(HTMLElement: element, String|Array: className): HTMLElement|null
+```
+
+```javascript
+let sibling = next_class(element, '.foo');
+let sibling = next_class(element, ['.foo', '.bar']);
+```
+
+<br>
+
 #### previous
+
+Traverses backwards through siblings to first element by class name OR tag type and returns element if matched.
 
 ```javascript
 previous(HTMLElement: element, String|Array: className): HTMLElement|null
@@ -482,6 +578,8 @@ let sibling = previous(element, '.foo');
 
 #### previous_class
 
+Traverses backwards through siblings to first element by class name and returns element if matched.
+
 ```javascript
 previous_class(HTMLElement: element, String|Array: className): HTMLElement|null
 ```
@@ -500,41 +598,9 @@ let sibling = previous_class(element, 'foo.bar');
 
 <br>
 
-#### remove_from_dom
-
-```javascript
-remove_from_dom(HTMLElement: element): Void
-```
-
-<br>
-
-#### scroll_pos
-
-```javascript
-scroll_pos(?HTMLElement: element = window): Object
-```
-
-```javascript
-// e.g { top: 20, left: 30 }
-
-// Window
-let scroll = scroll_pos();
-
-// element
-let scroll = scroll_pos(element);
-```
-
-<br>
-
-#### show_aria
-
-```javascript
-show_aria(HTMLElement: element): Void
-```
-
-<br>
-
 #### traverse_up
+
+Traverses up DOM tree and calls callback on each element until callback returns `true`.
 
 ```javascript
 traverse_up(HTMLElement: element, Function: callback): Void
@@ -549,7 +615,9 @@ traverse_up(element, (parent) =>
 
 <br>
 
-#### traverse_down	
+#### traverse_down
+
+Traverses down DOM tree and calls callback on each element until callback returns `true`.
 
 ```javascript
 traverse_down(HTMLElement: element, Function: callback): Void
@@ -566,6 +634,8 @@ traverse_down(element, (child) =>
 
 #### traverse_next
 
+Traverses next siblings and calls callback on each element until callback returns `true`.
+
 ```javascript
 traverse_next(HTMLElement: element, Function: callback): Void
 ```
@@ -581,6 +651,8 @@ traverse_next(element, (sibling) =>
 
 #### traverse_prev
 
+Traverses previous siblings and calls callback on each element until callback returns `true`.
+
 ```javascript
 traverse_prev(HTMLElement: element, Function: callback): Void
 ```
@@ -595,6 +667,8 @@ traverse_prev(element, (sibling) =>
 <br>
 
 #### trigger_event
+
+Triggers a custom or native DOM event on an element. Custom events are nestable with a colon value.
 
 ```javascript
 trigger_event(HTMLElement: element, String: event, ?Object: data = {}): Void

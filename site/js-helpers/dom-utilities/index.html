@@ -390,16 +390,6 @@
 <td>Returns element width in pixels.</td>
 </tr>
 <tr>
-<td style="text-align:center;"><a href="#closest" class="js-waypoint-trigger">#</a></td>
-<td><code>closest</code></td>
-<td>Traverses up DOM tree to first parent by class name OR tag type and returns element if matched.</td>
-</tr>
-<tr>
-<td style="text-align:center;"><a href="#closest_class" class="js-waypoint-trigger">#</a></td>
-<td><code>closest_class</code></td>
-<td>Traverses up DOM tree to first parent by class name and returns element if matched.</td>
-</tr>
-<tr>
 <td style="text-align:center;"><a href="#coordinates" class="js-waypoint-trigger">#</a></td>
 <td><code>coordinates</code></td>
 <td>Returns an object of absolute coordinates of element relative to page.</td>
@@ -425,11 +415,6 @@
 <td>Returns an key/value object of all form input, textarea and select element values.<br>Values are sanitized and are converted to <code>String</code> <code>Integer</code> <code>Float</code> where appropriate. Form inputs with a name <code>name[]</code> will be concatenated into an <code>Array</code>. Accepts radio and checkbox elements also.</td>
 </tr>
 <tr>
-<td style="text-align:center;"><a href="#hide_aria" class="js-waypoint-trigger">#</a></td>
-<td><code>hide_aria</code></td>
-<td>Sets aria-hidden to true.</td>
-</tr>
-<tr>
 <td style="text-align:center;"><a href="#in_viewport" class="js-waypoint-trigger">#</a></td>
 <td><code>in_viewport</code></td>
 <td>Returns true if element is in viewport.</td>
@@ -445,16 +430,6 @@
 <td>Returns input value of an input, textarea or select element.<br>Values are sanitized and are converted to <code>String</code> <code>Integer</code> <code>Float</code> where appropriate.<br>Radio elements will return the input value when checked. Checkbox elements will return a boolean.<br>File inputs will return a file object or array when <code>multiple</code> is set.</td>
 </tr>
 <tr>
-<td style="text-align:center;"><a href="#next" class="js-waypoint-trigger">#</a></td>
-<td><code>next</code></td>
-<td>Traverses forwards through siblings to first element by class name OR tag type and returns element if matched.</td>
-</tr>
-<tr>
-<td style="text-align:center;"><a href="#next_class" class="js-waypoint-trigger">#</a></td>
-<td><code>next_class</code></td>
-<td>Traverses forwards through siblings to first element by class name and returns element if matched.</td>
-</tr>
-<tr>
 <td style="text-align:center;"><a href="#nth_child" class="js-waypoint-trigger">#</a></td>
 <td><code>nth_child</code></td>
 <td>Returns nth direct child element of parent element if it exists.</td>
@@ -462,22 +437,12 @@
 <tr>
 <td style="text-align:center;"><a href="#sibling_index" class="js-waypoint-trigger">#</a></td>
 <td><code>sibling_index</code></td>
-<td>Returns index of element relative to it's siblings. For example if the element is the second</td>
+<td>Returns index of element relative to it's siblings.</td>
 </tr>
 <tr>
 <td style="text-align:center;"><a href="#preapend" class="js-waypoint-trigger">#</a></td>
 <td><code>preapend</code></td>
 <td>Appends HTMLElement as first child to an element.</td>
-</tr>
-<tr>
-<td style="text-align:center;"><a href="#previous" class="js-waypoint-trigger">#</a></td>
-<td><code>previous</code></td>
-<td>Traverses backwards through siblings to first element by class name OR tag type and returns element if matched.</td>
-</tr>
-<tr>
-<td style="text-align:center;"><a href="#previous_class" class="js-waypoint-trigger">#</a></td>
-<td><code>previous_class</code></td>
-<td>Traverses backwards through siblings to first element by class name and returns element if matched.</td>
 </tr>
 <tr>
 <td style="text-align:center;"><a href="#remove_from_dom" class="js-waypoint-trigger">#</a></td>
@@ -490,9 +455,34 @@
 <td>Returns scroll position of any element or viewport.</td>
 </tr>
 <tr>
-<td style="text-align:center;"><a href="#show_aria" class="js-waypoint-trigger">#</a></td>
-<td><code>show_aria</code></td>
-<td>Sets aria-hidden to true</td>
+<td style="text-align:center;"><a href="#closest" class="js-waypoint-trigger">#</a></td>
+<td><code>closest</code></td>
+<td>Traverses up DOM tree to first parent by class name OR tag type and returns element if matched.</td>
+</tr>
+<tr>
+<td style="text-align:center;"><a href="#closest_class" class="js-waypoint-trigger">#</a></td>
+<td><code>closest_class</code></td>
+<td>Traverses up DOM tree to first parent by class name and returns element if matched.</td>
+</tr>
+<tr>
+<td style="text-align:center;"><a href="#next" class="js-waypoint-trigger">#</a></td>
+<td><code>next</code></td>
+<td>Traverses forwards through siblings to first element by class name OR tag type and returns element if matched.</td>
+</tr>
+<tr>
+<td style="text-align:center;"><a href="#next_class" class="js-waypoint-trigger">#</a></td>
+<td><code>next_class</code></td>
+<td>Traverses forwards through siblings to first element by class name and returns element if matched.</td>
+</tr>
+<tr>
+<td style="text-align:center;"><a href="#previous" class="js-waypoint-trigger">#</a></td>
+<td><code>previous</code></td>
+<td>Traverses backwards through siblings to first element by class name OR tag type and returns element if matched.</td>
+</tr>
+<tr>
+<td style="text-align:center;"><a href="#previous_class" class="js-waypoint-trigger">#</a></td>
+<td><code>previous_class</code></td>
+<td>Traverses backwards through siblings to first element by class name and returns element if matched.</td>
 </tr>
 <tr>
 <td style="text-align:center;"><a href="#traverse_up" class="js-waypoint-trigger">#</a></td>
@@ -522,6 +512,7 @@
 </tbody>
 </table>
 <pre><code class="javascript language-javascript">find(HTMLElement: element, ?HTMLElement: context = window): HTMLElement|Undefined</code></pre>
+<p>Finds first single element by CSS selector and returns it.</p>
 <pre><code class="javascript language-javascript">let div = find('div');
 
 let id = find('#foo');
@@ -531,6 +522,7 @@ let clas = find('.foo.bar');
 let child = find('.foo', div);</code></pre>
 <p><br></p>
 <h4 id="find_all">find_all</h4>
+<p>Finds all elements by CSS selector and returns array. </p>
 <pre><code class="javascript language-javascript">find_all(HTMLElement: element, ?HTMLElement: context = window): Array</code></pre>
 <pre><code class="javascript language-javascript">let divs = find_all('div');
 
@@ -539,6 +531,7 @@ let classes = find_all('.foo.bar');
 let children = find_all('.foo', divs[0]);</code></pre>
 <p><br></p>
 <h4 id="add_class">add_class</h4>
+<p>Adds class(es) to HTMLElement(s).</p>
 <pre><code class="javascript language-javascript">add_class(HTMLElement|Array: element, String|Array: className): Void</code></pre>
 <pre><code class="javascript language-javascript">add_class(element, 'foo');
 
@@ -549,6 +542,7 @@ add_class(element, '.foo.bar');
 add_class([element1, element2], ['foo', 'bar']);</code></pre>
 <p><br></p>
 <h4 id="remove_class">remove_class</h4>
+<p>Removes class(es) to HTMLElement(s).</p>
 <pre><code class="javascript language-javascript">remove_class(HTMLElement|Array: element, String|Array: className): Void</code></pre>
 <pre><code class="javascript language-javascript">remove_class(element, 'foo');
 
@@ -559,27 +553,37 @@ remove_class(element, 'foo.bar');
 remove_class([element1, element2], ['foo', 'bar']);</code></pre>
 <p><br></p>
 <h4 id="has_class">has_class</h4>
+<p>Checks if an HTMLElement(s) have a class or classes. </p>
 <pre><code class="javascript language-javascript">has_class(HTMLElement: element, String|Array: className): Boolean</code></pre>
-<pre><code class="javascript language-javascript">// Has class 'foo' or 'bar'
-if (has_class(element, 'foo, bar')) { }
+<pre><code class="javascript language-javascript">// Has class 'foo'
+if (has_class(element, 'foo'))
 
 // Has class 'foo' or 'bar'
-if (has_class(element, ['foo', 'bar'])) { }
+if (has_class(element, 'foo, bar'))
+
+// Has class 'foo' or 'bar'
+if (has_class(element, ['foo', 'bar']))
 
 // Has class foo and bar
-if (has_class(element, '.foo.bar')) { }</code></pre>
+if (has_class(element, '.foo.bar'))</code></pre>
 <p><br></p>
 <h4 id="toggle_class">toggle_class</h4>
+<p>Adds OR removes class(es) to HTMLElement(s). </p>
 <pre><code class="javascript language-javascript">toggle_class(HTMLElement|Array: element, String|Array: className): Void</code></pre>
-<pre><code class="javascript language-javascript">toggle_class(element, 'foo');
+<pre><code class="javascript language-javascript">// Toggles 'foo'
+toggle_class(element, 'foo');
 
+// Toggles 'foo' or 'bar'
 toggle_class(element, 'foo, bar');
 
+// Toggles 'foo' and 'bar'
 toggle_class(element, '.foo.bar');
 
+// Toggles 'foo' and 'bar' or both elements
 toggle_class([element1, element2], ['foo', 'bar']);</code></pre>
 <p><br></p>
 <h4 id="attr">attr</h4>
+<p>Sets, gets or removes any attribute on an HTMLElement.</p>
 <pre><code class="javascript language-javascript">attr(HTMLElement: element, ?String|Object: nameOrObect, ?Mixed: value): Mixed</code></pre>
 <pre><code class="javascript language-javascript">// Get values
 let id      = attr(element, 'id');
@@ -606,6 +610,7 @@ attr(element, 'style', null);
 attr(element, 'onClick', null);</code></pre>
 <p><br></p>
 <h4 id="css">css</h4>
+<p>Set, get or remove CSS value(s) on element. Note that this will only return inline styles, use <code>rendered_style</code> for currently displayed styles.</p>
 <pre><code class="javascript language-javascript">css(HTMLElement: element, ?String|Object: property, ?Mixed: value): Mixed</code></pre>
 <pre><code class="javascript language-javascript">// Get inline styles
 let display = css(element, 'display');
@@ -622,6 +627,7 @@ css(element, 'display', false);
 css(element, '--foo-bar', false);</code></pre>
 <p><br></p>
 <h4 id="rendered_style">rendered_style</h4>
+<p>Returns currently rendered style attribute of an element.</p>
 <pre><code class="javascript language-javascript">rendered_style(HTMLElement: element, ?String|Object: property, ?Mixed: value): Mixed</code></pre>
 <pre><code class="javascript language-javascript">// e.g. 'block'
 let display = rendered_style(element, 'display');
@@ -633,26 +639,17 @@ let height = rendered_style(element, 'height');
 let fontSize = rendered_style(element, 'font-size');</code></pre>
 <p><br></p>
 <h4 id="height">height</h4>
+<p>Returns height in pixels of an element.</p>
 <pre><code class="javascript language-javascript">height(HTMLElement: element): Integer</code></pre>
 <pre><code class="javascript language-javascript">let y = height(element);</code></pre>
 <p><br></p>
 <h4 id="width">width</h4>
+<p>Returns element width in pixels. </p>
 <pre><code class="javascript language-javascript">width(HTMLElement: element): Integer</code></pre>
 <pre><code class="javascript language-javascript">let x = width(element);</code></pre>
 <p><br></p>
-<h4 id="closest">closest</h4>
-<pre><code class="javascript language-javascript">closest(HTMLElement: element, String|Array: classNameOrTag): HTMLElement|null</code></pre>
-<pre><code class="javascript language-javascript">let parent = closest(element, 'div');
-let parent = closest(element, '.my-class');
-let parent = closest(element, ['div', '.my-class']);</code></pre>
-<pre><code></code></pre>
-<p><br></p>
-<h4 id="closest_class">closest_class</h4>
-<pre><code class="javascript language-javascript">closest_class(HTMLElement: element, String|Array: className): HTMLElement</code></pre>
-<pre><code class="javascript language-javascript">let parent = closest_class(element, '.foo');
-let parent = closest_class(element, ['.foo', '.bar']);</code></pre>
-<p><br></p>
 <h4 id="coordinates">coordinates</h4>
+<p>Returns an object of absolute coordinates of element relative to page. </p>
 <pre><code class="javascript language-javascript">coordinates(HTMLElement: element): Object</code></pre>
 <pre><code class="javascript language-javascript">/*
 {
@@ -667,6 +664,7 @@ let parent = closest_class(element, ['.foo', '.bar']);</code></pre>
 let position = coordinates(element, '.foo');</code></pre>
 <p><br></p>
 <h4 id="dom_element">dom_element</h4>
+<p>Creates and returns an HTMLElement via an object of attributes. Attributes can be any HTML attribute to apply to the elem. Passing <code>on[Event]</code> will add an event listener to the element.</p>
 <pre><code class="javascript language-javascript">dom_element(Object: attributes, ?HTMLElement: appendTo, ?String|Array|HTMLElement: innerHTMLOrChildren): HTMLElement</code></pre>
 <pre><code class="javascript language-javascript">let container = dom_element({tag: 'div', class: 'container'});
 
@@ -682,49 +680,43 @@ let button2 = dom_element({tag: 'button', class: 'btn', type: 'button', innerTex
 let button3 = dom_element({tag: 'button', class: 'btn', type: 'button', innerHTML: '&amp;lt;span class=&amp;quot;fa fa-start&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;'});</code></pre>
 <p><br></p>
 <h4 id="first_children">first_children</h4>
+<p>Returns immediate first children of element.</p>
 <pre><code class="javascript language-javascript">first_children(HTMLElement: element): Array</code></pre>
 <pre><code class="javascript language-javascript">let children = first_children(element);</code></pre>
 <p><br></p>
 <h4 id="form_inputs">form_inputs</h4>
+<p>Returns all inputs, textarea and select elements of a form element.</p>
 <pre><code class="javascript language-javascript">form_inputs(HTMLElement: element): Array</code></pre>
 <pre><code class="javascript language-javascript">let inputs = form_inputs(element);</code></pre>
 <p><br></p>
 <h4 id="form_values">form_values</h4>
+<p>Returns an key/value object of all form input, textarea and select element values.<br>Values are sanitized and are converted to <code>String</code> <code>Integer</code> <code>Float</code> where appropriate. Form inputs with a name <code>name[]</code> will be concatenated into an <code>Array</code>. Accepts radio and checkbox elements also.</p>
 <pre><code class="javascript language-javascript">form_values(HTMLElement: element): Object</code></pre>
 <pre><code class="javascript language-javascript">let form = form_values(formElement);</code></pre>
 <p><br></p>
-<h4 id="hide_aria">hide_aria</h4>
-<pre><code class="javascript language-javascript">hide_aria(HTMLElement: element): Void</code></pre>
-<p><br></p>
 <h4 id="in_viewport">in_viewport</h4>
+<p>Returns true if element is in viewport.</p>
 <pre><code class="javascript language-javascript">in_viewport(HTMLElement: element): Boolean</code></pre>
 <p><br></p>
 <h4 id="inner_html">inner_HTML</h4>
+<p>Sets innerHTML of an element and clears any old event listeners.</p>
 <pre><code class="javascript language-javascript">inner_HTML(HTMLElement: element, String|Array: content, ?Boolean: append = false): Void</code></pre>
 <pre><code class="javascript language-javascript">inner_HTML(element, 'Hello world!');
 
 inner_HTML(element, '&amp;lt;br&amp;gt;More text', true)</code></pre>
 <p><br></p>
 <h4 id="input_value">input_value</h4>
+<p>Returns input value of an input, textarea or select element.<br>Values are sanitized and are converted to <code>String</code> <code>Integer</code> <code>Float</code> where appropriate.<br>Radio elements will return the input value when checked. Checkbox elements will return a boolean.<br>File inputs will return a file object or array when <code>multiple</code> is set.</p>
 <pre><code class="javascript language-javascript">input_value(HTMLElement: element): String|Integer|Float|Boolean</code></pre>
 <p><br></p>
-<h4 id="next">next</h4>
-<pre><code class="javascript language-javascript">next(HTMLElement: element, String|Array: classNameOrTag): HTMLElement|null</code></pre>
-<pre><code class="javascript language-javascript">let sibling = next(element, 'div');
-let sibling = next(element, '.my-class');
-let sibling = next(element, ['div', '.my-class']);</code></pre>
-<p><br></p>
-<h4 id="next_class">next_class</h4>
-<pre><code class="javascript language-javascript">next_class(HTMLElement: element, String|Array: className): HTMLElement|null</code></pre>
-<pre><code class="javascript language-javascript">let sibling = next_class(element, '.foo');
-let sibling = next_class(element, ['.foo', '.bar']);</code></pre>
-<p><br></p>
 <h4 id="nth_child">nth_child</h4>
+<p>Returns nth direct child element of parent element if it exists.</p>
 <pre><code class="javascript language-javascript">nth_child(HTMLElement: element, Integer: n): HTMLElement|undefined</code></pre>
 <pre><code class="javascript language-javascript">let first = nth_child(element, 0);
 let second = nth_child(element, 1);</code></pre>
 <p><br></p>
 <h4 id="sibling_index">sibling_index</h4>
+<p>Returns index of element relative to it's siblings. </p>
 <pre><code class="javascript language-javascript">sibling_index(HTMLElement: element): Integer</code></pre>
 <pre><code class="javascript language-javascript">// &amp;lt;div&amp;gt;1&amp;lt;/div&amp;gt;
 // &amp;lt;div &amp;gt;2&amp;lt;/div&amp;gt;
@@ -734,9 +726,69 @@ let second = nth_child(element, 1);</code></pre>
 let position = sibling_index(find('.three'));</code></pre>
 <p><br></p>
 <h4 id="preapend">preapend</h4>
+<p>Appends HTMLElement as first child to an element.</p>
 <pre><code class="javascript language-javascript">preapend(HTMLElement: element, HTMLElement: parent): Void</code></pre>
 <p><br></p>
+<h4 id="remove_from_dom">remove_from_dom</h4>
+<p>Removes element from DOM and clears any event listeners attached to it.</p>
+<pre><code class="javascript language-javascript">remove_from_dom(HTMLElement: element): Void</code></pre>
+<p><br></p>
+<h4 id="scroll_pos">scroll_pos</h4>
+<p>Returns scroll position of any element or viewport.</p>
+<pre><code class="javascript language-javascript">scroll_pos(?HTMLElement: element = window): Object</code></pre>
+<pre><code class="javascript language-javascript">// e.g { top: 20, left: 30 }
+
+// Window
+let scroll = scroll_pos();
+
+// element
+let scroll = scroll_pos(element);</code></pre>
+<p><br></p>
+<h4 id="closest">closest</h4>
+<p>Traverses up DOM tree to first parent by class name OR tag type and returns element if matched.</p>
+<pre><code class="javascript language-javascript">closest(HTMLElement: element, String|Array: classNameOrTag): HTMLElement|null</code></pre>
+<pre><code class="javascript language-javascript">// Div element
+let parent = closest(element, 'div');
+
+// 'foo' class
+let parent = closest(element, '.foo');
+
+// 'foo' or 'bar' class
+let parent = closest(element, '.foo, .bar');
+let parent = closest(element, ['.foo', '.bar']);
+
+// 'foo' and 'bar' class
+let parent = closest(element, '.foo.bar');</code></pre>
+<pre><code></code></pre>
+<p><br></p>
+<h4 id="closest_class">closest_class</h4>
+<p>Traverses up DOM tree to first parent by class name and returns element if matched.</p>
+<pre><code class="javascript language-javascript">closest_class(HTMLElement: element, String|Array: className): HTMLElement</code></pre>
+<pre><code class="javascript language-javascript">// 'foo' class
+let parent = closest_class(element, '.foo');
+
+// 'foo' or 'bar' class
+let parent = closest_class(element, '.foo, .bar');
+let parent = closest(element, ['.foo', '.bar']);
+
+// 'foo' and 'bar' class
+let parent = closest(element, '.foo.bar');</code></pre>
+<p><br></p>
+<h4 id="next">next</h4>
+<p>Traverses forwards through siblings to first element by class name OR tag type and returns element if matched.</p>
+<pre><code class="javascript language-javascript">next(HTMLElement: element, String|Array: classNameOrTag): HTMLElement|null</code></pre>
+<pre><code class="javascript language-javascript">let sibling = next(element, 'div');
+let sibling = next(element, '.my-class');
+let sibling = next(element, ['div', '.my-class']);</code></pre>
+<p><br></p>
+<h4 id="next_class">next_class</h4>
+<p>Traverses forwards through siblings to first element by class name and returns element if matched.</p>
+<pre><code class="javascript language-javascript">next_class(HTMLElement: element, String|Array: className): HTMLElement|null</code></pre>
+<pre><code class="javascript language-javascript">let sibling = next_class(element, '.foo');
+let sibling = next_class(element, ['.foo', '.bar']);</code></pre>
+<p><br></p>
 <h4 id="previous">previous</h4>
+<p>Traverses backwards through siblings to first element by class name OR tag type and returns element if matched.</p>
 <pre><code class="javascript language-javascript">previous(HTMLElement: element, String|Array: className): HTMLElement|null</code></pre>
 <pre><code class="javascript language-javascript">// Finds previous div element
 let sibling = previous(element, 'div');
@@ -749,6 +801,7 @@ let sibling = previous(element, ['div', 'span']);
 let sibling = previous(element, '.foo');</code></pre>
 <p><br></p>
 <h4 id="previous_class">previous_class</h4>
+<p>Traverses backwards through siblings to first element by class name and returns element if matched.</p>
 <pre><code class="javascript language-javascript">previous_class(HTMLElement: element, String|Array: className): HTMLElement|null</code></pre>
 <pre><code class="javascript language-javascript">// Finds previous element with class 'foo'
 let sibling = previous_class(element, 'foo');
@@ -760,23 +813,8 @@ let sibling = previous_class(element, ['foo', 'bar']);
 // Finds previous element with class 'foo' and 'bar'
 let sibling = previous_class(element, 'foo.bar');</code></pre>
 <p><br></p>
-<h4 id="remove_from_dom">remove_from_dom</h4>
-<pre><code class="javascript language-javascript">remove_from_dom(HTMLElement: element): Void</code></pre>
-<p><br></p>
-<h4 id="scroll_pos">scroll_pos</h4>
-<pre><code class="javascript language-javascript">scroll_pos(?HTMLElement: element = window): Object</code></pre>
-<pre><code class="javascript language-javascript">// e.g { top: 20, left: 30 }
-
-// Window
-let scroll = scroll_pos();
-
-// element
-let scroll = scroll_pos(element);</code></pre>
-<p><br></p>
-<h4 id="show_aria">show_aria</h4>
-<pre><code class="javascript language-javascript">show_aria(HTMLElement: element): Void</code></pre>
-<p><br></p>
 <h4 id="traverse_up">traverse_up</h4>
+<p>Traverses up DOM tree and calls callback on each element until callback returns <code>true</code>.</p>
 <pre><code class="javascript language-javascript">traverse_up(HTMLElement: element, Function: callback): Void</code></pre>
 <pre><code class="javascript language-javascript">traverse_up(element, (parent) =&gt;
 {
@@ -784,6 +822,7 @@ let scroll = scroll_pos(element);</code></pre>
 });</code></pre>
 <p><br></p>
 <h4 id="traverse_down">traverse_down</h4>
+<p>Traverses down DOM tree and calls callback on each element until callback returns <code>true</code>.</p>
 <pre><code class="javascript language-javascript">traverse_down(HTMLElement: element, Function: callback): Void</code></pre>
 <pre><code class="javascript language-javascript">traverse_down(element, (child) =&gt;
 {
@@ -791,6 +830,7 @@ let scroll = scroll_pos(element);</code></pre>
 });</code></pre>
 <p><br></p>
 <h4 id="traverse_next">traverse_next</h4>
+<p>Traverses next siblings and calls callback on each element until callback returns <code>true</code>.</p>
 <pre><code class="javascript language-javascript">traverse_next(HTMLElement: element, Function: callback): Void</code></pre>
 <pre><code class="javascript language-javascript">traverse_next(element, (sibling) =&gt;
 {
@@ -798,6 +838,7 @@ let scroll = scroll_pos(element);</code></pre>
 });</code></pre>
 <p><br></p>
 <h4 id="traverse_prev">traverse_prev</h4>
+<p>Traverses previous siblings and calls callback on each element until callback returns <code>true</code>.</p>
 <pre><code class="javascript language-javascript">traverse_prev(HTMLElement: element, Function: callback): Void</code></pre>
 <pre><code class="javascript language-javascript">traverse_prev(element, (sibling) =&gt;
 {
@@ -805,6 +846,7 @@ let scroll = scroll_pos(element);</code></pre>
 });</code></pre>
 <p><br></p>
 <h4 id="trigger_event">trigger_event</h4>
+<p>Triggers a custom or native DOM event on an element. Custom events are nestable with a colon value.</p>
 <pre><code class="javascript language-javascript">trigger_event(HTMLElement: element, String: event, ?Object: data = {}): Void</code></pre>
 <pre><code class="javascript language-javascript">trigger_event(element, 'click');
 

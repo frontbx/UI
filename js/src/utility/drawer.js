@@ -573,10 +573,8 @@
     Drawer.prototype._bindListeners = function()
     {
         if (!this._options.fromHTML) 
-        {
-            let context = this._options.persistent ? this._drawer : this._containerWrap;
-            
-            frontbx.dom().refresh(context);
+        {            
+            frontbx.dom().refresh(this._drawer);
         }
 
         if (this._options.responsive && this._options.persistent) 

@@ -5,7 +5,7 @@
      * 
      * @var {Function}
      */
-    const [find, dom_element, add_class, on, off, remove_class, remove_from_dom, hide_aria, show_aria] = frontbx.import(['find','dom_element','add_class','on','off','remove_class','remove_from_dom','hide_aria','show_aria']).from('_');
+    const [find, dom_element, add_class, on, off, remove_class, remove_from_dom, attr] = frontbx.import(['find','dom_element','add_class','on','off','remove_class','remove_from_dom','attr']).from('_');
 
     /**
      * Default options
@@ -154,7 +154,9 @@
 
         if (this._options.overlay !== false) add_class(document.body, 'no-scroll');
 
-        show_aria([this._modal, this._overlay]);
+        attr(this._modal, 'aria-hidden', 'false');
+
+        attr(this._overlay, 'aria-hidden', 'false');
     }
 
     /**
@@ -176,7 +178,9 @@
 
         remove_class(document.body, 'no-scroll');
 
-        hide_aria([this._modal, this._overlay]);
+        attr(this._modal, 'aria-hidden', 'true');
+
+        attr(this._overlay, 'aria-hidden', 'true');
 
         this._dialog.blur();
     }
