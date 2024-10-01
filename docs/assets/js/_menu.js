@@ -1,3 +1,99 @@
+
+
+/**
+ * Docs Drawer
+ *
+ */
+(function()
+{
+	const [find, toggle_class, remove_class, attr, width, on, off, trigger_event, animate, extend] = frontbx.import(['find','toggle_class','remove_class','attr','width', 'on', 'off', 'trigger_event','animate','extend']).from('_');
+
+	const [Component] = frontbx.get('Component');
+
+	const menu = find('#docs-menu');
+	
+	var drawer;
+
+	if (menu)
+	{
+		drawer = frontbx.Drawer({
+		    content : menu,
+		    state: 'collapsed,',
+		    swipeable : false,
+		    classes: 'docs-drawer',
+		    callbackClose: () => remove_class(find('.js-docs-drawer-trigger'), 'active')
+		});
+		
+		attr(menu, 'style', false);
+
+		frontbx.set('docs-drawer', drawer);
+	}
+
+    const DocDrawer = function()
+    {
+    	this._desktopContainer = find('.desktop-menu');
+
+    	this._mobileContainer = find('.docs-drawer .js-drawer-dialog');
+
+    	this._menuElem = find('#docs-menu');
+
+        this.super('.js-docs-drawer-trigger');
+    }
+
+    DocDrawer.prototype.bind = function(trigger)
+    {    	
+    	on(trigger, 'click', this._toggleDrawer, this);
+
+    	on(window, 'resize', this.resize(), this);
+
+    	on(window, 'frontbx:pjax:success', () => 
+
+    		animate(window, { property : 'scrollTo', to: '0, 0', duration: 300})
+    	);
+
+    	trigger_event(window, 'resize');
+    }
+
+    DocDrawer.prototype._toggleDrawer = function(e, trigger)
+    {
+    	toggle_class(trigger, 'active');
+
+    	drawer.opened() ? drawer.close() : drawer.open();
+    }
+
+    DocDrawer.prototype.unbind = function(trigger)
+    {
+    	off(trigger, 'click', this._toggleDrawer, this);
+
+    	off(window, 'resize', this.resize(), this);
+    }
+
+    DocDrawer.prototype.resize = function()
+    {
+    	return throttle(() =>
+    	{
+    		let x = width(window);
+
+	        if (x < 992 && this.inMain)
+	        {
+	            this._mobileContainer.appendChild(this._menuElem);
+
+	            this.inMain = false;
+	        }
+	        else if (x > 992 && !this.inMain)
+	        {
+	        	this._desktopContainer.appendChild(this._menuElem);
+
+	        	this.inMain = true;
+	        }
+
+    	}, 100);
+    }
+
+    frontbx.dom().register('DocDrawer', extend(Component, DocDrawer), true);
+
+}());
+
 /**
  * Active classes on docs menu.
  *
@@ -71,93 +167,5 @@
     }
 
     frontbx.dom().register('DocsMenu', extend(Component, DocsMenu), true);
-
-}());
-
-/**
- * Docs Drawer
- *
- */
-(function()
-{
-	const [find, toggle_class, remove_class, attr, width, on, off, trigger_event, animate, extend] = frontbx.import(['find','toggle_class','remove_class','attr','width', 'on', 'off', 'trigger_event','animate','extend']).from('_');
-
-	const [Component] = frontbx.get('Component');
-	const menu = find('#docs-menu');
-	var drawer;
-
-	if (menu)
-	{
-		drawer = frontbx.Drawer({
-		    content : menu,
-		    state: 'collapsed,',
-		    swipeable : false,
-		    classes: 'docs-drawer',
-		    callbackClose: () => remove_class(find('.js-docs-drawer-trigger'), 'active')
-		});
-		
-		attr(menu, 'style', false);
-
-		frontbx.set('docs-drawer', drawer);
-	}
-
-    const DocDrawer = function()
-    {
-    	this.main = find('.main-container');
-
-        this.super('.js-docs-drawer-trigger');
-    }
-
-    DocDrawer.prototype.bind = function(trigger)
-    {    	
-    	on(trigger, 'click', this._toggleDrawer, this);
-
-    	on(window, 'resize', this.resize(), this);
-
-    	on(window, 'frontbx:pjax:success', () => 
-
-    		animate(window, { property : 'scrollTo', to: '0, 0', duration: 300})
-    	);
-
-    	trigger_event(window, 'resize');
-    }
-
-    DocDrawer.prototype._toggleDrawer = function(e, trigger)
-    {
-    	toggle_class(trigger, 'active');
-
-    	drawer.opened() ? drawer.close() : drawer.open();
-    }
-
-    DocDrawer.prototype.unbind = function(trigger)
-    {
-    	off(trigger, 'click', this._toggleDrawer, this);
-
-    	off(window, 'resize', this.resize(), this);
-    }
-
-    DocDrawer.prototype.resize = function()
-    {
-    	return throttle(() =>
-    	{
-    		let x = width(window);
-
-	        if (x < 992 && this.inMain)
-	        {
-	            drawer._containerWrap.appendChild(drawer._drawer);
-
-	            this.inMain = false;
-	        }
-	        else if (x > 992 && !this.inMain)
-	        {
-	        	this.main.appendChild(drawer._drawer);
-
-	        	this.inMain = true;
-	        }
-
-    	}, 100);
-    }
-
-    frontbx.dom().register('DocDrawer', extend(Component, DocDrawer), true);
 
 }());
