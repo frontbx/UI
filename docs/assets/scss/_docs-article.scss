@@ -1,12 +1,13 @@
-.docs-body
+.docs-body,
+.docs-body > .pjax-temp-swap-wrapper
 {
-    // Lists
+    // Intro list
     > h1 + p + hr + ul,
     > h1 + p + p + hr + ul,
     > h1 + p + p + p + hr + ul,
     > h1 + p + hr + ul ul,
     > h1 + p + p + hr + ul ul,
-    > h1 + p + p + p + hr + ul ul
+    > h1 + p + p + p + hr + ul ul,
     {
         list-style: none;
     }
@@ -105,7 +106,8 @@
         padding-left: 0;
         padding-right: 0;
     }
-    .docs-body
+    .docs-body,
+    .docs-body > .pjax-temp-swap-wrapper
     {
         > .fbx-snippet-demo,
         > .fbx-code-snippet,
@@ -126,12 +128,8 @@
     }
 }
 
-.fbx-darkmode hr
-{
-    background: var(--fbx-black-200);
-}
-
-.docs-body
+.docs-body,
+.docs-body > .pjax-temp-swap-wrapper
 {
     > *:not(hr):not(ul):not(ol):not(blockquote):not(image):not(table):not(pre):not(.table-responsive):not(.fbx-code-snippet):not(.fbx-snippet-demo)
     {
@@ -147,7 +145,8 @@
 
 @include media-breakpoint-up(sm)
 {
-    .docs-body
+    .docs-body,
+    .docs-body > .pjax-temp-swap-wrapper
     {
         > *:not(hr):not(ul):not(ol):not(blockquote):not(image):not(table):not(pre):not(.table-responsive):not(.fbx-code-snippet):not(.fbx-snippet-demo)
         {
@@ -164,7 +163,8 @@
 
 @include media-breakpoint-up(md)
 {
-    .docs-body
+    .docs-body,
+    .docs-body > .pjax-temp-swap-wrapper
     {
         > *:not(hr):not(ul):not(ol):not(blockquote):not(image):not(table):not(pre):not(.table-responsive):not(.fbx-code-snippet):not(.fbx-snippet-demo)
         {
@@ -181,7 +181,8 @@
 
 @include media-breakpoint-up(lg)
 {
-    .docs-body
+    .docs-body,
+    .docs-body > .pjax-temp-swap-wrapper
     {
         > *:not(hr):not(ul):not(ol):not(blockquote):not(image):not(table):not(pre):not(.table-responsive):not(.fbx-code-snippet):not(.fbx-snippet-demo)
         {

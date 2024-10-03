@@ -5,7 +5,7 @@
      * 
      * @var {Function}
      */
-    const [each, is_function, is_object, is_array_last, is_empty, callable_name] = frontbx.import(['each','is_function','is_object','is_array_last','is_empty','callable_name']).from('_');
+    const [each, is_function, is_object, is_empty, callable_name, array_filter] = frontbx.import(['each','is_function','is_object','is_empty','callable_name', 'array_filter']).from('_');
 
     /**
      * Named callbacks
@@ -77,16 +77,6 @@
      * @class
      */
     const Ajax = function()
-    {
-        this._reset();
-    }
-
-    /**
-     * Reset internals.
-     *
-     * @return {this}
-     */
-    Ajax.prototype._reset = function()
     {
         this._settings =
         {
@@ -396,89 +386,59 @@
      * @param  {object}        headers  Request headers (optional)
      * @return {This}
      */
-    Ajax.prototype._setResponseHandlers = function(method, url, data, success, error, complete, abort, headers, progress)
+    Ajax.prototype._setResponseHandlers = function()
     {
-        let ret = { method, url, data, success, error, complete, abort, headers, progress };
-
         // Cleanup
-        let args = Array.prototype.slice.call(arguments);
-
-        // Remove method and URL
-        args.splice(0,2);
-
-        // post(url, complete)
-        // put(url, data)
-        if (args.length === 1 && is_function(args[0]) && !NAMED_CALLBACKS.includes(callable_name(args[0])))
+        let args    = Array.prototype.slice.call(arguments);
+        let method  = args.shift();
+        let url     = args.shift();
+        let data    = is_object(args[0]) ? args.shift() : null;
+        let headers = null;
+        let argmap  = ['success', 'error', 'complete', 'abort', 'headers', 'progress'];
+        
+        each(args, (i, arg) =>
         {
-            ret.complete = data;
-            ret.data = ret.success = ret.error = ret.complete = ret.abort = ret.progress = ret.headers = null;
-        }
-        // post(url, data, complete)
-        else if (args.length === 2 && is_function(args[1]) && !NAMED_CALLBACKS.includes(callable_name(args[1])))
-        {
-            ret.complete = success;
-            ret.success = ret.error = ret.complete = ret.abort = ret.progress = ret.headers = null;
-        }
-        else
-        {
-            each(args, (i, arg) =>
+            if (is_function(arg))
             {
-                if (is_function(arg))
-                {
-                    let name = callable_name(arg).toLowerCase();
+                let funcname = callable_name(arg).toLowerCase();
 
-                    if (NAMED_CALLBACKS.includes(callable_name(arg)))
-                    {
-                        ret[name] = arg;
-                    }
-                }
-                else if (is_object(arg))
-                {
-                    // First arg is always data if it's an object
-                    if (i === 0)
-                    {
-                        ret.data = arg;
-                    }
-                    // Last arg should be headers if it's an object
-                    else if (is_array_last(arg, args))
-                    {
-                        ret.headers = arg;
-                    }
-                }
-            });
-        }
+                let k = NAMED_CALLBACKS.includes(funcname) ? funcname : argmap[i];
 
-        // Sanitize params
-        let hasData = is_object(ret.data) && !is_empty(ret.data);
+                this[k](arg);
+            }
+            else if (is_object(arg))
+            {
+                this.headers(arg);
+            }
+        });
 
         // Ajax.get('foo.com?foo=bar&baz')
-        if (hasData)
+        if (is_object(data) && !is_empty(data))
         {
             if (method === 'UPLOAD')
             {
                 let form = new FormData();
 
-                each(data, (k, v) =>
-                {
-                    form.append(key, value, v.type);
-                });
+                each(data, (k, v) => form.append(k, v, v.type));
+
+                data = form;
             }
             else if (method !== 'POST')
             {   
-                let suffix = ret.url.includes('?') ? '&' : '?';
-                let params = this._params(ret.data);
-                ret.url    = `${ret.url}${suffix}${params}`;
-                ret.data   = undefined;
+                let suffix = url.includes('?') ? '&' : '?';
+                let params = this._params(data);
+                url  = `${url}${suffix}${params}`;
+                data = undefined;
             }
             else
             {
-                ret.data = this._params(ret.data);
+                data = this._params(data);
             }
         }
 
-        let callbacks = ['success', 'error', 'complete', 'abort', 'headers', 'progress'];
-
-        each(ret, (k,v) => callbacks.includes(k) ? this[k](v) : this[k] = v);
+        this.method = method;
+        this.data   = data;
+        this.url    = url;
     }
 
     /**
@@ -509,6 +469,12 @@
         }
     }
 
+    /**
+     * Converts parameters to string
+     *
+     * @param  {Object} obj
+     * @return {String}
+     */
     Ajax.prototype._params = function(obj)
     {
         let s = [];

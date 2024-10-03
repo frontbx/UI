@@ -12,7 +12,21 @@
      * 
      * @var {Function}
      */
-    const [on, off, attr, bool, extend]  = frontbx.import(['on','off','attr','bool','extend']).from('_');
+    const [on, off, each, is_undefined, attr, bool, to_camel_case, extend]  = frontbx.import(['on','off','each','is_undefined','attr','bool','to_camel_case','extend']).from('_');
+
+    /**
+     * Available data attributes.
+     * 
+     * @var {Array}
+     */
+    const DATA_ATTRIBUTES = ['element','url','once','nocache','urlhash','pushstate','scrolltop','animate'];
+
+    /**
+     * Available data attributes.
+     * 
+     * @var {Array}
+     */
+    const BOOL_ATTRS = ['once','nocache','urlhash','pushstate','scrolltop','animate'];
 
     /**
      * URLS Requested
@@ -57,23 +71,37 @@
      * @param {event|null} e JavaScript click event
      * @access {private}
      */
-    PjaxLinks.prototype._requestHandler = function(e, clicked)
+    PjaxLinks.prototype._requestHandler = function(e, trigger)
     {
-        let url       = clicked.href || attr(clicked, 'data-pjax-target');
-        let once      = attr(clicked, 'data-pjax-once') || false;
-        let element   = attr(clicked, 'data-pjax-target');
-        let cacheBust = bool(attr(clicked, 'data-pjax-nocache'));
-        let pushstate = !element || attr(clicked, 'data-pjax-pushstate') ? true : false;
-        let urlhash   = !element ? false : bool(attr(clicked, 'data-pjax-urlhash'));
+        let options = { };
+
+        each(DATA_ATTRIBUTES, (i, attribute) =>
+        {
+            let value = attr(trigger, `data-pjax-${attribute}`);
+
+            if (!is_undefined(value))
+            {
+                if (BOOL_ATTRS.includes(attribute))
+                {
+                    value = bool(value);
+                }
+                else if (value === 'element')
+                {
+                    value = value[0] !== '#' ? `#${value}` : value;
+                }
+
+                options[to_camel_case(attribute)] = value;
+            }
+        });
+
+        let url = trigger.href || options.url;
 
         // Only request once
-        if (REQUESTED.includes(url) && once) return;
+        if (REQUESTED.includes(url) && options.once) return false;
 
         REQUESTED.push(url);
 
-        if (element) element = element[0] !== '#' ? `#${element}` : element;
-
-        frontbx.Pjax().request(url, {once, element, cacheBust, pushstate, urlhash});
+        frontbx.Pjax().request(url, options);
 
         return false;
     }

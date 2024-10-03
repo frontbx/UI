@@ -217,7 +217,7 @@ The options arguement is an Object with the following values / defaults
 | Attribute   | Default | Description                                                                                             |
 |-------------|---------|---------------------------------------------------------------------------------------------------------|
 | `element`   | `body`  | Optional target element to insert response into                                                         |
-| `cacheBust` | `false` | When set to `true` a timestamp is appended to the URL query to ensure an un-cashed response.            |
+| `nocache` | `false` | When set to `true` a timestamp is appended to the URL query to ensure an un-cashed response.            |
 | `pushstate` | `false` | When set to `true` a new history state is created.                                                      |
 | `urlhash`   | `false` | When set to `true` and `element` is provided, the URL hash is updated with the id of the target element |
 

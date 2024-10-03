@@ -23,7 +23,6 @@ import './dom/tabs.js';
 import './dom/input-mask.js';
 import './dom/messages.js';
 import './dom/waypoint.js';
-
 import './dom/ripple.js';
 import './dom/table.js';
 import './dom/image.js';

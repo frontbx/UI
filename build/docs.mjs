@@ -315,7 +315,9 @@ DocsBuilder.prototype._genDocsPage = function(src, dest)
 
     let html = this._MDtoHTMLFile(src);
 
-    return this.PAGE_TEMPLATE.replaceAll('{{DOCS_MENU}}', menu).replace('{{ARTICLEBODY}}', html).replaceAll('{{ASSET_PATH}}', this._getAssetsPath(src)).replaceAll('DOLLAR_SIGN', '$');
+    let title = this._genTitle(src);
+
+    return this.PAGE_TEMPLATE.replaceAll('{{DOCS_MENU}}', menu).replace('{{DOC_TITLE}}', title).replace('{{ARTICLEBODY}}', html).replaceAll('{{ASSET_PATH}}', this._getAssetsPath(src)).replaceAll('DOLLAR_SIGN', '$');
 }
 
 /**
@@ -329,6 +331,17 @@ DocsBuilder.prototype._MDtoHTMLFile = function(path)
     const text = FS.readFileSync(path, 'utf8', (err, data) => data).replaceAll('$', 'DOLLAR_SIGN');
     
     return MARKDOWN.makeHtml(text);
+}
+
+/**
+ * Generates the page title.
+ *
+ * @param  {String} path
+ * @return {String}
+ */
+DocsBuilder.prototype._genTitle = function(path)
+{
+    return this._prettyMenuName(path);
 }
 
 /**
@@ -366,7 +379,7 @@ DocsBuilder.prototype._genHTMLDocsMenu = function(menu, currFile, dir, tabIndex)
                 let slug   = `${dir}/${name}/index.html`;
                 let back   = this._relativeLinkBack(slug, currFile.toLowerCase().split(DOCS_DEST_DIR.toLowerCase()).pop());
 
-                HTML += `${LB_CHRAR}${TAB_CHAR.repeat(tabIndex)}<li class="menu-item ${active}"><a data-pjax-target="#article-body" href="${back}${slug}" class="js-pjax-link js-docs-menu-link" data-pjax-pushstate="true">${item}</a></li>`;
+                HTML += `${LB_CHRAR}${TAB_CHAR.repeat(tabIndex)}<li class="menu-item ${active}"><a data-pjax-keep-scroll="false" data-pjax-animate="true" data-pjax-element="#article-body" data-pjax-pushstate="true" href="${back}${slug}" class="js-pjax-link js-docs-menu-link">${item}</a></li>`;
             }
         }
         else

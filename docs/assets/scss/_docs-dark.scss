@@ -6,15 +6,19 @@
         border-left: 1px solid var(--fbx-black-200);
     }
 }
-.fbx-darkmode .docs-body + .drawer-wrap
+
+.fbx-darkmode .docs-body > hr,
+.fbx-darkmode .docs-body > .pjax-temp-swap-wrapper > hr
 {
-    border-right: 1px solid var(--fbx-black-200);
+    background: var(--fbx-black-200);
 }
+
 .fbx-darkmode .desktop-menu .menu
 {
     --fbx-menu-bg: var(--fbx-body-bg);
 }
-.fbx-darkmode .docs-body > ul li a:not(.btn)
+.fbx-darkmode .docs-body > ul li a:not(.btn),
+.docs-body > .pjax-temp-swap-wrapper > ul li a:not(.btn)
 {
     color: var(--fbx-gray-400);
 }

@@ -24,6 +24,9 @@ _.prototype.find = function(selector, context, includeContextEl)
     
     if (fchild) selector = `:scope ${selector}`;
 
+    // Fixes IDs that start with a number - rare
+    if (/\#\d/.test(selector)) selector = selector.replaceAll(/(\#\d[^ ,]+)/g, '[id="$1"]').replaceAll('[id="#', '[id="');
+
     return context.querySelector(selector);
 }
 
@@ -63,6 +66,9 @@ _.prototype.find_all = function(selector, context, includeContextEl)
 
     if (multi)  selector = selector.replaceAll(/,\s?>/g, ', :scope >');
     if (fchild) selector = `:scope ${selector}`;
+
+    // Fixes IDs that start with a number - rare
+    if (/\#\d/.test(selector)) selector = selector.replaceAll(/(\#\d[^ ,]+)/g, '[id="$1"]').replaceAll('[id="#', '[id="');
 
     let ret = TO_ARR.call(context.querySelectorAll(selector));
 

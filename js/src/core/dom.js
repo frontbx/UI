@@ -37,12 +37,6 @@
      */
     Dom.prototype.boot = function()
     {
-        each(this.components, function(i, name)
-        {
-            this._bindComponent(name, document);
-
-        }, this);
-
         this._dispatchReady();
 
         this._isReady = true;
@@ -54,20 +48,14 @@
      * @access {public}
      * @param {string} name   Name of the module
      * @param {object} module Uninvoked module object
-     * @param {bool}   invoke Invoke the module immediately (optional) (default false)
      */
-    Dom.prototype.register = function(name, component, invoke)
+    Dom.prototype.register = function(name, component)
     {
-        invoke = (typeof invoke === 'undefined' ? false : invoke);
-
         this.components.push(name);
 
         frontbx.singleton(this._normaliseKey(name), component);
 
-        if (invoke || this._isReady)
-        {
-            this._bindComponent(name, document);
-        }
+        this._bindComponent(name, document);
     }
 
     /**

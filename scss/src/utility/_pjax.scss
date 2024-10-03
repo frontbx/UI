@@ -1,0 +1,36 @@
+.pjax-swapping-content
+{
+	position: relative;
+	overflow: hidden;
+
+	.pjax-temp-swap-wrapper
+	{
+		position: absolute;
+    	top: 0;
+    	left: 0;
+    	opacity: 0;
+    	width: 100%;
+    	overflow: hidden;
+    	transform: translate3d(0px, -100px, 0px);
+    	transition: var(--fbx-ease-time-sm) var(--fbx-base-easing);
+	}
+
+	.pjax-prev-content
+	{
+		opacity: 1;
+		transition: opacity var(--fbx-ease-time-sm) var(--fbx-base-easing);
+	}
+
+	&.active
+	{
+		.pjax-prev-content
+		{
+			opacity: 0;
+		}
+		.pjax-temp-swap-wrapper
+		{
+			transform: translate3d(0px, 0px, 0px);
+			opacity: 1;
+		}
+	}
+}

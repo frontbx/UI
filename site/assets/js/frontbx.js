@@ -4472,6 +4472,9 @@ _.prototype.find = function(selector, context, includeContextEl)
     
     if (fchild) selector = `:scope ${selector}`;
 
+    // Fixes IDs that start with a number - rare
+    if (/\#\d/.test(selector)) selector = selector.replaceAll(/(\#\d[^ ,]+)/g, '[id="$1"]').replaceAll('[id="#', '[id="');
+
     return context.querySelector(selector);
 }
 
@@ -4511,6 +4514,9 @@ _.prototype.find_all = function(selector, context, includeContextEl)
 
     if (multi)  selector = selector.replaceAll(/,\s?>/g, ', :scope >');
     if (fchild) selector = `:scope ${selector}`;
+
+    // Fixes IDs that start with a number - rare
+    if (/\#\d/.test(selector)) selector = selector.replaceAll(/(\#\d[^ ,]+)/g, '[id="$1"]').replaceAll('[id="#', '[id="');
 
     let ret = TO_ARR.call(context.querySelectorAll(selector));
 
@@ -4714,9 +4720,18 @@ _.prototype.traverse_prev = function(DOMElement, callback)
  * @param  {DOMElement}   DOMElement Target element
  * @return {object}
  */
-_.prototype.width = function(DOMElement)
+_.prototype.width = function(DOMElement, borderBox)
 {
 	if (DOMElement === window || DOMElement === document || DOMElement === document.documentElement ) return Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+
+	if (borderBox)
+    {
+        let w    = parseInt(this.rendered_style(DOMElement, 'width'));
+        let padL = parseInt(this.rendered_style(DOMElement, 'padding-left'));
+        let padR = parseInt(this.rendered_style(DOMElement, 'padding-right'));
+
+        return parseInt(w - padL - padR);
+    }
 
     return this.css_unit_value(this.rendered_style(DOMElement, 'width'));
 }
@@ -4727,9 +4742,18 @@ _.prototype.width = function(DOMElement)
  * @param  {DOMElement}   DOMElement Target element
  * @return {object}
  */
-_.prototype.height = function(DOMElement)
+_.prototype.height = function(DOMElement, borderBox)
 {
     if (DOMElement === window || DOMElement === document || DOMElement === document.documentElement) return Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+
+    if (borderBox)
+    {
+        let h    = parseInt(this.rendered_style(DOMElement, 'height'));
+        let padT = parseInt(this.rendered_style(DOMElement, 'padding-top'));
+        let padB = parseInt(this.rendered_style(DOMElement, 'padding-bottom'));
+
+        return parseInt(h - padT - padB);
+    }
 
     return this.css_unit_value(this.rendered_style(DOMElement, 'height'));
 }
@@ -7004,12 +7028,6 @@ Container.singleton('_', _);
      */
     Dom.prototype.boot = function()
     {
-        each(this.components, function(i, name)
-        {
-            this._bindComponent(name, document);
-
-        }, this);
-
         this._dispatchReady();
 
         this._isReady = true;
@@ -7021,20 +7039,14 @@ Container.singleton('_', _);
      * @access {public}
      * @param {string} name   Name of the module
      * @param {object} module Uninvoked module object
-     * @param {bool}   invoke Invoke the module immediately (optional) (default false)
      */
-    Dom.prototype.register = function(name, component, invoke)
+    Dom.prototype.register = function(name, component)
     {
-        invoke = (typeof invoke === 'undefined' ? false : invoke);
-
         this.components.push(name);
 
         frontbx.singleton(this._normaliseKey(name), component);
 
-        if (invoke || this._isReady)
-        {
-            this._bindComponent(name, document);
-        }
+        this._bindComponent(name, document);
     }
 
     /**
@@ -8159,7 +8171,7 @@ Container.singleton('_', _);
      * 
      * @var {Function}
      */
-    const [each, is_function, is_object, is_array_last, is_empty, callable_name] = frontbx.import(['each','is_function','is_object','is_array_last','is_empty','callable_name']).from('_');
+    const [each, is_function, is_object, is_empty, callable_name, array_filter] = frontbx.import(['each','is_function','is_object','is_empty','callable_name', 'array_filter']).from('_');
 
     /**
      * Named callbacks
@@ -8231,16 +8243,6 @@ Container.singleton('_', _);
      * @class
      */
     const Ajax = function()
-    {
-        this._reset();
-    }
-
-    /**
-     * Reset internals.
-     *
-     * @return {this}
-     */
-    Ajax.prototype._reset = function()
     {
         this._settings =
         {
@@ -8550,89 +8552,59 @@ Container.singleton('_', _);
      * @param  {object}        headers  Request headers (optional)
      * @return {This}
      */
-    Ajax.prototype._setResponseHandlers = function(method, url, data, success, error, complete, abort, headers, progress)
+    Ajax.prototype._setResponseHandlers = function()
     {
-        let ret = { method, url, data, success, error, complete, abort, headers, progress };
-
         // Cleanup
-        let args = Array.prototype.slice.call(arguments);
-
-        // Remove method and URL
-        args.splice(0,2);
-
-        // post(url, complete)
-        // put(url, data)
-        if (args.length === 1 && is_function(args[0]) && !NAMED_CALLBACKS.includes(callable_name(args[0])))
+        let args    = Array.prototype.slice.call(arguments);
+        let method  = args.shift();
+        let url     = args.shift();
+        let data    = is_object(args[0]) ? args.shift() : null;
+        let headers = null;
+        let argmap  = ['success', 'error', 'complete', 'abort', 'headers', 'progress'];
+        
+        each(args, (i, arg) =>
         {
-            ret.complete = data;
-            ret.data = ret.success = ret.error = ret.complete = ret.abort = ret.progress = ret.headers = null;
-        }
-        // post(url, data, complete)
-        else if (args.length === 2 && is_function(args[1]) && !NAMED_CALLBACKS.includes(callable_name(args[1])))
-        {
-            ret.complete = success;
-            ret.success = ret.error = ret.complete = ret.abort = ret.progress = ret.headers = null;
-        }
-        else
-        {
-            each(args, (i, arg) =>
+            if (is_function(arg))
             {
-                if (is_function(arg))
-                {
-                    let name = callable_name(arg).toLowerCase();
+                let funcname = callable_name(arg).toLowerCase();
 
-                    if (NAMED_CALLBACKS.includes(callable_name(arg)))
-                    {
-                        ret[name] = arg;
-                    }
-                }
-                else if (is_object(arg))
-                {
-                    // First arg is always data if it's an object
-                    if (i === 0)
-                    {
-                        ret.data = arg;
-                    }
-                    // Last arg should be headers if it's an object
-                    else if (is_array_last(arg, args))
-                    {
-                        ret.headers = arg;
-                    }
-                }
-            });
-        }
+                let k = NAMED_CALLBACKS.includes(funcname) ? funcname : argmap[i];
 
-        // Sanitize params
-        let hasData = is_object(ret.data) && !is_empty(ret.data);
+                this[k](arg);
+            }
+            else if (is_object(arg))
+            {
+                this.headers(arg);
+            }
+        });
 
         // Ajax.get('foo.com?foo=bar&baz')
-        if (hasData)
+        if (is_object(data) && !is_empty(data))
         {
             if (method === 'UPLOAD')
             {
                 let form = new FormData();
 
-                each(data, (k, v) =>
-                {
-                    form.append(key, value, v.type);
-                });
+                each(data, (k, v) => form.append(k, v, v.type));
+
+                data = form;
             }
             else if (method !== 'POST')
             {   
-                let suffix = ret.url.includes('?') ? '&' : '?';
-                let params = this._params(ret.data);
-                ret.url    = `${ret.url}${suffix}${params}`;
-                ret.data   = undefined;
+                let suffix = url.includes('?') ? '&' : '?';
+                let params = this._params(data);
+                url  = `${url}${suffix}${params}`;
+                data = undefined;
             }
             else
             {
-                ret.data = this._params(ret.data);
+                data = this._params(data);
             }
         }
 
-        let callbacks = ['success', 'error', 'complete', 'abort', 'headers', 'progress'];
-
-        each(ret, (k,v) => callbacks.includes(k) ? this[k](v) : this[k] = v);
+        this.method = method;
+        this.data   = data;
+        this.url    = url;
     }
 
     /**
@@ -8663,6 +8635,12 @@ Container.singleton('_', _);
         }
     }
 
+    /**
+     * Converts parameters to string
+     *
+     * @param  {Object} obj
+     * @return {String}
+     */
     Ajax.prototype._params = function(obj)
     {
         let s = [];
@@ -8681,15 +8659,15 @@ Container.singleton('_', _);
      * 
      * @var {Function}
      */
-    const [find, find_all, on, each, map, in_array, in_dom, is_empty, is_string, scroll_pos, trigger_event, normalize_url, inner_HTML, extend] = frontbx.import(['find','find_all','on','each','map','in_array','in_dom','is_empty','is_string','scroll_pos','trigger_event','normalize_url','inner_HTML','extend']).from('_');
-
+    const [on, add_class, remove_class, animate, css, dom_element, each, find, find_all, first_children, height, in_array, in_dom, inline_style, inner_HTML, is_empty, is_string, map, normalize_url, remove_from_dom, rendered_style, scroll_pos, trigger_event, width, is_object] = frontbx.import(['on','add_class','remove_class','animate','css','dom_element','each','find','find_all','first_children','height','in_array','in_dom','inline_style','inner_HTML','is_empty','is_string','map','normalize_url','remove_from_dom','rendered_style','scroll_pos','trigger_event','width','is_object']).from('_');
+    
     /**
      * Are we listening for state changes ?
      * 
      * @var {bool}
      */
-    var _listening = false;
-
+    var POP_LISTENING = false;
+    
     /**
      * Default options
      * 
@@ -8698,15 +8676,36 @@ Container.singleton('_', _);
     const DEFAULT_OPTIONS = 
     {
         element:   'body',
-        cacheBust:  true,
+        nocache:    true,
         once:       false,
-        keepScroll: true,
+        scrolltop:  false,
         pushstate:  false,
         urlhash:    false,
+        animate:    false,
     };
-
+    
     /**
-     * Pjax module
+     * Wrappers that need "position:relative" to hide overflow.
+     * 
+     * @var {Array}
+     */
+    const STATIC_POSITIONS = ['static', 'unset', 'initial'];
+    
+    /**
+     * AnimationTimeout
+     * 
+     * @var {Object}
+     */
+    const CURRENT_REQUESTS = new Map;
+    
+    /**
+     * AnimationTimeout
+     * 
+     * @var {Object}
+     */
+    const TRANSITION_TIMERS = new Map;
+    /**
+     * Pjax component
      *
      * @class
      * @extends   {Ajax}
@@ -8716,128 +8715,158 @@ Container.singleton('_', _);
      */
     const Pjax = function()
     {
-        this.super();
-
-        if (!_listening)
+        if (!POP_LISTENING)
         {
             on(window, 'popstate', this._popStateHandler, this);
-
-            _listening = true;
+    
+            POP_LISTENING = true;
         }
     }
-
+    
+    Pjax.prototype._normalizeOptions = function(url, options)
+    {
+        // Store URL in options for callbacks
+        url = normalize_url(url.trim());
+    
+        // Merge options with defaults
+        options = typeof options === 'undefined' ? { ...DEFAULT_OPTIONS, url  } : { ...DEFAULT_OPTIONS, ...options, url };
+    
+        if (options.element === 'body') options.element = document.body;
+    
+        return options;
+    }
     Pjax.prototype.request = function(url, options, success, error, complete, abort, headers)
     {
+        // Create ajax instance
+        this.ajax = frontbx.Ajax();
+    
+        // Normalise options
+        options = this._normalizeOptions(url, options);
+    
+        // Cache options
+        this.options = options;
+    
+        // cache headers
+        this.headers = !is_object(headers) ? { 'X-PJAX': true } : { 'X-PJAX': true, ...headers };
+    
         // If we are already loading a pjax, cancel it and
-        if (this._xhr) this.abort();
-
-        // Reset variables
-        this._reset();
-
-        // Merge options with defaults
-        options = typeof options === 'undefined' ? { ...DEFAULT_OPTIONS } : { ...DEFAULT_OPTIONS, ...options };
-
-        // Set PJAX header
-        this.headers({'X-PJAX': true});
-
-        // Store URL in options for callbacks
-        options.url = normalize_url(url.trim());
-
-        // Default data to send
-        let data = options.cacheBust ? { t: Date.now().toString() } : {};
-        
-        // Fire the start event
-        trigger_event(window, 'frontbx:pjax:start', { options });
-
-        // Set response handlers
-        this._setResponseHandlers('GET', options.url, data, success, error, complete, abort, headers);
-
-        // Cache callbacks
-        const [_success, _error, _complete, _abort ] = [this.success, this.error, this.complete, this.abort];
-
+        this._preAbort();
+    
+        // Set current request
+        CURRENT_REQUESTS.set(options.element, this.ajax);
+    
+        // Cache user defined callbacks
+        this.callbacks = { success, error, complete, abort };
+    
         // Cache current state
-        if (options.pushstate)
-        {            
-            let state = { ...options, id: normalize_url(window.location.href), scroll: {top: 0, left: 0} };
-
-            window.history.pushState(state, '', state.id);
-        }
-
+        this._pushState();
+    
+        // Fire the start event
+        trigger_event(window, 'frontbx:pjax:start', options);
+    
+        // Start nprogress
         frontbx.NProgress().start();
-
-        this.success((response) =>
-        {            
-            trigger_event(window, 'frontbx:pjax:success', { options });
-
-            this._handleSuccess(response.trim(), options);
-
-            if (_success) this._makeCallback(_success, this._xhr, [response]);
-        })
-        .error((response) =>
-        {
-            trigger_event(window, 'frontbx:pjax:error', { options });
-
-            if (_error) this._makeCallback(_error, this._xhr, [response]);
-        })
-        .abort((response) =>
-        {
-            trigger_event(window, 'frontbx:pjax:abort', { options });
-
-            if (_abort) this._makeCallback(_abort, this._xhr, [response, false]);
-        })
-        .complete((response, successfull) =>
-        {
-            trigger_event(window, 'frontbx:pjax:complete', { options });
-
-            if (_complete) this._makeCallback(_complete, this._xhr, [response, successfull]);
-
-            this._reset();
-
-            frontbx.NProgress().done();
-
-        })._call();
+    
+        this._sendAjax();
     }
-
+    
+    Pjax.prototype._sendAjax = function()
+    {
+        let options = this.options;
+    
+        this.ajax.headers(this.headers)
+        
+        .success((response) => this._onsuccess(response.trim()))
+    
+        .error((response) => this._onerror(response))
+        
+        .abort((response) => this._onabort(response))
+        
+        .complete((response, successfull) => this._oncomplete(response, successfull))
+        
+        .get(options.url, options.nocache ? { t: Date.now().toString() } : {});
+    }
     /**
-     * Pjax success handler
+     * Insert response.
      *
      * @access {private}
-     * @param  {object} locationObj Location object from the cache
-     * @param  {string} HTML        HTML string response from server
-     * @param  {bool}   stateChange Change the window history state
+     * @param  {string}  HTML HTML string response from server
      */
-    Pjax.prototype._handleSuccess = function(HTML, options)
-    {        
+    Pjax.prototype._insertResponse = function(HTML)
+    {
         // Parse the HTML
+        this._parseResponse(HTML);
+    
+        // Update meta
+        this._updateMeta();
+    
+        // Insert content
+        if (this.options.animate)
+        {
+            this._animateSwap(this._targetElem, this._responseElem);
+        }
+        else
+        {
+            inner_HTML(this._targetElem, this._responseElem.innerHTML);
+    
+            this._appendScripts();
+        }
+    }
+    
+    /**
+     * Parse response from server.
+     *
+     * @access {private}
+     * @param  {string}  HTML HTML string response from server
+     */
+    Pjax.prototype._parseResponse = function(HTML)
+    {
         let responseDoc = this._parseHTML(HTML);
-
-        // Cache scripts
-        let descrMeta       = find('meta[name=description]');
-        let responseTitle   = this._findDomTitle(responseDoc);
-        let responseDesc    = this._findDomDesc(responseDoc);
-        let responseScripts = this._getScripts(responseDoc);
-        let currScripts     = this._getScripts(document);
-        responseDoc         = this._removeScripts(responseDoc);
-
-        // Move scripts to head incase we're replacing body
-        each(currScripts, (i, script) => { if (script.node.parentNode.nodeName.toLowerCase() !== 'head') find('head').appendChild(script.node); });
-        
+    
+        this._responseTitle = this._findDomTitle(responseDoc);
+    
+        this._responseDesc = this._findDomDesc(responseDoc);
+    
+        let currScripts = this._getScripts(document);
+    
+        let newScripts = this._getScripts(responseDoc);
+    
+        this._newScripts = this._scriptsDiff(currScripts, newScripts);
+    
+        this._responseDoc = this._removeScripts(responseDoc);
+    
+        console.log(this._newScripts);
+    
+        // Move scripts to head incase we're replacing content
+        each(currScripts, (i, script) => script.node.parentNode.nodeName.toLowerCase() !== 'head' ? find('head').appendChild(script.node) : null);
+    
+        this._findElems();
+    }
+    
+    /**
+     * Finds target and response DOM elements.
+     *
+     * @access {private}
+     */
+    Pjax.prototype._findElems = function()
+    {
         // Default to document bodys
-        let targetEl        = document.body;
-        let responseEl      = responseDoc.body;
-
+        let targetEl   = document.body;
+        let responseEl = this._responseDoc.body;
+        let options    = this.options;
+    
         // Selector
-        if (options.element && options.element !== 'body' && options.element !== document.body)
+        if (options.element && options.element !== document.body)
         {
             if (is_string(options.element))
             {
                 targetEl = find(options.element);
-
+    
                 // Try to find the target element in the response
-                let tmpResponseEl = find(options.element, responseDoc);
-
+                let tmpResponseEl = find(options.element, this._responseDoc);
+    
                 if (tmpResponseEl) responseEl = tmpResponseEl;
-
+    
             }
             // DOM Node
             else if (in_dom(options.element))
@@ -8846,37 +8875,370 @@ Container.singleton('_', _);
                 targetEl = options.element;
             }
         }
-
-        // Push new state
-        if (options.pushstate)
-        {
-            if (responseTitle) document.title = responseTitle;
-
-            if (responseDesc && descrMeta) descrMeta.content = responseDesc;
-        
-            let state = { ...options, id: options.url, scroll: { top: 0, left: 0 } };
-
-            window.history.pushState(state, '', options.url);
-        }
-        // Adjust hash
-        else if (options.urlhash && targetEl !== document.body)
-        {
-            let url = window.location.href.split('#').shift();
-
-            window.history.replaceState({}, '', `${url}#${targetEl.id}`);
-        }
-
-        // Insert content
-        inner_HTML(targetEl, responseEl.innerHTML);
-
-        this._appendScripts(currScripts, responseScripts, () =>
-        {
-            frontbx.dom().refresh(targetEl === document.body ? document : targetEl);
-        });
-
-        if (!options.keepScroll || targetEl === document.body) window.scrollTo(0, 0);
+    
+        this._targetElem   = targetEl;
+        this._responseElem = responseEl;
     }
-
+    
+    /**
+     * Append new scripts.
+     * 
+     * Note that appending or replacing content via 'innerHTML' or even
+     * native Nodes with scripts inside their 'innerHTML'
+     * will not load scripts so we need to compare what scripts have loaded
+     * on the current page with any scripts that are in the new DOM tree 
+     * and load any that don't already exist
+     *
+     * @access {private}
+     */
+    Pjax.prototype._appendScripts = function()
+    {
+        if (this._newScripts.length > 0)
+        {
+            return each(scripts, (i, script) =>  this._appendScript(script, i === scripts.length -1));
+        }
+    
+        this._contentComplete();
+    }
+    
+    /**
+     * Append individual script or stylsheet.
+     *
+     * @access {private}
+     * @param  {Object}  scriptObj Parse script config
+     * @param  {Boolean} isLast    Is this the last script to load
+     */
+    Pjax.prototype._appendScript = function(scriptObj, isLast)
+    {
+        let element = document.createElement(scriptObj.type);
+    
+        element.type = scriptObj.type === 'script' ? 'text/javascript' : 'text/css';
+    
+        if (scriptObj.type === 'script')
+        {
+            element.async = false;
+    
+            if (!scriptObj.inline)
+            {
+                element.src = scriptObj.src;
+    
+                if (isLast) element.onload = () => this._contentComplete();
+            }
+            else
+            {
+                element.innerHTML = scriptObj.src;
+    
+                if (isLast) this._contentComplete()
+            }
+        }
+        else
+        {
+            element.rel = 'stylesheet';
+            
+            element.href = scriptObj.src;
+    
+            if (isLast) element.onload = () => this._contentComplete();
+        }
+    
+        find('head').appendChild(element);
+    }
+    
+    /**
+     * Filter scripts with unique key/values into an array
+     *
+     * @access {private}
+     * @param  {Document}  doc Document element
+     * @return {array}
+     */
+    Pjax.prototype._getScripts = function(doc)
+    {
+        var ret     = [];
+        var scripts = find_all('script, link[rel=stylesheet]', doc);
+    
+        each(scripts, function(i, script)
+        {
+            let type    = script.nodeName.toLowerCase();
+            let src     = type === 'link' ? normalize_url(script.getAttribute('href')) : normalize_url(script.getAttribute('src'));
+            let inline  = false;
+            let content = null;
+            let node    = script;
+    
+            if (!src)
+            {
+                inline  = true;
+                src     = null;
+                content = script.innerHTML.trim()
+            }
+    
+            ret.push({type, src, inline, node, content });
+        });
+    
+        return ret;
+    }
+    
+    /**
+     * Remove all scripts from a document
+     *
+     * @access {private}
+     * @param  {Document} doc Document element
+     * @return {Document}
+     */
+    Pjax.prototype._removeScripts = function(doc)
+    {
+        var scripts = find_all('script, link[rel=stylesheet]', doc);
+    
+        each(scripts, (i, script) => script.parentNode.removeChild(script));
+    
+        return doc;
+    }
+    
+    /**
+     * Try to find the page title in a DOM tree.
+     *
+     * @access {private}
+     * @param  {Document}     doc Document element
+     * @return {string|false}
+     */
+    Pjax.prototype._findDomTitle = function(doc)
+    {
+        var title = doc.getElementsByTagName('title');
+    
+        if (title.length)
+        {
+            return title[0].innerHTML.trim();
+        }
+    
+        return false;
+    }
+    
+    /**
+     * Try to find the page meta description.
+     *
+     * @access {private}
+     * @param  {Document}     doc Document element
+     * @return {string|false}
+     */
+    Pjax.prototype._findDomDesc = function(doc)
+    {
+        var desc = find('meta[name=description]', doc);
+    
+        if (desc)
+        {
+            return desc.content.trim();
+        }
+    
+        return false;
+    }
+    
+    /**
+     * Parse HTML from string into a document
+     *
+     * @access {private}
+     * @param  {string}    html HTML as a string (with or without full doctype)
+     * @return {Document}
+     */
+    Pjax.prototype._parseHTML = function(html)
+    {
+        var parser = new DOMParser();
+    
+        return parser.parseFromString(html, 'text/html');
+    }
+    
+    /**
+     * Diff current scripts with new scripts
+     *
+     * @access {private}
+     * @param  {Array}   currScripts Parsed current scripts array
+     * @param  {Array}   newScripts  Parsed new scripts array
+     * @param  {Array}
+     */
+    Pjax.prototype._scriptsDiff = function(currScripts, newScripts)
+    {
+        return map(newScripts, (j, script) =>
+        {
+            let ret = script;
+    
+            each(currScripts, (i, cScript) =>
+            {   
+                // Inline scripts
+                if (script.inline && cScript.inline && cScript.content === script.content)
+                {
+                    currScripts.splice(i, 1);
+    
+                    ret = false;
+    
+                    return false;
+                }
+                if (!script.inline && !cScript.inline && cScript.src === script.src)
+                {
+                    currScripts.splice(i, 1);
+    
+                    ret = false;
+    
+                    return false;
+                }
+            });
+    
+            return ret;
+        });
+    }
+    
+    /**
+     * Updated Meta title and description.
+     *
+     * @access {private}
+     */
+    Pjax.prototype._updateMeta = function()
+    {
+        let descrMeta = find('meta[name=description]');
+    
+        if (this._responseTitle) document.title = this._responseTitle;
+    
+        if (this._responseDesc && descrMeta) descrMeta.content = this._responseDesc;
+    }
+    
+    Pjax.prototype._onsuccess = function(response)
+    {
+        this._insertResponse(response);
+    
+        trigger_event(window, 'frontbx:pjax:success', this.options);
+    
+        this.ajax._makeCallback(this.callbacks.success, this._xhr, [response]);
+    }
+    
+    Pjax.prototype._onerror = function(response)
+    {
+        trigger_event(window, 'frontbx:pjax:abort', this.options);
+    
+        this.ajax._makeCallback(this.callbacks.error, this._xhr, [response, false]);
+    }
+    
+    Pjax.prototype._onabort = function(response)
+    {
+        let element = this.options.element;
+        
+        let swapTimer = TRANSITION_TIMERS.get(element);
+    
+        if (swapTimer) clearTimeout(swapTimer);
+    
+        CURRENT_REQUESTS.delete(element);
+    
+        TRANSITION_TIMERS.delete(element);
+    
+        frontbx.NProgress().done();
+    
+        trigger_event(window, 'frontbx:pjax:abort', this.options);
+    
+        this.ajax._makeCallback(this.callbacks.abort, this._xhr, [response, false]);
+    }
+    
+    Pjax.prototype._oncomplete = function(response, successfull)
+    {
+        trigger_event(window, 'frontbx:pjax:complete', this.options);
+    
+        this.ajax._makeCallback(this.callbacks.complete, this._xhr, [response, successfull]);
+    
+        frontbx.NProgress().done();
+    }
+    
+    Pjax.prototype._contentComplete = function()
+    {
+        let element = this.options.element;
+    
+        if (this.options.scrolltop)
+        {
+            animate(window, { property : 'scrollTo', to: '0, 0', duration: 150, callback: () => this._pushState() });
+        }
+    
+        CURRENT_REQUESTS.delete(element);
+    
+        TRANSITION_TIMERS.delete(element);
+    
+        frontbx.dom().refresh(element === document.body ? document : element);
+    }
+    
+    Pjax.prototype._preAbort = function()
+    {
+        let element = this.options.element;
+    
+        let ajax = CURRENT_REQUESTS.get(element);
+    
+        if (ajax) ajax.abort();
+    }
+    /**
+     * Fades / in out content.
+     *
+     * 
+     * @access {private}
+     */
+    Pjax.prototype._animateSwap = function(target, content)
+    {
+        // Cache wrapper height and width and so we can transition content without changing layout
+        const h           = height(target);
+        const w           = width(target);
+        const padW        = width(target, true);
+        const padH        = height(target, true);
+        const padL        = parseInt(rendered_style(target, 'padding-left'));
+        const padT        = parseInt(rendered_style(target, 'padding-top'));
+        const position    = rendered_style(target, 'position');
+        const InlOverflow = inline_style(target, 'overflow') || false;
+        const InlPosition = inline_style(target, 'overflow') || false;
+        const InlHeight   = inline_style(target, 'height') || false;
+        const InlWidth    = inline_style(target, 'width') || false;
+        const InlStyles   = { overflow: InlOverflow, position: InlPosition, height: InlHeight, width: InlWidth };
+        const newStyles   = { overflow: 'hidden', height: `${h}px`, width: `${w}px` };
+        const tmpStyles   = { left: `${padL}px`, top: `${padT}px`, height: `${padH}px`, width: `${padW}px` };
+    
+        if (STATIC_POSITIONS.includes(position)) newStyles.position = 'relative';
+    
+        // Cache content for afterwards
+        const oldContnet = first_children(target);
+        const newContent = first_children(content);
+    
+        // Prep content for inserting
+        let tempWrapper = dom_element({tag: 'div', class: 'pjax-temp-swap-wrapper', style: tmpStyles}, null, newContent);
+    
+        // Fix dimensions, overflow and positioning while transition.
+        css(target, newStyles);
+    
+        // Add wrapper class to position content swap while transitioning
+        add_class(target, 'pjax-swapping-content');
+    
+        // Transition out
+        each(oldContnet, (i, node) => add_class(node, 'pjax-prev-content'));
+    
+        // Finally append content
+        target.appendChild(tempWrapper);
+    
+        tempWrapper.offsetHeight;
+    
+        add_class(target, 'active');
+    
+        let timeout = setTimeout(() =>
+        {
+            // Remove old content
+            each(oldContnet, (i, child) => remove_from_dom(child));
+    
+            // Move new content to direct child
+            each(newContent, (i, child) => target.appendChild(child));
+    
+            // Remove the temp wrapper
+            target.removeChild(tempWrapper);
+    
+            // Remove pjax swap class on parent
+            remove_class(target, ['pjax-swapping-content', 'acitve']);
+    
+            // Set inline styles back to original
+            css(target, InlStyles);
+    
+            // Append scripts
+            this._appendScripts();
+    
+        }, 500);
+    
+        // Wait for transition to end
+        TRANSITION_TIMERS.set(target, timeout);
+    }
     /**
      * State change event handler (back/forward clicks)
      *
@@ -8890,193 +9252,32 @@ Container.singleton('_', _);
         // State obj exists 
         if (e.state && typeof e.state.id !== 'undefined')
         {
-            // Prevent default
-            e.preventDefault();
-
             let options = e.state;
-
+    
             this.request(options.id, {...options, pushstate: false });
-
+    
             return false;
         }
     }
-
-    /**
-     * If there are any new scripts load them
-     * 
-     * Note that appending or replacing content via 'innerHTML' or even
-     * native Nodes with scripts inside their 'innerHTML'
-     * will not load scripts so we need to compare what scripts have loaded
-     * on the current page with any scripts that are in the new DOM tree 
-     * and load any that don't already exist
-     *
-     * @access {private}
-     * @param  {array}   currScripts Currently loaded scripts array
-     * @param  {object}  newScripts  Newly loaded scripts
-     */
-    Pjax.prototype._appendScripts = function(currScripts, newScripts, callback)
+    
+    Pjax.prototype._pushState = function()
     {
-        let scripts = map(newScripts, (i, script) =>
-        {
-            let ret = script;
-
-            each(currScripts, (i, cScript) =>
-            {
-                if (cScript.content === script.content && cScript.inline === script.inline)
-                {
-                    ret = false;
-
-                    return;
-                }
-            })
-
-            return ret;
-        });
-
-        if (scripts.length > 0) 
-        {
-            return each(scripts, (i, script) =>  this._appendScript(script, i === scripts.length -1 ? callback : null));
+        if (this.options.pushstate)
+        {            
+            let state = { ...this.options, id: normalize_url(window.location.href), scroll: scroll_pos() };
+    
+            window.history.pushState(state, '', state.id);
         }
-
-        callback();
-    }
-
-    Pjax.prototype._appendScript = function(scriptObj, callback)
-    {
-        let element = document.createElement(scriptObj.type);
-
-        element.type = scriptObj.type === 'script' ? 'text/javascript' : 'text/css';
-
-        if (scriptObj.type === 'script')
+        // Adjust hash
+        else if (this.options.urlhash)
         {
-            element.async = false;
-
-            if (!scriptObj.inline)
-            {
-                element.src = scriptObj.src;
-
-                if (callback) element.onload = () => callback();
-            }
-            else
-            {
-                element.innerHTML = scriptObj.src;
-
-                if (callback) callback();
-            }
+            let url = window.location.href.split('#').shift();
+    
+            window.history.replaceState({}, '', `${url}#${this.options.element.id}`);
         }
-        else
-        {
-            element.rel = 'stylesheet';
-            
-            element.href = scriptObj.src;
-
-            if (callback) element.onload = () => callback();
-        }
-
-        find('head').appendChild(element);
     }
 
-    /**
-     * Filter scripts with unique key/values into an array
-     *
-     * @access {private}
-     * @param  {string} html HTML as a string (with or without full doctype)
-     * @return {array}
-     */
-    Pjax.prototype._getScripts = function(doc)
-    {
-        var ret     = [];
-        var scripts = find_all('script, link[rel=stylesheet]', doc);
-
-        each(scripts, function(i, script)
-        {
-            let type   = script.nodeName.toLowerCase();
-            let src    = type === 'link' ? script.getAttribute('href') : script.getAttribute('src');
-            let inline = false; 
-            let node   = script;
-
-            if (!src)
-            {
-                inline = true;
-                src = script.innerHTML.trim()
-            }
-
-            ret.push({type, src, inline, node });
-        });
-
-        return ret;
-    }
-
-    /**
-     * Remove all scripts from a document
-     *
-     * @access {private}
-     * @param  {Document} Document Document element
-     * @return {Document}
-     */
-    Pjax.prototype._removeScripts = function(doc)
-    {
-        var scripts = find_all('script, link[rel=stylesheet]', doc);
-
-        each(scripts, (i, script) => script.parentNode.removeChild(script));
-
-        return doc;
-    }
-
-    /**
-     * Try to find the page title in a DOM tree
-     *
-     * @access {private}
-     * @param  {string} html HTML as a string (with or without full doctype)
-     * @return {string|false}
-     */
-    Pjax.prototype._findDomTitle = function(DOM)
-    {
-        var title = DOM.getElementsByTagName('title');
-
-        if (title.length)
-        {
-            return title[0].innerHTML.trim();
-        }
-
-        return false;
-    }
-
-    /**
-     * Try to find the page title in a DOM tree
-     *
-     * @access {private}
-     * @param  {string} html HTML as a string (with or without full doctype)
-     * @return {string|false}
-     */
-    Pjax.prototype._findDomDesc = function(DOM)
-    {
-        var desc = find('meta[name=description]', DOM);
-
-        if (desc)
-        {
-            return desc.content.trim();
-        }
-
-        return false;
-    }
-
-    /**
-     * Parse HTML from string into a document
-     *
-     * @access {private}
-     * @param  {string} html HTML as a string (with or without full doctype)
-     * @return {DOM} tree
-     */
-    Pjax.prototype._parseHTML = function(html)
-    {
-        var parser = new DOMParser();
-
-        return parser.parseFromString(html, 'text/html');
-    }
-
-    // Pjax is singleton
-    frontbx.singleton('Pjax', extend(frontbx.Ajax().constructor, Pjax));
+    frontbx.set('Pjax', Pjax);
 
 })();
 (function()
@@ -9088,17 +9289,17 @@ Container.singleton('_', _);
     const [find, each, _for, is_array, is_object, in_array, is_undefined, is_callable, is_htmlElement, in_dom, is_empty, animate, add_class, remove_class, width, height, inline_style, rendered_style, css, is_array_last, dom_element] = frontbx.import(['find','each','for','is_array', 'is_object', 'in_array','is_undefined','is_callable','is_htmlElement','in_dom','is_empty','animate', 'add_class','remove_class', 'width', 'height', 'inline_style', 'rendered_style', 'css', 'is_array_last','dom_element']).from('_');
 
     /**
-    * Wrappers that need "position:relative" to hide overflow.
-    * 
-    * @var {array}
-    */
+     * Wrappers that need "position:relative" to hide overflow.
+     * 
+     * @var {array}
+     */
     const STATIC_POSITIONS = ['static', 'unset', 'initial'];
 
     /**
      * Default options.
      * 
      * @var {array}
-    */
+     */
     const DEFAULT_OPTIONS =
     {
         count: 1,
@@ -9111,26 +9312,26 @@ Container.singleton('_', _);
     };
 
     /**
-    * Class variants.
-    * 
-    * @var {array}
-    */
+     * Class variants.
+     * 
+     * @var {array}
+     */
     const CLASS_VARIANTS = ['block', 'text', 'btn', 'input', 'circle', 'wave', 'rounded', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 
     /**
-    * Class variants.
-    * 
-    * @var {array}
-    */
+     * Class variants.
+     * 
+     * @var {array}
+     */
     const WRAPPER_VARIANTS = ['text-block', 'block-h1', 'block-h2', 'block-h3', 'block-h4', 'block-h5', 'block-h6'];
 
     /**
-    * Skeleton.
-    *
-    * @param  {DOMElement}   DOMElement Target node
-    * @param  {object|array} options
-    * @return {this}
-    */
+     * Skeleton.
+     *
+     * @param  {DOMElement}   DOMElement Target node
+     * @param  {object|array} options
+     * @return {this}
+     */
     const Skeleton = function(DOMElement, options)
     {
     this._DOMElement = DOMElement;
@@ -15223,7 +15424,21 @@ Container.singleton('_', _);
      * 
      * @var {Function}
      */
-    const [on, off, attr, bool, extend]  = frontbx.import(['on','off','attr','bool','extend']).from('_');
+    const [on, off, each, is_undefined, attr, bool, to_camel_case, extend]  = frontbx.import(['on','off','each','is_undefined','attr','bool','to_camel_case','extend']).from('_');
+
+    /**
+     * Available data attributes.
+     * 
+     * @var {Array}
+     */
+    const DATA_ATTRIBUTES = ['element','url','once','nocache','urlhash','pushstate','scrolltop','animate'];
+
+    /**
+     * Available data attributes.
+     * 
+     * @var {Array}
+     */
+    const BOOL_ATTRS = ['once','nocache','urlhash','pushstate','scrolltop','animate'];
 
     /**
      * URLS Requested
@@ -15268,23 +15483,37 @@ Container.singleton('_', _);
      * @param {event|null} e JavaScript click event
      * @access {private}
      */
-    PjaxLinks.prototype._requestHandler = function(e, clicked)
+    PjaxLinks.prototype._requestHandler = function(e, trigger)
     {
-        let url       = clicked.href || attr(clicked, 'data-pjax-target');
-        let once      = attr(clicked, 'data-pjax-once') || false;
-        let element   = attr(clicked, 'data-pjax-target');
-        let cacheBust = bool(attr(clicked, 'data-pjax-nocache'));
-        let pushstate = !element || attr(clicked, 'data-pjax-pushstate') ? true : false;
-        let urlhash   = !element ? false : bool(attr(clicked, 'data-pjax-urlhash'));
+        let options = { };
+
+        each(DATA_ATTRIBUTES, (i, attribute) =>
+        {
+            let value = attr(trigger, `data-pjax-${attribute}`);
+
+            if (!is_undefined(value))
+            {
+                if (BOOL_ATTRS.includes(attribute))
+                {
+                    value = bool(value);
+                }
+                else if (value === 'element')
+                {
+                    value = value[0] !== '#' ? `#${value}` : value;
+                }
+
+                options[to_camel_case(attribute)] = value;
+            }
+        });
+
+        let url = trigger.href || options.url;
 
         // Only request once
-        if (REQUESTED.includes(url) && once) return;
+        if (REQUESTED.includes(url) && options.once) return false;
 
         REQUESTED.push(url);
 
-        if (element) element = element[0] !== '#' ? `#${element}` : element;
-
-        frontbx.Pjax().request(url, {once, element, cacheBust, pushstate, urlhash});
+        frontbx.Pjax().request(url, options);
 
         return false;
     }
@@ -16041,7 +16270,6 @@ Container.singleton('_', _);
     frontbx.dom().register('WayPoints', extend(Component, WayPoints));
 
 })();
-
 (function()
 {
     /**

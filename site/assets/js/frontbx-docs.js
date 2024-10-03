@@ -95,15 +95,13 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 }());
 
 // Menu / drawer
-
-
 /**
  * Docs Drawer
  *
  */
 (function()
 {
-	const [find, toggle_class, remove_class, attr, width, on, off, trigger_event, animate, extend] = frontbx.import(['find','toggle_class','remove_class','attr','width', 'on', 'off', 'trigger_event','animate','extend']).from('_');
+	const [find, toggle_class, remove_class, attr, width, on, off, trigger_event, extend] = frontbx.import(['find','toggle_class','remove_class','attr','width', 'on', 'off', 'trigger_event','extend']).from('_');
 
 	const [Component] = frontbx.get('Component');
 
@@ -143,12 +141,23 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
     	on(window, 'resize', this.resize(), this);
 
-    	on(window, 'frontbx:pjax:success', () => 
+    	on(window, 'scroll', () => console.log('scrolled'), this);
 
-    		animate(window, { property : 'scrollTo', to: '0, 0', duration: 300})
-    	);
+    	on(window, 'frontbx:pjax:success', this._onPjax, this);
 
     	trigger_event(window, 'resize');
+    }
+
+    DocDrawer.prototype._onPjax = function(e)
+    {
+    	console.log(e);
+    }
+
+    DocDrawer.prototype.unbind = function(trigger)
+    {
+    	off(trigger, 'click', this._toggleDrawer, this);
+
+    	off(window, 'resize', this.resize(), this);
     }
 
     DocDrawer.prototype._toggleDrawer = function(e, trigger)
@@ -158,11 +167,26 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     	drawer.opened() ? drawer.close() : drawer.open();
     }
 
-    DocDrawer.prototype.unbind = function(trigger)
+    DocDrawer.prototype.scroll = function()
     {
-    	off(trigger, 'click', this._toggleDrawer, this);
+    	return throttle(() =>
+    	{
+    		let x = width(window);
 
-    	off(window, 'resize', this.resize(), this);
+	        if (x < 992 && this.inMain)
+	        {
+	            this._mobileContainer.appendChild(this._menuElem);
+
+	            this.inMain = false;
+	        }
+	        else if (x > 992 && !this.inMain)
+	        {
+	        	this._desktopContainer.appendChild(this._menuElem);
+
+	        	this.inMain = true;
+	        }
+
+    	}, 100);
     }
 
     DocDrawer.prototype.resize = function()

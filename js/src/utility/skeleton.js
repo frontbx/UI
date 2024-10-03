@@ -7,17 +7,17 @@
     const [find, each, _for, is_array, is_object, in_array, is_undefined, is_callable, is_htmlElement, in_dom, is_empty, animate, add_class, remove_class, width, height, inline_style, rendered_style, css, is_array_last, dom_element] = frontbx.import(['find','each','for','is_array', 'is_object', 'in_array','is_undefined','is_callable','is_htmlElement','in_dom','is_empty','animate', 'add_class','remove_class', 'width', 'height', 'inline_style', 'rendered_style', 'css', 'is_array_last','dom_element']).from('_');
 
     /**
-    * Wrappers that need "position:relative" to hide overflow.
-    * 
-    * @var {array}
-    */
+     * Wrappers that need "position:relative" to hide overflow.
+     * 
+     * @var {array}
+     */
     const STATIC_POSITIONS = ['static', 'unset', 'initial'];
 
     /**
      * Default options.
      * 
      * @var {array}
-    */
+     */
     const DEFAULT_OPTIONS =
     {
         count: 1,
@@ -30,26 +30,26 @@
     };
 
     /**
-    * Class variants.
-    * 
-    * @var {array}
-    */
+     * Class variants.
+     * 
+     * @var {array}
+     */
     const CLASS_VARIANTS = ['block', 'text', 'btn', 'input', 'circle', 'wave', 'rounded', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 
     /**
-    * Class variants.
-    * 
-    * @var {array}
-    */
+     * Class variants.
+     * 
+     * @var {array}
+     */
     const WRAPPER_VARIANTS = ['text-block', 'block-h1', 'block-h2', 'block-h3', 'block-h4', 'block-h5', 'block-h6'];
 
     /**
-    * Skeleton.
-    *
-    * @param  {DOMElement}   DOMElement Target node
-    * @param  {object|array} options
-    * @return {this}
-    */
+     * Skeleton.
+     *
+     * @param  {DOMElement}   DOMElement Target node
+     * @param  {object|array} options
+     * @return {this}
+     */
     const Skeleton = function(DOMElement, options)
     {
     this._DOMElement = DOMElement;
