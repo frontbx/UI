@@ -361,7 +361,7 @@
 <h3 id="html-initialization">HTML Initialization</h3>
 <p>Pjax can be invoked automatically via HTML via any clickable HTML anchor element. To enable Pjax on an element add the <code>.js-pjax-link</code> to the anchor element. </p>
 <p>For native link elements (<code>&lt;a&gt;</code>, the <code>href</code> attribute will be used as the request URL. For other element types, set the request URL as the <code>data-pjax-href</code> attribute.</p>
-<p>Lastly, you can optionally provide the the <code>id</code> of the HTML response element to indicate where the response will be inserted into via <code>data-pjax-target</code> attribute. If this is omitted, Pjax assumes you're wanting to request an entire page and will replace the document <code>body</code>.</p>
+<p>Lastly, you can optionally provide the the <code>id</code> of the HTML response element to indicate where the response will be inserted into via <code>data-pjax-element</code> attribute. If this is omitted, Pjax assumes you're wanting to request an entire page and will replace the document <code>body</code>.</p>
 <p>Additional options can be provided through <code>data-</code> attributes. The table below outlines available options and how they effect behavior.</p>
 <table>
 <thead>
@@ -378,14 +378,24 @@
 <td>Used as the request URL to send request. Can be an absolute or a relative URL. Used on <code>&lt;a&gt;</code> elements only.</td>
 </tr>
 <tr>
-<td><code>data-pjax-target</code></td>
+<td><code>data-pjax-url</code></td>
 <td><code>null</code></td>
-<td>Used as the request URL to send request. Can be an absolute or a relative URL.</td>
+<td>Used as the request URL to send request for non <code>&lt;a&gt;</code> elements.</td>
+</tr>
+<tr>
+<td><code>data-pjax-element</code></td>
+<td><code>null</code></td>
+<td>An html element selector to append the response into.</td>
 </tr>
 <tr>
 <td><code>data-pjax-once</code></td>
 <td><code>false</code></td>
 <td>When set to <code>true</code> the request will only be sent once on first click.</td>
+</tr>
+<tr>
+<td><code>data-pjax-scrolltop</code></td>
+<td><code>false</code></td>
+<td>When set to <code>true</code> the page will scroll to to top when request completes.</td>
 </tr>
 <tr>
 <td><code>data-pjax-nocache</code></td>
@@ -395,12 +405,17 @@
 <tr>
 <td><code>data-pjax-pushstate</code></td>
 <td><code>false</code></td>
-<td>When set to <code>true</code> a new history state is created. If no <code>pjax-target</code> is provided it will default to <code>true</code></td>
+<td>When set to <code>true</code> a new history state is created.</td>
 </tr>
 <tr>
 <td><code>data-pjax-urlhash</code></td>
 <td><code>false</code></td>
-<td>When set to <code>true</code> and <code>pjax-target</code> is provided, the URL hash is updated with the id of the target element</td>
+<td>When set to <code>true</code>  the URL hash is updated with the id of the <code>element</code></td>
+</tr>
+<tr>
+<td><code>data-pjax-animate</code></td>
+<td><code>false</code></td>
+<td>When set to <code>true</code>  animates and transitions content in and out</td>
 </tr>
 </tbody>
 </table>
@@ -410,20 +425,20 @@
 <p>The link below would request send a Pjax request to <code>/my-page</code> and replace the entire document body:</p>
 <pre><code class="html language-html">&lt;a class="js-pjax-link" href="/my-page"&gt;My Page&lt;/button&gt;</code></pre>
 <p>Here, the button will send a request to <code>/url?sidebar</code> and place the response into the element <code>#sidebar-wrapper</code>:</p>
-<pre><code class="html language-html">&lt;a class="js-pjax-link" href="/url?sidebar" data-pjax-target="sidebar-wrapper"&gt;Sidebar&lt;/button&gt;</code></pre>
+<pre><code class="html language-html">&lt;a class="js-pjax-link" href="/url?sidebar" data-pjax-element="#sidebar-wrapper"&gt;Sidebar&lt;/button&gt;</code></pre>
 <p>You may want the request to only happen once when it is first called, in this case add <code>data-pjax-once</code> attribute to the anchor:</p>
-<pre><code class="html language-html">&lt;a class="js-pjax-link" href="/url?sidebar" data-pjax-once="true" data-pjax-target="sidebar-wrapper"&gt;Sidebar&lt;/button&gt;</code></pre>
+<pre><code class="html language-html">&lt;a class="js-pjax-link" href="/url?sidebar" data-pjax-once="true" data-pjax-element="#sidebar-wrapper"&gt;Sidebar&lt;/button&gt;</code></pre>
 <p>Below is a simple example using a tab navigation to load content:</p>
 <div class="fbx-snippet-demo">
     <ul class="tab-nav js-tab-nav">
         <li>
-            <a href="../pjax_tabs_iframe1.html" class="active js-pjax-link" data-tab="panel-1" data-pjax-target="tab-1">Tab 1</a>
+            <a href="../pjax_tabs_iframe1.html" class="active js-pjax-link" data-tab="panel-1" data-pjax-element="#tab-1">Tab 1</a>
         </li>
         <li>
-            <a href="../pjax_tabs_iframe2.html" class="js-pjax-link" data-tab="panel-2" data-pjax-target="tab-2">Tab 2</a>
+            <a href="../pjax_tabs_iframe2.html" class="js-pjax-link" data-tab="panel-2" data-pjax-element="#tab-2">Tab 2</a>
         </li>
         <li>
-            <a href="../pjax_tabs_iframe3.html" class="js-pjax-link" data-tab="panel-3" data-pjax-target="tab-3">Tab 3</a>
+            <a href="../pjax_tabs_iframe3.html" class="js-pjax-link" data-tab="panel-3" data-pjax-element="#tab-3">Tab 3</a>
         </li>
     </ul>
     <div class="tab-panels js-tab-panels">
@@ -441,13 +456,13 @@
 </div>
 <pre><code class="html language-html">&lt;ul class="tab-nav js-tab-nav"&gt;
     &lt;li&gt;
-        &lt;a href="/tab-1" class="active js-pjax-link" data-tab="panel-1" data-pjax-target="tab-1"&gt;Tab 1&lt;/a&gt;
+        &lt;a href="/tab-1" class="active js-pjax-link" data-tab="panel-1" data-pjax-element="#tab-1"&gt;Tab 1&lt;/a&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a href="/tab-2" class="js-pjax-link" data-tab="panel-2" data-pjax-target="tab-2"&gt;Tab 2&lt;/a&gt;
+        &lt;a href="/tab-2" class="js-pjax-link" data-tab="panel-2" data-pjax-element="#tab-2"&gt;Tab 2&lt;/a&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a href="/tab-3" class="js-pjax-link" data-tab="panel-3" data-pjax-target="tab-3"&gt;Tab 3&lt;/a&gt;
+        &lt;a href="/tab-3" class="js-pjax-link" data-tab="panel-3" data-pjax-element="#tab-3"&gt;Tab 3&lt;/a&gt;
     &lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="tab-panels js-tab-panels"&gt;
@@ -504,7 +519,7 @@ echo '
 <pre><code class="JavaScript language-JavaScript">let pjax = frontbx.Pjax();</code></pre>
 <p>To make a request, use the <code>request</code> method:</p>
 <pre><code class="JavaScript language-JavaScript">let pjax.request(url, options, success, error, complete, abort, headers);</code></pre>
-<p>Pjax extends Frontbx's Ajax Component so the callbacks folllow the same principles. For details on callbacks, see the <a href="/docs/javascript/pjax/index.html#arguments">Ajax Documentation</a></p>
+<p>Pjax extends Frontbx's Ajax Component so the callbacks folllow the same principles. For details on callbacks, see the <a href="../ajax/index.html#arguments">Ajax Documentation</a></p>
 <p>The options arguement is an Object with the following values / defaults</p>
 <table>
 <thead>
@@ -539,7 +554,7 @@ echo '
 </table>
 <hr />
 <h3 id="events">Events</h3>
-<p>Pjax will dispatch the following custom events on <code>window</code>. The provided options are set to <code>event.detail.options</code>:</p>
+<p>Pjax will dispatch the following custom events on <code>window</code>. The provided options are set to <code>event.detail</code>:</p>
 <table>
 <thead>
 <tr>
@@ -568,7 +583,7 @@ echo '
 </table>
 <pre><code class="JavaScript language-JavaScript">window.addEventListener('Frontbx:Pjax:success', (e) =&gt;
 {
-    let url = e.detail.options.url;
+    let url = e.detail.url;
 
 })</code></pre></article>
             </div>

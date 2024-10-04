@@ -43,19 +43,21 @@ Pjax can be invoked automatically via HTML via any clickable HTML anchor element
 
 For native link elements (`<a>`, the `href` attribute will be used as the request URL. For other element types, set the request URL as the `data-pjax-href` attribute.
 
-Lastly, you can optionally provide the the `id` of the HTML response element to indicate where the response will be inserted into via `data-pjax-target` attribute. If this is omitted, Pjax assumes you're wanting to request an entire page and will replace the document `body`.
+Lastly, you can optionally provide the the `id` of the HTML response element to indicate where the response will be inserted into via `data-pjax-element` attribute. If this is omitted, Pjax assumes you're wanting to request an entire page and will replace the document `body`.
 
 Additional options can be provided through `data-` attributes. The table below outlines available options and how they effect behavior.
 
-| Attribute             | Default | Description                                                                                                  |
-|-----------------------|---------|--------------------------------------------------------------------------------------------------------------|
-| `href`                | `null`  | Used as the request URL to send request. Can be an absolute or a relative URL. Used on `<a>` elements only.  |
-| `data-pjax-target`    | `null`  | Used as the request URL to send request. Can be an absolute or a relative URL.                               |
-| `data-pjax-once`      | `false` | When set to `true` the request will only be sent once on first click.                                        |
-| `data-pjax-nocache`   | `false` | When set to `true` a timestamp is appended to the URL query to ensure an un-cashed response.                 |
-| `data-pjax-pushstate` | `false` | When set to `true` a new history state is created. If no `pjax-target` is provided it will default to `true` |
-| `data-pjax-urlhash`   | `false` | When set to `true` and `pjax-target` is provided, the URL hash is updated with the id of the target element  |
-
+| Attribute             | Default | Description                                                                                                 |
+|-----------------------|---------|-------------------------------------------------------------------------------------------------------------|
+| `href`                | `null`  | Used as the request URL to send request. Can be an absolute or a relative URL. Used on `<a>` elements only. |
+| `data-pjax-url`       | `null`  | Used as the request URL to send request for non `<a>` elements.                                             |
+| `data-pjax-element`   | `null`  | An html element selector to append the response into.                                                       |
+| `data-pjax-once`      | `false` | When set to `true` the request will only be sent once on first click.                                       |
+| `data-pjax-scrolltop` | `false` | When set to `true` the page will scroll to to top when request completes.                                   |
+| `data-pjax-nocache`   | `false` | When set to `true` a timestamp is appended to the URL query to ensure an un-cashed response.                |
+| `data-pjax-pushstate` | `false` | When set to `true` a new history state is created.                                                          |
+| `data-pjax-urlhash`   | `false` | When set to `true`  the URL hash is updated with the id of the `element`                                    |
+| `data-pjax-animate`   | `false` | When set to `true`  animates and transitions content in and out                                             |
 
 > When response content contains CSS `<link>` tags or JavaScript `<script>` tags, Pjax automatically compares these to the currently loaded assets and will load them into the DOM if required. Additionally, Pjax will update the document title and meta description when `pushstate` is set to true and the response includes them. 
 
@@ -68,13 +70,13 @@ The link below would request send a Pjax request to `/my-page` and replace the e
 Here, the button will send a request to `/url?sidebar` and place the response into the element `#sidebar-wrapper`:
 
 ```html
-<a class="js-pjax-link" href="/url?sidebar" data-pjax-target="sidebar-wrapper">Sidebar</button>
+<a class="js-pjax-link" href="/url?sidebar" data-pjax-element="#sidebar-wrapper">Sidebar</button>
 ```
 
 You may want the request to only happen once when it is first called, in this case add `data-pjax-once` attribute to the anchor:
 
 ```html
-<a class="js-pjax-link" href="/url?sidebar" data-pjax-once="true" data-pjax-target="sidebar-wrapper">Sidebar</button>
+<a class="js-pjax-link" href="/url?sidebar" data-pjax-once="true" data-pjax-element="#sidebar-wrapper">Sidebar</button>
 ```
 
 Below is a simple example using a tab navigation to load content:
@@ -82,13 +84,13 @@ Below is a simple example using a tab navigation to load content:
 <div class="fbx-snippet-demo">
     <ul class="tab-nav js-tab-nav">
         <li>
-            <a href="../pjax_tabs_iframe1.html" class="active js-pjax-link" data-tab="panel-1" data-pjax-target="tab-1">Tab 1</a>
+            <a href="../pjax_tabs_iframe1.html" class="active js-pjax-link" data-tab="panel-1" data-pjax-element="#tab-1">Tab 1</a>
         </li>
         <li>
-            <a href="../pjax_tabs_iframe2.html" class="js-pjax-link" data-tab="panel-2" data-pjax-target="tab-2">Tab 2</a>
+            <a href="../pjax_tabs_iframe2.html" class="js-pjax-link" data-tab="panel-2" data-pjax-element="#tab-2">Tab 2</a>
         </li>
         <li>
-            <a href="../pjax_tabs_iframe3.html" class="js-pjax-link" data-tab="panel-3" data-pjax-target="tab-3">Tab 3</a>
+            <a href="../pjax_tabs_iframe3.html" class="js-pjax-link" data-tab="panel-3" data-pjax-element="#tab-3">Tab 3</a>
         </li>
     </ul>
     <div class="tab-panels js-tab-panels">
@@ -108,13 +110,13 @@ Below is a simple example using a tab navigation to load content:
 ```html
 <ul class="tab-nav js-tab-nav">
     <li>
-        <a href="/tab-1" class="active js-pjax-link" data-tab="panel-1" data-pjax-target="tab-1">Tab 1</a>
+        <a href="/tab-1" class="active js-pjax-link" data-tab="panel-1" data-pjax-element="#tab-1">Tab 1</a>
     </li>
     <li>
-        <a href="/tab-2" class="js-pjax-link" data-tab="panel-2" data-pjax-target="tab-2">Tab 2</a>
+        <a href="/tab-2" class="js-pjax-link" data-tab="panel-2" data-pjax-element="#tab-2">Tab 2</a>
     </li>
     <li>
-        <a href="/tab-3" class="js-pjax-link" data-tab="panel-3" data-pjax-target="tab-3">Tab 3</a>
+        <a href="/tab-3" class="js-pjax-link" data-tab="panel-3" data-pjax-element="#tab-3">Tab 3</a>
     </li>
 </ul>
 <div class="tab-panels js-tab-panels">
@@ -210,14 +212,14 @@ To make a request, use the `request` method:
 let pjax.request(url, options, success, error, complete, abort, headers);
 ```
 
-Pjax extends Frontbx's Ajax Component so the callbacks folllow the same principles. For details on callbacks, see the [Ajax Documentation](/docs/javascript/pjax/index.html#arguments)
+Pjax extends Frontbx's Ajax Component so the callbacks folllow the same principles. For details on callbacks, see the [Ajax Documentation](../ajax/index.html#arguments)
 
 The options arguement is an Object with the following values / defaults
 
 | Attribute   | Default | Description                                                                                             |
 |-------------|---------|---------------------------------------------------------------------------------------------------------|
 | `element`   | `body`  | Optional target element to insert response into                                                         |
-| `nocache` | `false` | When set to `true` a timestamp is appended to the URL query to ensure an un-cashed response.            |
+| `nocache`   | `false` | When set to `true` a timestamp is appended to the URL query to ensure an un-cashed response.            |
 | `pushstate` | `false` | When set to `true` a new history state is created.                                                      |
 | `urlhash`   | `false` | When set to `true` and `element` is provided, the URL hash is updated with the id of the target element |
 
@@ -225,7 +227,7 @@ The options arguement is an Object with the following values / defaults
 
 ### Events
 
-Pjax will dispatch the following custom events on `window`. The provided options are set to `event.detail.options`:
+Pjax will dispatch the following custom events on `window`. The provided options are set to `event.detail`:
 
 | Attribute   Description |                                                                                                       |
 |-------------------------|-------------------------------------------------------------------------------------------------------|
@@ -237,7 +239,7 @@ Pjax will dispatch the following custom events on `window`. The provided options
 ```JavaScript
 window.addEventListener('Frontbx:Pjax:success', (e) =>
 {
-    let url = e.detail.options.url;
+    let url = e.detail.url;
 
 })
 ```
