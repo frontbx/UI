@@ -19,6 +19,11 @@ Pjax.prototype._popStateHandler = function(e)
     }
 }
 
+/**
+ * Push state after complete.
+ *
+ * @access {private}
+ */
 Pjax.prototype._pushState = function()
 {    
     if (this.options.pushstate)
@@ -36,6 +41,11 @@ Pjax.prototype._pushState = function()
     }
 }
 
+/**
+ * Save state before requesting.
+ *
+ * @access {private}
+ */
 Pjax.prototype._saveState = function()
 {    
     if (this.options.pushstate)

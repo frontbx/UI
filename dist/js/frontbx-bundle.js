@@ -9173,6 +9173,8 @@
         
         Pjax.prototype._oncomplete = function(response, successfull)
         {
+            if (this.options.scrolltop) animate(window, { property : 'scrollTo', to: '0, 0', duration: 150, callback: () => this._pushState() });
+        
             trigger_event(window, 'frontbx:pjax:complete', this.options);
         
             this.ajax._makeCallback(this.callbacks.complete, this._xhr, [response, successfull]);
@@ -9182,15 +9184,8 @@
         
         Pjax.prototype._contentComplete = function()
         {
-            if (this.options.scrolltop)
-            {
-                animate(window, { property : 'scrollTo', to: '0, 0', duration: 150, callback: () => this._pushState() });
-            }
-            else
-            {
-                this._pushState();
-            }
-        
+            if (!this.options.scrolltop) this._pushState(); 
+           
             CURRENT_REQUESTS.delete(this.options.element);
         
             TRANSITION_TIMERS.delete(this.options.element);
@@ -9315,6 +9310,11 @@
             }
         }
         
+        /**
+         * Push state after complete.
+         *
+         * @access {private}
+         */
         Pjax.prototype._pushState = function()
         {    
             if (this.options.pushstate)
@@ -9332,6 +9332,11 @@
             }
         }
         
+        /**
+         * Save state before requesting.
+         *
+         * @access {private}
+         */
         Pjax.prototype._saveState = function()
         {    
             if (this.options.pushstate)
