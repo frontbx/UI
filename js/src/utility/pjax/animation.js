@@ -43,11 +43,14 @@ Pjax.prototype._animateSwap = function(target, content)
     // Finally append content
     target.appendChild(tempWrapper);
 
+    // Offset height for CSS transitions
     tempWrapper.offsetHeight;
 
+    // Activate animation
     add_class(target, 'active');
 
-    let timeout = setTimeout(() =>
+    // On complete
+    let completedTransition = setTimeout(() =>
     {
         // Remove old content
         each(oldContnet, (i, child) => remove_from_dom(child));
@@ -56,10 +59,10 @@ Pjax.prototype._animateSwap = function(target, content)
         each(newContent, (i, child) => target.appendChild(child));
 
         // Remove the temp wrapper
-        target.removeChild(tempWrapper);
+        if (tempWrapper.parentNode) tempWrapper.parentNode.removeChild(tempWrapper);
 
         // Remove pjax swap class on parent
-        remove_class(target, ['pjax-swapping-content', 'acitve']);
+        remove_class(target, ['pjax-swapping-content', 'active']);
 
         // Set inline styles back to original
         css(target, InlStyles);
@@ -69,6 +72,15 @@ Pjax.prototype._animateSwap = function(target, content)
 
     }, 500);
 
+    this._abortAnimations = () =>
+    {
+        if (tempWrapper.parentNode) tempWrapper.parentNode.removeChild(tempWrapper);
+
+        remove_class(target, ['pjax-swapping-content', 'active']);
+
+        css(target, InlStyles);
+    }
+
     // Wait for transition to end
-    TRANSITION_TIMERS.set(target, timeout);
+    TRANSITION_TIMERS.set(target, completedTransition);
 }

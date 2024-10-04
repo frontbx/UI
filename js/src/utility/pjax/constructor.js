@@ -9,6 +9,8 @@
  */
 const Pjax = function()
 {
+    this.completed = false;
+    
     if (!POP_LISTENING)
     {
         on(window, 'popstate', this._popStateHandler, this);

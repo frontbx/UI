@@ -47,8 +47,6 @@ Pjax.prototype._parseResponse = function(HTML)
 
     this._responseDoc = this._removeScripts(responseDoc);
 
-    console.log(this._newScripts);
-
     // Move scripts to head incase we're replacing content
     each(currScripts, (i, script) => script.node.parentNode.nodeName.toLowerCase() !== 'head' ? find('head').appendChild(script.node) : null);
 
@@ -63,29 +61,25 @@ Pjax.prototype._parseResponse = function(HTML)
 Pjax.prototype._findElems = function()
 {
     // Default to document bodys
-    let targetEl   = document.body;
+    let targetEl   = this._optionsElement();
     let responseEl = this._responseDoc.body;
-    let options    = this.options;
+    let selector   = this.options.element;
 
-    // Selector
-    if (options.element && options.element !== document.body)
+    // Html element
+    if (is_htmlElement(selector) && selector !== document && selector !== document.documentElement)
     {
-        if (is_string(options.element))
-        {
-            targetEl = find(options.element);
+        responseEl = find(selector.id, this._responseDoc);
+    }
 
-            // Try to find the target element in the response
-            let tmpResponseEl = find(options.element, this._responseDoc);
+    if (is_string(selector) && selector !== 'body')
+    {
+        targetEl = find(selector);
 
-            if (tmpResponseEl) responseEl = tmpResponseEl;
+        // Try to find the target element in the response
+        let tmpResponseEl = find(selector, this._responseDoc);
 
-        }
-        // DOM Node
-        else if (in_dom(options.element))
-        {
-            // Target is options.element
-            targetEl = options.element;
-        }
+        if (tmpResponseEl) responseEl = tmpResponseEl;
+
     }
 
     this._targetElem   = targetEl;

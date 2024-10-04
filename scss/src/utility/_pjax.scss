@@ -1,5 +1,10 @@
 .pjax-swapping-content
 {
+	--fbx-pjax-transform-in: #{$pjax-transform-in};
+	--fbx-pjax-transform-out: #{$pjax-transform-out};
+	--fbx-pjax-transition-in: #{$pjax-transition-in};
+	--fbx-pjax-transition-out: #{$pjax-transition-out};
+
 	position: relative;
 	overflow: hidden;
 
@@ -11,14 +16,15 @@
     	opacity: 0;
     	width: 100%;
     	overflow: hidden;
-    	transform: translate3d(0px, -100px, 0px);
-    	transition: var(--fbx-ease-time-sm) var(--fbx-base-easing);
+    	transform: var(--fbx-pjax-transform-in);
+    	transition: var(--fbx-pjax-transition-in);
 	}
 
 	.pjax-prev-content
 	{
 		opacity: 1;
-		transition: opacity var(--fbx-ease-time-sm) var(--fbx-base-easing);
+		transform: translate3d(0px, 0px, 0px);
+		transition: var(--fbx-pjax-transition-out);
 	}
 
 	&.active
@@ -26,6 +32,7 @@
 		.pjax-prev-content
 		{
 			opacity: 0;
+			transform: var(--fbx-pjax-transform-out);
 		}
 		.pjax-temp-swap-wrapper
 		{

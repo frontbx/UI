@@ -16,15 +16,19 @@ Pjax.prototype._onerror = function(response)
 
 Pjax.prototype._onabort = function(response)
 {
-    let element = this.options.element;
+    console.log('aborted');
+
+    let selector = this.options.element;
     
-    let swapTimer = TRANSITION_TIMERS.get(element);
+    let swapTimer = TRANSITION_TIMERS.get(selector);
 
     if (swapTimer) clearTimeout(swapTimer);
 
-    CURRENT_REQUESTS.delete(element);
+    CURRENT_REQUESTS.delete(selector);
 
-    TRANSITION_TIMERS.delete(element);
+    TRANSITION_TIMERS.delete(selector);
+
+    if (this._abortAnimations) this._abortAnimations();
 
     frontbx.NProgress().done();
 
@@ -44,25 +48,29 @@ Pjax.prototype._oncomplete = function(response, successfull)
 
 Pjax.prototype._contentComplete = function()
 {
-    let element = this.options.element;
-
     if (this.options.scrolltop)
     {
         animate(window, { property : 'scrollTo', to: '0, 0', duration: 150, callback: () => this._pushState() });
     }
+    else
+    {
+        this._pushState();
+    }
 
-    CURRENT_REQUESTS.delete(element);
+    CURRENT_REQUESTS.delete(this.options.element);
 
-    TRANSITION_TIMERS.delete(element);
+    TRANSITION_TIMERS.delete(this.options.element);
 
-    frontbx.dom().refresh(element === document.body ? document : element);
+    let _elem = this._optionsElement();
+
+    frontbx.dom().refresh(_elem === document.body ? document : _elem);
+
+    this.completed = true;
 }
 
 Pjax.prototype._preAbort = function()
 {
-    let element = this.options.element;
-
-    let ajax = CURRENT_REQUESTS.get(element);
+    let ajax = CURRENT_REQUESTS.get(this.options.element);
 
     if (ajax) ajax.abort();
 }

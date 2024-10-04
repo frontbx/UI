@@ -501,6 +501,12 @@ $loader-color1:                 var(--fbx-gray) !default;
 $loader-color2:                 var(--fbx-gray-300) !default;
 $loader-size:                   30px !default;
 
+// Pjax animations
+$pjax-transform-in:				translate3d(0px, -50px, 0px) !default;
+$pjax-transform-out:			translate3d(0px, 0px, 0px) !default;
+$pjax-transition-in:			opacity .5s ease, transform .3s ease !default;
+$pjax-transition-out:			opacity .25s ease !default;
+
 // Responsive breakpoints
 $breakpoints:
 (

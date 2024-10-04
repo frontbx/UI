@@ -12,7 +12,7 @@
      * 
      * @var {Function}
      */
-    const [on, off, each, is_undefined, attr, bool, to_camel_case, extend]  = frontbx.import(['on','off','each','is_undefined','attr','bool','to_camel_case','extend']).from('_');
+    const [on, off, each, is_undefined, attr, bool, to_camel_case, extend, normalize_url]  = frontbx.import(['on','off','each','is_undefined','attr','bool','to_camel_case','extend','normalize_url']).from('_');
 
     /**
      * Available data attributes.
@@ -98,6 +98,9 @@
 
         // Only request once
         if (REQUESTED.includes(url) && options.once) return false;
+
+        // No change
+        if (normalize_url(url) === normalize_url(window.location.href)) return false;
 
         REQUESTED.push(url);
 

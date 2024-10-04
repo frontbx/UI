@@ -8659,7 +8659,7 @@ Container.singleton('_', _);
      * 
      * @var {Function}
      */
-    const [on, add_class, remove_class, animate, css, dom_element, each, find, find_all, first_children, height, in_array, in_dom, inline_style, inner_HTML, is_empty, is_string, map, normalize_url, remove_from_dom, rendered_style, scroll_pos, trigger_event, width, is_object] = frontbx.import(['on','add_class','remove_class','animate','css','dom_element','each','find','find_all','first_children','height','in_array','in_dom','inline_style','inner_HTML','is_empty','is_string','map','normalize_url','remove_from_dom','rendered_style','scroll_pos','trigger_event','width','is_object']).from('_');
+    const [on, add_class, remove_class, animate, css, dom_element, each, find, find_all, first_children, height, in_array, in_dom, inline_style, inner_HTML, is_empty, is_string, map, normalize_url, remove_from_dom, rendered_style, scroll_pos, trigger_event, width, is_object, is_htmlElement] = frontbx.import(['on','add_class','remove_class','animate','css','dom_element','each','find','find_all','first_children','height','in_array','in_dom','inline_style','inner_HTML','is_empty','is_string','map','normalize_url','remove_from_dom','rendered_style','scroll_pos','trigger_event','width','is_object','is_htmlElement']).from('_');
     
     /**
      * Are we listening for state changes ?
@@ -8715,6 +8715,8 @@ Container.singleton('_', _);
      */
     const Pjax = function()
     {
+        this.completed = false;
+        
         if (!POP_LISTENING)
         {
             on(window, 'popstate', this._popStateHandler, this);
@@ -8723,17 +8725,46 @@ Container.singleton('_', _);
         }
     }
     
+    /**
+     * Normalise provided options.
+     *
+     * @access {private}
+     * @param  {String}  URL     Request url
+     * @param  {Object}  options User options
+     * @return {Object}
+     */
     Pjax.prototype._normalizeOptions = function(url, options)
     {
         // Store URL in options for callbacks
         url = normalize_url(url.trim());
     
         // Merge options with defaults
-        options = typeof options === 'undefined' ? { ...DEFAULT_OPTIONS, url  } : { ...DEFAULT_OPTIONS, ...options, url };
+        return typeof options === 'undefined' ? { ...DEFAULT_OPTIONS, url  } : { ...DEFAULT_OPTIONS, ...options, url };
+    }
     
-        if (options.element === 'body') options.element = document.body;
+    /**
+     * Returns the element from provided options.
+     *
+     * @access {private}
+     * @return {HTMLElement}
+     */
+    Pjax.prototype._optionsElement = function()
+    {
+        let element = this.options.element;
     
-        return options;
+        if (is_htmlElement(element))
+        {
+            if (element === document || element === document.documentElement)
+            {
+               return document.body;
+            }
+    
+            return element;
+        }
+    
+        if (is_string(element)) return find(element);
+    
+        return element;
     }
     Pjax.prototype.request = function(url, options, success, error, complete, abort, headers)
     {
@@ -8759,7 +8790,7 @@ Container.singleton('_', _);
         this.callbacks = { success, error, complete, abort };
     
         // Cache current state
-        this._pushState();
+        this._saveState();
     
         // Fire the start event
         trigger_event(window, 'frontbx:pjax:start', options);
@@ -8835,8 +8866,6 @@ Container.singleton('_', _);
     
         this._responseDoc = this._removeScripts(responseDoc);
     
-        console.log(this._newScripts);
-    
         // Move scripts to head incase we're replacing content
         each(currScripts, (i, script) => script.node.parentNode.nodeName.toLowerCase() !== 'head' ? find('head').appendChild(script.node) : null);
     
@@ -8851,29 +8880,25 @@ Container.singleton('_', _);
     Pjax.prototype._findElems = function()
     {
         // Default to document bodys
-        let targetEl   = document.body;
+        let targetEl   = this._optionsElement();
         let responseEl = this._responseDoc.body;
-        let options    = this.options;
+        let selector   = this.options.element;
     
-        // Selector
-        if (options.element && options.element !== document.body)
+        // Html element
+        if (is_htmlElement(selector) && selector !== document && selector !== document.documentElement)
         {
-            if (is_string(options.element))
-            {
-                targetEl = find(options.element);
+            responseEl = find(selector.id, this._responseDoc);
+        }
     
-                // Try to find the target element in the response
-                let tmpResponseEl = find(options.element, this._responseDoc);
+        if (is_string(selector) && selector !== 'body')
+        {
+            targetEl = find(selector);
     
-                if (tmpResponseEl) responseEl = tmpResponseEl;
+            // Try to find the target element in the response
+            let tmpResponseEl = find(selector, this._responseDoc);
     
-            }
-            // DOM Node
-            else if (in_dom(options.element))
-            {
-                // Target is options.element
-                targetEl = options.element;
-            }
+            if (tmpResponseEl) responseEl = tmpResponseEl;
+    
         }
     
         this._targetElem   = targetEl;
@@ -9115,15 +9140,19 @@ Container.singleton('_', _);
     
     Pjax.prototype._onabort = function(response)
     {
-        let element = this.options.element;
+        console.log('aborted');
+    
+        let selector = this.options.element;
         
-        let swapTimer = TRANSITION_TIMERS.get(element);
+        let swapTimer = TRANSITION_TIMERS.get(selector);
     
         if (swapTimer) clearTimeout(swapTimer);
     
-        CURRENT_REQUESTS.delete(element);
+        CURRENT_REQUESTS.delete(selector);
     
-        TRANSITION_TIMERS.delete(element);
+        TRANSITION_TIMERS.delete(selector);
+    
+        if (this._abortAnimations) this._abortAnimations();
     
         frontbx.NProgress().done();
     
@@ -9143,25 +9172,29 @@ Container.singleton('_', _);
     
     Pjax.prototype._contentComplete = function()
     {
-        let element = this.options.element;
-    
         if (this.options.scrolltop)
         {
             animate(window, { property : 'scrollTo', to: '0, 0', duration: 150, callback: () => this._pushState() });
         }
+        else
+        {
+            this._pushState();
+        }
     
-        CURRENT_REQUESTS.delete(element);
+        CURRENT_REQUESTS.delete(this.options.element);
     
-        TRANSITION_TIMERS.delete(element);
+        TRANSITION_TIMERS.delete(this.options.element);
     
-        frontbx.dom().refresh(element === document.body ? document : element);
+        let _elem = this._optionsElement();
+    
+        frontbx.dom().refresh(_elem === document.body ? document : _elem);
+    
+        this.completed = true;
     }
     
     Pjax.prototype._preAbort = function()
     {
-        let element = this.options.element;
-    
-        let ajax = CURRENT_REQUESTS.get(element);
+        let ajax = CURRENT_REQUESTS.get(this.options.element);
     
         if (ajax) ajax.abort();
     }
@@ -9210,11 +9243,14 @@ Container.singleton('_', _);
         // Finally append content
         target.appendChild(tempWrapper);
     
+        // Offset height for CSS transitions
         tempWrapper.offsetHeight;
     
+        // Activate animation
         add_class(target, 'active');
     
-        let timeout = setTimeout(() =>
+        // On complete
+        let completedTransition = setTimeout(() =>
         {
             // Remove old content
             each(oldContnet, (i, child) => remove_from_dom(child));
@@ -9223,10 +9259,10 @@ Container.singleton('_', _);
             each(newContent, (i, child) => target.appendChild(child));
     
             // Remove the temp wrapper
-            target.removeChild(tempWrapper);
+            if (tempWrapper.parentNode) tempWrapper.parentNode.removeChild(tempWrapper);
     
             // Remove pjax swap class on parent
-            remove_class(target, ['pjax-swapping-content', 'acitve']);
+            remove_class(target, ['pjax-swapping-content', 'active']);
     
             // Set inline styles back to original
             css(target, InlStyles);
@@ -9236,8 +9272,17 @@ Container.singleton('_', _);
     
         }, 500);
     
+        this._abortAnimations = () =>
+        {
+            if (tempWrapper.parentNode) tempWrapper.parentNode.removeChild(tempWrapper);
+    
+            remove_class(target, ['pjax-swapping-content', 'active']);
+    
+            css(target, InlStyles);
+        }
+    
         // Wait for transition to end
-        TRANSITION_TIMERS.set(target, timeout);
+        TRANSITION_TIMERS.set(target, completedTransition);
     }
     /**
      * State change event handler (back/forward clicks)
@@ -9261,10 +9306,10 @@ Container.singleton('_', _);
     }
     
     Pjax.prototype._pushState = function()
-    {
+    {    
         if (this.options.pushstate)
         {            
-            let state = { ...this.options, id: normalize_url(window.location.href), scroll: scroll_pos() };
+            let state = { ...this.options, id: this.options.url, scrolltop: false, scroll: scroll_pos() };
     
             window.history.pushState(state, '', state.id);
         }
@@ -9273,7 +9318,22 @@ Container.singleton('_', _);
         {
             let url = window.location.href.split('#').shift();
     
-            window.history.replaceState({}, '', `${url}#${this.options.element.id}`);
+            window.history.replaceState({}, '', `${url}#${this._optionsElement().id}`);
+        }
+    }
+    
+    Pjax.prototype._saveState = function()
+    {    
+        if (this.options.pushstate)
+        {            
+            let state = { ...this.options, id: normalize_url(window.location.href), scrolltop: false, scroll: scroll_pos() };
+    
+            window.history.pushState(state, '', state.id);
+        }
+        // Adjust hash
+        else if (this.options.urlhash)
+        {
+            window.history.replaceState({}, '', window.location.href);
         }
     }
 
@@ -15424,7 +15484,7 @@ Container.singleton('_', _);
      * 
      * @var {Function}
      */
-    const [on, off, each, is_undefined, attr, bool, to_camel_case, extend]  = frontbx.import(['on','off','each','is_undefined','attr','bool','to_camel_case','extend']).from('_');
+    const [on, off, each, is_undefined, attr, bool, to_camel_case, extend, normalize_url]  = frontbx.import(['on','off','each','is_undefined','attr','bool','to_camel_case','extend','normalize_url']).from('_');
 
     /**
      * Available data attributes.
@@ -15510,6 +15570,9 @@ Container.singleton('_', _);
 
         // Only request once
         if (REQUESTED.includes(url) && options.once) return false;
+
+        // No change
+        if (normalize_url(url) === normalize_url(window.location.href)) return false;
 
         REQUESTED.push(url);
 

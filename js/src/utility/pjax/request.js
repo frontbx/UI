@@ -22,7 +22,7 @@ Pjax.prototype.request = function(url, options, success, error, complete, abort,
     this.callbacks = { success, error, complete, abort };
 
     // Cache current state
-    this._pushState();
+    this._saveState();
 
     // Fire the start event
     trigger_event(window, 'frontbx:pjax:start', options);

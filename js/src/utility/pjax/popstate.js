@@ -20,10 +20,10 @@ Pjax.prototype._popStateHandler = function(e)
 }
 
 Pjax.prototype._pushState = function()
-{
+{    
     if (this.options.pushstate)
     {            
-        let state = { ...this.options, id: normalize_url(window.location.href), scroll: scroll_pos() };
+        let state = { ...this.options, id: this.options.url, scrolltop: false, scroll: scroll_pos() };
 
         window.history.pushState(state, '', state.id);
     }
@@ -32,6 +32,21 @@ Pjax.prototype._pushState = function()
     {
         let url = window.location.href.split('#').shift();
 
-        window.history.replaceState({}, '', `${url}#${this.options.element.id}`);
+        window.history.replaceState({}, '', `${url}#${this._optionsElement().id}`);
+    }
+}
+
+Pjax.prototype._saveState = function()
+{    
+    if (this.options.pushstate)
+    {            
+        let state = { ...this.options, id: normalize_url(window.location.href), scrolltop: false, scroll: scroll_pos() };
+
+        window.history.pushState(state, '', state.id);
+    }
+    // Adjust hash
+    else if (this.options.urlhash)
+    {
+        window.history.replaceState({}, '', window.location.href);
     }
 }
