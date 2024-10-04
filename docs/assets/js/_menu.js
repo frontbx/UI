@@ -44,16 +44,7 @@
 
     	on(window, 'resize', this.resize(), this);
 
-    	on(window, 'scroll', () => console.log('scrolled'), this);
-
-    	on(window, 'frontbx:pjax:success', this._onPjax, this);
-
     	trigger_event(window, 'resize');
-    }
-
-    DocDrawer.prototype._onPjax = function(e)
-    {
-    	console.log(e);
     }
 
     DocDrawer.prototype.unbind = function(trigger)

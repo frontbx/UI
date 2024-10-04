@@ -17,10 +17,12 @@
     width: 280px;
     flex: 0 0 auto;
     display: none;
+    position: fixed;
+    border-right: 1px solid var(--fbx-gray-200);
 }
 .desktop-menu #docs-menu
 {
-    height: 100vh;
+    height: calc(100vh - 80px);
     overflow-y: auto;
     width: 100%;
 }
@@ -44,9 +46,8 @@
     }
     .main-container .docs-body
     {
-        padding-left: 30px;
+        margin-left: 310px;
         width: calc(100% - 280px);
-        border-left: 1px solid var(--fbx-gray-200);
     }
 }
 

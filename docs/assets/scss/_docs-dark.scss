@@ -1,10 +1,7 @@
 /* Darkmode  */
-@media (min-width: 992px)
+.fbx-darkmode .desktop-menu
 {
-    .fbx-darkmode .main-container .docs-body
-    {
-        border-left: 1px solid var(--fbx-black-200);
-    }
+    border-right: 1px solid var(--fbx-black-200);
 }
 
 .fbx-darkmode .docs-body > hr,

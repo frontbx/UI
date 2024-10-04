@@ -131,7 +131,7 @@
 .docs-body,
 .docs-body > .pjax-temp-swap-wrapper
 {
-    > *:not(hr):not(ul):not(ol):not(blockquote):not(image):not(table):not(pre):not(.table-responsive):not(.fbx-code-snippet):not(.fbx-snippet-demo)
+    > *:not(.pjax-temp-swap-wrapper):not(hr):not(ul):not(ol):not(blockquote):not(image):not(table):not(pre):not(.table-responsive):not(.fbx-code-snippet):not(.fbx-snippet-demo)
     {
         padding-left: var(--fbx-container-gutter-xs);
         padding-right: var(--fbx-container-gutter-xs);
@@ -148,7 +148,7 @@
     .docs-body,
     .docs-body > .pjax-temp-swap-wrapper
     {
-        > *:not(hr):not(ul):not(ol):not(blockquote):not(image):not(table):not(pre):not(.table-responsive):not(.fbx-code-snippet):not(.fbx-snippet-demo)
+        > *:not(.pjax-temp-swap-wrapper):not(hr):not(ul):not(ol):not(blockquote):not(image):not(table):not(pre):not(.table-responsive):not(.fbx-code-snippet):not(.fbx-snippet-demo)
         {
             padding-left: var(--fbx-container-gutter-sm);
             padding-right: var(--fbx-container-gutter-sm);
@@ -166,7 +166,7 @@
     .docs-body,
     .docs-body > .pjax-temp-swap-wrapper
     {
-        > *:not(hr):not(ul):not(ol):not(blockquote):not(image):not(table):not(pre):not(.table-responsive):not(.fbx-code-snippet):not(.fbx-snippet-demo)
+        > *:not(.pjax-temp-swap-wrapper):not(hr):not(ul):not(ol):not(blockquote):not(image):not(table):not(pre):not(.table-responsive):not(.fbx-code-snippet):not(.fbx-snippet-demo)
         {
             padding-left: var(--fbx-container-gutter-md);
             padding-right: var(--fbx-container-gutter-md);
@@ -184,7 +184,7 @@
     .docs-body,
     .docs-body > .pjax-temp-swap-wrapper
     {
-        > *:not(hr):not(ul):not(ol):not(blockquote):not(image):not(table):not(pre):not(.table-responsive):not(.fbx-code-snippet):not(.fbx-snippet-demo)
+        > *:not(.pjax-temp-swap-wrapper):not(hr):not(ul):not(ol):not(blockquote):not(image):not(table):not(pre):not(.table-responsive):not(.fbx-code-snippet):not(.fbx-snippet-demo)
         {
             padding-left: 0;
             padding-right: 0;
