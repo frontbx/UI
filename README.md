@@ -1,4 +1,4 @@
-[![Deploy static content to Pages](https://github.com/frontbx/ui/actions/workflows/static.yml/badge.svg)](https://github.com/frontbx/ui/actions/workflows/static.yml)
+[![Deploy static content to Pages](https://github.com/frontbx/ui/actions/workflows/static.yml/badge.svg)](https://github.com/frontbx/ui/actions/workflows/static.yml) [![npm-publish](https://github.com/frontbx/ui/actions/workflows/release-package.yml/badge.svg)](https://github.com/frontbx/ui/actions/workflows/release-package.yml)
 
 # Frontbx
 
