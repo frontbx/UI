@@ -1,6 +1,6 @@
 {
     "name": "frontbx",
-    "homepage": "https://frontbxui.github.io/",
+    "homepage": "https://frontbx.github.io/ui",
     "version": "0.0.1",
     "keywords": [
         "css",
@@ -68,9 +68,6 @@
         "dist/{css,js}/*.{css,js,map}",
         "{scss,js}/*.{scss,js,map}"
     ],
-    "publishConfig": {
-        "registry": "https://npm.pkg.github.com"
-    },
     "devDependencies": {
         "autoprefixer": "^10.4.20",
         "console-tasks": "^0.1.9",
