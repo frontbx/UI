@@ -1,7 +1,12 @@
-/*!
-  * frontbx v0.1.0
-  * 
-  */
+/**
+ * --------------------------------------------------------------------------
+ * Frontbx UMD
+ * 
+ * @version  {0.0.2}
+ * @see      {https://github.com/frontbx/ui}
+ * @licensed {https://github.com/frontbx/ui/blob/main/LICENSE}
+ * --------------------------------------------------------------------------
+ */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
@@ -12,5 +17,5 @@
  	
     const index_umd = window.frontbx;
 
- 	  return index_umd;
+ 	return index_umd;
 }));

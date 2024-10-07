@@ -1,10 +1,12 @@
 /**
  * --------------------------------------------------------------------------
- * frontbx.esm.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * Frontbx ESM
+ * 
+ * @version  {0.0.2}
+ * @see      {https://github.com/frontbx/ui}
+ * @licensed {https://github.com/frontbx/ui/blob/main/LICENSE}
  * --------------------------------------------------------------------------
  */
-
 import './frontbx.js';
 
 const frontbx = window.frontbx;

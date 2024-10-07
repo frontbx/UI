@@ -351,11 +351,11 @@
 <p>If you're using a package manager or wanting to start a custom build - <a href="../download/index.html">Head to the Downloads page</a>.</p>
 <h4 id="css">CSS</h4>
 <p>Copy-paste the stylesheet <code>&lt;link&gt;</code> into your <code>&lt;head&gt;</code> before all other stylesheets to load Frontbx's CSS.</p>
-<pre><code class="html language-html">&lt;link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.0.1/dist/css/frontbx-bundle.cdn.min.css" rel="stylesheet" crossorigin="anonymous"&gt;</code></pre>
+<pre><code class="html language-html">&lt;link href="https://cdn.jsdelivr.net/npm/frontbx@0.0.2/dist/css/frontbx-bundle.cdn.min.css" rel="stylesheet" crossorigin="anonymous"&gt;</code></pre>
 <h5 id="icons">Icons</h5>
 <p>Frontbx uses <a href="https://fontawesome.com/">FontAwesome</a> for icons which are included in <code>frontbx-bundle.cdn.min.css</code>. if you prefer to have them loaded separately or don't need them, you can use <code>frontbx.min.css</code> which excludes icons and FontAwesome via JSDeliver which hosts the standalone icon CSS hosted externally.</p>
 <pre><code class="html language-html">&lt;!-- Frontbx CSS --&gt;
-&lt;link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/css/frontbx.cdn.min.css" rel="stylesheet" crossorigin="anonymous"&gt;
+&lt;link href="https://cdn.jsdelivr.net/npm/frontbx@0.0.2/dist/css/frontbx.cdn.min.css" rel="stylesheet" crossorigin="anonymous"&gt;
 
 &lt;!-- FontAwesome CSS --&gt;
 &lt;link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css" rel="stylesheet" crossorigin="anonymous"&gt;
@@ -365,11 +365,11 @@
 <p>Most Frontbx components require the use of <code>JavaScript</code> to function. Frontbx's JS is Component based with an inversion control system to manage it's own dependencies. Place the following <code>&lt;script&gt;</code> near the end of your pages, right before the closing <code>&lt;/body&gt;</code> tag.</p>
 <h5 id="bundle">Bundle</h5>
 <p>Include all Frontbx JavaScript Components and dependencies with Frontbx's bundled JS.</p>
-<pre><code class="html language-html">&lt;script src="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/js/frontbx-bundle.min.js" crossorigin="anonymous"&gt;&lt;/script&gt;</code></pre>
+<pre><code class="html language-html">&lt;script src="https://cdn.jsdelivr.net/npm/frontbx@0.0.2/dist/js/frontbx-bundle.min.js" crossorigin="anonymous"&gt;&lt;/script&gt;</code></pre>
 <h5 id="lazyload">Lazyload</h5>
 <p>Image lazy loading is included in <code>frontbx-bundle.min.js</code>, however for best performance, you should include this as a separate script in your document's <code>&lt;head&gt;</code>. This allows any lazyloaded images to start loading and rendering immediately - without having to wait for any other page dependencies to load.</p>
 <p>For details on lazy loading images - <a href="../../images/lazyload/index.html">see the LazyLoad page</a>.</p>
-<pre><code class="html language-html">&lt;script src="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/js/frontbx-lazyload.min.js" crossorigin="anonymous"&gt;&lt;/script&gt;</code></pre>
+<pre><code class="html language-html">&lt;script src="https://cdn.jsdelivr.net/npm/frontbx@0.0.2/dist/js/frontbx-lazyload.min.js" crossorigin="anonymous"&gt;&lt;/script&gt;</code></pre>
 <hr />
 <h3 id="boilerplate">Boilerplate</h3>
 <p>Below is a simple HTML5 Boilerplate to get up and running quickly with frontbx.</p>
@@ -381,17 +381,17 @@
     &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
 
     &lt;!-- Frontbx bundled CSS --&gt;
-    &lt;link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/css/frontbx-bundle.cdn.min.css" rel="stylesheet" crossorigin="anonymous"&gt;
+    &lt;link href="https://cdn.jsdelivr.net/npm/frontbx@0.0.2/dist/css/frontbx-bundle.cdn.min.css" rel="stylesheet" crossorigin="anonymous"&gt;
 
     &lt;!-- OR without icons / icons separately
-    &lt;link href="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/css/frontbx.cdn.min.css" rel="stylesheet" crossorigin="anonymous"&gt;
+    &lt;link href="https://cdn.jsdelivr.net/npm/frontbx@0.0.2/dist/css/frontbx.cdn.min.css" rel="stylesheet" crossorigin="anonymous"&gt;
     &lt;link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css" rel="stylesheet" crossorigin="anonymous"&gt;
     &lt;link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/solid.min.css" rel="stylesheet" crossorigin="anonymous"&gt;
     &lt;link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/brands.min.css" rel="stylesheet" crossorigin="anonymous"&gt;
      --&gt;
 
     &lt;!-- Frontbx Lazyload JS --&gt;
-    &lt;script src="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/js/frontbx-lazyload.min.js" crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;script src="https://cdn.jsdelivr.net/npm/frontbx@0.0.2/dist/js/frontbx-lazyload.min.js" crossorigin="anonymous"&gt;&lt;/script&gt;
 
     &lt;title&gt;Hello, world!&lt;/title&gt;
   &lt;/head&gt;
@@ -399,7 +399,7 @@
     &lt;h1&gt;Hello, world!&lt;/h1&gt;
 
     &lt;!-- Frontbx JS Bundle --&gt;
-    &lt;script src="https://cdn.jsdelivr.net/gh/frontbx/ui@0.1.0/dist/js/frontbx-bundle.min.js" crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;script src="https://cdn.jsdelivr.net/npm/frontbx@0.0.2/dist/js/frontbx-bundle.min.js" crossorigin="anonymous"&gt;&lt;/script&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 <hr />

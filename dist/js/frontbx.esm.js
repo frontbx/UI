@@ -1,10 +1,21 @@
 /**
  * --------------------------------------------------------------------------
- * frontbx.esm.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * Frontbx ESM
+ * 
+ * @version  {0.0.2}
+ * @see      {https://github.com/frontbx/ui}
+ * @licensed {https://github.com/frontbx/ui/blob/main/LICENSE}
  * --------------------------------------------------------------------------
  */
-
+/**
+ * --------------------------------------------------------------------------
+ * Frontbx standalone
+ * 
+ * @version  {0.0.2}
+ * @see      {https://github.com/frontbx/ui}
+ * @licensed {https://github.com/frontbx/ui/blob/main/LICENSE}
+ * --------------------------------------------------------------------------
+ */
 // Core
 // polyfills
 // polyfills
@@ -7378,6 +7389,15 @@ Container.singleton('_', _);
 })();
 
 // lazyload
+/**
+ * --------------------------------------------------------------------------
+ * Frontbx Lazyload
+ * 
+ * @version  {0.0.2}
+ * @see      {https://github.com/frontbx/ui}
+ * @licensed {https://github.com/frontbx/ui/blob/main/LICENSE}
+ * --------------------------------------------------------------------------
+ */
 (function()
 {
     if (!window.LAZY_FALLBACK_IMAGE)
