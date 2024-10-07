@@ -1,3 +1,54 @@
+.main-container
+{
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    margin-top: 80px;
+    height: 100%;
+}
+.main-container .docs-body
+{
+    flex: 0 0 100%;
+    width: 100%;
+}
+.desktop-menu
+{
+    position: sticky;
+    top: 0;
+    height: calc(100vh);
+    overflow-y: auto;
+    width: 280px;
+    flex: 0 0 auto;
+    display: none;
+    border-right: 1px solid var(--fbx-gray-200);
+}
+.desktop-menu #docs-menu
+{
+    width: 100%;
+}
+.desktop-menu .drawer-header
+{
+    display: none;
+}
+@media (min-width: 992px)
+{
+    .desktop-menu
+    {
+        display: flex;
+    }
+    body > .docs-drawer
+    {
+        display: none;
+    }
+    .main-container .docs-body
+    {
+        padding-left: 30px;
+        padding-right: 30px;
+        flex: 0 0 auto;
+        width: calc(100% - 250px);
+    }
+}
+
 // Homepage
 .home-page
 {
