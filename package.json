@@ -66,8 +66,8 @@
         "watch-docs-js": "nodemon --watch docs/assets/js/ --ext js --exec \"npm run docs-js\""
     },
     "files": [
-        "dist/{css,js}/*.{css,js,map}",
-        "{scss,js}/*.{scss,js,map}"
+        "dist/{css,js,fonts}/*.{css,js,map,ttf,woff2}",
+        "{scss,js}/**/*.{scss,js,map}"
     ],
     "devDependencies": {
         "autoprefixer": "^10.4.20",
