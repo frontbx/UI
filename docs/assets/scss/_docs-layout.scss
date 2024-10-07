@@ -15,7 +15,7 @@
 {
     position: sticky;
     top: 80px;
-    height: calc(100vh);
+    height: calc(100vh - 80px);
     width: 280px;
     flex: 0 0 auto;
     display: none;
@@ -25,6 +25,7 @@
 {
     width: 100%;
     overflow-y: auto;
+    @include _webkitScrollbars;
 }
 .desktop-menu .drawer-header
 {

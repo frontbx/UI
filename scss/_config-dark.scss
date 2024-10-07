@@ -4,6 +4,10 @@
 {
     --fbx-body-bg:    var(--fbx-black);
     --fbx-body-color: var(--fbx-white);
+
+    --fbx-webkit-scrollbars-thumbcolor: var(--fbx-gray-900);
+    --fbx-webkit-scrollbars-thumbcolor-hover: var(--fbx-gray-500);
+    --fbx-webkit-scrollbars-thumbcolor-active: var(--fbx-gray-500);
 }
 
 /* ----------------------------------- CONTENT DARK ------------------------------------- */
@@ -247,7 +251,7 @@
     }
     .notification-wrap .msg
     {
-        --fbx-msg-bg: var(--fbx-black-200);
+        --fbx-msg-bg: #000000;
     }
     .modal-overlay
     {

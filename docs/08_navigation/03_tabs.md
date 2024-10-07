@@ -177,7 +177,7 @@ Here is an example Frontbx's `.btn` for the navigation:
 Here's another example using Frontbx `.chip` components:
 
 <div class="fbx-snippet-demo">
-    <ul class="list-unstyled js-tab-nav" data-active-class="selected">
+    <ul class="list-inline js-tab-nav" data-active-class="selected">
         <li>
             <button type="button" class="btn btn-chip selected" data-tab="panel-1">
                 <span class="chip-text">Tab 1</span>
@@ -197,7 +197,7 @@ Here's another example using Frontbx `.chip` components:
 </div>
 
 ```html
-<ul class="list-unstyled js-tab-nav">
+<ul class="list-inline js-tab-nav">
     <li>
         <span class="chip active" data-tab="panel-1">
             <span class="chip-text">Tab 1</span>

@@ -507,6 +507,16 @@ $pjax-transform-out:			translate3d(0px, 0px, 0px) !default;
 $pjax-transition-in:			opacity .5s ease !default;
 $pjax-transition-out:			opacity .5s ease !default;
 
+// Custom scrollbars
+$webkit-scrollbars-thickness:   	  auto;
+$webkit-scrollbars-thickness-px: 	  9px;
+$webkit-scrollbars-thumbcolor:  	  var(--fbx-gray-300);
+$webkit-scrollbars-trackcolor: 		  transparent;
+$webkit-scrollbars-thumbcolor-hover:  var(--fbx-gray-500);
+$webkit-scrollbars-trackcolor-hover:  transparent;
+$webkit-scrollbars-thumbcolor-active: var(--fbx-gray-500);
+$webkit-scrollbars-trackcolor-active: transparent;
+
 // Responsive breakpoints
 $breakpoints:
 (
@@ -532,7 +542,7 @@ $grid-gutters:
 $grid-poles:
 (
     'xxs':                      0.5rem,
-    'xs':                       1rem,
+    'xs':                       1.5rem,
     'sm':                       3.0rem,
     'md':                       6.0rem,
     'lg':                       8.0rem,

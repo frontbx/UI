@@ -345,6 +345,13 @@
 	}
 }
 
+// Scrollbars  
+.card-scrollable-content .card-block,
+.card.card-scrollable
+{
+	@include _webkitScrollbars;
+}
+
 @include media-breakpoint-up(md)
 {
 	.card.card-landscape.responsive

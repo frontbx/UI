@@ -149,6 +149,16 @@
         --fbx-container-gutter-#{$name}: #{$cgutter};
     }
 
+    // Webkit scrollbars
+    --fbx-webkit-scrollbars-thickness: #{$webkit-scrollbars-thickness};
+    --fbx-webkit-scrollbars-thickness-px: #{$webkit-scrollbars-thickness-px};
+    --fbx-webkit-scrollbars-thumbcolor: #{$webkit-scrollbars-thumbcolor};
+    --fbx-webkit-scrollbars-trackcolor: #{$webkit-scrollbars-trackcolor};
+    --fbx-webkit-scrollbars-thumbcolor-hover: #{$webkit-scrollbars-thumbcolor-hover};
+    --fbx-webkit-scrollbars-trackcolor-hover: #{$webkit-scrollbars-trackcolor-hover};
+    --fbx-webkit-scrollbars-thumbcolor-active: #{$webkit-scrollbars-thumbcolor-active};
+    --fbx-webkit-scrollbars-trackcolor-active: #{$webkit-scrollbars-trackcolor-active};
+
     /* Easings */
     /* Easing functions */
     @each $name, $easing in $easings

@@ -166,29 +166,29 @@ Below is an example form using the validator. In a real request, you would use F
 				</div>
 			</div>
 			<div class="row pole-xs pole-s">
+				<p class="no-margin color-gray text-bold">Form result:</p>
 		        <div class="form-field pad-10 pad-r pad-s">
-		        	<p class="no-margin">Form result:</p>
 		            <span class="radio radio-info">
 		                <input type="radio" name="result" id="radio_10" value="info" />
-		                <label for="radio_10">Info</label>
+		                <label for="radio_10">&nbsp;&nbsp;Info</label>
 		            </span>
 		        </div>
 		        <div class="form-field pad-10">
 		            <span class="radio radio-success">
 		                <input type="radio" name="result" id="radio_11" value="success" checked />
-		                <label for="radio_11">Success</label>
+		                <label for="radio_11">&nbsp;&nbsp;Success</label>
 		            </span>
 		        </div>
 		        <div class="form-field pad-10">
 		            <span class="radio radio-warning">
 		                <input type="radio" name="result" id="radio_12" value="warning" />
-		                <label for="radio_12">Warning</label>
+		                <label for="radio_12">&nbsp;&nbsp;Warning</label>
 		            </span>
 		        </div>
 		        <div class="form-field pad-10">
 		            <span class="radio radio-danger">
 		                <input type="radio" name="result" id="radio_13" value="danger" />
-		                <label for="radio_13">Danger</label>
+		                <label for="radio_13">&nbsp;&nbsp;Danger</label>
 		            </span>
 		        </div>
 		    </div>
@@ -239,7 +239,7 @@ Below is an example form using the validator. In a real request, you would use F
 
 ```html
 <form id="my-form">
-
+	
 	<!-- name -->
 	<div class="row pole-xs pole-s">
 		<div class="form-field row">

@@ -54,43 +54,9 @@ pre[class*=language-]
     margin: 0;
     overflow: auto;
 }
-
-// Scrollbars  
-pre[class*="language-"]
+pre
 {
-    --scrollbar-color-thumb: var(--fbx-gray-300);
-    --scrollbar-color-track: transparent;
-    --scrollbar-width: thin;
-    --scrollbar-width-legacy: 8px;
-}
-
-// Modern browsers with `scrollbar-*` support 
-@supports (scrollbar-width: auto)
-{
-    pre[class*="language-"]
-    {
-        scrollbar-color: var(--scrollbar-color-thumb) var(--scrollbar-color-track);
-        scrollbar-width: var(--scrollbar-width);
-    }
-}
-
-// Legacy browsers with `::-webkit-scrollbar-*` support 
-@supports selector(::-webkit-scrollbar)
-{
-    pre[class*="language-"]::-webkit-scrollbar-thumb
-    {
-        background: var(--scrollbar-color-thumb);
-        border-radius: 20px;
-    }
-    pre[class*="language-"]::-webkit-scrollbar-track
-    {
-        background: var(--scrollbar-color-track);
-    }
-    pre[class*="language-"]::-webkit-scrollbar
-    {
-        max-width: var(--scrollbar-width-legacy);
-        max-height: var(--scrollbar-width-legacy);
-    }
+    @include _webkitScrollbars;
 }
 
 /* Snippets with file path  */

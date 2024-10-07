@@ -40,6 +40,49 @@
     &:-ms-input-placeholder      {@content}  
 }
 
+@mixin _webkitScrollbars()
+{
+    @supports (scrollbar-width: auto)
+    {
+        scrollbar-color: var(--fbx-webkit-scrollbars-thumbcolor) var(--fbx-webkit-scrollbars-trackcolor);
+        scrollbar-width: var(--fbx-webkit-scrollbars-thickness);
+    }
+
+    @supports selector(::-webkit-scrollbar)
+    {
+        &::-webkit-scrollbar-thumb
+        {
+            background: var(--fbx-webkit-scrollbars-thumbcolor);
+            border-radius: 20px;
+        }
+        &::-webkit-scrollbar-track
+        {
+            background: var(--fbx-webkit-scrollbars-trackcolor);
+        }
+        &::-webkit-scrollbar
+        {
+            max-width: var(--fbx-webkit-scrollbars-thickness-px);
+            max-height: var(--fbx-webkit-scrollbars-thickness-px);
+        }
+        &:hover::-webkit-scrollbar-thumb
+        {
+            background: var(--fbx-webkit-scrollbars-thumbcolor-hover);
+        }
+        &:hover::-webkit-scrollbar-track
+        {
+            background: var(--fbx-webkit-scrollbars-trackcolor-hover);
+        }
+        &:active::-webkit-scrollbar-thumb
+        {
+            background: var(--fbx-webkit-scrollbars-thumbcolor-active);
+        }
+        &:active::-webkit-scrollbar-track
+        {
+            background: var(--fbx-webkit-scrollbars-trackcolor-active);
+        }
+    }
+}
+
 // Color mixing
 @function _lighter($color, $percentage)
 {

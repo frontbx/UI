@@ -613,8 +613,8 @@ skeleton.load(content);
 The example below shows swapping out the contents of card component. Click the `Load content` button to try it out.
 
 <div class="fbx-snippet-demo">
-    <div class="flex-row align-cols-center-x">
-        <div class="card col col-lg-4 js-skeleton-loader-card">
+    <div class="flex-row align-cols-center flex-cols-12 flex-cols-md-8 flex-cols-lg-6">
+        <div class="card js-skeleton-loader-card">
             <div class="card-header">
                 <div class="card-header-left js-card-header-left">
                 </div>
@@ -628,10 +628,12 @@ The example below shows swapping out the contents of card component. Click the `
                 <div class="js-card-text"></div>
             </div>
         </div>
-    </div> 
-    <div class="flex-row align-cols-center col-gaps-xs pole-xs pole-n">
-        <button class=" btn btn-primary js-load-content">Load content</button>
-        <button class=" btn js-reset-skeletons">Reset</button>
+    </div>
+    <div class="flex-row align-cols-center flex-cols-12 flex-cols-md-8 flex-cols-lg-6 pole-sm pole-n">
+        <div class="flex-row row-gaps-xs">
+            <button class=" btn btn-primary js-load-content">Load content</button>
+            <button class=" btn js-reset-skeletons">Reset</button>
+        </div>
     </div>
 </div>
 
