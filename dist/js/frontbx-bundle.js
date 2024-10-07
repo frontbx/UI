@@ -1226,7 +1226,7 @@
     
     AnimateJS.prototype.start = function()
     {
-        if (this.keyFrameCount === 0) return;
+        if (this.keyFrameCount === 0) return this._complete();
     
         this.stopped = false;
     
@@ -1242,9 +1242,7 @@
     
             if (this.keyframes.length === 0)
             {            
-                this._complete();
-    
-                return;
+                return this._complete();
             }
     
             setTimeout(loop, this.intervalDelay);
