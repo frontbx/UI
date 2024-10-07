@@ -6955,7 +6955,7 @@
     
             this.version_minor = '0';
     
-            this.version_patch = '1';
+            this.version_patch = '02';
     
             this.version = `${this.version_major}.${this.version_minor}.${this.version_patch }`;
         }
