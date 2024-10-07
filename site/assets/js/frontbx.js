@@ -2,7 +2,7 @@
  * --------------------------------------------------------------------------
  * Frontbx standalone
  * 
- * @version  {0.0.2}
+ * @version  {0.0.3}
  * @see      {https://github.com/frontbx/ui}
  * @licensed {https://github.com/frontbx/ui/blob/main/LICENSE}
  * --------------------------------------------------------------------------
@@ -7384,7 +7384,7 @@ Container.singleton('_', _);
  * --------------------------------------------------------------------------
  * Frontbx Lazyload
  * 
- * @version  {0.0.2}
+ * @version  {0.0.3}
  * @see      {https://github.com/frontbx/ui}
  * @licensed {https://github.com/frontbx/ui/blob/main/LICENSE}
  * --------------------------------------------------------------------------
