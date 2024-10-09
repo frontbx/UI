@@ -9362,7 +9362,7 @@
             {
                 let options = e.state;
         
-                this.request(options.id, {...options, pushstate: false });
+                this.request(options.id, {...options, nocache: false, pushstate: false });
         
                 return false;
             }
