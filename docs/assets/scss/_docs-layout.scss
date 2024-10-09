@@ -81,6 +81,10 @@
 }
 
 // Header
+.navbar .nav-logo
+{
+    cursor: pointer;
+}
 .navbar .nav-logo svg
 {
     fill: var(--fbx-white);
