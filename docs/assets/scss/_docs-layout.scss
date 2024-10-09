@@ -55,7 +55,8 @@
 {
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(to left bottom, var(--fbx-body-bg) 0%, var(--fbx-theme-primary-900) 100%);
+    background-color: var(--fbx-theme-primary-800);
+    background-image: linear-gradient(43deg,var(--fbx-black) 0%,var(--fbx-theme-primary-500) 46%,var(--fbx-theme-primary-200) 92%,#ffffff 100%);
 }
 .home-code
 {
