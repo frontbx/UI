@@ -5,7 +5,7 @@
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -71,7 +71,7 @@
      * @inheritdoc
      * 
      */
-    Table.prototype.template = function(props)
+    Table.prototype.render = function(props)
     {
         let head = dom_element({tag: 'thead'}, null, dom_element({tag: 'tr'}, null, map(props.head, (i, cell) =>
         {   

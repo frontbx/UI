@@ -5,7 +5,7 @@
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -103,7 +103,7 @@
      * @inheritdoc
      * 
      */
-    Menu.prototype.template = function(props)
+    Menu.prototype.render = function(props)
     {
         return dom_element({tag: 'ul', class: `menu ${props.classes ? props.classes : ''} ${props.dense ? 'menu-dense' : ''} ${props.ellipsis ? 'menu-ellipsis' : ''} ${ props.selectable ? `js-select-menu` : '' }`}, null, map(props.items, (i, item) =>
             {

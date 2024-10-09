@@ -5,7 +5,7 @@
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * JS Helper reference
@@ -48,7 +48,7 @@
      * @access {private}
      * @param  {DOMElement} trigger Click/hover trigger
      */
-    Popover.prototype.template = function(props)
+    Popover.prototype.render = function(props)
     {
 
     }

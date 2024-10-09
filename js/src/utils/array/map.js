@@ -12,7 +12,7 @@ _.prototype.map = function(obj, callback)
 {
     if (typeof obj !== 'object' || obj === null) return;
 
-    let isArray = TO_STR.call(obj) === '[object Array]';
+    let isArray = this.is_array(obj);
     let i       = 0;
     let keys    = isArray ? null : Object.keys(obj);
     let len     = isArray ? obj.length : keys.length;

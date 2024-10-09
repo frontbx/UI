@@ -668,7 +668,15 @@ scss/components/list.scss
 
 ### JavaScript Instantiation
 
-List can be instantiated via JavaScript to generate dynamic content on the fly. To create a List dynamically, use Frontbx's `Component.Create` method either via the `frontbx.Dom` or the List Component directly:
+<div class="fbx-snippet-demo">
+    <div class="flex-row-fluid align-cols-center">
+        <div class="card flat col-12 col-md-8 col-lg-5 js-insert-list-container"></div>
+        <div class="col-12 pole-sm pole-n"></div>
+        <button class="btn js-insert-list-btn">Insert list</button>
+    </div>
+</div>
+
+List can be instantiated via JavaScript to generate dynamic content on the fly. To create a list dynamically, use Frontbx's `Component.Create` method either through `frontbx.Dom()` or the `List` Component directly:
 
 ```JavaScript
 let options =
@@ -705,7 +713,7 @@ Below are the available options:
 
 | Option             | Default | Example                                      | Behavior                                                        |
 |--------------------|---------|----------------------------------------------|-----------------------------------------------------------------|
-| `classes`          | `''`    | `my-button`                                  | Additional class name(s) on `<ul>` element.                     |
+| `class`            | `''`    | `my-button`                                  | Additional class name(s) on `<ul>` element.                     |
 | `dense`            | `false` | `true`                                       | Makes dense list                                                |
 | `ellipsis`         | `false` | `true`                                       | Enables list item text overflow ellipsis                        |
 | `selectable`       | `false` | `true`                                       | Enables selectable items.                                       |

@@ -141,6 +141,40 @@
 }());
 
 /**
+ * Insert list demo
+ *
+ */
+(function()
+{
+    let options =
+    {
+        dense: false,
+        selectable: true,
+        ellipsis: false,
+        items:
+        [
+            'Option One',
+            {
+                left: '<span class="fa fa-sun"></span>',
+                body: 'Option Two'
+            },
+            {
+                left: '<span class="fa fa-sun"></span>',
+                body: 'Option 3',
+                right: '<span class="fa fa-user"></span>',
+            }
+        ]
+    };
+
+    const [find] = frontbx.import(['find']).from('_');
+
+    frontbx.DocsDemo('.js-insert-list-btn', () => frontbx.Dom().create('List', options, find('.js-insert-list-container')));
+
+}());
+
+
+
+/**
  * Lazyload image demos
  *
  */
@@ -258,7 +292,7 @@
  */
 (function()
 {
-	const [Component] = frontbx.get('Component');
+	const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
 	const [find, each, on, off, extend] = frontbx.import(['find','each','on','off','extend']).from('_');
 

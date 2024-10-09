@@ -4,7 +4,7 @@
  */
 (function()
 {
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     const [find, on, off, add_class, remove_class, closest, attr, dom_element, extend] = frontbx.import(['find', 'on', 'off', 'add_class', 'remove_class', 'closest', 'attr', 'dom_element', 'extend']).from('_');
 
     Prism.hooks.add('before-sanity-check', function (env)

@@ -2,7 +2,7 @@
  * --------------------------------------------------------------------------
  * Frontbx ESM
  * 
- * @version  {0.0.3}
+ * @version  {0.1.0}
  * @see      {https://github.com/frontbx/ui}
  * @licensed {https://github.com/frontbx/ui/blob/main/LICENSE}
  * --------------------------------------------------------------------------
@@ -11,7 +11,7 @@
  * --------------------------------------------------------------------------
  * Frontbx standalone
  * 
- * @version  {0.0.3}
+ * @version  {0.1.0}
  * @see      {https://github.com/frontbx/ui}
  * @licensed {https://github.com/frontbx/ui/blob/main/LICENSE}
  * --------------------------------------------------------------------------
@@ -589,12 +589,14 @@ const ARGS_TAG = '[object Arguments]';
 const NODELST_TAG = '[object NodeList]';
 const OBJECT_TAG = '[object Object]';
 const DATE_TAG = '[object Date]';
+const NODECLT_TAG = '[object HTMLCollection]';
 
 // Unusual
 const SET_TAG = '[object Set]';
 const MAP_TAG = '[object Map]';
 const REGEXP_TAG = '[object RegExp]';
 const SYMBOL_TAG = '[object Symbol]';
+const CSSDEC_TAG = '[object CSSStyleDeclaration]';
 
 // Array buffer
 const ARRAY_BUFFER_TAG = '[object ArrayBuffer]';
@@ -614,7 +616,7 @@ const ERROR_TAG = '[object Error]';
 const WEAKMAP_TAG = '[object WeakMap]';
 
 // Arrayish _tags
-const ARRAYISH_TAGS = [ARRAY_TAG, ARGS_TAG, NODELST_TAG];
+const ARRAYISH_TAGS = [ARRAY_TAG, ARGS_TAG, NODELST_TAG, NODECLT_TAG];
 
 // Object.prototype.toString
 const TO_STR = Object.prototype.toString;
@@ -2534,7 +2536,7 @@ _.prototype.each = function(obj, callback)
 {
     if (typeof obj !== 'object' || obj === null) return;
 
-    let isArray = TO_STR.call(obj) === '[object Array]';
+    let isArray = this.is_array(obj);
     let i       = 0;
     let keys    = isArray ? null : Object.keys(obj);
     let len     = isArray ? obj.length : keys.length;
@@ -2670,7 +2672,7 @@ _.prototype.map = function(obj, callback)
 {
     if (typeof obj !== 'object' || obj === null) return;
 
-    let isArray = TO_STR.call(obj) === '[object Array]';
+    let isArray = this.is_array(obj);
     let i       = 0;
     let keys    = isArray ? null : Object.keys(obj);
     let len     = isArray ? obj.length : keys.length;
@@ -2749,7 +2751,7 @@ _.prototype.map = function(obj, callback)
  * @apram {mixed}        value       Property value
  */
 _.prototype.attr = function(DOMElement, name, value)
-{        
+{            
     // Get attribute
     // e.g attr(node, style)
     if ((TO_ARR.call(arguments)).length === 2 && this.is_string(name))
@@ -2854,7 +2856,6 @@ _.prototype.attr = function(DOMElement, name, value)
             else
             {
                 let isData     = name.startsWith('data');
-                let isAria     = name.startsWith('aria');
                 let camelName  = name.includes('-') ? this.to_camel_case(name) : name;
                 let hyphenName = name.includes('-') ? name : this.camel_case_to_hyphen(name);
                 let isEmpty    = this.is_empty(value);
@@ -2866,13 +2867,13 @@ _.prototype.attr = function(DOMElement, name, value)
                     {
                         DOMElement.removeAttribute(hyphenName);
 
-                        delete DOMElement.dataset[this.lc_first(this.ltrim(camelName, 'data'))];
+                        delete DOMElement.dataset[this.lc_first(camelName.substring(4))];
                     }
                     else
                     {
                         DOMElement.setAttribute(hyphenName, value);
 
-                        DOMElement.dataset[this.lc_first(this.ltrim(camelName, 'data'))] = value;
+                        DOMElement.dataset[this.lc_first(camelName.substring(4))] = value;
                     }
 
                     break;
@@ -2923,11 +2924,15 @@ _.prototype.attr = function(DOMElement, name, value)
  */
 _.prototype.__get_attribute = function(DOMElement, name)
 {
+    let camelName  = name.includes('-') ? this.to_camel_case(name) : name;
+    let hyphenName = name.includes('-') ? name : this.camel_case_to_hyphen(name);
+
+    // Data need to check dataset
     if (name.startsWith('data'))
     {
-        name = name.startsWith('data-') ? this.to_camel_case(name.substring(5)) : name.substring(4);
+        if (!DOMElement.dataset) return DOMElement.getAttribute(hyphenName);
 
-        return DOMElement.dataset[name];
+        return DOMElement.dataset[this.lc_first(camelName.substring(4))];
     }
 
     // Special booleans
@@ -2938,12 +2943,31 @@ _.prototype.__get_attribute = function(DOMElement, name)
         return DOMElement[name] === 'false' || !DOMElement[name] ? false : true;
     }
 
-    let camelName  = name.includes('-') ? this.to_camel_case(name) : name;
-    let hyphenName = name.includes('-') ? name : this.camel_case_to_hyphen(name);
-    let retCamel   = DOMElement[camelName];
-    let retAttr    = DOMElement.getAttribute(hyphenName);
+    let retCamel = DOMElement[camelName];
+    let retAttr  = DOMElement.getAttribute(hyphenName);
 
-    return retAttr === null || this.is_undefined(retAttr) ? retCamel : retAttr;
+    if (retAttr && retAttr !== '') return retAttr;
+
+    if (retCamel && retCamel !== '') return retCamel;
+
+    return retCamel || retAttr;
+}
+/**
+ * Set, get or remove DOM attribute.
+ *
+ * No third arg returns attribute value, third arg set to null or false removes attribute.
+ * 
+ * @param {HTMLElement}  DOMElement  Dom node
+ * @param {string}       name        Property name
+ * @apram {mixed}        value       Property value
+ */
+_.prototype.attrs = function(DOMElement)
+{
+	let ret = {};
+
+	this.each(DOMElement.attributes, (i, attribute) => ret[attribute.nodeName] = this.attr(DOMElement, attribute.nodeName));
+	
+	return ret;
 }
 /**
  * Set, get or remove CSS value(s) on element.
@@ -4633,7 +4657,7 @@ _.prototype.traverse_up = function(DOMElement, callback)
     // Stop on document
     if (DOMElement === document || this.is_undefined(DOMElement) || DOMElement === null) return;
 
-    let response = callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className.trim());
+    let response = callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className);
 
     if (response)
     {
@@ -4654,21 +4678,32 @@ _.prototype.traverse_up = function(DOMElement, callback)
  * @param  {DOMElement}   DOMElement Target element
  * @param  {Function}     callback   callback
  */
-_.prototype.traverse_down = function(DOMElement, callback)
+_.prototype.traverse_down = function(DOMElement, callback, includeText)
 {
+    includeText = typeof includeText === 'undefined' ? false : includeText;
+
     if (this.is_undefined(DOMElement) || DOMElement === null) return;
 
-    let children = this.find_all('*', DOMElement);
+    let ret;
 
-    let ret = false;
-
-    this.each(children, (i, child) => 
+    this.each(Array.prototype.slice.call(includeText ? DOMElement.childNodes : DOMElement.children), (i, child) => 
     {
-        let response = callback(child, child.tagName.toLowerCase(), child.className.trim());
+        if (includeText && (child.nodeType !== 1 && child.nodeType !== 3)) return;
+
+        let response = callback(child, child.tagName ? child.tagName.toLowerCase() : null, child.className);
 
         if (response || response === false)
         {
-            ret = response !== false ? DOMElement : response;
+            ret = response === false ? undefined : child;
+
+            return false;
+        }
+
+        response = this.traverse_down(child, callback, includeText);
+
+        if (response || response === false)
+        {
+            ret = response === false ? undefined : child;
 
             return false;
         }
@@ -4686,10 +4721,12 @@ _.prototype.traverse_down = function(DOMElement, callback)
  */
 _.prototype.traverse_next = function(DOMElement, callback)
 {
+    allNodes = typeof allNodes === 'undefined' ? false : allNodes;
+
     // Stop on document
     if (DOMElement === document || this.is_undefined(DOMElement) || DOMElement === null) return;
 
-    let response = callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className.trim());
+    let response = callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className);
 
     if (response)
     {
@@ -4715,7 +4752,7 @@ _.prototype.traverse_prev = function(DOMElement, callback)
     // Stop on document
     if (DOMElement === document || this.is_undefined(DOMElement) || DOMElement === null) return;
 
-    let response = callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className.trim());
+    let response = callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className);
 
     if (response)
     {
@@ -7343,7 +7380,7 @@ Container.singleton('_', _);
 
         props = {...this.defaultProps, ...props};
 
-        let node = this.template(props);
+        let node = this.render(props);
 
         if (appendTo) appendTo.appendChild(node);
 
@@ -7357,9 +7394,9 @@ Container.singleton('_', _);
      *
      * @access {public}
      */
-    Component.prototype.template = function()
+    Component.prototype.render = function()
     {
-        throw new Error('[template] method must be implemented.');
+        throw new Error('[render] method must be implemented.');
     }
 
 
@@ -7384,7 +7421,7 @@ Container.singleton('_', _);
     }
 
     // Register
-    frontbx.set('Component', [Component]);
+    frontbx.set('Component', Component);
 
 })();
 
@@ -7393,7 +7430,7 @@ Container.singleton('_', _);
  * --------------------------------------------------------------------------
  * Frontbx Lazyload
  * 
- * @version  {0.0.3}
+ * @version  {0.1.0}
  * @see      {https://github.com/frontbx/ui}
  * @licensed {https://github.com/frontbx/ui/blob/main/LICENSE}
  * --------------------------------------------------------------------------
@@ -13298,7 +13335,7 @@ Container.singleton('_', _);
      * 
      * @var {Class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -13362,7 +13399,7 @@ Container.singleton('_', _);
      * @inheritdoc
      * 
      */
-    Slider.prototype.template = function(props)
+    Slider.prototype.render = function(props)
     {
         return dom_element({tag: 'div', class: 'slider js-slider'}, null, props.slides);
     }
@@ -13377,7 +13414,7 @@ Container.singleton('_', _);
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -13554,7 +13591,7 @@ Container.singleton('_', _);
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -13822,7 +13859,7 @@ Container.singleton('_', _);
      * @inheritdoc
      * 
      */
-    RangeSlider.prototype.template = function(props)
+    RangeSlider.prototype.render = function(props)
     {
         console.log('create');
 
@@ -13968,7 +14005,7 @@ Container.singleton('_', _);
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * JS Helper reference
@@ -14011,7 +14048,7 @@ Container.singleton('_', _);
      * @access {private}
      * @param  {DOMElement} trigger Click/hover trigger
      */
-    Popover.prototype.template = function(props)
+    Popover.prototype.render = function(props)
     {
 
     }
@@ -14360,7 +14397,7 @@ Container.singleton('_', _);
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -14567,7 +14604,7 @@ Container.singleton('_', _);
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -14665,7 +14702,7 @@ Container.singleton('_', _);
      * @inheritdoc
      * 
      */
-    Menu.prototype.template = function(props)
+    Menu.prototype.render = function(props)
     {
         return dom_element({tag: 'ul', class: `menu ${props.classes ? props.classes : ''} ${props.dense ? 'menu-dense' : ''} ${props.ellipsis ? 'menu-ellipsis' : ''} ${ props.selectable ? `js-select-menu` : '' }`}, null, map(props.items, (i, item) =>
             {
@@ -14690,7 +14727,7 @@ Container.singleton('_', _);
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -14784,7 +14821,7 @@ Container.singleton('_', _);
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -14866,7 +14903,7 @@ Container.singleton('_', _);
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -14933,7 +14970,7 @@ Container.singleton('_', _);
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -15046,7 +15083,7 @@ Container.singleton('_', _);
 })();
 (function()
 {
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -15172,7 +15209,7 @@ Container.singleton('_', _);
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -15298,7 +15335,7 @@ Container.singleton('_', _);
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
      /**
      * Helper functions
@@ -15423,7 +15460,7 @@ Container.singleton('_', _);
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -15507,7 +15544,7 @@ Container.singleton('_', _);
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -15622,7 +15659,7 @@ Container.singleton('_', _);
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -15713,7 +15750,7 @@ Container.singleton('_', _);
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -15777,7 +15814,7 @@ Container.singleton('_', _);
      * @inheritdoc
      * 
      */
-    List.prototype.template = function(props)
+    List.prototype.render = function(props)
     {
         return dom_element({tag: 'ul', class: `list ${props.classes ? props.classes : ''} ${props.dense ? 'list-dense' : ''} ${props.ellipsis ? 'list-ellipsis' : ''} ${ props.selectable ? `js-select-list` : '' }`}, null, map(props.items, (i, item) =>
             {
@@ -15801,7 +15838,7 @@ Container.singleton('_', _);
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -15983,7 +16020,7 @@ Container.singleton('_', _);
      * @inheritdoc
      * 
      */
-    Dropdown.prototype.template = function(props)
+    Dropdown.prototype.render = function(props)
     {
         return dom_element({tag: 'div', class: 'drop-container'}, null,
         [
@@ -16026,7 +16063,7 @@ Container.singleton('_', _);
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -16176,7 +16213,7 @@ Container.singleton('_', _);
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -16256,7 +16293,7 @@ Container.singleton('_', _);
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -16370,7 +16407,7 @@ Container.singleton('_', _);
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -16616,7 +16653,7 @@ Container.singleton('_', _);
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -16682,7 +16719,7 @@ Container.singleton('_', _);
      * @inheritdoc
      * 
      */
-    Table.prototype.template = function(props)
+    Table.prototype.render = function(props)
     {
         let head = dom_element({tag: 'thead'}, null, dom_element({tag: 'tr'}, null, map(props.head, (i, cell) =>
         {   
@@ -16711,7 +16748,7 @@ Container.singleton('_', _);
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -16743,7 +16780,7 @@ Container.singleton('_', _);
      * @inheritdoc
      * 
      */
-    Image.prototype.template = function(props)
+    Image.prototype.render = function(props)
     {
         let attrs        = map({...props}, (k, v) => !AVAILABLE_OPTIONS.includes(k) ? v : false );
         let isBackground = props.background;

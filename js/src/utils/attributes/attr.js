@@ -8,7 +8,7 @@
  * @apram {mixed}        value       Property value
  */
 _.prototype.attr = function(DOMElement, name, value)
-{        
+{            
     // Get attribute
     // e.g attr(node, style)
     if ((TO_ARR.call(arguments)).length === 2 && this.is_string(name))
@@ -113,7 +113,6 @@ _.prototype.attr = function(DOMElement, name, value)
             else
             {
                 let isData     = name.startsWith('data');
-                let isAria     = name.startsWith('aria');
                 let camelName  = name.includes('-') ? this.to_camel_case(name) : name;
                 let hyphenName = name.includes('-') ? name : this.camel_case_to_hyphen(name);
                 let isEmpty    = this.is_empty(value);
@@ -125,13 +124,13 @@ _.prototype.attr = function(DOMElement, name, value)
                     {
                         DOMElement.removeAttribute(hyphenName);
 
-                        delete DOMElement.dataset[this.lc_first(this.ltrim(camelName, 'data'))];
+                        delete DOMElement.dataset[this.lc_first(camelName.substring(4))];
                     }
                     else
                     {
                         DOMElement.setAttribute(hyphenName, value);
 
-                        DOMElement.dataset[this.lc_first(this.ltrim(camelName, 'data'))] = value;
+                        DOMElement.dataset[this.lc_first(camelName.substring(4))] = value;
                     }
 
                     break;
@@ -182,11 +181,15 @@ _.prototype.attr = function(DOMElement, name, value)
  */
 _.prototype.__get_attribute = function(DOMElement, name)
 {
+    let camelName  = name.includes('-') ? this.to_camel_case(name) : name;
+    let hyphenName = name.includes('-') ? name : this.camel_case_to_hyphen(name);
+
+    // Data need to check dataset
     if (name.startsWith('data'))
     {
-        name = name.startsWith('data-') ? this.to_camel_case(name.substring(5)) : name.substring(4);
+        if (!DOMElement.dataset) return DOMElement.getAttribute(hyphenName);
 
-        return DOMElement.dataset[name];
+        return DOMElement.dataset[this.lc_first(camelName.substring(4))];
     }
 
     // Special booleans
@@ -197,10 +200,12 @@ _.prototype.__get_attribute = function(DOMElement, name)
         return DOMElement[name] === 'false' || !DOMElement[name] ? false : true;
     }
 
-    let camelName  = name.includes('-') ? this.to_camel_case(name) : name;
-    let hyphenName = name.includes('-') ? name : this.camel_case_to_hyphen(name);
-    let retCamel   = DOMElement[camelName];
-    let retAttr    = DOMElement.getAttribute(hyphenName);
+    let retCamel = DOMElement[camelName];
+    let retAttr  = DOMElement.getAttribute(hyphenName);
 
-    return retAttr === null || this.is_undefined(retAttr) ? retCamel : retAttr;
+    if (retAttr && retAttr !== '') return retAttr;
+
+    if (retCamel && retCamel !== '') return retCamel;
+
+    return retCamel || retAttr;
 }

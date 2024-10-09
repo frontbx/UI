@@ -5,7 +5,7 @@
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -37,7 +37,7 @@
      * @inheritdoc
      * 
      */
-    Image.prototype.template = function(props)
+    Image.prototype.render = function(props)
     {
         let attrs        = map({...props}, (k, v) => !AVAILABLE_OPTIONS.includes(k) ? v : false );
         let isBackground = props.background;

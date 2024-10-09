@@ -912,7 +912,14 @@ $list-divider-space:            5px;</code></pre>
 }</code></pre>
 <hr />
 <h3 id="javascript-instantiation">JavaScript Instantiation</h3>
-<p>List can be instantiated via JavaScript to generate dynamic content on the fly. To create a List dynamically, use Frontbx's <code>Component.Create</code> method either via the <code>frontbx.Dom</code> or the List Component directly:</p>
+<div class="fbx-snippet-demo">
+    <div class="flex-row-fluid align-cols-center">
+        <div class="card flat col-12 col-md-8 col-lg-5 js-insert-list-container"></div>
+        <div class="col-12 pole-sm pole-n"></div>
+        <button class="btn js-insert-list-btn">Insert list</button>
+    </div>
+</div>
+<p>List can be instantiated via JavaScript to generate dynamic content on the fly. To create a list dynamically, use Frontbx's <code>Component.Create</code> method either through <code>frontbx.Dom()</code> or the <code>List</code> Component directly:</p>
 <pre><code class="JavaScript language-JavaScript">let options =
 {
     dense: false,
@@ -952,7 +959,7 @@ frontbx.Dom().component('List').create(options, container);</code></pre>
 </thead>
 <tbody>
 <tr>
-<td><code>classes</code></td>
+<td><code>class</code></td>
 <td><code>''</code></td>
 <td><code>my-button</code></td>
 <td>Additional class name(s) on <code>&lt;ul&gt;</code> element.</td>

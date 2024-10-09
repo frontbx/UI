@@ -4,7 +4,7 @@
  */
 (function()
 {
-	const [Component] = frontbx.get('Component');
+	const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
 	const [find_all, each, on, off, attr, add_class, remove_class, extend] = frontbx.import(['find_all','each','on','off', 'attr','add_class','remove_class','extend']).from('_');
 

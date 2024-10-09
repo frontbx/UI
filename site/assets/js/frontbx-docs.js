@@ -21,7 +21,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     const [find, on, off, add_class, remove_class, closest, attr, dom_element, extend] = frontbx.import(['find', 'on', 'off', 'add_class', 'remove_class', 'closest', 'attr', 'dom_element', 'extend']).from('_');
 
     Prism.hooks.add('before-sanity-check', function (env)
@@ -103,7 +103,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 {
 	const [find, toggle_class, remove_class, attr, width, on, off, trigger_event, extend] = frontbx.import(['find','toggle_class','remove_class','attr','width', 'on', 'off', 'trigger_event','extend']).from('_');
 
-	const [Component] = frontbx.get('Component');
+	const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
 	const menu = find('#docs-menu');
 	
@@ -212,7 +212,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-	const [Component] = frontbx.get('Component');
+	const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
 	const [on, off, find, find_all, each, has_class, add_class, remove_class, extend] = frontbx.import(['on','off','find','find_all','each','has_class','add_class','remove_class', 'extend']).from('_');
 
@@ -290,7 +290,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-	const [Component] = frontbx.get('Component');
+	const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
 	const [on, off, is_array_last, extend] = frontbx.import(['on','off','is_array_last','extend']).from('_');
 
@@ -348,7 +348,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     const [find, add_class, remove_class, extend]  = frontbx.import(['find','add_class','remove_class','extend']).from('_');
 
     const ArticleWaypoints = function()
@@ -378,7 +378,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     const [add_class, dom_element, extend]  = frontbx.import(['add_class','dom_element','extend']).from('_');
 
     const ArticleTables = function()
@@ -413,7 +413,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     const [find, dom_element, remove_from_dom, extend]  = frontbx.import(['find','dom_element','remove_from_dom','extend']).from('_');
 
     const ArticleTitles = function()
@@ -456,7 +456,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     const [add_class, extend] = frontbx.import(['add_class', 'extend']).from('_');
 
     const BQs = function()
@@ -485,7 +485,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-	const [Component] = frontbx.get('Component');
+	const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
 	const [find_all, each, on, off, attr, add_class, remove_class, extend] = frontbx.import(['find_all','each','on','off', 'attr','add_class','remove_class','extend']).from('_');
 
@@ -580,7 +580,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     const [find, in_dom, dom_element, extend] = frontbx.import(['find','in_dom','dom_element','extend']).from('_');
 
@@ -673,7 +673,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-	const [Component] = frontbx.get('Component');
+	const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
 	const [on, off, each, attr, find, add_class, remove_class, extend] = frontbx.import(['on','off', 'each', 'attr','find','add_class','remove_class','extend']).from('_');
 
@@ -896,6 +896,40 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 }());
 
 /**
+ * Insert list demo
+ *
+ */
+(function()
+{
+    let options =
+    {
+        dense: false,
+        selectable: true,
+        ellipsis: false,
+        items:
+        [
+            'Option One',
+            {
+                left: '<span class="fa fa-sun"></span>',
+                body: 'Option Two'
+            },
+            {
+                left: '<span class="fa fa-sun"></span>',
+                body: 'Option 3',
+                right: '<span class="fa fa-user"></span>',
+            }
+        ]
+    };
+
+    const [find] = frontbx.import(['find']).from('_');
+
+    frontbx.DocsDemo('.js-insert-list-btn', () => frontbx.Dom().create('List', options, find('.js-insert-list-container')));
+
+}());
+
+
+
+/**
  * Lazyload image demos
  *
  */
@@ -1013,7 +1047,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-	const [Component] = frontbx.get('Component');
+	const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
 	const [find, each, on, off, extend] = frontbx.import(['find','each','on','off','extend']).from('_');
 

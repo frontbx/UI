@@ -5,7 +5,7 @@
      * 
      * @var {Class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -69,7 +69,7 @@
      * @inheritdoc
      * 
      */
-    Slider.prototype.template = function(props)
+    Slider.prototype.render = function(props)
     {
         return dom_element({tag: 'div', class: 'slider js-slider'}, null, props.slides);
     }
