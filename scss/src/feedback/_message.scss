@@ -64,7 +64,7 @@
                 top: 0;
                 width: 100%;
                 height: 100%;
-                border-radius: 50%;
+                border-radius: var(--fbx-msg-border-radius);
             }
         }
     }
@@ -92,6 +92,8 @@
     {
         padding: 0 var(--fbx-msg-spacer-x);
         white-space: nowrap;
+        column-gap: 10px;
+        row-gap: 10px;
     }
     .msg-icon + .msg-body
     {
@@ -100,6 +102,14 @@
     .msg-body + .msg-btn
     {
         padding-left: 0;
+    }
+
+    // Close btn
+    .btn-msg-close
+    {
+        position: absolute;
+        top: calc(var(--fbx-msg-spacer-x) / 2);
+        right: calc(var(--fbx-msg-spacer-x) / 2);
     }
 
     // Dense
@@ -119,12 +129,84 @@
         }
     }
 
+    // stacked
+    &.msg-stacked
+    {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .msg-icon
+        {
+            padding: var(--fbx-msg-spacer-y) var(--fbx-msg-spacer-x) 0 var(--fbx-msg-spacer-x);
+            align-self: flex-start;
+        }
+        .msg-body
+        {
+            padding: var(--fbx-msg-spacer-y) var(--fbx-msg-spacer-x);
+        }
+        .msg-icon + .msg-body
+        {
+            padding-top: calc(var(--fbx-msg-spacer-y) / 2);
+        }
+        .msg-body:not(:last-child)
+        {
+            padding-bottom: calc(var(--fbx-msg-spacer-y) / 2);
+        }
+        .msg-btn
+        {
+            padding: 0 var(--fbx-msg-spacer-x) var(--fbx-msg-spacer-y) var(--fbx-msg-spacer-x);
+            align-self: flex-start;
+        }
+    }
+
+    @include media-breakpoint-down(md)
+    {
+        &.msg-responsive
+        {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .msg-icon
+            {
+                padding: var(--fbx-msg-spacer-y) var(--fbx-msg-spacer-x) 0 var(--fbx-msg-spacer-x);
+                align-self: flex-start;
+            }
+            .msg-body
+            {
+                padding: var(--fbx-msg-spacer-y) var(--fbx-msg-spacer-x);
+            }
+            .msg-icon + .msg-body
+            {
+                padding-top: calc(var(--fbx-msg-spacer-y) / 2);
+            }
+            .msg-body:not(:last-child)
+            {
+                padding-bottom: calc(var(--fbx-msg-spacer-y) / 2);
+            }
+            .msg-btn
+            {
+                padding: 0 var(--fbx-msg-spacer-x) var(--fbx-msg-spacer-y) var(--fbx-msg-spacer-x);
+                align-self: flex-start;
+            }
+        }
+    }
+    
+
     // Variants
     @each $context, $colors in $contexts
     {    
+        $color: map-get($colors, "color");
+        $basename: _color-name-from-var($color);
+
         &.msg-#{$context}
         {
-            --fbx-msg-icon-color: #{map-get($colors, "color")};
+            --fbx-msg-icon-color: #{$color};
+            --fbx-msg-bg: var(--fbx-#{$basename}-300);
+            --fbx-msg-color: var(--fbx-#{$basename}-800);
+            background: linear-gradient(360deg, rgba(var(--fbx-#{$basename}-rgb), 0.25), rgba(var(--fbx-#{$basename}-rgb), 0.25) 100%), linear-gradient(360deg, #fff, #fff 70.71%);
         }
     }
 }
+

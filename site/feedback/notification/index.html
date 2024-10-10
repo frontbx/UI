@@ -348,7 +348,7 @@
 </div>
 <pre><code class="JavaScript language-JavaScript">let notif = frontbx.Notification(
 {
-    text  : `Hello! I'm a notification.`,
+    text  : 'Hello! I\'m a notification.',
 });</code></pre>
 <hr />
 <h3 id="position">Position</h3>
@@ -370,18 +370,104 @@
 </div>
 <pre><code class="JavaScript language-JavaScript">let notif = frontbx.Notification(
 {
-    text  : `Hello! I'm a notification.`,
+    text  : 'Hello! I\'m a notification.',
 });</code></pre>
 <hr />
 <h3 id="content">Content</h3>
-<p>Notifications have a few options for different use-cases. Use the provided options to add text and actions to a Notification:</p>
+<p>Notifications have a lot of versatility and provides a number of options for different use-cases. Use the provided options to add text and actions to a notification:</p>
 <div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="notification-wrap js-nofification-wrap active" style="position: relative;">
-            <div class="msg msg-dense animate-in-up"><div class="msg-body"><p>Hello! I'm a notification.</p></div><div class="msg-btn"><button class="btn btn-pure btn-primary btn-sm js-notif-btn">Dismiss</button></div></div>
-            <div class="msg msg-dense animate-in-up"><div class="msg-icon"><span class="fa fa-bell"></span></div><div class="msg-body"><p>Hello! I'm a notification.</p></div></div>
-            <div class="msg msg-dense animate-in-up"><div class="msg-body"><p>Hello! I'm a notification.</p></div><div class="msg-btn"><button class="btn btn-pure btn-danger btn-sm js-notif-btn">Danger</button></div></div>
-            <div class="msg msg-dense msg-success animate-in-up"><div class="msg-icon"><span class="fa fa-check"></span></div><div class="msg-body"><p>Hello! I'm a notification.</p></div></div>
+            <div class="msg msg-dense animate-in-up">
+                <div class="msg-body">
+                    <p>
+                        Hello! I'm a notification.
+                    </p>
+                </div>
+                <div class="msg-btn">
+                    <button class="btn btn-pure btn-primary btn-sm js-notif-btn">Dismiss</button>
+                </div>
+            </div>
+            <div class="msg msg-dense animate-in-up">
+                <div class="msg-icon">
+                    <span class="fa fa-bell"></span>
+                </div>
+                <div class="msg-body">
+                    <p>
+                        Hello! I'm a notification.
+                    </p>
+                </div>
+            </div>
+            <div class="msg msg-dense animate-in-up">
+                <div class="msg-body">
+                    <p>
+                        Hello! I'm a notification.
+                    </p>
+                </div>
+                <div class="msg-btn">
+                    <button class="btn btn-pure btn-danger btn-sm js-notif-btn">Danger</button>
+                </div>
+            </div>
+            <div class="msg msg-dense animate-in-up">
+                <button type="button" role="button" aria-label="close" class="btn btn-pure btn-xs btn-circle btn-msg-close"><span class="fa fa-xmark"></span></button>
+                <div class="msg-icon">
+                    <span class="fa fa-bell"></span>
+                </div>
+                <div class="msg-body">
+                    <p>
+                        Hello! I'm a notification.
+                    </p>
+                </div>
+            </div>
+            <div class="msg msg-primary msg-dense animate-in-up">
+                <div class="msg-icon">
+                    <span class="fa fa-check"></span>
+                </div>
+                <div class="msg-body">
+                    <p>
+                        Hello! I'm a notification.
+                    </p>
+                </div>
+            </div>
+            <div class="msg msg-stacked msg-dense animate-in-up">
+                <div class="msg-icon">
+                    <span class="fa fa-bell"></span>
+                </div>
+                <div class="msg-body">
+                    <p class="text-bold">
+                        Lorem ipsum laboris cupidatat in enim sunt?
+                    </p>
+                    <p style="opacity: 0.9;">
+                        In proident nostrud exercitation elit irure id consequat consequat nulla sunt nulla dolore officia est.
+                    </p>
+                </div>
+                <div class="msg-btn">
+                    <button type="button" class="btn btn-pure btn-sm" aria-label="cancel">Cancel</button><button type="button" class="btn btn-primary btn-sm" aria-label="Confirm">Confirm</button>
+                </div>
+            </div>
+            <div class="msg msg-responsive msg-dense animate-in-up">
+                <div class="msg-body">
+                    <p class="text-bold">
+                        Lorem ipsum laboris cupidatat in enim sunt?
+                    </p>
+                    <p style="opacity: 0.9;">
+                        In proident nostrud exercitation elit irure id consequat consequat nulla sunt nulla dolore officia est.
+                    </p>
+                </div>
+                <div class="msg-btn">
+                    <button class="btn btn-pure btn-primary btn-sm js-notif-btn">Confirm</button>
+                </div>
+            </div>
+            <div class="msg animate-in-up">
+                <div class="msg-icon">
+                    <span class="fa fa-bell"></span>
+                </div>
+                <div class="msg-body">
+                    <p>
+                        Eiusmod ullamco cupidatat culpa amet sit nostrud veniam consectetur quis labore duis duis ut occaecat sint.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -390,56 +476,100 @@
         <button class="js-notif-trigger-2 btn">With button</button>
         <button class="js-notif-trigger-3 btn">With icon</button>
         <button class="js-notif-trigger-4 btn">Button variant</button>
-        <button class="js-notif-trigger-5 btn">Message variant</button>
+        <div class="col-12"></div>
+        <button class="js-notif-trigger-5 btn">Close button</button>
+        <button class="js-notif-trigger-6 btn">Message variant</button>
+        <div class="col-12"></div>
+        <button class="js-notif-trigger-7 btn">Message stacked</button>
+        <button class="js-notif-trigger-8 btn">Message responsive</button>
+        <button class="js-notif-trigger-9 btn">Message large</button>
     </div>
 </div>
-<pre><code class="JavaScript language-JavaScript">/* WITH BUTTON */
-let notif1 = frontbx.Notification(
-{
-    btn  : `Dismiss`,
-    text : `Hello! I'm a notification.`,
+<pre><code class="JavaScript language-JavaScript">/* Standard */
+frontbx.Notification({
+    text  : 'Hello! I\'m a notification.',
 });
 
-/* WITH ICON */
-let notif2 = frontbx.Notification(
+/* Button */
+frontbx.Notification(
 {
-    icon : `bell`,
-    text : `Hello! I'm a notification.`,
+    btn  : 'Dismiss',
+    text : 'Hello! I\'m a notification.',
 });
 
-/* WITH BUTTON VARIANT */
-let notif3 = frontbx.Notification(
+/* Icon */
+frontbx.Notification(
 {
-    btn        : `Danger`,
-    btnVariant : `danger`,
-    text       : `Hello! I'm a notification.`,
+    icon : 'bell',
+    text : 'Hello! I\'m a notification.',
 });
 
-/* WITH MESSAGE VARIANT */
-let notif4 = frontbx.Notification(
+/* Button variant */
+frontbx.Notification(
 {
-    icon    : `check`,
-    variant : `success`, 
-    text    : `Hello! I'm a notification.`,
+    btn        : 'Danger',
+    btnVariant : 'danger',
+    text       : 'Hello! I\'m a notification.',
+});
+
+/* Close button */
+frontbx.Notification(
+{
+    icon : 'bell',
+    text : 'Hello! I\'m a notification.',
+    closebtn: true
+});
+
+/* Message variant */
+frontbx.Notification(
+{
+    icon    : 'check',
+    variant : 'primary',
+    text    : 'Hello! I\'m a notification.',
+});
+
+/* Stacked message */
+frontbx.Notification(
+{
+    icon       : 'bell',
+    stacked    : true,
+    btn        : '&lt;button class="btn"&gt;&lt;/button&gt;...',
+    text       : '&lt;p class="text-bold"&gt;...&lt;/p&gt;&lt;p&gt;...&lt;/p&gt;',
+});
+
+/* Responsive message */
+frontbx.Notification(
+{
+    responsive : true,
+    btn        : 'Confirm',
+    text       : '&lt;p class="text-bold"&gt;Lorem ipsum laboris cupidatat in enim sunt?&lt;/p&gt;&lt;p style="opacity: 0.9;"&gt;In proident nostrud exercitation elit irure id consequat consequat nulla sunt nulla dolore officia est.&lt;/p&gt;',
+});
+
+/* Non-dense message */
+frontbx.Notification(
+{
+    icon       : 'bell',
+    dense      : false,
+    text       : 'Eiusmod ullamco cupidatat culpa amet sit nostrud veniam consectetur quis labore duis duis ut occaecat sint.',
 });</code></pre>
 <hr />
 <h3 id="timeout">Timeout</h3>
 <p>Notifications auto-dismiss after 6 seconds by default. You can set a different timeout in milliseconds on the <code>timeout</code> option, or set it to <code>false</code> if you don't want it to auto-dismiss.</p>
 <div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs">
-        <button class="js-notif-trigger-6 btn">Persistent</button>
-        <button class="js-notif-trigger-7 btn">Timeout</button>
+        <button class="js-notif-trigger-10 btn">Persistent</button>
+        <button class="js-notif-trigger-11 btn">Timeout</button>
     </div>
 </div>
 <pre><code class="JavaScript language-JavaScript">let notif1 = frontbx.Notification(
 {
-    text  : `Hello! I'm a notification.`,
+    text  : 'Hello! I\'m a notification.',
     timeout: false,
 });
 
 let notif2 =frontbx.Notification(
 {
-    text  : `Hello! I'm a notification.`,
+    text  : 'Hello! I\'m a notification.',
     timeout: 10000,
 });</code></pre>
 <hr />
@@ -452,7 +582,7 @@ let notif2 =frontbx.Notification(
 <p>The <code>callbackValidate</code> option when creating the notification allows you to run your own validation on whether the notification can be dismissed. Return <code>true</code> from this function to allow it or <code>false</code> if the user needs to take some sort of action:</p>
 <pre><code class="javascript language-javascript">let notif = frontbx.Notification(
 {
-    text  : `Hello! I'm a notification.`,
+    text  : 'Hello! I\'m a notification.',
 
     callbackValidate: (element) =&gt;
     {
@@ -470,69 +600,99 @@ let notif2 =frontbx.Notification(
 <th id="option_key">Option key</th>
 <th id="var_type">Var Type</th>
 <th id="behavior">Behavior</th>
-<th id="required">Required</th>
+<th id="default">Default</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>text</td>
-<td><code>string</code></td>
-<td>Text to be displayed inside the notification.</td>
-<td><code>yes</code></td>
+<td><code>position</code></td>
+<td><code>boolean</code></td>
+<td>Position of notification. Can be one of <code>top-left</code> <code>top</code> <code>top-right</code> <code>left</code> <code>right</code> <code>bottom-left</code> <code>bottom</code> <code>top-right</code></td>
+<td><code>bottom</code></td>
 </tr>
 <tr>
-<td>timeout</td>
+<td><code>timeout</code></td>
 <td><code>integer</code> <code>false</code></td>
-<td>Time in milliseconds when notification will be auto-dismissed. Defaults to <code>6000</code>.</td>
-<td><code>no</code></td>
+<td>Time in milliseconds when notification will be auto-dismissed. Provide <code>false</code> for no timeout.</td>
+<td><code>6000</code></td>
 </tr>
 <tr>
-<td>icon</td>
+<td><code>text</code></td>
 <td><code>string</code></td>
-<td>Optional icon name. Gets set as <code>fa-[name]</code> if provided</td>
-<td><code>no</code></td>
+<td>Text to be displayed inside the notification.<br>Will be wrapped inside a <code>&lt;p&gt;</code> tag unless provided string contains HTML.</td>
+<td><code>null</code></td>
 </tr>
 <tr>
-<td>btn</td>
+<td><code>btn</code></td>
 <td><code>string</code></td>
-<td>Text to be displayed in a confirmation button.</td>
-<td><code>no</code></td>
+<td>Text to be displayed in a confirmation button.<br>Will be wrapped inside a styled <code>&lt;button&gt;</code> tag unless provided string contains HTML.</td>
+<td><code>null</code></td>
 </tr>
 <tr>
-<td>variant</td>
+<td><code>icon</code></td>
+<td><code>string</code></td>
+<td>Optional icon name. Gets set as <code>fa-[name]</code> if provided.</td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>stacked</code></td>
+<td><code>boolean</code></td>
+<td>Makes message stackable.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>dense</code></td>
+<td><code>boolean</code></td>
+<td>Makes message dense.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>responsive</code></td>
+<td><code>boolean</code></td>
+<td>Makes message stack on small screen sizes.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>closebtn</code></td>
+<td><code>boolean</code></td>
+<td>Adds xmark close button.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>variant</code></td>
 <td><code>string</code></td>
 <td>Optional message variant, gets set as <code>msg-[name]</code> if provided</td>
-<td><code>no</code></td>
+<td><code>null</code></td>
 </tr>
 <tr>
-<td>btnVariant</td>
+<td><code>btnVariant</code></td>
 <td><code>string</code></td>
 <td>Btn variant/context class. Gets set as <code>btn-[name]</code> if provided.</td>
-<td><code>no</code></td>
+<td><code>primary</code></td>
 </tr>
 <tr>
-<td>callbackBuilt</td>
+<td><code>callbackBuilt</code></td>
 <td><code>function</code></td>
 <td>Callback function to be called notification element is built but not rendered.</td>
-<td><code>no</code></td>
+<td><code>null</code></td>
 </tr>
 <tr>
-<td>callbackRender</td>
+<td><code>callbackRender</code></td>
 <td><code>function</code></td>
 <td>Callback function to be called notification is ready and displayed.</td>
-<td><code>no</code></td>
+<td><code>null</code></td>
 </tr>
 <tr>
-<td>callbackDismiss</td>
+<td><code>callbackDismiss</code></td>
 <td><code>function</code></td>
 <td>Callback function to be called when notification is removed.</td>
-<td><code>no</code></td>
+<td><code>null</code></td>
 </tr>
 <tr>
-<td>callbackValidate</td>
+<td><code>callbackValidate</code></td>
 <td><code>function</code></td>
 <td>Callback function to validate if notification can be closed. Must return <code>boolean</code></td>
-<td><code>no</code></td>
+<td><code>true</code></td>
 </tr>
 </tbody>
 </table>
@@ -553,23 +713,15 @@ let notif2 =frontbx.Notification(
 <p>For details on customizing message components, see the <a href="../message/index.html#css-customization">Message Documentation</a></p>
 <p>Default values are set in the <code>scss/_config.scss</code> file in Frontbx's source.</p>
 <pre><code class="file-path language-file-path">scss/_config.scss</code></pre>
-<pre><code class="scss language-scss">$notif-bg:                      var(--fbx-black) !default;
-$notif-color:                   var(--fbx-white) !default;
-$notif-font-size:               1.2rem !default;
-$notif-spacer-y:                2rem !default;
-$notif-spacer-x:                2rem !default;
-$notif-border-radius:           var(--fbx-border-radius) !default;
-$notif-shadow:                  3 !default;</code></pre>
-<pre><code class="scss language-scss">.notification-wrap
+<pre><code class="scss language-scss">$notification-max-width: 450px !default;
+$notification-shadow:    3 !default; // 1, 2, 3</code></pre>
+<pre><code class="css language-css">.notification-wrap
 {
-    --fbx-notification-max-width: #{$notification-max-width};
-    --fbx-notification-bg: #{$notification-bg};
-    --fbx-notification-color: #{$notification-color};
+    --fbx-notification-max-width: 450px;
 }
 .notification-wrap .msg
 {
-    --fbx-msg-bg: var(--fbx-notification-bg);
-    --fbx-msg-color: var(--fbx-notification-color);
+    box-shadow: ...;
 }</code></pre></article>
             </div>
         </div>

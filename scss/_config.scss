@@ -50,12 +50,12 @@ $black:                         #2b2b2b !default;
 $gray:                          #9597a0 !default;
 
 // Contexts
-$theme-primary:                 var(--fbx-color-beetroot)    !default;
-$theme-secondary:               var(--fbx-color-salmon)      !default;
-$theme-success:                 var(--fbx-color-emerland)    !default;
-$theme-info:                    var(--fbx-color-skyblue)     !default;
-$theme-warning:                 var(--fbx-color-sunflower)   !default;
-$theme-danger:                  var(--fbx-color-coralred)    !default;
+$theme-primary:                 var(--fbx-color-beetroot)   !default;
+$theme-secondary:               var(--fbx-color-salmon)     !default;
+$theme-success:                 var(--fbx-color-emerland)   !default;
+$theme-info:                    var(--fbx-color-skyblue)    !default;
+$theme-warning:                 var(--fbx-color-sunflower)  !default;
+$theme-danger:                  var(--fbx-color-coralred)   !default;
 
 // Load and host icons locally?
 $local-icons:					'true' !default;
@@ -119,7 +119,7 @@ $icon-xl:                       45px !default;
 $icon-xxl:                      50px !default;
 
 // Base border radius
-$border-radius:                 5px !default;
+$border-radius:                 6px !default;
 
 // Grid breakpoints
 $breakpoint-xs:                 0 !default;
@@ -145,10 +145,10 @@ $lazyload-start-blur:           5px !default;
 $lazyload-end-blur:             0px !default;
 $lazyload-start-grayscale:      1 !default;
 $lazyload-end-grayscale:        0 !default;
-$lazyload-transition:           opacity 1s cubic-bezier(0.4, 0.0, 0.2, 1), filter 1s cubic-bezier(0.4, 0.0, 0.2, 1);
-$lazyload-falback-bg:           #d0d4d9;
-$lazyload-falback-size:         30%;
-$lazyload-falback-padding:      30%;
+$lazyload-transition:           opacity 1s cubic-bezier(0.4, 0.0, 0.2, 1), filter 1s cubic-bezier(0.4, 0.0, 0.2, 1) !default;
+$lazyload-falback-bg:           #d0d4d9 !default;
+$lazyload-falback-size:         30% !default;
+$lazyload-falback-padding:      30% !default;
 
 // Ripple
 $ripple-color:                  rgba(0, 0, 0, 0.15) !default;
@@ -251,7 +251,7 @@ $list-item-bg-selected:         var(--fbx-theme-info) !default;
 $list-item-pad-y:               10px !default;
 $list-item-pad-x:               12px !default;
 $list-divider-color:            var(--fbx-gray-200) !default;
-$list-divider-space:            5px;
+$list-divider-space:            5px !default;
 
 // Menu
 $menu-bg:						var(--fbx-white) !default;
@@ -273,7 +273,7 @@ $menu-item-pad-y:               10px !default;
 $menu-item-pad-x:               12px !default;
 $menu-item-v-space:             2px !default;
 $menu-divider-color:            var(--fbx-gray-200) !default;
-$menu-divider-space:            5px;
+$menu-divider-space:            5px !default;
 
 // Tabs
 $tab-nav-color:                 var(--fbx-gray-700) !default;
@@ -295,8 +295,8 @@ $navbar-color: 					var(--fbx-white) !default;
 $navbar-logo-size:				40px !default;
 
 // Nav menu
-$nav-link-padding-x: 			1rem  !default;
-$nav-link-padding-y: 			0.5rem  !default;
+$nav-link-padding-x: 			1rem !default;
+$nav-link-padding-y: 			0.5rem !default;
 $nav-link-spacing:  			1rem !default;
 $nav-link-font-size: 			1.4rem !default;
 $nav-link-icon-size: 			1.6rem !default;
@@ -318,6 +318,7 @@ $pagination-active-bg:			var(--fbx-theme-primary) !default;
 
 // Button
 $btn-text-transform:            none !default;
+$btn-radius:                    5px !default;
 $btn-pad-x:                     1.6rem !default;
 $btn-pad-y:                     1.4rem !default;
 $btn-font-size:                 1.4rem !default;
@@ -388,24 +389,24 @@ $switch-knob-color-off:         var(--fbx-white) !default;
 $switch-knob-color-on:          var(--fbx-gray) !default;
 
 // Range
-$range-track-bg: 				var(--fbx-gray-300);
-$range-track-highlight: 		var(--fbx-theme-info);
-$range-thumb-bg: 				var(--fbx-theme-info);
-$range-track-size: 				4px;
-$range-thumb-size: 				16px;
-$range-thumb-focus-ring-color:  rgba(var(--fbx-theme-info-rgb), 0.3);
-$range-indicator-color: 		var(--fbx-gray-300);
-$range-indicator-font-size: 	1.45rem;
-$range-icon-color: 				var(--fbx-gray-400);
-$range-icon-color-on: 			var(--fbx-theme-info);
-$range-icon-color-off: 			var(--fbx-gray-200);
+$range-track-bg: 				var(--fbx-gray-300) !default;
+$range-track-highlight: 		var(--fbx-theme-info) !default;
+$range-thumb-bg: 				var(--fbx-theme-info) !default;
+$range-track-size: 				4px !default;
+$range-thumb-size: 				16px !default;
+$range-thumb-focus-ring-color:  rgba(var(--fbx-theme-info-rgb), 0.3) !default;
+$range-indicator-color: 		var(--fbx-gray-300) !default;
+$range-indicator-font-size: 	1.45rem !default;
+$range-icon-color: 				var(--fbx-gray-400) !default;
+$range-icon-color-on: 			var(--fbx-theme-info) !default;
+$range-icon-color-off: 			var(--fbx-gray-200) !default;
 
 // Progress
 $progress-size:                 10px !default;
 $progress-radius:               var(--fbx-border-radius) !default;
 $progress-bg:                   var(--fbx-gray-200) !default;
 $progress-color:                var(--fbx-gray) !default;
-$progress-gradient:             linear-gradient(to right,  #b0e2fe 0%,#b0b2fb 100%);
+$progress-gradient:             linear-gradient(to right,  #b0e2fe 0%,#b0b2fb 100%) !default;
 
 // Messages
 $msg-bg:                        var(--fbx-black) !default;
@@ -418,10 +419,8 @@ $msg-icon-font-size:			1.6rem !default;
 $msg-border-radius:             var(--fbx-border-radius) !default;
 
 // Notifications
-$notification-max-width:        450px;
-$notification-bg:               var(--fbx-black) !default;
-$notification-color:            var(--fbx-white) !default;
-$notification-shadow:           3 !default;
+$notification-max-width:        450px !default;
+$notification-shadow:           3 !default; // 1, 2, 3
 
 // Modals
 $modal-max-width:               680px !default;
@@ -464,8 +463,8 @@ $slider-dots-size:              3px !default;
 $slider-nav-btn-size:           25px !default;
 $slider-nav-btn-color:          var(--fbx-white) !default;
 $slider-nav-btn-color-hover:    var(--fbx-theme-primary) !default;
-$slider-slides-gap:				20px;
-$slider-slide-width:			66%;
+$slider-slides-gap:				20px !default;
+$slider-slide-width:			66% !default;
 
 // Tooltips
 $tooltip-bg:                    var(--fbx-gray-900) !default;
@@ -508,14 +507,14 @@ $pjax-transition-in:			opacity .5s ease !default;
 $pjax-transition-out:			opacity .5s ease !default;
 
 // Custom scrollbars
-$webkit-scrollbars-thickness:   	  auto;
-$webkit-scrollbars-thickness-px: 	  9px;
-$webkit-scrollbars-thumbcolor:  	  var(--fbx-gray-300);
-$webkit-scrollbars-trackcolor: 		  transparent;
-$webkit-scrollbars-thumbcolor-hover:  var(--fbx-gray-500);
-$webkit-scrollbars-trackcolor-hover:  transparent;
-$webkit-scrollbars-thumbcolor-active: var(--fbx-gray-500);
-$webkit-scrollbars-trackcolor-active: transparent;
+$webkit-scrollbars-thickness:   	  auto !default;
+$webkit-scrollbars-thickness-px: 	  9px !default;
+$webkit-scrollbars-thumbcolor:  	  var(--fbx-gray-300) !default;
+$webkit-scrollbars-trackcolor: 		  transparent !default;
+$webkit-scrollbars-thumbcolor-hover:  var(--fbx-gray-500) !default;
+$webkit-scrollbars-trackcolor-hover:  transparent !default;
+$webkit-scrollbars-thumbcolor-active: var(--fbx-gray-500) !default;
+$webkit-scrollbars-trackcolor-active: transparent !default;
 
 // Responsive breakpoints
 $breakpoints:

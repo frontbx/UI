@@ -1246,39 +1246,64 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-	frontbx.DocsDemo('.js-notif-trigger-1', () =>
-        frontbx.Notification({
-            text  : `Hello! I'm a notification.`,
+	frontbx.DocsDemo('.js-notif-trigger-1', () => frontbx.Notification({
+            text  : 'Hello! I\'m a notification.',
         })
     );
     frontbx.DocsDemo('.js-notif-trigger-2', () => frontbx.Notification(
     {
-        btn  : `Dismiss`,
-        text : `Hello! I'm a notification.`,
+        btn  : 'Dismiss',
+        text : 'Hello! I\'m a notification.',
     }));
     frontbx.DocsDemo('.js-notif-trigger-3', () => frontbx.Notification(
     {
-        icon : `bell`,
-        text : `Hello! I'm a notification.`,
+        icon : 'bell',
+        text : 'Hello! I\'m a notification.',
     }));
     frontbx.DocsDemo('.js-notif-trigger-4', () => frontbx.Notification(
     {
-        btn        : `Danger`,
-        btnVariant : `danger`,
-        text       : `Hello! I'm a notification.`,
+        btn        : 'Danger',
+        btnVariant : 'danger',
+        text       : 'Hello! I\'m a notification.',
     }));
     frontbx.DocsDemo('.js-notif-trigger-5', () => frontbx.Notification(
     {
-        icon    : `check`,
-        variant : `success`, 
-        text    : `Hello! I'm a notification.`,
+        icon : 'bell',
+        text : 'Hello! I\'m a notification.',
+        closebtn: true
     }));
     frontbx.DocsDemo('.js-notif-trigger-6', () => frontbx.Notification(
+    {
+        icon    : 'check',
+        variant : 'primary',
+        text    : 'Hello! I\'m a notification.',
+    }));
+    frontbx.DocsDemo('.js-notif-trigger-7', () => frontbx.Notification(
+    {
+        icon       : 'bell',
+        stacked    : true,
+        btn        : '<button type="button" class="btn btn-pure btn-sm" aria-label="cancel">Cancel</button><button type="button" class="btn btn-primary btn-sm" aria-label="Confirm">Confirm</button>',
+        text       : '<p class="text-bold">Lorem ipsum laboris cupidatat in enim sunt?</p><p style="opacity: 0.9;">In proident nostrud exercitation elit irure id consequat consequat nulla sunt nulla dolore officia est.</p>',
+    }));
+    frontbx.DocsDemo('.js-notif-trigger-8', () => frontbx.Notification(
+    {
+        responsive : true,
+        btn        : 'Confirm',
+        text       : '<p class="text-bold">Lorem ipsum laboris cupidatat in enim sunt?</p><p style="opacity: 0.9;">In proident nostrud exercitation elit irure id consequat consequat nulla sunt nulla dolore officia est.</p>',
+    }));
+    frontbx.DocsDemo('.js-notif-trigger-9', () => frontbx.Notification(
+    {
+        icon       : 'bell',
+        dense      : false,
+        text       : 'Eiusmod ullamco cupidatat culpa amet sit nostrud veniam consectetur quis labore duis duis ut occaecat sint.',
+    }));
+    
+    frontbx.DocsDemo('.js-notif-trigger-10', () => frontbx.Notification(
     {
         text: 'Hello! You need to click me to dismiss.',
         timeout: false,
     }));
-    frontbx.DocsDemo('.js-notif-trigger-7', function()
+    frontbx.DocsDemo('.js-notif-trigger-11', function()
     {
         let start = 10;
         let i     = 1;

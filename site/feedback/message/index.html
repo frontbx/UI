@@ -326,14 +326,16 @@
 </ul></div>
                 </aside>
                 <article class="docs-body pole-sm" id="article-body"><h1 id="message">Message</h1>
-<hr />
 <p>Frontbx message provide contextual feedback messages for typical user actions user actions on page. They are also use as part of the built in JS Form Validation component.</p>
 <hr />
 <ul>
 <li><a href="#basic-example">Basic example</a></li>
 <li><a href="#icons">Icons</a></li>
-<li><a href="#context">Context</a></li>
 <li><a href="#buttons">Buttons</a></li>
+<li><a href="#dense">Dense</a></li>
+<li><a href="#stacked">Stacked</a></li>
+<li><a href="#responsive">Responsive</a></li>
+<li><a href="#context">Context</a></li>
 <li><a href="#dismissible">Dismissible</a></li>
 <li><a href="#javaScript-behavior">JavaScript Behavior</a></li>
 <li><a href="#css-customization">CSS Customization</a></li>
@@ -341,10 +343,12 @@
 <hr />
 <h3 id="basic-example">Basic example</h3>
 <p>A Frontbx message has specific markup that you must follow for it to be displayed correctly. Below is the most simple example:</p>
-<div class="fbx-snippet-demo">    
-    <div class="msg">
-        <div class="msg-body">
-            <p>This is an alert! Please read this carefully.</p>
+<div class="fbx-snippet-demo">
+    <div class="flex-row align-cols-center flex-cols-12 flex-cols-md-8 flex-cols-lg-8">
+        <div class="msg">
+            <div class="msg-body">
+                <p>This is an alert! Please read this carefully.</p>
+            </div>
         </div>
     </div>
 </div>
@@ -356,64 +360,11 @@
 <hr />
 <h3 id="icons">Icons</h3>
 <p>Frontbx messages have built in styles for icons to help display a message's context to the user quickly:</p>
-<div class="fbx-snippet-demo">    
-    <div class="msg">
-        <div class="msg-icon">
-            <span class="fa fa-bell"></span>
-        </div>
-        <div class="msg-body">
-            <p>This is an alert! Please read this carefully.</p>
-        </div>
-    </div>
-</div>
-<pre><code class="html language-html">&lt;div class="msg"&gt;
-    &lt;div class="msg-icon"&gt;
-        &lt;span class="fa fa-bell"&gt;&lt;/span&gt;
-    &lt;/div&gt;
-    &lt;div class="msg-body"&gt;
-        &lt;p&gt;This is an alert! Please read this carefully.&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-<hr />
-<h3 id="context">Context</h3>
-<p>Add a class of <code>.msg-primary</code>, <code>.msg-info</code>, <code>.msg-success</code>, <code>.msg-warning</code> or <code>.msg-danger</code> to contextualize messages:</p>
-<div class="fbx-snippet-demo">    
-    <div class="flex-row row-gaps-xs">
+<div class="fbx-snippet-demo">
+    <div class="flex-row align-cols-center flex-cols-12 flex-cols-md-8 flex-cols-lg-8">
         <div class="msg">
             <div class="msg-icon">
                 <span class="fa fa-bell"></span>
-            </div>
-            <div class="msg-body">
-                <p>This is an alert! Please read this carefully.</p>
-            </div>
-        </div>
-        <div class="msg msg-info">
-            <div class="msg-icon">
-                <span class="fa fa-bell"></span>
-            </div>
-            <div class="msg-body">
-                <p>This is an alert! Please read this carefully.</p>
-            </div>
-        </div>
-        <div class="msg msg-success">
-            <div class="msg-icon">
-                <span class="fa fa-check"></span>
-            </div>
-            <div class="msg-body">
-                <p>This is an alert! Please read this carefully.</p>
-            </div>
-        </div>
-        <div class="msg msg-warning">
-            <div class="msg-icon">
-                <span class="fa fa-triangle-exclamation"></span>
-            </div>
-            <div class="msg-body">
-                <p>This is an alert! Please read this carefully.</p>
-            </div>
-        </div>
-        <div class="msg msg-danger">
-            <div class="msg-icon">
-                <span class="fa fa-xmark"></span>
             </div>
             <div class="msg-body">
                 <p>This is an alert! Please read this carefully.</p>
@@ -444,17 +395,6 @@
             <div class="msg-btn">
                 <button type="button" class="btn btn-primary btn-pure btn-sm" aria-label="Click me">WITH BUTTON</button>
             </div>
-        </div>    
-        <div class="msg msg-success">
-            <div class="msg-icon">
-                <span class="fa fa-check"></span>
-            </div>
-            <div class="msg-body">
-                <p>This is an alert! Please read this carefully.</p>
-            </div>
-            <div class="msg-btn">
-                <button type="button" class="btn btn-success btn-pure btn-sm" aria-label="Click me">WITH BUTTON</button>
-            </div>
         </div>
     </div>
 </div>
@@ -470,13 +410,208 @@
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
 <hr />
+<h3 id="dense">Dense</h3>
+<p>Add the modifier <code>.msg-dense</code> to display a more compact message:</p>
+<div class="fbx-snippet-demo">
+    <div class="flex-row align-cols-center flex-cols-12 flex-cols-md-8 flex-cols-lg-8 row-gaps-xs">
+        <div class="msg msg-dense">
+            <div class="msg-icon">
+                <span class="fa fa-bell"></span>
+            </div>
+            <div class="msg-body">
+                <p>This is an alert! Please read this carefully.</p>
+            </div>
+        </div>
+        <div class="msg msg-dense">
+            <div class="msg-icon">
+                <span class="fa fa-bell"></span>
+            </div>
+            <div class="msg-body">
+                <p>This is an alert! Please read this carefully.</p>
+            </div>
+            <div class="msg-btn">
+                <button type="button" class="btn btn-primary btn-pure btn-sm" aria-label="Click me">WITH BUTTON</button>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="msg"&gt;
+    &lt;div class="msg-icon"&gt;
+        &lt;span class="fa fa-bell"&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="msg-body"&gt;
+        &lt;p&gt;This is an alert! Please read this carefully.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<hr />
+<h3 id="stacked">Stacked</h3>
+<p>Add the modifier <code>.msg-stacked</code> to for larger messages:</p>
+<div class="fbx-snippet-demo">
+    <div class="flex-row align-cols-center flex-cols-12 flex-cols-md-8 flex-cols-lg-8">
+        <div class="msg msg-stacked">
+            <div class="msg-icon">
+                <span class="fa fa-bell"></span>
+            </div>
+            <div class="msg-body">
+                <p class="text-bold">Lorem ipsum laboris cupidatat in enim sunt?</p>
+                <p style="opacity: 0.9;">In proident nostrud exercitation elit irure id consequat consequat nulla sunt nulla dolore officia est.</p>
+            </div>
+            <div class="msg-btn">
+                <button type="button" class="btn btn-pure btn-sm" aria-label="cancel">Cancel</button>
+                <button type="button" class="btn btn-primary btn-sm" aria-label="Confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="msg"&gt;
+    &lt;div class="msg-icon"&gt;
+        &lt;span class="fa fa-bell"&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="msg-body"&gt;
+        &lt;p&gt;This is an alert! Please read this carefully.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<hr />
+<h3 id="responsive">Responsive</h3>
+<p>Add the modifier <code>.msg-responsive</code> to have message stack on smaller viewports:</p>
+<div class="fbx-snippet-demo">
+    <div class="flex-row align-cols-center flex-cols-12 flex-cols-md-8 flex-cols-lg-8">
+        <div class="msg msg-responsive">
+            <div class="msg-body">
+                <p>This is an alert! Please read this carefully.</p>
+                <p>Ea ea quis fugiat est elit duis ut aliqua adipisicing quis eiusmod in aliquip veniam duis id reprehenderit.</p>
+            </div>
+            <div class="msg-btn">
+                <button type="button" class="btn btn-primary btn-pure btn-sm" aria-label="Click me">WITH BUTTON</button>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="msg"&gt;
+    &lt;div class="msg-icon"&gt;
+        &lt;span class="fa fa-bell"&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="msg-body"&gt;
+        &lt;p&gt;This is an alert! Please read this carefully.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<hr />
+<h3 id="close-buttons">Close buttons</h3>
+<p>Add the modifier <code>.btn-msg-close</code> to a button to position a close button:</p>
+<div class="fbx-snippet-demo">
+    <div class="flex-row align-cols-center flex-cols-12 flex-cols-md-8 flex-cols-lg-8 row-gaps-xs">
+        <div class="msg msg-dense">
+            <button class="btn btn-pure btn-xs btn-circle btn-msg-close">
+                <span class="fa fa-xmark"></span>
+            </button>
+            <div class="msg-icon">
+                <span class="fa fa-bell"></span>
+            </div>
+            <div class="msg-body">
+                <p>This is an alert! Please read this carefully.</p>
+            </div>
+        </div>
+        <div class="msg msg-stacked">
+            <button class="btn btn-pure btn-xs btn-circle btn-msg-close">
+                <span class="fa fa-xmark"></span>
+            </button>
+            <div class="msg-icon">
+                <span class="fa fa-bell"></span>
+            </div>
+            <div class="msg-body">
+                <p class="text-bold">Lorem ipsum laboris cupidatat in enim sunt?</p>
+                <p style="opacity: 0.9;">In proident nostrud exercitation elit irure id consequat consequat nulla sunt nulla dolore officia est.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="msg"&gt;
+    &lt;button class="btn btn-pure btn-xs btn-circle btn-msg-close"&gt;
+        &lt;span class="fa fa-xmark"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+    ...
+&lt;/div&gt;</code></pre>
+<hr />
+<h3 id="context">Context</h3>
+<p>Add a class of <code>.msg-primary</code>, <code>.msg-info</code>, <code>.msg-success</code>, <code>.msg-warning</code> or <code>.msg-danger</code> to contextualize messages:</p>
+<div class="fbx-snippet-demo">    
+    <div class="flex-row row-gaps-xs">
+        <div class="msg msg-primary">
+            <div class="msg-icon">
+                <span class="fa fa-bell"></span>
+            </div>
+            <div class="msg-body">
+                <p>This is an alert! Please read this carefully.</p>
+            </div>
+            <div class="msg-btn">
+                <button type="button" class="btn btn-primary btn-pure btn-sm" aria-label="Click me">WITH BUTTON</button>
+            </div>
+        </div>
+        <div class="msg msg-info">
+            <div class="msg-icon">
+                <span class="fa fa-bell"></span>
+            </div>
+            <div class="msg-body">
+                <p>This is an alert! Please read this carefully.</p>
+            </div>
+            <div class="msg-btn">
+                <button type="button" class="btn btn-info btn-pure btn-sm" aria-label="Click me">WITH BUTTON</button>
+            </div>
+        </div>
+        <div class="msg msg-success">
+            <div class="msg-icon">
+                <span class="fa fa-check"></span>
+            </div>
+            <div class="msg-body">
+                <p>This is an alert! Please read this carefully.</p>
+            </div>
+            <div class="msg-btn">
+                <button type="button" class="btn btn-success btn-pure btn-sm" aria-label="Click me">WITH BUTTON</button>
+            </div>
+        </div>
+        <div class="msg msg-warning">
+            <div class="msg-icon">
+                <span class="fa fa-triangle-exclamation"></span>
+            </div>
+            <div class="msg-body">
+                <p>This is an alert! Please read this carefully.</p>
+            </div>
+            <div class="msg-btn">
+                <button type="button" class="btn btn-warning btn-pure btn-sm" aria-label="Click me">WITH BUTTON</button>
+            </div>
+        </div>
+        <div class="msg msg-danger">
+            <div class="msg-icon">
+                <span class="fa fa-xmark"></span>
+            </div>
+            <div class="msg-body">
+                <p>This is an alert! Please read this carefully.</p>
+            </div>
+            <div class="msg-btn">
+                <button type="button" class="btn btn-danger btn-pure btn-sm" aria-label="Click me">WITH BUTTON</button>
+            </div>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;div class="msg msg-success"&gt;
+    &lt;div class="msg-icon"&gt;
+        &lt;span class="fa fa-bell"&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="msg-body"&gt;
+        &lt;p&gt;This is an alert! Please read this carefully.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="msg-btn"&gt;
+        &lt;button type="button" class="btn btn-success btn-pure btn-sm" aria-label="Click me"&gt;WITH BUTTON&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<hr />
 <h3 id="dismissible">Dismissible</h3>
 <p>Add a class of <code>.js-close-msg</code> to the button (or any element inside a message) to make the message removable by the user. The message will be removed from the DOM after it is clicked.</p>
 <blockquote>
   <p>Add a class of <code>.js-rmv-parent</code> to the trigger element to remove the message and its containing wrapper element. This is usufell when your message is wrapped in a spacing element that you want to remove at the same time.</p>
 </blockquote>
-<div class="fbx-snippet-demo">    
-    <div class="row">
+<div class="fbx-snippet-demo">
+    <div class="flex-row align-cols-center flex-cols-12 flex-cols-md-8 flex-cols-lg-8 row-gaps-xs">
         <div class="msg">
             <div class="msg-icon">
                 <span class="fa fa-bell"></span>
@@ -485,7 +620,18 @@
                 <p>This is an alert! Please read this carefully.</p>
             </div>
             <div class="msg-btn">
-                <button type="button" class="btn btn-primary btn-pure btn-sm js-close-msg js-rmv-parent" aria-label="Close">Dismiss</button>
+                <button type="button" class="btn btn-primary btn-pure btn-sm js-close-msg" aria-label="Close">Dismiss</button>
+            </div>
+        </div>
+        <div class="msg msg-dense">
+            <button class="btn btn-pure btn-xs btn-circle btn-msg-close js-close-msg">
+                <span class="fa fa-xmark"></span>
+            </button>
+            <div class="msg-icon">
+                <span class="fa fa-bell"></span>
+            </div>
+            <div class="msg-body">
+                <p>This is an alert! Please read this carefully.</p>
             </div>
         </div>
     </div>
@@ -532,23 +678,26 @@ myMsg.addEventListener('message:close', event =&gt;
 <h3 id="css-customization">CSS Customization</h3>
 <p>Messages use local CSS variables on <code>.msg</code> for enhanced component customization and styling. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>
 <p>Default values are set in the <code>scss/_config.scss</code> file in Frontbx's source.</p>
-<pre><code class="file-path language-file-path">scss/components/_message.scss</code></pre>
-<pre><code class="scss language-scss">--fbx-msg-bg: #{$msg-bg};
---fbx-msg-color: #{$msg-color};
---fbx-msg-icon-color: #{$msg-icon-color};
---fbx-msg-spacer-y: #{$msg-spacer-y};
---fbx-msg-spacer-x: #{$msg-spacer-x};
---fbx-msg-border-radius: #{$msg-border-radius};
---fbx-msg-font-size: #{$msg-font-size};</code></pre>
-<p><br></p>
 <pre><code class="file-path language-file-path">scss/_config.scss</code></pre>
-<pre><code class="scss language-scss">$msg-bg:                        var(--fbx-black) !default;
-$msg-color:                     var(--fbx-white) !default;
-$msg-icon-color:                var(--fbx-theme-primary) !default;
-$msg-spacer-y:                  3rem !default;
-$msg-spacer-x:                  2rem !default;
-$msg-font-size:                 1.4rem !default;
-$msg-border-radius:             var(--fbx-border-radius) !default;</code></pre></article>
+<pre><code class="scss language-scss">$msg-bg:             var(--fbx-black) !default;
+$msg-color:          var(--fbx-white) !default;
+$msg-icon-color:     var(--fbx-theme-primary) !default;
+$msg-spacer-y:       3rem !default;
+$msg-spacer-x:       2rem !default;
+$msg-font-size:      1.4rem !default;
+$msg-icon-font-size: 1.6rem !default;
+$msg-border-radius:  var(--fbx-border-radius) !default;</code></pre>
+<pre><code class="css language-css">.msg
+{
+    --fbx-msg-bg: var(--fbx-black);
+    --fbx-msg-color: var(--fbx-white);
+    --fbx-msg-icon-color: var(--fbx-theme-primary);
+    --fbx-msg-spacer-y: 3rem;
+    --fbx-msg-spacer-x: 2rem;
+    --fbx-msg-border-radius: var(--fbx-border-radius);
+    --fbx-msg-font-size: 1.4rem;
+    --fbx-msg-icon-font-size: 1.6rem;
+}</code></pre></article>
             </div>
         </div>
         <footer class="site-footer">

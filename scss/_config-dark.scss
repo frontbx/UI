@@ -4,7 +4,6 @@
 {
     --fbx-body-bg:    var(--fbx-black);
     --fbx-body-color: var(--fbx-white);
-
     --fbx-webkit-scrollbars-thumbcolor: var(--fbx-gray-900);
     --fbx-webkit-scrollbars-thumbcolor-hover: var(--fbx-gray-500);
     --fbx-webkit-scrollbars-thumbcolor-active: var(--fbx-gray-500);
@@ -258,7 +257,18 @@
         --fbx-modal-overlay-bg: rgb(255 255 255 / 57%);
         --fbx-modal-overlay-bg-dark: rgb(75 75 75 / 74%);
     }
+    @each $context, $colors in $contexts
+    {    
+        $color: map-get($colors, "color");
+        $basename: _color-name-from-var($color);
 
+        .msg.msg-#{$context}
+        {
+            --fbx-msg-bg: var(--fbx-#{$basename}-900);
+            --fbx-msg-color: var(--fbx-#{$basename}-600);
+            background: linear-gradient(360deg, rgba(var(--fbx-#{$basename}-rgb), 0.25), rgba(var(--fbx-#{$basename}-rgb), 0.25) 100%), linear-gradient(360deg, #000000, #000000 70.71%);
+        }
+    }
 /* ----------------------------------- UTILITY DARK ------------------------------------- */
 /* --------------------------------------------------------------------------------- */
 }
