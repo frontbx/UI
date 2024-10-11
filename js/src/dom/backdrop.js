@@ -120,6 +120,6 @@
     }
 
     // Load into frontbx DOM core
-    frontbx.dom().register('Backdrop', extend(Component, Backdrop));
+    frontbx.dom().register('DOM_Backdrops', extend(Component, Backdrop));
 
 })();

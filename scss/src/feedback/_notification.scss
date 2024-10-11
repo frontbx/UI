@@ -20,6 +20,11 @@
 	    width: 100%;
 		cursor: pointer;
 		@include raised($notification-shadow);
+
+		&.msg-with-btn
+		{
+			cursor: default;
+		}
 	}
 
 	&.position-top,

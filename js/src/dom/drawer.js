@@ -116,6 +116,6 @@
     }
 
     // Load into frontbx DOM core
-    frontbx.dom().register('Drawer', extend(Component, Drawer));
+    frontbx.dom().register('DOM_Drawers', extend(Component, Drawer));
     
 })();

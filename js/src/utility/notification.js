@@ -119,7 +119,7 @@
 
         this._animateOutClass = this._animateOut();
 
-        let notif = dom_element({tag: 'div', class: `msg ${options.responsive ? 'msg-responsive' : ''} ${options.stacked ? 'msg-stacked' : ''} ${options.variant ? `msg-${options.variant}` : ''} ${options.dense ? 'msg-dense' : ''} ${this._animateInClass}`} );
+        let notif = dom_element({tag: 'div', class: `msg ${options.closebtn || options.btn ? 'msg-with-btn' : ''} ${options.responsive ? 'msg-responsive' : ''} ${options.stacked ? 'msg-stacked' : ''} ${options.variant ? `msg-${options.variant}` : ''} ${options.dense ? 'msg-dense' : ''} ${this._animateInClass}`} );
         
         if (options.closebtn)
         {
@@ -136,6 +136,8 @@
         if (options.btn)
         {
             this._btn = dom_element({tag: 'div', class: 'msg-btn' }, notif, options.btn.trim().startsWith('<') ? options.btn : dom_element({tag: 'button', class: `btn btn-pure btn-${options.btnVariant} btn-sm js-notif-btn`, innerText: options.btn }));
+            
+            add_class(find_all('button', this._btn), 'js-notif-btn');
         }
 
         this._notification = notif;

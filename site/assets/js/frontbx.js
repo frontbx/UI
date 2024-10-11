@@ -6978,6 +6978,8 @@ Container.singleton('_', _);
 // frontbx core
 (function()
 {
+    const EXCLUDED_SERVICES = ['services','boot','set','singleton','has','delete','get','import','bind','_setproto','_singletonfunc','_isinvokable','_isinvoked','_newinstance','_storeobj','_normalizekey','_is_func'];
+
     /**
      * Application core
      *
@@ -6997,12 +6999,37 @@ Container.singleton('_', _);
     }
 
     /**
+     * Returns registered services.
+     *
+     * @access {public}
+     * @return {Object}
+     */
+    Application.prototype.services = function()
+    {
+        let proto = this.prototype || Object.getPrototypeOf(this);
+
+        let ret = {};
+
+        for (let key in proto)
+        {
+            let val = proto[key];
+
+            if (!EXCLUDED_SERVICES.includes(key.toLowerCase()) && {}.toString.call(val) === '[object Function]')
+            {
+                ret[key] = val;
+            }
+        }
+
+        return ret;
+    }
+
+    /**
      * Called when the application is first initialized
      *
      * @access {public}
      */
     Application.prototype.boot = function()
-    {        
+    {
         this.dom().boot();
 
         this._().trigger_event(window, 'frontbx:ready', this);
@@ -7030,8 +7057,6 @@ Container.singleton('_', _);
     // Set global
     window.frontbx = app;
 
-    console.log(app);
-
 })();
 (function()
 {
@@ -7041,13 +7066,6 @@ Container.singleton('_', _);
      * @var {Function}
      */
     const [each, trigger_event, collect_garbage, is_undefined, is_string, is_htmlElement] = frontbx.import(['each', 'trigger_event', 'collect_garbage', 'is_undefined', 'is_string', 'is_htmlElement']).from('_');
-
-    /**
-     * Prefix for container.
-     *
-     * @var {String}
-     */
-    const KEYPREFIX = 'HB_DOM:';
 
     /**
      * DOM Manager
@@ -7088,7 +7106,7 @@ Container.singleton('_', _);
     {
         this.components.push(name);
 
-        frontbx.singleton(this._normaliseKey(name), component);
+        frontbx.singleton(name, component);
 
         this._bindComponent(name, document);
     }
@@ -7100,7 +7118,7 @@ Container.singleton('_', _);
      */
     Dom.prototype.component = function(name)
     {
-        return frontbx.get(this._normaliseKey(name));
+        return frontbx.get(name);
     }
 
     /**
@@ -7145,7 +7163,7 @@ Container.singleton('_', _);
      */
     Dom.prototype._bindComponent = function(name, context, isRefresh)
     {                
-        let component = frontbx.get(this._normaliseKey(name));
+        let component = frontbx.get(name);
 
         if (this._hasMethod(component, 'construct') && isRefresh)
         {
@@ -7165,7 +7183,7 @@ Container.singleton('_', _);
      */
     Dom.prototype._unbindComponent = function(name, context)
     {            
-        let component = frontbx.get(this._normaliseKey(name));
+        let component = frontbx.get(name);
 
         if (this._hasMethod(component, 'destruct'))
         {
@@ -7243,18 +7261,6 @@ Container.singleton('_', _);
     Dom.prototype._hasMethod = function(classObj, method)
     {
         return typeof classObj === 'object' && typeof classObj[method] === 'function';
-    }
-
-    /**
-     * Normalize key
-     *
-     * @access {public}
-     * @param {string} name   Name of the module
-     * @param {object} module Uninvoked module object
-     */
-    Dom.prototype._normaliseKey = function(key)
-    {
-        return `${KEYPREFIX}${key}`;
     }
 
     // Load into container and invoke
@@ -11293,7 +11299,7 @@ Container.singleton('_', _);
 
         this._animateOutClass = this._animateOut();
 
-        let notif = dom_element({tag: 'div', class: `msg ${options.responsive ? 'msg-responsive' : ''} ${options.stacked ? 'msg-stacked' : ''} ${options.variant ? `msg-${options.variant}` : ''} ${options.dense ? 'msg-dense' : ''} ${this._animateInClass}`} );
+        let notif = dom_element({tag: 'div', class: `msg ${options.closebtn || options.btn ? 'msg-with-btn' : ''} ${options.responsive ? 'msg-responsive' : ''} ${options.stacked ? 'msg-stacked' : ''} ${options.variant ? `msg-${options.variant}` : ''} ${options.dense ? 'msg-dense' : ''} ${this._animateInClass}`} );
         
         if (options.closebtn)
         {
@@ -11310,6 +11316,8 @@ Container.singleton('_', _);
         if (options.btn)
         {
             this._btn = dom_element({tag: 'div', class: 'msg-btn' }, notif, options.btn.trim().startsWith('<') ? options.btn : dom_element({tag: 'button', class: `btn btn-pure btn-${options.btnVariant} btn-sm js-notif-btn`, innerText: options.btn }));
+            
+            add_class(find_all('button', this._btn), 'js-notif-btn');
         }
 
         this._notification = notif;
@@ -15079,7 +15087,7 @@ Container.singleton('_', _);
     }
 
     // Load into frontbx DOM core
-    frontbx.dom().register('Modal', extend(Component, Modal));
+    frontbx.dom().register('DOM_Modals', extend(Component, Modal));
 })();
 (function()
 {
@@ -15199,7 +15207,7 @@ Container.singleton('_', _);
     }
 
     // Load into frontbx DOM core
-    frontbx.dom().register('Drawer', extend(Component, Drawer));
+    frontbx.dom().register('DOM_Drawers', extend(Component, Drawer));
     
 })();
 (function()
@@ -15325,7 +15333,7 @@ Container.singleton('_', _);
     }
 
     // Load into frontbx DOM core
-    frontbx.dom().register('Frontdrop', extend(Component, Frontdrop));
+    frontbx.dom().register('DOM_Frontdrops', extend(Component, Frontdrop));
     
 })();
 (function()
@@ -15450,7 +15458,7 @@ Container.singleton('_', _);
     }
 
     // Load into frontbx DOM core
-    frontbx.dom().register('Backdrop', extend(Component, Backdrop));
+    frontbx.dom().register('DOM_Backdrops', extend(Component, Backdrop));
 
 })();
 (function()
@@ -15534,7 +15542,7 @@ Container.singleton('_', _);
     }
 
     // Load into frontbx DOM core
-    frontbx.dom().register('Notification', extend(Component, Notification));
+    frontbx.dom().register('DOM_Notifications', extend(Component, Notification));
 
 })();
 (function()
@@ -16838,5 +16846,9 @@ Container.singleton('_', _);
 (function()
 {
 	frontbx.boot();
+
+	console.log(frontbx);
+
+	console.log(frontbx.services());
 
 })();

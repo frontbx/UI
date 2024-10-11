@@ -1,5 +1,7 @@
 (function()
 {
+    const EXCLUDED_SERVICES = ['services','boot','set','singleton','has','delete','get','import','bind','_setproto','_singletonfunc','_isinvokable','_isinvoked','_newinstance','_storeobj','_normalizekey','_is_func'];
+
     /**
      * Application core
      *
@@ -19,12 +21,37 @@
     }
 
     /**
+     * Returns registered services.
+     *
+     * @access {public}
+     * @return {Object}
+     */
+    Application.prototype.services = function()
+    {
+        let proto = this.prototype || Object.getPrototypeOf(this);
+
+        let ret = {};
+
+        for (let key in proto)
+        {
+            let val = proto[key];
+
+            if (!EXCLUDED_SERVICES.includes(key.toLowerCase()) && {}.toString.call(val) === '[object Function]')
+            {
+                ret[key] = val;
+            }
+        }
+
+        return ret;
+    }
+
+    /**
      * Called when the application is first initialized
      *
      * @access {public}
      */
     Application.prototype.boot = function()
-    {        
+    {
         this.dom().boot();
 
         this._().trigger_event(window, 'frontbx:ready', this);
@@ -51,7 +78,5 @@
 
     // Set global
     window.frontbx = app;
-
-    console.log(app);
 
 })();

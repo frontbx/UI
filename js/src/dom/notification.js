@@ -79,6 +79,6 @@
     }
 
     // Load into frontbx DOM core
-    frontbx.dom().register('Notification', extend(Component, Notification));
+    frontbx.dom().register('DOM_Notifications', extend(Component, Notification));
 
 })();

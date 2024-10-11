@@ -121,6 +121,6 @@
     }
 
     // Load into frontbx DOM core
-    frontbx.dom().register('Frontdrop', extend(Component, Frontdrop));
+    frontbx.dom().register('DOM_Frontdrops', extend(Component, Frontdrop));
     
 })();

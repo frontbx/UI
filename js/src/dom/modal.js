@@ -114,5 +114,5 @@
     }
 
     // Load into frontbx DOM core
-    frontbx.dom().register('Modal', extend(Component, Modal));
+    frontbx.dom().register('DOM_Modals', extend(Component, Modal));
 })();

@@ -8,13 +8,6 @@
     const [each, trigger_event, collect_garbage, is_undefined, is_string, is_htmlElement] = frontbx.import(['each', 'trigger_event', 'collect_garbage', 'is_undefined', 'is_string', 'is_htmlElement']).from('_');
 
     /**
-     * Prefix for container.
-     *
-     * @var {String}
-     */
-    const KEYPREFIX = 'HB_DOM:';
-
-    /**
      * DOM Manager
      *
      * @author    {Joe J. Howard}
@@ -53,7 +46,7 @@
     {
         this.components.push(name);
 
-        frontbx.singleton(this._normaliseKey(name), component);
+        frontbx.singleton(name, component);
 
         this._bindComponent(name, document);
     }
@@ -65,7 +58,7 @@
      */
     Dom.prototype.component = function(name)
     {
-        return frontbx.get(this._normaliseKey(name));
+        return frontbx.get(name);
     }
 
     /**
@@ -110,7 +103,7 @@
      */
     Dom.prototype._bindComponent = function(name, context, isRefresh)
     {                
-        let component = frontbx.get(this._normaliseKey(name));
+        let component = frontbx.get(name);
 
         if (this._hasMethod(component, 'construct') && isRefresh)
         {
@@ -130,7 +123,7 @@
      */
     Dom.prototype._unbindComponent = function(name, context)
     {            
-        let component = frontbx.get(this._normaliseKey(name));
+        let component = frontbx.get(name);
 
         if (this._hasMethod(component, 'destruct'))
         {
@@ -208,18 +201,6 @@
     Dom.prototype._hasMethod = function(classObj, method)
     {
         return typeof classObj === 'object' && typeof classObj[method] === 'function';
-    }
-
-    /**
-     * Normalize key
-     *
-     * @access {public}
-     * @param {string} name   Name of the module
-     * @param {object} module Uninvoked module object
-     */
-    Dom.prototype._normaliseKey = function(key)
-    {
-        return `${KEYPREFIX}${key}`;
     }
 
     // Load into container and invoke
