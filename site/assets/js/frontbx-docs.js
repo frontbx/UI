@@ -1066,7 +1066,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
         { selector: '.js-card-header-content', variant: 'text-block', lines: 2},
         { selector: '.js-card-media', variant: 'block wave', aspectratio: '16/9'},
         { selector: '.js-card-title', variant: 'h5'},
-        { selector: '.js-card-text', variant: 'text-block', lines: 3},
+        { selector: '.js-card-text', variant: 'text-block', lines: 2},
     ];
 
 	const SkeletonLoader = function()

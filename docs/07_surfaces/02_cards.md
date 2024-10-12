@@ -488,7 +488,7 @@ Add an optional footer within a card by using `.card-footer`, remember to wrap a
             </div>
             <div class="card-footer">
                 <div class="card-footer-left">
-                    <span class="fa fa-github icon-lg"></span>
+                    <span class="fa-brands fa-github icon-lg"></span>
                 </div>
                 <div class="card-footer-content">
                     <button class="btn btn-pure btn-primary">Action</button>

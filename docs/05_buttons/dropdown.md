@@ -6,7 +6,7 @@ Dropdown provides end-users with a list of options on a temporary surface. It ap
 
 *   [Markup](#markup)
 *   [Menu items](#menu-items)
-*   [Dense menu](#icon-menu)
+*   [Dense menu](#dense-menu)
 *   [States](#states)
 *   [Selected menu](#selected-menu)
 *   [Positioning](#positioning)
@@ -229,15 +229,18 @@ Menu items come with a handful of convenient states to help with different use-c
 <div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <ul class="menu raised-2 border-radius" style="width: 200px;">
-            <li>Back</li>
+            <li>normal</li>
             <li class="disabled">.disabled</li>
             <li class="active">.active</li>
-            <li>Cast...</li>
             <li class="selected">
                 <span class="item-body">.selected</span>
+            </li>
+            <li>normal</li>
+            <li class="checked">
+                <span class="item-body">.checked</span>
                 <span class="item-right"><span class="fa fa-check"></span>
             </li>
-            <li>Inspect</li>
+            <li>normal</li>
         </ul>
     </div>
 </div>
@@ -246,8 +249,9 @@ Menu items come with a handful of convenient states to help with different use-c
 <ul class="menu">
     <li class="disabled">.disabled</li>
     <li class="active">.active</li>
-    <li class="selected">
-        <span class="item-body">.selected</span>
+    <li class="selected">.selected</li>
+    <li class="checked">
+        <span class="item-body">.checked</span>
         <span class="item-right"><span class="fa fa-check"></span>
     </li>
 </ul>

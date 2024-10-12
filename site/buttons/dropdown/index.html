@@ -331,7 +331,7 @@
 <ul>
 <li><a href="#markup">Markup</a></li>
 <li><a href="#menu-items">Menu items</a></li>
-<li><a href="#icon-menu">Dense menu</a></li>
+<li><a href="#dense-menu">Dense menu</a></li>
 <li><a href="#states">States</a></li>
 <li><a href="#selected-menu">Selected menu</a></li>
 <li><a href="#positioning">Positioning</a></li>
@@ -526,23 +526,27 @@
 <div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <ul class="menu raised-2 border-radius" style="width: 200px;">
-            <li>Back</li>
+            <li>normal</li>
             <li class="disabled">.disabled</li>
             <li class="active">.active</li>
-            <li>Cast...</li>
             <li class="selected">
                 <span class="item-body">.selected</span>
+            </li>
+            <li>normal</li>
+            <li class="checked">
+                <span class="item-body">.checked</span>
                 <span class="item-right"><span class="fa fa-check"></span>
             </li>
-            <li>Inspect</li>
+            <li>normal</li>
         </ul>
     </div>
 </div>
 <pre><code class="html language-html">&lt;ul class="menu"&gt;
     &lt;li class="disabled"&gt;.disabled&lt;/li&gt;
     &lt;li class="active"&gt;.active&lt;/li&gt;
-    &lt;li class="selected"&gt;
-        &lt;span class="item-body"&gt;.selected&lt;/span&gt;
+    &lt;li class="selected"&gt;.selected&lt;/li&gt;
+    &lt;li class="checked"&gt;
+        &lt;span class="item-body"&gt;.checked&lt;/span&gt;
         &lt;span class="item-right"&gt;&lt;span class="fa fa-check"&gt;&lt;/span&gt;
     &lt;/li&gt;
 &lt;/ul&gt;</code></pre>

@@ -200,6 +200,14 @@
     --fbx-btn-icon-size: #{_addPercent($btn-icon-font-size, 20)};
 }
 
+// Outline buttons need 1px smaller
+.btn-outline
+{
+    --fbx-btn-paddings-y: calc(var(--fbx-btn-padding-y) - 1px);
+    padding-top: var(--fbx-btn-paddings-y);
+    padding-bottom: var(--fbx-btn-paddings-y);
+}
+
 // Circle default and sizes 
 .btn-circle
 {
