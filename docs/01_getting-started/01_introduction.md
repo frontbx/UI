@@ -18,11 +18,11 @@ Frontbx is a fast, dependency-free UI framework built with Sass, CSS and JavaScr
 
 ### Welcome
 
-Frontbx is a modular `CSS` and `JavaScript` front-end framework built with `Sass` and vanilla `JavaScript`. Frontbx is designed to be used as core UI framework for any sized project from a tiny landing page to a giant web app.
+Frontbx is a modular  front-end framework built on **Sass** and vanilla **JavaScript**. Frontbx is designed to be used as core UI framework for any sized project from a tiny landing page to a giant web app.
 
 One of the main purposes of Frontbx is to save you time while building beautiful web pages with ease. Frontbx is a medium to large front-end framework and has pretty much everything you will need to kick-start your next project.
 
-If you are new to Frontbx, it's recommended you read this documentation from start to finish. It's also highly advisable to spend some time reading through the [Customization documentation](../../customize/sass/index.html) as well as the [JavaScript documentation](../../javascript/container/index.html) section to understand the framework architecture and how to use it on a broad level.
+If you are new to Frontbx, it's recommended you read this documentation from start to finish. It's also highly advisable to spend some time reading through the [Contents documentation](../contents/index.html) as well as the [JavaScript documentation](../../javascript/container/index.html) section to understand the framework architecture and how to use it on a broad level.
 
 ---
 

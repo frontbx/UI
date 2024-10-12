@@ -78,15 +78,9 @@ With named functions, as long as the function names are one of `success`, `error
 Ajax.post(url, error, abort, success, complete, headers);
 ```
 
-Additionally you can supply response handlers directly to an Ajax instance, this can be done either before or after the `XHR` call is made:
+Additionally you can supply response handlers directly to an Ajax instance, this should be done before the `XHR` call is made:
 
 ```JavaScript
-// After call
-Ajax.post(url, data).success((response) =>
-{
-    // Do something here
-});
-
 // Before call
 Ajax.success((response) =>
 {
@@ -122,8 +116,9 @@ Additionally, you can use the `headers` function to supply headers specifically 
 Ajax.success((response) =>
 {
     // Do something here
-
-}).headers({foo: 'bar'}).post(url, data);
+})
+.headers({foo: 'bar'})
+.post(url, data);
 ```
 
 If the `abort` method is called after an XHR call is made, the request will be immediately aborted. The `abort` and `error` handler with both be called:
@@ -132,15 +127,14 @@ If the `abort` method is called after an XHR call is made, the request will be i
 Ajax.success((response) =>
 {
     // Do something here
-
-}).
-Ajax.error((response) =>
+})
+.error((response) =>
 {
     // Do something here
 
-}).post(url, data);
-
-Ajax.abort();
+})
+.post(url, data)
+.abort();
 ```
 
 If the `abort` method is called before an XHR call is made, a supplied callback will be used as the abort handler
@@ -149,15 +143,13 @@ If the `abort` method is called before an XHR call is made, a supplied callback 
 Ajax.success((response) =>
 {
     // Do something here
-
-}).
-Ajax.abort((response) =>
+})
+.abort((response) =>
 {
     // Do something here
-
-}).post(url, data);
-
-Ajax.abort();
+})
+.post(url, data)
+.abort();
 ```
 
 ---
