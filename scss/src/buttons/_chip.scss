@@ -60,7 +60,7 @@
 
     &:before
     {
-        @include glyph-icon;
+        @include font-icon;
     	content: "\f00c";
         vertical-align: middle;
 	    line-height: 0;

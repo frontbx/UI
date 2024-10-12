@@ -8,7 +8,7 @@
             // This doesn't use a variable as it can be used on
             // any element
             width: 100%;
-            @include _clearfix;
+            @include clearfix;
         }
     }
 }

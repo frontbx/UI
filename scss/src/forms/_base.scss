@@ -127,7 +127,7 @@ input.unstyled
     input:not([type="radio"]):not([type="checkbox"]):not([type="range"]),
     textarea
     {
-        @include placeholder
+        @include _placeholder
         {
             font-weight: $text-normal;
             opacity: var(--fbx-placeholder-opacity);
@@ -176,7 +176,7 @@ input.unstyled
     input[type="date"]:before,
     input[type="datetime-local"]:before
     {
-        @include glyph-icon;
+        @include font-icon;
         content: "\f073";
         display: inline-block;
         position: absolute;
@@ -216,7 +216,7 @@ input.unstyled
     label + textarea,
     label + select
     {
-        @include placeholder
+        @include _placeholder
         {
             --fbx-placeholder-opacity: 1;
         }

@@ -12,7 +12,7 @@
     padding-right: var(--fbx-container-pad-r);
     margin-left: auto;
     margin-right: auto;
-    @include _clearfix;
+    @include clearfix;
 }
 
 /* Row base */
@@ -20,7 +20,7 @@
 {
     --fbx-row-width: 100%;
     width: var(--fbx-row-width);
-    @include _clearfix;
+    @include clearfix;
 }
 
 /* Flex row base */
@@ -50,7 +50,7 @@
     width: var(--fbx-col-width);
     left: var(--fbx-col-pull);
     right: var(--fbx-col-push);
-    @include _clearfix;
+    @include clearfix;
 }
 
 /* Flex column base */

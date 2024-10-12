@@ -92,16 +92,16 @@
     {
         > *
         {
-            @include _ellipsis;
+            @include ellipsis;
             
             .item-body
             {
                 min-width: 0;
-                @include _ellipsis;
+                @include ellipsis;
 
                 > *
                 {
-                    @include _ellipsis;
+                    @include ellipsis;
                 }
             }
         }

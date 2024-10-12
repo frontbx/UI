@@ -1,37 +1,8 @@
 @use 'sass:math';
-// Font smoothing
-@mixin _font-smooth()
-{
-    @if $font-smoothing
-    {
-      text-rendering: optimizeLegibility;
-      font-smoothing: antialiased;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-  }
-}
 
-// Text ellipsis
-@mixin _ellipsis
-{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-// Clearfix
-@mixin _clearfix
-{
-    &:after
-    {
-        content: "";
-        display: table;
-        clear: both;
-    }
-}
 
 // Placeholder
-@mixin placeholder
+@mixin _placeholder
 {
     &::placeholder               {@content}
     &::-webkit-input-placeholder {@content}
@@ -141,11 +112,6 @@
             '(', ''),
         ',', ''),
    ' ', '');
-}
-
-@function _color-base-name-from-var($colorVar)
-{
-    @return _str-replace(_color-name-from-var($colorVar) ,'theme-', '');
 }
 
 @function _var-to-str($cssVar)

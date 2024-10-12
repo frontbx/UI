@@ -41,7 +41,7 @@
         pointer-events: none;
         background-color: var(--fbx-tooltip-bg);
         zoom:101%;
-        @include _font-smooth();
+        @include font-smooth;
     }
     // Trianlge
     &:before

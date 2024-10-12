@@ -14,7 +14,7 @@
 
 // Font Styles
 .font-italic    { font-style: italic }
-.font-ellipses  { @include _ellipsis() }
+.font-ellipses  { @include ellipsis() }
 .font-strike    { text-decoration: line-through }
 
 // Text Modifications

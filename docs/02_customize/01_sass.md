@@ -6,12 +6,12 @@ Learn how Frontbx's Sass is structured when running your own Frontbx build.
 
 *	[Introduction](#introduction)
 *	[Sass variables](#sass-variables)
+*	[Sass mixins](#sass-mixins)
 *	[CSS variables](#css-variables)
 
 ----
 
 ### Introduction
-
 
 Frontbx's Sass configuration can be found in the `scss/_config.scss` and `scss/_config-dark.scss` files - with the latter being configuration for **Dark Mode**.
 
@@ -70,6 +70,26 @@ $my-color: $body-bg;
 
 @import "../node_modules/frontbx/scss/src/variables";
 ```
+
+---
+
+#### Sass Mixins
+
+Frontbx comes with a few public mixins for common tasks. Frontbx doesn't offer a component-based mixin library as this is not part of the library design pattern. The table below outlines the public mixins:
+
+| Mixin                                          | Description                                                                                                                                   |
+|------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| `media-breakpoint-up($breakpoint)`             | Applies styles to breakpoint and above.<br>Breakpoint can be any value e.g `300px` or a predifined grid breakpoint:<br>`sm`, `md`, `lg`, `xl` |
+| `media-breakpoint-down($breakpoint)`           | Applies styles to breakpoint and below.<br>Breakpoint can be any value e.g `300px` or a predifined grid breakpoint:<br>`sm`, `md`, `lg`, `xl` |
+| `media-retina($pixel-density)`                 | Applies styles to screen pixel densities and above.                                                                                           |
+| `font-icon`                                    | Applies required styles for FontAwesome icon.                                                                                                 |
+| `raised($level : 1)`                           | Applies raised box-shadow. Accepts `1,2,3,4` levels                                                                                           |
+| `raise($varname, $level : 1, $color: #000000)` | Applies raised box-shadow to a css variable. Accepts `1,2,3,4` levels                                                                         |
+| `button-unstyled`                              | Resets basic styles of a button                                                                                                               |
+| `font-smooth`                                  | Applies font-smoothing                                                                                                                        |
+| `ellipsis`                                     | Text ellipsis styles                                                                                                                          |
+| `clearfix`                                     | Clearfixes an element                                                                                                                         |
+
 
 ---
 

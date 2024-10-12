@@ -8750,7 +8750,7 @@
         const DEFAULT_OPTIONS = 
         {
             element:   'body',
-            nocache:    true,
+            nocache:    false,
             once:       false,
             scrolltop:  false,
             pushstate:  false,

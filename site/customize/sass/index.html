@@ -331,6 +331,7 @@
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#sass-variables">Sass variables</a></li>
+<li><a href="#sass-mixins">Sass mixins</a></li>
 <li><a href="#css-variables">CSS variables</a></li>
 </ul>
 <hr />
@@ -362,6 +363,59 @@
 <pre><code class="scss language-scss">$my-color: $body-bg;
 
 @import "../node_modules/frontbx/scss/src/variables";</code></pre>
+<hr />
+<h4 id="sass-mixins">Sass Mixins</h4>
+<p>Frontbx comes with a few public mixins for common tasks. Frontbx doesn't offer a component-based mixin library as this is not part of the library design pattern. The table below outlines the public mixins:</p>
+<table>
+<thead>
+<tr>
+<th id="mixin">Mixin</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>media-breakpoint-up($breakpoint)</code></td>
+<td>Applies styles to breakpoint and above.<br>Breakpoint can be any value e.g <code>300px</code> or a predifined grid breakpoint:<br><code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code></td>
+</tr>
+<tr>
+<td><code>media-breakpoint-down($breakpoint)</code></td>
+<td>Applies styles to breakpoint and below.<br>Breakpoint can be any value e.g <code>300px</code> or a predifined grid breakpoint:<br><code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code></td>
+</tr>
+<tr>
+<td><code>media-retina($pixel-density)</code></td>
+<td>Applies styles to screen pixel densities and above.</td>
+</tr>
+<tr>
+<td><code>font-icon</code></td>
+<td>Applies required styles for FontAwesome icon.</td>
+</tr>
+<tr>
+<td><code>raised($level : 1)</code></td>
+<td>Applies raised box-shadow. Accepts <code>1,2,3,4</code> levels</td>
+</tr>
+<tr>
+<td><code>raise($varname, $level : 1, $color: #000000)</code></td>
+<td>Applies raised box-shadow to a css variable. Accepts <code>1,2,3,4</code> levels</td>
+</tr>
+<tr>
+<td><code>button-unstyled</code></td>
+<td>Resets basic styles of a button</td>
+</tr>
+<tr>
+<td><code>font-smooth</code></td>
+<td>Applies font-smoothing</td>
+</tr>
+<tr>
+<td><code>ellipsis</code></td>
+<td>Text ellipsis styles</td>
+</tr>
+<tr>
+<td><code>clearfix</code></td>
+<td>Clearfixes an element</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h4 id="css-variables">CSS Variables</h4>
 <blockquote>
