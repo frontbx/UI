@@ -83,6 +83,12 @@
             return;
         }
 
+        // No ripples inside elements with badges or status
+        if (find('> .badge', node) || find('> .status', node))
+        {
+            return;
+        }
+
         // No ripples inside list buttons
         if (has_class(node, 'btn') && closest(node, '.list'))
         {

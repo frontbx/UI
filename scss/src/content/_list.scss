@@ -15,7 +15,6 @@
     --fbx-list-divider-color: #{$list-divider-color};
     --fbx-list-divider-space: #{$list-divider-space};
 
-
     list-style: none;
     margin: 0;
     background-color: var(--fbx-list-bg);
@@ -23,9 +22,15 @@
     padding: var(--fbx-list-item-pad-y) 0px;
     font-size: var(--fbx-list-font-size);
 
-    > *
+    li
     {
         margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .list-item
+    {
         padding: var(--fbx-list-item-pad-y) var(--fbx-list-item-pad-x);
         background-color: var(--fbx-list-item-bg);
         column-gap: var(--fbx-list-item-pad-x);
@@ -84,6 +89,43 @@
         {
             color: var(--fbx-body-color);
             font-weight: $text-bold;
+        }
+        .checkbox label
+        {
+            z-index: 1;
+        }
+    }
+
+    // Nested lists
+    ul, ol
+    {
+        flex: 1 0 100%;
+        width: 100%;
+        font-size: var(--fbx-list-font-size);
+        background-color: var(--fbx-list-item-bg);
+        list-style: none;
+        padding: 0;
+        color: inherit;
+
+        &:hover
+        {
+            background-color: var(--fbx-list-bg);
+        }
+        .list-item
+        {
+            padding-left: calc(var(--fbx-list-item-pad-x) * 2.5);
+
+            + ul .list-item,
+            + ol .list-item
+            {
+                padding-left: calc(var(--fbx-list-item-pad-x) * 3.5);
+
+                + ul .list-item,
+                + ol .list-item
+                {
+                    padding-left: calc(var(--fbx-list-item-pad-x) * 4.5);
+                }
+            }
         }
     }
 

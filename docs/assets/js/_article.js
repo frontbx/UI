@@ -29,7 +29,7 @@
 }());
 
 /**
- * Converts article menu's to responsive
+ * Converts article table's to responsive
  *
  */
 (function()

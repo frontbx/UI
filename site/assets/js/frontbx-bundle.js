@@ -15791,7 +15791,7 @@
          */
         const List = function()
         { 
-            this.super('.js-select-list > li');
+            this.super('.js-select-list .list-item');
         }
     
         /**
@@ -15841,7 +15841,7 @@
         {
             return dom_element({tag: 'ul', class: `list ${props.classes ? props.classes : ''} ${props.dense ? 'list-dense' : ''} ${props.ellipsis ? 'list-ellipsis' : ''} ${ props.selectable ? `js-select-list` : '' }`}, null, map(props.items, (i, item) =>
                 {
-                    return dom_element({tag: 'li', class: `${item.state} ${props.selected && (props.selected === item.value || props.selected === item.text) ? 'selected' : null}`}, null,
+                    return dom_element({tag: 'li', class: `list-item ${item.state} ${props.selected && (props.selected === item.value || props.selected === item.text) ? 'selected' : null}`}, null,
                     [
                         item.left ? dom_element({tag: 'span', class: 'item-left', innerHTML: item.left}) : null,
                         dom_element({tag: 'span', class: 'item-body', innerText: item.body || item.text || item }),
@@ -16504,6 +16504,12 @@
         {                
             // No ripples inside primary actions
             if (!has_class(node, 'primary-action') && closest(node, '.primary-action') && !has_class(node, 'card'))
+            {
+                return;
+            }
+    
+            // No ripples inside elements with badges or status
+            if (find('> .badge', node) || find('> .status', node))
             {
                 return;
             }

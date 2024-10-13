@@ -330,6 +330,7 @@
 <hr />
 <ul>
 <li><a href="#basic-example">Basic example</a></li>
+<li><a href="#nested-lists">Nested lists</a></li>
 <li><a href="#list-contents">List contents</a></li>
 <li><a href="#dense-list">Dense list</a></li>
 <li><a href="#list-overflow">List overflow</a></li>
@@ -341,24 +342,61 @@
 </ul>
 <hr />
 <h3 id="basic-example">Basic example</h3>
-<p>To create a list, add the <code>.list</code> class to a <code>&lt;ul&gt;</code>. Below is an example of a list in it's most basic form:</p>
+<p>To create a list, add the <code>.list</code> class to a <code>&lt;ul&gt;</code> and use the <code>.list-item</code> class to pad out items. Below is an example of a list in it's most basic form:</p>
 <div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list">
-                <li>Item 1</li>
-                <li>Item 2</li>
-                <li>Item 3</li>
-                <li>Item 4</li>
+                <li class="list-item">Item 1</li>
+                <li class="list-item">Item 2</li>
+                <li class="list-item">Item 3</li>
+                <li class="list-item">Item 4</li>
             </ul>
         </div>
     </div>
 </div>
 <pre><code class="html language-html">&lt;ul class="list"&gt;
-    &lt;li&gt;Item 1&lt;/li&gt;
-    &lt;li&gt;Item 2&lt;/li&gt;
-    &lt;li&gt;Item 3&lt;/li&gt;
-    &lt;li&gt;Item 4&lt;/li&gt;
+    &lt;li class="list-item"&gt;Item 1&lt;/li&gt;
+    &lt;li class="list-item"&gt;Item 2&lt;/li&gt;
+    &lt;li class="list-item"&gt;Item 3&lt;/li&gt;
+    &lt;li class="list-item"&gt;Item 4&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<hr />
+<h3 id="nested-lists">Nested lists</h3>
+<p>To nest a list, add a list as sub-item immediately after a <code>.list-item</code>:</p>
+<div class="fbx-snippet-demo">
+    <div class="flex-row-fluid align-cols-center">
+        <div class="card flat col-12 col-md-8 col-lg-5">
+            <ul class="list">
+                <li class="list-item">Item 1</li>
+                <li class="list-item">Item 2</li>
+                <li>
+                    <span class="list-item">Item 3</span>
+                    <ul>
+                        <li class="list-item">Nested 1</li>
+                        <li class="list-item">Nested 2</li>
+                        <li class="list-item">Nested 3</li>
+                        <li class="list-item">Nested 4</li>
+                    </ul>
+                </li>
+                <li class="list-item">Item 4</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;ul class="list"&gt;
+    &lt;li class="list-item"&gt;Item 1&lt;/li&gt;
+    &lt;li class="list-item"&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;
+        &lt;span class="list-item"&gt;Item 3&lt;/span&gt;
+        &lt;ul&gt;
+            &lt;li class="list-item"&gt;Nested 1&lt;/li&gt;
+            &lt;li class="list-item"&gt;Nested 2&lt;/li&gt;
+            &lt;li class="list-item"&gt;Nested 3&lt;/li&gt;
+            &lt;li class="list-item"&gt;Nested 4&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li class="list-item"&gt;Item 4&lt;/li&gt;
 &lt;/ul&gt;</code></pre>
 <hr />
 <h3 id="list-contents">List contents</h3>
@@ -367,19 +405,19 @@
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list">
-                <li>
+                <li class="list-item">
                     <div class="item-body">
                         <div class="item-title">Amet proident.</div>
                         <div class="item-subtitle">Officia cillum nisi ea velit.</div>
                     </div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-body">
                         <div class="item-title">Lorem ipsum sed ut mollit.</div>
                         <div class="item-subtitle">Ex excepteur adipisicing laboris.</div>
                     </div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-body">
                         <div class="item-title">Minim velit laboris in aliquip.</div>
                         <div class="item-subtitle">Esse et cillum magna.</div>
@@ -390,10 +428,10 @@
     </div>
 </div>
 <pre><code class="html language-html">&lt;ul class="list"&gt;
-    &lt;li&gt;
+    &lt;li class="list-item"&gt;
         &lt;div class="item-body"&gt;
-            &lt;div class="item-title"&gt;List Item&lt;/div&gt;
-            &lt;div class="item-subtitle"&gt;Secondary text&lt;/div&gt;
+            &lt;div class="item-title"&gt;Amet proident.&lt;/div&gt;
+            &lt;div class="item-subtitle"&gt;Officia cillum nisi ea velit.&lt;/div&gt;
         &lt;/div&gt;
     &lt;/li&gt;
     ...
@@ -403,32 +441,32 @@
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list"> 
-                <li>
+                <li class="list-item">
                     <div class="item-left"><span class="fa fa-inbox color-gray-500"></span></div>
                     <div class="item-body">Inbox</div>
                     <div class="item-right"><span class="label">4</span></div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-left"><span class="fa fa-flag color-gray-500"></span></div>
                     <div class="item-body">Flagged</div>
                     <div class="item-right"><span class="label">23</span></div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-left"><span class="fa fa-note-sticky color-gray-500"></span></div>
                     <div class="item-body">Drafts</div>
                     <div class="item-right"><span class="label">3</span></div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-left"><span class="fa fa-paper-plane color-gray-500"></span></div>
                     <div class="item-body">Sent</div>
                     <div class="item-right"><span class="status status-xs"></span></div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-left"><span class="fa fa-circle-minus color-gray-500"></span></div>
                     <div class="item-body">Junk</div>
                     <div class="item-right"><span class="status status-xs status-warning"></span></div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-left"><span class="fa fa-trash color-gray-500"></span></div>
                     <div class="item-body">Trash</div>
                     <div class="item-right"><span class="status status-xs status-danger"></span></div>
@@ -438,7 +476,7 @@
     </div>
 </div>
 <pre><code class="html language-html">&lt;ul class="list"&gt; 
-    &lt;li&gt;
+    &lt;li class="list-item"&gt;
         &lt;div class="item-left"&gt;&lt;span class="fa fa-inbox color-gray-500"&gt;&lt;/span&gt;&lt;/div&gt;
         &lt;div class="item-body"&gt;Inbox&lt;/span&gt;
         &lt;div class="item-right"&gt;&lt;span class="label"&gt;4&lt;/span&gt;&lt;/div&gt;
@@ -449,7 +487,7 @@
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list"> 
-                <li>
+               <li class="list-item">
                     <div class="item-left">
                         <div class="avatar">
                             <img data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" />
@@ -460,7 +498,7 @@
                         <div class="item-subtitle">Strong economy, secure borders, less regulation! MAGA!!!</div>
                     </div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-left">
                         <div class="avatar">
                             <img data-src="../../assets/img/elon_avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/elon_avatar.jpg" />
@@ -471,7 +509,7 @@
                         <div class="item-subtitle">🔥🔥</div>
                     </div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-left">
                         <div class="avatar">
                             <img data-src="../../assets/img/greg_avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/greg_avatar_thumb.jpg" />
@@ -487,7 +525,7 @@
     </div>
 </div>
 <pre><code class="html language-html">&lt;ul class="list"&gt; 
-    &lt;li&gt;
+    &lt;li class="list-item"&gt;
         &lt;div class="item-left"&gt;
             &lt;div class="avatar"&gt;
                 &lt;img data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" /&gt;
@@ -507,44 +545,44 @@
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list list-dense">
-                <li>Item 1</li>
-                <li>Item 2</li>
-                <li>Item 3</li>
-                <li>Item 4</li>
-                <li>Item 5</li>
-                <li>Item 6</li>
+                <li class="list-item">Item 1</li>
+                <li class="list-item">Item 2</li>
+                <li class="list-item">Item 3</li>
+                <li class="list-item">Item 4</li>
+                <li class="list-item">Item 5</li>
+                <li class="list-item">Item 6</li>
             </ul>
         </div>
     </div>
 </div>
 <pre><code class="html language-html">&lt;ul class="list list-dense"&gt;
-    &lt;li&gt;Item 1&lt;/li&gt;
-    &lt;li&gt;Item 2&lt;/li&gt;
-    &lt;li&gt;Item 3&lt;/li&gt;
-    &lt;li&gt;Item 4&lt;/li&gt;
-    &lt;li&gt;Item 5&lt;/li&gt;
-    &lt;li&gt;Item 6&lt;/li&gt;
+    &lt;li class="list-item"&gt;Item 1&lt;/li&gt;
+    &lt;li class="list-item"&gt;Item 2&lt;/li&gt;
+    &lt;li class="list-item"&gt;Item 3&lt;/li&gt;
+    &lt;li class="list-item"&gt;Item 4&lt;/li&gt;
+    &lt;li class="list-item"&gt;Item 5&lt;/li&gt;
+    &lt;li class="list-item"&gt;Item 6&lt;/li&gt;
 &lt;/ul&gt;</code></pre>
 <hr />
 <h3 id="list-overflow">List overflow</h3>
-<p>Adding the  <code>.list-ellipsis</code> modifier on <code>.list</code> enables text overflow ellipsis. Ensure your text is nested inside <code>.item-body</code> for this to work:</p>
+<p>Adding the <code>.list-ellipsis</code> modifier on <code>.list</code> enables text overflow ellipsis. Ensure your text is nested inside <code>.item-body</code> for this to work:</p>
 <div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list list-ellipsis">
-                <li>
+                <li class="list-item">
                     <div class="item-body">
                         <div class="item-title">Amet proident.</div>
                         <div class="item-subtitle">Officia cillum nisi ea velit.</div>
                     </div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-body">
                         <div class="item-title">Lorem ipsum sed ut mollit.</div>
                         <div class="item-subtitle">Lorem ipsum dolor anim commodo elit in consectetur tempor amet dolor quis dolore laborum proident irure in.</div>
                     </div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-body">
                         <div class="item-title">Minim velit laboris in aliquip.</div>
                         <div class="item-subtitle">Esse et cillum magna.</div>
@@ -554,13 +592,14 @@
         </div>
     </div>
 </div>
-<pre><code class="html language-html">&lt;ul class="list list-dense"&gt;
-    &lt;li&gt;Item 1&lt;/li&gt;
-    &lt;li&gt;Item 2&lt;/li&gt;
-    &lt;li&gt;Item 3&lt;/li&gt;
-    &lt;li&gt;Item 4&lt;/li&gt;
-    &lt;li&gt;Item 5&lt;/li&gt;
-    &lt;li&gt;Item 6&lt;/li&gt;
+<pre><code class="html language-html">&lt;ul class="list list-ellipsis"&gt;
+    &lt;li class="list-item"&gt;
+        &lt;div class="item-body"&gt;
+            &lt;div class="item-title"&gt;Amet proident.&lt;/div&gt;
+            &lt;div class="item-subtitle"&gt;Officia cillum nisi ea velit.&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    ...
 &lt;/ul&gt;</code></pre>
 <hr />
 <h3 id="list-controls">List controls</h3>
@@ -569,7 +608,7 @@
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list"> 
-                <li>
+                <li class="list-item">
                     <div class="item-left">
                         <div class="form-field">
                             <span class="checkbox checkbox-info">
@@ -582,7 +621,7 @@
                         <div class="item-title">The Don</div>
                     </div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-left">
                         <div class="form-field">
                             <span class="checkbox checkbox-info">
@@ -595,7 +634,7 @@
                         <div class="item-title">Elon Musk</div>
                     </div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-left">
                         <div class="form-field">
                             <span class="checkbox checkbox-info">
@@ -613,7 +652,7 @@
     </div>
 </div>
 <pre><code class="html language-html">&lt;ul class="list"&gt; 
-    &lt;li&gt;
+    &lt;li class="list-item"&gt;
         &lt;div class="item-left"&gt;
             &lt;div class="form-field"&gt;
                 &lt;span class="checkbox checkbox-info"&gt;
@@ -633,7 +672,7 @@
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list"> 
-                <li>
+                <li class="list-item">
                     <div class="item-left">
                         <div class="avatar">
                             <img data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" />
@@ -651,7 +690,7 @@
                         </div>
                     </div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-left">
                         <div class="avatar">
                             <img data-src="../../assets/img/elon_avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/elon_avatar.jpg" />
@@ -669,7 +708,7 @@
                         </div>
                     </div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-left">
                         <div class="avatar">
                             <img data-src="../../assets/img/greg_avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/greg_avatar_thumb.jpg" />
@@ -692,7 +731,7 @@
     </div>
 </div>
 <pre><code class="html language-html">&lt;ul class="list"&gt; 
-    &lt;li&gt;
+    &lt;li class="list-item"&gt;
         &lt;div class="item-left"&gt;
             &lt;div class="avatar"&gt;
                 &lt;img data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" /&gt;
@@ -719,25 +758,27 @@
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list">
-                <li>Default</li>
-                <li class="hover">hover</li>
-                <li>Default</li>
-                <li class="active">.active</li>
-                <li>Default</li>
-                <li class="selected">.selected</li>
-                <li>Default</li>
-                <li class="disabled">.disabled</li>
+                <li class="list-item">Default</li>
+                <li class="list-item hover">hover</li>
+                <li class="list-item">Default</li>
+                <li class="list-item active">.active</li>
+                <li class="list-item">Default</li>
+                <li class="list-item selected">.selected</li>
+                <li class="list-item">Default</li>
+                <li class="list-item disabled">.disabled</li>
             </ul>
         </div>
     </div>
 </div>
 <pre><code class="html language-html">&lt;ul class="list"&gt;
-    &lt;li&gt;Default&lt;/li&gt;
-    &lt;li class="hover"&gt;hover&lt;/li&gt;
-    &lt;li&gt;Default&lt;/li&gt;
-    &lt;li class="active"&gt;.active&lt;/li&gt;
-    &lt;li&gt;Default&lt;/li&gt;
-    &lt;li class="selected"&gt;.selected&lt;/li&gt;
+    &lt;li class="list-item"&gt;Default&lt;/li&gt;
+    &lt;li class="list-item hover"&gt;hover&lt;/li&gt;
+    &lt;li class="list-item"&gt;Default&lt;/li&gt;
+    &lt;li class="list-item active"&gt;.active&lt;/li&gt;
+    &lt;li class="list-item"&gt;Default&lt;/li&gt;
+    &lt;li class="list-item selected"&gt;.selected&lt;/li&gt;
+    &lt;li class="list-item"&gt;Default&lt;/li&gt;
+    &lt;li class="list-item disabled"&gt;.disabled&lt;/li&gt;
 &lt;/ul&gt;</code></pre>
 <hr />
 <h3 id="selected-lists">Selected lists</h3>
@@ -746,19 +787,19 @@
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list js-select-list">
-                <li class="selected">
+                <li class="list-item selected">
                     <div class="item-body">
                         <div class="item-title">Amet proident.</div>
                         <div class="item-subtitle">Officia cillum nisi ea velit.</div>
                     </div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-body">
                         <div class="item-title">Lorem ipsum sed ut mollit.</div>
                         <div class="item-subtitle">Ut duis reprehenderit ad.</div>
                     </div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-body">
                         <div class="item-title">Minim velit laboris in aliquip.</div>
                         <div class="item-subtitle">Esse et cillum magna.</div>
@@ -769,19 +810,19 @@
     </div>
 </div>
 <pre><code class="html language-html"> &lt;ul class="list js-select-list"&gt;
-    &lt;li class="selected"&gt;
+    &lt;li class="list-item selected"&gt;
         &lt;div class="item-body"&gt;
             &lt;div class="item-title"&gt;Amet proident.&lt;/div&gt;
             &lt;div class="item-subtitle"&gt;Officia cillum nisi ea velit.&lt;/div&gt;
         &lt;/div&gt;
     &lt;/li&gt;
-    &lt;li&gt;
+    &lt;li class="list-item"&gt;
         &lt;div class="item-body"&gt;
             &lt;div class="item-title"&gt;Lorem ipsum sed ut mollit.&lt;/div&gt;
             &lt;div class="item-subtitle"&gt;Ut duis reprehenderit ad.&lt;/div&gt;
         &lt;/div&gt;
     &lt;/li&gt;
-    &lt;li&gt;
+    &lt;li class="list-item"&gt;
         &lt;div class="item-body"&gt;
             &lt;div class="item-title"&gt;Minim velit laboris in aliquip.&lt;/div&gt;
             &lt;div class="item-subtitle"&gt;Esse et cillum magna.&lt;/div&gt;
@@ -831,32 +872,32 @@ list.addEventListener('list:selected', event =&gt;
             }
         </style>
         <ul class="list custom-list col-12 col-md-8 col-lg-5"> 
-            <li>
+            <li class="list-item">
                 <span class="item-left"><span class="fa fa-inbox color-gray-800"></span></span>
                 <span class="item-body">Inbox</span>
                 <span class="item-right"><span class="label bg-gray-800">4</span></span>
             </li>
-            <li>
+            <li class="list-item">
                 <span class="item-left"><span class="fa fa-flag color-gray-800"></span></span>
                 <span class="item-body">Flagged</span>
                 <span class="item-right"><span class="label bg-gray-800">23</span></span>
             </li>
-            <li>
+            <li class="list-item">
                 <span class="item-left"><span class="fa fa-note-sticky color-gray-800"></span></span>
                 <span class="item-body">Drafts</span>
                 <span class="item-right"><span class="label bg-gray-800">3</span></span>
             </li>
-            <li>
+            <li class="list-item">
                 <span class="item-left"><span class="fa fa-paper-plane color-gray-800"></span></span>
                 <span class="item-body">Sent</span>
                 <span class="item-right"><span class="status status-xs bg-gray-800"></span></span>
             </li>
-            <li>
+            <li class="list-item">
                 <span class="item-left"><span class="fa fa-circle-minus color-gray-800"></span></span>
                 <span class="item-body">Junk</span>
                 <span class="item-right"><span class="status status-xs status-warning"></span></span>
             </li>
-            <li>
+            <li class="list-item">
                 <span class="item-left"><span class="fa fa-trash color-gray-800"></span></span>
                 <span class="item-body">Trash</span>
                 <span class="item-right"><span class="status status-xs status-danger"></span></span>
@@ -891,7 +932,7 @@ $list-item-bg-selected:         var(--fbx-theme-info) !default;
 $list-item-pad-y:               10px !default;
 $list-item-pad-x:               12px !default;
 $list-divider-color:            var(--fbx-gray-200) !default;
-$list-divider-space:            5px;</code></pre>
+$list-divider-space:            5px !default;</code></pre>
 <pre><code class="file-path language-file-path">scss/components/list.scss</code></pre>
 <pre><code class="css language-css">.list {
     --fbx-list-bg: var(--fbx-white);
