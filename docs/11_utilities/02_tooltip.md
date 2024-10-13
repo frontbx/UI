@@ -15,8 +15,9 @@ Frontbx comes with a simple CSS tooltip that's easy to use. Simple add the `.too
 Then add the content you want displayed as the `data-tooltip` attribute.
 
 <div class="fbx-snippet-demo">
-    <div class="container-fuid text-center">
+    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn tooltipped tooltipped-n" data-tooltip="Hello World!">.tooltipped</button>
+        <button class="btn tooltipped tooltipped-n tooltipped-no-arrow" data-tooltip="Hello World!">.tooltipped-no-arrow</button>
     </div>
 </div>
 
