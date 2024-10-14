@@ -11473,6 +11473,56 @@ Container.singleton('_', _);
 (function()
 {
     /**
+     * JS Helper reference
+     * 
+     * @var {object}
+     */
+    const [is_htmlElement, dom_element, remove_class] = frontbx.import(['is_htmlElement', 'dom_element', 'remove_class']).from('_');
+
+    /**
+     * Create popover.
+     * 
+     * @param  {object} options
+     * @return {Object}
+     */
+    function popover(options)
+    {
+        if (typeof options.content === 'string')
+        {
+            let contents = [];
+
+            if (options.title)
+            {
+                contents.push(dom_element({tag: 'h5', class: 'popover-title'}, null, options.title));
+            }
+
+            contents.push(dom_element({tag: 'div', class: 'popover-content'}, null, dom_element({tag: 'p'}, null, options.content)));
+
+            options.content = contents;
+        }
+        else if (is_htmlElement(options.content))
+        {
+            remove_class(options.content, 'hidden');
+
+            options.content.style = '';
+        }
+
+        let handler = frontbx.get('PopHandler', options);
+
+        handler.render();
+
+        console.log(handler);
+
+        return handler;
+    }
+
+    // Load into container 
+    frontbx.set('Popover', popover);
+
+})();
+(function()
+{
+    /**
      * Cached helper functions.
      * 
      * @var {functions}
@@ -13903,6 +13953,7 @@ Container.singleton('_', _);
         direction: 'top',
         animation: 'pop',
         variant: 'default',
+        state: 'open',
         classes: '',
     };
 
@@ -13916,8 +13967,8 @@ Container.singleton('_', _);
     const PopHandler = function(options)
     {
         this.options    = {...DEFAULT_OPTIONS, ...options};
-        this.popElement = this.buildPopEl();
-        this.state      = 'inactive';
+        this.popElement = this._buildPopEl();
+        this.state      = this.options.state;
     }
 
     /**
@@ -13929,13 +13980,49 @@ Container.singleton('_', _);
     {
         document.body.appendChild(this.popElement);
 
-        this.stylePop();
+        this.position();
 
-        this.popElement.classList.add(`popover-${this.options.animation}`);
-
-        this.state = 'active';
+        if (this.state === 'open') this.popElement.classList.add(`popover-${this.options.animation}`);
 
         return this.popElement;
+    }
+
+    /**
+     * Destroy the popover.
+     *
+     * @access {public}
+     */
+    PopHandler.prototype.destroy = function()
+    {
+        if (in_dom(this.popElement)) this.popElement.parentNode.removeChild(this.popElement);
+    }
+
+    /**
+     * Destroy the popover.
+     *
+     * @access {public}
+     */
+    PopHandler.prototype.hide = function()
+    {
+        this.popElement.classList.remove(`popover-${this.options.animation}`);
+
+        this.popElement.classList.add(`sr-only`);
+
+        this.state = 'closed';
+    }
+
+    /**
+     * Destroy the popover.
+     *
+     * @access {public}
+     */
+    PopHandler.prototype.show = function()
+    {
+        this.popElement.classList.remove(`sr-only`);
+        
+        this.popElement.classList.add(`popover-${this.options.animation}`);
+
+        this.state = 'open';
     }
 
     /**
@@ -13943,21 +14030,9 @@ Container.singleton('_', _);
      *
      * @access {private}
      */
-    PopHandler.prototype.buildPopEl = function()
+    PopHandler.prototype._buildPopEl = function()
     {
         return dom_element({tag: 'div', class: `popover popover-${this.options.variant} popover-${this.options.direction} ${this.options.classes}`}, null, this.options.content);
-    }
-
-    /**
-     * Remove the popover
-     *
-     * @access {public}
-     */
-    PopHandler.prototype.remove = function()
-    {
-        if (in_dom(this.popElement)) this.popElement.parentNode.removeChild(this.popElement);
-
-        this.state = 'inactive';
     }
 
     /**
@@ -13965,7 +14040,7 @@ Container.singleton('_', _);
      *
      * @access {public}
      */
-    PopHandler.prototype.stylePop = function()
+    PopHandler.prototype.position = function()
     {
         var tarcoordinates = coordinates(this.options.trigger);
 
@@ -14013,7 +14088,7 @@ Container.singleton('_', _);
      * 
      * @var {object}
      */
-    const [attr, is_undefined, to_camel_case, dom_element, find, find_all, add_class, on, closest, has_class, is_empty, remove_class, off, each, extend] = frontbx.import(['attr','is_undefined','to_camel_case','dom_element','find','find_all','add_class','on','closest','has_class','is_empty','remove_class','off','each','extend']).from('_');
+    const [attr, is_undefined, is_htmlElement, to_camel_case, dom_element, find, find_all, add_class, on, closest, has_class, is_empty, remove_class, off, each, map, extend] = frontbx.import(['attr','is_undefined','is_htmlElement','to_camel_case','dom_element','find','find_all','add_class','on','closest','has_class','is_empty','remove_class','off','each','map','extend']).from('_');
 
     /**
      * Timer for mouse in-out.
@@ -14034,7 +14109,7 @@ Container.singleton('_', _);
      * 
      * @var {Array}
      */
-    const DATA_ATTRIBUTES = ['variant','direction','title','content','event','animation'];
+    const DATA_ATTRIBUTES = ['variant','direction','title','content','event','animation','state','trigger'];
 
     /**
      * Popover
@@ -14043,7 +14118,7 @@ Container.singleton('_', _);
      * @copyright {Joe J. Howard}
      * @license   {https://raw.githubusercontent.comfrontbx/uimaster/LICENSE}
      */
-    const Popover = function()
+    const Popovers = function()
     {
         this.super('.js-popover');
 
@@ -14056,7 +14131,7 @@ Container.singleton('_', _);
      * @access {private}
      * @param  {DOMElement} trigger Click/hover trigger
      */
-    Popover.prototype.bind = function(trigger)
+    Popovers.prototype.bind = function(trigger)
     {
         if (!this._windowClick)
         {
@@ -14065,9 +14140,7 @@ Container.singleton('_', _);
             this._windowClick = true;
         }
 
-        let options = {trigger};
-        let elem;
-        let pop;
+        let options = { trigger };
 
         each(DATA_ATTRIBUTES, (i, attribute) =>
         {
@@ -14078,17 +14151,39 @@ Container.singleton('_', _);
                 if (value === 'true' || value === 'false') value = value === 'true' ? true : false;
 
                 if (attribute === 'content' && value[0] === '#')
-                {                    
-                    elem = find(value);
-
-                    value = elem;
+                {
+                    value = find(value);
                 }
 
                 options[to_camel_case(attribute)] = value;
             }
         });
 
-        if (!elem)
+        let popHandler = frontbx.get('PopHandler', this._build(options));
+
+        if (options.event === 'click')
+        {
+            on(trigger, 'click', this._clickHandler, this);
+            on(window, 'resize', this._windowResize, this);
+        }
+        else
+        {                
+            on(trigger, 'mouseenter', this._hoverEnter, this);
+        }
+
+        POP_HANDLERS.set(trigger, popHandler);
+    }
+
+    /**
+     * Builds the popover if necessary.
+     *
+     * @access {private}
+     * @param  {Object} options
+     * @return {Object}
+     */
+    Popovers.prototype._build = function(options)
+    {
+        if (typeof options.content === 'string')
         {
             let contents = [];
 
@@ -14108,26 +14203,14 @@ Container.singleton('_', _);
 
             options.content = contents;
         }
-        else
+        else if (is_htmlElement(options.content))
         {
-            remove_class(elem, 'hidden');
-            
-            elem.style = '';
+            remove_class(options.content, 'hidden');
+
+            options.content.style = '';
         }
 
-        let popHandler = frontbx.get('PopHandler', options);
-
-        if (options.event === 'click')
-        {
-            on(trigger, 'click', this._clickHandler, this);
-            on(window, 'resize', this._windowResize, this);
-        }
-        else
-        {                
-            on(trigger, 'mouseenter', this._hoverEnter, this);
-        }
-
-        POP_HANDLERS.set(trigger, popHandler);
+        return options;
     }
 
     /**
@@ -14136,7 +14219,7 @@ Container.singleton('_', _);
      * @param {trigger} node
      * @access {private}
      */
-    Popover.prototype.unbind = function(trigger)
+    Popovers.prototype.unbind = function(trigger)
     {
         if (this._windowClick)
         {
@@ -14149,13 +14232,13 @@ Container.singleton('_', _);
 
         if (content[0] === '#')
         {
-            content = find(content);
+            elem = find(content);
             
-            if (content)
+            if (elem)
             {
-                content.style.display = 'none';
+                elem.style.display = 'none';
 
-                document.body.appendChild(content);
+                document.body.appendChild(elem);
             }
         }
 
@@ -14182,7 +14265,7 @@ Container.singleton('_', _);
      *
      * @access {private}
      */
-    Popover.prototype._hoverEnter = function(e, trigger)
+    Popovers.prototype._hoverEnter = function(e, trigger)
     {
         if (has_class(trigger, 'popped')) return;
 
@@ -14202,7 +14285,7 @@ Container.singleton('_', _);
      *
      * @access {private}
      */
-    Popover.prototype._hoverLeave = function(e, trigger)
+    Popovers.prototype._hoverLeave = function(e, trigger)
     {
         clearTimeout(HOVER_TIMER);
 
@@ -14211,7 +14294,7 @@ Container.singleton('_', _);
         {
             for (let [_trigger, handler] of POP_HANDLERS)
             {
-                if (handler.el === trigger) trigger = handler.trigger;
+                if (handler.popElement === trigger) trigger = handler.options.trigger;
             }
         }
 
@@ -14229,7 +14312,7 @@ Container.singleton('_', _);
      *
      * @access {private}
      */
-    Popover.prototype._hoverPop = function(e, pop)
+    Popovers.prototype._hoverPop = function(e, pop)
     {
         clearTimeout(HOVER_TIMER);
 
@@ -14241,12 +14324,11 @@ Container.singleton('_', _);
      *
      * @access {private}
      */
-    Popover.prototype._windowResize = function()
+    Popovers.prototype._windowResize = function()
     {
         for (let [trigger, handler] of POP_HANDLERS)
         {
-            if (handler.state === 'active') handler.stylePop();
-
+            if (handler.state === 'active') handler.position();
         }
     }
 
@@ -14256,11 +14338,11 @@ Container.singleton('_', _);
      * @param {event|null} e JavaScript click event
      * @access {private}
      */
-    Popover.prototype._killPop = function(trigger)
+    Popovers.prototype._killPop = function(trigger)
     {            
         let handler = POP_HANDLERS.get(trigger);
 
-        handler.remove();
+        handler.destroy();
         
         remove_class(trigger, 'popped');
     }
@@ -14271,7 +14353,7 @@ Container.singleton('_', _);
      * @param {event|null} e JavaScript click event
      * @access {private}
      */
-    Popover.prototype._clickHandler = function(e, trigger)
+    Popovers.prototype._clickHandler = function(e, trigger)
     {
         e = e || window.event;
 
@@ -14283,7 +14365,7 @@ Container.singleton('_', _);
         {
             this._removeAll(trigger);
             
-            popHandler.remove();
+            popHandler.destroy();
             
             remove_class(trigger, 'popped');
         }
@@ -14302,7 +14384,7 @@ Container.singleton('_', _);
      *
      * @access {private}
      */
-    Popover.prototype._windowClickHandler = function(e)
+    Popovers.prototype._windowClickHandler = function(e)
     {        
         let clicked = e.target;
 
@@ -14334,13 +14416,13 @@ Container.singleton('_', _);
      *
      * @access {private}
      */
-    Popover.prototype._removeAll = function(exception)
+    Popovers.prototype._removeAll = function(exception)
     {        
         for (let [trigger, handler] of POP_HANDLERS)
         {
             if (!exception || (exception && trigger !== exception))
             {
-                handler.remove();
+                handler.destroy();
 
                 remove_class(trigger, 'popped');
             }
@@ -14348,7 +14430,7 @@ Container.singleton('_', _);
     }
 
     // Load into frontbx DOM core
-    frontbx.dom().register('Popover', extend(Component, Popover));
+    frontbx.dom().register('DOM_Popovers', extend(Component, Popovers));
 
 }());
 

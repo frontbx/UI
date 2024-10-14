@@ -1521,3 +1521,59 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     }, () => inserted = false);
 
 }());
+
+/**
+ * Popover insert demo
+ *
+ */
+(function()
+{
+    const [on] = frontbx.import(['on']).from('_');
+
+    let popover;
+
+    let options =
+    {
+        min: 0,
+        max: 100,
+        value: 50,
+        step: 1,
+        labeled: false,
+        indicators: false,
+    };
+
+    frontbx.DocsDemo('.js-docs-popover-trigger', (e, btn) =>
+    {
+        if (!popover)
+        {
+            popover = frontbx.Popover(
+            {
+                variant: 'info',
+                direction: 'top-left',
+                animation: 'fade',
+                title: 'Hello World!',
+                content: 'Laboris nostrud excepteur nostrud sit anim eiusmod occaecat in elit reprehenderit ex ad occaecat anim sint irure est sunt.',
+                event: 'click',
+                classes: 'my-popover',
+                trigger: btn
+            });
+
+            window.addEventListener('click', () =>
+            {
+                
+            });
+        }
+    });
+
+    on(window, 'frontbx:pjax:start', () => 
+    {
+        if (popover)
+        {
+            popover.destroy();
+
+            popover = null;
+        }
+    });
+
+}());
+

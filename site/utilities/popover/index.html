@@ -330,11 +330,13 @@
 <hr />
 <ul>
 <li><a href="#markup">Markup</a></li>
+<li><a href="#event">Event</a></li>
 <li><a href="#direction">Direction</a></li>
 <li><a href="#animation">Animation</a></li>
 <li><a href="#variants">Variants</a></li>
 <li><a href="#contents">Contents</a></li>
 <li><a href="#markup">Options</a></li>
+<li><a href="#javascript-instantiation">JavaScript Instantiation</a></li>
 <li><a href="#css-customization">CSS Customization</a></li>
 </ul>
 <hr />
@@ -345,7 +347,6 @@
         <button class="btn js-popover"
             data-popover-title="Popover Title"
             data-popover-content="Aliqua commodo fugiat pariatur fugiat est dolor ut cillum dolore esse aliquip voluptate dolore labore."
-            data-popover-direction="top"
             data-popover-event="click">Toggle popover</button>
     </div>
 </div>
@@ -353,8 +354,25 @@
     class="btn js-popover"
     data-popover-title="Popover Title"
     data-popover-content="Aliqua commodo..."
-    data-popover-direction="top"
     data-popover-event="click"&gt;Toggle popover&lt;/button&gt;</code></pre>
+<hr />
+<h3 id="event">Event</h3>
+<p>Popovers be toggled by either hovering or clicking on the anchor element by setting the <code>data-popover-event</code> attribute to <code>hover</code> or <code>click</code>:</p>
+<div class="fbx-snippet-demo">
+    <div class="flex-row-fluid align-cols-center col-gaps-xs">
+        <button class="btn js-popover"
+            data-popover-title="Popover Title"
+            data-popover-content="Aliqua commodo fugiat pariatur fugiat est dolor ut cillum dolore esse aliquip voluptate dolore labore."
+            data-popover-event="click">Click toggle popover</button>
+        <button class="btn js-popover"
+            data-popover-title="Popover Title"
+            data-popover-content="Aliqua commodo fugiat pariatur fugiat est dolor ut cillum dolore esse aliquip voluptate dolore labore."
+            data-popover-event="hover">Hover toggle popover</button>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;button class="btn js-popover" data-popover-event="click" ...&gt;Toggle popover&lt;/button&gt;
+
+&lt;button class="btn js-popover" data-popover-event="hover" ...&gt;Toggle popover&lt;/button&gt;</code></pre>
 <hr />
 <h3 id="direction">Direction</h3>
 <p>Use the <code>data-popover-direction</code> option to set a popover in the desired position on the screen: Available directions are:  <code>top-left</code> <code>top</code> <code>top-right</code> <code>left</code> <code>right</code> <code>bottom-left</code> <code>bottom</code> <code>top-right</code></p>
@@ -469,6 +487,7 @@
     </div>
 </div>
 <pre><code class="html language-html">&lt;button class="btn js-popover" data-popover-variant="primary"...&gt;Toggle popover&lt;/button&gt;</code></pre>
+<hr />
 <h3 id="contents">Contents</h3>
 <p>For basic HTML string content, simply use the <code>data-popover-content</code> and <code>data-popover-title</code> attributes with any required string content to populate the popover.</p>
 <p>For more complex requirements point to the id of a hidden target element element in the DOM with the <code>data-popover-content</code> attribute. Remember to always include the <code>#</code> character before the ID as this differentiates it from it being interpenetrated as a string.</p>
@@ -537,6 +556,41 @@
 </tr>
 </tbody>
 </table>
+<hr />
+<h3 id="javascript-instantiation">JavaScript Instantiation</h3>
+<p>In cases where a popover is required through JavaScript, popovers can be created dynamically. There are a few minor differences in the options which are outlined below:</p>
+<ol>
+<li>An additional <code>state</code> value is available which can either be <code>open</code> or <code>closed</code>.</li>
+<li>An additional mandatory <code>trigger</code> value must be provided as <code>HTMLElement</code> which will be used as reference point for positioning the popover.</li>
+<li>The <code>content</code> value can be provided as either a <code>String</code>, <code>DOMElement</code>, or HTML <code>NodeList</code>:</li>
+</ol>
+<pre><code class="JavaScript language-JavaScript">let options =
+{
+    variant: 'info',
+    direction: 'top-left',
+    animation: 'fade',
+    title: 'Hello World!',
+    content: '...',
+    event: 'click',
+    classes: 'my-popover',
+    trigger: find('.js-reference-element')
+};
+
+let popover = frontbx.Popover(options);</code></pre>
+<div class="fbx-snippet-demo">
+    <div class="flex-row-fluid align-cols-center col-gaps-xs">
+        <button class="btn js-docs-popover-trigger">Toggle popover</button>
+    </div>
+</div>
+<p>Once you have reference to a Popover instance the following methods are made available:</p>
+<p>The <code>hide</code> method hides the popover:</p>
+<pre><code class="JavaScript language-JavaScript">popover.destroy();</code></pre>
+<p>The <code>show</code> method shows the popover:</p>
+<pre><code class="JavaScript language-JavaScript">popover.destroy();</code></pre>
+<p>The <code>position</code> method positions the popover relative to the anchor element:</p>
+<pre><code class="JavaScript language-JavaScript">popover.position();</code></pre>
+<p>Finally, the <code>destroy</code> method destroys the popover:</p>
+<pre><code class="JavaScript language-JavaScript">popover.destroy();</code></pre>
 <hr />
 <h3 id="css-customization">CSS Customization</h3>
 <p>Popovers use local CSS variables on <code>.popover</code> for enhanced component customization and styling. The base values are used by the UI to create all the variants. Values for the CSS variables are set via Sass, so pre-compilation customization is still supported too.</p>

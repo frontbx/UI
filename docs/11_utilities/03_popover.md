@@ -5,11 +5,13 @@ Similar to tooltip, popover allows you to display helper content and information
 ---
 
 *   [Markup](#markup)
+*   [Event](#event)
 *   [Direction](#direction)
 *   [Animation](#animation)
 *   [Variants](#variants)
 *   [Contents](#contents)
 *   [Options](#markup)
+*   [JavaScript Instantiation](#javascript-instantiation)
 *   [CSS Customization](#css-customization)
 
 ---
@@ -23,7 +25,6 @@ Popovers can be instantiated automatically via HTML through a combination of cla
         <button class="btn js-popover"
             data-popover-title="Popover Title"
             data-popover-content="Aliqua commodo fugiat pariatur fugiat est dolor ut cillum dolore esse aliquip voluptate dolore labore."
-            data-popover-direction="top"
             data-popover-event="click">Toggle popover</button>
     </div>
 </div>
@@ -33,8 +34,32 @@ Popovers can be instantiated automatically via HTML through a combination of cla
     class="btn js-popover"
     data-popover-title="Popover Title"
     data-popover-content="Aliqua commodo..."
-    data-popover-direction="top"
     data-popover-event="click">Toggle popover</button>
+```
+
+---
+
+### Event
+
+Popovers be toggled by either hovering or clicking on the anchor element by setting the `data-popover-event` attribute to `hover` or `click`:
+
+<div class="fbx-snippet-demo">
+    <div class="flex-row-fluid align-cols-center col-gaps-xs">
+        <button class="btn js-popover"
+            data-popover-title="Popover Title"
+            data-popover-content="Aliqua commodo fugiat pariatur fugiat est dolor ut cillum dolore esse aliquip voluptate dolore labore."
+            data-popover-event="click">Click toggle popover</button>
+        <button class="btn js-popover"
+            data-popover-title="Popover Title"
+            data-popover-content="Aliqua commodo fugiat pariatur fugiat est dolor ut cillum dolore esse aliquip voluptate dolore labore."
+            data-popover-event="hover">Hover toggle popover</button>
+    </div>
+</div>
+
+```html
+<button class="btn js-popover" data-popover-event="click" ...>Toggle popover</button>
+
+<button class="btn js-popover" data-popover-event="hover" ...>Toggle popover</button>
 ```
 
 ---
@@ -172,6 +197,8 @@ Popover comes pre-styled with Frontbx's default contextual values set through th
 <button class="btn js-popover" data-popover-variant="primary"...>Toggle popover</button>
 ```
 
+---
+
 ### Contents
 
 For basic HTML string content, simply use the `data-popover-content` and `data-popover-title` attributes with any required string content to populate the popover.
@@ -215,6 +242,65 @@ Data attributes placed on the anchor element define various behavior of the popo
 | `data-popover-classes`   | `String`                                                                             | Any additional class-names to pass over the popover element.                                           |
 
 ---
+
+### JavaScript Instantiation
+
+In cases where a popover is required through JavaScript, popovers can be created dynamically. There are a few minor differences in the options which are outlined below:
+
+1. An additional `state` value is available which can either be `open` or `closed`.
+2. An additional mandatory `trigger` value must be provided as `HTMLElement` which will be used as reference point for positioning the popover.
+3. The `content` value can be provided as either a `String`, `DOMElement`, or HTML `NodeList`:
+
+```JavaScript
+let options =
+{
+    variant: 'info',
+    direction: 'top-left',
+    animation: 'fade',
+    title: 'Hello World!',
+    content: '...',
+    event: 'click',
+    classes: 'my-popover',
+    trigger: find('.js-reference-element')
+};
+
+let popover = frontbx.Popover(options);
+```
+
+<div class="fbx-snippet-demo">
+    <div class="flex-row-fluid align-cols-center col-gaps-xs">
+        <button class="btn js-docs-popover-trigger">Toggle popover</button>
+    </div>
+</div>
+
+Once you have reference to a Popover instance the following methods are made available:
+
+The `hide` method hides the popover:
+
+```JavaScript
+popover.destroy();
+```
+
+The `show` method shows the popover:
+
+```JavaScript
+popover.destroy();
+```
+
+The `position` method positions the popover relative to the anchor element:
+
+```JavaScript
+popover.position();
+```
+
+Finally, the `destroy` method destroys the popover:
+
+```JavaScript
+popover.destroy();
+```
+
+---
+
 
 ### CSS Customization
 

@@ -17,6 +17,7 @@
         direction: 'top',
         animation: 'pop',
         variant: 'default',
+        state: 'open',
         classes: '',
     };
 
@@ -30,8 +31,8 @@
     const PopHandler = function(options)
     {
         this.options    = {...DEFAULT_OPTIONS, ...options};
-        this.popElement = this.buildPopEl();
-        this.state      = 'inactive';
+        this.popElement = this._buildPopEl();
+        this.state      = this.options.state;
     }
 
     /**
@@ -43,13 +44,49 @@
     {
         document.body.appendChild(this.popElement);
 
-        this.stylePop();
+        this.position();
 
-        this.popElement.classList.add(`popover-${this.options.animation}`);
-
-        this.state = 'active';
+        if (this.state === 'open') this.popElement.classList.add(`popover-${this.options.animation}`);
 
         return this.popElement;
+    }
+
+    /**
+     * Destroy the popover.
+     *
+     * @access {public}
+     */
+    PopHandler.prototype.destroy = function()
+    {
+        if (in_dom(this.popElement)) this.popElement.parentNode.removeChild(this.popElement);
+    }
+
+    /**
+     * Destroy the popover.
+     *
+     * @access {public}
+     */
+    PopHandler.prototype.hide = function()
+    {
+        this.popElement.classList.remove(`popover-${this.options.animation}`);
+
+        this.popElement.classList.add(`sr-only`);
+
+        this.state = 'closed';
+    }
+
+    /**
+     * Destroy the popover.
+     *
+     * @access {public}
+     */
+    PopHandler.prototype.show = function()
+    {
+        this.popElement.classList.remove(`sr-only`);
+        
+        this.popElement.classList.add(`popover-${this.options.animation}`);
+
+        this.state = 'open';
     }
 
     /**
@@ -57,21 +94,9 @@
      *
      * @access {private}
      */
-    PopHandler.prototype.buildPopEl = function()
+    PopHandler.prototype._buildPopEl = function()
     {
         return dom_element({tag: 'div', class: `popover popover-${this.options.variant} popover-${this.options.direction} ${this.options.classes}`}, null, this.options.content);
-    }
-
-    /**
-     * Remove the popover
-     *
-     * @access {public}
-     */
-    PopHandler.prototype.remove = function()
-    {
-        if (in_dom(this.popElement)) this.popElement.parentNode.removeChild(this.popElement);
-
-        this.state = 'inactive';
     }
 
     /**
@@ -79,7 +104,7 @@
      *
      * @access {public}
      */
-    PopHandler.prototype.stylePop = function()
+    PopHandler.prototype.position = function()
     {
         var tarcoordinates = coordinates(this.options.trigger);
 

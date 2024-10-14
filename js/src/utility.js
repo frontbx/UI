@@ -9,5 +9,6 @@ import './utility/backdrop.js';
 import './utility/modal.js';
 import './utility/notification.js';
 import './utility/smooth-scroll.js';
+import './utility/popover.js';
 import './utility/input-mask.js';
 import './utility/form-validator.js';
