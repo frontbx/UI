@@ -16248,11 +16248,25 @@ Container.singleton('_', _);
 (function()
 {
     /**
+     * Component base
+     * 
+     * @var {class}
+     */
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
+
+    /**
      * JS Helper reference
      * 
      * @var {object}
      */
-    const Helper = frontbx._();
+    const [attr, extend] = frontbx.import(['attr','extend']).from('_');
+
+    /**
+     * Masks.
+     * 
+     * @var {Map}
+     */
+    const MASK_HANDLERS = new Map;
 
     /**
      * Input masker
@@ -16263,61 +16277,45 @@ Container.singleton('_', _);
      */
     const InputMasks = function()
     {
-        this._nodes = Helper.find_all('.js-mask');
-        
-        this._masks = [];
 
-        this._bind();
-
-        return this;
+        this.super('.js-mask');
     }
 
     /**
-     * Public destructor remove all masks
-     *
-     * @access {public}
-     */
-    InputMasks.prototype.destruct = function()
-    {
-        Helper.each(this._masks, function(i, mask)
-        {
-            mask.destroy();
-        });
-        
-        this._nodes = [];
-
-        this._masks = [];
-    }
-
-    /**
-     * Find all the nodes and apply any masks
+     * Event binder - Binds all events on button click
      *
      * @access {private}
      */
-    InputMasks.prototype._bind = function()
+    InputMasks.prototype.bind = function(node)
     {
-        // Find all the nodes
-        Helper.each(this._nodes, function(i, input)
+        let mask = attr(node, 'data-mask');
+
+        let format = attr(node, 'data-format');
+
+        if (mask && mask.startsWith('regex(')) mask = mask.trim().replace('regex(', '').slice(0, -1);
+
+        if (mask)
         {
-            let mask = Helper.attr(input, 'data-mask');
+            MASK_HANDLERS.set(node, frontbx.InputMasker(node, mask, format));
+        }
+    }
 
-            let format = Helper.attr(input, 'data-format');
+    /**
+     * Event unbinder - Removes all events on button click
+     *
+     * @access {private}
+     */
+    InputMasks.prototype.unbind = function(node)
+    {
+        let handler = MASK_HANDLERS.get(node);
 
-            if (mask && mask.startsWith('regex('))
-            {
-                mask = mask.trim().replace('regex(', '').slice(0, -1);
-            }
+        if (handler) handler.destroy();
 
-            if (mask)
-            {
-                this._masks.push(frontbx.InputMasker(input, mask, format));
-            }
-
-        }, this);
+        MASK_HANDLERS.delete(node);
     }
 
     // Load into frontbx DOM core
-    frontbx.dom().register('InputMasks', InputMasks);
+    frontbx.dom().register('InputMasks', extend(Component, InputMasks));
 
 })();
 (function()
