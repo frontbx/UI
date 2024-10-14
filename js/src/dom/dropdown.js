@@ -5,7 +5,7 @@
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -187,7 +187,7 @@
      * @inheritdoc
      * 
      */
-    Dropdown.prototype.template = function(props)
+    Dropdown.prototype.render = function(props)
     {
         return dom_element({tag: 'div', class: 'drop-container'}, null,
         [

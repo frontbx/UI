@@ -302,58 +302,122 @@ Create groups by wrapping a set of buttons in a `.btn-group` classed element.
 <div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <div class="btn-group floor-xs">
-            <button class="btn btn-icon" type="button">
-                <span class="fa fa-headphones icon-md"></span>
+            <button class="btn" type="button">
+                <span class="fa fa-bold icon-md"></span>
             </button>
-            <button class="btn btn-icon" type="button">
-                <span class="fa fa-headphones icon-md"></span>
+            <button class="btn" type="button">
+                <span class="fa fa-italic icon-md"></span>
             </button>
-            <button class="btn btn-icon" type="button">
-                <span class="fa fa-headphones icon-md"></span>
+            <button class="btn" type="button">
+                <span class="fa fa-underline icon-md"></span>
             </button>
-            <button class="btn btn-icon" type="button">
-                <span class="fa fa-headphones icon-md"></span>
-            </button>
-        </div>
-        <div class="col-12"></div>
-        <div class="btn-group btn-pill floor-xs">
-            <button class="btn btn-outline" type="button">
-                <span class="fa fa-headphones icon-md"></span>
-            </button>
-            <button class="btn btn-outline" type="button">
-                <span class="fa fa-headphones icon-md"></span>
-            </button>
-            <button class="btn btn-outline" type="button">
-                <span class="fa fa-headphones icon-md"></span>
-            </button>
-            <button class="btn btn-outline" type="button">
-                <span class="fa fa-headphones icon-md"></span>
+            <button class="btn" type="button">
+                <span class="fa fa-strikethrough icon-md"></span>
             </button>
         </div>
-        <div class="col-12"></div>
+        <div class="btn-group floor-xs">
+            <button class="btn btn-outline" type="button">
+                <span class="fa fa-bold icon-md"></span>
+            </button>
+            <button class="btn btn-outline" type="button">
+                <span class="fa fa-italic icon-md"></span>
+            </button>
+            <button class="btn btn-outline" type="button">
+                <span class="fa fa-underline icon-md"></span>
+            </button>
+            <button class="btn btn-outline" type="button">
+                <span class="fa fa-strikethrough icon-md"></span>
+            </button>
+        </div>
+        <div class="col-12 floor-xs"></div>
+        <div class="btn-group btn-group-pill">
+            <button class="btn" type="button">
+                <span class="fa fa-copy icon-md"></span>
+            </button>
+            <button class="btn" type="button">
+                <span class="fa fa-paste icon-md"></span>
+            </button>
+            <button class="btn" type="button">
+                <span class="fa fa-rotate-left icon-md"></span>
+            </button>
+            <button class="btn" type="button">
+                <span class="fa fa-rotate-right icon-md"></span>
+            </button>
+        </div>
+        <div class="btn-group btn-group-pill">
+            <button class="btn btn-outline" type="button">
+                <span class="fa fa-copy icon-md"></span>
+            </button>
+            <button class="btn btn-outline" type="button">
+                <span class="fa fa-paste icon-md"></span>
+            </button>
+            <button class="btn btn-outline" type="button">
+                <span class="fa fa-rotate-left icon-md"></span>
+            </button>
+            <button class="btn btn-outline" type="button">
+                <span class="fa fa-rotate-right icon-md"></span>
+            </button>
+        </div>
+        <div class="col-12 floor-xs"></div>
         <div class="btn-group">
             <button class="btn btn-pure" type="button">
-                <span class="fa fa-headphones icon-md"></span>
+                <span class="fa fa-align-left icon-md"></span>
             </button>
             <button class="btn btn-pure" type="button">
-                <span class="fa fa-headphones icon-md"></span>
+                <span class="fa fa-align-center icon-md"></span>
             </button>
             <button class="btn btn-pure" type="button">
-                <span class="fa fa-headphones icon-md"></span>
+                <span class="fa fa-align-justify icon-md"></span>
             </button>
             <button class="btn btn-pure" type="button">
-                <span class="fa fa-headphones icon-md"></span>
+                <span class="fa fa-align-right icon-md"></span>
+            </button>
+        </div>
+        <div class="btn-group">
+            <button class="btn btn-pure btn-outline" type="button">
+                <span class="fa fa-align-left icon-md"></span>
+            </button>
+            <button class="btn btn-pure btn-outline" type="button">
+                <span class="fa fa-align-center icon-md"></span>
+            </button>
+            <button class="btn btn-pure btn-outline" type="button">
+                <span class="fa fa-align-justify icon-md"></span>
+            </button>
+            <button class="btn btn-pure btn-outline" type="button">
+                <span class="fa fa-align-right icon-md"></span>
             </button>
         </div>
     </div>
 </div>
 
 ```html
+<!-- Noraml group -->
+<div class="btn-group">
+    
+    <!-- Regular button -->
+    <button class="btn">...</button>
 
-<div class="btn-group floor-xs">
-    ...
+    <!-- Pure button -->
+    <button class="btn btn-pure">...</button>
+
+    <!-- Outline button -->
+    <button class="btn btn-outline">...</button>
+
 </div>
 
+<!-- Pill style -->
+<div class="btn-group btn-group-pill">
+
+    <!-- Regular button -->
+    <button class="btn">...</button>
+
+    <!-- Pure button -->
+    <button class="btn btn-pure">...</button>
+
+    <!-- Outline button -->
+    <button class="btn btn-outline">...</button>
+
+</div>
 ```
 
 ---

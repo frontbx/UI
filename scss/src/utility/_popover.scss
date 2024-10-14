@@ -7,30 +7,20 @@
     --fbx-popover-radius: #{$popover-radius};
     --fbx-popover-pad-y: #{$popover-pad-y};
     --fbx-popover-pad-x: #{$popover-pad-x};
+    --fbx-popover-bg: #{$popover-bg};
+    --fbx-popover-color: #{$popover-color};
+    --fbx-popover-title-color: #{$popover-title-color};
+    --fbx-popover-title-border: #{$popover-title-border};
 
-    --fbx-popover-bg-light: #{$popover-bg-light};
-    --fbx-popover-color-light: #{$popover-color-light};
-    --fbx-popover-title-color-light: #{$popover-title-color-light};
-    --fbx-popover-title-border-light: #{$popover-title-border-light};
-
-    --fbx-popover-bg-dark: #{$popover-bg-dark};
-    --fbx-popover-color-dark: #{$popover-color-dark};
-    --fbx-popover-title-color-dark: #{$popover-title-color-dark};
-    --fbx-popover-title-border-dark: #{$popover-title-border-dark};
-
-    --fbx-popover-bg: none;
-    --fbx-popover-color: none;
-    --fbx-popover-title-color: none;
-    --fbx-popover-title-border: none;
     position: absolute;
     font-size: var(--fbx-popover-font-size);
     border-radius: var(--fbx-popover-radius);
     max-width: var(--fbx-popover-max-width);
     box-shadow: var(--fbx-popover-shadow);
-    @include raise(--fbx-popover-shadow, $popover-shadow, $black);
     background-color: var(--fbx-popover-bg);
     color: var(--fbx-popover-color);
     z-index: var(--fbx-zindex-popover);
+    @include raised($popover-shadow);
 
     .popover-title
     {
@@ -48,20 +38,6 @@
     }
     
     // Themes
-    &.dark
-    {
-        --fbx-popover-bg: var(--fbx-popover-bg-dark);
-        --fbx-popover-color: var(--fbx-popover-color-dark);
-        --fbx-popover-title-color: var(--fbx-popover-title-color-dark);
-        --fbx-popover-title-border: var(--fbx-popover-title-border-dark);
-    }
-    &.light
-    {
-        --fbx-popover-bg: var(--fbx-popover-bg-light);
-        --fbx-popover-color: var(--fbx-popover-color-light);
-        --fbx-popover-title-color: var(--fbx-popover-title-color-light);
-        --fbx-popover-title-border: var(--fbx-popover-title-border-light);
-    }
     p
     {
         padding: 0;
@@ -73,12 +49,36 @@
     }
     .close-btn
     {
+        --fbx-btn-icon-color: var(--fbx-gray-300);
         position: absolute;
         cursor: pointer;
-        top: 0;
-        right: 0;
-        width: 35px;
-        height: 35px;
+        top: 2px;
+        right: 5px;
+        width: 30px;
+        height: 30px;
+    }
+
+    // Variants
+    @each $context, $colors in $contexts
+    {    
+        $color: map-get($colors, "color");
+        $basename: _color-name-from-var($color);
+
+        &.popover-#{$context}
+        {
+            --fbx-popover-title-color: #ffffff;
+
+            .popover-title
+            {
+                background-color: #{$color};
+                border-color: #{$color};
+                font-weight: $text-bolder;
+            }
+            .close-btn
+            {
+                --fbx-btn-icon-color: var(--fbx-#{$basename}-800);
+            }
+        }
     }
 }
 
@@ -111,13 +111,14 @@
 .popover-fade
 {
     animation-name: popoverfade;
-    animation-duration: .3s;
+    animation-duration: .35s;
     animation-fill-mode: both;
+    animation-timing-function: ease;
 }
 
 .popover-pop
 {
     animation-name: popoverpop;
-    animation-duration: .1s;
+    animation-duration: .25s;
     animation-fill-mode: both;
 }

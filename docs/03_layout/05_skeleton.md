@@ -215,6 +215,8 @@ For multi-line text blocks, wrap skeletons in a `.skeleton-text-block` element.
                 <div class="skeleton"></div>
                 <div class="skeleton"></div>
                 <div class="skeleton"></div>
+                <div class="skeleton"></div>
+                <div class="skeleton"></div>
             </div>
         </div>
         <div class="col col-6 gutter-xxs gutter-l">

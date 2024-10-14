@@ -50,11 +50,10 @@
                     <span class="hamburger-patty"></span>
                     <span class="hamburger-bun  hamburger-bun--btm"></span>
                 </button>
-                <a class="nav-logo" href="/">
+                <span class="nav-logo" href="/" onclick="(() => window.location.href.includes('localhost') ? window.location.href = '/site' : window.location.href = '/ui')();">
                     <svg viewBox="0 0 1451 1451"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg>
                     <span class="logo-text md-inline-block lg-inline-block xl-inline-block">Frontbx</span>
-                </a>
-
+                </span>
                 <ul class="nav-menu flex-content-right">
                     <li class="lg xl">
                         <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Github">
@@ -362,14 +361,8 @@
 Ajax.post(url, data, success, error);</code></pre>
 <p>With named functions, as long as the function names are one of <code>success</code>, <code>error</code>, <code>complete</code>, <code>abort</code>, they can be provided in any order</p>
 <pre><code class="JavaScript language-JavaScript">Ajax.post(url, error, abort, success, complete, headers);</code></pre>
-<p>Additionally you can supply response handlers directly to an Ajax instance, this can be done either before or after the <code>XHR</code> call is made:</p>
-<pre><code class="JavaScript language-JavaScript">// After call
-Ajax.post(url, data).success((response) =&gt;
-{
-    // Do something here
-});
-
-// Before call
+<p>Additionally you can supply response handlers directly to an Ajax instance, this should be done before the <code>XHR</code> call is made:</p>
+<pre><code class="JavaScript language-JavaScript">// Before call
 Ajax.success((response) =&gt;
 {
     // Do something here
@@ -396,34 +389,32 @@ Ajax.success((response) =&gt;
 <pre><code class="JavaScript language-JavaScript">Ajax.success((response) =&gt;
 {
     // Do something here
-
-}).headers({foo: 'bar'}).post(url, data);</code></pre>
+})
+.headers({foo: 'bar'})
+.post(url, data);</code></pre>
 <p>If the <code>abort</code> method is called after an XHR call is made, the request will be immediately aborted. The <code>abort</code> and <code>error</code> handler with both be called:</p>
 <pre><code class="JavaScript language-JavaScript">Ajax.success((response) =&gt;
 {
     // Do something here
-
-}).
-Ajax.error((response) =&gt;
+})
+.error((response) =&gt;
 {
     // Do something here
 
-}).post(url, data);
-
-Ajax.abort();</code></pre>
+})
+.post(url, data)
+.abort();</code></pre>
 <p>If the <code>abort</code> method is called before an XHR call is made, a supplied callback will be used as the abort handler</p>
 <pre><code class="JavaScript language-JavaScript">Ajax.success((response) =&gt;
 {
     // Do something here
-
-}).
-Ajax.abort((response) =&gt;
+})
+.abort((response) =&gt;
 {
     // Do something here
-
-}).post(url, data);
-
-Ajax.abort();</code></pre>
+})
+.post(url, data)
+.abort();</code></pre>
 <hr />
 <h3 id="response">Response</h3>
 <p>Response handlers will receive the <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseText">XHR.responseText</a> as their primary parameter with <code>this</code> applied as the <a href="https://developer.mozilla.org/en-US/docs/Glossary/XMLHttpRequest">XHR Object</a>.</p>

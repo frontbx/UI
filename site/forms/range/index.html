@@ -50,11 +50,10 @@
                     <span class="hamburger-patty"></span>
                     <span class="hamburger-bun  hamburger-bun--btm"></span>
                 </button>
-                <a class="nav-logo" href="/">
+                <span class="nav-logo" href="/" onclick="(() => window.location.href.includes('localhost') ? window.location.href = '/site' : window.location.href = '/ui')();">
                     <svg viewBox="0 0 1451 1451"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg>
                     <span class="logo-text md-inline-block lg-inline-block xl-inline-block">Frontbx</span>
-                </a>
-
+                </span>
                 <ul class="nav-menu flex-content-right">
                     <li class="lg xl">
                         <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Github">
@@ -441,10 +440,10 @@
     <style scoped>
         .range-slider.custom-range
         {
-            --fbx-track-highlight: var(--fbx-theme-danger);
-            --fbx-thumb-bg: var(--fbx-theme-danger);
-            --fbx-thumb-focus-ring-color: rgba(var(--fbx-theme-danger-rgb),0.3);
-            --fbx-icon-color-on: var(--fbx-theme-danger);
+            --fbx-track-highlight: var(--fbx-theme-primary);
+            --fbx-thumb-bg: var(--fbx-theme-primary);
+            --fbx-thumb-focus-ring-color: rgba(var(--fbx-theme-primary-rgb),0.3);
+            --fbx-icon-color-on: var(--fbx-theme-primary);
             --fbx-track-size: 8px;
             --fbx-thumb-size: 16px;
         }

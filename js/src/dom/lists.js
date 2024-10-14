@@ -5,7 +5,7 @@
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -23,7 +23,7 @@
      */
     const List = function()
     { 
-        this.super('.js-select-list > li');
+        this.super('.js-select-list .list-item');
     }
 
     /**
@@ -69,11 +69,11 @@
      * @inheritdoc
      * 
      */
-    List.prototype.template = function(props)
+    List.prototype.render = function(props)
     {
         return dom_element({tag: 'ul', class: `list ${props.classes ? props.classes : ''} ${props.dense ? 'list-dense' : ''} ${props.ellipsis ? 'list-ellipsis' : ''} ${ props.selectable ? `js-select-list` : '' }`}, null, map(props.items, (i, item) =>
             {
-                return dom_element({tag: 'li', class: `${item.state} ${props.selected && (props.selected === item.value || props.selected === item.text) ? 'selected' : null}`}, null,
+                return dom_element({tag: 'li', class: `list-item ${item.state} ${props.selected && (props.selected === item.value || props.selected === item.text) ? 'selected' : null}`}, null,
                 [
                     item.left ? dom_element({tag: 'span', class: 'item-left', innerHTML: item.left}) : null,
                     dom_element({tag: 'span', class: 'item-body', innerText: item.body || item.text || item }),

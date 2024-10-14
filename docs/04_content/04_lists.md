@@ -5,6 +5,7 @@ Frontbx lists allow you to to display a continuous group of text or images quick
 ---
 
 *   [Basic example](#basic-example)
+*   [Nested lists](#nested-lists)
 *   [List contents](#list-contents)
 *   [Dense list](#dense-list)
 *   [List overflow](#list-overflow)
@@ -18,16 +19,16 @@ Frontbx lists allow you to to display a continuous group of text or images quick
 
 ### Basic example
 
-To create a list, add the `.list` class to a `<ul>`. Below is an example of a list in it's most basic form:
+To create a list, add the `.list` class to a `<ul>` and use the `.list-item` class to pad out items. Below is an example of a list in it's most basic form:
 
 <div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list">
-                <li>Item 1</li>
-                <li>Item 2</li>
-                <li>Item 3</li>
-                <li>Item 4</li>
+                <li class="list-item">Item 1</li>
+                <li class="list-item">Item 2</li>
+                <li class="list-item">Item 3</li>
+                <li class="list-item">Item 4</li>
             </ul>
         </div>
     </div>
@@ -35,10 +36,54 @@ To create a list, add the `.list` class to a `<ul>`. Below is an example of a li
 
 ```html
 <ul class="list">
-    <li>Item 1</li>
-    <li>Item 2</li>
-    <li>Item 3</li>
-    <li>Item 4</li>
+    <li class="list-item">Item 1</li>
+    <li class="list-item">Item 2</li>
+    <li class="list-item">Item 3</li>
+    <li class="list-item">Item 4</li>
+</ul>
+```
+
+---
+
+### Nested lists
+
+To nest a list, add a list as sub-item immediately after a `.list-item`:
+
+<div class="fbx-snippet-demo">
+    <div class="flex-row-fluid align-cols-center">
+        <div class="card flat col-12 col-md-8 col-lg-5">
+            <ul class="list">
+                <li class="list-item">Item 1</li>
+                <li class="list-item">Item 2</li>
+                <li>
+                    <span class="list-item">Item 3</span>
+                    <ul>
+                        <li class="list-item">Nested 1</li>
+                        <li class="list-item">Nested 2</li>
+                        <li class="list-item">Nested 3</li>
+                        <li class="list-item">Nested 4</li>
+                    </ul>
+                </li>
+                <li class="list-item">Item 4</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+```html
+<ul class="list">
+    <li class="list-item">Item 1</li>
+    <li class="list-item">Item 2</li>
+    <li>
+        <span class="list-item">Item 3</span>
+        <ul>
+            <li class="list-item">Nested 1</li>
+            <li class="list-item">Nested 2</li>
+            <li class="list-item">Nested 3</li>
+            <li class="list-item">Nested 4</li>
+        </ul>
+    </li>
+    <li class="list-item">Item 4</li>
 </ul>
 ```
 
@@ -52,19 +97,19 @@ List items come with handy `.item-title` and `.item-subtitle` helper to help del
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list">
-                <li>
+                <li class="list-item">
                     <div class="item-body">
                         <div class="item-title">Amet proident.</div>
                         <div class="item-subtitle">Officia cillum nisi ea velit.</div>
                     </div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-body">
                         <div class="item-title">Lorem ipsum sed ut mollit.</div>
                         <div class="item-subtitle">Ex excepteur adipisicing laboris.</div>
                     </div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-body">
                         <div class="item-title">Minim velit laboris in aliquip.</div>
                         <div class="item-subtitle">Esse et cillum magna.</div>
@@ -77,10 +122,10 @@ List items come with handy `.item-title` and `.item-subtitle` helper to help del
 
 ```html
 <ul class="list">
-    <li>
+    <li class="list-item">
         <div class="item-body">
-            <div class="item-title">List Item</div>
-            <div class="item-subtitle">Secondary text</div>
+            <div class="item-title">Amet proident.</div>
+            <div class="item-subtitle">Officia cillum nisi ea velit.</div>
         </div>
     </li>
     ...
@@ -93,32 +138,32 @@ List items can hold three helper elements `.item-left`, `.item-body` and `.item-
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list"> 
-                <li>
+                <li class="list-item">
                     <div class="item-left"><span class="fa fa-inbox color-gray-500"></span></div>
                     <div class="item-body">Inbox</div>
                     <div class="item-right"><span class="label">4</span></div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-left"><span class="fa fa-flag color-gray-500"></span></div>
                     <div class="item-body">Flagged</div>
                     <div class="item-right"><span class="label">23</span></div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-left"><span class="fa fa-note-sticky color-gray-500"></span></div>
                     <div class="item-body">Drafts</div>
                     <div class="item-right"><span class="label">3</span></div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-left"><span class="fa fa-paper-plane color-gray-500"></span></div>
                     <div class="item-body">Sent</div>
                     <div class="item-right"><span class="status status-xs"></span></div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-left"><span class="fa fa-circle-minus color-gray-500"></span></div>
                     <div class="item-body">Junk</div>
                     <div class="item-right"><span class="status status-xs status-warning"></span></div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-left"><span class="fa fa-trash color-gray-500"></span></div>
                     <div class="item-body">Trash</div>
                     <div class="item-right"><span class="status status-xs status-danger"></span></div>
@@ -130,7 +175,7 @@ List items can hold three helper elements `.item-left`, `.item-body` and `.item-
 
 ```html
 <ul class="list"> 
-    <li>
+    <li class="list-item">
         <div class="item-left"><span class="fa fa-inbox color-gray-500"></span></div>
         <div class="item-body">Inbox</span>
         <div class="item-right"><span class="label">4</span></div>
@@ -143,7 +188,7 @@ List items can hold three helper elements `.item-left`, `.item-body` and `.item-
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list"> 
-                <li>
+               <li class="list-item">
                     <div class="item-left">
                         <div class="avatar">
                             <img data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" />
@@ -154,7 +199,7 @@ List items can hold three helper elements `.item-left`, `.item-body` and `.item-
                         <div class="item-subtitle">Strong economy, secure borders, less regulation! MAGA!!!</div>
                     </div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-left">
                         <div class="avatar">
                             <img data-src="../../assets/img/elon_avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/elon_avatar.jpg" />
@@ -165,7 +210,7 @@ List items can hold three helper elements `.item-left`, `.item-body` and `.item-
                         <div class="item-subtitle">🔥🔥</div>
                     </div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-left">
                         <div class="avatar">
                             <img data-src="../../assets/img/greg_avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/greg_avatar_thumb.jpg" />
@@ -183,7 +228,7 @@ List items can hold three helper elements `.item-left`, `.item-body` and `.item-
 
 ```html
 <ul class="list"> 
-    <li>
+    <li class="list-item">
         <div class="item-left">
             <div class="avatar">
                 <img data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" />
@@ -208,12 +253,12 @@ For larger lists with multiple items, you can use the `.list-dense` modifier on 
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list list-dense">
-                <li>Item 1</li>
-                <li>Item 2</li>
-                <li>Item 3</li>
-                <li>Item 4</li>
-                <li>Item 5</li>
-                <li>Item 6</li>
+                <li class="list-item">Item 1</li>
+                <li class="list-item">Item 2</li>
+                <li class="list-item">Item 3</li>
+                <li class="list-item">Item 4</li>
+                <li class="list-item">Item 5</li>
+                <li class="list-item">Item 6</li>
             </ul>
         </div>
     </div>
@@ -221,12 +266,12 @@ For larger lists with multiple items, you can use the `.list-dense` modifier on 
 
 ```html
 <ul class="list list-dense">
-    <li>Item 1</li>
-    <li>Item 2</li>
-    <li>Item 3</li>
-    <li>Item 4</li>
-    <li>Item 5</li>
-    <li>Item 6</li>
+    <li class="list-item">Item 1</li>
+    <li class="list-item">Item 2</li>
+    <li class="list-item">Item 3</li>
+    <li class="list-item">Item 4</li>
+    <li class="list-item">Item 5</li>
+    <li class="list-item">Item 6</li>
 </ul>
 ```
 
@@ -234,25 +279,25 @@ For larger lists with multiple items, you can use the `.list-dense` modifier on 
 
 ### List overflow
 
-Adding the  `.list-ellipsis` modifier on `.list` enables text overflow ellipsis. Ensure your text is nested inside `.item-body` for this to work:
+Adding the `.list-ellipsis` modifier on `.list` enables text overflow ellipsis. Ensure your text is nested inside `.item-body` for this to work:
 
 <div class="fbx-snippet-demo">
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list list-ellipsis">
-                <li>
+                <li class="list-item">
                     <div class="item-body">
                         <div class="item-title">Amet proident.</div>
                         <div class="item-subtitle">Officia cillum nisi ea velit.</div>
                     </div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-body">
                         <div class="item-title">Lorem ipsum sed ut mollit.</div>
                         <div class="item-subtitle">Lorem ipsum dolor anim commodo elit in consectetur tempor amet dolor quis dolore laborum proident irure in.</div>
                     </div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-body">
                         <div class="item-title">Minim velit laboris in aliquip.</div>
                         <div class="item-subtitle">Esse et cillum magna.</div>
@@ -264,13 +309,14 @@ Adding the  `.list-ellipsis` modifier on `.list` enables text overflow ellipsis.
 </div>
 
 ```html
-<ul class="list list-dense">
-    <li>Item 1</li>
-    <li>Item 2</li>
-    <li>Item 3</li>
-    <li>Item 4</li>
-    <li>Item 5</li>
-    <li>Item 6</li>
+<ul class="list list-ellipsis">
+    <li class="list-item">
+        <div class="item-body">
+            <div class="item-title">Amet proident.</div>
+            <div class="item-subtitle">Officia cillum nisi ea velit.</div>
+        </div>
+    </li>
+    ...
 </ul>
 ```
 
@@ -284,7 +330,7 @@ A checkbox can either be a primary action or a secondary action. When a checkbox
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list"> 
-                <li>
+                <li class="list-item">
                     <div class="item-left">
                         <div class="form-field">
                             <span class="checkbox checkbox-info">
@@ -297,7 +343,7 @@ A checkbox can either be a primary action or a secondary action. When a checkbox
                         <div class="item-title">The Don</div>
                     </div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-left">
                         <div class="form-field">
                             <span class="checkbox checkbox-info">
@@ -310,7 +356,7 @@ A checkbox can either be a primary action or a secondary action. When a checkbox
                         <div class="item-title">Elon Musk</div>
                     </div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-left">
                         <div class="form-field">
                             <span class="checkbox checkbox-info">
@@ -330,7 +376,7 @@ A checkbox can either be a primary action or a secondary action. When a checkbox
 
 ```html
 <ul class="list"> 
-    <li>
+    <li class="list-item">
         <div class="item-left">
             <div class="form-field">
                 <span class="checkbox checkbox-info">
@@ -353,7 +399,7 @@ When nested inside `.item-right`, a checkbox becomes a secondary action:
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list"> 
-                <li>
+                <li class="list-item">
                     <div class="item-left">
                         <div class="avatar">
                             <img data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" />
@@ -371,7 +417,7 @@ When nested inside `.item-right`, a checkbox becomes a secondary action:
                         </div>
                     </div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-left">
                         <div class="avatar">
                             <img data-src="../../assets/img/elon_avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/elon_avatar.jpg" />
@@ -389,7 +435,7 @@ When nested inside `.item-right`, a checkbox becomes a secondary action:
                         </div>
                     </div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-left">
                         <div class="avatar">
                             <img data-src="../../assets/img/greg_avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/greg_avatar_thumb.jpg" />
@@ -414,7 +460,7 @@ When nested inside `.item-right`, a checkbox becomes a secondary action:
 
 ```html
 <ul class="list"> 
-    <li>
+    <li class="list-item">
         <div class="item-left">
             <div class="avatar">
                 <img data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" />
@@ -446,14 +492,14 @@ List items come with a handful of convenient states to help with different use-c
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list">
-                <li>Default</li>
-                <li class="hover">hover</li>
-                <li>Default</li>
-                <li class="active">.active</li>
-                <li>Default</li>
-                <li class="selected">.selected</li>
-                <li>Default</li>
-                <li class="disabled">.disabled</li>
+                <li class="list-item">Default</li>
+                <li class="list-item hover">hover</li>
+                <li class="list-item">Default</li>
+                <li class="list-item active">.active</li>
+                <li class="list-item">Default</li>
+                <li class="list-item selected">.selected</li>
+                <li class="list-item">Default</li>
+                <li class="list-item disabled">.disabled</li>
             </ul>
         </div>
     </div>
@@ -461,12 +507,14 @@ List items come with a handful of convenient states to help with different use-c
 
 ```html
 <ul class="list">
-    <li>Default</li>
-    <li class="hover">hover</li>
-    <li>Default</li>
-    <li class="active">.active</li>
-    <li>Default</li>
-    <li class="selected">.selected</li>
+    <li class="list-item">Default</li>
+    <li class="list-item hover">hover</li>
+    <li class="list-item">Default</li>
+    <li class="list-item active">.active</li>
+    <li class="list-item">Default</li>
+    <li class="list-item selected">.selected</li>
+    <li class="list-item">Default</li>
+    <li class="list-item disabled">.disabled</li>
 </ul>
 ```
 
@@ -480,19 +528,19 @@ Add the `.js-select-list` class to any list to enable clickable selection.
     <div class="flex-row-fluid align-cols-center">
         <div class="card flat col-12 col-md-8 col-lg-5">
             <ul class="list js-select-list">
-                <li class="selected">
+                <li class="list-item selected">
                     <div class="item-body">
                         <div class="item-title">Amet proident.</div>
                         <div class="item-subtitle">Officia cillum nisi ea velit.</div>
                     </div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-body">
                         <div class="item-title">Lorem ipsum sed ut mollit.</div>
                         <div class="item-subtitle">Ut duis reprehenderit ad.</div>
                     </div>
                 </li>
-                <li>
+                <li class="list-item">
                     <div class="item-body">
                         <div class="item-title">Minim velit laboris in aliquip.</div>
                         <div class="item-subtitle">Esse et cillum magna.</div>
@@ -505,19 +553,19 @@ Add the `.js-select-list` class to any list to enable clickable selection.
 
 ```html
  <ul class="list js-select-list">
-    <li class="selected">
+    <li class="list-item selected">
         <div class="item-body">
             <div class="item-title">Amet proident.</div>
             <div class="item-subtitle">Officia cillum nisi ea velit.</div>
         </div>
     </li>
-    <li>
+    <li class="list-item">
         <div class="item-body">
             <div class="item-title">Lorem ipsum sed ut mollit.</div>
             <div class="item-subtitle">Ut duis reprehenderit ad.</div>
         </div>
     </li>
-    <li>
+    <li class="list-item">
         <div class="item-body">
             <div class="item-title">Minim velit laboris in aliquip.</div>
             <div class="item-subtitle">Esse et cillum magna.</div>
@@ -545,7 +593,6 @@ list.addEventListener('list:selected', event =>
 })
 ```
 
-
 ---
 
 ### CSS Customization
@@ -569,32 +616,32 @@ List uses local CSS variables on `.list` along with Sass variables for enhanced 
             }
         </style>
         <ul class="list custom-list col-12 col-md-8 col-lg-5"> 
-            <li>
+            <li class="list-item">
                 <span class="item-left"><span class="fa fa-inbox color-gray-800"></span></span>
                 <span class="item-body">Inbox</span>
                 <span class="item-right"><span class="label bg-gray-800">4</span></span>
             </li>
-            <li>
+            <li class="list-item">
                 <span class="item-left"><span class="fa fa-flag color-gray-800"></span></span>
                 <span class="item-body">Flagged</span>
                 <span class="item-right"><span class="label bg-gray-800">23</span></span>
             </li>
-            <li>
+            <li class="list-item">
                 <span class="item-left"><span class="fa fa-note-sticky color-gray-800"></span></span>
                 <span class="item-body">Drafts</span>
                 <span class="item-right"><span class="label bg-gray-800">3</span></span>
             </li>
-            <li>
+            <li class="list-item">
                 <span class="item-left"><span class="fa fa-paper-plane color-gray-800"></span></span>
                 <span class="item-body">Sent</span>
                 <span class="item-right"><span class="status status-xs bg-gray-800"></span></span>
             </li>
-            <li>
+            <li class="list-item">
                 <span class="item-left"><span class="fa fa-circle-minus color-gray-800"></span></span>
                 <span class="item-body">Junk</span>
                 <span class="item-right"><span class="status status-xs status-warning"></span></span>
             </li>
-            <li>
+            <li class="list-item">
                 <span class="item-left"><span class="fa fa-trash color-gray-800"></span></span>
                 <span class="item-body">Trash</span>
                 <span class="item-right"><span class="status status-xs status-danger"></span></span>
@@ -638,7 +685,7 @@ $list-item-bg-selected:         var(--fbx-theme-info) !default;
 $list-item-pad-y:               10px !default;
 $list-item-pad-x:               12px !default;
 $list-divider-color:            var(--fbx-gray-200) !default;
-$list-divider-space:            5px;
+$list-divider-space:            5px !default;
 ```
 
 ```file-path
@@ -668,7 +715,15 @@ scss/components/list.scss
 
 ### JavaScript Instantiation
 
-List can be instantiated via JavaScript to generate dynamic content on the fly. To create a List dynamically, use Frontbx's `Component.Create` method either via the `frontbx.Dom` or the List Component directly:
+<div class="fbx-snippet-demo">
+    <div class="flex-row-fluid align-cols-center">
+        <div class="card flat col-12 col-md-8 col-lg-5 js-insert-list-container"></div>
+        <div class="col-12 pole-sm pole-n"></div>
+        <button class="btn js-insert-list-btn">Insert list</button>
+    </div>
+</div>
+
+List can be instantiated via JavaScript to generate dynamic content on the fly. To create a list dynamically, use Frontbx's `Component.Create` method either through `frontbx.Dom()` or the `List` Component directly:
 
 ```JavaScript
 let options =
@@ -705,7 +760,7 @@ Below are the available options:
 
 | Option             | Default | Example                                      | Behavior                                                        |
 |--------------------|---------|----------------------------------------------|-----------------------------------------------------------------|
-| `classes`          | `''`    | `my-button`                                  | Additional class name(s) on `<ul>` element.                     |
+| `class`            | `''`    | `my-button`                                  | Additional class name(s) on `<ul>` element.                     |
 | `dense`            | `false` | `true`                                       | Makes dense list                                                |
 | `ellipsis`         | `false` | `true`                                       | Enables list item text overflow ellipsis                        |
 | `selectable`       | `false` | `true`                                       | Enables selectable items.                                       |

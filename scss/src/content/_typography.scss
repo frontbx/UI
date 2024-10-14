@@ -296,7 +296,7 @@ dl dd:last-child
 {
     float: left;
     text-align: right;
-    @include _ellipsis();
+    @include ellipsis();
     width: 160px;
     clear: left;
 }

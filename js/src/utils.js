@@ -21,6 +21,7 @@ import './utils/array/each.js';
 import './utils/array/in_array.js';
 import './utils/array/map.js';
 import './utils/attributes/attr.js';
+import './utils/attributes/attrs.js';
 import './utils/css/css.js';
 import './utils/css/css_prop_to_camel_case.js';
 import './utils/css/css_prop_to_hyphen_case.js';

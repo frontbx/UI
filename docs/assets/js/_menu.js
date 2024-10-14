@@ -6,7 +6,7 @@
 {
 	const [find, toggle_class, remove_class, attr, width, on, off, trigger_event, extend] = frontbx.import(['find','toggle_class','remove_class','attr','width', 'on', 'off', 'trigger_event','extend']).from('_');
 
-	const [Component] = frontbx.get('Component');
+	const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
 	const menu = find('#docs-menu');
 	
@@ -115,7 +115,7 @@
  */
 (function()
 {
-	const [Component] = frontbx.get('Component');
+	const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
 	const [on, off, find, find_all, each, has_class, add_class, remove_class, extend] = frontbx.import(['on','off','find','find_all','each','has_class','add_class','remove_class', 'extend']).from('_');
 

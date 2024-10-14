@@ -1,6 +1,6 @@
 (function()
 {
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -116,6 +116,6 @@
     }
 
     // Load into frontbx DOM core
-    frontbx.dom().register('Drawer', extend(Component, Drawer));
+    frontbx.dom().register('DOM_Drawers', extend(Component, Drawer));
     
 })();

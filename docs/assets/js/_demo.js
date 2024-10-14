@@ -4,7 +4,7 @@
  */
 (function()
 {
-	const [Component] = frontbx.get('Component');
+	const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
 	const [on, off, is_array_last, extend] = frontbx.import(['on','off','is_array_last','extend']).from('_');
 

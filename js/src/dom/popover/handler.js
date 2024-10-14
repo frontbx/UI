@@ -5,7 +5,21 @@
      * 
      * @var {Function}
      */
-    const [in_dom, coordinates] = frontbx.import(['in_dom','coordinates']).from('_');
+    const [height, width, coordinates, dom_element, in_dom] = frontbx.import(['height','width','coordinates','dom_element','in_dom']).from('_');
+
+    /**
+     * Default options.
+     * 
+     * @var {Object}
+     */
+    const DEFAULT_OPTIONS =
+    {
+        direction: 'top',
+        animation: 'pop',
+        variant: 'default',
+        state: 'open',
+        classes: '',
+    };
 
     /**
      * Popover Handler
@@ -16,34 +30,9 @@
      */
     const PopHandler = function(options)
     {
-        this.trigger = options.target;
-        this.options = options;
-        this.el = this.buildPopEl();
-        this.el.className = options.classes;
-        this.animation = false;
-        this.state = 'inactive';
-
-        if (options.animation === 'pop')
-        {
-            this.animation = 'popover-pop';
-        }
-        else if (options.animation === 'fade')
-        {
-            this.animation = 'popover-fade';
-        }
-
-        this.render = function()
-        {
-            document.body.appendChild(this.el);
-
-            this.stylePop();
-
-            this.el.classList.add(this.animation);
-
-            this.state = 'active';
-
-            return this.el;
-        }
+        this.options    = {...DEFAULT_OPTIONS, ...options};
+        this.popElement = this._buildPopEl();
+        this.state      = this.options.state;
     }
 
     /**
@@ -51,34 +40,63 @@
      *
      * @access {private}
      */
-    PopHandler.prototype.buildPopEl = function()
+    PopHandler.prototype.render = function()
     {
-        var pop = document.createElement('div');
-        
-        pop.className = this.options.classes;
+        document.body.appendChild(this.popElement);
 
-        if (typeof this.options.template === 'string')
-        {
-            pop.innerHTML = this.options.template;
-        }
-        else
-        {
-            pop.appendChild(this.options.template);
-        }
+        this.position();
 
-        return pop;
+        if (this.state === 'open') this.popElement.classList.add(`popover-${this.options.animation}`);
+
+        return this.popElement;
     }
 
     /**
-     * Remove the popover
+     * Destroy the popover.
      *
      * @access {public}
      */
-    PopHandler.prototype.remove = function()
+    PopHandler.prototype.destroy = function()
     {
-        if (in_dom(this.el)) this.el.parentNode.removeChild(this.el);
+        if (in_dom(this.popElement)) this.popElement.parentNode.removeChild(this.popElement);
+    }
 
-        this.state = 'inactive';
+    /**
+     * Destroy the popover.
+     *
+     * @access {public}
+     */
+    PopHandler.prototype.hide = function()
+    {
+        this.popElement.classList.remove(`popover-${this.options.animation}`);
+
+        this.popElement.classList.add(`sr-only`);
+
+        this.state = 'closed';
+    }
+
+    /**
+     * Destroy the popover.
+     *
+     * @access {public}
+     */
+    PopHandler.prototype.show = function()
+    {
+        this.popElement.classList.remove(`sr-only`);
+        
+        this.popElement.classList.add(`popover-${this.options.animation}`);
+
+        this.state = 'open';
+    }
+
+    /**
+     * Build the popover
+     *
+     * @access {private}
+     */
+    PopHandler.prototype._buildPopEl = function()
+    {
+        return dom_element({tag: 'div', class: `popover popover-${this.options.variant} popover-${this.options.direction} ${this.options.classes}`}, null, this.options.content);
     }
 
     /**
@@ -86,33 +104,33 @@
      *
      * @access {public}
      */
-    PopHandler.prototype.stylePop = function()
+    PopHandler.prototype.position = function()
     {
-        var tarcoordinates = coordinates(this.options.target);
+        var tarcoordinates = coordinates(this.options.trigger);
 
-        if (this.options.direction === 'top')
+        if (this.options.direction.includes('top'))
         {
-            this.el.style.top = tarcoordinates.top - this.el.scrollHeight + 'px';
-            this.el.style.left = tarcoordinates.left - (this.el.offsetWidth / 2) + (this.options.target.offsetWidth / 2) + 'px';
-            return;
+            this.popElement.style.top = `${ (tarcoordinates.top - height(this.popElement)) - 10}px`;
+
+            if (this.options.direction === 'top') this.popElement.style.left = `${tarcoordinates.left - (width(this.popElement) / 2) + (width(this.options.trigger) / 2)}px`;
         }
-        else if (this.options.direction === 'bottom')
+        else if (this.options.direction.includes('bottom'))
         {
-            this.el.style.top = tarcoordinates.top + this.options.target.offsetHeight + 10 + 'px';
-            this.el.style.left = tarcoordinates.left - (this.el.offsetWidth / 2) + (this.options.target.offsetWidth / 2) + 'px';
-            return;
+            this.popElement.style.top = `${(tarcoordinates.top + height(this.options.trigger) + 10)}px`;
+
+            if (this.options.direction === 'bottom') this.popElement.style.left = `${tarcoordinates.left - (width(this.popElement) / 2) + (width(this.options.trigger) / 2)}px`;
         }
-        else if (this.options.direction === 'left')
+        if (this.options.direction.includes('left'))
         {
-            this.el.style.top = tarcoordinates.top - (this.el.offsetHeight / 2) + (this.options.target.offsetHeight / 2) + 'px';
-            this.el.style.left = tarcoordinates.left - this.el.offsetWidth - 10 + 'px';
-            return;
+            this.popElement.style.left = this.options.direction === 'left' ? `${tarcoordinates.left - width(this.popElement) - 10}px` : `${tarcoordinates.left}px`;
+
+            if (this.options.direction === 'left') this.popElement.style.top = `${(tarcoordinates.top - (height(this.popElement) / 2 ))}px`;
         }
-        else if (this.options.direction === 'right')
+        else if (this.options.direction.includes('right'))
         {
-            this.el.style.top = tarcoordinates.top - (this.el.offsetHeight / 2) + (this.options.target.offsetHeight / 2) + 'px';
-            this.el.style.left = tarcoordinates.left + this.options.target.offsetWidth + 10 + 'px';
-            return;
+            this.popElement.style.left =  this.options.direction === 'right' ? `${tarcoordinates.left + width(this.options.trigger) + 10 }px` : `${tarcoordinates.left + width(this.options.trigger) - width(this.popElement)}px`;
+
+            if (this.options.direction === 'right') this.popElement.style.top = `${(tarcoordinates.top - (height(this.popElement) / 2 ))}px`;
         }
     }
 

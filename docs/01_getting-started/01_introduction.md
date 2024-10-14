@@ -18,11 +18,11 @@ Frontbx is a fast, dependency-free UI framework built with Sass, CSS and JavaScr
 
 ### Welcome
 
-Frontbx is a modular `CSS` and `JavaScript` front-end framework built with `Sass` and vanilla `JavaScript`. Frontbx is designed to be used as core UI framework for any sized project from a tiny landing page to a giant web app.
+Frontbx is a modular  front-end framework built on **Sass** and vanilla **JavaScript**. Frontbx is designed to be used as core UI framework for any sized project from a tiny landing page to a giant web app.
 
 One of the main purposes of Frontbx is to save you time while building beautiful web pages with ease. Frontbx is a medium to large front-end framework and has pretty much everything you will need to kick-start your next project.
 
-If you are new to Frontbx, it's recommended you read this documentation from start to finish. It's also highly advisable to spend some time reading through the [Customization documentation](../../customize/sass/index.html) as well as the [JavaScript documentation](../../javascript/container/index.html) section to understand the framework architecture and how to use it on a broad level.
+If you are new to Frontbx, it's recommended you read this documentation from start to finish. It's also highly advisable to spend some time reading through the [Contents documentation](../contents/index.html) as well as the [JavaScript documentation](../../javascript/container/index.html) section to understand the framework architecture and how to use it on a broad level.
 
 ---
 
@@ -37,7 +37,7 @@ If you're using a package manager or wanting to start a custom build - [Head to 
 Copy-paste the stylesheet `<link>` into your `<head>` before all other stylesheets to load Frontbx's CSS.
 
 ```html
-<link href="https://cdn.jsdelivr.net/npm/frontbx@0.0.3/dist/css/frontbx-bundle.cdn.min.css" rel="stylesheet" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/frontbx@0.1.0/dist/css/frontbx-bundle.cdn.min.css" rel="stylesheet" crossorigin="anonymous">
 ```
 
 ##### Icons
@@ -46,7 +46,7 @@ Frontbx uses [FontAwesome](https://fontawesome.com/) for icons which are include
 
 ```html
 <!-- Frontbx CSS -->
-<link href="https://cdn.jsdelivr.net/npm/frontbx@0.0.3/dist/css/frontbx.cdn.min.css" rel="stylesheet" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/frontbx@0.1.0/dist/css/frontbx.cdn.min.css" rel="stylesheet" crossorigin="anonymous">
 
 <!-- FontAwesome CSS -->
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css" rel="stylesheet" crossorigin="anonymous">
@@ -63,7 +63,7 @@ Most Frontbx components require the use of `JavaScript` to function. Frontbx's J
 Include all Frontbx JavaScript Components and dependencies with Frontbx's bundled JS.
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/frontbx@0.0.3/dist/js/frontbx-bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/frontbx@0.1.0/dist/js/frontbx-bundle.min.js" crossorigin="anonymous"></script>
 ```
 
 ##### Lazyload
@@ -73,7 +73,7 @@ Image lazy loading is included in `frontbx-bundle.min.js`, however for best perf
 For details on lazy loading images - [see the LazyLoad page](../../images/lazyload/index.html).
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/frontbx@0.0.3/dist/js/frontbx-lazyload.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/frontbx@0.1.0/dist/js/frontbx-lazyload.min.js" crossorigin="anonymous"></script>
 ```
 
 --- 
@@ -91,17 +91,17 @@ Below is a simple HTML5 Boilerplate to get up and running quickly with frontbx.
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Frontbx bundled CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/frontbx@0.0.3/dist/css/frontbx-bundle.cdn.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/frontbx@0.1.0/dist/css/frontbx-bundle.cdn.min.css" rel="stylesheet" crossorigin="anonymous">
 
     <!-- OR without icons / icons separately
-    <link href="https://cdn.jsdelivr.net/npm/frontbx@0.0.3/dist/css/frontbx.cdn.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/frontbx@0.1.0/dist/css/frontbx.cdn.min.css" rel="stylesheet" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css" rel="stylesheet" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/solid.min.css" rel="stylesheet" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/brands.min.css" rel="stylesheet" crossorigin="anonymous">
      -->
 
     <!-- Frontbx Lazyload JS -->
-    <script src="https://cdn.jsdelivr.net/npm/frontbx@0.0.3/dist/js/frontbx-lazyload.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/frontbx@0.1.0/dist/js/frontbx-lazyload.min.js" crossorigin="anonymous"></script>
 
     <title>Hello, world!</title>
   </head>
@@ -109,7 +109,7 @@ Below is a simple HTML5 Boilerplate to get up and running quickly with frontbx.
     <h1>Hello, world!</h1>
 
     <!-- Frontbx JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/frontbx@0.0.3/dist/js/frontbx-bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/frontbx@0.1.0/dist/js/frontbx-bundle.min.js" crossorigin="anonymous"></script>
   </body>
 </html>
 ```

@@ -108,7 +108,7 @@
 
         props = {...this.defaultProps, ...props};
 
-        let node = this.template(props);
+        let node = this.render(props);
 
         if (appendTo) appendTo.appendChild(node);
 
@@ -122,9 +122,9 @@
      *
      * @access {public}
      */
-    Component.prototype.template = function()
+    Component.prototype.render = function()
     {
-        throw new Error('[template] method must be implemented.');
+        throw new Error('[render] method must be implemented.');
     }
 
 
@@ -149,6 +149,6 @@
     }
 
     // Register
-    frontbx.set('Component', [Component]);
+    frontbx.set('Component', Component);
 
 })();

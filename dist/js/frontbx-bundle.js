@@ -2,7 +2,7 @@
  * --------------------------------------------------------------------------
  * Frontbx UMD
  * 
- * @version  {0.0.3}
+ * @version  {0.1.0}
  * @see      {https://github.com/frontbx/ui}
  * @licensed {https://github.com/frontbx/ui/blob/main/LICENSE}
  * --------------------------------------------------------------------------
@@ -17,7 +17,7 @@
      * --------------------------------------------------------------------------
      * Frontbx standalone
      * 
-     * @version  {0.0.3}
+     * @version  {0.1.0}
      * @see      {https://github.com/frontbx/ui}
      * @licensed {https://github.com/frontbx/ui/blob/main/LICENSE}
      * --------------------------------------------------------------------------
@@ -595,12 +595,14 @@
     const NODELST_TAG = '[object NodeList]';
     const OBJECT_TAG = '[object Object]';
     const DATE_TAG = '[object Date]';
+    const NODECLT_TAG = '[object HTMLCollection]';
     
     // Unusual
     const SET_TAG = '[object Set]';
     const MAP_TAG = '[object Map]';
     const REGEXP_TAG = '[object RegExp]';
     const SYMBOL_TAG = '[object Symbol]';
+    const CSSDEC_TAG = '[object CSSStyleDeclaration]';
     
     // Array buffer
     const ARRAY_BUFFER_TAG = '[object ArrayBuffer]';
@@ -620,7 +622,7 @@
     const WEAKMAP_TAG = '[object WeakMap]';
     
     // Arrayish _tags
-    const ARRAYISH_TAGS = [ARRAY_TAG, ARGS_TAG, NODELST_TAG];
+    const ARRAYISH_TAGS = [ARRAY_TAG, ARGS_TAG, NODELST_TAG, NODECLT_TAG];
     
     // Object.prototype.toString
     const TO_STR = Object.prototype.toString;
@@ -2540,7 +2542,7 @@
     {
         if (typeof obj !== 'object' || obj === null) return;
     
-        let isArray = TO_STR.call(obj) === '[object Array]';
+        let isArray = this.is_array(obj);
         let i       = 0;
         let keys    = isArray ? null : Object.keys(obj);
         let len     = isArray ? obj.length : keys.length;
@@ -2676,7 +2678,7 @@
     {
         if (typeof obj !== 'object' || obj === null) return;
     
-        let isArray = TO_STR.call(obj) === '[object Array]';
+        let isArray = this.is_array(obj);
         let i       = 0;
         let keys    = isArray ? null : Object.keys(obj);
         let len     = isArray ? obj.length : keys.length;
@@ -2755,7 +2757,7 @@
      * @apram {mixed}        value       Property value
      */
     _.prototype.attr = function(DOMElement, name, value)
-    {        
+    {            
         // Get attribute
         // e.g attr(node, style)
         if ((TO_ARR.call(arguments)).length === 2 && this.is_string(name))
@@ -2860,7 +2862,6 @@
                 else
                 {
                     let isData     = name.startsWith('data');
-                    let isAria     = name.startsWith('aria');
                     let camelName  = name.includes('-') ? this.to_camel_case(name) : name;
                     let hyphenName = name.includes('-') ? name : this.camel_case_to_hyphen(name);
                     let isEmpty    = this.is_empty(value);
@@ -2872,13 +2873,13 @@
                         {
                             DOMElement.removeAttribute(hyphenName);
     
-                            delete DOMElement.dataset[this.lc_first(this.ltrim(camelName, 'data'))];
+                            delete DOMElement.dataset[this.lc_first(camelName.substring(4))];
                         }
                         else
                         {
                             DOMElement.setAttribute(hyphenName, value);
     
-                            DOMElement.dataset[this.lc_first(this.ltrim(camelName, 'data'))] = value;
+                            DOMElement.dataset[this.lc_first(camelName.substring(4))] = value;
                         }
     
                         break;
@@ -2929,11 +2930,15 @@
      */
     _.prototype.__get_attribute = function(DOMElement, name)
     {
+        let camelName  = name.includes('-') ? this.to_camel_case(name) : name;
+        let hyphenName = name.includes('-') ? name : this.camel_case_to_hyphen(name);
+    
+        // Data need to check dataset
         if (name.startsWith('data'))
         {
-            name = name.startsWith('data-') ? this.to_camel_case(name.substring(5)) : name.substring(4);
+            if (!DOMElement.dataset) return DOMElement.getAttribute(hyphenName);
     
-            return DOMElement.dataset[name];
+            return DOMElement.dataset[this.lc_first(camelName.substring(4))];
         }
     
         // Special booleans
@@ -2944,12 +2949,31 @@
             return DOMElement[name] === 'false' || !DOMElement[name] ? false : true;
         }
     
-        let camelName  = name.includes('-') ? this.to_camel_case(name) : name;
-        let hyphenName = name.includes('-') ? name : this.camel_case_to_hyphen(name);
-        let retCamel   = DOMElement[camelName];
-        let retAttr    = DOMElement.getAttribute(hyphenName);
+        let retCamel = DOMElement[camelName];
+        let retAttr  = DOMElement.getAttribute(hyphenName);
     
-        return retAttr === null || this.is_undefined(retAttr) ? retCamel : retAttr;
+        if (retAttr && retAttr !== '') return retAttr;
+    
+        if (retCamel && retCamel !== '') return retCamel;
+    
+        return retCamel || retAttr;
+    }
+    /**
+     * Set, get or remove DOM attribute.
+     *
+     * No third arg returns attribute value, third arg set to null or false removes attribute.
+     * 
+     * @param {HTMLElement}  DOMElement  Dom node
+     * @param {string}       name        Property name
+     * @apram {mixed}        value       Property value
+     */
+    _.prototype.attrs = function(DOMElement)
+    {
+    	let ret = {};
+    
+    	this.each(DOMElement.attributes, (i, attribute) => ret[attribute.nodeName] = this.attr(DOMElement, attribute.nodeName));
+    	
+    	return ret;
     }
     /**
      * Set, get or remove CSS value(s) on element.
@@ -4639,7 +4663,7 @@
         // Stop on document
         if (DOMElement === document || this.is_undefined(DOMElement) || DOMElement === null) return;
     
-        let response = callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className.trim());
+        let response = callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className);
     
         if (response)
         {
@@ -4660,21 +4684,32 @@
      * @param  {DOMElement}   DOMElement Target element
      * @param  {Function}     callback   callback
      */
-    _.prototype.traverse_down = function(DOMElement, callback)
+    _.prototype.traverse_down = function(DOMElement, callback, includeText)
     {
+        includeText = typeof includeText === 'undefined' ? false : includeText;
+    
         if (this.is_undefined(DOMElement) || DOMElement === null) return;
     
-        let children = this.find_all('*', DOMElement);
+        let ret;
     
-        let ret = false;
-    
-        this.each(children, (i, child) => 
+        this.each(Array.prototype.slice.call(includeText ? DOMElement.childNodes : DOMElement.children), (i, child) => 
         {
-            let response = callback(child, child.tagName.toLowerCase(), child.className.trim());
+            if (includeText && (child.nodeType !== 1 && child.nodeType !== 3)) return;
+    
+            let response = callback(child, child.tagName ? child.tagName.toLowerCase() : null, child.className);
     
             if (response || response === false)
             {
-                ret = response !== false ? DOMElement : response;
+                ret = response === false ? undefined : child;
+    
+                return false;
+            }
+    
+            response = this.traverse_down(child, callback, includeText);
+    
+            if (response || response === false)
+            {
+                ret = response === false ? undefined : child;
     
                 return false;
             }
@@ -4692,10 +4727,12 @@
      */
     _.prototype.traverse_next = function(DOMElement, callback)
     {
+        allNodes = typeof allNodes === 'undefined' ? false : allNodes;
+    
         // Stop on document
         if (DOMElement === document || this.is_undefined(DOMElement) || DOMElement === null) return;
     
-        let response = callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className.trim());
+        let response = callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className);
     
         if (response)
         {
@@ -4721,7 +4758,7 @@
         // Stop on document
         if (DOMElement === document || this.is_undefined(DOMElement) || DOMElement === null) return;
     
-        let response = callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className.trim());
+        let response = callback(DOMElement, DOMElement.tagName.toLowerCase(), DOMElement.className);
     
         if (response)
         {
@@ -6956,6 +6993,8 @@
     // frontbx core
     (function()
     {
+        const EXCLUDED_SERVICES = ['services','boot','set','singleton','has','delete','get','import','bind','_setproto','_singletonfunc','_isinvokable','_isinvoked','_newinstance','_storeobj','_normalizekey','_is_func'];
+    
         /**
          * Application core
          *
@@ -6975,12 +7014,37 @@
         }
     
         /**
+         * Returns registered services.
+         *
+         * @access {public}
+         * @return {Object}
+         */
+        Application.prototype.services = function()
+        {
+            let proto = this.prototype || Object.getPrototypeOf(this);
+    
+            let ret = {};
+    
+            for (let key in proto)
+            {
+                let val = proto[key];
+    
+                if (!EXCLUDED_SERVICES.includes(key.toLowerCase()) && {}.toString.call(val) === '[object Function]')
+                {
+                    ret[key] = val;
+                }
+            }
+    
+            return ret;
+        }
+    
+        /**
          * Called when the application is first initialized
          *
          * @access {public}
          */
         Application.prototype.boot = function()
-        {        
+        {
             this.dom().boot();
     
             this._().trigger_event(window, 'frontbx:ready', this);
@@ -7008,8 +7072,6 @@
         // Set global
         window.frontbx = app;
     
-        console.log(app);
-    
     })();
     (function()
     {
@@ -7019,13 +7081,6 @@
          * @var {Function}
          */
         const [each, trigger_event, collect_garbage, is_undefined, is_string, is_htmlElement] = frontbx.import(['each', 'trigger_event', 'collect_garbage', 'is_undefined', 'is_string', 'is_htmlElement']).from('_');
-    
-        /**
-         * Prefix for container.
-         *
-         * @var {String}
-         */
-        const KEYPREFIX = 'HB_DOM:';
     
         /**
          * DOM Manager
@@ -7066,7 +7121,7 @@
         {
             this.components.push(name);
     
-            frontbx.singleton(this._normaliseKey(name), component);
+            frontbx.singleton(name, component);
     
             this._bindComponent(name, document);
         }
@@ -7078,7 +7133,7 @@
          */
         Dom.prototype.component = function(name)
         {
-            return frontbx.get(this._normaliseKey(name));
+            return frontbx.get(name);
         }
     
         /**
@@ -7123,7 +7178,7 @@
          */
         Dom.prototype._bindComponent = function(name, context, isRefresh)
         {                
-            let component = frontbx.get(this._normaliseKey(name));
+            let component = frontbx.get(name);
     
             if (this._hasMethod(component, 'construct') && isRefresh)
             {
@@ -7143,7 +7198,7 @@
          */
         Dom.prototype._unbindComponent = function(name, context)
         {            
-            let component = frontbx.get(this._normaliseKey(name));
+            let component = frontbx.get(name);
     
             if (this._hasMethod(component, 'destruct'))
             {
@@ -7221,18 +7276,6 @@
         Dom.prototype._hasMethod = function(classObj, method)
         {
             return typeof classObj === 'object' && typeof classObj[method] === 'function';
-        }
-    
-        /**
-         * Normalize key
-         *
-         * @access {public}
-         * @param {string} name   Name of the module
-         * @param {object} module Uninvoked module object
-         */
-        Dom.prototype._normaliseKey = function(key)
-        {
-            return `${KEYPREFIX}${key}`;
         }
     
         // Load into container and invoke
@@ -7349,7 +7392,7 @@
     
             props = {...this.defaultProps, ...props};
     
-            let node = this.template(props);
+            let node = this.render(props);
     
             if (appendTo) appendTo.appendChild(node);
     
@@ -7363,9 +7406,9 @@
          *
          * @access {public}
          */
-        Component.prototype.template = function()
+        Component.prototype.render = function()
         {
-            throw new Error('[template] method must be implemented.');
+            throw new Error('[render] method must be implemented.');
         }
     
     
@@ -7390,7 +7433,7 @@
         }
     
         // Register
-        frontbx.set('Component', [Component]);
+        frontbx.set('Component', Component);
     
     })();
     
@@ -7399,7 +7442,7 @@
      * --------------------------------------------------------------------------
      * Frontbx Lazyload
      * 
-     * @version  {0.0.3}
+     * @version  {0.1.0}
      * @see      {https://github.com/frontbx/ui}
      * @licensed {https://github.com/frontbx/ui/blob/main/LICENSE}
      * --------------------------------------------------------------------------
@@ -8707,7 +8750,7 @@
         const DEFAULT_OPTIONS = 
         {
             element:   'body',
-            nocache:    true,
+            nocache:    false,
             once:       false,
             scrolltop:  false,
             pushstate:  false,
@@ -9325,7 +9368,7 @@
             {
                 let options = e.state;
         
-                this.request(options.id, {...options, pushstate: false });
+                this.request(options.id, {...options, nocache: false, pushstate: false });
         
                 return false;
             }
@@ -11157,7 +11200,7 @@
          * 
          * @var {Function}
          */
-        const [find, add_class, on, in_dom, remove_class, remove_from_dom, dom_element] = frontbx.import(['find','add_class','on','in_dom','remove_class','remove_from_dom','dom_element']).from('_');
+        const [find, find_all, add_class, on, in_dom, remove_class, remove_from_dom, dom_element] = frontbx.import(['find','find_all','add_class','on','in_dom','remove_class','remove_from_dom','dom_element']).from('_');
     
         /**
          * Default options
@@ -11168,10 +11211,14 @@
         {
             text:             '',
             variant:          '',
+            closebtn:         false,
+            responsive:       false,
+            btn:              false,
+            stacked:          false,
+            dense:            true,
             icon:             '',
             position:         'bottom',
             timeout:          6000,
-            btn:              false,
             btnVariant:       'primary',
             callbackBuilt:    () => {},
             callbackRender:   () => {},
@@ -11267,18 +11314,25 @@
     
             this._animateOutClass = this._animateOut();
     
-            let notif = dom_element({tag: 'div', class: options.variant ? `msg msg-dense msg-${options.variant} ${this._animateInClass}` : `msg msg-dense ${this._animateInClass}` });
+            let notif = dom_element({tag: 'div', class: `msg ${options.closebtn || options.btn ? 'msg-with-btn' : ''} ${options.responsive ? 'msg-responsive' : ''} ${options.stacked ? 'msg-stacked' : ''} ${options.variant ? `msg-${options.variant}` : ''} ${options.dense ? 'msg-dense' : ''} ${this._animateInClass}`} );
             
+            if (options.closebtn)
+            {
+                dom_element({tag: 'button', type: 'button', role: 'button', ariaLabel: 'close', class: 'btn btn-pure btn-xs btn-circle btn-msg-close js-notif-btn' }, notif, dom_element({tag: 'span', class: 'fa fa-xmark' }));
+            }
+    
             if (options.icon)
             {
                 dom_element({tag: 'div', class: 'msg-icon' }, notif, dom_element({tag: 'span', class: `fa fa-${options.icon}` }));
             }
     
-            dom_element({tag: 'div', class: 'msg-body'}, notif, dom_element({tag: 'p', innerHTML: options.text }))
+            dom_element({tag: 'div', class: 'msg-body'}, notif, options.text.trim().startsWith('<') ? options.text : dom_element({tag: 'p', innerHTML: options.text }) );
     
             if (options.btn)
             {
-                this._btn = dom_element({tag: 'div', class: 'msg-btn' }, notif, dom_element({tag: 'button', class: `btn btn-pure btn-${options.btnVariant} btn-sm js-notif-btn`, innerText: options.btn }));
+                this._btn = dom_element({tag: 'div', class: 'msg-btn' }, notif, options.btn.trim().startsWith('<') ? options.btn : dom_element({tag: 'button', class: `btn btn-pure btn-${options.btnVariant} btn-sm js-notif-btn`, innerText: options.btn }));
+                
+                add_class(find_all('button', this._btn), 'js-notif-btn');
             }
     
             this._notification = notif;
@@ -11349,7 +11403,7 @@
                 this._timeout = setTimeout(() => this._removeValidate(), this._options.timeout);
             }
     
-            on(this._notification, 'click', this._removeValidate, this);
+            on(this._options.closebtn || this._options.btn ? find_all('.js-notif-btn', this._notification) : this._notification, 'click', this._removeValidate, this);
         }
     
         /**
@@ -11429,6 +11483,56 @@
     
         // Load into frontbx DOM core
         frontbx.set('SmoothScroll', SmoothScroll);
+    
+    })();
+    (function()
+    {
+        /**
+         * JS Helper reference
+         * 
+         * @var {object}
+         */
+        const [is_htmlElement, dom_element, remove_class] = frontbx.import(['is_htmlElement', 'dom_element', 'remove_class']).from('_');
+    
+        /**
+         * Create popover.
+         * 
+         * @param  {object} options
+         * @return {Object}
+         */
+        function popover(options)
+        {
+            if (typeof options.content === 'string')
+            {
+                let contents = [];
+    
+                if (options.title)
+                {
+                    contents.push(dom_element({tag: 'h5', class: 'popover-title'}, null, options.title));
+                }
+    
+                contents.push(dom_element({tag: 'div', class: 'popover-content'}, null, dom_element({tag: 'p'}, null, options.content)));
+    
+                options.content = contents;
+            }
+            else if (is_htmlElement(options.content))
+            {
+                remove_class(options.content, 'hidden');
+    
+                options.content.style = '';
+            }
+    
+            let handler = frontbx.get('PopHandler', options);
+    
+            handler.render();
+    
+            console.log(handler);
+    
+            return handler;
+        }
+    
+        // Load into container 
+        frontbx.set('Popover', popover);
     
     })();
     (function()
@@ -13304,7 +13408,7 @@
          * 
          * @var {Class}
          */
-        const [Component] = frontbx.get('Component');
+        const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     
         /**
          * Helper functions
@@ -13368,7 +13472,7 @@
          * @inheritdoc
          * 
          */
-        Slider.prototype.template = function(props)
+        Slider.prototype.render = function(props)
         {
             return dom_element({tag: 'div', class: 'slider js-slider'}, null, props.slides);
         }
@@ -13383,7 +13487,7 @@
          * 
          * @var {class}
          */
-        const [Component] = frontbx.get('Component');
+        const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     
         /**
          * Helper functions
@@ -13560,7 +13664,7 @@
          * 
          * @var {class}
          */
-        const [Component] = frontbx.get('Component');
+        const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     
         /**
          * Helper functions
@@ -13828,7 +13932,7 @@
          * @inheritdoc
          * 
          */
-        RangeSlider.prototype.template = function(props)
+        RangeSlider.prototype.render = function(props)
         {
             console.log('create');
     
@@ -13852,7 +13956,21 @@
          * 
          * @var {Function}
          */
-        const [in_dom, coordinates] = frontbx.import(['in_dom','coordinates']).from('_');
+        const [height, width, coordinates, dom_element, in_dom] = frontbx.import(['height','width','coordinates','dom_element','in_dom']).from('_');
+    
+        /**
+         * Default options.
+         * 
+         * @var {Object}
+         */
+        const DEFAULT_OPTIONS =
+        {
+            direction: 'top',
+            animation: 'pop',
+            variant: 'default',
+            state: 'open',
+            classes: '',
+        };
     
         /**
          * Popover Handler
@@ -13863,34 +13981,9 @@
          */
         const PopHandler = function(options)
         {
-            this.trigger = options.target;
-            this.options = options;
-            this.el = this.buildPopEl();
-            this.el.className = options.classes;
-            this.animation = false;
-            this.state = 'inactive';
-    
-            if (options.animation === 'pop')
-            {
-                this.animation = 'popover-pop';
-            }
-            else if (options.animation === 'fade')
-            {
-                this.animation = 'popover-fade';
-            }
-    
-            this.render = function()
-            {
-                document.body.appendChild(this.el);
-    
-                this.stylePop();
-    
-                this.el.classList.add(this.animation);
-    
-                this.state = 'active';
-    
-                return this.el;
-            }
+            this.options    = {...DEFAULT_OPTIONS, ...options};
+            this.popElement = this._buildPopEl();
+            this.state      = this.options.state;
         }
     
         /**
@@ -13898,34 +13991,63 @@
          *
          * @access {private}
          */
-        PopHandler.prototype.buildPopEl = function()
+        PopHandler.prototype.render = function()
         {
-            var pop = document.createElement('div');
-            
-            pop.className = this.options.classes;
+            document.body.appendChild(this.popElement);
     
-            if (typeof this.options.template === 'string')
-            {
-                pop.innerHTML = this.options.template;
-            }
-            else
-            {
-                pop.appendChild(this.options.template);
-            }
+            this.position();
     
-            return pop;
+            if (this.state === 'open') this.popElement.classList.add(`popover-${this.options.animation}`);
+    
+            return this.popElement;
         }
     
         /**
-         * Remove the popover
+         * Destroy the popover.
          *
          * @access {public}
          */
-        PopHandler.prototype.remove = function()
+        PopHandler.prototype.destroy = function()
         {
-            if (in_dom(this.el)) this.el.parentNode.removeChild(this.el);
+            if (in_dom(this.popElement)) this.popElement.parentNode.removeChild(this.popElement);
+        }
     
-            this.state = 'inactive';
+        /**
+         * Destroy the popover.
+         *
+         * @access {public}
+         */
+        PopHandler.prototype.hide = function()
+        {
+            this.popElement.classList.remove(`popover-${this.options.animation}`);
+    
+            this.popElement.classList.add(`sr-only`);
+    
+            this.state = 'closed';
+        }
+    
+        /**
+         * Destroy the popover.
+         *
+         * @access {public}
+         */
+        PopHandler.prototype.show = function()
+        {
+            this.popElement.classList.remove(`sr-only`);
+            
+            this.popElement.classList.add(`popover-${this.options.animation}`);
+    
+            this.state = 'open';
+        }
+    
+        /**
+         * Build the popover
+         *
+         * @access {private}
+         */
+        PopHandler.prototype._buildPopEl = function()
+        {
+            return dom_element({tag: 'div', class: `popover popover-${this.options.variant} popover-${this.options.direction} ${this.options.classes}`}, null, this.options.content);
         }
     
         /**
@@ -13933,33 +14055,33 @@
          *
          * @access {public}
          */
-        PopHandler.prototype.stylePop = function()
+        PopHandler.prototype.position = function()
         {
-            var tarcoordinates = coordinates(this.options.target);
+            var tarcoordinates = coordinates(this.options.trigger);
     
-            if (this.options.direction === 'top')
+            if (this.options.direction.includes('top'))
             {
-                this.el.style.top = tarcoordinates.top - this.el.scrollHeight + 'px';
-                this.el.style.left = tarcoordinates.left - (this.el.offsetWidth / 2) + (this.options.target.offsetWidth / 2) + 'px';
-                return;
+                this.popElement.style.top = `${ (tarcoordinates.top - height(this.popElement)) - 10}px`;
+    
+                if (this.options.direction === 'top') this.popElement.style.left = `${tarcoordinates.left - (width(this.popElement) / 2) + (width(this.options.trigger) / 2)}px`;
             }
-            else if (this.options.direction === 'bottom')
+            else if (this.options.direction.includes('bottom'))
             {
-                this.el.style.top = tarcoordinates.top + this.options.target.offsetHeight + 10 + 'px';
-                this.el.style.left = tarcoordinates.left - (this.el.offsetWidth / 2) + (this.options.target.offsetWidth / 2) + 'px';
-                return;
+                this.popElement.style.top = `${(tarcoordinates.top + height(this.options.trigger) + 10)}px`;
+    
+                if (this.options.direction === 'bottom') this.popElement.style.left = `${tarcoordinates.left - (width(this.popElement) / 2) + (width(this.options.trigger) / 2)}px`;
             }
-            else if (this.options.direction === 'left')
+            if (this.options.direction.includes('left'))
             {
-                this.el.style.top = tarcoordinates.top - (this.el.offsetHeight / 2) + (this.options.target.offsetHeight / 2) + 'px';
-                this.el.style.left = tarcoordinates.left - this.el.offsetWidth - 10 + 'px';
-                return;
+                this.popElement.style.left = this.options.direction === 'left' ? `${tarcoordinates.left - width(this.popElement) - 10}px` : `${tarcoordinates.left}px`;
+    
+                if (this.options.direction === 'left') this.popElement.style.top = `${(tarcoordinates.top - (height(this.popElement) / 2 ))}px`;
             }
-            else if (this.options.direction === 'right')
+            else if (this.options.direction.includes('right'))
             {
-                this.el.style.top = tarcoordinates.top - (this.el.offsetHeight / 2) + (this.options.target.offsetHeight / 2) + 'px';
-                this.el.style.left = tarcoordinates.left + this.options.target.offsetWidth + 10 + 'px';
-                return;
+                this.popElement.style.left =  this.options.direction === 'right' ? `${tarcoordinates.left + width(this.options.trigger) + 10 }px` : `${tarcoordinates.left + width(this.options.trigger) - width(this.popElement)}px`;
+    
+                if (this.options.direction === 'right') this.popElement.style.top = `${(tarcoordinates.top - (height(this.popElement) / 2 ))}px`;
             }
         }
     
@@ -13974,18 +14096,35 @@
          * 
          * @var {class}
          */
-        const [Component] = frontbx.get('Component');
+        const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     
         /**
          * JS Helper reference
          * 
          * @var {object}
          */
-        const [find, find_all, add_class, on, closest, has_class, is_empty, remove_class, off, each, extend] = frontbx.import(['find', 'find_all', 'add_class', 'on', 'closest', 'has_class', 'is_empty', 'remove_class', 'off', 'each', 'extend']).from('_');
+        const [attr, is_undefined, is_htmlElement, to_camel_case, dom_element, find, find_all, add_class, on, closest, has_class, is_empty, remove_class, off, each, map, extend] = frontbx.import(['attr','is_undefined','is_htmlElement','to_camel_case','dom_element','find','find_all','add_class','on','closest','has_class','is_empty','remove_class','off','each','map','extend']).from('_');
     
+        /**
+         * Timer for mouse in-out.
+         * 
+         * @var {Timeout}
+         */
         var HOVER_TIMER;
     
+        /**
+         * Handlers.
+         * 
+         * @var {Map}
+         */
         var POP_HANDLERS = new Map;
+    
+        /**
+         * Available attributes.
+         * 
+         * @var {Array}
+         */
+        const DATA_ATTRIBUTES = ['variant','direction','title','content','event','animation','state','trigger'];
     
         /**
          * Popover
@@ -13994,21 +14133,11 @@
          * @copyright {Joe J. Howard}
          * @license   {https://raw.githubusercontent.comfrontbx/uimaster/LICENSE}
          */
-        const Popover = function()
+        const Popovers = function()
         {
             this.super('.js-popover');
     
             this._windowClick = false;
-    
-            this.defaultProps = 
-            {
-                direction: 'top',
-                animation: 'pop',
-                theme:     'light',
-                title:     '',
-                content:   '',
-                event:     'click',
-            };
         }
     
         /**
@@ -14017,29 +14146,7 @@
          * @access {private}
          * @param  {DOMElement} trigger Click/hover trigger
          */
-        Popover.prototype.template = function(props)
-        {
-    
-        }
-    
-        /**
-         * Initialize the handlers on a trigger
-         *
-         * @access {private}
-         * @param  {DOMElement} trigger Click/hover trigger
-         */
-        Popover.prototype._build = function(options)
-        {
-    
-        }
-    
-        /**
-         * Initialize the handlers on a trigger
-         *
-         * @access {private}
-         * @param  {DOMElement} trigger Click/hover trigger
-         */
-        Popover.prototype.bind = function(trigger)
+        Popovers.prototype.bind = function(trigger)
         {
             if (!this._windowClick)
             {
@@ -14048,37 +14155,28 @@
                 this._windowClick = true;
             }
     
-            let direction = trigger.dataset.popoverDirection;
-            let title     = trigger.dataset.popoverTitle;
-            let theme     = trigger.dataset.popoverTheme || 'dark';
-            let content   = trigger.dataset.popoverContent;
-            let evnt      = trigger.dataset.popoverEvent;
-            let animation = trigger.dataset.popoverAnimate || 'pop';
-            let target    = trigger.dataset.popoverTarget;
-            let closeBtn  = evnt === 'click' ? '<button type="button" class="btn btn-sm btn-pure btn-circle js-remove-pop close-btn"><span class="fa fa-xmark"></span></button>' : '';
-            let pop       = '<div class="popover-content"><p>' + content + '</p></div>';
+            let options = { trigger };
     
-            if (title)
+            each(DATA_ATTRIBUTES, (i, attribute) =>
             {
-                pop = closeBtn + '<h5 class="popover-title">' + title + '</h5>' + pop;
-            }
+                let value = attr(trigger, `data-popover-${attribute}`);
     
-            if (target)
-            {
-                pop = find('#' + target).cloneNode(true);
-                pop.classList.remove('hidden');
-            }
+                if (!is_undefined(value))
+                {
+                    if (value === 'true' || value === 'false') value = value === 'true' ? true : false;
     
-            let popHandler = frontbx.get('PopHandler',
-            {
-                target: trigger,
-                direction: direction,
-                template: pop,
-                animation: animation,
-                classes: 'popover ' + direction + ' ' + theme,
+                    if (attribute === 'content' && value[0] === '#')
+                    {
+                        value = find(value);
+                    }
+    
+                    options[to_camel_case(attribute)] = value;
+                }
             });
     
-            if (evnt === 'click')
+            let popHandler = frontbx.get('PopHandler', this._build(options));
+    
+            if (options.event === 'click')
             {
                 on(trigger, 'click', this._clickHandler, this);
                 on(window, 'resize', this._windowResize, this);
@@ -14092,12 +14190,51 @@
         }
     
         /**
+         * Builds the popover if necessary.
+         *
+         * @access {private}
+         * @param  {Object} options
+         * @return {Object}
+         */
+        Popovers.prototype._build = function(options)
+        {
+            if (typeof options.content === 'string')
+            {
+                let contents = [];
+    
+                if (options.event && options.event === 'click')
+                {
+                    contents.push(dom_element({tag: 'button', type: 'button', role: 'button', ariaLabel: 'close', class: 'btn btn-sm btn-pure btn-circle js-remove-pop close-btn'}, null, 
+                        dom_element({tag: 'span', class: 'fa fa-xmark'})
+                    ));
+                }
+    
+                if (options.title)
+                {
+                    contents.push(dom_element({tag: 'h5', class: 'popover-title'}, null, options.title));
+                }
+    
+                contents.push(dom_element({tag: 'div', class: 'popover-content'}, null, dom_element({tag: 'p'}, null, options.content)));
+    
+                options.content = contents;
+            }
+            else if (is_htmlElement(options.content))
+            {
+                remove_class(options.content, 'hidden');
+    
+                options.content.style = '';
+            }
+    
+            return options;
+        }
+    
+        /**
          * Unbind event listeners on a trigger
          *
          * @param {trigger} node
          * @access {private}
          */
-        Popover.prototype.unbind = function(trigger)
+        Popovers.prototype.unbind = function(trigger)
         {
             if (this._windowClick)
             {
@@ -14106,7 +14243,21 @@
                 this._windowClick = false;
             }
     
-            var evnt = trigger.dataset.popoverEvent;
+            let content = attr(trigger, 'data-content');
+    
+            if (content[0] === '#')
+            {
+                elem = find(content);
+                
+                if (elem)
+                {
+                    elem.style.display = 'none';
+    
+                    document.body.appendChild(elem);
+                }
+            }
+    
+            var evnt = attr(trigger, 'data-popover-event');
     
             if (evnt === 'click')
             {
@@ -14129,7 +14280,7 @@
          *
          * @access {private}
          */
-        Popover.prototype._hoverEnter = function(e, trigger)
+        Popovers.prototype._hoverEnter = function(e, trigger)
         {
             if (has_class(trigger, 'popped')) return;
     
@@ -14149,7 +14300,7 @@
          *
          * @access {private}
          */
-        Popover.prototype._hoverLeave = function(e, trigger)
+        Popovers.prototype._hoverLeave = function(e, trigger)
         {
             clearTimeout(HOVER_TIMER);
     
@@ -14158,7 +14309,7 @@
             {
                 for (let [_trigger, handler] of POP_HANDLERS)
                 {
-                    if (handler.el === trigger) trigger = handler.trigger;
+                    if (handler.popElement === trigger) trigger = handler.options.trigger;
                 }
             }
     
@@ -14176,7 +14327,7 @@
          *
          * @access {private}
          */
-        Popover.prototype._hoverPop = function(e, pop)
+        Popovers.prototype._hoverPop = function(e, pop)
         {
             clearTimeout(HOVER_TIMER);
     
@@ -14188,12 +14339,11 @@
          *
          * @access {private}
          */
-        Popover.prototype._windowResize = function()
+        Popovers.prototype._windowResize = function()
         {
             for (let [trigger, handler] of POP_HANDLERS)
             {
-                if (handler.state === 'active') handler.stylePop();
-    
+                if (handler.state === 'active') handler.position();
             }
         }
     
@@ -14203,11 +14353,11 @@
          * @param {event|null} e JavaScript click event
          * @access {private}
          */
-        Popover.prototype._killPop = function(trigger)
+        Popovers.prototype._killPop = function(trigger)
         {            
             let handler = POP_HANDLERS.get(trigger);
     
-            handler.remove();
+            handler.destroy();
             
             remove_class(trigger, 'popped');
         }
@@ -14218,7 +14368,7 @@
          * @param {event|null} e JavaScript click event
          * @access {private}
          */
-        Popover.prototype._clickHandler = function(e, trigger)
+        Popovers.prototype._clickHandler = function(e, trigger)
         {
             e = e || window.event;
     
@@ -14230,7 +14380,7 @@
             {
                 this._removeAll(trigger);
                 
-                popHandler.remove();
+                popHandler.destroy();
                 
                 remove_class(trigger, 'popped');
             }
@@ -14249,7 +14399,7 @@
          *
          * @access {private}
          */
-        Popover.prototype._windowClickHandler = function(e)
+        Popovers.prototype._windowClickHandler = function(e)
         {        
             let clicked = e.target;
     
@@ -14281,13 +14431,13 @@
          *
          * @access {private}
          */
-        Popover.prototype._removeAll = function(exception)
+        Popovers.prototype._removeAll = function(exception)
         {        
             for (let [trigger, handler] of POP_HANDLERS)
             {
                 if (!exception || (exception && trigger !== exception))
                 {
-                    handler.remove();
+                    handler.destroy();
     
                     remove_class(trigger, 'popped');
                 }
@@ -14295,7 +14445,7 @@
         }
     
         // Load into frontbx DOM core
-        frontbx.dom().register('Popover', extend(Component, Popover));
+        frontbx.dom().register('DOM_Popovers', extend(Component, Popovers));
     
     }());
     
@@ -14366,7 +14516,7 @@
          * 
          * @var {class}
          */
-        const [Component] = frontbx.get('Component');
+        const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     
         /**
          * Helper functions
@@ -14573,7 +14723,7 @@
          * 
          * @var {class}
          */
-        const [Component] = frontbx.get('Component');
+        const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     
         /**
          * Helper functions
@@ -14671,7 +14821,7 @@
          * @inheritdoc
          * 
          */
-        Menu.prototype.template = function(props)
+        Menu.prototype.render = function(props)
         {
             return dom_element({tag: 'ul', class: `menu ${props.classes ? props.classes : ''} ${props.dense ? 'menu-dense' : ''} ${props.ellipsis ? 'menu-ellipsis' : ''} ${ props.selectable ? `js-select-menu` : '' }`}, null, map(props.items, (i, item) =>
                 {
@@ -14696,14 +14846,14 @@
          * 
          * @var {class}
          */
-        const [Component] = frontbx.get('Component');
+        const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     
         /**
          * Helper functions
          * 
          * @var {Function}
          */
-        const [find, on, attr, closest, has_class, in_dom, off, remove_from_dom, trigger_event, extend] = frontbx.import(['find','on','attr','closest','has_class','in_dom','off','remove_from_dom','trigger_event','extend']).from('_');
+        const [find, on, attr, closest, has_class, in_dom, off, remove_from_dom, trigger_event, is_empty, extend] = frontbx.import(['find','on','attr','closest','has_class','in_dom','off','remove_from_dom','trigger_event','is_empty','extend']).from('_');
     
         /**
          * Chip suggestions.
@@ -14747,7 +14897,6 @@
         {
             e = e || window.event;
     
-            e.preventDefault();
     
             var _wrapper = closest(this, '.js-chip-suggestions');
             var _input   = find('#' + _wrapper.dataset.inputTarget);
@@ -14767,16 +14916,18 @@
     
                 remove_from_dom(this);
     
-                return;
+                return false;
             }
     
             let val = attr(_input, 'value');
     
-            attr(_input, 'value',  val === '' ? _text : `${val} ${_text}`);
+            attr(_input, 'value', is_empty(val) ? _text : `${val} ${_text}`);
     
             trigger_event(_input, 'change');
     
             remove_from_dom(this);
+    
+            return false;
         }
     
         // Load into frontbx DOM core
@@ -14790,7 +14941,7 @@
          * 
          * @var {class}
          */
-        const [Component] = frontbx.get('Component');
+        const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     
         /**
          * Helper functions
@@ -14872,7 +15023,7 @@
          * 
          * @var {class}
          */
-        const [Component] = frontbx.get('Component');
+        const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     
         /**
          * Helper functions
@@ -14939,7 +15090,7 @@
          * 
          * @var {class}
          */
-        const [Component] = frontbx.get('Component');
+        const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     
         /**
          * Helper functions
@@ -15048,11 +15199,11 @@
         }
     
         // Load into frontbx DOM core
-        frontbx.dom().register('Modal', extend(Component, Modal));
+        frontbx.dom().register('DOM_Modals', extend(Component, Modal));
     })();
     (function()
     {
-        const [Component] = frontbx.get('Component');
+        const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     
         /**
          * Helper functions
@@ -15168,7 +15319,7 @@
         }
     
         // Load into frontbx DOM core
-        frontbx.dom().register('Drawer', extend(Component, Drawer));
+        frontbx.dom().register('DOM_Drawers', extend(Component, Drawer));
         
     })();
     (function()
@@ -15178,7 +15329,7 @@
          * 
          * @var {class}
          */
-        const [Component] = frontbx.get('Component');
+        const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     
         /**
          * Helper functions
@@ -15294,7 +15445,7 @@
         }
     
         // Load into frontbx DOM core
-        frontbx.dom().register('Frontdrop', extend(Component, Frontdrop));
+        frontbx.dom().register('DOM_Frontdrops', extend(Component, Frontdrop));
         
     })();
     (function()
@@ -15304,7 +15455,7 @@
          * 
          * @var {class}
          */
-        const [Component] = frontbx.get('Component');
+        const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     
          /**
          * Helper functions
@@ -15419,7 +15570,7 @@
         }
     
         // Load into frontbx DOM core
-        frontbx.dom().register('Backdrop', extend(Component, Backdrop));
+        frontbx.dom().register('DOM_Backdrops', extend(Component, Backdrop));
     
     })();
     (function()
@@ -15429,7 +15580,7 @@
          * 
          * @var {class}
          */
-        const [Component] = frontbx.get('Component');
+        const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     
         /**
          * Helper functions
@@ -15503,7 +15654,7 @@
         }
     
         // Load into frontbx DOM core
-        frontbx.dom().register('Notification', extend(Component, Notification));
+        frontbx.dom().register('DOM_Notifications', extend(Component, Notification));
     
     })();
     (function()
@@ -15513,7 +15664,7 @@
          * 
          * @var {class}
          */
-        const [Component] = frontbx.get('Component');
+        const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     
         /**
          * Helper functions
@@ -15628,7 +15779,7 @@
          * 
          * @var {class}
          */
-        const [Component] = frontbx.get('Component');
+        const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     
         /**
          * Helper functions
@@ -15719,7 +15870,7 @@
          * 
          * @var {class}
          */
-        const [Component] = frontbx.get('Component');
+        const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     
         /**
          * Helper functions
@@ -15737,7 +15888,7 @@
          */
         const List = function()
         { 
-            this.super('.js-select-list > li');
+            this.super('.js-select-list .list-item');
         }
     
         /**
@@ -15783,11 +15934,11 @@
          * @inheritdoc
          * 
          */
-        List.prototype.template = function(props)
+        List.prototype.render = function(props)
         {
             return dom_element({tag: 'ul', class: `list ${props.classes ? props.classes : ''} ${props.dense ? 'list-dense' : ''} ${props.ellipsis ? 'list-ellipsis' : ''} ${ props.selectable ? `js-select-list` : '' }`}, null, map(props.items, (i, item) =>
                 {
-                    return dom_element({tag: 'li', class: `${item.state} ${props.selected && (props.selected === item.value || props.selected === item.text) ? 'selected' : null}`}, null,
+                    return dom_element({tag: 'li', class: `list-item ${item.state} ${props.selected && (props.selected === item.value || props.selected === item.text) ? 'selected' : null}`}, null,
                     [
                         item.left ? dom_element({tag: 'span', class: 'item-left', innerHTML: item.left}) : null,
                         dom_element({tag: 'span', class: 'item-body', innerText: item.body || item.text || item }),
@@ -15807,7 +15958,7 @@
          * 
          * @var {class}
          */
-        const [Component] = frontbx.get('Component');
+        const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     
         /**
          * Helper functions
@@ -15989,7 +16140,7 @@
          * @inheritdoc
          * 
          */
-        Dropdown.prototype.template = function(props)
+        Dropdown.prototype.render = function(props)
         {
             return dom_element({tag: 'div', class: 'drop-container'}, null,
             [
@@ -16032,7 +16183,7 @@
          * 
          * @var {class}
          */
-        const [Component] = frontbx.get('Component');
+        const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     
         /**
          * Helper functions
@@ -16103,11 +16254,25 @@
     (function()
     {
         /**
+         * Component base
+         * 
+         * @var {class}
+         */
+        const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
+    
+        /**
          * JS Helper reference
          * 
          * @var {object}
          */
-        const Helper = frontbx._();
+        const [attr, extend] = frontbx.import(['attr','extend']).from('_');
+    
+        /**
+         * Masks.
+         * 
+         * @var {Map}
+         */
+        const MASK_HANDLERS = new Map;
     
         /**
          * Input masker
@@ -16118,61 +16283,45 @@
          */
         const InputMasks = function()
         {
-            this._nodes = Helper.find_all('.js-mask');
-            
-            this._masks = [];
     
-            this._bind();
-    
-            return this;
+            this.super('.js-mask');
         }
     
         /**
-         * Public destructor remove all masks
-         *
-         * @access {public}
-         */
-        InputMasks.prototype.destruct = function()
-        {
-            Helper.each(this._masks, function(i, mask)
-            {
-                mask.destroy();
-            });
-            
-            this._nodes = [];
-    
-            this._masks = [];
-        }
-    
-        /**
-         * Find all the nodes and apply any masks
+         * Event binder - Binds all events on button click
          *
          * @access {private}
          */
-        InputMasks.prototype._bind = function()
+        InputMasks.prototype.bind = function(node)
         {
-            // Find all the nodes
-            Helper.each(this._nodes, function(i, input)
+            let mask = attr(node, 'data-mask');
+    
+            let format = attr(node, 'data-format');
+    
+            if (mask && mask.startsWith('regex(')) mask = mask.trim().replace('regex(', '').slice(0, -1);
+    
+            if (mask)
             {
-                let mask = Helper.attr(input, 'data-mask');
+                MASK_HANDLERS.set(node, frontbx.InputMasker(node, mask, format));
+            }
+        }
     
-                let format = Helper.attr(input, 'data-format');
+        /**
+         * Event unbinder - Removes all events on button click
+         *
+         * @access {private}
+         */
+        InputMasks.prototype.unbind = function(node)
+        {
+            let handler = MASK_HANDLERS.get(node);
     
-                if (mask && mask.startsWith('regex('))
-                {
-                    mask = mask.trim().replace('regex(', '').slice(0, -1);
-                }
+            if (handler) handler.destroy();
     
-                if (mask)
-                {
-                    this._masks.push(frontbx.InputMasker(input, mask, format));
-                }
-    
-            }, this);
+            MASK_HANDLERS.delete(node);
         }
     
         // Load into frontbx DOM core
-        frontbx.dom().register('InputMasks', InputMasks);
+        frontbx.dom().register('InputMasks', extend(Component, InputMasks));
     
     })();
     (function()
@@ -16182,7 +16331,7 @@
          * 
          * @var {class}
          */
-        const [Component] = frontbx.get('Component');
+        const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     
         /**
          * Helper functions
@@ -16262,7 +16411,7 @@
          * 
          * @var {class}
          */
-        const [Component] = frontbx.get('Component');
+        const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     
         /**
          * Helper functions
@@ -16376,7 +16525,7 @@
          * 
          * @var {class}
          */
-        const [Component] = frontbx.get('Component');
+        const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     
         /**
          * Helper functions
@@ -16450,6 +16599,12 @@
         {                
             // No ripples inside primary actions
             if (!has_class(node, 'primary-action') && closest(node, '.primary-action') && !has_class(node, 'card'))
+            {
+                return;
+            }
+    
+            // No ripples inside elements with badges or status
+            if (find('> .badge', node) || find('> .status', node))
             {
                 return;
             }
@@ -16622,7 +16777,7 @@
          * 
          * @var {class}
          */
-        const [Component] = frontbx.get('Component');
+        const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     
         /**
          * Helper functions
@@ -16688,7 +16843,7 @@
          * @inheritdoc
          * 
          */
-        Table.prototype.template = function(props)
+        Table.prototype.render = function(props)
         {
             let head = dom_element({tag: 'thead'}, null, dom_element({tag: 'tr'}, null, map(props.head, (i, cell) =>
             {   
@@ -16717,7 +16872,7 @@
          * 
          * @var {class}
          */
-        const [Component] = frontbx.get('Component');
+        const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     
         /**
          * Helper functions
@@ -16749,7 +16904,7 @@
          * @inheritdoc
          * 
          */
-        Image.prototype.template = function(props)
+        Image.prototype.render = function(props)
         {
             let attrs        = map({...props}, (k, v) => !AVAILABLE_OPTIONS.includes(k) ? v : false );
             let isBackground = props.background;
@@ -16807,6 +16962,10 @@
     (function()
     {
     	frontbx.boot();
+    
+    	console.log(frontbx);
+    
+    	console.log(frontbx.services());
     
     })();
  	

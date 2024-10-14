@@ -34,7 +34,7 @@
     --fbx-btn-overflow: hidden;
     --fbx-btn-border: none;
     --fbx-btn-width: auto;
-    --fbx-btn-border-radius: #{$border-radius};
+    --fbx-btn-border-radius: #{$btn-radius};
     --fbx-btn-font-size: #{$btn-font-size};
     --fbx-btn-line-height: #{$btn-font-size};
     --fbx-btn-bg-color: #{$btn-base-bg};
@@ -200,6 +200,14 @@
     --fbx-btn-icon-size: #{_addPercent($btn-icon-font-size, 20)};
 }
 
+// Outline buttons need 1px smaller
+.btn-outline
+{
+    --fbx-btn-paddings-y: calc(var(--fbx-btn-padding-y) - 1px);
+    padding-top: var(--fbx-btn-paddings-y);
+    padding-bottom: var(--fbx-btn-paddings-y);
+}
+
 // Circle default and sizes 
 .btn-circle
 {
@@ -208,7 +216,15 @@
     --fbx-btn-padding-x: 0;
     width: calc(var(--fbx-btn-font-size) * 3);
     height: calc(var(--fbx-btn-font-size) * 3);
-    
+
+    > .fa, .fa-brands
+    {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        line-height: 1;
+        transform: translate3d(-50%, -50%, 0px);
+    }
 }
 
 // Block buttons

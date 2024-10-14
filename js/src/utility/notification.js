@@ -5,7 +5,7 @@
      * 
      * @var {Function}
      */
-    const [find, add_class, on, in_dom, remove_class, remove_from_dom, dom_element] = frontbx.import(['find','add_class','on','in_dom','remove_class','remove_from_dom','dom_element']).from('_');
+    const [find, find_all, add_class, on, in_dom, remove_class, remove_from_dom, dom_element] = frontbx.import(['find','find_all','add_class','on','in_dom','remove_class','remove_from_dom','dom_element']).from('_');
 
     /**
      * Default options
@@ -16,10 +16,14 @@
     {
         text:             '',
         variant:          '',
+        closebtn:         false,
+        responsive:       false,
+        btn:              false,
+        stacked:          false,
+        dense:            true,
         icon:             '',
         position:         'bottom',
         timeout:          6000,
-        btn:              false,
         btnVariant:       'primary',
         callbackBuilt:    () => {},
         callbackRender:   () => {},
@@ -115,18 +119,25 @@
 
         this._animateOutClass = this._animateOut();
 
-        let notif = dom_element({tag: 'div', class: options.variant ? `msg msg-dense msg-${options.variant} ${this._animateInClass}` : `msg msg-dense ${this._animateInClass}` });
+        let notif = dom_element({tag: 'div', class: `msg ${options.closebtn || options.btn ? 'msg-with-btn' : ''} ${options.responsive ? 'msg-responsive' : ''} ${options.stacked ? 'msg-stacked' : ''} ${options.variant ? `msg-${options.variant}` : ''} ${options.dense ? 'msg-dense' : ''} ${this._animateInClass}`} );
         
+        if (options.closebtn)
+        {
+            dom_element({tag: 'button', type: 'button', role: 'button', ariaLabel: 'close', class: 'btn btn-pure btn-xs btn-circle btn-msg-close js-notif-btn' }, notif, dom_element({tag: 'span', class: 'fa fa-xmark' }));
+        }
+
         if (options.icon)
         {
             dom_element({tag: 'div', class: 'msg-icon' }, notif, dom_element({tag: 'span', class: `fa fa-${options.icon}` }));
         }
 
-        dom_element({tag: 'div', class: 'msg-body'}, notif, dom_element({tag: 'p', innerHTML: options.text }))
+        dom_element({tag: 'div', class: 'msg-body'}, notif, options.text.trim().startsWith('<') ? options.text : dom_element({tag: 'p', innerHTML: options.text }) );
 
         if (options.btn)
         {
-            this._btn = dom_element({tag: 'div', class: 'msg-btn' }, notif, dom_element({tag: 'button', class: `btn btn-pure btn-${options.btnVariant} btn-sm js-notif-btn`, innerText: options.btn }));
+            this._btn = dom_element({tag: 'div', class: 'msg-btn' }, notif, options.btn.trim().startsWith('<') ? options.btn : dom_element({tag: 'button', class: `btn btn-pure btn-${options.btnVariant} btn-sm js-notif-btn`, innerText: options.btn }));
+            
+            add_class(find_all('button', this._btn), 'js-notif-btn');
         }
 
         this._notification = notif;
@@ -197,7 +208,7 @@
             this._timeout = setTimeout(() => this._removeValidate(), this._options.timeout);
         }
 
-        on(this._notification, 'click', this._removeValidate, this);
+        on(this._options.closebtn || this._options.btn ? find_all('.js-notif-btn', this._notification) : this._notification, 'click', this._removeValidate, this);
     }
 
     /**

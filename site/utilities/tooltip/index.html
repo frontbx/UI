@@ -50,11 +50,10 @@
                     <span class="hamburger-patty"></span>
                     <span class="hamburger-bun  hamburger-bun--btm"></span>
                 </button>
-                <a class="nav-logo" href="/">
+                <span class="nav-logo" href="/" onclick="(() => window.location.href.includes('localhost') ? window.location.href = '/site' : window.location.href = '/ui')();">
                     <svg viewBox="0 0 1451 1451"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg>
                     <span class="logo-text md-inline-block lg-inline-block xl-inline-block">Frontbx</span>
-                </a>
-
+                </span>
                 <ul class="nav-menu flex-content-right">
                     <li class="lg xl">
                         <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Github">
@@ -338,8 +337,9 @@
 <p>Frontbx comes with a simple CSS tooltip that's easy to use. Simple add the <code>.tooltipped</code> class with the direction <code>.tooltipped-[direction]</code> you want the toooltip to be displayed.</p>
 <p>Then add the content you want displayed as the <code>data-tooltip</code> attribute.</p>
 <div class="fbx-snippet-demo">
-    <div class="container-fuid text-center">
+    <div class="flex-row-fluid align-cols-center col-gaps-xs row-gaps-xs">
         <button class="btn tooltipped tooltipped-n" data-tooltip="Hello World!">.tooltipped</button>
+        <button class="btn tooltipped tooltipped-n tooltipped-no-arrow" data-tooltip="Hello World!">.tooltipped-no-arrow</button>
     </div>
 </div>
 <pre><code class="html language-html">    &lt;button class="tooltipped tooltipped-n" data-tooltip="Hello World!"&gt;...&lt;/button&gt;</code></pre>

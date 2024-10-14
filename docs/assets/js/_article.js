@@ -4,7 +4,7 @@
  */
 (function()
 {
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     const [find, add_class, remove_class, extend]  = frontbx.import(['find','add_class','remove_class','extend']).from('_');
 
     const ArticleWaypoints = function()
@@ -29,12 +29,12 @@
 }());
 
 /**
- * Converts article menu's to responsive
+ * Converts article table's to responsive
  *
  */
 (function()
 {
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     const [add_class, dom_element, extend]  = frontbx.import(['add_class','dom_element','extend']).from('_');
 
     const ArticleTables = function()
@@ -69,7 +69,7 @@
  */
 (function()
 {
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     const [find, dom_element, remove_from_dom, extend]  = frontbx.import(['find','dom_element','remove_from_dom','extend']).from('_');
 
     const ArticleTitles = function()
@@ -112,7 +112,7 @@
  */
 (function()
 {
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
     const [add_class, extend] = frontbx.import(['add_class', 'extend']).from('_');
 
     const BQs = function()

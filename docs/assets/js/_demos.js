@@ -141,6 +141,40 @@
 }());
 
 /**
+ * Insert list demo
+ *
+ */
+(function()
+{
+    let options =
+    {
+        dense: false,
+        selectable: true,
+        ellipsis: false,
+        items:
+        [
+            'Option One',
+            {
+                left: '<span class="fa fa-sun"></span>',
+                body: 'Option Two'
+            },
+            {
+                left: '<span class="fa fa-sun"></span>',
+                body: 'Option 3',
+                right: '<span class="fa fa-user"></span>',
+            }
+        ]
+    };
+
+    const [find] = frontbx.import(['find']).from('_');
+
+    frontbx.DocsDemo('.js-insert-list-btn', () => frontbx.Dom().create('List', options, find('.js-insert-list-container')));
+
+}());
+
+
+
+/**
  * Lazyload image demos
  *
  */
@@ -258,7 +292,7 @@
  */
 (function()
 {
-	const [Component] = frontbx.get('Component');
+	const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
 	const [find, each, on, off, extend] = frontbx.import(['find','each','on','off','extend']).from('_');
 
@@ -277,7 +311,7 @@
         { selector: '.js-card-header-content', variant: 'text-block', lines: 2},
         { selector: '.js-card-media', variant: 'block wave', aspectratio: '16/9'},
         { selector: '.js-card-title', variant: 'h5'},
-        { selector: '.js-card-text', variant: 'text-block', lines: 3},
+        { selector: '.js-card-text', variant: 'text-block', lines: 2},
     ];
 
 	const SkeletonLoader = function()
@@ -457,39 +491,64 @@
  */
 (function()
 {
-	frontbx.DocsDemo('.js-notif-trigger-1', () =>
-        frontbx.Notification({
-            text  : `Hello! I'm a notification.`,
+	frontbx.DocsDemo('.js-notif-trigger-1', () => frontbx.Notification({
+            text  : 'Hello! I\'m a notification.',
         })
     );
     frontbx.DocsDemo('.js-notif-trigger-2', () => frontbx.Notification(
     {
-        btn  : `Dismiss`,
-        text : `Hello! I'm a notification.`,
+        btn  : 'Dismiss',
+        text : 'Hello! I\'m a notification.',
     }));
     frontbx.DocsDemo('.js-notif-trigger-3', () => frontbx.Notification(
     {
-        icon : `bell`,
-        text : `Hello! I'm a notification.`,
+        icon : 'bell',
+        text : 'Hello! I\'m a notification.',
     }));
     frontbx.DocsDemo('.js-notif-trigger-4', () => frontbx.Notification(
     {
-        btn        : `Danger`,
-        btnVariant : `danger`,
-        text       : `Hello! I'm a notification.`,
+        btn        : 'Danger',
+        btnVariant : 'danger',
+        text       : 'Hello! I\'m a notification.',
     }));
     frontbx.DocsDemo('.js-notif-trigger-5', () => frontbx.Notification(
     {
-        icon    : `check`,
-        variant : `success`, 
-        text    : `Hello! I'm a notification.`,
+        icon : 'bell',
+        text : 'Hello! I\'m a notification.',
+        closebtn: true
     }));
     frontbx.DocsDemo('.js-notif-trigger-6', () => frontbx.Notification(
+    {
+        icon    : 'check',
+        variant : 'primary',
+        text    : 'Hello! I\'m a notification.',
+    }));
+    frontbx.DocsDemo('.js-notif-trigger-7', () => frontbx.Notification(
+    {
+        icon       : 'bell',
+        stacked    : true,
+        btn        : '<button type="button" class="btn btn-pure btn-sm" aria-label="cancel">Cancel</button><button type="button" class="btn btn-primary btn-sm" aria-label="Confirm">Confirm</button>',
+        text       : '<p class="text-bold">Lorem ipsum laboris cupidatat in enim sunt?</p><p style="opacity: 0.9;">In proident nostrud exercitation elit irure id consequat consequat nulla sunt nulla dolore officia est.</p>',
+    }));
+    frontbx.DocsDemo('.js-notif-trigger-8', () => frontbx.Notification(
+    {
+        responsive : true,
+        btn        : 'Confirm',
+        text       : '<p class="text-bold">Lorem ipsum laboris cupidatat in enim sunt?</p><p style="opacity: 0.9;">In proident nostrud exercitation elit irure id consequat consequat nulla sunt nulla dolore officia est.</p>',
+    }));
+    frontbx.DocsDemo('.js-notif-trigger-9', () => frontbx.Notification(
+    {
+        icon       : 'bell',
+        dense      : false,
+        text       : 'Eiusmod ullamco cupidatat culpa amet sit nostrud veniam consectetur quis labore duis duis ut occaecat sint.',
+    }));
+    
+    frontbx.DocsDemo('.js-notif-trigger-10', () => frontbx.Notification(
     {
         text: 'Hello! You need to click me to dismiss.',
         timeout: false,
     }));
-    frontbx.DocsDemo('.js-notif-trigger-7', function()
+    frontbx.DocsDemo('.js-notif-trigger-11', function()
     {
         let start = 10;
         let i     = 1;
@@ -705,5 +764,60 @@
             inserted = true;    
         }
     }, () => inserted = false);
+
+}());
+
+/**
+ * Popover insert demo
+ *
+ */
+(function()
+{
+    const [on] = frontbx.import(['on']).from('_');
+
+    let popover;
+
+    let options =
+    {
+        min: 0,
+        max: 100,
+        value: 50,
+        step: 1,
+        labeled: false,
+        indicators: false,
+    };
+
+    frontbx.DocsDemo('.js-docs-popover-trigger', (e, btn) =>
+    {
+        if (!popover)
+        {
+            popover = frontbx.Popover(
+            {
+                variant: 'info',
+                direction: 'top-left',
+                animation: 'fade',
+                title: 'Hello World!',
+                content: 'Laboris nostrud excepteur nostrud sit anim eiusmod occaecat in elit reprehenderit ex ad occaecat anim sint irure est sunt.',
+                event: 'click',
+                classes: 'my-popover',
+                trigger: btn
+            });
+
+            window.addEventListener('click', () =>
+            {
+                
+            });
+        }
+    });
+
+    on(window, 'frontbx:pjax:start', () => 
+    {
+        if (popover)
+        {
+            popover.destroy();
+
+            popover = null;
+        }
+    });
 
 }());

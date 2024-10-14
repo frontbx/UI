@@ -125,7 +125,7 @@
     --fbx-box-shadow-in: #{$box-shadow-in};
 
     /* Misc */
-    --fbx-border-radius: 3px;
+    --fbx-border-radius: #{$border-radius};
 
     /* Grid */
     /* Breakpoints */

@@ -5,7 +5,7 @@
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -121,6 +121,6 @@
     }
 
     // Load into frontbx DOM core
-    frontbx.dom().register('Frontdrop', extend(Component, Frontdrop));
+    frontbx.dom().register('DOM_Frontdrops', extend(Component, Frontdrop));
     
 })();

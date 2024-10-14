@@ -9,4 +9,8 @@
 {
 	frontbx.boot();
 
+	console.log(frontbx);
+
+	console.log(frontbx.services());
+
 })();

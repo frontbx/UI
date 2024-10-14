@@ -101,10 +101,10 @@
 // Variants
 @mixin _checkbox($color)
 {
-    $light: _color-name-from-var($color) + '-200';
+    $light: _color-name-from-var($color) + '-300';
     $medium: _color-name-from-var($color) + '-300';
 
-    --fbx-switch-track-color-off:  var(--fbx-#{$light});
+    --fbx-switch-track-color-off: var(--fbx-#{$light});
     --fbx-switch-track-color-on: var(--fbx-#{$medium});
     --fbx-switch-knob-color-on :#{$color};
 

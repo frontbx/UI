@@ -36,3 +36,8 @@
 {
     color: var(--fbx-gray-300);
 }
+
+.fbx-darkmode pre[class*="language-file-path"]
+{
+    border-bottom: 1px solid var(--fbx-black-300)
+}

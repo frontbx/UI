@@ -35,7 +35,7 @@
         transform: translate3d(-50%, -50%, 0px);
     }
 
-    @include _clearfix;
+    @include clearfix;
 }
 
 // Square

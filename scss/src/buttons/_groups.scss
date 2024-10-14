@@ -2,52 +2,41 @@
 {
 	--fbx-btn-group-radius: #{$btn-group-radius};
 
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: row;
+
 	> .btn
 	{
 		display: inline-block;
-		margin-left: -5px;
 		border-radius: 0;
-		&:first-child
-		{
-			margin-left: 0;
-			border-top-left-radius: var(--fbx-btn-group-radius);
-			border-bottom-left-radius: var(--fbx-btn-group-radius);
-		}
-		&:last-child
-		{
-			border-top-right-radius: var(--fbx-btn-group-radius);
-			border-bottom-right-radius: var(--fbx-btn-group-radius);
-		}
+		
 	}
-	> .drop-container
+
+	> :not(:first-child)
 	{
-		.btn
-		{
-			display: inline-block;
-			margin-left: -5px;
-			border-radius: 0;
-		}
-		&:first-child .btn
-		{
-			margin-left: 0;
-			border-top-left-radius: var(--fbx-btn-group-radius);
-			border-bottom-left-radius: var(--fbx-btn-group-radius);
-		}
-		&:last-child .btn
-		{
-			border-top-right-radius: var(--fbx-btn-group-radius);
-			border-bottom-right-radius: var(--fbx-btn-group-radius);
-		}
+		margin-left: -1px;
 	}
-	&.btn-pill
+	> :first-child, .drop-container:first-child > .btn
 	{
-		> .btn:first-child
+		border-top-left-radius: var(--fbx-btn-group-radius);
+		border-bottom-left-radius: var(--fbx-btn-group-radius);
+	}
+	> :last-child, .drop-container:last-child > .btn
+	{
+		border-top-right-radius: var(--fbx-btn-group-radius);
+		border-bottom-right-radius: var(--fbx-btn-group-radius);
+	}
+
+	&.btn-group-pill
+	{
+		> :first-child
 		{
-			border-radius: 500px 0 0 500px;
+			border-radius: 100px 0 0 100px;
 		}
-		> .btn:last-child
+		> :last-child
 		{
-			border-radius: 0 500px 500px 0;
+			border-radius: 0 100px 100px 0;
 		}
 		.fa, .fa-brands
 		{

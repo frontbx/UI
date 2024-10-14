@@ -5,7 +5,7 @@
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -79,6 +79,12 @@
     {                
         // No ripples inside primary actions
         if (!has_class(node, 'primary-action') && closest(node, '.primary-action') && !has_class(node, 'card'))
+        {
+            return;
+        }
+
+        // No ripples inside elements with badges or status
+        if (find('> .badge', node) || find('> .status', node))
         {
             return;
         }

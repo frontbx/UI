@@ -10,12 +10,14 @@ const ARGS_TAG = '[object Arguments]';
 const NODELST_TAG = '[object NodeList]';
 const OBJECT_TAG = '[object Object]';
 const DATE_TAG = '[object Date]';
+const NODECLT_TAG = '[object HTMLCollection]';
 
 // Unusual
 const SET_TAG = '[object Set]';
 const MAP_TAG = '[object Map]';
 const REGEXP_TAG = '[object RegExp]';
 const SYMBOL_TAG = '[object Symbol]';
+const CSSDEC_TAG = '[object CSSStyleDeclaration]';
 
 // Array buffer
 const ARRAY_BUFFER_TAG = '[object ArrayBuffer]';
@@ -35,7 +37,7 @@ const ERROR_TAG = '[object Error]';
 const WEAKMAP_TAG = '[object WeakMap]';
 
 // Arrayish _tags
-const ARRAYISH_TAGS = [ARRAY_TAG, ARGS_TAG, NODELST_TAG];
+const ARRAYISH_TAGS = [ARRAY_TAG, ARGS_TAG, NODELST_TAG, NODECLT_TAG];
 
 // Object.prototype.toString
 const TO_STR = Object.prototype.toString;

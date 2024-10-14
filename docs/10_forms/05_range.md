@@ -150,10 +150,10 @@ You can also add an optional prefix and/or suffix string to the indicators. This
     <style scoped>
         .range-slider.custom-range
         {
-            --fbx-track-highlight: var(--fbx-theme-danger);
-            --fbx-thumb-bg: var(--fbx-theme-danger);
-            --fbx-thumb-focus-ring-color: rgba(var(--fbx-theme-danger-rgb),0.3);
-            --fbx-icon-color-on: var(--fbx-theme-danger);
+            --fbx-track-highlight: var(--fbx-theme-primary);
+            --fbx-thumb-bg: var(--fbx-theme-primary);
+            --fbx-thumb-focus-ring-color: rgba(var(--fbx-theme-primary-rgb),0.3);
+            --fbx-icon-color-on: var(--fbx-theme-primary);
             --fbx-track-size: 8px;
             --fbx-thumb-size: 16px;
         }

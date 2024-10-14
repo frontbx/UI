@@ -50,11 +50,10 @@
                     <span class="hamburger-patty"></span>
                     <span class="hamburger-bun  hamburger-bun--btm"></span>
                 </button>
-                <a class="nav-logo" href="/">
+                <span class="nav-logo" href="/" onclick="(() => window.location.href.includes('localhost') ? window.location.href = '/site' : window.location.href = '/ui')();">
                     <svg viewBox="0 0 1451 1451"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg>
                     <span class="logo-text md-inline-block lg-inline-block xl-inline-block">Frontbx</span>
-                </a>
-
+                </span>
                 <ul class="nav-menu flex-content-right">
                     <li class="lg xl">
                         <a href="https://github.com/frontbx/ui" target="_blank" class="btn-unstyled btn-white tooltipped tooltipped-s" data-tooltip="Github">
@@ -350,7 +349,7 @@
 <p>Once the Frontbx's DOM has loaded, if the Live DOM is altered, mutated or updated in any way Frontbx's Dom can be "refreshed", which removes any redundant listeners on nodes that were removed and checks for any new elements that need binding.</p>
 <h4 id="usage">Usage</h4>
 <p>The base Component can be retrieved via the container:</p>
-<pre><code class="javascript language-javascript">const [Component] = frontbx.get('Component');</code></pre>
+<pre><code class="javascript language-javascript">const Component = frontbx.Component(frontbx.IMPORT_AS_REF);</code></pre>
 <p>In an extended component's <code>constructor</code>, <code>this.super</code> method should be called with a selector string, which constructs the base <code>Component</code> and queries any DOM selectors to <code>this._DOMElements</code>;</p>
 <pre><code class="javascript language-javascript">const Buttons = function()
 {
@@ -385,7 +384,7 @@
 <p>Or refresh all Dom Components to a context element:</p>
 <pre><code class="javascript language-javascript">dom.refresh(document.querySelector('.wrapper'));</code></pre>
 <p>Below is a simple example of a complete Dom Component that console logs click events on buttons:</p>
-<pre><code class="javascript language-javascript">const [Component] = frontbx.get('Component');
+<pre><code class="javascript language-javascript">const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
 const [on, off, extend] = frontbx.import(['on','off','extend']).from('_');
 
@@ -428,7 +427,7 @@ document.querySelector('div').appendChild(dropdown);</code></pre>
 <pre><code class="JavaScript language-JavaScript">frontbx.Dom().create('Dropdown', options, document.querySelector('.div'));</code></pre>
 <h4 id="dynamic-content">Dynamic Content</h4>
 <p>When creating your own component, if you want a Component use <code>Component.create</code> use the <code>template</code> method to return a DOM element. The method will receive an object of passed properties merged with <code>this.defaultProps</code> on the Component.</p>
-<pre><code class="javascript language-javascript">const [Component] = frontbx.get('Component');
+<pre><code class="javascript language-javascript">const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
 const [dom_element] = frontbx.import(['dom_element']).from('_');
 
@@ -488,19 +487,19 @@ const button = frontbx.Dom().create('Buttons', {text: 'Click me!'});</code></pre
 <td>Fired immediately after live DOMElement node is removed from the DOM</td>
 </tr>
 <tr>
-<td><code>Frontbx:dom:bind:[component]</code></td>
+<td><code>Frontbx:dom:bind:Component</code></td>
 <td><code>window</code></td>
 <td><code>e.detail.component</code> <code>e.detail.context</code></td>
 <td>Fired immediately after a Dom Component is bound</td>
 </tr>
 <tr>
-<td><code>Frontbx:dom:unbind:[component]</code></td>
+<td><code>Frontbx:dom:unbind:Component</code></td>
 <td><code>window</code></td>
 <td><code>e.detail.component</code> <code>e.detail.context</code></td>
 <td>Fired immediately after a Dom Component is unbound</td>
 </tr>
 <tr>
-<td><code>Frontbx:dom:refresh:[component]</code></td>
+<td><code>Frontbx:dom:refresh:Component</code></td>
 <td><code>window</code></td>
 <td><code>e.detail.component</code> <code>e.detail.context</code></td>
 <td>Fired immediately after a Dom Component is refreshed</td>

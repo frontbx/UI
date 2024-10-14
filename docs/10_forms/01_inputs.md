@@ -257,9 +257,6 @@ Input errors and warning help-text can be used when running form validations. Th
 
 ### Add-ons
 
-
-#### Prompts
-
 Input prompts can be added inside a `.form-field` by adding the `.input-group` modifier to the wrapper and be placed either side of the input. In cases where the add-on is before (or either side) of the input - simply wrap the `<label>` and `<input>` in a `div`
 
 <div class="fbx-snippet-demo">
@@ -464,7 +461,7 @@ Icons can be integrated into input inside the `.form-field` wrapper as an add-on
 In addition to the default styles, the `.field-on-bg` modifier provides pre-styled markup for inputs that are on a colored background such as `bg-black` `.bg-black` etc...
 
 <div class="fbx-snippet-demo">
-    <form class="row bg-black pole-sm">
+    <form class="row bg-primary pole-sm">
         <div class="flex-row-fluid col-gaps-sm align-cols-center">
             <div class="form-field field-on-bg">
                 <input name="text" id="example_26" type="text" placeholder="Enter some text...">

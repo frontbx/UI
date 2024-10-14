@@ -5,7 +5,7 @@
      * 
      * @var {class}
      */
-    const [Component] = frontbx.get('Component');
+    const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
     /**
      * Helper functions
@@ -114,5 +114,5 @@
     }
 
     // Load into frontbx DOM core
-    frontbx.dom().register('Modal', extend(Component, Modal));
+    frontbx.dom().register('DOM_Modals', extend(Component, Modal));
 })();

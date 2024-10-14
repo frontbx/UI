@@ -40,7 +40,7 @@ Once the Frontbx's DOM has loaded, if the Live DOM is altered, mutated or update
 The base Component can be retrieved via the container:
 
 ```javascript
-const [Component] = frontbx.get('Component');
+const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 ```
 
 In an extended component's `constructor`, `this.super` method should be called with a selector string, which constructs the base `Component` and queries any DOM selectors to `this._DOMElements`;
@@ -112,7 +112,7 @@ dom.refresh(document.querySelector('.wrapper'));
 Below is a simple example of a complete Dom Component that console logs click events on buttons:
 
 ```javascript
-const [Component] = frontbx.get('Component');
+const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
 const [on, off, extend] = frontbx.import(['on','off','extend']).from('_');
 
@@ -175,7 +175,7 @@ When creating your own component, if you want a Component use `Component.create`
 
 
 ```javascript
-const [Component] = frontbx.get('Component');
+const Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 
 const [dom_element] = frontbx.import(['dom_element']).from('_');
 
@@ -211,6 +211,6 @@ Frontbx will dispatch various events when DOM components are interacted with or 
 | `Frontbx:dom:refresh`             | `window`       | `e.detail.context`                      | Fired immediately after Frontbx Dom has been refreshed and all Components are re-bound |
 | `Frontbx:dom:mutate`              | `DOMElement`   | `e.detail.DOMElement`                   | Fired immediately after content on live DOMElement node is mutated                    |
 | `Frontbx:dom:remove`              | `DOMElement`   | `e.detail.DOMElement`                   | Fired immediately after live DOMElement node is removed from the DOM                  |
-| `Frontbx:dom:bind:[component]`    | `window`       | `e.detail.component` `e.detail.context` | Fired immediately after a Dom Component is bound                                      |
-| `Frontbx:dom:unbind:[component]`  | `window`       | `e.detail.component` `e.detail.context` | Fired immediately after a Dom Component is unbound                                    |
-| `Frontbx:dom:refresh:[component]` | `window`       | `e.detail.component` `e.detail.context` | Fired immediately after a Dom Component is refreshed                                  |
+| `Frontbx:dom:bind:Component`    | `window`       | `e.detail.component` `e.detail.context` | Fired immediately after a Dom Component is bound                                      |
+| `Frontbx:dom:unbind:Component`  | `window`       | `e.detail.component` `e.detail.context` | Fired immediately after a Dom Component is unbound                                    |
+| `Frontbx:dom:refresh:Component` | `window`       | `e.detail.component` `e.detail.context` | Fired immediately after a Dom Component is refreshed                                  |

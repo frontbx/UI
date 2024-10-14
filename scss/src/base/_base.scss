@@ -26,14 +26,14 @@ body
     font-weight:      var(--fbx-base-font-weight);
     line-height:      var(--fbx-base-line-height);
     font-size:        var(--fbx-base-font-size);
-    @include _font-smooth;
+    @include font-smooth;
 }
 input, select, label, button, textarea
 {
     font-family: var(--fbx-base-font-family);
     font-size:   var(--fbx-base-font-size);
     color:       var(--fbx-body-color);
-    @include _font-smooth;
+    @include font-smooth;
 }
 input[type="hidden"]
 {
@@ -60,7 +60,7 @@ a
 // Clearfix
 .clearfix
 {
-    @include _clearfix;
+    @include clearfix;
 }
 
 // no-scroll body

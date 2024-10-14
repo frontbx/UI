@@ -73,7 +73,7 @@
     label:after
     {
         content: "\f00c";
-        @include glyph-icon;
+        @include font-icon;
         display: inline-block;
         position: absolute;
         line-height: inherit;

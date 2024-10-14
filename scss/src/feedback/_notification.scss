@@ -1,8 +1,6 @@
 .notification-wrap
 {
 	--fbx-notification-max-width: #{$notification-max-width};
-	--fbx-notification-bg: #{$notification-bg};
-	--fbx-notification-color: #{$notification-color};
 	z-index: var(--fbx-zindex-notification);
 	width: 100%;
 	position: fixed;
@@ -19,11 +17,14 @@
 	}
 	.msg
 	{
-		--fbx-msg-bg: var(--fbx-notification-bg);
-	    --fbx-msg-color: var(--fbx-notification-color);
 	    width: 100%;
 		cursor: pointer;
 		@include raised($notification-shadow);
+
+		&.msg-with-btn
+		{
+			cursor: default;
+		}
 	}
 
 	&.position-top,
@@ -45,13 +46,13 @@
 	&.position-top-left,
 	&.position-top-right
 	{
-		top: 5px;
+		top: 10px;
 	}
 	&.position-bottom,
 	&.position-bottom-left,
 	&.position-bottom-right
 	{
-		bottom: 5px;
+		bottom: 10px;
 	}
 
 	&.position-top-left,
