@@ -519,60 +519,60 @@
 <p>The <code>data-input-target</code> must contain the <code>id</code> of the target input.</p>
 <div class="fbx-snippet-demo">
     <div class="row pole-xs">
-        <div class="form-field row">
-            <input name="response" id="response1" type="text" placeholder="Enter some text...">
-            <label for="response1">Text Input</label>
+        <div class="chips-input-unstyled row">
+            <label for="response1">Text Input:</label>
+            <input class="input-unstyled" name="response" id="response1" type="text" placeholder="Enter some text...">
         </div>
-        <div class="row pole-xs pole-n chip-suggestions js-chip-suggestions" data-input-target="response1">
+        <div class="flex-row-fluid pole-xs pole-n col-gaps-xs js-chip-suggestions" data-input-target="response1">
             <button class="btn btn-chip ">Wow great idea!</button>
             <button class="btn btn-chip">Sounds good. Let's do it.</button>
             <button class="btn btn-chip">Ok see you there.</button>
         </div>
     </div>
 </div>
-<pre><code class="html language-html">&lt;form&gt;
-    &lt;div class="form-field row"&gt;
-        &lt;input name="response" id="response1" type="text" placeholder="Enter some text..."&gt;
-        &lt;label for="response1"&gt;Text Input&lt;/label&gt;
-    &lt;/div&gt;
-    &lt;div class="row pole-xs pole-n chip-suggestions js-chip-suggestions" data-input-target="response1"&gt;
-        &lt;button class="btn btn-chip "&gt;Wow great idea!&lt;/button&gt;
-        &lt;button class="btn btn-chip"&gt;Sounds good. Let's do it.&lt;/button&gt;
-        &lt;button class="btn btn-chip"&gt;Ok see you there.&lt;/button&gt;
-    &lt;/div&gt;
-&lt;/form&gt;</code></pre>
+<pre><code class="html language-html">&lt;div class="chips-input-unstyled row"&gt;
+    &lt;label for="response1"&gt;Text Input:&lt;/label&gt;
+    &lt;input class="input-unstyled" name="response" id="response1" type="text" placeholder="Enter some text..."&gt;
+&lt;/div&gt;
+
+&lt;div class="flex-row-fluid pole-xs pole-n col-gaps-xs js-chip-suggestions" data-input-target="response1"&gt;
+    &lt;button class="btn btn-chip "&gt;Wow great idea!&lt;/button&gt;
+    &lt;button class="btn btn-chip"&gt;Sounds good. Let's do it.&lt;/button&gt;
+    &lt;button class="btn btn-chip"&gt;Ok see you there.&lt;/button&gt;
+&lt;/div&gt;</code></pre>
 <p>Chip suggestions can be incorporated into a <strong>chip input</strong> too.</p>
 <div class="fbx-snippet-demo">
-    <div class="row pole-xs">
-        <div class="chips-input js-chips-input" data-input-name="chips[]" data-chip-class="" id="suggestions-chip-input">
-            <span class="btn btn-chip">
-                Hello
-                <button type="button" aria-label="remove" class="remove-btn btn-unstyled js-remove-btn">
-                    <span class="fa fa-xmark"></span>
-                </button>
-                <input type="hidden" value="Hello" name="chips[]">
-            </span>
-            <span class="btn btn-chip">
-                World
-                <button type="button" aria-label="remove" class="remove-btn btn-unstyled js-remove-btn">
-                    <span class="fa fa-xmark"></span>
-                </button>
-                <input type="hidden" value="World" name="chips[]">
-            </span>
-            <div class="form-field">
-                <input class="js-chip-input" id="chip-suggestions-field" type="text" placeholder="Add your chips...">
-                <label for="chip-suggestions-field">Text Input</label>
-            </div>
-        </div>
-        <div class="row pole-xs pole-n chip-suggestions js-chip-suggestions" data-input-target="suggestions-chip-input">
-            <button class="btn btn-chip ">Wow great idea!</button>
-            <button class="btn btn-chip">Sounds good. Let's do it.</button>
-            <button class="btn btn-chip">Ok see you there.</button>
-        </div>
+    <div class="chips-input-unstyled js-chips-input" data-input-name="chips[]" data-chip-class="" id="suggestions-chip-input">
+        <label for="chip-field2">Tags</label>
+        <span class="btn btn-chip">
+            Hello
+            <button type="button" aria-label="remove" class="remove-btn btn-unstyled js-remove-btn">
+                <span class="fa fa-xmark"></span>
+            </button>
+            <input type="hidden" value="Hello" name="chips[]">
+        </span>
+        <span class="btn btn-chip">
+            World
+            <button type="button" aria-label="remove" class="remove-btn btn-unstyled js-remove-btn">
+                <span class="fa fa-xmark"></span>
+            </button>
+            <input type="hidden" value="World" name="chips[]">
+        </span>
+        <input type="text" class="input-unstyled js-chip-input" placeholder="Enter your tags...">
+    </div>
+    <div class="flex-row-fluid pole-xs pole-n col-gaps-xs js-chip-suggestions" data-input-target="suggestions-chip-input">
+        <button class="btn btn-chip ">Wow great idea!</button>
+        <button class="btn btn-chip">Sounds good. Let's do it.</button>
+        <button class="btn btn-chip">Ok see you there.</button>
     </div>
 </div>
-<pre><code class="html language-html">&lt;div class="chips-input js-chips-input" data-input-name="chips[]" data-chip-class="" id="suggestions-chip-input"&gt;
+<pre><code class="html language-html">&lt;!-- Input wrapper --&gt;
+&lt;div class="chips-input-unstyled js-chips-input" data-input-name="chips[]" data-chip-class="" id="suggestions-chip-input"&gt;
 
+    &lt;!-- Input label --&gt;
+    &lt;label for="chip-field2"&gt;Tags&lt;/label&gt;
+
+    &lt;!-- Existing chip --&gt;
     &lt;span class="btn btn-chip"&gt;
         Hello
         &lt;button type="button" aria-label="remove" class="remove-btn btn-unstyled js-remove-btn"&gt;
@@ -581,22 +581,12 @@
         &lt;input type="hidden" value="Hello" name="chips[]"&gt;
     &lt;/span&gt;
 
-    &lt;span class="btn btn-chip"&gt;
-        World
-        &lt;button type="button" aria-label="remove" class="remove-btn btn-unstyled js-remove-btn"&gt;
-            &lt;span class="fa fa-xmark"&gt;&lt;/span&gt;
-        &lt;/button&gt;
-        &lt;input type="hidden" value="World" name="chips[]"&gt;
-    &lt;/span&gt;
-
-    &lt;div class="form-field"&gt;
-        &lt;input class="js-chip-input" id="chip-suggestions-field" type="text" placeholder="Add your chips..."&gt;
-        &lt;label for="chip-suggestions-field"&gt;Text Input&lt;/label&gt;
-    &lt;/div&gt;
-
+    &lt;!-- Actual input --&gt;
+    &lt;input type="text" class="input-unstyled js-chip-input" placeholder="Enter your tags..."&gt;
 &lt;/div&gt;
 
-&lt;div class="row pole-xs pole-n chip-suggestions js-chip-suggestions" data-input-target="suggestions-chip-input"&gt;
+&lt;!-- Suggestions wrapper --&gt;
+&lt;div class="flex-row-fluid pole-xs pole-n col-gaps-xs js-chip-suggestions" data-input-target="suggestions-chip-input"&gt;
     &lt;button class="btn btn-chip "&gt;Wow great idea!&lt;/button&gt;
     &lt;button class="btn btn-chip"&gt;Sounds good. Let's do it.&lt;/button&gt;
     &lt;button class="btn btn-chip"&gt;Ok see you there.&lt;/button&gt;

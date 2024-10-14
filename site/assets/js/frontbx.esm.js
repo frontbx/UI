@@ -14847,7 +14847,7 @@ Container.singleton('_', _);
      * 
      * @var {Function}
      */
-    const [find, on, attr, closest, has_class, in_dom, off, remove_from_dom, trigger_event, extend] = frontbx.import(['find','on','attr','closest','has_class','in_dom','off','remove_from_dom','trigger_event','extend']).from('_');
+    const [find, on, attr, closest, has_class, in_dom, off, remove_from_dom, trigger_event, is_empty, extend] = frontbx.import(['find','on','attr','closest','has_class','in_dom','off','remove_from_dom','trigger_event','is_empty','extend']).from('_');
 
     /**
      * Chip suggestions.
@@ -14891,7 +14891,6 @@ Container.singleton('_', _);
     {
         e = e || window.event;
 
-        e.preventDefault();
 
         var _wrapper = closest(this, '.js-chip-suggestions');
         var _input   = find('#' + _wrapper.dataset.inputTarget);
@@ -14911,16 +14910,18 @@ Container.singleton('_', _);
 
             remove_from_dom(this);
 
-            return;
+            return false;
         }
 
         let val = attr(_input, 'value');
 
-        attr(_input, 'value',  val === '' ? _text : `${val} ${_text}`);
+        attr(_input, 'value', is_empty(val) ? _text : `${val} ${_text}`);
 
         trigger_event(_input, 'change');
 
         remove_from_dom(this);
+
+        return false;
     }
 
     // Load into frontbx DOM core

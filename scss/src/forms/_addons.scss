@@ -49,7 +49,7 @@
     	align-items: center;
     	color: var(--fbx-input-addon-color);
     	padding: 0 var(--fbx-input-pad-x);
-    	font-size: var(--fbx-input-font-size);
+    	font-size: calc(var(--fbx-input-font-size) * 0.8);
         background-color: var(--fbx-input-addon-bg);
         border-style: solid;
         border-color: #{$input-border-color};

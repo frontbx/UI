@@ -216,23 +216,24 @@
         --fbx-input-color-placeholder: rgba(255,255,255, 0.2);
         
         // Addons
-        --fbx-input-addon-bg: transparent;
-        --fbx-input-addon-color: rgba(255,255,255, 0.9);
+        --fbx-input-addon-color: var(--fbx-black-100);
+        --fbx-input-addon-bg: rgba(255,255,255,0.03);
+
+        .input-addon
+        {
+            border-color: var(--fbx-black-200);
+        }
        
         // Used internally for states
         --fbx-input-bg-focus: transparent;
         --fbx-special-placeholder-color: rgba(255,255,255, 0.2);
-        --fbx-input-addon-bg: rgba(255,255,255,0.2);
 
         // Label first child
         > label:first-child
         {
             color: #ffffff;
         }
-        .input-addon
-        {
-            border-color: #ffffff;
-        }
+       
     }
     .form-field input:not([type="radio"]):not([type="checkbox"]):not([type="range"]) + label,
     .form-field textarea + label,

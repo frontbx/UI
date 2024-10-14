@@ -6,6 +6,7 @@
 
     --fbx-btn-padding-y: #{$chipsize};
     --fbx-btn-border-radius: 100px;
+    --fbx-btn-icon-size: 14px;
 
     display: flex;
     align-items: center;
@@ -96,9 +97,12 @@
     .remove-btn
     {
     	font-size: var(--fbx-btn-icon-size);
-    	line-height: 0;
-    	vertical-align: middle;
     	cursor: pointer;
+        line-height: 12px;
+        .fa
+        {
+            --fbx-icon-size: 16px;
+        }
     }
 
 }
@@ -125,9 +129,16 @@
     .btn-chip
     {
         margin: math.div($input-pad-y, 2) 0;
+        padding-right: calc(var(--fbx-btn-padding-x) * 2);
+
         &:first-child
         {
             margin-left: $input-pad-x;
+        }
+        .remove-btn
+        {
+            position: absolute;
+            right: var(--fbx-btn-padding-x);
         }
     }
     .form-field
@@ -173,6 +184,13 @@
 	.btn-chip
 	{
 		display: inline-table;
+        padding-right: calc(var(--fbx-btn-padding-x) * 2);
+
+        .remove-btn
+        {
+            position: absolute;
+            right: var(--fbx-btn-padding-x);
+        }
 	}
 
 	label
