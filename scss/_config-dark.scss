@@ -218,11 +218,6 @@
         // Addons
         --fbx-input-addon-color: var(--fbx-black-100);
         --fbx-input-addon-bg: rgba(255,255,255,0.03);
-
-        .input-addon
-        {
-            border-color: var(--fbx-black-200);
-        }
        
         // Used internally for states
         --fbx-input-bg-focus: transparent;
@@ -232,6 +227,11 @@
         > label:first-child
         {
             color: #ffffff;
+        }
+
+        .input-addon
+        {
+            border-color: var(--fbx-black-200);
         }
        
     }

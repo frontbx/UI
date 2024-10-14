@@ -1,14 +1,12 @@
 # Results
 
----
-
 Form results can be displayed as a message by simply adding a contextual class to the `<form>` element. 
 
 This is super handy as you can have all your messages setup in the form result, and simply add the contextual class depending on the form validation. The contextual classes are `.info`, `.success`, `.warning`, `.danger`. This can be automated using the form validation component.
 
 ---
 
-*   [Markup](#Markup)
+*   [Markup](#markup)
 
 ---
 
