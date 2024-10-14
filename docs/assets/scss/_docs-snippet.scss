@@ -17,6 +17,7 @@ pre:after
     position: relative;    
     .fbx-clipboard
     {
+        --fbx-tooltip-bg: var(--fbx-theme-primary);
         position: absolute;
         top: 0;
         right: 0;

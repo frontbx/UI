@@ -110,6 +110,7 @@ Adding a button to a message is easy, simply wrap it in a `.msg-btn` element aft
 ### Dense
 
 Add the modifier `.msg-dense` to display a more compact message:
+
 <div class="fbx-snippet-demo">
     <div class="flex-row align-cols-center flex-cols-12 flex-cols-md-8 flex-cols-lg-8 row-gaps-xs">
         <div class="msg msg-dense">

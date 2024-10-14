@@ -12,11 +12,28 @@
      * 
      * @var {object}
      */
-    const [find, find_all, add_class, on, closest, has_class, is_empty, remove_class, off, each, extend] = frontbx.import(['find', 'find_all', 'add_class', 'on', 'closest', 'has_class', 'is_empty', 'remove_class', 'off', 'each', 'extend']).from('_');
+    const [attr, is_undefined, to_camel_case, dom_element, find, find_all, add_class, on, closest, has_class, is_empty, remove_class, off, each, extend] = frontbx.import(['attr','is_undefined','to_camel_case','dom_element','find','find_all','add_class','on','closest','has_class','is_empty','remove_class','off','each','extend']).from('_');
 
+    /**
+     * Timer for mouse in-out.
+     * 
+     * @var {Timeout}
+     */
     var HOVER_TIMER;
 
+    /**
+     * Handlers.
+     * 
+     * @var {Map}
+     */
     var POP_HANDLERS = new Map;
+
+    /**
+     * Available attributes.
+     * 
+     * @var {Array}
+     */
+    const DATA_ATTRIBUTES = ['variant','direction','title','content','event','animation'];
 
     /**
      * Popover
@@ -30,38 +47,6 @@
         this.super('.js-popover');
 
         this._windowClick = false;
-
-        this.defaultProps = 
-        {
-            direction: 'top',
-            animation: 'pop',
-            theme:     'light',
-            title:     '',
-            content:   '',
-            event:     'click',
-        };
-    }
-
-    /**
-     * Initialize the handlers on a trigger
-     *
-     * @access {private}
-     * @param  {DOMElement} trigger Click/hover trigger
-     */
-    Popover.prototype.render = function(props)
-    {
-
-    }
-
-    /**
-     * Initialize the handlers on a trigger
-     *
-     * @access {private}
-     * @param  {DOMElement} trigger Click/hover trigger
-     */
-    Popover.prototype._build = function(options)
-    {
-
     }
 
     /**
@@ -79,37 +64,59 @@
             this._windowClick = true;
         }
 
-        let direction = trigger.dataset.popoverDirection;
-        let title     = trigger.dataset.popoverTitle;
-        let theme     = trigger.dataset.popoverTheme || 'dark';
-        let content   = trigger.dataset.popoverContent;
-        let evnt      = trigger.dataset.popoverEvent;
-        let animation = trigger.dataset.popoverAnimate || 'pop';
-        let target    = trigger.dataset.popoverTarget;
-        let closeBtn  = evnt === 'click' ? '<button type="button" class="btn btn-sm btn-pure btn-circle js-remove-pop close-btn"><span class="fa fa-xmark"></span></button>' : '';
-        let pop       = '<div class="popover-content"><p>' + content + '</p></div>';
+        let options = {trigger};
+        let elem;
+        let pop;
 
-        if (title)
+        each(DATA_ATTRIBUTES, (i, attribute) =>
         {
-            pop = closeBtn + '<h5 class="popover-title">' + title + '</h5>' + pop;
-        }
+            let value = attr(trigger, `data-popover-${attribute}`);
 
-        if (target)
-        {
-            pop = find('#' + target).cloneNode(true);
-            pop.classList.remove('hidden');
-        }
+            if (!is_undefined(value))
+            {
+                if (value === 'true' || value === 'false') value = value === 'true' ? true : false;
 
-        let popHandler = frontbx.get('PopHandler',
-        {
-            target: trigger,
-            direction: direction,
-            template: pop,
-            animation: animation,
-            classes: 'popover ' + direction + ' ' + theme,
+                if (attribute === 'content' && value[0] === '#')
+                {                    
+                    elem = find(value);
+
+                    value = elem;
+                }
+
+                options[to_camel_case(attribute)] = value;
+            }
         });
 
-        if (evnt === 'click')
+        if (!elem)
+        {
+            let contents = [];
+
+            if (options.event && options.event === 'click')
+            {
+                contents.push(dom_element({tag: 'button', type: 'button', role: 'button', ariaLabel: 'close', class: 'btn btn-sm btn-pure btn-circle js-remove-pop close-btn'}, null, 
+                    dom_element({tag: 'span', class: 'fa fa-xmark'})
+                ));
+            }
+
+            if (options.title)
+            {
+                contents.push(dom_element({tag: 'h5', class: 'popover-title'}, null, options.title));
+            }
+
+            contents.push(dom_element({tag: 'div', class: 'popover-content'}, null, dom_element({tag: 'p'}, null, options.content)));
+
+            options.content = contents;
+        }
+        else
+        {
+            remove_class(elem, 'hidden');
+            
+            elem.style = '';
+        }
+
+        let popHandler = frontbx.get('PopHandler', options);
+
+        if (options.event === 'click')
         {
             on(trigger, 'click', this._clickHandler, this);
             on(window, 'resize', this._windowResize, this);
@@ -137,7 +144,21 @@
             this._windowClick = false;
         }
 
-        var evnt = trigger.dataset.popoverEvent;
+        let content = attr(trigger, 'data-content');
+
+        if (content[0] === '#')
+        {
+            content = find(content);
+            
+            if (content)
+            {
+                content.style.display = 'none';
+
+                document.body.appendChild(content);
+            }
+        }
+
+        var evnt = attr(trigger, 'data-popover-event');
 
         if (evnt === 'click')
         {

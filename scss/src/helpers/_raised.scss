@@ -11,9 +11,11 @@
 {
     box-shadow: var(--fbx-raised-level-three);
 }
-.flat,
-.flat:hover,
-.flat:active
+.raised-4
+{
+    box-shadow: var(--fbx-raised-level-four);
+}
+.flat
 {
     box-shadow: none !important;
 }

@@ -481,20 +481,16 @@ $tooltop-target-space-neg:      -8px !default;
 
 // Popovers
 $popover-max-width:             270px !default;
-$popover-shadow:                2 !default; // 0,1,2,3
+$popover-shadow:                4 !default; // 0,1,2,3,4
 $popover-font-size:             1.2rem !default;
 $popover-title-size:            1.2rem !default;
 $popover-radius:                var(--fbx-border-radius) !default;
 $popover-pad-y:                 1rem !default;
 $popover-pad-x:                 1.5rem !default;
-$popover-bg-light:              var(--fbx-white) !default;     
-$popover-color-light:           var(--fbx-gray-600) !default;
-$popover-title-color-light:     var(--fbx-gray-700) !default;
-$popover-title-border-light:    1px solid var(--fbx-gray-300) !default;
-$popover-bg-dark:               var(--fbx-black) !default;
-$popover-color-dark:            var(--fbx-gray-400) !default;
-$popover-title-color-dark:      var(--fbx-white) !default;
-$popover-title-border-dark:     1px solid var(--fbx-gray-400) !default;
+$popover-bg:              		var(--fbx-white) !default;     
+$popover-color:           		var(--fbx-gray-600) !default;
+$popover-title-color:		    var(--fbx-gray-700) !default;
+$popover-title-border:	    	1px solid var(--fbx-gray-200) !default;
 
 // Loading animations
 $loader-color1:                 var(--fbx-gray) !default;
