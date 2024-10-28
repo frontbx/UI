@@ -802,11 +802,6 @@
                 classes: 'my-popover',
                 trigger: btn
             });
-
-            window.addEventListener('click', () =>
-            {
-                
-            });
         }
     });
 

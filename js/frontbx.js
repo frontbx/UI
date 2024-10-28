@@ -19,6 +19,9 @@ import './src/vendor/nprogress.js';
 // utility
 import './src/utility.js';
 
+// JSX
+import './src/jsx.js';
+
 // dom components
 import './src/dom.js';
 

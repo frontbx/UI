@@ -1557,11 +1557,6 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
                 classes: 'my-popover',
                 trigger: btn
             });
-
-            window.addEventListener('click', () =>
-            {
-                
-            });
         }
     });
 
