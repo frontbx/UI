@@ -1,3 +1,5 @@
+var container;
+
 (function()
 {
     /**
@@ -348,11 +350,6 @@
      * Loads container into global namespace as "frontbx"
      *
      */
-    if (!window.Container)
-    {
-        var container = new Inverse;
-
-        window.Container = container;
-    }
+    container = new Inverse;
     
 })();

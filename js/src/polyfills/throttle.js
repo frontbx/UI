@@ -154,8 +154,8 @@
         return debounced;
     };
 
-    window.throttle = _throttle;
+    FBX_ROOT.throttle = _throttle;
 
-    window.debounce = _debounce;
+    FBX_ROOT.debounce = _debounce;
 
 }());

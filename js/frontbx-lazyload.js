@@ -2,16 +2,19 @@
  * --------------------------------------------------------------------------
  * Frontbx Lazyload
  * 
- * @version  {0.1.0}
+ * @version  {0.0.4}
  * @see      {https://github.com/frontbx/ui}
  * @licensed {https://github.com/frontbx/ui/blob/main/LICENSE}
  * --------------------------------------------------------------------------
  */
 (function()
 {
-    if (!window.LAZY_FALLBACK_IMAGE)
+
+    var root = typeof FBX_ROOT === 'undefined' ? (typeof process === 'object' && typeof global === 'object' ? global : window) : FBX_ROOT;
+
+    if (!root.LAZY_FALLBACK_IMAGE)
     {
-        window.LAZY_FALLBACK_IMAGE = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSJ3aGl0ZSI+CiAgPHBhdGggZD0iTTAgNCBMMCAyOCBMMzIgMjggTDMyIDQgeiBNNCAyNCBMMTAgMTAgTDE1IDE4IEwxOCAxNCBMMjQgMjR6IE0yNSA3IEE0IDQgMCAwIDEgMjUgMTUgQTQgNCAwIDAgMSAyNSA3Ij48L3BhdGg+Cjwvc3ZnPg==';
+        root.LAZY_FALLBACK_IMAGE = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSJ3aGl0ZSI+CiAgPHBhdGggZD0iTTAgNCBMMCAyOCBMMzIgMjggTDMyIDQgeiBNNCAyNCBMMTAgMTAgTDE1IDE4IEwxOCAxNCBMMjQgMjR6IE0yNSA3IEE0IDQgMCAwIDEgMjUgMTUgQTQgNCAwIDAgMSAyNSA3Ij48L3BhdGg+Cjwvc3ZnPg==';
     }
 
     /**
@@ -175,7 +178,7 @@
     {
         const _this = this;
 
-        let _fallback = window.LAZY_FALLBACK_IMAGE;
+        let _fallback = LAZY_FALLBACK_IMAGE;
 
         return function loadImage(queue)
         {
@@ -289,7 +292,7 @@
         return node.nodeName.toLowerCase() === 'img';
     }
 
-    if (!window.frontbx)
+    if (!root.frontbx)
     {
         window.addEventListener('DOMContentLoaded', () =>
         {

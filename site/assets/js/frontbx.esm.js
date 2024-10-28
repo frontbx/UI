@@ -2,7 +2,7 @@
  * --------------------------------------------------------------------------
  * Frontbx ESM
  * 
- * @version  {0.1.0}
+ * @version  {0.0.4}
  * @see      {https://github.com/frontbx/ui}
  * @licensed {https://github.com/frontbx/ui/blob/main/LICENSE}
  * --------------------------------------------------------------------------
@@ -11,7 +11,7 @@
  * --------------------------------------------------------------------------
  * Frontbx standalone
  * 
- * @version  {0.1.0}
+ * @version  {0.0.4}
  * @see      {https://github.com/frontbx/ui}
  * @licensed {https://github.com/frontbx/ui/blob/main/LICENSE}
  * --------------------------------------------------------------------------
@@ -19,6 +19,9 @@
 // Core
 // polyfills
 // polyfills
+const FBX_ROOT = typeof process === 'object' && typeof global === 'object' ? global : window;
+
+if (typeof window === 'undefined') throw new Error('Frontbx requires a window object to run.');
 /**
  * A fix to allow you to use window.location.origin consistently
  *
@@ -209,14 +212,16 @@ if (!window.location.origin)
         return debounced;
     };
 
-    window.throttle = _throttle;
+    FBX_ROOT.throttle = _throttle;
 
-    window.debounce = _debounce;
+    FBX_ROOT.debounce = _debounce;
 
 }());
 
 
 // container
+var container;
+
 (function()
 {
     /**
@@ -567,12 +572,7 @@ if (!window.location.origin)
      * Loads container into global namespace as "frontbx"
      *
      */
-    if (!window.Container)
-    {
-        var container = new Inverse;
-
-        window.Container = container;
-    }
+    container = new Inverse;
     
 })();
 
@@ -6980,7 +6980,7 @@ _.prototype.destruct = function()
     this.clear_event_listeners();
 }
 
-Container.singleton('_', _);
+container.singleton('_', _);
 
 })();
 
@@ -7055,16 +7055,11 @@ Container.singleton('_', _);
         return this.Dom();
     }
 
-    Container._().trigger_event(window, 'frontbx:loading');
+    container._().trigger_event(window, 'frontbx:loading');
 
-    const app = Container._().extend(Container, new Application);
+    FBX_ROOT.frontbx = container._().extend(container, new Application);
 
-    window.Container = undefined;
-
-    delete window['Container'];
-
-    // Set global
-    window.frontbx = app;
+    container = undefined;
 
 })();
 (function()
@@ -7436,16 +7431,19 @@ Container.singleton('_', _);
  * --------------------------------------------------------------------------
  * Frontbx Lazyload
  * 
- * @version  {0.1.0}
+ * @version  {0.0.4}
  * @see      {https://github.com/frontbx/ui}
  * @licensed {https://github.com/frontbx/ui/blob/main/LICENSE}
  * --------------------------------------------------------------------------
  */
 (function()
 {
-    if (!window.LAZY_FALLBACK_IMAGE)
+
+    var root = typeof FBX_ROOT === 'undefined' ? (typeof process === 'object' && typeof global === 'object' ? global : window) : FBX_ROOT;
+
+    if (!root.LAZY_FALLBACK_IMAGE)
     {
-        window.LAZY_FALLBACK_IMAGE = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSJ3aGl0ZSI+CiAgPHBhdGggZD0iTTAgNCBMMCAyOCBMMzIgMjggTDMyIDQgeiBNNCAyNCBMMTAgMTAgTDE1IDE4IEwxOCAxNCBMMjQgMjR6IE0yNSA3IEE0IDQgMCAwIDEgMjUgMTUgQTQgNCAwIDAgMSAyNSA3Ij48L3BhdGg+Cjwvc3ZnPg==';
+        root.LAZY_FALLBACK_IMAGE = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSJ3aGl0ZSI+CiAgPHBhdGggZD0iTTAgNCBMMCAyOCBMMzIgMjggTDMyIDQgeiBNNCAyNCBMMTAgMTAgTDE1IDE4IEwxOCAxNCBMMjQgMjR6IE0yNSA3IEE0IDQgMCAwIDEgMjUgMTUgQTQgNCAwIDAgMSAyNSA3Ij48L3BhdGg+Cjwvc3ZnPg==';
     }
 
     /**
@@ -7609,7 +7607,7 @@ Container.singleton('_', _);
     {
         const _this = this;
 
-        let _fallback = window.LAZY_FALLBACK_IMAGE;
+        let _fallback = LAZY_FALLBACK_IMAGE;
 
         return function loadImage(queue)
         {
@@ -7723,7 +7721,7 @@ Container.singleton('_', _);
         return node.nodeName.toLowerCase() === 'img';
     }
 
-    if (!window.frontbx)
+    if (!root.frontbx)
     {
         window.addEventListener('DOMContentLoaded', () =>
         {

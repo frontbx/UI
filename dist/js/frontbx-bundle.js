@@ -2,22 +2,29 @@
  * --------------------------------------------------------------------------
  * Frontbx UMD
  * 
- * @version  {0.1.0}
+ * @version  {0.0.4}
  * @see      {https://github.com/frontbx/ui}
  * @licensed {https://github.com/frontbx/ui/blob/main/LICENSE}
  * --------------------------------------------------------------------------
  */
-(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.frontbx = factory());
-})(this, (function () { 'use strict';
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD
+    define([], factory);
+  } else if (typeof exports === 'object' && typeof module === 'object') {
+    // CommonJS
+    module.exports = factory();
+  } else {
+    // Global variable
+    root.myModule = factory();
+  }
+})(typeof self !== 'undefined' ? self : this, function () {
   
     /**
      * --------------------------------------------------------------------------
      * Frontbx standalone
      * 
-     * @version  {0.1.0}
+     * @version  {0.0.4}
      * @see      {https://github.com/frontbx/ui}
      * @licensed {https://github.com/frontbx/ui/blob/main/LICENSE}
      * --------------------------------------------------------------------------
@@ -25,6 +32,9 @@
     // Core
     // polyfills
     // polyfills
+    const FBX_ROOT = typeof process === 'object' && typeof global === 'object' ? global : window;
+    
+    if (typeof window === 'undefined') throw new Error('Frontbx requires a window object to run.');
     /**
      * A fix to allow you to use window.location.origin consistently
      *
@@ -215,14 +225,16 @@
             return debounced;
         };
     
-        window.throttle = _throttle;
+        FBX_ROOT.throttle = _throttle;
     
-        window.debounce = _debounce;
+        FBX_ROOT.debounce = _debounce;
     
     }());
     
     
     // container
+    var container;
+    
     (function()
     {
         /**
@@ -573,12 +585,7 @@
          * Loads container into global namespace as "frontbx"
          *
          */
-        if (!window.Container)
-        {
-            var container = new Inverse;
-    
-            window.Container = container;
-        }
+        container = new Inverse;
         
     })();
     
@@ -6986,7 +6993,7 @@
         this.clear_event_listeners();
     }
     
-    Container.singleton('_', _);
+    container.singleton('_', _);
     
     })();
     
@@ -7061,16 +7068,11 @@
             return this.Dom();
         }
     
-        Container._().trigger_event(window, 'frontbx:loading');
+        container._().trigger_event(window, 'frontbx:loading');
     
-        const app = Container._().extend(Container, new Application);
+        FBX_ROOT.frontbx = container._().extend(container, new Application);
     
-        window.Container = undefined;
-    
-        delete window['Container'];
-    
-        // Set global
-        window.frontbx = app;
+        container = undefined;
     
     })();
     (function()
@@ -7442,16 +7444,19 @@
      * --------------------------------------------------------------------------
      * Frontbx Lazyload
      * 
-     * @version  {0.1.0}
+     * @version  {0.0.4}
      * @see      {https://github.com/frontbx/ui}
      * @licensed {https://github.com/frontbx/ui/blob/main/LICENSE}
      * --------------------------------------------------------------------------
      */
     (function()
     {
-        if (!window.LAZY_FALLBACK_IMAGE)
+    
+        var root = typeof FBX_ROOT === 'undefined' ? (typeof process === 'object' && typeof global === 'object' ? global : window) : FBX_ROOT;
+    
+        if (!root.LAZY_FALLBACK_IMAGE)
         {
-            window.LAZY_FALLBACK_IMAGE = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSJ3aGl0ZSI+CiAgPHBhdGggZD0iTTAgNCBMMCAyOCBMMzIgMjggTDMyIDQgeiBNNCAyNCBMMTAgMTAgTDE1IDE4IEwxOCAxNCBMMjQgMjR6IE0yNSA3IEE0IDQgMCAwIDEgMjUgMTUgQTQgNCAwIDAgMSAyNSA3Ij48L3BhdGg+Cjwvc3ZnPg==';
+            root.LAZY_FALLBACK_IMAGE = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSJ3aGl0ZSI+CiAgPHBhdGggZD0iTTAgNCBMMCAyOCBMMzIgMjggTDMyIDQgeiBNNCAyNCBMMTAgMTAgTDE1IDE4IEwxOCAxNCBMMjQgMjR6IE0yNSA3IEE0IDQgMCAwIDEgMjUgMTUgQTQgNCAwIDAgMSAyNSA3Ij48L3BhdGg+Cjwvc3ZnPg==';
         }
     
         /**
@@ -7615,7 +7620,7 @@
         {
             const _this = this;
     
-            let _fallback = window.LAZY_FALLBACK_IMAGE;
+            let _fallback = LAZY_FALLBACK_IMAGE;
     
             return function loadImage(queue)
             {
@@ -7729,7 +7734,7 @@
             return node.nodeName.toLowerCase() === 'img';
         }
     
-        if (!window.frontbx)
+        if (!root.frontbx)
         {
             window.addEventListener('DOMContentLoaded', () =>
             {
@@ -16968,8 +16973,6 @@
     	console.log(frontbx.services());
     
     })();
- 	
-    const index_umd = window.frontbx;
 
- 	  return index_umd;
-}));
+    return frontbx;
+});

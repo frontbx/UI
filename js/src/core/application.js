@@ -68,15 +68,10 @@
         return this.Dom();
     }
 
-    Container._().trigger_event(window, 'frontbx:loading');
+    container._().trigger_event(window, 'frontbx:loading');
 
-    const app = Container._().extend(Container, new Application);
+    FBX_ROOT.frontbx = container._().extend(container, new Application);
 
-    window.Container = undefined;
-
-    delete window['Container'];
-
-    // Set global
-    window.frontbx = app;
+    container = undefined;
 
 })();
