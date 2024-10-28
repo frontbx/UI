@@ -17,5 +17,5 @@
  	
     const index_umd = window.frontbx;
 
- 	return index_umd;
+ 	  return index_umd;
 }));

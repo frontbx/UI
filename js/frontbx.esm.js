@@ -9,6 +9,4 @@
  */
 import './frontbx.js';
 
-const frontbx = window.frontbx;
-
 export default frontbx;

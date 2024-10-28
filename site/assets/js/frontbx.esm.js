@@ -16963,6 +16963,4 @@ Container.singleton('_', _);
 
 })();
 
-const frontbx = window.frontbx;
-
 export default frontbx;

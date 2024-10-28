@@ -2,7 +2,7 @@
     "name": "frontbx",
     "description": "Build powerful, dynamic web interfaces on a fully responsive UI framework. Combining Sass for sleek styling, JavaScript for strong functionality, and HTML Frontbx is designed for serious developers.",
     "homepage": "https://frontbx.github.io/ui",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "keywords": [
         "css",
         "sass",
