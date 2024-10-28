@@ -16,8 +16,6 @@ Pjax.prototype._onerror = function(response)
 
 Pjax.prototype._onabort = function(response)
 {
-    console.log('aborted');
-
     let selector = this.options.element;
     
     let swapTimer = TRANSITION_TIMERS.get(selector);

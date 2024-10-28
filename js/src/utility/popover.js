@@ -39,8 +39,6 @@
 
         handler.render();
 
-        console.log(handler);
-
         return handler;
     }
 

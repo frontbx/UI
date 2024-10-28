@@ -9206,8 +9206,6 @@ container.singleton('_', _);
     
     Pjax.prototype._onabort = function(response)
     {
-        console.log('aborted');
-    
         let selector = this.options.element;
         
         let swapTimer = TRANSITION_TIMERS.get(selector);
@@ -11517,8 +11515,6 @@ container.singleton('_', _);
         let handler = frontbx.get('PopHandler', options);
 
         handler.render();
-
-        console.log(handler);
 
         return handler;
     }
@@ -14736,8 +14732,6 @@ container.singleton('_', _);
      */
     RangeSlider.prototype.render = function(props)
     {
-        console.log('create');
-
         let inputProps = { min: props.min, max: props.max, value: props.value, step: props.step };
 
         if (props.prefix) inputProps.dataPrefix = props.prefix;
@@ -17764,10 +17758,6 @@ container.singleton('_', _);
 (function()
 {
 	frontbx.boot();
-
-	console.log(frontbx);
-
-	console.log(frontbx.services());
 
 })();
 

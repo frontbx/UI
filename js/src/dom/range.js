@@ -275,8 +275,6 @@
      */
     RangeSlider.prototype.render = function(props)
     {
-        console.log('create');
-
         let inputProps = { min: props.min, max: props.max, value: props.value, step: props.step };
 
         if (props.prefix) inputProps.dataPrefix = props.prefix;

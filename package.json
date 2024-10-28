@@ -20,12 +20,14 @@
     "bugs": {
         "url": "https://github.com/frontbx/ui/issues"
     },
+    "type": "module",
     "main": "dist/js/frontbx-bundle.js",
     "module": "dist/js/frontbx.esm.js",
     "sass": "scss/frontbx-bundle.scss",
     "style": "dist/css/frontbx-bundle.css",
     "scripts": {
         "help": "node build/help.mjs",
+        "test": "mocha  test/index.js",
         "start": "npm-run-all --parallel watch docs-serve",
         "dist": "npm-run-all --sequential css js docs-build",
         "css": "npm-run-all --sequential css-compile css-prefix css-minify",
@@ -71,19 +73,24 @@
     ],
     "devDependencies": {
         "autoprefixer": "^10.4.20",
-        "console-tasks": "^0.1.9",
+        "chai": "^5.1.2",
+        "console-table-printer": "^2.12.1",
         "copyfiles": "^2.4.1",
         "html-linter": "^1.1.1",
         "http-server": "^14.1.1",
+        "jsdom": "25.0.1",
+        "jsdom-global": "3.0.2",
+        "mocha": "^10.7.3",
         "nodemon": "^3.1.4",
         "npm-run-all": "^4.1.5",
-        "optimist": "^0.6.1",
+        "optimist": "^0.5.2",
         "postcss": "^8.4.41",
         "postcss-cli": "^11.0.0",
         "postcss-minify": "^1.1.0",
         "sass": "^1.77.8",
         "showdown": "^2.1.0",
-        "terser": "^5.31.6",
-        "console-table-printer": "^2.12.1"
+        "sinon": "^19.0.2",
+        "sinon-chai": "^4.0.0",
+        "terser": "^5.31.6"
     }
 }
