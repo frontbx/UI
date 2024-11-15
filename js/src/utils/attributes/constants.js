@@ -28,7 +28,8 @@ const BOOLEAN_ATTRS =
 	'readonly',
 	'required',
 	'reversed',
-	'selected'
+	'selected',
+	'hidden',
 ];
 
 /**

@@ -7,7 +7,7 @@
  */
 _.prototype.bind = function(func, context)
 {
-    context = typeof context === 'undefined' ? window : context;
+    context = typeof context === 'undefined' ? (window || global) : context;
 
     const bound = function()
     {

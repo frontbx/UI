@@ -27,7 +27,7 @@
     "style": "dist/css/frontbx-bundle.css",
     "scripts": {
         "help": "node build/help.mjs",
-        "test": "mocha  test/index.js",
+        "test": "mocha test/index.js",
         "start": "npm-run-all --parallel watch docs-serve",
         "dist": "npm-run-all --sequential css js docs-build",
         "css": "npm-run-all --sequential css-compile css-prefix css-minify",

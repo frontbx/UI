@@ -1,7 +1,20 @@
-var Lexer;
-
 (function()
 {    
+    /**
+     * Utility Regexes.
+     * 
+     * @var {Regexp}
+     */
+    const SPACE = /[\t\r\n\f ]/;
+    const ALPHA = /[A-z]/;
+    const ALPHA_DASH = /[A-z-]/;
+    const QUOTES = ['"', '\'', '`'];
+
+    /**
+     * Void tags.
+     * 
+     * @var {Array}
+     */
     const VOID_ELS =
     [
         'area',
@@ -25,269 +38,828 @@ var Lexer;
         'track',
         'use',
         'wbr',
+        'doctype',
     ];
 
-    let tag;
-    let state;
-    let inquotes = false;
-    let braceDepth = 0;
+    /**
+     * Lexer.
+     * 
+     * @param {String}   html
+     * @param {Function} emit
+     */
+    const Lexer = function(html, emit)
+    {
+        this.html = html;
+        this.emit = emit;
+        this.currentTag  = null;
+        this.pos         = 0;
+        this.braceDepth  = 0;
+        this.attrValStack = [];
+    }
 
     /**
-    * Scan the given `html`.
-    * 
-    * @param {String} html
-    * @param {Function} emit
-    */
-    Lexer = function(html, emit)
+     * Parse and emit.
+     * 
+     * @access {public}
+     */
+    Lexer.prototype.parse = function()
     {
-        var scan = text
-        , pos = 0;
+        let scan = 'text';
 
-        /**
-        * scan
-        */
-        while (scan = scan());
+        while (scan = this[scan](this.peek()));
 
-        /**
-        * next
-        */
-        function next()
+        if (this.html === '')
         {
-            return html.charAt(pos++);
+            scan = null;
+
+            this.complete();
+        }
+    }
+
+    /**
+     * next.
+     * 
+     * @access {private}
+     * @return {String}
+     */
+    Lexer.prototype.next = function()
+    {
+        return this.html.charAt(this.pos++);
+    }
+
+    /**
+     * peek next.
+     * 
+     * @access {private}
+     * @return {String}
+     */
+    Lexer.prototype.peek = function()
+    {
+        return this.html.charAt(this.pos);
+    }
+
+    /**
+     * peek next.
+     * 
+     * @access {private}
+     * @return {String}
+     */
+    Lexer.prototype.peekback = function()
+    {
+        return this.html.charAt(this.pos -1);
+    }
+
+    /**
+     * peek n chars.
+     * 
+     * @access {private}
+     * @param  {Integer} n
+     * @return {String}
+     */
+    Lexer.prototype.peekn = function(n)
+    {            
+        return this.html.slice(this.pos, this.pos + n);
+    }
+
+    /**
+     * Chunk position buffer.
+     * 
+     * @access {private}
+     * @return {String}
+     */
+    Lexer.prototype.chunk = function()
+    {
+        let buff = this.html.slice(0, this.pos);
+        
+        this.consume(this.pos);
+
+        return buff;
+    }
+
+    /**
+     * consume n chars.
+     * 
+     * @access {private}
+     * @param  {Integer} n
+     */
+    Lexer.prototype.consume = function(n)
+    {
+        this.html = this.html.substr(n);
+
+        this.pos  = 0;
+    }
+
+    /**
+     * consume whitespace.
+     * 
+     * @access {private}
+     */
+    Lexer.prototype.whitespace = function()
+    {
+        while (SPACE.test(this.peek()) && this.next());
+
+        this.consume(this.pos);
+    }
+
+    /**
+     * Scan until chars
+     * 
+     * @access {private}
+     * @return {Boolean}
+     */
+    Lexer.prototype.scan = function(chars)
+    {
+        let len = chars.length;
+
+        while (this.peekn(len) !== chars)
+        {
+            if (!this.next()) break;
         }
 
-        /**
-        * peek
-        */
-        function peek()
+        return this.html.slice(0, this.pos);
+    }
+
+    /**
+     * JSX spread attribute.
+     * 
+     * @access {private}
+     * @return {String}
+     */
+    Lexer.prototype.bufferjsx = function()
+    {
+        let braceDepth = 0;
+
+        // Collect the intial spread
+        let jsx = this.buffer((char) =>
         {
-            return html.charAt(pos);
-        }
-
-        /**
-        * peek
-        */
-        function peekn(n)
-        {            
-            return html.slice(pos, pos + n);
-        }
-
-        /**
-        * consume
-        */
-        function consume(n)
-        {
-            html = html.substr(n);
-            pos = 0;
-        }
-
-        /**
-        * `>(text)<`
-        */
-        function text()
-        {
-            if ('>' == peek()) consume(1);
-            
-            while (lessthan());
-            
-            var buf = html.slice(0, pos);
-            
-            consume(buf.length);
-
-            if (html === '') return emit('complete');
-            
-            if (buf)
+            if (char === '{')
             {
-                tag = null;
-
-                emit('text', buf);
+                braceDepth++;
+            }
+            else if (char === '}')
+            {
+                braceDepth--;
             }
 
-            // treat `< ` as text
-            if (0 == html.indexOf('< '))
-            {
-                buf += html.slice(0, 2);
+            if (braceDepth === 0) return true;
+        });
 
-                consume(2);
-                
-                return text;
+        if (braceDepth > 0) throw new Error('Unclosed JSX bracket found');
+
+        this.next();
+
+        return this.chunk();
+    }
+
+    /**
+     * Buffer until callback on each char
+     * 
+     * @access {private}
+     * @return {String}
+     */
+    Lexer.prototype.buffer = function(validator)
+    {
+        let buff = '';
+
+        while (!validator(this.peek(), buff))
+        {
+            let n = this.peek();
+
+            if (n === '') break;
+
+            buff += n;
+
+            this.next();
+        }
+        
+        return buff;
+    }
+
+    /**
+     * Complete.
+     * 
+     */
+    Lexer.prototype.complete = function()
+    {
+        this.emit('complete');
+    }
+
+    /**
+     * Text default state.
+     * 
+     * @access {private}
+     * @return {String}
+     */
+    Lexer.prototype.text = function()
+    {
+        if ('>' == this.peek()) this.consume(1);
+        
+        let next = false;
+
+        let buff = this.buffer((char) => 
+        { 
+            // JSX Func was left open
+            if (
+                    (
+                        this.braceDepth > 0 &&
+                        (char !== '>' && char !== '<') &&
+                        !this.currentTag
+                    ) 
+                    ||
+                    (
+                        this.peekback() !== '\\' && 
+                        (char === '{' || char === '}')
+                    )
+                )
+            {
+                next = 'jsx_block';
+
+                return true;
             }
 
-            // ignore `<!`
-            if (0 == html.indexOf('<!--'))
+            if (char === '<' && !SPACE.test(this.peek()))
             {
-                buf += html.slice(0, 4);
+                next = 'tag_open';
 
-                consume(4);
+                return true;
+            }
+        });
 
-                emit('commentopen');
+        if (buff && buff !== '<')
+        {
+            this.consume(buff.length);
 
-                while (comment());
+            this.emit('text', buff);
+        }
 
-                buf = html.slice(0, pos);
+        if (next === 'tag_open') this.consume(1);
+
+        return next;
+    }
+
+    /**
+     * Tag open.
+     * 
+     * @access {private}
+     * @return {String}
+     */
+    Lexer.prototype.tag_open = function(char)
+    {                
+        // Markup declaration
+        if (char === '!')
+        {
+            this.consume(1);
+
+            return 'markup_declaration_open';
+        }
+
+        // Bogus tag
+        if (char === '?')
+        {
+            this.consume(1);
+
+            return 'bogus_tag';
+        }
+
+        // Close
+        if (char === '/')
+        {
+            this.consume(1);
+
+            return 'tag_close';
+        }
+
+        let tag = this.buffer(char => SPACE.test(char) || char === '>');
+
+        if (tag.length === 0) throw new Error('Empty tag name.');
+
+        this.consume(tag.length);
+
+        this.currentTag = tag;
+
+        this.emit('tag:open', tag);
+
+        return 'attr_key';
+    }
+
+    /**
+     * Tag close self close. Reached after "/" in a tag.
+     * 
+     * @access {private}
+     * @return {String}
+     */
+    Lexer.prototype.tag_close_self = function()
+    {
+        // Consume any whitespace
+        this.whitespace();
+
+        // Emit and close the tag.
+        if ('>' === this.peek())
+        {
+            this.currentTag = null;
+
+            this.emit('tag:close:self', '');
+
+            return 'text';
+        }
+
+        // Fallback to error.
+        throw new Error('Invalid self closing tag.');
+    }
+
+    /**
+     * Tag close self close. Reached after ">" in void tag.
+     * 
+     * @access {private}
+     * @return {String}
+     */
+    Lexer.prototype.tag_close_void = function()
+    {
+        this.consume(1);
+
+        this.currentTag = null;
+
+        this.emit('tag:close:void');
+
+        return 'text';
+    }
+
+    /**
+     * Tag close.
+     * 
+     * @access {private}
+     * @return {String}
+     */
+    Lexer.prototype.tag_close = function()
+    {
+        let tag = this.buffer(char => char === '>');
+        
+        this.consume(tag.length);
+        
+        this.emit('tag:close', tag);
+
+        this.currentTag = null;
+        
+        return 'text';
+    }
+
+    /**
+     * Attribute key.
+     * 
+     * @access {private}
+     * @return {String}
+     */
+    Lexer.prototype.attr_key = function()
+    {
+        this.whitespace();
+
+        if ('>' === this.peek())
+        {
+            if (this.currentTag && VOID_ELS.includes(this.currentTag)) return 'tag_close_void';
+
+            this.consume(1);
+
+            return 'text';
+        }
+
+        if ('/' === this.peek())
+        {
+            this.consume(1);
+
+            return 'tag_close_self';
+        }
+
+        if ('{' === this.peek()) return 'attr_jsx_spread';
+        
+        let attr = this.buffer(char => SPACE.test(char) || char === '=' || char === '>');
+
+        this.consume(attr.length);
+        
+        if (attr) this.emit('attr:key', attr);
+
+        let peek = this.peek();
+
+        if (peek === '=')
+        {
+            this.consume(1);
+
+            return 'attr_val';
+        }
+
+        if (peek === '>')
+        {
+            if (this.currentTag && VOID_ELS.includes(this.currentTag)) return 'tag_close_void';
+
+            this.consume(1);
+
+            return 'text';
+        }
+
+        if (SPACE.test(peek))
+        {
+            this.consume(1);
             
-                consume(buf.length);
+            return 'attr_key';
+        }
+    }
 
-                emit('comment', buf);
+    /**
+     * Attribute value.
+     * 
+     * @access {private}
+     * @return {String}
+     */
+    Lexer.prototype.attr_val = function()
+    {
+        // Clear out whitespace
+        this.whitespace();
 
-                consume(3);
+        if (this.peek() === '{') return 'attr_val_jsx';
 
-                emit('commentclose');
+        let end;
 
-                return text;
-            }
+        if ('"' == this.peek()) end = '"';
+        
+        if ('\'' == this.peek()) end = '\'';
 
-            // close
-            if (0 == html.indexOf('</'))
-            {
-                return close;
-            }
+        if (!end) throw new Error('Unquoted attribute value.');
 
-            // open
-            if ('<' == peek())
-            {
-                return open;
-            }
+        // Remove starting quote
+        this.consume(1);
+
+        // Cache end marker
+        this.attrValEnd = end;
+
+        // Buffer untill closed or jsx is found
+        let buff = this.buffer(char => this.peekback() !== '\\' && (char === '{' || char === end ));
+
+        // JSX was found
+        if (this.peek() === '{')
+        {
+            this.consume(buff.length);
+
+            this.attrValStack.push(buff);
+            
+            return 'attr_val_interpolated';
+        }
+        
+        // Remove end quote plus value
+        this.consume(buff.length + 1);
+
+        this.emit('attr:val', buff);
+
+        // Stop
+        if (this.html === '') throw new Error('Unclosed attribute value.');
+
+        return 'attr_key';
+    }
+
+    /**
+     * When reached an opening jsx bracket "{" inside a quoted attribute value.
+     * 
+     * @access {private}
+     * @return {String}
+     */
+    Lexer.prototype.attr_val_interpolated = function()
+    {
+        // Buffer untill closed or jsx is found
+        this.buffer(char => this.peekback() !== '\\' && char === '}');
+
+        // Add closing bracket
+        this.next();
+
+        // Consume buff
+        let jsx = this.chunk();
+        
+        // Push attr to stack
+        this.attrValStack.push(`\$${jsx}`);
+
+        // Buffer to an opening jsx bracket or end of attribute vlaue
+        let buff = this.buffer(char => this.peekback() !== '\\' && (char === '{' || char === this.attrValEnd ));
+
+        // JSX was found
+        if (this.peek() === '{')
+        {
+            this.consume(buff.length);
+
+            this.attrValStack.push(buff);
+            
+            return 'attr_val_interpolated';
         }
 
-        /**
-        * `<(tag)`
-        */
-        function open()
+        // Consume buff plus ending quote marker
+        this.consume(buff.length + 1);
+
+        // Don't empty quotes
+        if (buff.length >= 1) this.attrValStack.push(buff);
+
+        this.emit('attr:val:interpolated', this.attrValStack.join(''));
+
+        this.attrValStack = [];
+
+        return 'attr_key';
+    }
+
+    /**
+     * JSX atribute value.
+     * 
+     * @access {private}
+     * @return {String}
+     */
+    Lexer.prototype.attr_val_jsx = function()
+    {
+        this.emit('attr:val:jsx', this.bufferjsx().trim());
+
+        return 'attr_key';
+    }
+
+    /**
+     * JSX spread attribute.
+     * 
+     * @access {private}
+     * @return {String}
+     */
+    Lexer.prototype.attr_jsx_spread = function()
+    {
+        this.emit('attr:jsx:spread', this.bufferjsx().trim());
+
+        return 'attr_key';
+    }
+
+    /**
+     * Bogus tag.
+     * 
+     * @access {private}
+     * @throws
+     */
+    Lexer.prototype.bogus_tag = function()
+    {
+        this.html = '';
+
+        throw new Error('Invalid [<?] tag in html.');
+    }
+
+    /**
+     * Comment open, cdata open or doctype declartion.
+     * 
+     * @access {private}
+     * @return {String}
+     */
+    Lexer.prototype.markup_declaration_open = function()
+    {
+        let char = this.peek();
+
+        if (this.peekn(2) === '--')
         {
-            while (' ' != peek() && '>' != peek() && next());
+            this.consume(2);
 
-            var buf = html.slice(0, pos);
-
-            consume(buf.length);
-
-            tag = buf.substr(1);
-
-            if (1 < buf.length) emit('tagopen', buf.substr(1));
-
-            return attrkey;
+            return 'comment_start';
         }
 
-        /**
-        * ` *(key)*`
-        */
-        function attrkey()
+        if (this.peek() === '[')
         {
-            whitespace();
+            this.consume(1);
 
-            if ('/' === peek())
+            return 'cdata_start';
+        }
+        
+        this.whitespace();
+
+        if (ALPHA.test(this.peek())) return 'doc_type';
+
+        throw new Error('Invalid comment (comments should start with <!--');
+    }
+
+    /**
+     * Doctype declaration.
+     * 
+     * @access {private}
+     * @return {String}
+     */
+    Lexer.prototype.doc_type = function()
+    {
+        if (!this.html.startsWith('DOCTYPE ')) throw new Error('Invalid doctype declaration');
+        
+        this.emit('doctype', '<!DOCTYPE');
+
+        this.consume(8);
+
+        let buf = this.buffer(char => char === '>' || SPACE.test(char));
+
+        if (buf.length <= 1) throw new Error('Invalid doctype declaration');
+
+        this.consume(buf.length);
+
+        this.emit('doctype:declaration', buf);
+
+        return 'doc_type_attr';
+    }
+
+    /**
+     * Doctype attribute.
+     * 
+     * @access {private}
+     * @return {String}
+     */
+    Lexer.prototype.doc_type_attr = function()
+    {
+        // Consume space
+        this.whitespace();
+
+        // Closed doctype
+        if ('>' == this.peek()) return 'tag_close_self';
+
+        // Doc types don't have "key=value" attributes, only attributes
+        // e.g  PUBLIC
+        // e.g  "-//W3C//DTD HTML 4.01 Transitional//EN"        
+        let end = SPACE;
+        
+        if ('"' == this.peek()) end = /"/;
+        
+        if (end !== SPACE) this.consume(1);
+
+        let buf = this.buffer(char => end.test(char) || char === '>');
+        
+        this.consume(buf.length);
+        
+        if (end !== SPACE) this.consume(1);
+        
+        this.emit('doctype:attr', end !== SPACE ? `"${buf}"` : buf);
+
+        return 'doc_type_attr';       
+    }
+
+    /**
+     * Comment start.
+     * 
+     * @access {private}
+     * @return {String}
+     */
+    Lexer.prototype.comment_start = function()
+    {
+        if (this.peek() === '[') return 'conditional_comment_open';
+
+        this.emit('comment:open', '<!--');
+
+        let buff = this.scan('-->');
+
+        this.consume(buff.length);
+
+        this.emit('comment:body', buff);
+
+        this.consume(3);
+
+        this.emit('comment:close', '-->');
+
+        return 'text';
+    }
+
+    /**
+     * Conditional comment open.
+     * 
+     * @access {private}
+     * @return {String}
+     */
+    Lexer.prototype.conditional_comment_open = function()
+    {
+        if (this.peekn(4) !== '[if ') throw new Error('Invalid conditional comment');
+
+        let buff = this.scan(']>');
+
+        this.consume(buff.length);
+
+        this.emit('comment:open', `<!--${buff}>`);
+
+        this.consume(3);
+
+        return 'conditional_comment';
+    }
+
+    /**
+     * Conditional comment.
+     * 
+     * @access {private}
+     * @return {String}
+     */
+    Lexer.prototype.conditional_comment = function()
+    {
+        let buff = this.scan('<![endif]-->');
+
+        this.consume(buff.length);
+
+        this.emit('comment:body', buff);
+
+        this.consume(12);
+
+        this.emit('comment:close', '<![endif]-->');
+
+        return 'text';
+    }
+
+    /**
+     * cdata start.
+     * 
+     * @access {private}
+     * @return {String}
+     */
+    Lexer.prototype.cdata_start = function()
+    {
+        if (!this.html.startsWith('CDATA[')) throw new Error('Invalid doctype declaration');
+        
+        this.consume(6);
+
+        this.emit('cdata:open', '<![CDATA[');
+
+        let buff = this.scan(']]>');
+    
+        this.consume(buff.length);
+
+        this.emit('cdata:body', buff);
+
+        this.consume(3);
+
+        this.emit('cdata:close', ']]>');
+
+        return 'text';
+    }
+
+    /**
+     * JSX.
+     * 
+     * @access {private}
+     * @return {String}
+     */
+    Lexer.prototype.jsx_block = function()
+    {        
+        let blockpeth = 0;
+        let opened = this.braceDepth >= 1;
+
+        this.buffer((char, chunk) =>
+        {
+            if (this.peekback() !== '\\')
             {
-                consume(1);
-
-                whitespace();
-
-                if ('>' === peek())
+                if (char === '{')
                 {
-                    tag = null;
+                    this.braceDepth++;
+                    blockpeth++;
+                }
+                else if (char === '}')
+                {
+                   this.braceDepth--;
+                   blockpeth--;
+                }
 
-                    emit('tagselfclose', '');
+                if (this.braceDepth === 0 || char === '<')
+                {
+                    if (char === '}') this.next();
+
+                    return true;
+                }
+
+                // JSX inside neseted jsx function
+                if (blockpeth === 0 && chunk[0] === '{')
+                {
+                    this.next();
+
+                    return true;
                 }
             }
+        });
 
-            while ('>' != peek() && ' ' != peek() && '=' != peek() && next());
+        let buff = this.chunk();
 
-            var buf = html.slice(0, pos);
-            
-            consume(buf.length);
-            
-            if (buf) emit('attrkey', buf.trim());
-            
-            return attrval;
-        }
+        let jsx = buff.trim();
 
-        /**
-        * `=?(["'](val)['"])`
-        */
-        function attrval()
+        // Open / close
+        if (jsx[0] === '{' && jsx.substr(-1) === '}')
         {
-            if (' ' == peek()) return attrkey;
-            
-            if ('>' == peek())
-            {
-                if (tag && VOID_ELS.includes(tag)) emit('tagclosevoid');
-
-                return text;
-            }
-            
-            if ('=' == peek()) consume(1);
-            
-            var end = ' ';
-
-            if ("{" == peek()) end = '}';
-            
-            if ('"' == peek()) end = '"';
-            
-            if ("'" == peek()) end = "'";
-
-            if (' ' != end) consume(1);
-            
-            while (end != peek() && next());
-            
-            var buf = html.slice(0, pos);
-            
-            consume(buf.length);
-            
-            if (' ' != end) consume(1);
-            
-            emit('attrval', buf);
-            
-            return attrval;
+            this.emit('jsx', buff);
         }
 
-        /**
-        * `</(tag)`
-        */
-        function close()
+        // Close jsx
+        else if (jsx[0] === ')' || jsx[0] === '}' || opened)
         {
-            while (greaterthan());
-            
-            var buf = html.slice(0, pos);
-            
-            consume(1 + buf.length);
-            
-            if (2 < buf.length) emit('tagclose', buf.substr(2));
-            
-            return text;
+            this.emit('jsx:close', buff);
         }
 
-        /**
-        * consume whitespace.
-        */
-        function whitespace()
+        else if (jsx.substr(-1) === '(' || jsx.substr(-1) === '{' || this.braceDepth >= 1)
         {
-            while (' ' == peek() && next());
-
-            consume(pos);
+            this.emit('jsx:open', buff);
         }
 
-        /**
-        * scan `<`
-        */
-        function lessthan()
-        {
-            return '<' != peek() && next();
-        }
+        return 'text';  
+    }
 
-        /**
-        * scan `>`
-        */
-        function greaterthan()
-        {
-            return '>' != peek() && next();
-        }
+    /**
+     * Lexer parse function.
+     * 
+     * @param {String}   html
+     * @param {Function} emit
+     */
+    lexer = function(html, emitter)
+    {
+        let l = new Lexer(html, emitter);
 
-        /**
-        * scan `-->`
-        */
-        function comment()
-        {
-            return '-->' != peekn(3) && next();
-        }
-    };
-    
+        l.parse();
+    }
 })();

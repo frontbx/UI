@@ -71,6 +71,21 @@
      */
     List.prototype.render = function(props)
     {
+        return `
+            <ul class="list {props.classes ? props.classes : ''} {props.dense ? 'list-dense' : ''} {props.ellipsis ? 'list-ellipsis' : ''} { props.selectable ? 'js-select-list' : '' }">
+                {map(props.items, (i, item) =>
+                (
+                    <li class="list-item {item.state} {props.selected && (props.selected === item.value || props.selected === item.text) ? 'selected' : ''}">
+                        {[
+                            item.left ? <span class="item-left">{item.left}</span> : null,
+                            <span class="item-body">{item.body || item.text || item}</span>,
+                            item.right ? <span class="item-right">{item.right}</span> : null,
+                        ]}
+                    </li>
+                ))}
+            </ul>
+        `;
+
         return dom_element({tag: 'ul', class: `list ${props.classes ? props.classes : ''} ${props.dense ? 'list-dense' : ''} ${props.ellipsis ? 'list-ellipsis' : ''} ${ props.selectable ? `js-select-list` : '' }`}, null, map(props.items, (i, item) =>
             {
                 return dom_element({tag: 'li', class: `list-item ${item.state} ${props.selected && (props.selected === item.value || props.selected === item.text) ? 'selected' : null}`}, null,

@@ -1,5 +1,3 @@
-var Tokenizer;
-
 (function()
 {
     Tokenizer = function(htmlstr)
@@ -18,20 +16,13 @@ var Tokenizer;
     Tokenizer.prototype.parse = function()
     {
         const delegate = (token, value) => 
-        {
+        {            
             this.readtoken(token, value);
         }
         
-        Lexer(this.htmlstr, delegate);
+        lexer(this.htmlstr, delegate);
 
-        if (this.stack.children.length > 1)
-        {
-            this.stack.type = '#fragment';
-
-            return this.stack;
-        }
-        
-        return this.stack.children[0];
+        return this.stack.children;
     }
 
     Tokenizer.prototype.pushNode = function(node)
@@ -41,6 +32,11 @@ var Tokenizer;
         this.parent.push(this.curr);
 
         this.curr = node;
+    }
+
+    Tokenizer.prototype.pushValue = function(val)
+    {
+        this.curr.value += val;
     }
 
     Tokenizer.prototype.pushChild = function(node)
@@ -60,6 +56,11 @@ var Tokenizer;
         this.currAttr = value;
     }
 
+    Tokenizer.prototype.pushAttrSpread = function(value)
+    {
+        this.curr.spreadAttribute = value;
+    }
+
     Tokenizer.prototype.pushAttrVal = function(value)
     {
         this.curr.attrs[this.currAttr] = value;
@@ -67,50 +68,98 @@ var Tokenizer;
         this.currAttr = null;
     }
 
+    Tokenizer.prototype.pushJsx = function(value)
+    {
+        this.pushChild(this.node('#jsx', value));
+    }
+
+    Tokenizer.prototype.openJsx = function(value)
+    {   
+        let node = this.node('#jsx:function');
+
+        node.open = value;
+
+        this.pushNode(node);
+    }
+
+    Tokenizer.prototype.closeJsx = function(value)
+    {    
+        while (this.curr.type !== '#jsx:function')
+        {
+            this.curr = this.parent.pop();
+        }
+
+        this.curr.close = value;
+    }
+
+    Tokenizer.prototype.node = function(type, value, children)
+    {
+        let attrs = {};
+        children  = children || [];
+
+        return { type, value, children, attrs };
+    }
+
     Tokenizer.prototype.readtoken = function(token, value)
-    {        
+    {
         switch (token)
         {
             case 'text':
-                
-                value = value.trim();
-
-                this.pushChild({
-                    __isvnode: true,
-                    type: value === '' ? '#empty' : '#text',
-                    value : value
-                });
+                this.pushChild({type: '#text', value: value});
                 break;
 
-            case 'tagclosevoid':
+            case 'tag:open':
+                this.pushNode(this.node(value[0].toLowerCase() === value[0] ? '#element' : (value === 'Fragment' ? '#fragment' : '#component'), value));
+                break;
+
+            case 'tag:close:void':
+            case 'tag:close:self':
+            case 'tag:close':
                 this.closeNode();
                 break;
 
-            case 'tagselfclose':
-                this.closeNode();
+            case 'jsx':
+                this.pushJsx(value);
                 break;
 
-             case 'tagclose':
-                this.closeNode();
+            case 'jsx:open':
+                this.openJsx(value);
                 break;
 
-            case 'tagopen':
-                this.pushNode({ 
-                    __isvnode: true,
-                    type : value[0].toLowerCase() === value[0] ? '#element' : '#component',
-                    value : value,
-                    attrs: {},
-                    children: [],
-                });
+            case 'jsx:close':
+                this.closeJsx(value);
                 break;
 
-            case 'attrkey':
+            case 'attr:key':
                 this.pushAttr(value);
                 break;
 
-            case 'attrval':
+            case 'attr:jsx:spread':
+                this.pushAttrSpread(value);
+                break;
+
+            case 'attr:val':
+            case 'attr:val:jsx':
                 this.pushAttrVal(value);
                 break;
+
+            case 'attr:val:interpolated':
+                this.pushAttrVal(`\`${value}\``);
+                break;
+
+            case 'comment:open':
+                this.pushNode(this.node('#comment', value));
+                break;
+
+            case 'comment:body':
+                this.pushValue(value);
+                break;
+
+            case 'comment:close':
+                this.pushValue(value);
+                this.closeNode();
+                break;
+
         }
 
         this.prev = token;

@@ -13,7 +13,7 @@ _.prototype.coordinates = function(DOMElement)
     
     if (hidden === 'none')
     {
-        // If the element was "display:none" with an inline
+        // If the element was 'display:none' with an inline
         // style, remove the inline display so it defaults to
         // whatever styles are set on in through stylesheet
         if (inlineDisplay)
@@ -34,14 +34,14 @@ _.prototype.coordinates = function(DOMElement)
     var scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
     var clientTop  = docEl.clientTop || body.clientTop || 0;
     var clientLeft = docEl.clientLeft || body.clientLeft || 0;
-    var borderL    = parseInt(this.rendered_style(DOMElement, 'border-top-width'));
-    var borderR    = parseInt(this.rendered_style(DOMElement, 'border-top-width'));
-    var borderT    = parseInt(this.rendered_style(DOMElement, 'border-top-width'));
-    var borderB    = parseInt(this.rendered_style(DOMElement, 'border-top-width'));
+    var borderL    = parseInt(this.rendered_style(DOMElement, 'border-left-width')) || 0;
+    var borderR    = parseInt(this.rendered_style(DOMElement, 'border-right-width')) || 0;
+    var borderT    = parseInt(this.rendered_style(DOMElement, 'border-top-width')) || 0;
+    var borderB    = parseInt(this.rendered_style(DOMElement, 'border-bottom-width')) || 0;
     var top        = box.top + scrollTop - clientTop - borderT - borderB;
     var left       = box.left + scrollLeft - clientLeft + borderL - borderR;
-    var width      = parseFloat(this.rendered_style(DOMElement, "width"));
-    var height     = parseFloat(this.rendered_style(DOMElement, "height"));
+    var width      = parseFloat(this.rendered_style(DOMElement, 'width'))
+    var height     = parseFloat(this.rendered_style(DOMElement, 'height'));
 
     if (inlineDisplay)
     {

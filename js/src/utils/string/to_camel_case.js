@@ -1,6 +1,5 @@
 _.prototype.to_camel_case = function(str)
 {
-    
     str = str.trim();
 
     // Shouldn't be changed

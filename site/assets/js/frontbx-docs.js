@@ -759,7 +759,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-	frontbx.DocsDemo('.js-modal-trigger-1', () => 
+	frontbx.docsDemo('.js-modal-trigger-1', () => 
 	    frontbx.Modal({
 	        title            : 'Use X\'s location service?',
 	        content          : 'Let X help apps determine location. This means sending anonymous location data to X, even when no apps are running.',
@@ -789,7 +789,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
         </div>
     </div>`;
 
-	frontbx.DocsDemo('.js-modal-trigger-2', () => frontbx.Modal({
+	frontbx.docsDemo('.js-modal-trigger-2', () => frontbx.Modal({
         content : demo2Content,
         custom: true,
         closeAnywhere: true
@@ -804,10 +804,10 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
         confirmBtn       : 'Agree',
     };
 
-    frontbx.DocsDemo('.js-modal-trigger-3', () => frontbx.Modal({...options, scroll: 'modal'}));
-    frontbx.DocsDemo('.js-modal-trigger-4', () => frontbx.Modal({...options, scroll: 'content'}));
+    frontbx.docsDemo('.js-modal-trigger-3', () => frontbx.Modal({...options, scroll: 'modal'}));
+    frontbx.docsDemo('.js-modal-trigger-4', () => frontbx.Modal({...options, scroll: 'content'}));
 
-	frontbx.DocsDemo('.js-modal-trigger-5', () => frontbx.Modal({
+	frontbx.docsDemo('.js-modal-trigger-5', () => frontbx.Modal({
         title : 'Subscribe for $1?',
         content : 'Subscribe for $1 and get all my posts for free!',
         cancelBtn : 'Nah',
@@ -826,7 +826,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
         dom_element({tag: 'label', for: 'email', innerText: 'Email'}),
     ]);
 
-    frontbx.DocsDemo('.js-modal-trigger-6', function()
+    frontbx.docsDemo('.js-modal-trigger-6', function()
     {
         frontbx.Modal({
             title: 'Subscribe',
@@ -866,7 +866,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 	    ]
 	};
 
-    frontbx.DocsDemo('.js-insert-trigger', (e, btn) => frontbx.Dom().create('Menu', options, document.querySelector('.js-insert-container')))
+    frontbx.docsDemo('.js-insert-trigger', (e, btn) => frontbx.Dom().create('Menu', options, document.querySelector('.js-insert-container')))
 
 }());
 
@@ -891,7 +891,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
     const [find] = frontbx.import(['find']).from('_');
 
-    frontbx.DocsDemo('.js-insert-table-btn', () => frontbx.Dom().create('Table', options, find('.js-insert-table-container')));
+    frontbx.docsDemo('.js-insert-table-btn', () => frontbx.Dom().create('Table', options, find('.js-insert-table-container')));
 
 }());
 
@@ -923,7 +923,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
     const [find] = frontbx.import(['find']).from('_');
 
-    frontbx.DocsDemo('.js-insert-list-btn', () => frontbx.Dom().create('List', options, find('.js-insert-list-container')));
+    frontbx.docsDemo('.js-insert-list-btn', () => frontbx.Dom().create('List', options, find('.js-insert-list-container')));
 
 }());
 
@@ -937,7 +937,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 {
     const [each, find_all, closest, add_class, has_class] = frontbx.import(['each', 'find_all', 'closest', 'add_class', 'has_class']).from('_');
 
-    frontbx.DocsDemo('.js-lazy-demo .js-lazy-demo-trigger', (i, btn) =>
+    frontbx.docsDemo('.js-lazy-demo .js-lazy-demo-trigger', (i, btn) =>
     {        
         let wrapper = closest(btn, '.js-lazy-demo');
 
@@ -974,7 +974,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
 	const [find] = frontbx.import(['find']).from('_');
 
-	frontbx.DocsDemo('.js-insert-img-btn', () => frontbx.Dom().create('Image', options, find('.js-insert-img-container')));
+	frontbx.docsDemo('.js-insert-img-btn', () => frontbx.Dom().create('Image', options, find('.js-insert-img-container')));
 
 }());
 
@@ -988,7 +988,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
 	const img = '<div class="avatar avatar-xl"><img alt="Trump" data-src="../../assets/img/trump-avatar.jpg" class="img-responsive js-lazyload lazyload grayscale" src="../../assets/img/trump-avatar_thumb.jpg" /></div>';
 
-	frontbx.DocsDemo('.js-refresh-lazyload-btn', () =>
+	frontbx.docsDemo('.js-refresh-lazyload-btn', () =>
 	{
 		let container = find('.js-refresh-lazyload-container');
 
@@ -1009,7 +1009,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
 	let skeletons = [];
 
-	frontbx.DocsDemo('.js-insert-skeletons', function()
+	frontbx.docsDemo('.js-insert-skeletons', function()
     {
     	const DOMElementform = find('.js-skeleton-form');
 	    const DOMElementCard = find('.js-skeleton-card');
@@ -1026,7 +1026,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
     }, () => skeletons = []);
 
-    frontbx.DocsDemo('.js-destroy-skeletons', function(e, btn)
+    frontbx.docsDemo('.js-destroy-skeletons', function(e, btn)
     {
     	if (has_class(btn, 'active') || skeletons.length === 0) return false;
 
@@ -1137,7 +1137,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 {
     const [find, animate] = frontbx.import(['find', 'animate']).from('_');
 
-    frontbx.DocsDemo('.js-animate-css-trigger', () =>
+    frontbx.docsDemo('.js-animate-css-trigger', () =>
         animate(find('.js-animate-css-example'),
         {
             width: 
@@ -1159,7 +1159,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
         })
     );
 
-    frontbx.DocsDemo('.js-animate-trigger', () =>
+    frontbx.docsDemo('.js-animate-trigger', () =>
         animate(find('.js-animate-example'),
         {
             width: 
@@ -1196,7 +1196,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 	let fakeAjax;
 	let validator;
 
-	frontbx.DocsDemo('.js-form-validatior-btn', (e, submitBtn) =>
+	frontbx.docsDemo('.js-form-validatior-btn', (e, submitBtn) =>
 	{
 		if (validator) validator.destroy();
 
@@ -1246,64 +1246,64 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
  */
 (function()
 {
-	frontbx.DocsDemo('.js-notif-trigger-1', () => frontbx.Notification({
+	frontbx.docsDemo('.js-notif-trigger-1', () => frontbx.Notification({
             text  : 'Hello! I\'m a notification.',
         })
     );
-    frontbx.DocsDemo('.js-notif-trigger-2', () => frontbx.Notification(
+    frontbx.docsDemo('.js-notif-trigger-2', () => frontbx.Notification(
     {
         btn  : 'Dismiss',
         text : 'Hello! I\'m a notification.',
     }));
-    frontbx.DocsDemo('.js-notif-trigger-3', () => frontbx.Notification(
+    frontbx.docsDemo('.js-notif-trigger-3', () => frontbx.Notification(
     {
         icon : 'bell',
         text : 'Hello! I\'m a notification.',
     }));
-    frontbx.DocsDemo('.js-notif-trigger-4', () => frontbx.Notification(
+    frontbx.docsDemo('.js-notif-trigger-4', () => frontbx.Notification(
     {
         btn        : 'Danger',
         btnVariant : 'danger',
         text       : 'Hello! I\'m a notification.',
     }));
-    frontbx.DocsDemo('.js-notif-trigger-5', () => frontbx.Notification(
+    frontbx.docsDemo('.js-notif-trigger-5', () => frontbx.Notification(
     {
         icon : 'bell',
         text : 'Hello! I\'m a notification.',
         closebtn: true
     }));
-    frontbx.DocsDemo('.js-notif-trigger-6', () => frontbx.Notification(
+    frontbx.docsDemo('.js-notif-trigger-6', () => frontbx.Notification(
     {
         icon    : 'check',
         variant : 'primary',
         text    : 'Hello! I\'m a notification.',
     }));
-    frontbx.DocsDemo('.js-notif-trigger-7', () => frontbx.Notification(
+    frontbx.docsDemo('.js-notif-trigger-7', () => frontbx.Notification(
     {
         icon       : 'bell',
         stacked    : true,
         btn        : '<button type="button" class="btn btn-pure btn-sm" aria-label="cancel">Cancel</button><button type="button" class="btn btn-primary btn-sm" aria-label="Confirm">Confirm</button>',
         text       : '<p class="text-bold">Lorem ipsum laboris cupidatat in enim sunt?</p><p style="opacity: 0.9;">In proident nostrud exercitation elit irure id consequat consequat nulla sunt nulla dolore officia est.</p>',
     }));
-    frontbx.DocsDemo('.js-notif-trigger-8', () => frontbx.Notification(
+    frontbx.docsDemo('.js-notif-trigger-8', () => frontbx.Notification(
     {
         responsive : true,
         btn        : 'Confirm',
         text       : '<p class="text-bold">Lorem ipsum laboris cupidatat in enim sunt?</p><p style="opacity: 0.9;">In proident nostrud exercitation elit irure id consequat consequat nulla sunt nulla dolore officia est.</p>',
     }));
-    frontbx.DocsDemo('.js-notif-trigger-9', () => frontbx.Notification(
+    frontbx.docsDemo('.js-notif-trigger-9', () => frontbx.Notification(
     {
         icon       : 'bell',
         dense      : false,
         text       : 'Eiusmod ullamco cupidatat culpa amet sit nostrud veniam consectetur quis labore duis duis ut occaecat sint.',
     }));
     
-    frontbx.DocsDemo('.js-notif-trigger-10', () => frontbx.Notification(
+    frontbx.docsDemo('.js-notif-trigger-10', () => frontbx.Notification(
     {
         text: 'Hello! You need to click me to dismiss.',
         timeout: false,
     }));
-    frontbx.DocsDemo('.js-notif-trigger-11', function()
+    frontbx.docsDemo('.js-notif-trigger-11', function()
     {
         let start = 10;
         let i     = 1;
@@ -1316,7 +1316,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
             callbackDismiss: () => clearInterval(timer)
         });
     });
-    frontbx.DocsDemo('.js-notif-triggers-pos', (e, trigger) =>
+    frontbx.docsDemo('.js-notif-triggers-pos', (e, trigger) =>
     {
         frontbx.Notification({
             text: 'Hello! I\'m a notification.',
@@ -1337,7 +1337,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     let drawer1;
     let drawer2;
 
-    frontbx.DocsDemo('.js-dw-trigger-1', () =>
+    frontbx.docsDemo('.js-dw-trigger-1', () =>
     {        
         if (drawer2) drawer2 = drawer2.destroy();
 
@@ -1348,7 +1348,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     }, () => drawer1 ? drawer1 = drawer1.destroy() : null);
 
     
-    frontbx.DocsDemo('.js-dw-trigger-2, .js-dw-trigger-3, .js-dw-trigger-4, .js-dw-trigger-5', (e, btn) =>
+    frontbx.docsDemo('.js-dw-trigger-2, .js-dw-trigger-3, .js-dw-trigger-4, .js-dw-trigger-5', (e, btn) =>
     {
         if (drawer1) drawer1 = drawer1.destroy();
 
@@ -1383,7 +1383,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     let backdrop1;
     let backdrop2;
 
-    frontbx.DocsDemo('.js-bd-trigger-1', () =>
+    frontbx.docsDemo('.js-bd-trigger-1', () =>
     {        
         if (backdrop2) backdrop2 = backdrop2.destroy();
 
@@ -1402,7 +1402,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
     }, () => backdrop1 ? backdrop1 = backdrop1.destroy() : null);
    
-    frontbx.DocsDemo('.js-bd-trigger-2', () =>
+    frontbx.docsDemo('.js-bd-trigger-2', () =>
     {       
         if (backdrop1) backdrop1 = backdrop1.destroy();
 
@@ -1448,7 +1448,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     let frontdrop1;
     let frontdrop2;
 
-    frontbx.DocsDemo('.js-fd-trigger-1', () =>
+    frontbx.docsDemo('.js-fd-trigger-1', () =>
     {
         if (frontdrop2) frontdrop2 = frontdrop2.destroy();
 
@@ -1465,7 +1465,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
     }, () => frontdrop1 ? frontdrop1 = frontdrop1.destroy() : null );
 
     
-    frontbx.DocsDemo('.js-fd-trigger-2', () =>
+    frontbx.docsDemo('.js-fd-trigger-2', () =>
     {
         if (frontdrop1) frontdrop1 = frontdrop1.destroy();
 
@@ -1510,7 +1510,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
         indicators: false,
     };
 
-    frontbx.DocsDemo('.js-insert-range-btn', (e, btn) =>
+    frontbx.docsDemo('.js-insert-range-btn', (e, btn) =>
     {
         if (!inserted)
         {
@@ -1542,7 +1542,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
         indicators: false,
     };
 
-    frontbx.DocsDemo('.js-docs-popover-trigger', (e, btn) =>
+    frontbx.docsDemo('.js-docs-popover-trigger', (e, btn) =>
     {
         if (!popover)
         {

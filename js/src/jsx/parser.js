@@ -1,393 +1,146 @@
 (function()
 {
-	/**
-     * Helper functions
+    /**
+     * Helpers.
      *
-     * @var {Function}
+     * @var  {Function}
      */
-	const [dom_element, each, is_array, is_constructable, is_constructed, is_empty, is_function, is_htmlElement, is_object, is_string, is_number, join_obj, map, str_replace] = frontbx.import(['dom_element','each','is_array','is_constructable','is_constructed','is_empty','is_function','is_htmlElement','is_object','is_string','is_number','join_obj','map','str_replace']).from('_');
+    const [is_array, each, map] = frontbx.import(['is_array','each','map']).from('_');
 
-	/**
-     * Helper functions
+    /**
+     * Cache.
      *
-     * @var {Function}
+     * @var  {object}
      */
-	const INTERPOLATE_MAP = {};
+    const CACHE_STR = {};
 
-	/**
-     * Currently interpolating.
+    /**
+     * Helper function.
      *
-     * @var {Object}
+     * @param  {String} str
+     * @return {String}
      */
-	var CURR_INTERPOLATIONS = {};
+    function sanitizeQuotes(str)
+    {
+        return str.replaceAll(/(?<!\\)'/g, '\\\'');
+    }
 
-	/**
-     * Helper functions
+    /**
+     * Parser. Parses tokenized input into 'createElement' statement. 
      *
-     * @var {Function}
+     * @param  {string}  jsxStr  JSX  string
      */
-	var GUID = 0;
-	
-	/**
-     * Main JSX parser.
+    Parser = function(jsxStr)
+    {
+        this.jsxStr = jsxStr;
+    }
+
+    /**
+     * Parse current string.
      *
-     * @access {Public}
-     * @param  {String} jsx to parse
-     * @return {Array|HTMLElement}
+     * @returns {object}
      */
-	function jsx(jsx, root, interpolations)
-	{
-		jsx = _jsxStrClean(jsx + '');
-		
-		// Already parsed
-		if (is_htmlElement(jsx)) return jsx;
-		
-		// Empty
-	    if (jsx === null || jsx === true || jsx === false || typeof jsx === 'undefined' || (typeof jsx === 'string' && jsx.trim() === ''))
-	    {
-	        return _createTextNode('', root);
-	    }
+    Parser.prototype.parse = function()
+    {
+        let useCache = this.jsxStr.length < 720;
 
-	    // Cache interpolations
-	    if (is_object(interpolations)) each(interpolations, (k, v) => CURR_INTERPOLATIONS[k] = v);
+        if (useCache && CACHE_STR[this.jsxStr]) return CACHE_STR[this.jsxStr];
 
-	    // No HTML
-	    if (!jsx.includes('<') && !jsx.includes('>')) return _createTextNode(jsx, root);
+        // tokenize and create
+        let funcString = this.genChildren((new Tokenizer(this.jsxStr)).parse());
 
-	    let tokenizer = new Tokenizer(jsx);
-
-	    let tokens = tokenizer.parse();
-
-    	return _createDomElement(tokens, root);
-	}
-
-	/**
-     * Create HTML Element from vnode.
-     *
-     * @access {private}
-     * @param  {HTMLElement}  vnode
-     * @param  {HTMLElement}  parentDOMElement
-     * @return {HTMLElement|Array}
-     */
-    function _createDomElement(vnode, parentDOMElement)
-	{
-		switch (vnode.type)
+        if (useCache)
         {
-        	case '#empty':
-                return _createTextNode('', parentDOMElement);
-
-            case '#text':
-                return _createTextNode(vnode.value, parentDOMElement);
-
-            case '#element':
-                return _createHTMLElement(vnode, parentDOMElement);
-
-            case '#component':
-                return _flatten(_renderComponent(vnode, parentDOMElement));
-
-            case '#fragment':
-                return _flatten(_createFragment(vnode, parentDOMElement));
-
-            default:
-            	return _createTextNode('', parentDOMElement);
+            return CACHE_STR[this.jsxStr] = funcString;
         }
-	}
 
-	/**
-     * Create an HTMLElement.
+        return funcString;
+    }
+
+    /**
+     * Generates 'createElement' string tag
      *
-     * @access {private}
-     * @param  {HTMLElement}  vnode
-     * @return {HTMLElement}
+     * @param   {object}  el  Token element
+     * @returns {strng}
      */
-	function _createHTMLElement(vnode, parentDOMElement)
-	{        
-		let attributes = _vattrs(vnode);
+    Parser.prototype.genTag = function(el)
+    {
+        let children = this.genChildren(el.children, el);
+        let props    = this.genProps(el.attrs, el);
+        let tag      = el.type === '#component' || el.type === '#fragment' ? el.value : `'${el.value}'`;
 
-		let children = vnode.children.length === 0 && attributes.children ? _normaliseChildren(attributes.children) : vnode.children;
+        return `h(${tag},${props},${children})`;
+    }
 
-		delete attributes.children;
+    /**
+     * Generates props from token
+     *
+     * @param   {object}  props  Prop values
+     * @param   {object}  el     Target token
+     * @returns {strng}
+     */
+    Parser.prototype.genProps = function(props, el)
+    {
+        if (!props && !el.spreadAttribute) return 'null';
 
-		let DOMElement = dom_element({tag: vnode.value, ...attributes});
+        let spread = el.spreadAttribute;
 
-		each(children, (i, child) =>
+        let attrs = [];
+
+        each(props, (key, prop) => attrs.push(`'${key}':${this.genPropValue(prop)}`));
+
+        if (spread) return `Object.assign({}, ${spread}, {${attrs.join(', ')}})`;
+
+        return `{${attrs.join(', ')}}`;
+    }
+
+    /**
+     * Generates props value.
+     *
+     * @param   {mixed}  val  Prop values
+     * @returns {strng}
+     */
+    Parser.prototype.genPropValue = function(val)
+    {
+        if (val.startsWith('{')) return val.substring(1).trim().slice(0, -1).trim();
+
+        if (val.startsWith('`')) return val;
+
+        return `'${sanitizeQuotes(val)}'`;
+    }
+
+    /**
+     * Generates children for tag.
+     *
+     * @param  {array}  Children  Array of child tokens.
+     * @param  {strng}  parent    Parant token
+     * @param  {string} glue      Optional glue string
+     */
+    Parser.prototype.genChildren = function(children, parent, glue)
+    {
+        if (parent && (!parent.children || !parent.children.length)) return 'null';
+
+        return map(children, (i, child) => 
         {
-            let childDOMElem = _createDomElement(child);
+            if (child.type === '#jsx') return child.value.substring(1).trim().slice(0, -1).trim();
+            
+            if (child.type === '#text') return `'${sanitizeQuotes(child.value)}'`;
 
-            is_array(childDOMElem) ? _appendChildren(childDOMElem, DOMElement) : DOMElement.appendChild(childDOMElem);
-        });
+            if (child.type === '#comment') return `h('comment',{},'${sanitizeQuotes(child.value.substring(4).trim().slice(0, -3).trim())}')`;
 
-        parentDOMElement.appendChild(DOMElement);
+            if (child.type === '#jsx:function')
+            {
+                let open  = child.open.trim().substring(1).trim();
+                let close = child.close.trim().slice(0, -1).trim();
 
-	    return DOMElement;
-	}
+                return `${open} ${this.genChildren(child.children, null, ' ')} ${close}`;
+            }
 
-	/**
-	 * Cleans unnecessary white-space from JSX string.
-	 *
-	 * @param  {string}  input
-	 * @return {string}
-	 */
-	function _jsxStrClean(str)
-	{
-	    return str.split(/\n|  /g).filter(block => block !== '').join(' ').trim();
-	}
+            if (child) return this.genTag(child);
 
-	function _isVnode(value)
-	{
-		return !is_object(value) && value.__isvnode === true;
-	}
-	
-	/**
-     * Caches and returns a children function.
-     *
-     * @access {private}
-     * @param  {String} key   Cached callback key
-     * @param  {Mixed}  value Children value
-     * @return {Array|HTMLElement|String}
-     */
-	function _normaliseChildren(value)
-	{
-		// Flatten arrays
-		if (is_array(value)) return _flatten(map(value, (i, sub) => _normaliseChildren(sub)));
+            return false;
 
-		// Already parsed
-		if (_isVnode(value)) return [value];
+        }).join(glue || ', ');
+    }
 
-		// HTML elements
-		if (is_htmlElement(value)) return [ value ];
-
-		// Empty 
-		if (is_empty(value)) return [{__isvnode: true,type: '#empty',value : ''}];
-
-		// Strings or numbers
-		if (is_string(value) || is_number(value))
-		{
-			let tokenizer = new Tokenizer(jsx);
-
-	    	return [tokenizer.parse()];
-		}
-	}
-
-	function _appendChildren(children, parentDOMElement)
-	{
-	    if (is_array(children))
-	    {
-	        each(children, (i, child) => _appendChildren(parentDOMElement, child));
-	    }
-
-	    if (is_htmlElement(children)) parentDOMElement.appendChild(children);
-	}
-
-	/**
-     * Vnode attributes.
-     *
-     * @access {private}
-     * @param  {HTMLElement}  vnode
-     * @return {Object}
-     */
-    function _vattrs(vnode)
-	{
-		let ret = {};
-
-		each(vnode.attrs, (attribute, value) =>
-		{
-			if (value.includes('#JSX_FUNC_'))
-			{
-				let callback = INTERPOLATE_MAP[value];
-
-				let called = callback(attribute);
-
-				value = called;
-			}
-			
-			ret[attribute] = value;
-		});
-
-		return ret;
-	}
-
-	/**
-     * Create text node.
-     *
-     * @access {private}
-     * @param  {String}  text
-     * @return {HTMLElement}
-     */
-	function _createTextNode(text, parentDOMElement)
-	{		
-		let txt = document.createTextNode(text);
-
-		if (parentDOMElement) parentDOMElement.appendChild(txt);
-
-		return txt;
-	}
-
-	/**
-     * Create fragment.
-     *
-     * @access {private}
-     * @param  {Array}  vnode
-     * @return {Array}
-     */
-	function _createFragment(vnode)
-	{
-	    return map(vnode.children, (i, child) => _createDomElement(child));
-	}
-
-	/**
-     * Create component.
-     *
-     * @access {private}
-     * @param  {HTMLElement} vnode
-     * @param  {HTMLElement} parentDOMElement
-     * @return {Array}
-     */
-	function _renderComponent(vnode, parentDOMElement)
-	{
-		let fn = _getComponent(vnode.value);
-
-		let elem = jsx(fn(_vattrs(vnode)), parentDOMElement);
-
-		frontbx.dom().refresh(elem);
-
-		return [].prototype.slice.call(parentDOMElement.children);
-	}
-
-	/**
-     * Get component render function.
-     *
-     * @access {private}
-     * @param  {String}   name
-     * @return {Function}
-     */
-	function _getComponent(name)
-	{
-		let fn = CURR_INTERPOLATIONS[name] || frontbx.get(name);
-
-		if (is_constructed(fn))
-		{
-			if (!fn.render) throw new Error('Object Components must implement the [render] method');
-
-			return fn.render;
-		}
-
-		if (is_constructable(fn))
-		{
-			let component = new fn;
-
-			if (!fn.render) throw new Error('Object Components must implement the [render] method');
-
-			return component.render;
-		}
-
-		if (!is_function(fn)) throw new Error(`Invalid Component [${name}]`);
-
-		return fn;
-	}
-
-	/**
-     * Flatten multidimensional children.
-     *
-     * @access {private}
-     * @param  {HTMLElement|Array} DOMElement
-     * @return {HTMLElement|Array}
-     */
-	function _flatten(DOMElement)
-	{
-	    if (is_array(DOMElement))
-	    {
-	        let ret = [];
-
-	        each(DOMElement, (i, child) =>
-	        {
-	            if (is_array(child))
-	            {
-	               	ret = [...ret, ..._flatten(child)];
-	            }
-	            else
-	            {
-	                ret.push(child);
-	            }
-	        });
-
-	        return ret;
-	    }
-
-	    return DOMElement;
-	}
-
-	/**
-     * Converts Object to HTML props before parsing.
-     *
-     * @access {Public}
-     * @param  {Object} attributes
-     * @return {String}
-     */
-	function props(attributes)
-	{
-		let ret = [];
-
-		each(attributes, (name, value) => 
-		{
-			value = name === 'style' && is_object(value) ? join_obj(value, ': ','; ') : _prop(value);
-		    
-            ret.push(`${name}="${_prop(value)}"`);
-	    });
-
-	    return ret.join(' ');
-	}
-
-	/**
-     * Interperlates JSX property before passing.
-     *
-     * @access {Private}
-     * @param  {Mixed}  value
-     * @return {String}
-     */
-	function _prop(value)
-	{
-		// Empty strings
-		if (is_string(value) && str_replace(value, ['undefined','null','false','NaN'], '').replace(/\s\s+/g, ' ').trim() === '') return false;
-		
-		// Empty values
-		if (is_empty(value)) return false;
-		
-		// Functions
-		if (is_function(value)) return _propfunc(value);
-
-		// Arrays
-		if (is_array(value)) return map(value, (i, v) => _prop(v)).join(' ').trim();
-
-		return value;
-	}
-
-	/**
-     * Returns a property callback.
-     *
-     * @access {private}
-     * @param  {String}   key   Cache key.
-     * @param  {Function} value Function
-     * @return {Function}
-     */
-	function _propfunc(callback)
-	{
-		GUID++;
-			
-		let key = `#JSX_FUNC_${GUID}`;
-
-		INTERPOLATE_MAP[key] = (attribute) =>
-		{
-			delete INTERPOLATE_MAP[key];
-
-			return attribute[0] === 'o' && attribute[1] === 'n' ? callback : callback();
-		}
-
-		return key;
-	}
-
-	frontbx.set('jsx', jsx);
-
-	frontbx.set('props', props);
-	
 })();

@@ -62,7 +62,7 @@ _.prototype.attr = function(DOMElement, name, value)
         case 'className':
 
             // Cleanup classname
-            value = this.is_string(value) ? this.replace(value, ['undefined', 'null', 'false', 'true'], '').replace(/\s\s+/g, ' ').trim() : value;
+            value = this.is_string(value) ? this.str_replace(value, ['undefined', 'null', 'false', 'true'], '').replace(/\s\s+/g, ' ').trim() : value;
 
             if (this.is_empty(value))
             {
@@ -112,10 +112,14 @@ _.prototype.attr = function(DOMElement, name, value)
             // All other node attributes
             else
             {
+                let isEmpty    = this.is_empty(value);
                 let isData     = name.startsWith('data');
+                let isAria     = name.startsWith('aria');
                 let camelName  = name.includes('-') ? this.to_camel_case(name) : name;
                 let hyphenName = name.includes('-') ? name : this.camel_case_to_hyphen(name);
-                let isEmpty    = this.is_empty(value);
+                let isBoolean  = this.in_array(camelName, BOOLEAN_ATTRS);
+
+                if (value === 'false' || value === 'null' || value === 'undefined') value = isBoolean ? false : isAria || isData ? 'false' : '';
 
                 // Special data
                 if (isData)
@@ -136,24 +140,13 @@ _.prototype.attr = function(DOMElement, name, value)
                     break;
                 }
 
-                // Special booleans
-                if (this.in_array(name, BOOLEAN_ATTRS))
-                {
-                    DOMElement[name] = isEmpty ? '' : value;
-
-                    if (isEmpty) DOMElement.removeAttribute(name);
-
-                    break;
-                }
-
-                if (!PROP_ATTRIBUTES.includes(camelName))
-                {
+                if (camelName !== 'viewBox')
+                    
                     try
                     {                        
-                        DOMElement[camelName] = isEmpty ? '' : value;
+                        DOMElement[camelName] = value;
 
                     } catch (e) {}
-                }
 
                 if (isEmpty)
                 {

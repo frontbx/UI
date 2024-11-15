@@ -47,6 +47,3 @@ const TO_ARR = Array.prototype.slice;
 
 // Regex for HTMLElement types
 const HTML_REGXP = /^\[object HTML\w*Element\]$/;
-
-// Empty object
-const EMPTY_OBJ_KEYS = Object.getOwnPropertyNames(Object.getPrototypeOf({}));

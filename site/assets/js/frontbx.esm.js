@@ -224,6 +224,8 @@ var container;
 
 (function()
 {
+    const EMPTY_OBJ_KEYS = Object.getOwnPropertyNames(Object.getPrototypeOf({}));
+
     /**
      * JS IoC Container
      *
@@ -334,7 +336,7 @@ var container;
 
         let storeObj = this._store[key];
 
-        if (this.has(key))
+        if (storeObj)
         {
             if (args[0] && args[0] === this.IMPORT_AS_REF) return storeObj.value;
 
@@ -485,6 +487,13 @@ var container;
             return false;
         }
 
+        // Prototype
+        let proto = mixed_var.prototype || Object.getPrototypeOf(mixed_var);
+
+        let protokeys = Object.getOwnPropertyNames(proto);
+
+        if (protokeys.filter(x => !EMPTY_OBJ_KEYS.includes(x)).length === 0) return false;
+
         return true;
     }
 
@@ -551,16 +560,7 @@ var container;
      */
     Inverse.prototype._normalizeKey = function(key)
     {
-        key = key.replace(/['"]/g, '').replace(/\W+/g, ' ')
-            .replace(/ (.)/g, function($1)
-            {
-                return $1.toUpperCase();
-            })
-            .replace(/ /g, '');
-
-        key = key.charAt(0).toUpperCase() + key.slice(1);
-
-        return key;
+        return key.replace(/[^\w]+/g, '');
     }
 
     Inverse.prototype._is_func = function(mixedVar)
@@ -626,9 +626,6 @@ const TO_ARR = Array.prototype.slice;
 
 // Regex for HTMLElement types
 const HTML_REGXP = /^\[object HTML\w*Element\]$/;
-
-// Empty object
-const EMPTY_OBJ_KEYS = Object.getOwnPropertyNames(Object.getPrototypeOf({}));
 /**
  * List of shorthand properties and their longhand equivalents
  *
@@ -810,8 +807,10 @@ const CSS_ABSOLUTE_UNITS =
  */
 const CSS_PROP_TO_HYPHEN_CASES = {};
 const CSS_PROP_TO_CAMEL_CASES  = {};
-// Current clone map (stops recursive cloning between array/objects)
+// Empty object
+const EMPTY_OBJ_KEYS = Object.getOwnPropertyNames(Object.getPrototypeOf({}));
 
+const FORBIDDEN_OBJ_KEYS = ['length', 'name', 'arguments', 'constructor', 'apply', 'bind', 'call', 'toString', 'caller', 'callee', 'prototype'];
 /**
  * Default options.
  * 
@@ -1147,7 +1146,8 @@ const BOOLEAN_ATTRS =
 	'readonly',
 	'required',
 	'reversed',
-	'selected'
+	'selected',
+	'hidden',
 ];
 
 /**
@@ -2805,7 +2805,7 @@ _.prototype.attr = function(DOMElement, name, value)
         case 'className':
 
             // Cleanup classname
-            value = this.is_string(value) ? this.replace(value, ['undefined', 'null', 'false', 'true'], '').replace(/\s\s+/g, ' ').trim() : value;
+            value = this.is_string(value) ? this.str_replace(value, ['undefined', 'null', 'false', 'true'], '').replace(/\s\s+/g, ' ').trim() : value;
 
             if (this.is_empty(value))
             {
@@ -2855,10 +2855,14 @@ _.prototype.attr = function(DOMElement, name, value)
             // All other node attributes
             else
             {
+                let isEmpty    = this.is_empty(value);
                 let isData     = name.startsWith('data');
+                let isAria     = name.startsWith('aria');
                 let camelName  = name.includes('-') ? this.to_camel_case(name) : name;
                 let hyphenName = name.includes('-') ? name : this.camel_case_to_hyphen(name);
-                let isEmpty    = this.is_empty(value);
+                let isBoolean  = this.in_array(camelName, BOOLEAN_ATTRS);
+
+                if (value === 'false' || value === 'null' || value === 'undefined') value = isBoolean ? false : isAria || isData ? 'false' : '';
 
                 // Special data
                 if (isData)
@@ -2879,24 +2883,13 @@ _.prototype.attr = function(DOMElement, name, value)
                     break;
                 }
 
-                // Special booleans
-                if (this.in_array(name, BOOLEAN_ATTRS))
-                {
-                    DOMElement[name] = isEmpty ? '' : value;
-
-                    if (isEmpty) DOMElement.removeAttribute(name);
-
-                    break;
-                }
-
-                if (!PROP_ATTRIBUTES.includes(camelName))
-                {
+                if (camelName !== 'viewBox')
+                    
                     try
                     {                        
-                        DOMElement[camelName] = isEmpty ? '' : value;
+                        DOMElement[camelName] = value;
 
                     } catch (e) {}
-                }
 
                 if (isEmpty)
                 {
@@ -3915,7 +3908,7 @@ _.prototype.coordinates = function(DOMElement)
     
     if (hidden === 'none')
     {
-        // If the element was "display:none" with an inline
+        // If the element was 'display:none' with an inline
         // style, remove the inline display so it defaults to
         // whatever styles are set on in through stylesheet
         if (inlineDisplay)
@@ -3936,14 +3929,14 @@ _.prototype.coordinates = function(DOMElement)
     var scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
     var clientTop  = docEl.clientTop || body.clientTop || 0;
     var clientLeft = docEl.clientLeft || body.clientLeft || 0;
-    var borderL    = parseInt(this.rendered_style(DOMElement, 'border-top-width'));
-    var borderR    = parseInt(this.rendered_style(DOMElement, 'border-top-width'));
-    var borderT    = parseInt(this.rendered_style(DOMElement, 'border-top-width'));
-    var borderB    = parseInt(this.rendered_style(DOMElement, 'border-top-width'));
+    var borderL    = parseInt(this.rendered_style(DOMElement, 'border-left-width')) || 0;
+    var borderR    = parseInt(this.rendered_style(DOMElement, 'border-right-width')) || 0;
+    var borderT    = parseInt(this.rendered_style(DOMElement, 'border-top-width')) || 0;
+    var borderB    = parseInt(this.rendered_style(DOMElement, 'border-bottom-width')) || 0;
     var top        = box.top + scrollTop - clientTop - borderT - borderB;
     var left       = box.left + scrollLeft - clientLeft + borderL - borderR;
-    var width      = parseFloat(this.rendered_style(DOMElement, "width"));
-    var height     = parseFloat(this.rendered_style(DOMElement, "height"));
+    var width      = parseFloat(this.rendered_style(DOMElement, 'width'))
+    var height     = parseFloat(this.rendered_style(DOMElement, 'height'));
 
     if (inlineDisplay)
     {
@@ -5498,7 +5491,7 @@ _.prototype.__clone_var = function(mixed_var, context)
             return this.__clone_array(mixed_var, context);
 
         case FUNC_TAG:
-            return this.__clone_func(mixed_var, context);
+            return this.__clone_func(mixed_var);
 
         case NULL_TAG:
             return null;
@@ -5569,6 +5562,7 @@ _.prototype.__clone_obj = function(obj, context)
 {
     // Shallow keys
     let keys = this.object_props(obj);
+
     let ret  = {};
 
     // Empty object
@@ -5577,12 +5571,8 @@ _.prototype.__clone_obj = function(obj, context)
         return ret;
     }
 
-    this.each(keys, function(i, key)
-    {
-        ret[key] = this.clone_deep(obj[key], context);
-
-    }, this);
-
+    this.each(keys, (i, key) => ret[key] = this.clone_deep(obj[key], context));
+    
     // Clone prototypes
     let protos = this.prototypes(obj);
 
@@ -5612,9 +5602,27 @@ _.prototype.__clone_obj = function(obj, context)
  * @param   {mixed}     context   Context to bind function
  * @returns {function}
  */
-_.prototype.__clone_func = function(func, context)
+_.prototype.__clone_func = function(func)
 {
-    return this.bind(func, context);
+    let statics = this.object_props(func, true);
+
+    if (!this.is_constructable(func))
+    {
+        let bound = this.bind(func);
+
+        this.each(statics, (i, method) => bound[method] = func[method] ? this.bind(func[method]) : null);
+
+        return bound;
+    }
+
+    let bound = function()
+    {
+        this.super(...arguments)
+    }
+
+    this.each(statics, (i, method) => bound[method] = this.bind(func[method]));
+
+    return this.extend(func, bound);
 }
 
 /**
@@ -5627,11 +5635,11 @@ _.prototype.__clone_array = function(arr, context)
 {
     let ret = [];
 
-    this.each(arr, function(i, val)
+    this.each(arr, (i, val) =>
     {
         ret[i] = this.clone_deep(val, context);
     
-    }, this);
+    });
 
     return ret;
 }
@@ -5682,7 +5690,7 @@ _.prototype.__clone_set = function(s, context)
     {
         ret.add(k, this.clone_deep(v, context));
     
-    }, this);
+    });
 
     return ret;
 }
@@ -5745,7 +5753,7 @@ _.prototype.__clone_typed_array = function(typedArray)
  */
 _.prototype.bind = function(func, context)
 {
-    context = typeof context === 'undefined' ? window : context;
+    context = typeof context === 'undefined' ? (window || global) : context;
 
     const bound = function()
     {
@@ -5940,19 +5948,18 @@ _.prototype.object_props = function(mixed_var, deep)
     if (!mixed_var) return [];
 
     deep = typeof deep === 'undefined' ? false : deep;
-
-    let keys = Object.keys(mixed_var);
-
-    let proto = mixed_var.prototype || Object.getPrototypeOf(mixed_var);
+    
+    let keys = deep ?this.array_unique([...Object.keys(mixed_var), ...Object.getOwnPropertyNames(mixed_var)]) : Object.keys(mixed_var);
 
     if (deep)
     {
-        keys = [...keys, ...this.object_props(proto, true)];
+        let protos = this.prototypes(mixed_var);
+
+        this.each(protos, (i, proto) => keys = [...keys, ...this.object_props(proto, true)] );
     }
     
-    return this.array_unique(keys);
+    return this.array_unique(keys.filter((key) => !EMPTY_OBJ_KEYS.includes(key) && !FORBIDDEN_OBJ_KEYS.includes(key)));
 }
-
 
 /**
  * Returns an array of prototypes
@@ -6148,7 +6155,6 @@ _.prototype.rtrim = function(str, charlist)
 }
 _.prototype.to_camel_case = function(str)
 {
-    
     str = str.trim();
 
     // Shouldn't be changed
@@ -6198,7 +6204,7 @@ _.prototype.lc_first = function(string)
  * @param  {str}           str
  * @return {array|string} charlist (optional)
  */
-_.prototype.replace = function(str, charlist, value)
+_.prototype.str_replace = function(str, charlist, value)
 {
     if (this.is_string(charlist) || this.is_regexp(charlist))
     {
@@ -6527,7 +6533,7 @@ _.prototype.is_constructable = function(mixed_var)
     }
 
     // If prototype is empty 
-    return this.object_props(mixed_var, true).length > 0;
+    return this.object_props(mixed_var.prototype).length > 0;
 }
 /**
  * Checks if variable is constructed object function.
@@ -9206,8 +9212,6 @@ container.singleton('_', _);
     
     Pjax.prototype._onabort = function(response)
     {
-        console.log('aborted');
-    
         let selector = this.options.element;
         
         let swapTimer = TRANSITION_TIMERS.get(selector);
@@ -11518,8 +11522,6 @@ container.singleton('_', _);
 
         handler.render();
 
-        console.log(handler);
-
         return handler;
     }
 
@@ -12243,10 +12245,176 @@ container.singleton('_', _);
 // JSX
 (function()
 {
-	var Lexer;
+	/**
+	 * Currently rendering Component.
+	 *
+	 * @var  {Osbject}
+	 */
+	const CURR_RENDER =
+	{
+	    current: null
+	};
 	
+	/**
+	 * Bindings / variable caching.
+	 *
+	 * @var  {Osbject}
+	 */
+	const BINDINGS_CACHE = {};
+	
+	// Assume a browser environment.
+	const RESERVED_WORDS =
+	[
+	    'break',
+	    'do',
+	    'in',
+	    'typeof',
+	    'case',
+	    'else',
+	    'instanceof',
+	    'var',
+	    'let',
+	    'catch',
+	    'export',
+	    'new',
+	    'void',
+	    'class',
+	    'extends',
+	    'return',
+	    'while',
+	    'const',
+	    'finally',
+	    'super',
+	    'with',
+	    'continue',
+	    'for',
+	    'switch',
+	    'yield',
+	    'debugger',
+	    'function',
+	    'this',
+	    'delete',
+	    'import',
+	    'try',
+	    'enum',
+	    'implements',
+	    'package',
+	    'protected',
+	    'static',
+	    'interface',
+	    'private',
+	    'public',
+	    'eval',
+	    'global',
+	    'process',
+	    'module',
+	    'require',
+	    'document',
+	    'window',
+	    'Window',
+	    'Function',
+	    'JSON',
+	    'Object',
+	    'Array',
+	    'String',
+	    'Boolean',
+	    'Number',
+	    'Date',
+	    'RegExp',
+	    'Error',
+	    'EvalError',
+	    'RangeError',
+	    'ReferenceError',
+	    'SyntaxError',
+	    'TypeError',
+	    'URIError',
+	    'frontbx',
+	    'jsx',
+	    '__defineGetter__',
+	    '__defineSetter__',
+	    '__lookupGetter__',
+	    '__lookupSetter__',
+	    '__proto__',
+	    'callee',
+	    'caller',
+	    'constructor',
+	    'hasOwnProperty',
+	    'isPrototypeOf',
+	    'propertyIsEnumerable',
+	    'prototype',
+	    'toLocaleString',
+	    'toString',
+	    'valueOf',
+	];
+	
+	/**
+	 * Fragment.
+	 *
+	 * @var  {Function}
+	 */
+	const Fragment = function(props)
+	{
+	    return props.children;
+	}
+	
+	/**
+	 * Local lexer.
+	 * 
+	 * @var {Function}
+	 */
+	var lexer;
+	
+	/**
+	 * Local tokenizer.
+	 * 
+	 * @var {Function}
+	 */
+	var Tokenizer;
+	
+	/**
+	 * Local parser.
+	 * 
+	 * @var {Function}
+	 */
+	var Parser;
+	
+	/**
+	 * Local createElement.
+	 * 
+	 * @var {Function}
+	 */
+	var createElement;
+	
+	/**
+	 * Local sanbox.
+	 * 
+	 * @var {Function}
+	 */
+	var sandbox;
+	
+	/**
+	 * Local jsx.
+	 * 
+	 * @var {Function}
+	 */
+	var jsx;
 	(function()
 	{    
+	    /**
+	     * Utility Regexes.
+	     * 
+	     * @var {Regexp}
+	     */
+	    const SPACE = /[\t\r\n\f ]/;
+	    const ALPHA = /[A-z]/;
+	    const ALPHA_DASH = /[A-z-]/;
+	    const QUOTES = ['"', '\'', '`'];
+	
+	    /**
+	     * Void tags.
+	     * 
+	     * @var {Array}
+	     */
 	    const VOID_ELS =
 	    [
 	        'area',
@@ -12270,274 +12438,831 @@ container.singleton('_', _);
 	        'track',
 	        'use',
 	        'wbr',
+	        'doctype',
 	    ];
 	
-	    let tag;
-	    let state;
-	    let inquotes = false;
-	    let braceDepth = 0;
+	    /**
+	     * Lexer.
+	     * 
+	     * @param {String}   html
+	     * @param {Function} emit
+	     */
+	    const Lexer = function(html, emit)
+	    {
+	        this.html = html;
+	        this.emit = emit;
+	        this.currentTag  = null;
+	        this.pos         = 0;
+	        this.braceDepth  = 0;
+	        this.attrValStack = [];
+	    }
 	
 	    /**
-	    * Scan the given `html`.
-	    * 
-	    * @param {String} html
-	    * @param {Function} emit
-	    */
-	    Lexer = function(html, emit)
+	     * Parse and emit.
+	     * 
+	     * @access {public}
+	     */
+	    Lexer.prototype.parse = function()
 	    {
-	        var scan = text
-	        , pos = 0;
+	        let scan = 'text';
 	
-	        /**
-	        * scan
-	        */
-	        while (scan = scan());
+	        while (scan = this[scan](this.peek()));
 	
-	        /**
-	        * next
-	        */
-	        function next()
+	        if (this.html === '')
 	        {
-	            return html.charAt(pos++);
+	            scan = null;
+	
+	            this.complete();
+	        }
+	    }
+	
+	    /**
+	     * next.
+	     * 
+	     * @access {private}
+	     * @return {String}
+	     */
+	    Lexer.prototype.next = function()
+	    {
+	        return this.html.charAt(this.pos++);
+	    }
+	
+	    /**
+	     * peek next.
+	     * 
+	     * @access {private}
+	     * @return {String}
+	     */
+	    Lexer.prototype.peek = function()
+	    {
+	        return this.html.charAt(this.pos);
+	    }
+	
+	    /**
+	     * peek next.
+	     * 
+	     * @access {private}
+	     * @return {String}
+	     */
+	    Lexer.prototype.peekback = function()
+	    {
+	        return this.html.charAt(this.pos -1);
+	    }
+	
+	    /**
+	     * peek n chars.
+	     * 
+	     * @access {private}
+	     * @param  {Integer} n
+	     * @return {String}
+	     */
+	    Lexer.prototype.peekn = function(n)
+	    {            
+	        return this.html.slice(this.pos, this.pos + n);
+	    }
+	
+	    /**
+	     * Chunk position buffer.
+	     * 
+	     * @access {private}
+	     * @return {String}
+	     */
+	    Lexer.prototype.chunk = function()
+	    {
+	        let buff = this.html.slice(0, this.pos);
+	        
+	        this.consume(this.pos);
+	
+	        return buff;
+	    }
+	
+	    /**
+	     * consume n chars.
+	     * 
+	     * @access {private}
+	     * @param  {Integer} n
+	     */
+	    Lexer.prototype.consume = function(n)
+	    {
+	        this.html = this.html.substr(n);
+	
+	        this.pos  = 0;
+	    }
+	
+	    /**
+	     * consume whitespace.
+	     * 
+	     * @access {private}
+	     */
+	    Lexer.prototype.whitespace = function()
+	    {
+	        while (SPACE.test(this.peek()) && this.next());
+	
+	        this.consume(this.pos);
+	    }
+	
+	    /**
+	     * Scan until chars
+	     * 
+	     * @access {private}
+	     * @return {Boolean}
+	     */
+	    Lexer.prototype.scan = function(chars)
+	    {
+	        let len = chars.length;
+	
+	        while (this.peekn(len) !== chars)
+	        {
+	            if (!this.next()) break;
 	        }
 	
-	        /**
-	        * peek
-	        */
-	        function peek()
+	        return this.html.slice(0, this.pos);
+	    }
+	
+	    /**
+	     * JSX spread attribute.
+	     * 
+	     * @access {private}
+	     * @return {String}
+	     */
+	    Lexer.prototype.bufferjsx = function()
+	    {
+	        let braceDepth = 0;
+	
+	        // Collect the intial spread
+	        let jsx = this.buffer((char) =>
 	        {
-	            return html.charAt(pos);
-	        }
-	
-	        /**
-	        * peek
-	        */
-	        function peekn(n)
-	        {            
-	            return html.slice(pos, pos + n);
-	        }
-	
-	        /**
-	        * consume
-	        */
-	        function consume(n)
-	        {
-	            html = html.substr(n);
-	            pos = 0;
-	        }
-	
-	        /**
-	        * `>(text)<`
-	        */
-	        function text()
-	        {
-	            if ('>' == peek()) consume(1);
-	            
-	            while (lessthan());
-	            
-	            var buf = html.slice(0, pos);
-	            
-	            consume(buf.length);
-	
-	            if (html === '') return emit('complete');
-	            
-	            if (buf)
+	            if (char === '{')
 	            {
-	                tag = null;
-	
-	                emit('text', buf);
+	                braceDepth++;
+	            }
+	            else if (char === '}')
+	            {
+	                braceDepth--;
 	            }
 	
-	            // treat `< ` as text
-	            if (0 == html.indexOf('< '))
-	            {
-	                buf += html.slice(0, 2);
+	            if (braceDepth === 0) return true;
+	        });
 	
-	                consume(2);
-	                
-	                return text;
+	        if (braceDepth > 0) throw new Error('Unclosed JSX bracket found');
+	
+	        this.next();
+	
+	        return this.chunk();
+	    }
+	
+	    /**
+	     * Buffer until callback on each char
+	     * 
+	     * @access {private}
+	     * @return {String}
+	     */
+	    Lexer.prototype.buffer = function(validator)
+	    {
+	        let buff = '';
+	
+	        while (!validator(this.peek(), buff))
+	        {
+	            let n = this.peek();
+	
+	            if (n === '') break;
+	
+	            buff += n;
+	
+	            this.next();
+	        }
+	        
+	        return buff;
+	    }
+	
+	    /**
+	     * Complete.
+	     * 
+	     */
+	    Lexer.prototype.complete = function()
+	    {
+	        this.emit('complete');
+	    }
+	
+	    /**
+	     * Text default state.
+	     * 
+	     * @access {private}
+	     * @return {String}
+	     */
+	    Lexer.prototype.text = function()
+	    {
+	        if ('>' == this.peek()) this.consume(1);
+	        
+	        let next = false;
+	
+	        let buff = this.buffer((char) => 
+	        { 
+	            // JSX Func was left open
+	            if (
+	                    (
+	                        this.braceDepth > 0 &&
+	                        (char !== '>' && char !== '<') &&
+	                        !this.currentTag
+	                    ) 
+	                    ||
+	                    (
+	                        this.peekback() !== '\\' && 
+	                        (char === '{' || char === '}')
+	                    )
+	                )
+	            {
+	                next = 'jsx_block';
+	
+	                return true;
 	            }
 	
-	            // ignore `<!`
-	            if (0 == html.indexOf('<!--'))
+	            if (char === '<' && !SPACE.test(this.peek()))
 	            {
-	                buf += html.slice(0, 4);
+	                next = 'tag_open';
 	
-	                consume(4);
+	                return true;
+	            }
+	        });
 	
-	                emit('commentopen');
+	        if (buff && buff !== '<')
+	        {
+	            this.consume(buff.length);
 	
-	                while (comment());
+	            this.emit('text', buff);
+	        }
 	
-	                buf = html.slice(0, pos);
+	        if (next === 'tag_open') this.consume(1);
+	
+	        return next;
+	    }
+	
+	    /**
+	     * Tag open.
+	     * 
+	     * @access {private}
+	     * @return {String}
+	     */
+	    Lexer.prototype.tag_open = function(char)
+	    {                
+	        // Markup declaration
+	        if (char === '!')
+	        {
+	            this.consume(1);
+	
+	            return 'markup_declaration_open';
+	        }
+	
+	        // Bogus tag
+	        if (char === '?')
+	        {
+	            this.consume(1);
+	
+	            return 'bogus_tag';
+	        }
+	
+	        // Close
+	        if (char === '/')
+	        {
+	            this.consume(1);
+	
+	            return 'tag_close';
+	        }
+	
+	        let tag = this.buffer(char => SPACE.test(char) || char === '>');
+	
+	        if (tag.length === 0) throw new Error('Empty tag name.');
+	
+	        this.consume(tag.length);
+	
+	        this.currentTag = tag;
+	
+	        this.emit('tag:open', tag);
+	
+	        return 'attr_key';
+	    }
+	
+	    /**
+	     * Tag close self close. Reached after "/" in a tag.
+	     * 
+	     * @access {private}
+	     * @return {String}
+	     */
+	    Lexer.prototype.tag_close_self = function()
+	    {
+	        // Consume any whitespace
+	        this.whitespace();
+	
+	        // Emit and close the tag.
+	        if ('>' === this.peek())
+	        {
+	            this.currentTag = null;
+	
+	            this.emit('tag:close:self', '');
+	
+	            return 'text';
+	        }
+	
+	        // Fallback to error.
+	        throw new Error('Invalid self closing tag.');
+	    }
+	
+	    /**
+	     * Tag close self close. Reached after ">" in void tag.
+	     * 
+	     * @access {private}
+	     * @return {String}
+	     */
+	    Lexer.prototype.tag_close_void = function()
+	    {
+	        this.consume(1);
+	
+	        this.currentTag = null;
+	
+	        this.emit('tag:close:void');
+	
+	        return 'text';
+	    }
+	
+	    /**
+	     * Tag close.
+	     * 
+	     * @access {private}
+	     * @return {String}
+	     */
+	    Lexer.prototype.tag_close = function()
+	    {
+	        let tag = this.buffer(char => char === '>');
+	        
+	        this.consume(tag.length);
+	        
+	        this.emit('tag:close', tag);
+	
+	        this.currentTag = null;
+	        
+	        return 'text';
+	    }
+	
+	    /**
+	     * Attribute key.
+	     * 
+	     * @access {private}
+	     * @return {String}
+	     */
+	    Lexer.prototype.attr_key = function()
+	    {
+	        this.whitespace();
+	
+	        if ('>' === this.peek())
+	        {
+	            if (this.currentTag && VOID_ELS.includes(this.currentTag)) return 'tag_close_void';
+	
+	            this.consume(1);
+	
+	            return 'text';
+	        }
+	
+	        if ('/' === this.peek())
+	        {
+	            this.consume(1);
+	
+	            return 'tag_close_self';
+	        }
+	
+	        if ('{' === this.peek()) return 'attr_jsx_spread';
+	        
+	        let attr = this.buffer(char => SPACE.test(char) || char === '=' || char === '>');
+	
+	        this.consume(attr.length);
+	        
+	        if (attr) this.emit('attr:key', attr);
+	
+	        let peek = this.peek();
+	
+	        if (peek === '=')
+	        {
+	            this.consume(1);
+	
+	            return 'attr_val';
+	        }
+	
+	        if (peek === '>')
+	        {
+	            if (this.currentTag && VOID_ELS.includes(this.currentTag)) return 'tag_close_void';
+	
+	            this.consume(1);
+	
+	            return 'text';
+	        }
+	
+	        if (SPACE.test(peek))
+	        {
+	            this.consume(1);
 	            
-	                consume(buf.length);
+	            return 'attr_key';
+	        }
+	    }
 	
-	                emit('comment', buf);
+	    /**
+	     * Attribute value.
+	     * 
+	     * @access {private}
+	     * @return {String}
+	     */
+	    Lexer.prototype.attr_val = function()
+	    {
+	        // Clear out whitespace
+	        this.whitespace();
 	
-	                consume(3);
+	        if (this.peek() === '{') return 'attr_val_jsx';
 	
-	                emit('commentclose');
+	        let end;
 	
-	                return text;
-	            }
+	        if ('"' == this.peek()) end = '"';
+	        
+	        if ('\'' == this.peek()) end = '\'';
 	
-	            // close
-	            if (0 == html.indexOf('</'))
-	            {
-	                return close;
-	            }
+	        if (!end) throw new Error('Unquoted attribute value.');
 	
-	            // open
-	            if ('<' == peek())
-	            {
-	                return open;
-	            }
+	        // Remove starting quote
+	        this.consume(1);
+	
+	        // Cache end marker
+	        this.attrValEnd = end;
+	
+	        // Buffer untill closed or jsx is found
+	        let buff = this.buffer(char => this.peekback() !== '\\' && (char === '{' || char === end ));
+	
+	        // JSX was found
+	        if (this.peek() === '{')
+	        {
+	            this.consume(buff.length);
+	
+	            this.attrValStack.push(buff);
+	            
+	            return 'attr_val_interpolated';
+	        }
+	        
+	        // Remove end quote plus value
+	        this.consume(buff.length + 1);
+	
+	        this.emit('attr:val', buff);
+	
+	        // Stop
+	        if (this.html === '') throw new Error('Unclosed attribute value.');
+	
+	        return 'attr_key';
+	    }
+	
+	    /**
+	     * When reached an opening jsx bracket "{" inside a quoted attribute value.
+	     * 
+	     * @access {private}
+	     * @return {String}
+	     */
+	    Lexer.prototype.attr_val_interpolated = function()
+	    {
+	        // Buffer untill closed or jsx is found
+	        this.buffer(char => this.peekback() !== '\\' && char === '}');
+	
+	        // Add closing bracket
+	        this.next();
+	
+	        // Consume buff
+	        let jsx = this.chunk();
+	        
+	        // Push attr to stack
+	        this.attrValStack.push(`\$${jsx}`);
+	
+	        // Buffer to an opening jsx bracket or end of attribute vlaue
+	        let buff = this.buffer(char => this.peekback() !== '\\' && (char === '{' || char === this.attrValEnd ));
+	
+	        // JSX was found
+	        if (this.peek() === '{')
+	        {
+	            this.consume(buff.length);
+	
+	            this.attrValStack.push(buff);
+	            
+	            return 'attr_val_interpolated';
 	        }
 	
-	        /**
-	        * `<(tag)`
-	        */
-	        function open()
+	        // Consume buff plus ending quote marker
+	        this.consume(buff.length + 1);
+	
+	        // Don't empty quotes
+	        if (buff.length >= 1) this.attrValStack.push(buff);
+	
+	        this.emit('attr:val:interpolated', this.attrValStack.join(''));
+	
+	        this.attrValStack = [];
+	
+	        return 'attr_key';
+	    }
+	
+	    /**
+	     * JSX atribute value.
+	     * 
+	     * @access {private}
+	     * @return {String}
+	     */
+	    Lexer.prototype.attr_val_jsx = function()
+	    {
+	        this.emit('attr:val:jsx', this.bufferjsx().trim());
+	
+	        return 'attr_key';
+	    }
+	
+	    /**
+	     * JSX spread attribute.
+	     * 
+	     * @access {private}
+	     * @return {String}
+	     */
+	    Lexer.prototype.attr_jsx_spread = function()
+	    {
+	        this.emit('attr:jsx:spread', this.bufferjsx().trim());
+	
+	        return 'attr_key';
+	    }
+	
+	    /**
+	     * Bogus tag.
+	     * 
+	     * @access {private}
+	     * @throws
+	     */
+	    Lexer.prototype.bogus_tag = function()
+	    {
+	        this.html = '';
+	
+	        throw new Error('Invalid [<?] tag in html.');
+	    }
+	
+	    /**
+	     * Comment open, cdata open or doctype declartion.
+	     * 
+	     * @access {private}
+	     * @return {String}
+	     */
+	    Lexer.prototype.markup_declaration_open = function()
+	    {
+	        let char = this.peek();
+	
+	        if (this.peekn(2) === '--')
 	        {
-	            while (' ' != peek() && '>' != peek() && next());
+	            this.consume(2);
 	
-	            var buf = html.slice(0, pos);
-	
-	            consume(buf.length);
-	
-	            tag = buf.substr(1);
-	
-	            if (1 < buf.length) emit('tagopen', buf.substr(1));
-	
-	            return attrkey;
+	            return 'comment_start';
 	        }
 	
-	        /**
-	        * ` *(key)*`
-	        */
-	        function attrkey()
+	        if (this.peek() === '[')
 	        {
-	            whitespace();
+	            this.consume(1);
 	
-	            if ('/' === peek())
+	            return 'cdata_start';
+	        }
+	        
+	        this.whitespace();
+	
+	        if (ALPHA.test(this.peek())) return 'doc_type';
+	
+	        throw new Error('Invalid comment (comments should start with <!--');
+	    }
+	
+	    /**
+	     * Doctype declaration.
+	     * 
+	     * @access {private}
+	     * @return {String}
+	     */
+	    Lexer.prototype.doc_type = function()
+	    {
+	        if (!this.html.startsWith('DOCTYPE ')) throw new Error('Invalid doctype declaration');
+	        
+	        this.emit('doctype', '<!DOCTYPE');
+	
+	        this.consume(8);
+	
+	        let buf = this.buffer(char => char === '>' || SPACE.test(char));
+	
+	        if (buf.length <= 1) throw new Error('Invalid doctype declaration');
+	
+	        this.consume(buf.length);
+	
+	        this.emit('doctype:declaration', buf);
+	
+	        return 'doc_type_attr';
+	    }
+	
+	    /**
+	     * Doctype attribute.
+	     * 
+	     * @access {private}
+	     * @return {String}
+	     */
+	    Lexer.prototype.doc_type_attr = function()
+	    {
+	        // Consume space
+	        this.whitespace();
+	
+	        // Closed doctype
+	        if ('>' == this.peek()) return 'tag_close_self';
+	
+	        // Doc types don't have "key=value" attributes, only attributes
+	        // e.g  PUBLIC
+	        // e.g  "-//W3C//DTD HTML 4.01 Transitional//EN"        
+	        let end = SPACE;
+	        
+	        if ('"' == this.peek()) end = /"/;
+	        
+	        if (end !== SPACE) this.consume(1);
+	
+	        let buf = this.buffer(char => end.test(char) || char === '>');
+	        
+	        this.consume(buf.length);
+	        
+	        if (end !== SPACE) this.consume(1);
+	        
+	        this.emit('doctype:attr', end !== SPACE ? `"${buf}"` : buf);
+	
+	        return 'doc_type_attr';       
+	    }
+	
+	    /**
+	     * Comment start.
+	     * 
+	     * @access {private}
+	     * @return {String}
+	     */
+	    Lexer.prototype.comment_start = function()
+	    {
+	        if (this.peek() === '[') return 'conditional_comment_open';
+	
+	        this.emit('comment:open', '<!--');
+	
+	        let buff = this.scan('-->');
+	
+	        this.consume(buff.length);
+	
+	        this.emit('comment:body', buff);
+	
+	        this.consume(3);
+	
+	        this.emit('comment:close', '-->');
+	
+	        return 'text';
+	    }
+	
+	    /**
+	     * Conditional comment open.
+	     * 
+	     * @access {private}
+	     * @return {String}
+	     */
+	    Lexer.prototype.conditional_comment_open = function()
+	    {
+	        if (this.peekn(4) !== '[if ') throw new Error('Invalid conditional comment');
+	
+	        let buff = this.scan(']>');
+	
+	        this.consume(buff.length);
+	
+	        this.emit('comment:open', `<!--${buff}>`);
+	
+	        this.consume(3);
+	
+	        return 'conditional_comment';
+	    }
+	
+	    /**
+	     * Conditional comment.
+	     * 
+	     * @access {private}
+	     * @return {String}
+	     */
+	    Lexer.prototype.conditional_comment = function()
+	    {
+	        let buff = this.scan('<![endif]-->');
+	
+	        this.consume(buff.length);
+	
+	        this.emit('comment:body', buff);
+	
+	        this.consume(12);
+	
+	        this.emit('comment:close', '<![endif]-->');
+	
+	        return 'text';
+	    }
+	
+	    /**
+	     * cdata start.
+	     * 
+	     * @access {private}
+	     * @return {String}
+	     */
+	    Lexer.prototype.cdata_start = function()
+	    {
+	        if (!this.html.startsWith('CDATA[')) throw new Error('Invalid doctype declaration');
+	        
+	        this.consume(6);
+	
+	        this.emit('cdata:open', '<![CDATA[');
+	
+	        let buff = this.scan(']]>');
+	    
+	        this.consume(buff.length);
+	
+	        this.emit('cdata:body', buff);
+	
+	        this.consume(3);
+	
+	        this.emit('cdata:close', ']]>');
+	
+	        return 'text';
+	    }
+	
+	    /**
+	     * JSX.
+	     * 
+	     * @access {private}
+	     * @return {String}
+	     */
+	    Lexer.prototype.jsx_block = function()
+	    {        
+	        let blockpeth = 0;
+	        let opened = this.braceDepth >= 1;
+	
+	        this.buffer((char, chunk) =>
+	        {
+	            if (this.peekback() !== '\\')
 	            {
-	                consume(1);
-	
-	                whitespace();
-	
-	                if ('>' === peek())
+	                if (char === '{')
 	                {
-	                    tag = null;
+	                    this.braceDepth++;
+	                    blockpeth++;
+	                }
+	                else if (char === '}')
+	                {
+	                   this.braceDepth--;
+	                   blockpeth--;
+	                }
 	
-	                    emit('tagselfclose', '');
+	                if (this.braceDepth === 0 || char === '<')
+	                {
+	                    if (char === '}') this.next();
+	
+	                    return true;
+	                }
+	
+	                // JSX inside neseted jsx function
+	                if (blockpeth === 0 && chunk[0] === '{')
+	                {
+	                    this.next();
+	
+	                    return true;
 	                }
 	            }
+	        });
 	
-	            while ('>' != peek() && ' ' != peek() && '=' != peek() && next());
+	        let buff = this.chunk();
 	
-	            var buf = html.slice(0, pos);
-	            
-	            consume(buf.length);
-	            
-	            if (buf) emit('attrkey', buf.trim());
-	            
-	            return attrval;
-	        }
+	        let jsx = buff.trim();
 	
-	        /**
-	        * `=?(["'](val)['"])`
-	        */
-	        function attrval()
+	        // Open / close
+	        if (jsx[0] === '{' && jsx.substr(-1) === '}')
 	        {
-	            if (' ' == peek()) return attrkey;
-	            
-	            if ('>' == peek())
-	            {
-	                if (tag && VOID_ELS.includes(tag)) emit('tagclosevoid');
-	
-	                return text;
-	            }
-	            
-	            if ('=' == peek()) consume(1);
-	            
-	            var end = ' ';
-	
-	            if ("{" == peek()) end = '}';
-	            
-	            if ('"' == peek()) end = '"';
-	            
-	            if ("'" == peek()) end = "'";
-	
-	            if (' ' != end) consume(1);
-	            
-	            while (end != peek() && next());
-	            
-	            var buf = html.slice(0, pos);
-	            
-	            consume(buf.length);
-	            
-	            if (' ' != end) consume(1);
-	            
-	            emit('attrval', buf);
-	            
-	            return attrval;
+	            this.emit('jsx', buff);
 	        }
 	
-	        /**
-	        * `</(tag)`
-	        */
-	        function close()
+	        // Close jsx
+	        else if (jsx[0] === ')' || jsx[0] === '}' || opened)
 	        {
-	            while (greaterthan());
-	            
-	            var buf = html.slice(0, pos);
-	            
-	            consume(1 + buf.length);
-	            
-	            if (2 < buf.length) emit('tagclose', buf.substr(2));
-	            
-	            return text;
+	            this.emit('jsx:close', buff);
 	        }
 	
-	        /**
-	        * consume whitespace.
-	        */
-	        function whitespace()
+	        else if (jsx.substr(-1) === '(' || jsx.substr(-1) === '{' || this.braceDepth >= 1)
 	        {
-	            while (' ' == peek() && next());
-	
-	            consume(pos);
+	            this.emit('jsx:open', buff);
 	        }
 	
-	        /**
-	        * scan `<`
-	        */
-	        function lessthan()
-	        {
-	            return '<' != peek() && next();
-	        }
+	        return 'text';  
+	    }
 	
-	        /**
-	        * scan `>`
-	        */
-	        function greaterthan()
-	        {
-	            return '>' != peek() && next();
-	        }
+	    /**
+	     * Lexer parse function.
+	     * 
+	     * @param {String}   html
+	     * @param {Function} emit
+	     */
+	    lexer = function(html, emitter)
+	    {
+	        let l = new Lexer(html, emitter);
 	
-	        /**
-	        * scan `-->`
-	        */
-	        function comment()
-	        {
-	            return '-->' != peekn(3) && next();
-	        }
-	    };
-	    
+	        l.parse();
+	    }
 	})();
-	var Tokenizer;
-	
 	(function()
 	{
 	    Tokenizer = function(htmlstr)
@@ -12556,20 +13281,13 @@ container.singleton('_', _);
 	    Tokenizer.prototype.parse = function()
 	    {
 	        const delegate = (token, value) => 
-	        {
+	        {            
 	            this.readtoken(token, value);
 	        }
 	        
-	        Lexer(this.htmlstr, delegate);
+	        lexer(this.htmlstr, delegate);
 	
-	        if (this.stack.children.length > 1)
-	        {
-	            this.stack.type = '#fragment';
-	
-	            return this.stack;
-	        }
-	        
-	        return this.stack.children[0];
+	        return this.stack.children;
 	    }
 	
 	    Tokenizer.prototype.pushNode = function(node)
@@ -12579,6 +13297,11 @@ container.singleton('_', _);
 	        this.parent.push(this.curr);
 	
 	        this.curr = node;
+	    }
+	
+	    Tokenizer.prototype.pushValue = function(val)
+	    {
+	        this.curr.value += val;
 	    }
 	
 	    Tokenizer.prototype.pushChild = function(node)
@@ -12598,6 +13321,11 @@ container.singleton('_', _);
 	        this.currAttr = value;
 	    }
 	
+	    Tokenizer.prototype.pushAttrSpread = function(value)
+	    {
+	        this.curr.spreadAttribute = value;
+	    }
+	
 	    Tokenizer.prototype.pushAttrVal = function(value)
 	    {
 	        this.curr.attrs[this.currAttr] = value;
@@ -12605,50 +13333,98 @@ container.singleton('_', _);
 	        this.currAttr = null;
 	    }
 	
+	    Tokenizer.prototype.pushJsx = function(value)
+	    {
+	        this.pushChild(this.node('#jsx', value));
+	    }
+	
+	    Tokenizer.prototype.openJsx = function(value)
+	    {   
+	        let node = this.node('#jsx:function');
+	
+	        node.open = value;
+	
+	        this.pushNode(node);
+	    }
+	
+	    Tokenizer.prototype.closeJsx = function(value)
+	    {    
+	        while (this.curr.type !== '#jsx:function')
+	        {
+	            this.curr = this.parent.pop();
+	        }
+	
+	        this.curr.close = value;
+	    }
+	
+	    Tokenizer.prototype.node = function(type, value, children)
+	    {
+	        let attrs = {};
+	        children  = children || [];
+	
+	        return { type, value, children, attrs };
+	    }
+	
 	    Tokenizer.prototype.readtoken = function(token, value)
-	    {        
+	    {
 	        switch (token)
 	        {
 	            case 'text':
-	                
-	                value = value.trim();
-	
-	                this.pushChild({
-	                    __isvnode: true,
-	                    type: value === '' ? '#empty' : '#text',
-	                    value : value
-	                });
+	                this.pushChild({type: '#text', value: value});
 	                break;
 	
-	            case 'tagclosevoid':
+	            case 'tag:open':
+	                this.pushNode(this.node(value[0].toLowerCase() === value[0] ? '#element' : (value === 'Fragment' ? '#fragment' : '#component'), value));
+	                break;
+	
+	            case 'tag:close:void':
+	            case 'tag:close:self':
+	            case 'tag:close':
 	                this.closeNode();
 	                break;
 	
-	            case 'tagselfclose':
-	                this.closeNode();
+	            case 'jsx':
+	                this.pushJsx(value);
 	                break;
 	
-	             case 'tagclose':
-	                this.closeNode();
+	            case 'jsx:open':
+	                this.openJsx(value);
 	                break;
 	
-	            case 'tagopen':
-	                this.pushNode({ 
-	                    __isvnode: true,
-	                    type : value[0].toLowerCase() === value[0] ? '#element' : '#component',
-	                    value : value,
-	                    attrs: {},
-	                    children: [],
-	                });
+	            case 'jsx:close':
+	                this.closeJsx(value);
 	                break;
 	
-	            case 'attrkey':
+	            case 'attr:key':
 	                this.pushAttr(value);
 	                break;
 	
-	            case 'attrval':
+	            case 'attr:jsx:spread':
+	                this.pushAttrSpread(value);
+	                break;
+	
+	            case 'attr:val':
+	            case 'attr:val:jsx':
 	                this.pushAttrVal(value);
 	                break;
+	
+	            case 'attr:val:interpolated':
+	                this.pushAttrVal(`\`${value}\``);
+	                break;
+	
+	            case 'comment:open':
+	                this.pushNode(this.node('#comment', value));
+	                break;
+	
+	            case 'comment:body':
+	                this.pushValue(value);
+	                break;
+	
+	            case 'comment:close':
+	                this.pushValue(value);
+	                this.closeNode();
+	                break;
+	
 	        }
 	
 	        this.prev = token;
@@ -12657,242 +13433,328 @@ container.singleton('_', _);
 	})();
 	(function()
 	{
-		/**
-	     * Helper functions
+	    /**
+	     * Helpers.
 	     *
-	     * @var {Function}
+	     * @var  {Function}
 	     */
-		const [dom_element, each, is_array, is_constructable, is_constructed, is_empty, is_function, is_htmlElement, is_object, is_string, is_number, join_obj, map, str_replace] = frontbx.import(['dom_element','each','is_array','is_constructable','is_constructed','is_empty','is_function','is_htmlElement','is_object','is_string','is_number','join_obj','map','str_replace']).from('_');
+	    const [is_array, each, map] = frontbx.import(['is_array','each','map']).from('_');
 	
-		/**
-	     * Helper functions
+	    /**
+	     * Cache.
 	     *
-	     * @var {Function}
+	     * @var  {object}
 	     */
-		const INTERPOLATE_MAP = {};
+	    const CACHE_STR = {};
 	
-		/**
-	     * Currently interpolating.
+	    /**
+	     * Helper function.
 	     *
-	     * @var {Object}
+	     * @param  {String} str
+	     * @return {String}
 	     */
-		var CURR_INTERPOLATIONS = {};
+	    function sanitizeQuotes(str)
+	    {
+	        return str.replaceAll(/(?<!\\)'/g, '\\\'');
+	    }
 	
-		/**
-	     * Helper functions
+	    /**
+	     * Parser. Parses tokenized input into 'createElement' statement. 
 	     *
-	     * @var {Function}
+	     * @param  {string}  jsxStr  JSX  string
 	     */
-		var GUID = 0;
-		
-		/**
-	     * Main JSX parser.
+	    Parser = function(jsxStr)
+	    {
+	        this.jsxStr = jsxStr;
+	    }
+	
+	    /**
+	     * Parse current string.
 	     *
-	     * @access {Public}
-	     * @param  {String} jsx to parse
-	     * @return {Array|HTMLElement}
+	     * @returns {object}
 	     */
-		function jsx(jsx, root, interpolations)
-		{
-			jsx = _jsxStrClean(jsx + '');
-			
-			// Already parsed
-			if (is_htmlElement(jsx)) return jsx;
-			
-			// Empty
-		    if (jsx === null || jsx === true || jsx === false || typeof jsx === 'undefined' || (typeof jsx === 'string' && jsx.trim() === ''))
-		    {
-		        return _createTextNode('', root);
-		    }
+	    Parser.prototype.parse = function()
+	    {
+	        let useCache = this.jsxStr.length < 720;
 	
-		    // Cache interpolations
-		    if (is_object(interpolations)) each(interpolations, (k, v) => CURR_INTERPOLATIONS[k] = v);
+	        if (useCache && CACHE_STR[this.jsxStr]) return CACHE_STR[this.jsxStr];
 	
-		    // No HTML
-		    if (!jsx.includes('<') && !jsx.includes('>')) return _createTextNode(jsx, root);
+	        // tokenize and create
+	        let funcString = this.genChildren((new Tokenizer(this.jsxStr)).parse());
 	
-		    let tokenizer = new Tokenizer(jsx);
-	
-		    let tokens = tokenizer.parse();
-	
-	    	return _createDomElement(tokens, root);
-		}
-	
-		/**
-	     * Create HTML Element from vnode.
-	     *
-	     * @access {private}
-	     * @param  {HTMLElement}  vnode
-	     * @param  {HTMLElement}  parentDOMElement
-	     * @return {HTMLElement|Array}
-	     */
-	    function _createDomElement(vnode, parentDOMElement)
-		{
-			switch (vnode.type)
+	        if (useCache)
 	        {
-	        	case '#empty':
-	                return _createTextNode('', parentDOMElement);
-	
-	            case '#text':
-	                return _createTextNode(vnode.value, parentDOMElement);
-	
-	            case '#element':
-	                return _createHTMLElement(vnode, parentDOMElement);
-	
-	            case '#component':
-	                return _flatten(_renderComponent(vnode, parentDOMElement));
-	
-	            case '#fragment':
-	                return _flatten(_createFragment(vnode, parentDOMElement));
-	
-	            default:
-	            	return _createTextNode('', parentDOMElement);
+	            return CACHE_STR[this.jsxStr] = funcString;
 	        }
-		}
 	
-		/**
-	     * Create an HTMLElement.
+	        return funcString;
+	    }
+	
+	    /**
+	     * Generates 'createElement' string tag
 	     *
-	     * @access {private}
-	     * @param  {HTMLElement}  vnode
-	     * @return {HTMLElement}
+	     * @param   {object}  el  Token element
+	     * @returns {strng}
 	     */
-		function _createHTMLElement(vnode, parentDOMElement)
-		{        
-			let attributes = _vattrs(vnode);
+	    Parser.prototype.genTag = function(el)
+	    {
+	        let children = this.genChildren(el.children, el);
+	        let props    = this.genProps(el.attrs, el);
+	        let tag      = el.type === '#component' || el.type === '#fragment' ? el.value : `'${el.value}'`;
 	
-			let children = vnode.children.length === 0 && attributes.children ? _normaliseChildren(attributes.children) : vnode.children;
+	        return `h(${tag},${props},${children})`;
+	    }
 	
-			delete attributes.children;
+	    /**
+	     * Generates props from token
+	     *
+	     * @param   {object}  props  Prop values
+	     * @param   {object}  el     Target token
+	     * @returns {strng}
+	     */
+	    Parser.prototype.genProps = function(props, el)
+	    {
+	        if (!props && !el.spreadAttribute) return 'null';
 	
-			let DOMElement = dom_element({tag: vnode.value, ...attributes});
+	        let spread = el.spreadAttribute;
 	
-			each(children, (i, child) =>
+	        let attrs = [];
+	
+	        each(props, (key, prop) => attrs.push(`'${key}':${this.genPropValue(prop)}`));
+	
+	        if (spread) return `Object.assign({}, ${spread}, {${attrs.join(', ')}})`;
+	
+	        return `{${attrs.join(', ')}}`;
+	    }
+	
+	    /**
+	     * Generates props value.
+	     *
+	     * @param   {mixed}  val  Prop values
+	     * @returns {strng}
+	     */
+	    Parser.prototype.genPropValue = function(val)
+	    {
+	        if (val.startsWith('{')) return val.substring(1).trim().slice(0, -1).trim();
+	
+	        if (val.startsWith('`')) return val;
+	
+	        return `'${sanitizeQuotes(val)}'`;
+	    }
+	
+	    /**
+	     * Generates children for tag.
+	     *
+	     * @param  {array}  Children  Array of child tokens.
+	     * @param  {strng}  parent    Parant token
+	     * @param  {string} glue      Optional glue string
+	     */
+	    Parser.prototype.genChildren = function(children, parent, glue)
+	    {
+	        if (parent && (!parent.children || !parent.children.length)) return 'null';
+	
+	        return map(children, (i, child) => 
 	        {
-	            let childDOMElem = _createDomElement(child);
+	            if (child.type === '#jsx') return child.value.substring(1).trim().slice(0, -1).trim();
+	            
+	            if (child.type === '#text') return `'${sanitizeQuotes(child.value)}'`;
 	
-	            is_array(childDOMElem) ? _appendChildren(childDOMElem, DOMElement) : DOMElement.appendChild(childDOMElem);
+	            if (child.type === '#comment') return `h('comment',{},'${sanitizeQuotes(child.value.substring(4).trim().slice(0, -3).trim())}')`;
+	
+	            if (child.type === '#jsx:function')
+	            {
+	                let open  = child.open.trim().substring(1).trim();
+	                let close = child.close.trim().slice(0, -1).trim();
+	
+	                return `${open} ${this.genChildren(child.children, null, ' ')} ${close}`;
+	            }
+	
+	            if (child) return this.genTag(child);
+	
+	            return false;
+	
+	        }).join(glue || ', ');
+	    }
+	
+	})();
+	(function()
+	{    
+	    /**
+	     * Helpers.
+	     *
+	     * @var  {Function}
+	     */
+	    const [map, each, object_props, clone_deep] = frontbx.import(['map','each','object_props','clone_deep']).from('_');
+	
+	    // Produce the code to shadow all globals in the environment
+	    // through lexical binding.
+	    // See also var `builtins`.
+	    const BUILT_INS_STR =
+	    [
+	        'JSON',
+	        'Object',
+	        'Function',
+	        'Array',
+	        'String',
+	        'Boolean',
+	        'Number',
+	        'Date',
+	        'RegExp',
+	        'Error',
+	        'EvalError',
+	        'RangeError',
+	        'ReferenceError',
+	        'SyntaxError',
+	        'TypeError',
+	        'URIError'
+	    ];
+	
+	    const DISSALOWEDES =
+	    {
+	        // disallowed
+	        global: undefined,
+	        process: undefined,
+	        module: undefined,
+	        require: undefined,
+	        document: undefined,
+	        window: undefined,
+	        Window: undefined,
+	        // no evil...
+	        eval: undefined,
+	        Function: undefined
+	    };
+	
+	    // Variable identifiers
+	    const IDENTIFIER = /^[$_a-zA-Z][$_a-zA-Z0-9]*$/;
+	
+	    // Keep in store all real builtin prototypes to restore them after
+	    // a possible alteration during the evaluation.
+	    const BUILT_INS  = [JSON, Object, Function, Array, String, Boolean, Number, Date, RegExp, Error, EvalError, RangeError, ReferenceError, SyntaxError, TypeError, URIError];
+	    const COPIES     = new Array(BUILT_INS.length);
+	    const PROTO_KEYS = map(new Array(BUILT_INS.length), (i) => object_props(BUILT_INS[i], true));
+	
+	    const acceptableVariable = function(v)
+	    {
+	        return !RESERVED_WORDS.includes(v) && IDENTIFIER.test(v);
+	    }
+	
+	    const resetEnv = function()
+	    {
+	        let resets = map(object_props(window || global, true), (i, v) => acceptableVariable(v) ? v : false);
+	
+	        return `var ${resets.join(',')}, undefined;`;
+	    }
+	
+	    // Fake all builtins' prototypes.
+	    const alienate = function()
+	    {
+	        each(BUILT_INS_STR, (i) => typeof COPIES[i] === 'undefined' ? COPIES[i] = clone_deep(BUILT_INS[i]) : null);
+	    }
+	
+	    // Restore all builtins' prototypes.
+	    const unalienate = function()
+	    {
+	        let g = window || global;
+	
+	        each(BUILT_INS_STR, (i, name) =>
+	        {
+	            // Reset global
+	            g[name] = BUILT_INS[i];
+	
+	            // Delete altered prototypes
+	            let realKeys = PROTO_KEYS[i];
+	            let currKeys = object_props(BUILT_INS[i], true);
+	            let diff     = currKeys.filter(x => !realKeys.includes(x));
+	
+	            if (diff.length >= 1) each(diff, (i, key) => BUILT_INS[i][key] = undefined);
 	        });
+	    }
 	
-	        parentDOMElement.appendChild(DOMElement);
+	    const genBindings = function(bindings)
+	    {
+	        // Sanitize bindings
+	        bindings = map(bindings, (k, v) => acceptableVariable(k) ? v : false);
 	
-		    return DOMElement;
-		}
+	        // Add in default built in protos
+	        each(BUILT_INS_STR, (i, name) => bindings[name] = COPIES[i]);
 	
-		/**
-		 * Cleans unnecessary white-space from JSX string.
-		 *
-		 * @param  {string}  input
-		 * @return {string}
-		 */
-		function _jsxStrClean(str)
-		{
-		    return str.split(/\n|  /g).filter(block => block !== '').join(' ').trim();
-		}
+	        // Merge with GLOBALS and DISSALOWEDES
+	        return {...bindings, ...DISSALOWEDES}; 
+	    }
 	
-		function _isVnode(value)
-		{
-			return !is_object(value) && value.__isvnode === true;
-		}
-		
-		/**
-	     * Caches and returns a children function.
+	    const SANDBOX_NAME = '$sandbox$';
+	
+	    // Evaluate code as a String (`source`) without letting global variables get
+	    // used or modified. The `sandbox` is an object containing variables we want
+	    // to pass in.
+	    sandbox = function(source, bindings, context)
+	    { 
+	        alienate();
+	
+	        bindings = genBindings(bindings || {});
+	
+	        context = context || null;
+	
+	        let sandboxed = 'this.constructor.constructor = function () {};\nvar ';
+	
+	        each(bindings, (key, value) => sandboxed += `${key} = ${SANDBOX_NAME}['${key}'],\n`);
+	
+	        sandboxed += `undefined;\n${resetEnv()}\n return ${source};`;
+	
+	        let ret;
+	
+	        ret = Function(SANDBOX_NAME, sandboxed).call(context, bindings);
+	
+	        unalienate();
+	
+	        return ret;
+	    }
+	
+	})();
+	(function()
+	{
+	    /**
+	     * Helpers.
 	     *
-	     * @access {private}
-	     * @param  {String} key   Cached callback key
-	     * @param  {Mixed}  value Children value
-	     * @return {Array|HTMLElement|String}
+	     * @var  {Function}
 	     */
-		function _normaliseChildren(value)
-		{
-			// Flatten arrays
-			if (is_array(value)) return _flatten(map(value, (i, sub) => _normaliseChildren(sub)));
+	    const [array_filter, dom_element, each, is_array, is_bool, is_constructed, is_constructable, is_function, is_htmlElement, is_null, is_number, is_string, is_undefined, map, str_replace] = frontbx.import(['array_filter','dom_element','each','is_array','is_bool','is_constructed','is_constructable','is_function','is_htmlElement','is_null','is_number','is_string','is_undefined','map','str_replace']).from('_');
 	
-			// Already parsed
-			if (_isVnode(value)) return [value];
-	
-			// HTML elements
-			if (is_htmlElement(value)) return [ value ];
-	
-			// Empty 
-			if (is_empty(value)) return [{__isvnode: true,type: '#empty',value : ''}];
-	
-			// Strings or numbers
-			if (is_string(value) || is_number(value))
-			{
-				let tokenizer = new Tokenizer(jsx);
-	
-		    	return [tokenizer.parse()];
-			}
-		}
-	
-		function _appendChildren(children, parentDOMElement)
-		{
-		    if (is_array(children))
-		    {
-		        each(children, (i, child) => _appendChildren(parentDOMElement, child));
-		    }
-	
-		    if (is_htmlElement(children)) parentDOMElement.appendChild(children);
-		}
-	
-		/**
-	     * Vnode attributes.
-	     *
-	     * @access {private}
-	     * @param  {HTMLElement}  vnode
-	     * @return {Object}
+	    /**
+	     * JSX create element.
+	     *  
+	     * @param   {string | function}   tag         Root html element
+	     * @param   {object | undefined}  attrs       Tag props / attributes
+	     * @param   {array | undefined}  ...children  Tag children (recursive)
+	     * @returns {Array|HTMLElement}
 	     */
-	    function _vattrs(vnode)
-		{
-			let ret = {};
+	    createElement = function(tag, attributes)
+	    {        
+	        // Empty
+	        if (arguments.length === 0) return document.createTextNode('');
 	
-			each(vnode.attrs, (attribute, value) =>
-			{
-				if (value.includes('#JSX_FUNC_'))
-				{
-					let callback = INTERPOLATE_MAP[value];
+	        // Get children
+	        let children = arguments.length > 2 ? [].slice.call(arguments, 2) : [];
 	
-					let called = callback(attribute);
+	        // Special case for text
+	        if (tag === 'text') return document.createTextNode(children.toString());
 	
-					value = called;
-				}
-				
-				ret[attribute] = value;
-			});
+	        // Special case for comments
+	        if (tag === 'comment') return document.createComment(children.toString());
 	
-			return ret;
-		}
+	        // Normalise children
+	        children = _normaliseChildren(children.length === 0 && attributes.children && attributes.children.length > 0 ? attributes.children : children);
 	
-		/**
-	     * Create text node.
-	     *
-	     * @access {private}
-	     * @param  {String}  text
-	     * @return {HTMLElement}
-	     */
-		function _createTextNode(text, parentDOMElement)
-		{		
-			let txt = document.createTextNode(text);
+	        let node = is_function(tag) || is_constructed(tag) ? _createComponent(tag, {...attributes, children}) : dom_element({...attributes, tag});
+	        
+	        if (is_array(node) || Object.prototype.toString.call(node).toLowerCase() === '[object text]') return node;
 	
-			if (parentDOMElement) parentDOMElement.appendChild(txt);
+	        each(children, (i, child) => node.appendChild(child));
 	
-			return txt;
-		}
+	        return node;
+	    }
 	
-		/**
-	     * Create fragment.
-	     *
-	     * @access {private}
-	     * @param  {Array}  vnode
-	     * @return {Array}
-	     */
-		function _createFragment(vnode)
-		{
-		    return map(vnode.children, (i, child) => _createDomElement(child));
-		}
-	
-		/**
+	    /**
 	     * Create component.
 	     *
 	     * @access {private}
@@ -12900,153 +13762,260 @@ container.singleton('_', _);
 	     * @param  {HTMLElement} parentDOMElement
 	     * @return {Array}
 	     */
-		function _renderComponent(vnode, parentDOMElement)
-		{
-			let fn = _getComponent(vnode.value);
+	    function _createComponent(component, _props)
+	    {        
+	        let { render, props } = _comoponentRenderFn(component, _props);
 	
-			let elem = jsx(fn(_vattrs(vnode)), parentDOMElement);
+	        BINDINGS_CACHE.props = props;
 	
-			frontbx.dom().refresh(elem);
+	        let rendered = render(props);
 	
-			return [].prototype.slice.call(parentDOMElement.children);
-		}
+	        if (is_htmlElement(rendered))
+	        {
+	            //if (children.nodeType === 1) frontbx.dom().refresh(children);
 	
-		/**
+	            return rendered;
+	        }
+	        else if (is_array(rendered))
+	        {
+	
+	            //if (children.nodeType === 1) frontbx.dom().refresh(children);
+	
+	            return _normaliseChildren(rendered);
+	        }
+	
+	        let toJsx = jsx(rendered);
+	
+	        //if (children.nodeType === 1) frontbx.dom().refresh(children);
+	
+	        return toJsx;
+	    }
+	
+	    /**
 	     * Get component render function.
 	     *
 	     * @access {private}
 	     * @param  {String}   name
 	     * @return {Function}
 	     */
-		function _getComponent(name)
-		{
-			let fn = CURR_INTERPOLATIONS[name] || frontbx.get(name);
+	    function _comoponentRenderFn(fn, props)
+	    {        
+	        if (is_constructed(fn))
+	        {           
+	            if (!fn.render) throw new Error('Object Components must implement the [render] method');
 	
-			if (is_constructed(fn))
-			{
-				if (!fn.render) throw new Error('Object Components must implement the [render] method');
+	            CURR_RENDER.current = fn;
 	
-				return fn.render;
-			}
+	            if (fn.defaultProps) props = {...fn.defaultProps, ...props };
 	
-			if (is_constructable(fn))
-			{
-				let component = new fn;
+	            return { render: fn.render, props };
+	        }
 	
-				if (!fn.render) throw new Error('Object Components must implement the [render] method');
+	        if (is_constructable(fn))
+	        {
+	            let component = new fn;
 	
-				return component.render;
-			}
+	            if (!component.render) throw new Error('Object Components must implement the [render] method');
 	
-			if (!is_function(fn)) throw new Error(`Invalid Component [${name}]`);
+	            CURR_RENDER.current = component;
 	
-			return fn;
-		}
+	            if (component.defaultProps) props = {...component.defaultProps, ...props };
 	
-		/**
+	            return { render: component.render, props };
+	        }
+	
+	        if (!is_function(fn)) throw new Error(`Invalid Component [${name}]`);
+	
+	        CURR_RENDER.current = fn;
+	
+	        if (fn.defaultProps) props = {...fn.defaultProps, ...props };
+	
+	        return { render: fn, props };
+	    }
+	
+	    /**
+	     * Caches and returns a children function.
+	     *
+	     * @access {private}
+	     * @param  {String} key   Cached callback key
+	     * @param  {Mixed}  value Children value
+	     * @return {Array|HTMLElement|String}
+	     */
+	    function _normaliseChildren(value)
+	    {
+	        // Flatten arrays
+	        if (is_array(value)) return map(array_filter(_flatten(value)), (i, sub) => _normaliseChild(sub));
+	
+	        return _flatten([_normaliseChild(value)]);
+	    }
+	
+	    function _normaliseChild(child)
+	    {
+	        // Already parsed
+	        if (is_htmlElement(child)) return child;
+	
+	        // Functions
+	        if (is_function(child)) return _normaliseChildren(child());
+	
+	        // Empty strings
+	        if (is_string(child) && str_replace(child, ['undefined','null','false','NaN'], '').trim() === '') return document.createTextNode('');
+	
+	        // Empty values
+	        if (is_null(child) || is_undefined(child) || is_bool(child)) return document.createTextNode('');
+	
+	        // Strings / numbers
+	        if (is_string(child) || is_number(child)) return jsx(child);
+	
+	        // Objects
+	        if (is_object(child)) throw new Error('Objects cannot be used as children');
+	
+	        return document.createTextNode('');
+	    }
+	
+	    /**
 	     * Flatten multidimensional children.
 	     *
 	     * @access {private}
 	     * @param  {HTMLElement|Array} DOMElement
 	     * @return {HTMLElement|Array}
 	     */
-		function _flatten(DOMElement)
-		{
-		    if (is_array(DOMElement))
-		    {
-		        let ret = [];
+	    function _flatten(children)
+	    {
+	        if (is_array(children))
+	        {
+	            let ret = [];
 	
-		        each(DOMElement, (i, child) =>
-		        {
-		            if (is_array(child))
-		            {
-		               	ret = [...ret, ..._flatten(child)];
-		            }
-		            else
-		            {
-		                ret.push(child);
-		            }
-		        });
+	            each(children, (i, child) => is_array(child) ? ret = [...ret, ..._flatten(child)] : ret.push(child));
 	
-		        return ret;
-		    }
+	            return ret;
+	        }
 	
-		    return DOMElement;
-		}
+	        return children;
+	    }
+	    
+	})();
 	
-		/**
-	     * Converts Object to HTML props before parsing.
+	(function()
+	{
+	    /**
+	     * Helpers.
 	     *
-	     * @access {Public}
-	     * @param  {Object} attributes
-	     * @return {String}
+	     * @var  {Function}
 	     */
-		function props(attributes)
-		{
-			let ret = [];
+	    const [is_array, is_object, each, object_props] = frontbx.import(['is_array','is_object','each','object_props']).from('_');
 	
-			each(attributes, (name, value) => 
-			{
-				value = name === 'style' && is_object(value) ? join_obj(value, ': ','; ') : _prop(value);
-			    
-	            ret.push(`${name}="${_prop(value)}"`);
-		    });
-	
-		    return ret.join(' ');
-		}
-	
-		/**
-	     * Interperlates JSX property before passing.
+	    /**
+	     * Cache.
 	     *
-	     * @access {Private}
-	     * @param  {Mixed}  value
-	     * @return {String}
+	     * @var  {object}
 	     */
-		function _prop(value)
-		{
-			// Empty strings
-			if (is_string(value) && str_replace(value, ['undefined','null','false','NaN'], '').replace(/\s\s+/g, ' ').trim() === '') return false;
-			
-			// Empty values
-			if (is_empty(value)) return false;
-			
-			// Functions
-			if (is_function(value)) return _propfunc(value);
+	    const CACHE_STR = {};
 	
-			// Arrays
-			if (is_array(value)) return map(value, (i, v) => _prop(v)).join(' ').trim();
-	
-			return value;
-		}
-	
-		/**
-	     * Returns a property callback.
+	    /**
+	     * Global decencies.
 	     *
-	     * @access {private}
-	     * @param  {String}   key   Cache key.
-	     * @param  {Function} value Function
-	     * @return {Function}
+	     * @var  {object}
 	     */
-		function _propfunc(callback)
-		{
-			GUID++;
-				
-			let key = `#JSX_FUNC_${GUID}`;
+	    const GLOBAL_BINDINGS =
+	    {
+	        h: createElement,
+	        Fragment: Fragment,
+	    };
 	
-			INTERPOLATE_MAP[key] = (attribute) =>
-			{
-				delete INTERPOLATE_MAP[key];
+	    /**
+	     * Parse's JSX tokens
+	     *
+	     * @param   {string}             jsxStr  JSX  string
+	     * @param   {HTMLElement|Object} root or bindings
+	     * @returns {object}             bindings  
+	     */
+	    function _jsx(jsxStr, root, bindings)
+	    {
+	        if (is_object(root))
+	        {
+	            bindings = root;
 	
-				return attribute[0] === 'o' && attribute[1] === 'n' ? callback : callback();
-			}
+	            root = false;
+	        }
 	
-			return key;
-		}
+	        if (is_array(jsxStr))
+	        {
+	            let ret = createElement(Fragment, {}, jsxStr);
 	
-		frontbx.set('jsx', jsx);
+	            if (root) each(ret, (i, node) => root.appendChild(node));
 	
-		frontbx.set('props', props);
-		
+	            return ret;
+	        }
+	
+	        // Empty
+	        else if (jsxStr === null || jsxStr === true || jsxStr === false || typeof jsxStr === 'undefined' || (typeof jsxStr === 'string' && jsxStr.trim() === ''))
+	        {
+	            let ret = createElement();
+	
+	            if (root) root.appendChild(ret);
+	
+	            return ret;
+	        }
+	
+	        // Clean jsx
+	        jsxStr = `${jsxStr}`.replaceAll(/[\n\t]/g, '').trim();
+	
+	        // No elements
+	        if (!jsxStr.includes('<') && !jsxStr.includes('>') && !jsxStr.includes('{'))
+	        {
+	            let ret = createElement('text', null, jsxStr);
+	
+	            if (root) root.appendChild(ret);
+	
+	            return ret;
+	        }
+	
+	        // Parse into function
+	        let parser = new Parser(jsxStr);
+	
+	        let output = parser.parse();
+	
+	        let ret = sandbox(output, genBindings(bindings), CURR_RENDER.current);
+	
+	        if (root) is_array(ret) ? each(ret, (i, node) => root.appendChild(node)) : root.appendChild(ret);
+	        
+	        return ret;
+	    }
+	
+	    /**
+	     * Generates object of bindings for JSX parsing.
+	     *
+	     * @param  {object}  input  bindings
+	     * @return {object}
+	     */
+	    function genBindings(bindings)
+	    {
+	        // Normalize bindings.
+	        bindings = !bindings ? { ...GLOBAL_BINDINGS } : { ...bindings, ...GLOBAL_BINDINGS };
+	
+	        // Apply temporary bindings cache
+	        each(BINDINGS_CACHE, (k,v) =>
+	        {
+	            bindings[k] = v;
+	
+	            delete BINDINGS_CACHE[k];
+	        });
+	        
+	        // Apply currently rendering component
+	        if (CURR_RENDER.current)
+	        {        
+	            let props = object_props(CURR_RENDER.current, true);
+	            
+	            each(props, (i, k) => bindings[k] = CURR_RENDER.current[k]);
+	        }
+	
+	        return bindings;
+	    }
+	
+	    jsx = _jsx;
+	
+	    frontbx.set('jsx', _jsx);
+	
 	})();
 })();
 
@@ -14736,8 +15705,6 @@ container.singleton('_', _);
      */
     RangeSlider.prototype.render = function(props)
     {
-        console.log('create');
-
         let inputProps = { min: props.min, max: props.max, value: props.value, step: props.step };
 
         if (props.prefix) inputProps.dataPrefix = props.prefix;
@@ -16738,6 +17705,21 @@ container.singleton('_', _);
      */
     List.prototype.render = function(props)
     {
+        return `
+            <ul class="list {props.classes ? props.classes : ''} {props.dense ? 'list-dense' : ''} {props.ellipsis ? 'list-ellipsis' : ''} { props.selectable ? 'js-select-list' : '' }">
+                {map(props.items, (i, item) =>
+                (
+                    <li class="list-item {item.state} {props.selected && (props.selected === item.value || props.selected === item.text) ? 'selected' : ''}">
+                        {[
+                            item.left ? <span class="item-left">{item.left}</span> : null,
+                            <span class="item-body">{item.body || item.text || item}</span>,
+                            item.right ? <span class="item-right">{item.right}</span> : null,
+                        ]}
+                    </li>
+                ))}
+            </ul>
+        `;
+
         return dom_element({tag: 'ul', class: `list ${props.classes ? props.classes : ''} ${props.dense ? 'list-dense' : ''} ${props.ellipsis ? 'list-ellipsis' : ''} ${ props.selectable ? `js-select-list` : '' }`}, null, map(props.items, (i, item) =>
             {
                 return dom_element({tag: 'li', class: `list-item ${item.state} ${props.selected && (props.selected === item.value || props.selected === item.text) ? 'selected' : null}`}, null,
@@ -17764,11 +18746,7 @@ container.singleton('_', _);
 (function()
 {
 	frontbx.boot();
-
-	console.log(frontbx);
-
-	console.log(frontbx.services());
-
+		
 })();
 
 export default frontbx;

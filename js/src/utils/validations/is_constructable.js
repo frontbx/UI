@@ -25,5 +25,5 @@ _.prototype.is_constructable = function(mixed_var)
     }
 
     // If prototype is empty 
-    return this.object_props(mixed_var, true).length > 0;
+    return this.object_props(mixed_var.prototype).length > 0;
 }

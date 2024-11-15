@@ -2,6 +2,8 @@ var container;
 
 (function()
 {
+    const EMPTY_OBJ_KEYS = Object.getOwnPropertyNames(Object.getPrototypeOf({}));
+
     /**
      * JS IoC Container
      *
@@ -112,7 +114,7 @@ var container;
 
         let storeObj = this._store[key];
 
-        if (this.has(key))
+        if (storeObj)
         {
             if (args[0] && args[0] === this.IMPORT_AS_REF) return storeObj.value;
 
@@ -263,6 +265,13 @@ var container;
             return false;
         }
 
+        // Prototype
+        let proto = mixed_var.prototype || Object.getPrototypeOf(mixed_var);
+
+        let protokeys = Object.getOwnPropertyNames(proto);
+
+        if (protokeys.filter(x => !EMPTY_OBJ_KEYS.includes(x)).length === 0) return false;
+
         return true;
     }
 
@@ -329,16 +338,7 @@ var container;
      */
     Inverse.prototype._normalizeKey = function(key)
     {
-        key = key.replace(/['"]/g, '').replace(/\W+/g, ' ')
-            .replace(/ (.)/g, function($1)
-            {
-                return $1.toUpperCase();
-            })
-            .replace(/ /g, '');
-
-        key = key.charAt(0).toUpperCase() + key.slice(1);
-
-        return key;
+        return key.replace(/[^\w]+/g, '');
     }
 
     Inverse.prototype._is_func = function(mixedVar)

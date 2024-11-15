@@ -32,7 +32,7 @@ _.prototype.__clone_var = function(mixed_var, context)
             return this.__clone_array(mixed_var, context);
 
         case FUNC_TAG:
-            return this.__clone_func(mixed_var, context);
+            return this.__clone_func(mixed_var);
 
         case NULL_TAG:
             return null;
@@ -103,6 +103,7 @@ _.prototype.__clone_obj = function(obj, context)
 {
     // Shallow keys
     let keys = this.object_props(obj);
+
     let ret  = {};
 
     // Empty object
@@ -111,12 +112,8 @@ _.prototype.__clone_obj = function(obj, context)
         return ret;
     }
 
-    this.each(keys, function(i, key)
-    {
-        ret[key] = this.clone_deep(obj[key], context);
-
-    }, this);
-
+    this.each(keys, (i, key) => ret[key] = this.clone_deep(obj[key], context));
+    
     // Clone prototypes
     let protos = this.prototypes(obj);
 
@@ -146,9 +143,27 @@ _.prototype.__clone_obj = function(obj, context)
  * @param   {mixed}     context   Context to bind function
  * @returns {function}
  */
-_.prototype.__clone_func = function(func, context)
+_.prototype.__clone_func = function(func)
 {
-    return this.bind(func, context);
+    let statics = this.object_props(func, true);
+
+    if (!this.is_constructable(func))
+    {
+        let bound = this.bind(func);
+
+        this.each(statics, (i, method) => bound[method] = func[method] ? this.bind(func[method]) : null);
+
+        return bound;
+    }
+
+    let bound = function()
+    {
+        this.super(...arguments)
+    }
+
+    this.each(statics, (i, method) => bound[method] = this.bind(func[method]));
+
+    return this.extend(func, bound);
 }
 
 /**
@@ -161,11 +176,11 @@ _.prototype.__clone_array = function(arr, context)
 {
     let ret = [];
 
-    this.each(arr, function(i, val)
+    this.each(arr, (i, val) =>
     {
         ret[i] = this.clone_deep(val, context);
     
-    }, this);
+    });
 
     return ret;
 }
@@ -216,7 +231,7 @@ _.prototype.__clone_set = function(s, context)
     {
         ret.add(k, this.clone_deep(v, context));
     
-    }, this);
+    });
 
     return ret;
 }
