@@ -1,3 +1,5 @@
+@use "sass:map";
+
 :root
 {
     /*  Palette base colors */
@@ -17,7 +19,7 @@
     /* Context shades */
     @each $name, $colorVar in $contextsCSSVar
     {
-        $color : map-get($palette, quote(_color-name-from-var($colorVar)));
+        $color : map.get($palette, quote(_color-name-from-var($colorVar)));
 
         /* #{$name} */
         --fbx-theme-#{$name}-100: #{_lighter($color, 90%)};

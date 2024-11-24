@@ -1,4 +1,4 @@
-/*import TestCase from '../../testcase.js';
+import TestCase from '../../testcase.js';
 
 const jsx      = frontbx.jsx(frontbx.IMPORT_AS_REF);
 const isIE11   = /Trident\//.test(navigator.userAgent);
@@ -86,7 +86,6 @@ class Test extends TestCase
 					this.expect(scratch.innerHTML).to.equal('42');
 				});
 
-				
 				it('should not render null', () =>
 				{
 					jsx(null, scratch);
@@ -101,10 +100,10 @@ class Test extends TestCase
 					this.expect(scratch.childNodes).to.have.length(1);
 				});
 
-				it('should not render boolean true', () =>
+				it('should render boolean true', () =>
 				{
 					jsx(true, scratch);
-					this.expect(scratch.innerHTML).to.equal('');
+					this.expect(scratch.innerHTML).to.equal('true');
 					this.expect(scratch.childNodes).to.have.length(1);
 				});
 
@@ -187,8 +186,8 @@ class Test extends TestCase
 
 				it('should not ignore HTML comments', () => 
 				{
-					jsx(`<div> Foo <!-- Hello world ---></div>`, scratch);
-					this.expect(scratch.innerHTML).to.equal('<div> Foo <!-- Hello world ---></div>');
+					jsx(`<div> Foo <!-- Hello world --></div>`, scratch);
+					this.expect(scratch.innerHTML).to.equal('<div> Foo <!-- Hello world --></div>');
 				});
 
 				it('should not ignore conditional comments', () => 
@@ -223,6 +222,53 @@ class Test extends TestCase
 
 			describe('Node attributes', () =>
 			{
+				it('should set string attributes', () =>
+				{
+					jsx(`<input class="bar" id="foo" />`, scratch);
+
+					this.expect(scratch.firstChild.className).to.equal('bar');
+					this.expect(scratch.firstChild.id).to.equal('foo');
+				});
+
+				it('should set JSX attributes', () =>
+				{
+					jsx(`<input class={'bar'} id={'foo'} />`, scratch);
+
+					this.expect(scratch.firstChild.className).to.equal('bar');
+					this.expect(scratch.firstChild.id).to.equal('foo');
+				});
+
+				it('should set JSX spread attributes', () =>
+				{
+					jsx(`<input {...attrs} />`, scratch, {attrs: { class: 'bar', id: 'foo' } });
+
+					this.expect(scratch.firstChild.className).to.equal('bar');
+					this.expect(scratch.firstChild.id).to.equal('foo');
+				});
+
+				it('should set JSX object attributes', () =>
+				{
+					jsx(`<input {{ class: 'bar', id: 'foo' }} />`, scratch);
+
+					this.expect(scratch.firstChild.className).to.equal('bar');
+					this.expect(scratch.firstChild.id).to.equal('foo');
+				});
+
+				it('should merge spread attributes', () =>
+				{
+					jsx(`<input {...attrs} id="baz" />`, scratch, {attrs: { class: 'bar', id: 'foo' } });
+
+					this.expect(scratch.firstChild.className).to.equal('bar');
+					this.expect(scratch.firstChild.id).to.equal('baz');
+				});
+
+				it('should pass custom attributes', () =>
+				{
+					jsx(`<input foo="bar" />`, scratch);
+
+					this.expect(scratch.firstChild.foo).to.equal('bar');
+				});
+
 				it('should not throw error in IE11 with type date', () =>
 				{
 					this.expect(() => jsx(`<input type="date" />`, scratch)).to.not.throw();
@@ -287,10 +333,10 @@ class Test extends TestCase
 				it('should render download attribute', () =>
 				{
 					jsx(`<a download="" />`, scratch);
-					this.expect(scratch.firstChild.getAttribute('download')).to.equal(null);
+					this.expect(scratch.firstChild.getAttribute('download')).to.equal('');
 
 					jsx(`<a download="null" />`, scratch);
-					this.expect(scratch.firstChild.getAttribute('download')).to.equal(null);
+					this.expect(scratch.firstChild.getAttribute('download')).to.equal('');
 				});
 
 				it('should not set tagName', () =>
@@ -306,14 +352,14 @@ class Test extends TestCase
 
 				it('should not serialize function props as attributes', () =>
 				{
-					jsx(`<div { {onclick: e => {}, ONCLICK: e => {} }} />`, scratch);
+					jsx(`<div { {onclick: e => {}, foo: () => {} } } />`, scratch);
 
 					let div = scratch.childNodes[0];
 
 					this.expect(div.attributes.length).to.equal(0);
 				});
 
-				it('should serialize object props as attributes', () =>
+				it('should not serialize object props as attributes', () =>
 				{
 					jsx(`
 						<div {{
@@ -324,7 +370,7 @@ class Test extends TestCase
 					`, scratch);
 
 					let div = scratch.childNodes[0];
-					this.expect(div.attributes.length).to.equal(2);
+					this.expect(div.attributes.length).to.equal(0);
 
 					// Normalize attribute order because it's different in various browsers
 					let normalized = {};
@@ -333,10 +379,7 @@ class Test extends TestCase
 						normalized[attr.name] = attr.value;
 					}
 
-					this.expect(normalized).to.deep.equal({
-						bar: 'abc',
-						foo: '[object Object]'
-					});
+					this.expect(normalized).to.deep.equal({});
 				});
 
 				it('should apply class as String', () =>
@@ -382,22 +425,22 @@ class Test extends TestCase
 					this.expect(scratch.innerHTML).to.equal('<o-input value="test"></o-input>');
 				});
 
-				it('should unset href if null || undefined', () =>
+				it('should not unset href if null || undefined', () =>
 				{
 					jsx(`
 						<pre>
 							<a href="#">href="#"</a>
-							<a { href: undefined})}></a>
-							<a { href: null})}>href="null"</a>
-							<a { href: ''}>href="''"</a>
+							<a { { href: undefined }}></a>
+							<a { { href: null }}>href="null"</a>
+							<a { { href: '' }}>href="''"</a>
 						</pre>
 					`, scratch);
 
 					const links = scratch.querySelectorAll('a');
 					this.expect(links[0].hasAttribute('href')).to.equal(true);
-					this.expect(links[1].hasAttribute('href')).to.equal(false);
-					this.expect(links[2].hasAttribute('href')).to.equal(false);
-					this.expect(links[3].hasAttribute('href')).to.equal(false);
+					this.expect(links[1].hasAttribute('href')).to.equal(true);
+					this.expect(links[2].hasAttribute('href')).to.equal(true);
+					this.expect(links[3].hasAttribute('href')).to.equal(true);
 				});
 
 			});
@@ -430,7 +473,7 @@ class Test extends TestCase
 
 				it('should allow node reuse', () =>
 				{
-					let reused = jsx(`<div class="reuse">Hello World!</div>`);
+					let reused = `<div class="reuse">Hello World!</div>`;
 
 					jsx(
 						`<div>
@@ -463,6 +506,20 @@ class Test extends TestCase
 					);
 				});
 
+				it('should render nested JSX functions', () =>
+				{
+					let MapComponent = () => `<span>
+					{[1,2].map(i => <div>
+					{
+						[1,2].map(x => <i>{i + x}</i>)
+
+					}</div>)}</span>`;
+
+					jsx(`<MapComponent />`, scratch, { MapComponent });
+
+					this.expect(scratch.innerHTML).to.equal(`<span><div><i>2</i><i>3</i></div><div><i>3</i><i>4</i></div></span>`);
+				});
+
 				it('should nest empty nodes', () =>
 				{
 					jsx(`
@@ -491,4 +548,3 @@ class Test extends TestCase
 let test = new Test();
 
 test.run();
-*/

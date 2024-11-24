@@ -19,11 +19,7 @@ _.prototype.attr = function(DOMElement, name, value)
     // attr(node, {foo : 'bar', baz: 'bar'})
     if (this.is_object(name))
     {
-        this.each(name, function(prop, value)
-        {
-            this.attr(DOMElement, prop, value);
-
-        }, this);
+        this.each(name, (prop, value) => this.attr(DOMElement, prop, value));
 
         return;
     }
@@ -44,17 +40,10 @@ _.prototype.attr = function(DOMElement, name, value)
         // Children
         case 'children':
 
-            this.each(DOMElement.children, function(node)
-            {
-                this.remove_from_dom(node);
+            this.each(DOMElement.children, (node) => this.remove_from_dom(node));
+
+            if (this.is_array(value)) this.each(value, (i, node) => DOMElement.appendChild(node));
             
-            }, this);
-
-            this.each(value, function(node)
-            {
-                DOMElement.appendChild(node);
-            });
-
             break;
 
         // Class
@@ -112,6 +101,8 @@ _.prototype.attr = function(DOMElement, name, value)
             // All other node attributes
             else
             {
+                if (this.is_function(value) || this.is_object(value)) return;
+
                 let isEmpty    = this.is_empty(value);
                 let isData     = name.startsWith('data');
                 let isAria     = name.startsWith('aria');
@@ -119,36 +110,18 @@ _.prototype.attr = function(DOMElement, name, value)
                 let hyphenName = name.includes('-') ? name : this.camel_case_to_hyphen(name);
                 let isBoolean  = this.in_array(camelName, BOOLEAN_ATTRS);
 
-                if (value === 'false' || value === 'null' || value === 'undefined') value = isBoolean ? false : isAria || isData ? 'false' : '';
+                if (value === 'false' || value === 'null' || value === 'undefined' || isEmpty) value = isBoolean ? false : (isAria || isData ? 'false' : '');
 
                 // Special data
                 if (isData)
                 {
-                    if (isEmpty)
-                    {
-                        DOMElement.removeAttribute(hyphenName);
+                    DOMElement.setAttribute(hyphenName, value);
 
-                        delete DOMElement.dataset[this.lc_first(camelName.substring(4))];
-                    }
-                    else
-                    {
-                        DOMElement.setAttribute(hyphenName, value);
-
-                        DOMElement.dataset[this.lc_first(camelName.substring(4))] = value;
-                    }
+                    DOMElement.dataset[this.lc_first(camelName.substring(4))] = value;
 
                     break;
                 }
-
-                if (camelName !== 'viewBox')
-                    
-                    try
-                    {                        
-                        DOMElement[camelName] = value;
-
-                    } catch (e) {}
-
-                if (isEmpty)
+                else if (isEmpty && !isAria && !PROP_ATTRIBUTES.includes(camelName))
                 {
                     DOMElement.removeAttribute(hyphenName);
                 }
@@ -156,6 +129,17 @@ _.prototype.attr = function(DOMElement, name, value)
                 {
                     DOMElement.setAttribute(hyphenName, value);
                 }
+
+                if (camelName !== 'viewBox')
+                {
+                    try
+                    {                        
+                        DOMElement[camelName] = value;
+
+                    } catch (e) {}
+                }
+
+                
             }
 
             break;

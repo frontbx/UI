@@ -1,3 +1,41 @@
+import TestCase from '../../../testcase.js';
+
+class Test extends TestCase
+{
+    run()
+    {
+        describe('scroll_pos()', () =>
+        {
+            const [scroll_pos] = frontbx.import(['scroll_pos']).from('_');
+
+            let scratch;
+            
+            beforeEach(() => scratch = this.setupScratch());
+
+            afterEach(() => this.teardown(scratch));
+
+            it('should find first children', () =>
+            {        
+                scratch.innerHTML = `
+                    <div>1</div>
+                    <span>2</span>
+                    <div>
+                        <span>3</span>
+                    </div>
+                    <i>5</i>
+                `;
+
+                this.expect(scroll_pos(scratch).length).to.equal(4);
+            });
+        });
+    }
+}
+
+let test = new Test();
+
+test.run();
+
+
 /**
  * Get the current document scroll position
  *

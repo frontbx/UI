@@ -1,3 +1,40 @@
+import TestCase from '../../../testcase.js';
+
+class Test extends TestCase
+{
+    run()
+    {
+        describe('in_viewport()', () =>
+        {
+            const [in_viewport] = frontbx.import(['in_viewport']).from('_');
+
+            let scratch;
+            
+            beforeEach(() => scratch = this.setupScratch());
+
+            afterEach(() => this.teardown(scratch));
+
+            it('should find first children', () =>
+            {        
+                scratch.innerHTML = `
+                    <div>1</div>
+                    <span>2</span>
+                    <div>
+                        <span>3</span>
+                    </div>
+                    <i>5</i>
+                `;
+
+                this.expect(in_viewport(scratch).length).to.equal(4);
+            });
+        });
+    }
+}
+
+let test = new Test();
+
+test.run();
+
 /**
  * Check if an element is in current viewport
  *

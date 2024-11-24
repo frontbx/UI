@@ -16,23 +16,21 @@ _.prototype.form_values = function(form)
 
         let val = this.input_value(input);
 
-        if (input.type !== 'radio')
+        if (key.endsWith('[]'))
+        {
+            key = key.slice(0, -2); 
+
+            if (!ret[key] || !this.is_array(ret[key])) ret[key] = [];
+
+            ret[key].push(val);
+        }
+        else if (input.type !== 'radio')
         {
             ret[key] = val;
         }
         else
         {
             if (val) ret[key] = val;
-        }
-
-        if (key.includes('[]'))
-        {
-            if (!ret[key] || !this.is_array(ret[key]))
-            {
-                ret[key] = [];
-            }
-
-            ret[key].push(val);
         }
     });
    

@@ -1,3 +1,4 @@
+@use "sass:map";
 // Message color variants
 .msg
 {
@@ -196,7 +197,7 @@
     // Variants
     @each $context, $colors in $contexts
     {    
-        $color: map-get($colors, "color");
+        $color: map.get($colors, "color");
         $basename: _color-name-from-var($color);
 
         &.msg-#{$context}

@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "sass:map";
 // styles
 .radio
 {
@@ -166,6 +167,6 @@
 {    
     .radio.radio-#{$context}
     {
-        @include _radio( map-get($colors, "color") );
+        @include _radio( map.get($colors, "color") );
     }
 }

@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "sass:map";
 $select-pos-y : _minusPercent($input-pad-y, 10);
 
 input.unstyled
@@ -381,7 +382,7 @@ input.unstyled
 }
 @each $context, $colors in $contexts
 {    
-    $color : map-get($colors, 'color');
+    $color : map.get($colors, 'color');
 
     .bg-#{$context} .form-field.field-on-bg input:not([type="radio"]):not([type="checkbox"]):not([type="range"]) + label,
     .bg-#{$context} .form-field.field-on-bg textarea + label,

@@ -1,3 +1,5 @@
+@use "sass:map";
+
 .status
 {
 	--fbx-status-color: #{$status-color};
@@ -12,7 +14,7 @@
     {
         &.status-#{$context}
         {
-            --fbx-status-color: #{map-get($colors, "color")};
+            --fbx-status-color: #{map.get($colors, "color")};
         }
     }
     &.status-xs

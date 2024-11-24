@@ -1,3 +1,4 @@
+@use "sass:map";
 .switch
 {
     --fbx-switch-size :#{$switch-size};
@@ -114,6 +115,6 @@
 {    
     .switch.switch-#{$context}
     {
-        @include _checkbox( map-get($colors, "color") );
+        @include _checkbox( map.get($colors, "color") );
     }
 }

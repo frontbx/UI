@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Build powerful, dynamic web interfaces on a fully responsive UI framework. Combining Sass for sleek styling, JavaScript for strong functionality, and HTML Frontbx is designed for serious developers.">
         <meta name="author" content="Joe J. Howard">
-        <title>Breakpoints · Frontbx Documentation</title>
+        <title>Jsx · Frontbx Documentation</title>
 
         <!-- Assets -->
         <script src="../../assets/js/frontbx-lazyload.min.js"></script>
@@ -171,13 +171,13 @@
             <li class="menu-item "><a data-pjax-scrolltop="true" data-pjax-animate="true" data-pjax-element="#article-body" data-pjax-pushstate="true" href="../../customize/playground/index.html" class="js-pjax-link js-docs-menu-link">Playground</a></li>
         </ul>
     </li>
-    <li class="menu-item-title js-collapse active" data-collapse-target="menu-layout">
+    <li class="menu-item-title js-collapse " data-collapse-target="menu-layout">
         <span class="item-left"><span class="fa fa-chevron-right"></span></span>
         <span class="item-body">Layout</span>
     </li>
-    <li style="height:auto" id="menu-layout" class="menu-item-submenu">
+    <li  id="menu-layout" class="menu-item-submenu">
         <ul class="menu menu-dense">
-            <li class="menu-item active"><a data-pjax-scrolltop="true" data-pjax-animate="true" data-pjax-element="#article-body" data-pjax-pushstate="true" href="../../layout/breakpoints/index.html" class="js-pjax-link js-docs-menu-link">Breakpoints</a></li>
+            <li class="menu-item "><a data-pjax-scrolltop="true" data-pjax-animate="true" data-pjax-element="#article-body" data-pjax-pushstate="true" href="../../layout/breakpoints/index.html" class="js-pjax-link js-docs-menu-link">Breakpoints</a></li>
             <li class="menu-item "><a data-pjax-scrolltop="true" data-pjax-animate="true" data-pjax-element="#article-body" data-pjax-pushstate="true" href="../../layout/container/index.html" class="js-pjax-link js-docs-menu-link">Container</a></li>
             <li class="menu-item "><a data-pjax-scrolltop="true" data-pjax-animate="true" data-pjax-element="#article-body" data-pjax-pushstate="true" href="../../layout/flex-grid/index.html" class="js-pjax-link js-docs-menu-link">Flex Grid</a></li>
             <li class="menu-item "><a data-pjax-scrolltop="true" data-pjax-animate="true" data-pjax-element="#article-body" data-pjax-pushstate="true" href="../../layout/grid/index.html" class="js-pjax-link js-docs-menu-link">Grid</a></li>
@@ -284,16 +284,16 @@
             <li class="menu-item "><a data-pjax-scrolltop="true" data-pjax-animate="true" data-pjax-element="#article-body" data-pjax-pushstate="true" href="../../utilities/collapse/index.html" class="js-pjax-link js-docs-menu-link">Collapse</a></li>
         </ul>
     </li>
-    <li class="menu-item-title js-collapse " data-collapse-target="menu-javascript">
+    <li class="menu-item-title js-collapse active" data-collapse-target="menu-javascript">
         <span class="item-left"><span class="fa fa-chevron-right"></span></span>
         <span class="item-body">Javascript</span>
     </li>
-    <li  id="menu-javascript" class="menu-item-submenu">
+    <li style="height:auto" id="menu-javascript" class="menu-item-submenu">
         <ul class="menu menu-dense">
             <li class="menu-item "><a data-pjax-scrolltop="true" data-pjax-animate="true" data-pjax-element="#article-body" data-pjax-pushstate="true" href="../../javascript/container/index.html" class="js-pjax-link js-docs-menu-link">Container</a></li>
             <li class="menu-item "><a data-pjax-scrolltop="true" data-pjax-animate="true" data-pjax-element="#article-body" data-pjax-pushstate="true" href="../../javascript/dom/index.html" class="js-pjax-link js-docs-menu-link">Dom</a></li>
             <li class="menu-item "><a data-pjax-scrolltop="true" data-pjax-animate="true" data-pjax-element="#article-body" data-pjax-pushstate="true" href="../../javascript/ajax/index.html" class="js-pjax-link js-docs-menu-link">Ajax</a></li>
-            <li class="menu-item "><a data-pjax-scrolltop="true" data-pjax-animate="true" data-pjax-element="#article-body" data-pjax-pushstate="true" href="../../javascript/jsx/index.html" class="js-pjax-link js-docs-menu-link">Jsx</a></li>
+            <li class="menu-item active"><a data-pjax-scrolltop="true" data-pjax-animate="true" data-pjax-element="#article-body" data-pjax-pushstate="true" href="../../javascript/jsx/index.html" class="js-pjax-link js-docs-menu-link">Jsx</a></li>
             <li class="menu-item "><a data-pjax-scrolltop="true" data-pjax-animate="true" data-pjax-element="#article-body" data-pjax-pushstate="true" href="../../javascript/pjax/index.html" class="js-pjax-link js-docs-menu-link">Pjax</a></li>
         </ul>
     </li>
@@ -326,92 +326,247 @@
     </li>
 </ul></div>
                 </aside>
-                <article class="docs-body pole-sm" id="article-body"><h1 id="breakpoints">Breakpoints</h1>
-<p>Since Frontbx is developed to be mobile first, there are a number of media queries to create sensible breakpoints for customization and various screen sizes. These breakpoints are mostly based on minimum viewport widths and allow you to adjust layouts an content as the viewport changes.</p>
+                <article class="docs-body pole-sm" id="article-body"><h1 id="jsx">JSX</h1>
+<p>Frontbx comes with a JSX parser allowing you to write JSX-like syntax from a string directly without needing to pre-compile.</p>
 <hr />
 <ul>
-<li><a href="#breakpoints">Breakpoints</a></li>
-<li><a href="#sass-mixins">Sass Mixins</a></li>
-<li><a href="#css-customization">CSS Customization</a></li>
+<li><a href="#Introduction">Introduction</a></li>
+<li><a href="#html-Initialization">HTML Initialization</a></li>
+<li><a href="#server-response">Server Response</a></li>
+<li><a href="#javascript-usage">JavaScript Usage</a></li>
+<li><a href="#events">Events</a></li>
 </ul>
 <hr />
-<h3 id="breakpoints-1">Breakpoints</h3>
-<p>Frontbx makes the following media <code>min-width</code> breakpoints available for layouts, grid system, and components. The breakpoint sizes can be changed via CSS or Sass variables.</p>
-<pre><code class="css language-css">@media (min-width: 576px) { ... }
-
-@media (min-width: 768px) { ... }
-
-@media (min-width: 992px) { ... }
-
-@media (min-width: 1200px) { ... }</code></pre>
-<p>There are also a handul of <code>max-width</code> breakpoints for screen-size and below styles:</p>
-<pre><code class="css language-css">@media (max-width: 576px) { ... }
-
-@media (max-width: 768px) { ... }
-
-@media (max-width: 992px) { ... }
-
-@media (max-width: 1200px) { ... }</code></pre>
+<h3 id="introduction">Introduction</h3>
 <hr />
-<h3 id="sass-mixins">Sass Mixins</h3>
-<p>Both <code>max-width</code> and <code>min-width</code> media queries are available as Sass mixins making it super easy to target screen-sizes:</p>
-<pre><code class="scss language-scss">@include media-breakpoint-up(xs) { ... }
-@include media-breakpoint-up(sm) { ... }
-@include media-breakpoint-up(md) { ... }
-@include media-breakpoint-up(lg) { ... }
-@include media-breakpoint-up(xl) { ... }
-
-// Example usage:
-@include media-breakpoint-up(sm)
-{
-    .some-class
-    {
-        display: block;
-    }
-}</code></pre>
-<pre><code class="scss language-scss">@include media-breakpoint-down(xs) { ... }
-@include media-breakpoint-down(sm) { ... }
-@include media-breakpoint-down(md) { ... }
-@include media-breakpoint-down(lg) { ... }
-
-// Example usage:
-@include media-breakpoint-down(sm)
-{
-    .some-class
-    {
-        display: none;
-    }
-}</code></pre>
-<hr />
-<h3 id="css-customization">CSS Customization</h3>
+<h3 id="html-initialization">HTML Initialization</h3>
+<p>Pjax can be invoked automatically via HTML via any clickable HTML anchor element. To enable Pjax on an element add the <code>.js-pjax-link</code> to the anchor element. </p>
+<p>For native link elements (<code>&lt;a&gt;</code>, the <code>href</code> attribute will be used as the request URL. For other element types, set the request URL as the <code>data-pjax-href</code> attribute.</p>
+<p>Lastly, you can optionally provide the the <code>id</code> of the HTML response element to indicate where the response will be inserted into via <code>data-pjax-element</code> attribute. If this is omitted, Pjax assumes you're wanting to request an entire page and will replace the document <code>body</code>.</p>
+<p>Additional options can be provided through <code>data-</code> attributes. The table below outlines available options and how they effect behavior.</p>
+<table>
+<thead>
+<tr>
+<th id="attribute">Attribute</th>
+<th id="default">Default</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>href</code></td>
+<td><code>null</code></td>
+<td>Used as the request URL to send request. Can be an absolute or a relative URL. Used on <code>&lt;a&gt;</code> elements only.</td>
+</tr>
+<tr>
+<td><code>data-pjax-url</code></td>
+<td><code>null</code></td>
+<td>Used as the request URL to send request for non <code>&lt;a&gt;</code> elements.</td>
+</tr>
+<tr>
+<td><code>data-pjax-element</code></td>
+<td><code>null</code></td>
+<td>An html element selector to append the response into.</td>
+</tr>
+<tr>
+<td><code>data-pjax-once</code></td>
+<td><code>false</code></td>
+<td>When set to <code>true</code> the request will only be sent once on first click.</td>
+</tr>
+<tr>
+<td><code>data-pjax-scrolltop</code></td>
+<td><code>false</code></td>
+<td>When set to <code>true</code> the page will scroll to to top when request completes.</td>
+</tr>
+<tr>
+<td><code>data-pjax-nocache</code></td>
+<td><code>false</code></td>
+<td>When set to <code>true</code> a timestamp is appended to the URL query to ensure an un-cashed response.</td>
+</tr>
+<tr>
+<td><code>data-pjax-pushstate</code></td>
+<td><code>false</code></td>
+<td>When set to <code>true</code> a new history state is created.</td>
+</tr>
+<tr>
+<td><code>data-pjax-urlhash</code></td>
+<td><code>false</code></td>
+<td>When set to <code>true</code>  the URL hash is updated with the id of the <code>element</code></td>
+</tr>
+<tr>
+<td><code>data-pjax-animate</code></td>
+<td><code>false</code></td>
+<td>When set to <code>true</code>  animates and transitions content in and out</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
-  <p>Changes to breakpoints should be made pre-compilation via Sass as breakpoint sizes on media queries via CSS variables are not fully supported. The CSS variables can still be changed, however this will only effect container sizing not baked in media-queries.</p>
+  <p>When response content contains CSS <code>&lt;link&gt;</code> tags or JavaScript <code>&lt;script&gt;</code> tags, Pjax automatically compares these to the currently loaded assets and will load them into the DOM if required. Additionally, Pjax will update the document title and meta description when <code>pushstate</code> is set to true and the response includes them. </p>
 </blockquote>
-<p>The breakpoint system uses a combination of both local root CSS variables for enhanced component customization and styling across a range of components.</p>
-<p>Default values are set in the <code>scss/_config.scss</code> file in Frontbx's source.</p>
-<pre><code class="file-path language-file-path">scss/_config.scss</code></pre>
-<pre><code class="scss language-scss">$breakpoint-xs: 0 !default;
-$breakpoint-sm: 576px !default;
-$breakpoint-md: 768px !default;
-$breakpoint-lg: 992px !default;
-$breakpoint-xl: 1200px !default;
-
-$breakpoints:
-(
-    'xs': $breakpoint-xs,
-    'sm': $breakpoint-sm,
-    'md': $breakpoint-md,
-    'lg': $breakpoint-lg,
-    'xl': $breakpoint-xl,
-) !default;</code></pre>
-<pre><code class="css language-css">:root
+<p>The link below would request send a Pjax request to <code>/my-page</code> and replace the entire document body:</p>
+<pre><code class="html language-html">&lt;a class="js-pjax-link" href="/my-page"&gt;My Page&lt;/button&gt;</code></pre>
+<p>Here, the button will send a request to <code>/url?sidebar</code> and place the response into the element <code>#sidebar-wrapper</code>:</p>
+<pre><code class="html language-html">&lt;a class="js-pjax-link" href="/url?sidebar" data-pjax-element="#sidebar-wrapper"&gt;Sidebar&lt;/button&gt;</code></pre>
+<p>You may want the request to only happen once when it is first called, in this case add <code>data-pjax-once</code> attribute to the anchor:</p>
+<pre><code class="html language-html">&lt;a class="js-pjax-link" href="/url?sidebar" data-pjax-once="true" data-pjax-element="#sidebar-wrapper"&gt;Sidebar&lt;/button&gt;</code></pre>
+<p>Below is a simple example using a tab navigation to load content:</p>
+<div class="fbx-snippet-demo">
+    <ul class="tab-nav js-tab-nav">
+        <li>
+            <a href="../pjax_tabs_iframe1.html" class="active js-pjax-link" data-tab="panel-1" data-pjax-element="#tab-1">Tab 1</a>
+        </li>
+        <li>
+            <a href="../pjax_tabs_iframe2.html" class="js-pjax-link" data-tab="panel-2" data-pjax-element="#tab-2">Tab 2</a>
+        </li>
+        <li>
+            <a href="../pjax_tabs_iframe3.html" class="js-pjax-link" data-tab="panel-3" data-pjax-element="#tab-3">Tab 3</a>
+        </li>
+    </ul>
+    <div class="tab-panels js-tab-panels">
+        <div class="tab-panel active" data-tab-panel="panel-1" id="tab-1">
+            <div class="pad-20">
+                <h4>Panel 1</h4>
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+            </div>
+        </div>
+        <div class="tab-panel" data-tab-panel="panel-2" id="tab-2">
+        </div>
+        <div class="tab-panel" data-tab-panel="panel-3" id="tab-3">
+        </div>
+    </div>
+</div>
+<pre><code class="html language-html">&lt;ul class="tab-nav js-tab-nav"&gt;
+    &lt;li&gt;
+        &lt;a href="/tab-1" class="active js-pjax-link" data-tab="panel-1" data-pjax-element="#tab-1"&gt;Tab 1&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href="/tab-2" class="js-pjax-link" data-tab="panel-2" data-pjax-element="#tab-2"&gt;Tab 2&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href="/tab-3" class="js-pjax-link" data-tab="panel-3" data-pjax-element="#tab-3"&gt;Tab 3&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="tab-panels js-tab-panels"&gt;
+    &lt;div class="tab-panel active" data-tab-panel="panel-1" id="tab-1"&gt;
+        &lt;div class="pad-20"&gt;
+            &lt;h4&gt;Panel 1&lt;/h4&gt;
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="tab-panel" data-tab-panel="panel-2" id="tab-2"&gt;
+    &lt;/div&gt;
+    &lt;div class="tab-panel" data-tab-panel="panel-3" id="tab-3"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<hr />
+<h3 id="server-response">Server Response</h3>
+<p><code>Pjax</code> requests are made via HTTP <code>GET</code> requests. Your server can differentiate these requests from other incoming <code>GET</code> requests by checking if the <code>X-PJAX</code> header is sent with the request.</p>
+<p>For example, in PHP:</p>
+<pre><code class="php language-php">if (isset($_SERVER['X-PJAX']))
 {
-    --fbx-breakpoint-xs: 0;
-    --fbx-breakpoint-sm: 576px;
-    --fbx-breakpoint-md: 768px;
-    --fbx-breakpoint-lg: 992px;
-    --fbx-breakpoint-xl: 1200px;
-}</code></pre></article>
+    # Send response
+}</code></pre>
+<p>When sending a response, your server must send valid <code>HTML</code> markup, with the correct header type:</p>
+<pre><code class="php language-php">header('Content-Type: text/html; charset=utf-8');
+
+echo '&lt;div&gt;Hello World!&lt;/div&gt;';</code></pre>
+<p>Server responses should not send an entire HTML <code>document</code>, it only needs return the content itself.</p>
+<pre><code class="php language-php">header('Content-Type: text/html; charset=utf-8');
+
+echo '&lt;div&gt;Hello World!&lt;/div&gt;';</code></pre>
+<p>If Pjax is not supported on your server however, you can still send an entire HTML <code>document</code>. Pjax will parse the code and replace the document body.</p>
+<pre><code class="JavaScript language-JavaScript">frontbx.require('Pjax').invoke('/foo/bar');</code></pre>
+<pre><code class="php language-php">header('Content-Type: text/html; charset=utf-8');
+
+echo '
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+        ...
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div&gt;Hello World!&lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+';</code></pre>
+<p>If the response contains a <code>&lt;title&gt;</code> element, and <code>stateChange</code> is set to true, that title will be used (regardless of if a full HTML <code>document</code> is sent).</p>
+<pre><code class="php language-php">echo '
+&lt;title&gt;Hello&lt;/title&gt;
+&lt;div id="target-id"&gt;Hello World!&lt;/div&gt;
+';</code></pre>
+<hr />
+<h3 id="javascript-usage">JavaScript Usage</h3>
+<p>The Pjax Component can be accessed directly via Frontbx's container using the <code>Pjax</code> key.</p>
+<pre><code class="JavaScript language-JavaScript">let pjax = frontbx.Pjax();</code></pre>
+<p>To make a request, use the <code>request</code> method:</p>
+<pre><code class="JavaScript language-JavaScript">let pjax.request(url, options, success, error, complete, abort, headers);</code></pre>
+<p>Pjax extends Frontbx's Ajax Component so the callbacks folllow the same principles. For details on callbacks, see the <a href="../ajax/index.html#arguments">Ajax Documentation</a></p>
+<p>The options arguement is an Object with the following values / defaults</p>
+<table>
+<thead>
+<tr>
+<th id="attribute">Attribute</th>
+<th id="default">Default</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>element</code></td>
+<td><code>body</code></td>
+<td>Optional target element to insert response into</td>
+</tr>
+<tr>
+<td><code>nocache</code></td>
+<td><code>false</code></td>
+<td>When set to <code>true</code> a timestamp is appended to the URL query to ensure an un-cashed response.</td>
+</tr>
+<tr>
+<td><code>pushstate</code></td>
+<td><code>false</code></td>
+<td>When set to <code>true</code> a new history state is created.</td>
+</tr>
+<tr>
+<td><code>urlhash</code></td>
+<td><code>false</code></td>
+<td>When set to <code>true</code> and <code>element</code> is provided, the URL hash is updated with the id of the target element</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="events">Events</h3>
+<p>Pjax will dispatch the following custom events on <code>window</code>. The provided options are set to <code>event.detail</code>:</p>
+<table>
+<thead>
+<tr>
+<th id="attribute___description">Attribute   Description</th>
+<th id=""></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Frontbx:Pjax:start</code></td>
+<td>Sent immediately before a Pjax request is made.</td>
+</tr>
+<tr>
+<td><code>Frontbx:Pjax:success</code></td>
+<td>Sent after a successful Pjax request is made, DOM is updated and all assets have loaded.</td>
+</tr>
+<tr>
+<td><code>Frontbx:Pjax:error</code></td>
+<td>Sent when Pjax request receives an XHR error response.</td>
+</tr>
+<tr>
+<td><code>Frontbx:Pjax:abort</code></td>
+<td>Sent when Pjax request is interrupted and aborted by either another Pjax request or manually aborted.</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="JavaScript language-JavaScript">window.addEventListener('Frontbx:Pjax:success', (e) =&gt;
+{
+    let url = e.detail.url;
+
+})</code></pre></article>
             </div>
         </div>
         <footer class="site-footer">

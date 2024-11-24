@@ -33,7 +33,7 @@
      * @returns {object}             bindings  
      */
     function _jsx(jsxStr, root, bindings)
-    {
+    {        
         if (is_object(root))
         {
             bindings = root;
@@ -51,7 +51,7 @@
         }
 
         // Empty
-        else if (jsxStr === null || jsxStr === true || jsxStr === false || typeof jsxStr === 'undefined' || (typeof jsxStr === 'string' && jsxStr.trim() === ''))
+        else if (jsxStr === null || jsxStr === false || typeof jsxStr === 'undefined' || (typeof jsxStr === 'string' && jsxStr.trim() === ''))
         {
             let ret = createElement();
 
@@ -61,7 +61,7 @@
         }
 
         // Clean jsx
-        jsxStr = `${jsxStr}`.replaceAll(/[\n\t]/g, '').trim();
+        jsxStr = `${jsxStr}`.replaceAll(/[\r\n\t\f\v]/g, '');
 
         // No elements
         if (!jsxStr.includes('<') && !jsxStr.includes('>') && !jsxStr.includes('{'))
@@ -106,7 +106,7 @@
         
         // Apply currently rendering component
         if (CURR_RENDER.current)
-        {        
+        {
             let props = object_props(CURR_RENDER.current, true);
             
             each(props, (i, k) => bindings[k] = CURR_RENDER.current[k]);

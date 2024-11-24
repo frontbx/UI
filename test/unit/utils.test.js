@@ -1,8 +1,12 @@
-import './utils/dom/has_class.js';
 import './utils/dom/add_class.js';
-import './utils/dom/remove_class.js';
 import './utils/dom/class_names.js';
 import './utils/dom/closest.js';
 import './utils/dom/closest_class.js';
 import './utils/dom/coordinates.js';
 import './utils/dom/dom_element.js';
+import './utils/dom/first_children.js';
+import './utils/dom/form_inputs.js';
+import './utils/dom/form_values.js';
+import './utils/dom/has_class.js';
+import './utils/dom/height.js';
+import './utils/dom/remove_class.js';

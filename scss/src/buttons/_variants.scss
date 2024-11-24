@@ -85,7 +85,7 @@
 {    
     .btn.btn-#{$context}
     {
-        @include button( map-get($colors, "contrast"), map-get($colors, "color"));
+        @include button( map.get($colors, "contrast"), map.get($colors, "color"));
     }
 }
 
@@ -104,7 +104,7 @@
 {    
     .btn.btn-#{$context}.btn-outline
     {
-        @include button-outline( map-get($colors, "color") );
+        @include button-outline( map.get($colors, "color") );
     }
 }
 
@@ -117,6 +117,6 @@
 {
     .btn.btn-#{$context}.btn-pure
     {
-        @include button-pure( map-get($colors, "color") );
+        @include button-pure( map.get($colors, "color") );
     }
 }

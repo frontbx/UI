@@ -40,9 +40,9 @@
      *
      * @see {https://tosbourn.com/a-fix-for-window-location-origin-in-internet-explorer/}
      */
-    if (!window.location.origin)
+    if (!FBX_ROOT.location.origin)
     {
-        window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+        FBX_ROOT.location.origin = FBX_ROOT.location.protocol + "//" + FBX_ROOT.location.hostname + (FBX_ROOT.location.port ? ':' + FBX_ROOT.location.port : '');
     }
     /*
      * Custom events 
@@ -2454,20 +2454,7 @@
      */
     _.prototype.array_filter = function(arr)
     {
-        let isArr = this.is_array(arr);
-    
-        let ret = isArr ? [] : {};
-    
-        this.each(arr, function(i, val)
-        {
-            if (!this.is_empty(val))
-            {
-                isArr ? ret.push(val) : ret[i] = val;
-            }
-            
-        }, this);
-    
-        return ret;
+        return this.map(arr, (k,v) => this.is_empty(v) ? false : v );
     }
     /**
      * Gets an from an array/object using dot/bracket notation.
@@ -2775,11 +2762,7 @@
         // attr(node, {foo : 'bar', baz: 'bar'})
         if (this.is_object(name))
         {
-            this.each(name, function(prop, value)
-            {
-                this.attr(DOMElement, prop, value);
-    
-            }, this);
+            this.each(name, (prop, value) => this.attr(DOMElement, prop, value));
     
             return;
         }
@@ -2800,17 +2783,10 @@
             // Children
             case 'children':
     
-                this.each(DOMElement.children, function(node)
-                {
-                    this.remove_from_dom(node);
+                this.each(DOMElement.children, (node) => this.remove_from_dom(node));
+    
+                if (this.is_array(value)) this.each(value, (i, node) => DOMElement.appendChild(node));
                 
-                }, this);
-    
-                this.each(value, function(node)
-                {
-                    DOMElement.appendChild(node);
-                });
-    
                 break;
     
             // Class
@@ -2868,6 +2844,8 @@
                 // All other node attributes
                 else
                 {
+                    if (this.is_function(value) || this.is_object(value)) return;
+    
                     let isEmpty    = this.is_empty(value);
                     let isData     = name.startsWith('data');
                     let isAria     = name.startsWith('aria');
@@ -2875,36 +2853,18 @@
                     let hyphenName = name.includes('-') ? name : this.camel_case_to_hyphen(name);
                     let isBoolean  = this.in_array(camelName, BOOLEAN_ATTRS);
     
-                    if (value === 'false' || value === 'null' || value === 'undefined') value = isBoolean ? false : isAria || isData ? 'false' : '';
+                    if (value === 'false' || value === 'null' || value === 'undefined' || isEmpty) value = isBoolean ? false : (isAria || isData ? 'false' : '');
     
                     // Special data
                     if (isData)
                     {
-                        if (isEmpty)
-                        {
-                            DOMElement.removeAttribute(hyphenName);
+                        DOMElement.setAttribute(hyphenName, value);
     
-                            delete DOMElement.dataset[this.lc_first(camelName.substring(4))];
-                        }
-                        else
-                        {
-                            DOMElement.setAttribute(hyphenName, value);
-    
-                            DOMElement.dataset[this.lc_first(camelName.substring(4))] = value;
-                        }
+                        DOMElement.dataset[this.lc_first(camelName.substring(4))] = value;
     
                         break;
                     }
-    
-                    if (camelName !== 'viewBox')
-                        
-                        try
-                        {                        
-                            DOMElement[camelName] = value;
-    
-                        } catch (e) {}
-    
-                    if (isEmpty)
+                    else if (isEmpty && !isAria && !PROP_ATTRIBUTES.includes(camelName))
                     {
                         DOMElement.removeAttribute(hyphenName);
                     }
@@ -2912,6 +2872,17 @@
                     {
                         DOMElement.setAttribute(hyphenName, value);
                     }
+    
+                    if (camelName !== 'viewBox')
+                    {
+                        try
+                        {                        
+                            DOMElement[camelName] = value;
+    
+                        } catch (e) {}
+                    }
+    
+                    
                 }
     
                 break;
@@ -4009,23 +3980,21 @@
     
             let val = this.input_value(input);
     
-            if (input.type !== 'radio')
+            if (key.endsWith('[]'))
+            {
+                key = key.slice(0, -2); 
+    
+                if (!ret[key] || !this.is_array(ret[key])) ret[key] = [];
+    
+                ret[key].push(val);
+            }
+            else if (input.type !== 'radio')
             {
                 ret[key] = val;
             }
             else
             {
                 if (val) ret[key] = val;
-            }
-    
-            if (key.includes('[]'))
-            {
-                if (!ret[key] || !this.is_array(ret[key]))
-                {
-                    ret[key] = [];
-                }
-    
-                ret[key].push(val);
             }
         });
        
@@ -4139,7 +4108,7 @@
         {
             return this.attr(input, 'checked') ? this.attr(input, 'value') : undefined;
         }
-        if (input.type == 'number')
+        if (input.type == 'number' || input.type === 'range')
         {
             return input.value.includes('.') ? parseInt(input.value) : parseFloat(input.value);
         }
@@ -4155,7 +4124,7 @@
     
         let ret = input.type == 'select' ? input.options[input.selectedIndex].value : input.value;
     
-        return this.is_numeric(ret) ? (input.value.includes('.') ? parseInt(input.value) : parseFloat(input.value)) : ret.trim();
+        return ret.trim();
     }
     /**
      * Create and insert a new node
@@ -6792,7 +6761,7 @@
         {
             let type = this.var_type(mixed_var);
     
-            return HTML_REGXP.test(type) || type === '[object HTMLDocument]' || type === '[object Text]';
+            return HTML_REGXP.test(type) || type === '[object HTMLDocument]' || type === '[object Text]' || type === '[object Comment]';
         }
     
         return false;
@@ -12358,6 +12327,9 @@
     	    'toLocaleString',
     	    'toString',
     	    'valueOf',
+    	    'localStorage',
+    	    'sessionStorage',
+    	    'cookie',
     	];
     	
     	/**
@@ -12411,6 +12383,13 @@
     	 * @var {Function}
     	 */
     	var jsx;
+    	
+    	/**
+    	 * Local children.
+    	 * 
+    	 * @var {Function}
+    	 */
+    	var children;
     	(function()
     	{    
     	    /**
@@ -12674,14 +12653,11 @@
     	            // JSX Func was left open
     	            if (
     	                    (
-    	                        this.braceDepth > 0 &&
-    	                        (char !== '>' && char !== '<') &&
-    	                        !this.currentTag
+    	                        this.braceDepth > 0 && (char !== '>' && char !== '<') 
     	                    ) 
     	                    ||
     	                    (
-    	                        this.peekback() !== '\\' && 
-    	                        (char === '{' || char === '}')
+    	                        this.peekback() !== '\\' && (char === '{' || char === '}')
     	                    )
     	                )
     	            {
@@ -13080,7 +13056,14 @@
     	        this.whitespace();
     	
     	        // Closed doctype
-    	        if ('>' == this.peek()) return 'tag_close_self';
+    	        if ('>' == this.peek())
+    	        {
+    	            this.currentTag = null;
+    	
+    	            this.emit('doctype:close:self', '');
+    	
+    	            return 'text';
+    	        }
     	
     	        // Doc types don't have "key=value" attributes, only attributes
     	        // e.g  PUBLIC
@@ -13139,9 +13122,9 @@
     	
     	        let buff = this.scan(']>');
     	
-    	        this.consume(buff.length);
+    	        this.consume(buff.length -1);
     	
-    	        this.emit('comment:open', `<!--${buff}>`);
+    	        this.emit('comment:open', `<!--${buff}]>`);
     	
     	        this.consume(3);
     	
@@ -13250,12 +13233,19 @@
     	        }
     	
     	        // Close jsx
-    	        else if (jsx[0] === ')' || jsx[0] === '}' || opened)
+    	        else if ((jsx[0] === ')' || jsx[0] === '}') && opened)
     	        {
     	            this.emit('jsx:close', buff);
     	        }
     	
+    	        // Open
     	        else if (jsx.substr(-1) === '(' || jsx.substr(-1) === '{' || this.braceDepth >= 1)
+    	        {
+    	            this.emit('jsx:open', buff);
+    	        }
+    	
+    	        // Nested
+    	        else if (this.braceDepth >= 1)
     	        {
     	            this.emit('jsx:open', buff);
     	        }
@@ -13289,15 +13279,17 @@
     	        this.curr = this.stack;
     	
     	        this.parent = [];
+    	
+    	        this.currtoken;
     	    }
     	
     	    Tokenizer.prototype.parse = function()
     	    {
     	        const delegate = (token, value) => 
-    	        {            
+    	        {
     	            this.readtoken(token, value);
     	        }
-    	        
+    	
     	        lexer(this.htmlstr, delegate);
     	
     	        return this.stack.children;
@@ -13329,7 +13321,7 @@
     	
     	    Tokenizer.prototype.pushAttr = function(value)
     	    {
-    	        this.curr.attrs[value] = true;
+    	        this.curr.attrs[value] = 'true';
     	
     	        this.currAttr = value;
     	    }
@@ -13368,6 +13360,8 @@
     	        }
     	
     	        this.curr.close = value;
+    	
+    	        this.curr = this.parent.pop();
     	    }
     	
     	    Tokenizer.prototype.node = function(type, value, children)
@@ -13380,6 +13374,8 @@
     	
     	    Tokenizer.prototype.readtoken = function(token, value)
     	    {
+    	        this.currtoken = token;
+    	
     	        switch (token)
     	        {
     	            case 'text':
@@ -13529,7 +13525,12 @@
     	    {
     	        if (!props && !el.spreadAttribute) return 'null';
     	
-    	        let spread = el.spreadAttribute;
+    	        let spread;
+    	
+    	        if (el.spreadAttribute)
+    	        {
+    	            spread = /^\{\s?\{/.test(el.spreadAttribute) ? el.spreadAttribute.substring(1).trim().slice(0, -1).trim() : el.spreadAttribute; 
+    	        }
     	
     	        let attrs = [];
     	
@@ -13572,14 +13573,14 @@
     	            
     	            if (child.type === '#text') return `'${sanitizeQuotes(child.value)}'`;
     	
-    	            if (child.type === '#comment') return `h('comment',{},'${sanitizeQuotes(child.value.substring(4).trim().slice(0, -3).trim())}')`;
+    	            if (child.type === '#comment') return `h('comment',{},'${sanitizeQuotes(child.value.substring(4).slice(0, -3))}')`;
     	
     	            if (child.type === '#jsx:function')
     	            {
     	                let open  = child.open.trim().substring(1).trim();
     	                let close = child.close.trim().slice(0, -1).trim();
     	
-    	                return `${open} ${this.genChildren(child.children, null, ' ')} ${close}`;
+    	                return `${open} ${this.genChildren(child.children, null)} ${close}`;
     	            }
     	
     	            if (child) return this.genTag(child);
@@ -13642,9 +13643,12 @@
     	
     	    // Keep in store all real builtin prototypes to restore them after
     	    // a possible alteration during the evaluation.
-    	    const BUILT_INS  = [JSON, Object, Function, Array, String, Boolean, Number, Date, RegExp, Error, EvalError, RangeError, ReferenceError, SyntaxError, TypeError, URIError];
+    	    const BUILT_INS  = map(BUILT_INS_STR, (i, name) => (window || global)[name] );
     	    const COPIES     = new Array(BUILT_INS.length);
     	    const PROTO_KEYS = map(new Array(BUILT_INS.length), (i) => object_props(BUILT_INS[i], true));
+    	
+    	    // Sandbox name
+    	    const SANDBOX_NAME = '$sandbox$';
     	
     	    const acceptableVariable = function(v)
     	    {
@@ -13695,28 +13699,26 @@
     	        return {...bindings, ...DISSALOWEDES}; 
     	    }
     	
-    	    const SANDBOX_NAME = '$sandbox$';
-    	
     	    // Evaluate code as a String (`source`) without letting global variables get
     	    // used or modified. The `sandbox` is an object containing variables we want
     	    // to pass in.
     	    sandbox = function(source, bindings, context)
-    	    { 
+    	    {
     	        alienate();
     	
     	        bindings = genBindings(bindings || {});
     	
     	        context = context || null;
     	
-    	        let sandboxed = 'this.constructor.constructor = function () {};\nvar ';
+    	        let func = 'this.constructor.constructor = function () {};\nvar ';
     	
-    	        each(bindings, (key, value) => sandboxed += `${key} = ${SANDBOX_NAME}['${key}'],\n`);
+    	        each(bindings, (key, value) => func += `${key} = ${SANDBOX_NAME}['${key}'],\n`);
     	
-    	        sandboxed += `undefined;\n${resetEnv()}\n return ${source};`;
-    	
+    	        func += `undefined;\n${resetEnv()}\n return ${source};`;
+    	        
     	        let ret;
     	
-    	        ret = Function(SANDBOX_NAME, sandboxed).call(context, bindings);
+    	        ret = Function(SANDBOX_NAME, func).call(context, bindings);
     	
     	        unalienate();
     	
@@ -13731,7 +13733,7 @@
     	     *
     	     * @var  {Function}
     	     */
-    	    const [array_filter, dom_element, each, is_array, is_bool, is_constructed, is_constructable, is_function, is_htmlElement, is_null, is_number, is_string, is_undefined, map, str_replace] = frontbx.import(['array_filter','dom_element','each','is_array','is_bool','is_constructed','is_constructable','is_function','is_htmlElement','is_null','is_number','is_string','is_undefined','map','str_replace']).from('_');
+    	    const [array_filter, dom_element, is_empty, each, is_array, is_object, is_bool, is_constructed, is_constructable, is_function, is_htmlElement, is_null, is_number, is_string, is_undefined, map, str_replace] = frontbx.import(['array_filter','dom_element','is_empty','each','is_array','is_object','is_bool','is_constructed','is_constructable','is_function','is_htmlElement','is_null','is_number','is_string','is_undefined','map','str_replace']).from('_');
     	
     	    /**
     	     * JSX create element.
@@ -13742,12 +13744,12 @@
     	     * @returns {Array|HTMLElement}
     	     */
     	    createElement = function(tag, attributes)
-    	    {        
+    	    {
     	        // Empty
     	        if (arguments.length === 0) return document.createTextNode('');
     	
     	        // Get children
-    	        let children = arguments.length > 2 ? [].slice.call(arguments, 2) : [];
+    	        let children = arguments.length > 2 ? array_filter([].slice.call(arguments, 2)) : [];
     	
     	        // Special case for text
     	        if (tag === 'text') return document.createTextNode(children.toString());
@@ -13756,13 +13758,13 @@
     	        if (tag === 'comment') return document.createComment(children.toString());
     	
     	        // Normalise children
-    	        children = _normaliseChildren(children.length === 0 && attributes.children && attributes.children.length > 0 ? attributes.children : children);
+    	        children = _normaliseChildren(children.length === 0 && attributes.children && !is_empty(attributes.children) ? attributes.children : children);
     	
-    	        let node = is_function(tag) || is_constructed(tag) ? _createComponent(tag, {...attributes, children}) : dom_element({...attributes, tag});
-    	        
-    	        if (is_array(node) || Object.prototype.toString.call(node).toLowerCase() === '[object text]') return node;
+    	        let node = is_function(tag) || is_constructed(tag) ? _createComponent(tag, {...attributes, children}) : dom_element({...attributes, children, tag});
     	
-    	        each(children, (i, child) => node.appendChild(child));
+    	        //if (is_array(node) || Object.prototype.toString.call(node).toLowerCase() === '[object text]') return node;
+    	
+    	        //each(children, (i, child) => node.appendChild(child));
     	
     	        return node;
     	    }
@@ -13775,9 +13777,9 @@
     	     * @param  {HTMLElement} parentDOMElement
     	     * @return {Array}
     	     */
-    	    function _createComponent(component, _props)
+    	    function _createComponent(component, attributes)
     	    {        
-    	        let { render, props } = _comoponentRenderFn(component, _props);
+    	        let { render, props } = _comoponentRenderFn(component, attributes);
     	
     	        BINDINGS_CACHE.props = props;
     	
@@ -13791,7 +13793,6 @@
     	        }
     	        else if (is_array(rendered))
     	        {
-    	
     	            //if (children.nodeType === 1) frontbx.dom().refresh(children);
     	
     	            return _normaliseChildren(rendered);
@@ -13868,21 +13869,18 @@
     	        if (is_htmlElement(child)) return child;
     	
     	        // Functions
-    	        if (is_function(child)) return _normaliseChildren(child());
+    	        if (is_function(child)) return jsx(child());
     	
     	        // Empty strings
     	        if (is_string(child) && str_replace(child, ['undefined','null','false','NaN'], '').trim() === '') return document.createTextNode('');
     	
     	        // Empty values
-    	        if (is_null(child) || is_undefined(child) || is_bool(child)) return document.createTextNode('');
-    	
-    	        // Strings / numbers
-    	        if (is_string(child) || is_number(child)) return jsx(child);
+    	        if (is_null(child) || is_undefined(child) || child === false) return document.createTextNode('');
     	
     	        // Objects
     	        if (is_object(child)) throw new Error('Objects cannot be used as children');
     	
-    	        return document.createTextNode('');
+    	        return jsx(`${child}`);
     	    }
     	
     	    /**
@@ -13943,7 +13941,7 @@
     	     * @returns {object}             bindings  
     	     */
     	    function _jsx(jsxStr, root, bindings)
-    	    {
+    	    {        
     	        if (is_object(root))
     	        {
     	            bindings = root;
@@ -13961,7 +13959,7 @@
     	        }
     	
     	        // Empty
-    	        else if (jsxStr === null || jsxStr === true || jsxStr === false || typeof jsxStr === 'undefined' || (typeof jsxStr === 'string' && jsxStr.trim() === ''))
+    	        else if (jsxStr === null || jsxStr === false || typeof jsxStr === 'undefined' || (typeof jsxStr === 'string' && jsxStr.trim() === ''))
     	        {
     	            let ret = createElement();
     	
@@ -13971,7 +13969,7 @@
     	        }
     	
     	        // Clean jsx
-    	        jsxStr = `${jsxStr}`.replaceAll(/[\n\t]/g, '').trim();
+    	        jsxStr = `${jsxStr}`.replaceAll(/[\r\n\t\f\v]/g, '');
     	
     	        // No elements
     	        if (!jsxStr.includes('<') && !jsxStr.includes('>') && !jsxStr.includes('{'))
@@ -14016,7 +14014,7 @@
     	        
     	        // Apply currently rendering component
     	        if (CURR_RENDER.current)
-    	        {        
+    	        {
     	            let props = object_props(CURR_RENDER.current, true);
     	            
     	            each(props, (i, k) => bindings[k] = CURR_RENDER.current[k]);

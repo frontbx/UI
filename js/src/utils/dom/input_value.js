@@ -15,7 +15,7 @@ _.prototype.input_value = function(input)
     {
         return this.attr(input, 'checked') ? this.attr(input, 'value') : undefined;
     }
-    if (input.type == 'number')
+    if (input.type == 'number' || input.type === 'range')
     {
         return input.value.includes('.') ? parseInt(input.value) : parseFloat(input.value);
     }
@@ -31,5 +31,5 @@ _.prototype.input_value = function(input)
 
     let ret = input.type == 'select' ? input.options[input.selectedIndex].value : input.value;
 
-    return this.is_numeric(ret) ? (input.value.includes('.') ? parseInt(input.value) : parseFloat(input.value)) : ret.trim();
+    return ret.trim();
 }

@@ -1,3 +1,4 @@
+@use "sass:map";
 .bq, blockquote[class*="bq-"]
 {
     --fbx-bq-bg: #{$bq-bg};
@@ -36,7 +37,7 @@
     {    
         &.bq-#{$context}
         {
-            --fbx-bq-bg: var(--fbx-#{_color-name-from-var(map-get($colors, "color"))-400});
+            --fbx-bq-bg: var(--fbx-#{_color-name-from-var(map.get($colors, "color"))-400});
         }
     }
 }

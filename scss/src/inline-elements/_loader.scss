@@ -1,3 +1,5 @@
+@use "sass:map";
+
 // Basic vars
 .loader
 {
@@ -10,9 +12,9 @@
     {
         &.loader-#{$context}
         {
-            $name : _color-name-from-var(map-get($colors, "color"));
+            $name : _color-name-from-var(map.get($colors, "color"));
 
-            --fbx-loader-color-one: #{map-get($colors, "color")};
+            --fbx-loader-color-one: #{map.get($colors, "color")};
             --fbx-loader-color-two: #{var(--fbx-#{$name}-300)};
         }
     }

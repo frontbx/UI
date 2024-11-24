@@ -5,7 +5,7 @@
      *
      * @var  {Function}
      */
-    const [array_filter, dom_element, each, is_array, is_bool, is_constructed, is_constructable, is_function, is_htmlElement, is_null, is_number, is_string, is_undefined, map, str_replace] = frontbx.import(['array_filter','dom_element','each','is_array','is_bool','is_constructed','is_constructable','is_function','is_htmlElement','is_null','is_number','is_string','is_undefined','map','str_replace']).from('_');
+    const [array_filter, dom_element, is_empty, each, is_array, is_object, is_bool, is_constructed, is_constructable, is_function, is_htmlElement, is_null, is_number, is_string, is_undefined, map, str_replace] = frontbx.import(['array_filter','dom_element','is_empty','each','is_array','is_object','is_bool','is_constructed','is_constructable','is_function','is_htmlElement','is_null','is_number','is_string','is_undefined','map','str_replace']).from('_');
 
     /**
      * JSX create element.
@@ -16,12 +16,12 @@
      * @returns {Array|HTMLElement}
      */
     createElement = function(tag, attributes)
-    {        
+    {
         // Empty
         if (arguments.length === 0) return document.createTextNode('');
 
         // Get children
-        let children = arguments.length > 2 ? [].slice.call(arguments, 2) : [];
+        let children = arguments.length > 2 ? array_filter([].slice.call(arguments, 2)) : [];
 
         // Special case for text
         if (tag === 'text') return document.createTextNode(children.toString());
@@ -30,13 +30,13 @@
         if (tag === 'comment') return document.createComment(children.toString());
 
         // Normalise children
-        children = _normaliseChildren(children.length === 0 && attributes.children && attributes.children.length > 0 ? attributes.children : children);
+        children = _normaliseChildren(children.length === 0 && attributes.children && !is_empty(attributes.children) ? attributes.children : children);
 
-        let node = is_function(tag) || is_constructed(tag) ? _createComponent(tag, {...attributes, children}) : dom_element({...attributes, tag});
-        
-        if (is_array(node) || Object.prototype.toString.call(node).toLowerCase() === '[object text]') return node;
+        let node = is_function(tag) || is_constructed(tag) ? _createComponent(tag, {...attributes, children}) : dom_element({...attributes, children, tag});
 
-        each(children, (i, child) => node.appendChild(child));
+        //if (is_array(node) || Object.prototype.toString.call(node).toLowerCase() === '[object text]') return node;
+
+        //each(children, (i, child) => node.appendChild(child));
 
         return node;
     }
@@ -49,9 +49,9 @@
      * @param  {HTMLElement} parentDOMElement
      * @return {Array}
      */
-    function _createComponent(component, _props)
+    function _createComponent(component, attributes)
     {        
-        let { render, props } = _comoponentRenderFn(component, _props);
+        let { render, props } = _comoponentRenderFn(component, attributes);
 
         BINDINGS_CACHE.props = props;
 
@@ -65,7 +65,6 @@
         }
         else if (is_array(rendered))
         {
-
             //if (children.nodeType === 1) frontbx.dom().refresh(children);
 
             return _normaliseChildren(rendered);
@@ -142,21 +141,18 @@
         if (is_htmlElement(child)) return child;
 
         // Functions
-        if (is_function(child)) return _normaliseChildren(child());
+        if (is_function(child)) return jsx(child());
 
         // Empty strings
         if (is_string(child) && str_replace(child, ['undefined','null','false','NaN'], '').trim() === '') return document.createTextNode('');
 
         // Empty values
-        if (is_null(child) || is_undefined(child) || is_bool(child)) return document.createTextNode('');
-
-        // Strings / numbers
-        if (is_string(child) || is_number(child)) return jsx(child);
+        if (is_null(child) || is_undefined(child) || child === false) return document.createTextNode('');
 
         // Objects
         if (is_object(child)) throw new Error('Objects cannot be used as children');
 
-        return document.createTextNode('');
+        return jsx(`${child}`);
     }
 
     /**

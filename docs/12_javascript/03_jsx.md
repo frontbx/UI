@@ -1,0 +1,228 @@
+# JSX
+
+Frontbx comes with a JSX parser allowing you to write JSX-like syntax from a string directly without needing to pre-compile.
+
+---
+
+*   [Introduction](#Introduction)
+*   [HTML Initialization](#html-Initialization)
+*   [Server Response](#server-response)
+*   [JavaScript Usage](#javascript-usage)
+*   [Events](#events)
+
+---
+
+### Introduction
+
+
+
+---
+
+### HTML Initialization
+
+Pjax can be invoked automatically via HTML via any clickable HTML anchor element. To enable Pjax on an element add the `.js-pjax-link` to the anchor element. 
+
+For native link elements (`<a>`, the `href` attribute will be used as the request URL. For other element types, set the request URL as the `data-pjax-href` attribute.
+
+Lastly, you can optionally provide the the `id` of the HTML response element to indicate where the response will be inserted into via `data-pjax-element` attribute. If this is omitted, Pjax assumes you're wanting to request an entire page and will replace the document `body`.
+
+Additional options can be provided through `data-` attributes. The table below outlines available options and how they effect behavior.
+
+| Attribute             | Default | Description                                                                                                 |
+|-----------------------|---------|-------------------------------------------------------------------------------------------------------------|
+| `href`                | `null`  | Used as the request URL to send request. Can be an absolute or a relative URL. Used on `<a>` elements only. |
+| `data-pjax-url`       | `null`  | Used as the request URL to send request for non `<a>` elements.                                             |
+| `data-pjax-element`   | `null`  | An html element selector to append the response into.                                                       |
+| `data-pjax-once`      | `false` | When set to `true` the request will only be sent once on first click.                                       |
+| `data-pjax-scrolltop` | `false` | When set to `true` the page will scroll to to top when request completes.                                   |
+| `data-pjax-nocache`   | `false` | When set to `true` a timestamp is appended to the URL query to ensure an un-cashed response.                |
+| `data-pjax-pushstate` | `false` | When set to `true` a new history state is created.                                                          |
+| `data-pjax-urlhash`   | `false` | When set to `true`  the URL hash is updated with the id of the `element`                                    |
+| `data-pjax-animate`   | `false` | When set to `true`  animates and transitions content in and out                                             |
+
+> When response content contains CSS `<link>` tags or JavaScript `<script>` tags, Pjax automatically compares these to the currently loaded assets and will load them into the DOM if required. Additionally, Pjax will update the document title and meta description when `pushstate` is set to true and the response includes them. 
+
+The link below would request send a Pjax request to `/my-page` and replace the entire document body:
+
+```html
+<a class="js-pjax-link" href="/my-page">My Page</button>
+```
+
+Here, the button will send a request to `/url?sidebar` and place the response into the element `#sidebar-wrapper`:
+
+```html
+<a class="js-pjax-link" href="/url?sidebar" data-pjax-element="#sidebar-wrapper">Sidebar</button>
+```
+
+You may want the request to only happen once when it is first called, in this case add `data-pjax-once` attribute to the anchor:
+
+```html
+<a class="js-pjax-link" href="/url?sidebar" data-pjax-once="true" data-pjax-element="#sidebar-wrapper">Sidebar</button>
+```
+
+Below is a simple example using a tab navigation to load content:
+
+<div class="fbx-snippet-demo">
+    <ul class="tab-nav js-tab-nav">
+        <li>
+            <a href="../pjax_tabs_iframe1.html" class="active js-pjax-link" data-tab="panel-1" data-pjax-element="#tab-1">Tab 1</a>
+        </li>
+        <li>
+            <a href="../pjax_tabs_iframe2.html" class="js-pjax-link" data-tab="panel-2" data-pjax-element="#tab-2">Tab 2</a>
+        </li>
+        <li>
+            <a href="../pjax_tabs_iframe3.html" class="js-pjax-link" data-tab="panel-3" data-pjax-element="#tab-3">Tab 3</a>
+        </li>
+    </ul>
+    <div class="tab-panels js-tab-panels">
+        <div class="tab-panel active" data-tab-panel="panel-1" id="tab-1">
+            <div class="pad-20">
+                <h4>Panel 1</h4>
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+            </div>
+        </div>
+        <div class="tab-panel" data-tab-panel="panel-2" id="tab-2">
+        </div>
+        <div class="tab-panel" data-tab-panel="panel-3" id="tab-3">
+        </div>
+    </div>
+</div>
+
+```html
+<ul class="tab-nav js-tab-nav">
+    <li>
+        <a href="/tab-1" class="active js-pjax-link" data-tab="panel-1" data-pjax-element="#tab-1">Tab 1</a>
+    </li>
+    <li>
+        <a href="/tab-2" class="js-pjax-link" data-tab="panel-2" data-pjax-element="#tab-2">Tab 2</a>
+    </li>
+    <li>
+        <a href="/tab-3" class="js-pjax-link" data-tab="panel-3" data-pjax-element="#tab-3">Tab 3</a>
+    </li>
+</ul>
+<div class="tab-panels js-tab-panels">
+    <div class="tab-panel active" data-tab-panel="panel-1" id="tab-1">
+        <div class="pad-20">
+            <h4>Panel 1</h4>
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+        </div>
+    </div>
+    <div class="tab-panel" data-tab-panel="panel-2" id="tab-2">
+    </div>
+    <div class="tab-panel" data-tab-panel="panel-3" id="tab-3">
+    </div>
+</div>
+```
+
+---
+
+### Server Response
+
+`Pjax` requests are made via HTTP `GET` requests. Your server can differentiate these requests from other incoming `GET` requests by checking if the `X-PJAX` header is sent with the request.
+
+For example, in PHP:
+
+```php
+if (isset($_SERVER['X-PJAX']))
+{
+    # Send response
+}
+```
+
+When sending a response, your server must send valid `HTML` markup, with the correct header type:
+
+```php
+header('Content-Type: text/html; charset=utf-8');
+
+echo '<div>Hello World!</div>';
+```
+
+Server responses should not send an entire HTML `document`, it only needs return the content itself.
+
+```php
+header('Content-Type: text/html; charset=utf-8');
+
+echo '<div>Hello World!</div>';
+```
+
+If Pjax is not supported on your server however, you can still send an entire HTML `document`. Pjax will parse the code and replace the document body.
+
+```JavaScript
+frontbx.require('Pjax').invoke('/foo/bar');
+```
+
+```php
+header('Content-Type: text/html; charset=utf-8');
+
+echo '
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        ...
+    </head>
+    <body>
+        <div>Hello World!</div>
+    </body>
+</html>
+';
+```
+
+If the response contains a `<title>` element, and `stateChange` is set to true, that title will be used (regardless of if a full HTML `document` is sent).
+
+```php
+echo '
+<title>Hello</title>
+<div id="target-id">Hello World!</div>
+';
+```
+
+---
+
+### JavaScript Usage
+
+
+The Pjax Component can be accessed directly via Frontbx's container using the `Pjax` key.
+
+```JavaScript
+let pjax = frontbx.Pjax();
+```
+
+To make a request, use the `request` method:
+
+```JavaScript
+let pjax.request(url, options, success, error, complete, abort, headers);
+```
+
+Pjax extends Frontbx's Ajax Component so the callbacks folllow the same principles. For details on callbacks, see the [Ajax Documentation](../ajax/index.html#arguments)
+
+The options arguement is an Object with the following values / defaults
+
+| Attribute   | Default | Description                                                                                             |
+|-------------|---------|---------------------------------------------------------------------------------------------------------|
+| `element`   | `body`  | Optional target element to insert response into                                                         |
+| `nocache`   | `false` | When set to `true` a timestamp is appended to the URL query to ensure an un-cashed response.            |
+| `pushstate` | `false` | When set to `true` a new history state is created.                                                      |
+| `urlhash`   | `false` | When set to `true` and `element` is provided, the URL hash is updated with the id of the target element |
+
+---
+
+### Events
+
+Pjax will dispatch the following custom events on `window`. The provided options are set to `event.detail`:
+
+| Attribute   Description |                                                                                                       |
+|-------------------------|-------------------------------------------------------------------------------------------------------|
+| `Frontbx:Pjax:start`     | Sent immediately before a Pjax request is made.                                                       |
+| `Frontbx:Pjax:success`   | Sent after a successful Pjax request is made, DOM is updated and all assets have loaded.              |
+| `Frontbx:Pjax:error`     | Sent when Pjax request receives an XHR error response.                                                |
+| `Frontbx:Pjax:abort`     | Sent when Pjax request is interrupted and aborted by either another Pjax request or manually aborted. |
+
+```JavaScript
+window.addEventListener('Frontbx:Pjax:success', (e) =>
+{
+    let url = e.detail.url;
+
+})
+```
+
+

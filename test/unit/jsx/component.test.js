@@ -10,7 +10,6 @@ class Test extends TestCase
 		{
 			let scratch;
 			let PROPS;
-			let STATE;
 			let Component = frontbx.Component(frontbx.IMPORT_AS_REF);
 			
 			beforeEach(() => scratch = this.setupScratch());
@@ -22,29 +21,6 @@ class Test extends TestCase
 				beforeEach(() =>
 				{
 					PROPS = { foo: 'bar', onclick: () => {} };
-					STATE = { text: 'Hello' };
-				});
-
-				it('should throw on extended class components without a render function', () =>
-				{
-					let passedProps;
-
-					class ClassComp extends Component { }
-
-					let instance = new ClassComp;
-
-					this.expect(() => jsx(`<ClassComp {PROPS} />`, scratch, { ClassComp: instance })).to.throw();
-				});
-
-				it('should throw on class components without a render function', () =>
-				{
-					let passedProps;
-
-					class ClassComp { }
-
-					let instance = new ClassComp;
-
-					this.expect(() => jsx(`<ClassComp {PROPS} />`, scratch, { ClassComp: instance })).to.throw();
 				});
 
 				it('should super on class components', () =>
@@ -82,10 +58,48 @@ class Test extends TestCase
 					this.expect(scratch.innerHTML).to.equal('<div>Hello</div>');
 				});
 
-				/*it('should get variables from components properties', () =>
+				it('should construct functional components', () =>
 				{
+					let testvar;
 
-				});*/
+					let FunctionComp = function()
+					{
+						testvar = 'foo';
+					}
+
+					FunctionComp.prototype.render = function(props)
+					{
+						return `<div>Hello</div>`;
+					}
+
+					jsx(`<FunctionComp {PROPS} />`, scratch, { FunctionComp, PROPS });
+
+					this.expect(scratch.innerHTML).to.equal('<div>Hello</div>');
+
+					this.expect(testvar).to.equal('foo');
+				});
+
+				it('should throw on class components without a render function', () =>
+				{
+					let passedProps;
+
+					class ClassComp extends Component { }
+
+					let instance = new ClassComp;
+
+					this.expect(() => jsx(`<ClassComp {PROPS} />`, scratch, { ClassComp: instance })).to.throw();
+				});
+
+				it('should throw on class components without a render function', () =>
+				{
+					let passedProps;
+
+					class ClassComp { }
+
+					let instance = new ClassComp;
+
+					this.expect(() => jsx(`<ClassComp {PROPS} />`, scratch, { ClassComp: instance })).to.throw();
+				});
 
 				it('should construct fragments', () =>
 				{
@@ -113,6 +127,71 @@ class Test extends TestCase
 					this.expect(ClassComp.prototype.render)
 						.to.have.been.calledOnce
 						.and.to.have.been.calledWith({class: 'foo', id: 'bar', 'data-foo': 'baz', children: []});
+				});
+
+				it('should parse variables from class component properties', () =>
+				{
+					class TestComp
+					{
+						render(props)
+						{
+							return `<div>{foo}</div>`;
+						}
+					}
+
+					TestComp.prototype.foo = 'bar';
+
+					jsx(`<TestComp />`, scratch, { TestComp });
+
+					this.expect(scratch.innerHTML).to.equal('<div>bar</div>');
+				});
+
+				it('should parse variables from functional component properties', () =>
+				{
+					let TestFunc = (props) => `<div>{foo}</div>`;
+
+					TestFunc.foo = 'bar';
+
+					jsx(`<TestFunc />`, scratch, { TestFunc });
+
+					this.expect(scratch.innerHTML).to.equal('<div>bar</div>');
+				});
+
+				it('should interpolate this in class components', () =>
+				{
+					class TestComp
+					{
+						render(props)
+						{
+							return `<div>{this.foo}</div>`;
+						}
+					}
+
+					TestComp.prototype.foo = 'bar';
+
+					jsx(`<TestComp />`, scratch, { TestComp, foo: 'bar' });
+
+					this.expect(scratch.innerHTML).to.equal('<div>bar</div>');
+				});
+
+				it('should interpolate this in functional components', () =>
+				{
+					let testvar;
+
+					let FunctionComp = function()
+					{
+						this.foo = 'bar';
+					}
+
+					FunctionComp.prototype.render = function(props)
+					{
+						return `<div>{this.foo}</div>`;
+					}
+
+					jsx(`<FunctionComp />`, scratch, { FunctionComp });
+
+					this.expect(scratch.innerHTML).to.equal('<div>bar</div>');
+
 				});
 
 				it('should pass jsx spread props to render on class components', () =>
@@ -396,29 +475,16 @@ class Test extends TestCase
 				{
 					let Foo = () => `<Fragment>{ getMixedArray() }</Fragment>`;
 
-					jsx(`<Foo />`, scratch, { Foo, getMixedArray });
+					Foo.getMixedArray = getMixedArray;
+
+					jsx(`<Foo />`, scratch, { Foo });
 
 					this.expect(scratch.innerHTML).to.equal(mixedArrayHTML);
 				});
 
-				/*
-				
-
-				
-
-				
-
-				
-
-				it('should render array map', () =>
+				it('should render array map children on component', () =>
 				{
-					class MapComponent extends Component
-					{
-						render()
-						{
-							return `<span>{[1,2,3].map(i => <div>{i}</div>)}</span>`;
-						}
-					}
+					let MapComponent = () => `<span>{[1,2,3].map(i => <div>{i}</div>)}</span>`;
 
 					jsx(`<MapComponent />`, scratch, { MapComponent });
 
@@ -427,12 +493,12 @@ class Test extends TestCase
 
 				it('should render sibling array children', () =>
 				{
-					const Todo = () => (`
+					let Todo = () => (`
 						<ul>
 							<li>A header</li>
-							{['a', 'b'].map(v => <li>{v}</li>)}
+							{ ['a', 'b'].map(v => <li>{v}</li>) }
 							<li>A divider</li>
-							{['c', 'd'].map(v => <li>{v}</li>)}
+							{ ['c', 'd'].map(v => <li>{v}</li>) }
 							<li>A footer</li>
 						</ul>
 					`);
@@ -455,92 +521,202 @@ class Test extends TestCase
 
 			describe('props.children', () =>
 			{
-				let tmpchildren;
+				let tempChildren;
 
 				let childrenArr =  ['<span class="bar">bar</span>', '123', 456];
 
-				beforeEach(() => tmpchildren = false);
+				let getMixedArray = () => [ 0, 'a', 'b', '<span>c</span>', null, undefined, false, ['e', 'f'], 1];
 
-				let ChildrenFunc = _props =>
+				let mixedArrayHTML = '0ab<span>c</span>ef1';
+
+				let ChildrenFunc = props =>
 				{
-					tmpchildren = _props.children;
+					tempChildren = props.children;
 
-					return `<div>{_props.children}</div>`;
+					return `<div>{props.children}</div>`;
 				}
+
+				beforeEach(() => tempChildren = false);
 
 				it('should support passing children as a prop', () =>
 				{
-					let Foo = _props => `<div {_props} />`;
+					jsx(`<ChildrenFunc { { a: 'b', children: ['<span class="bar">bar</span>', '123', 456] } } />`, scratch, { ChildrenFunc });
 
-					jsx(`<Foo { {a: 'b', children: childrenArr } } />`, scratch, { Foo });
-
-					this.expect(scratch.innerHTML).to.equal('<div a="b"><span class="bar">bar</span>123456</div>');
+					this.expect(scratch.innerHTML).to.equal('<div><span class="bar">bar</span>123456</div>');
 				});
 
 				it('should be ignored when explicit children exist', () =>
 				{
-					let Foo = _props => `<div { _props }>a</div>`;
+					let Foo = props => `<div {...props}>a</div>`;
 
-					jsx(`<Foo { {a: 'b', children: childrenArr } } />`, scratch, { Foo });
+					jsx(`<Foo children={'b'} />`, scratch, { Foo });
 
-					this.expect(scratch.innerHTML).to.equal('<div a="b">a</div>');
+					this.expect(scratch.innerHTML).to.equal('<div>a</div>');
 				});
 
-				it('should be undefined with no child', () =>
+				it('should be empty array with no child', () =>
 				{
 					jsx(`<ChildrenFunc />`, scratch, { ChildrenFunc });
 					
-					this.expect(tmpchildren).to.be.undefined;
+					this.expect(tempChildren).to.deep.equal([]);
 					
 					this.expect(scratch.innerHTML).to.equal('<div></div>');
 				});
 
-				it('should be undefined with null as a child', () =>
+				it('should be empty array with null as a child', () =>
 				{
 					jsx(`<ChildrenFunc {{ children: null }} />`, scratch, { ChildrenFunc });
+
+					this.expect(tempChildren).to.deep.equal([]);
 					
 					this.expect(scratch.innerHTML).to.equal('<div></div>');
 				});
 
-				it('should be undefined with false as a child', () =>
+				it('should be empty array with false as a child', () =>
 				{
 					jsx(`<ChildrenFunc {{ children: false }} />`, scratch, { ChildrenFunc });
+
+					this.expect(tempChildren).to.deep.equal([]);
 					
 					this.expect(scratch.innerHTML).to.equal('<div></div>');
 				});
 
-				it('should be true with true as a child', () =>
+				it('should be array with true as a child', () =>
 				{
 					jsx(`<ChildrenFunc {{ children: true }} />`, scratch, { ChildrenFunc });
 					
+					this.expect(tempChildren).to.be.an('array');
+					this.expect(tempChildren[0].nodeValue).to.equal('true');
+
 					this.expect(scratch.innerHTML).to.equal('<div>true</div>');
+				});
+
+				it('should be an array with multiple children', () =>
+				{
+					jsx(`<ChildrenFunc>
+							0<span />
+							<input />
+							<div />1
+						</ChildrenFunc>`, scratch, { ChildrenFunc });
+
+					this.expect(tempChildren).to.be.an('array');
+					this.expect(tempChildren[0].nodeValue).to.equal('0');
+					this.expect(tempChildren[1].tagName.toLowerCase()).to.equal('span');
+					this.expect(tempChildren[2].tagName.toLowerCase()).to.equal('input');
+					this.expect(tempChildren[3].tagName.toLowerCase()).to.equal('div');
+					this.expect(tempChildren[4].nodeValue).to.equal('1');
+					this.expect(scratch.innerHTML).to.equal(
+						`<div>0<span></span><input><div></div>1</div>`
+					);
+				});
+
+				it('should be an array with an array as children', () =>
+				{
+					let mixedArray = getMixedArray();
+
+					jsx(`<ChildrenFunc>{mixedArray}</ChildrenFunc>`, scratch, { ChildrenFunc, mixedArray });
+
+					this.expect(tempChildren).to.be.an('array');
+					this.expect(tempChildren[0].nodeValue).to.equal('0');
+					this.expect(tempChildren[1].nodeValue).to.equal('a');
+					this.expect(tempChildren[2].nodeValue).to.equal('b');
+					this.expect(tempChildren[3].tagName.toLowerCase()).to.equal('span');
+					this.expect(tempChildren[3].innerHTML).to.equal('c');
+					this.expect(tempChildren[4].nodeValue).to.equal('e');
+					this.expect(tempChildren[5].nodeValue).to.equal('f');
+					this.expect(tempChildren[6].nodeValue).to.equal('1');
+
+					this.expect(scratch.innerHTML).to.equal(`<div>${mixedArrayHTML}</div>`);
+				});
+
+				it('should flatten nested arrays', () =>
+				{
+					let list1 = [0, 1, [2, 3]];
+
+					jsx(`<ChildrenFunc>{list1}</ChildrenFunc>`, scratch, { ChildrenFunc, list1 } );
+
+					this.expect(tempChildren).to.be.an('array');
+					this.expect(tempChildren.length).to.be.equal(4);
+					this.expect(scratch.innerHTML).to.equal('<div>0123</div>');
+				});
+
+				it('should flatten sibling arrays', () =>
+				{
+					let list1 = [0, 1];
+					let list2 = [2, 3];
+					let list3 = [4, 5];
+					let list4 = [6, 7];
+					let list5 = [8, 9];
+
+					jsx(`
+						<ChildrenFunc>
+							{[list1, list2]}
+							{[list3, list4]}
+							{list5}
+						</ChildrenFunc>`, scratch, { ChildrenFunc, list1, list2, list3, list4, list5 } 
+					);
+
+					this.expect(tempChildren).to.be.an('array');
+					this.expect(tempChildren.length).to.be.equal(10);
+					this.expect(scratch.innerHTML).to.equal('<div>0123456789</div>');
 				});
 			});
 
 			describe('component nesting', () =>
 			{
-				let Foo = _props =>
+				it('should render nested class components', () =>
 				{
-					return `<div>Foo</div>`;
-				}
+					class B
+					{
+						render(props)
+						{
+							return `<div>{props.foo}</div>`;
+						}
+					}
 
-				let ChildFunc = _props =>
-				{
-					frontbx.set('Foo', Foo);
-
-					return `<Foo />`;
-				}
-
-				it('should render nested children', () =>
-				{
-					jsx(`<span><ChildFunc /></span>`, scratch, { ChildFunc });
+					class A
+					{
+						render(props)
+						{
+							return `<B foo="bar"/>`;
+						}
+					}
 					
-					this.expect(scratch.innerHTML).to.equal('<span><div>Foo</div></span>');
-				});*/
+					A.prototype.B = B;
+
+					jsx(`<A />`, scratch, { A });
+					
+					this.expect(scratch.innerHTML).to.equal('<div>bar</div>');
+				});
+
+
+				it('should render nested functional components', () =>
+				{
+					let B = props => `<div>{props.foo}</div>`;
+				
+					let A = props =>  `<B foo="bar"/>`;
+					
+					A.B = B;
+
+					jsx(`<A />`, scratch, { A });
+					
+					this.expect(scratch.innerHTML).to.equal('<div>bar</div>');
+				});
+
+				it('should wrap nested components', () =>
+				{
+					let B = props => `<div>{props.foo}</div>`;
+				
+					let A = props => `<span><B foo="bar"/></span>`;
+					
+					A.B = B;
+
+					jsx(`<A />`, scratch, { A });
+					
+					this.expect(scratch.innerHTML).to.equal('<span><div>bar</div></span>');
+				});
 
 			});
-
-
 		});
 	}
 }

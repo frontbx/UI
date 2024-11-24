@@ -261,14 +261,11 @@
             // JSX Func was left open
             if (
                     (
-                        this.braceDepth > 0 &&
-                        (char !== '>' && char !== '<') &&
-                        !this.currentTag
+                        this.braceDepth > 0 && (char !== '>' && char !== '<') 
                     ) 
                     ||
                     (
-                        this.peekback() !== '\\' && 
-                        (char === '{' || char === '}')
+                        this.peekback() !== '\\' && (char === '{' || char === '}')
                     )
                 )
             {
@@ -667,7 +664,14 @@
         this.whitespace();
 
         // Closed doctype
-        if ('>' == this.peek()) return 'tag_close_self';
+        if ('>' == this.peek())
+        {
+            this.currentTag = null;
+
+            this.emit('doctype:close:self', '');
+
+            return 'text';
+        }
 
         // Doc types don't have "key=value" attributes, only attributes
         // e.g  PUBLIC
@@ -726,9 +730,9 @@
 
         let buff = this.scan(']>');
 
-        this.consume(buff.length);
+        this.consume(buff.length -1);
 
-        this.emit('comment:open', `<!--${buff}>`);
+        this.emit('comment:open', `<!--${buff}]>`);
 
         this.consume(3);
 
@@ -837,12 +841,19 @@
         }
 
         // Close jsx
-        else if (jsx[0] === ')' || jsx[0] === '}' || opened)
+        else if ((jsx[0] === ')' || jsx[0] === '}') && opened)
         {
             this.emit('jsx:close', buff);
         }
 
+        // Open
         else if (jsx.substr(-1) === '(' || jsx.substr(-1) === '{' || this.braceDepth >= 1)
+        {
+            this.emit('jsx:open', buff);
+        }
+
+        // Nested
+        else if (this.braceDepth >= 1)
         {
             this.emit('jsx:open', buff);
         }

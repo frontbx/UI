@@ -11,15 +11,17 @@
         this.curr = this.stack;
 
         this.parent = [];
+
+        this.currtoken;
     }
 
     Tokenizer.prototype.parse = function()
     {
         const delegate = (token, value) => 
-        {            
+        {
             this.readtoken(token, value);
         }
-        
+
         lexer(this.htmlstr, delegate);
 
         return this.stack.children;
@@ -51,7 +53,7 @@
 
     Tokenizer.prototype.pushAttr = function(value)
     {
-        this.curr.attrs[value] = true;
+        this.curr.attrs[value] = 'true';
 
         this.currAttr = value;
     }
@@ -90,6 +92,8 @@
         }
 
         this.curr.close = value;
+
+        this.curr = this.parent.pop();
     }
 
     Tokenizer.prototype.node = function(type, value, children)
@@ -102,6 +106,8 @@
 
     Tokenizer.prototype.readtoken = function(token, value)
     {
+        this.currtoken = token;
+
         switch (token)
         {
             case 'text':

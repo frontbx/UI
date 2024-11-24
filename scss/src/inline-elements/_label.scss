@@ -1,3 +1,5 @@
+@use "sass:map";
+
 // Labels
 .label
 {
@@ -30,8 +32,8 @@
     {
         &.label-#{$context}
         {
-            --fbx-label-color: #{map-get($colors, "contrast")};
-            --fbx-label-bg: #{map-get($colors, "color")}
+            --fbx-label-color: #{map.get($colors, "contrast")};
+            --fbx-label-bg: #{map.get($colors, "color")}
         }
     }
 

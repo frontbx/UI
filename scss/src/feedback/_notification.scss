@@ -1,3 +1,4 @@
+@use "sass:map";
 .notification-wrap
 {
 	--fbx-notification-max-width: #{$notification-max-width};
@@ -8,8 +9,8 @@
     flex-direction: column;
     flex-wrap: nowrap;
     row-gap: 10px;
-    padding-left:  map-get($container-gutters, xs);
-    padding-right: map-get($container-gutters, xs);
+    padding-left:  map.get($container-gutters, xs);
+    padding-right: map.get($container-gutters, xs);
 	
 	&.active
 	{

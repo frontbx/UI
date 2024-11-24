@@ -1,22 +1,91 @@
-/**
- * Get an element's actual height in px
- *
- * @access {public}
- * @param  {DOMElement}   DOMElement Target element
- * @return {object}
- */
-_.prototype.height = function(DOMElement, borderBox)
+import TestCase from '../../../testcase.js';
+
+class Test extends TestCase
 {
-    if (DOMElement === window || DOMElement === document || DOMElement === document.documentElement) return Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+   run()
+   {
+        describe('height()', () =>
+        {
+            let scratch;
 
-    if (borderBox)
-    {
-        let h    = parseInt(this.rendered_style(DOMElement, 'height'));
-        let padT = parseInt(this.rendered_style(DOMElement, 'padding-top'));
-        let padB = parseInt(this.rendered_style(DOMElement, 'padding-bottom'));
+            const [height] = frontbx.import(['height']).from('_');
+            
+            beforeEach(() =>
+            {
+                scratch = this.setupScratch();
+            });
 
-        return parseInt(h - padT - padB);
+            afterEach(() =>
+            {
+                this.teardown(scratch);
+            });
+
+            it('should read element height', () =>
+            {
+                scratch.style.height = '200px';
+
+                this.expect(height(scratch)).to.equal(200);
+            });
+
+            it('should retrieve float values', () =>
+            {
+                scratch.style.height = '200.5px';
+
+                this.expect(height(scratch)).to.equal(200.5);
+            });
+
+            it('should read element height from stylesheet rules', () =>
+            {
+                let css    = '#scratch { height: 100px; }',
+                head       = document.head || document.getElementsByTagName('head')[0],
+                style      = document.createElement('style');
+                style.type = 'text/css';
+
+                if (style.styleSheet)
+                {
+                  style.styleSheet.cssText = css;
+                }
+                else
+                {
+                  style.appendChild(document.createTextNode(css));
+                }
+
+                head.appendChild(style);
+
+                this.expect(height(scratch)).to.equal(100);
+
+                style.parentNode.removeChild(style);
+            });
+
+            it('Inline styles should override style-sheet rules', () =>
+            {
+                let css    = '#scratch { height: 100px; }',
+                head       = document.head || document.getElementsByTagName('head')[0],
+                style      = document.createElement('style');
+                style.type = 'text/css';
+
+                if (style.styleSheet)
+                {
+                  style.styleSheet.cssText = css;
+                }
+                else
+                {
+                  style.appendChild(document.createTextNode(css));
+                }
+
+                head.appendChild(style);
+
+                scratch.style.height = '200px';
+
+                this.expect(height(scratch)).to.equal(200);
+
+                style.parentNode.removeChild(style);
+            });
+           
+        });
     }
-
-    return this.css_unit_value(this.rendered_style(DOMElement, 'height'));
 }
+
+let test = new Test();
+
+test.run();

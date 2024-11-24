@@ -1,3 +1,5 @@
+@use "sass:map";
+
 .avatar
 {
 	--fbx-avatar-bg: #{$avatar-bg};
@@ -54,8 +56,8 @@
     {
         &.avatar-#{$context}
         {
-            --fbx-avatar-bg: #{map-get($colors, "color")};
-            --fbx-avatar-text-color: #{map-get($colors, "contrast")};
+            --fbx-avatar-bg: #{map.get($colors, "color")};
+            --fbx-avatar-text-color: #{map.get($colors, "contrast")};
         }
     }
 

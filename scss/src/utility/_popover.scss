@@ -1,3 +1,5 @@
+@use "sass:map";
+
 .popover
 {
     --fbx-popover-max-width: #{$popover-max-width};
@@ -61,7 +63,7 @@
     // Variants
     @each $context, $colors in $contexts
     {    
-        $color: map-get($colors, "color");
+        $color: map.get($colors, "color");
         $basename: _color-name-from-var($color);
 
         &.popover-#{$context}

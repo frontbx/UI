@@ -1,3 +1,5 @@
+@use "sass:map";
+
 .color-transparent   { color: transparent}
 .color-gray          {color: var(--fbx-gray)}
 @for $i from 1 through 9
@@ -6,7 +8,7 @@
 }
 @each $context, $colors in $contexts
 {    
-    $color : map-get($colors, 'color');
+    $color : map.get($colors, 'color');
 
     .color-#{$context} { color: $color}
 }

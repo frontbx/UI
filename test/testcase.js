@@ -1,9 +1,7 @@
-import 'jsdom-global/register.js';
 import { use as usechai, expect } from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import frontbx from '../dist/js/frontbx.esm.js';
-import './unit/utils.test.js';
 
 const VOID_ELEMENTS = /^(area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)$/;
 
@@ -56,7 +54,7 @@ function serializeDomTree(node)
 	
 }
 
-export default class TestCase
+export default class Test
 {
 	constructor()
 	{
@@ -65,9 +63,9 @@ export default class TestCase
 		this.sinon = sinon;
 	}
 	
-	expect(args)
+	expect()
 	{
-		return expect(args);
+		return expect(...arguments);
 	}
 
 	setupScratch(node)

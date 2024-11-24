@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "sass:map";
 // styles
 .checkbox
 {
@@ -170,6 +171,6 @@
 {    
     .checkbox.checkbox-#{$context}
     {
-        @include _checkbox( map-get($colors, "color") );
+        @include _checkbox( map.get($colors, "color") );
     }
 }

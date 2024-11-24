@@ -10,7 +10,7 @@ _.prototype.is_htmlElement = function(mixed_var)
     {
         let type = this.var_type(mixed_var);
 
-        return HTML_REGXP.test(type) || type === '[object HTMLDocument]' || type === '[object Text]';
+        return HTML_REGXP.test(type) || type === '[object HTMLDocument]' || type === '[object Text]' || type === '[object Comment]';
     }
 
     return false;

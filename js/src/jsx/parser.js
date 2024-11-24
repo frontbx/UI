@@ -83,7 +83,12 @@
     {
         if (!props && !el.spreadAttribute) return 'null';
 
-        let spread = el.spreadAttribute;
+        let spread;
+
+        if (el.spreadAttribute)
+        {
+            spread = /^\{\s?\{/.test(el.spreadAttribute) ? el.spreadAttribute.substring(1).trim().slice(0, -1).trim() : el.spreadAttribute; 
+        }
 
         let attrs = [];
 
@@ -126,14 +131,14 @@
             
             if (child.type === '#text') return `'${sanitizeQuotes(child.value)}'`;
 
-            if (child.type === '#comment') return `h('comment',{},'${sanitizeQuotes(child.value.substring(4).trim().slice(0, -3).trim())}')`;
+            if (child.type === '#comment') return `h('comment',{},'${sanitizeQuotes(child.value.substring(4).slice(0, -3))}')`;
 
             if (child.type === '#jsx:function')
             {
                 let open  = child.open.trim().substring(1).trim();
                 let close = child.close.trim().slice(0, -1).trim();
 
-                return `${open} ${this.genChildren(child.children, null, ' ')} ${close}`;
+                return `${open} ${this.genChildren(child.children, null)} ${close}`;
             }
 
             if (child) return this.genTag(child);

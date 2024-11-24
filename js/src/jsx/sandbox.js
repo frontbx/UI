@@ -50,9 +50,12 @@
 
     // Keep in store all real builtin prototypes to restore them after
     // a possible alteration during the evaluation.
-    const BUILT_INS  = [JSON, Object, Function, Array, String, Boolean, Number, Date, RegExp, Error, EvalError, RangeError, ReferenceError, SyntaxError, TypeError, URIError];
+    const BUILT_INS  = map(BUILT_INS_STR, (i, name) => (window || global)[name] );
     const COPIES     = new Array(BUILT_INS.length);
     const PROTO_KEYS = map(new Array(BUILT_INS.length), (i) => object_props(BUILT_INS[i], true));
+
+    // Sandbox name
+    const SANDBOX_NAME = '$sandbox$';
 
     const acceptableVariable = function(v)
     {
@@ -103,28 +106,26 @@
         return {...bindings, ...DISSALOWEDES}; 
     }
 
-    const SANDBOX_NAME = '$sandbox$';
-
     // Evaluate code as a String (`source`) without letting global variables get
     // used or modified. The `sandbox` is an object containing variables we want
     // to pass in.
     sandbox = function(source, bindings, context)
-    { 
+    {
         alienate();
 
         bindings = genBindings(bindings || {});
 
         context = context || null;
 
-        let sandboxed = 'this.constructor.constructor = function () {};\nvar ';
+        let func = 'this.constructor.constructor = function () {};\nvar ';
 
-        each(bindings, (key, value) => sandboxed += `${key} = ${SANDBOX_NAME}['${key}'],\n`);
+        each(bindings, (key, value) => func += `${key} = ${SANDBOX_NAME}['${key}'],\n`);
 
-        sandboxed += `undefined;\n${resetEnv()}\n return ${source};`;
-
+        func += `undefined;\n${resetEnv()}\n return ${source};`;
+        
         let ret;
 
-        ret = Function(SANDBOX_NAME, sandboxed).call(context, bindings);
+        ret = Function(SANDBOX_NAME, func).call(context, bindings);
 
         unalienate();
 

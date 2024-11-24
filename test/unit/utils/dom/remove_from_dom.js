@@ -1,3 +1,41 @@
+import TestCase from '../../../testcase.js';
+
+class Test extends TestCase
+{
+    run()
+    {
+        describe('remove_from_dom()', () =>
+        {
+            const [remove_from_dom] = frontbx.import(['remove_from_dom']).from('_');
+
+            let scratch;
+            
+            beforeEach(() => scratch = this.setupScratch());
+
+            afterEach(() => this.teardown(scratch));
+
+            it('should find first children', () =>
+            {        
+                scratch.innerHTML = `
+                    <div>1</div>
+                    <span>2</span>
+                    <div>
+                        <span>3</span>
+                    </div>
+                    <i>5</i>
+                `;
+
+                this.expect(remove_from_dom(scratch).length).to.equal(4);
+            });
+        });
+    }
+}
+
+let test = new Test();
+
+test.run();
+
+
 /**
  * Remove an element from the DOM
  *

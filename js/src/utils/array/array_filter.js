@@ -6,18 +6,5 @@
  */
 _.prototype.array_filter = function(arr)
 {
-    let isArr = this.is_array(arr);
-
-    let ret = isArr ? [] : {};
-
-    this.each(arr, function(i, val)
-    {
-        if (!this.is_empty(val))
-        {
-            isArr ? ret.push(val) : ret[i] = val;
-        }
-        
-    }, this);
-
-    return ret;
+    return this.map(arr, (k,v) => this.is_empty(v) ? false : v );
 }

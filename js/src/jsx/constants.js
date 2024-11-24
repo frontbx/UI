@@ -98,6 +98,9 @@ const RESERVED_WORDS =
     'toLocaleString',
     'toString',
     'valueOf',
+    'localStorage',
+    'sessionStorage',
+    'cookie',
 ];
 
 /**
@@ -151,3 +154,10 @@ var sandbox;
  * @var {Function}
  */
 var jsx;
+
+/**
+ * Local children.
+ * 
+ * @var {Function}
+ */
+var children;

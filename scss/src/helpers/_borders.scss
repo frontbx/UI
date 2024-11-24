@@ -1,3 +1,5 @@
+@use "sass:map";
+
 // Reset
 .no-border              { border: 0; }
 
@@ -15,7 +17,7 @@
 }
 @each $context, $colors in $contexts
 {    
-    $color : map-get($colors, 'color');
+    $color : map.get($colors, 'color');
 
     .border-#{$context} { border-color: $color}
 }

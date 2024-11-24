@@ -1,3 +1,4 @@
+@use "sass:map";
 /* ---------------------------------- ROOT DARK ------------------------------------ */
 /* --------------------------------------------------------------------------------- */
 .fbx-darkmode:root
@@ -260,7 +261,7 @@
     }
     @each $context, $colors in $contexts
     {    
-        $color: map-get($colors, "color");
+        $color: map.get($colors, "color");
         $basename: _color-name-from-var($color);
 
         .msg.msg-#{$context}
